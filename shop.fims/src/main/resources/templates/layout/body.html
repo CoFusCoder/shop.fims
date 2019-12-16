@@ -286,9 +286,12 @@
               <span>#거래처 관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/festival_account/allAccountView}">#모든거래처관리</a></li>
-              <li><a th:href="@{/festival_account/approvalAccountView}">#승인된거래처관리</a></li>
-              <li><a th:href="@{/festival_account/accountMemberView}">#거래처회원관리</a></li>
+              <li><a th:href="@{/insertAllAccount}">#모든거래처등록</a></li>
+              <li><a th:href="@{/allAccountView}">#모든거래처관리</a></li>
+              <li><a th:href="@{/insertApprovalAccount}">#승인된거래처등록</a></li>
+              <li><a th:href="@{/approvalAccountView}">#승인된거래처관리</a></li>
+              <li><a th:href="@{/insertAccountMember}">#거래처회원등록</a></li>
+              <li><a th:href="@{/accountMemberView}">#거래처회원관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -297,7 +300,8 @@
               <span>#위원회관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/festival_committee/allCommitteeView}">#위원회관리</a></li>
+              <li><a th:href="@{/insertAllCommittee}">#위원회등록</a></li>
+              <li><a th:href="@{/allCommitteeView}">#위원회관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -413,7 +417,7 @@
               <span>#게시판관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/festival_announcement/announcementView}">#축제공고관리</a></li>
+              <li><a th:href="@{/announcementView}">#축제공고관리</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#공지사항</a></li>
@@ -439,10 +443,10 @@
             <ul class="sub">
               <li><a th:href="@{estimatelist}">#전체심사</a></li>              
               <li><a th:href="@{finalestimatelist}">#완료심사</a></li>
-              <li><a href="/festival_applicationform/serviceAppFormView">#용역신청서관리</a></li>
-              <li><a href="/festival_applicationform/boothAppFormView">#부스신청서관리</a></li>
-              <li><a href="/festival_applicationform/volunteerAppFormView">#자원봉사신청서관리</a></li>
-              <li><a href="/festival_applicationform/committeeAppFormView">#위원회신청서관리</a></li>
+              <li><a th:href="@{/serviceAppFormView}">#용역신청서관리</a></li>
+              <li><a th:href="@{/boothAppFormView}">#부스신청서관리</a></li>
+              <li><a th:href="@{/volunteerAppFormView}">#자원봉사신청서관리</a></li>
+              <li><a th:href="@{/committeeAppFormView}">#위원회신청서관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
