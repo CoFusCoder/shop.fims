@@ -1,4 +1,4 @@
-package shop.fims.human.controller;
+package shop.fims.human;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,12 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class WorkController {
 
-	//축제업무별배치인원리스트
-	@GetMapping("/workingpeopleList")
-	public String selectWorkingpeople() {
-		
-		return "/work/workingpeopleList";
-	}
 	//축제업무분류리스트
 	@GetMapping("/workcategoryList")
 	public String selectWorkCategory() {

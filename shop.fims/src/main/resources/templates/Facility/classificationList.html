@@ -9,24 +9,41 @@ layout:decorator="layout/main">
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		모든시설분류리스트(수정삭제연결확인용 추후 수정)
-		<table border="1">
-				<tr>
-					<td>아이디</td>
-					<td>비밀번호</td>
-					<td>권한</td>
-					<td>이름</td>
-					<td>이메일</td>
-					<td>수정</td>
-					<td>삭제</td>
-					<td>
-						<a th:href="@{/classificationUpdate}">수정연결</a>
-					</td>
-					<td>
-						<a th:href="@{/classificationDelete}">삭제연결</a>
-					</td>
-				</tr>
-		</table>
+		모든시설분류리스트
+			<style>
+			  table {
+			    width: 100%;
+			    border-top: 1px solid #444444;
+			    border-collapse: collapse;
+			  }
+			  th, td {
+			    border-bottom: 1px solid #444444;
+			    padding: 10px;
+			    text-align: center;
+			  }
+			  th {
+			    background-color: #bbdefb;
+			  }
+			  td /* {
+			    background-color: #e3f2fd;
+			  } */
+			</style>
+			<table>
+					<tr>
+						<th>시설분류</th>
+						<th>수정</th>
+						<th>삭제</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<a th:href="@{/classificationUpdate}">수정연결</a>
+						</td>
+						<td>
+							<a th:href="@{/classificationDelete}">삭제연결</a>
+						</td>					
+					</tr>
+			</table>
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>
