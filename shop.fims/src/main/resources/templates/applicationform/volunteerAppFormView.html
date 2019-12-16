@@ -5,28 +5,29 @@
 
 <th:block layout:fragment="customHead">
 <meta charset="UTF-8">
-<title>용역신청서</title>
+<title>자원봉사신청서리스트</title>
 <th:block th:include="layout/customHead"></th:block>
 </th:block>
 	<th:block layout:fragment="customBody">
 		<div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>용역신청서</h4>
+              <h4><i class="fa fa-angle-right"></i>자원봉사신청서리스트</h4>
               <hr>
               <table class="table">
                 <thead>
                   <tr>
                     <th>컬럼1</th>
                     <th>컬럼2</th>
-                    <th>컬럼3</th>
-                    <th>컬럼4</th>
+                    <th>수정</th>
+                    <th>삭제</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>값1</td>
                     <td>값1</td>
-                    <td>값1</td>
-                    <td>값1</td>
+                    <td><a th:href="@{/updateVolunteerAppForm}">수정</a></td>
+                    <td><a th:href="@{/}">삭제</a></td>
+                    
                   </tr>
 
                 </tbody>

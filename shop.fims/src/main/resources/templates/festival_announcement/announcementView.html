@@ -17,34 +17,26 @@
                   <tr>
                     <th>컬럼1</th>
                     <th>컬럼2</th>
-                    <th>컬럼3</th>
-                    <th>컬럼4</th>
+                    <th>등록</th>
+                    <th>수정</th>
+                    <th>삭제</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>값1</td>
                     <td>값1</td>
-                    <td>값1</td>
-                    <td>값1</td>
+                    <td><a th:href="@{/insertAnnouncement}">등록</a></td>
+                    <td><a th:href="@{/updateAnnouncement}">수정</a></td>
+                    <td><a th:href="@{/}">삭제</a></td>
+                    
                   </tr>
-                  <tr>
-                    <td>값2</td>
-                    <td>값2</td>
-                    <td>값2</td>
-                    <td>값2</td>
-                  </tr>
-                  <tr>
-                    <td>값3</td>
-                    <td>값3</td>
-                    <td>값3</td>
-                    <td>값3</td>
-                  </tr>
+
                 </tbody>
               </table>
             </div>
 	</th:block>
-<th:block layout:fragment="customJquery">
+	<th:block layout:fragment="customJquery">
 	<th:block th:include="layout/customJquery"></th:block>
 </th:block>
 </html>

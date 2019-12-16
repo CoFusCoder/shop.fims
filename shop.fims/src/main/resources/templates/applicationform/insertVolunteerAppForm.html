@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+
+<th:block layout:fragment="customHead">
+<meta charset="UTF-8">
+<title>봉사활동신청서 등록</title>
+<th:block th:include="layout/customHead"></th:block>
+</th:block>
+	<th:block layout:fragment="customBody">
+		<div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>봉사활동 신청서 등록</h4>
+              <hr>
+				<form th:action="@{/InsertVolunteerAppForm}" method="post">
+					<table border="1">
+						<tr>
+							<td>ㅌㅌㅌ</td>
+							<td>
+								<input type="text" name="#">
+							</td>
+						</tr>
+						<tr>
+							<td>ㅌㅌㅌ</td>
+							<td>
+								<input type="text" name="#">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button type="submit">봉사활동 신청서 등록</button>
+							</td>
+						</tr>
+					</table>
+				</form>	
+	</th:block>
+ 	<th:block layout:fragment="customJquery">
+	<th:block th:include="layout/customJquery"></th:block>
+</th:block>
+</html>
