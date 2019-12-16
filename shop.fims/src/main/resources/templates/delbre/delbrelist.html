@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>축제통합관리시스템</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+	<style>
+		.button {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			-webkit-transition-duration: 0.4s; /* Safari */
+			transition-duration: 0.4s;
+		}
+		
+		.input {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		
+		.disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
+		
+		table, td, th {
+			border: 1px solid black;
+		}
+		
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		
+		th {
+			height: 50px;
+		}
+	</style>
+	<!-- page content -->
+	<p>계약내역 거래내역 리스트 </p>
+	   <form th:action="@{#}">
+			<table>
+				<tr>
+					<th>모든 행정기관관리</th>				
+					<th>전국 지역관리</th>
+					<th>모든 지역 시군관리</th>
+					<th>모든 축제관리</th>
+					<th>거래처관리</th>				
+					<th>거래처 업종 분류</th>
+					<th>위원회관리</th>
+					<th>계약물품날짜</th>
+					<th>계약물품내역</th>
+					<th>계약물품 등록</th>
+					<th>계약물품 수정</th>
+				
+				
+				</tr>
+				<tr>
+					<th>전라북도청</th>
+					<th>전라북도</th>
+					<th>전주시</th>
+					<th>소리문화축제</th>
+					<th>주식회사 유원전력조명</th>
+					<th>무대설치대행업체</th>
+					<th>전주세계소리축제조직위원회</th>								
+					<th>2019-8-10</th>
+					<th>대형조명</th>
+					<th><input type="submit" name="delbrelistsubmit" value="계약물품 등록"></th>
+					<th><input type="submit" name="delbreupdate" value="계약물품 수정"></th>
+				</tr>							
+				<tr>
+					<th>전라북도청</th>
+					<th>전라북도</th>
+					<th>전주시</th>
+					<th>소리문화축제</th>
+					<th>무대 용역시험다아</th>
+					<th>무대설치대행업체</th>
+					<th>전주세계소리축제조직위원회</th>								
+					<th>2019-8-12</th>
+					<th>대형조명</th>
+					<th><input type="submit" name="delbrelistsubmit" value="계약물품 등록"></th>
+					<th><input type="submit" name="delbreupdate" value="계약물품 수정"></th>
+				
+				
+				</tr>							
+			</table>
+		</form>	
+	</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>

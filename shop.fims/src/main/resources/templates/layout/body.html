@@ -101,7 +101,7 @@
               </li>
               <li>
                 <a href="#">
-                  <span class="photo"><img alt="avatar" src="img/ui-zac.jpg"></span>
+                  <span class="photo"><img alt="avatar" th:src="@{/img/ui-zac.jpg}"></span>
                   <span class="subject">
                   <span class="from">Zac Snider</span>
                   <span class="time">Just now</span>
@@ -113,7 +113,7 @@
               </li>
               <li>
                 <a href="#">
-                  <span class="photo"><img alt="avatar" src="img/ui-divya.jpg"></span>
+                  <span class="photo"><img alt="avatar" th:src="@{/img/ui-divya.jpg}"></span>
                   <span class="subject">
                   <span class="from">Divya Manian</span>
                   <span class="time">40 mins.</span>
@@ -125,7 +125,7 @@
               </li>
               <li>
                 <a href="#">
-                  <span class="photo"><img alt="avatar" src="img/ui-danro.jpg"></span>
+                  <span class="photo"><img alt="avatar" th:src="@{/img/ui-danro.jpg}"></span>
                   <span class="subject">
                   <span class="from">Dan Rogers</span>
                   <span class="time">2 hrs.</span>
@@ -137,7 +137,7 @@
               </li>
               <li>
                 <a href="#">
-                  <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span>
+                  <span class="photo"><img alt="avatar" th:src="@{/img/ui-sherman.jpg}"></span>
                   <span class="subject">
                   <span class="from">Dj Sherman</span>
                   <span class="time">4 hrs.</span>
@@ -216,7 +216,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="#"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="#"><img th:src="@{/img/ui-sam.jpg}" class="img-circle" width="80"></a></p>
           <h5 class="centered">#SamSoffes</h5>
           <li class="mt">
             <a class="active" href="#">
@@ -230,10 +230,30 @@
               <span>#운영관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/SystemManageView}">#시스템 사용 대상 등록</a></li>
+              <li><a href="#">#시스템 사용 등록 현황</a></li>
+              <li><a href="#">#시스템 사용 신청서 관리</a></li>
+              <li><a href="#">#온라인 시설코드발급</a></li>
+              <li><a href="#">#온라인 시설코드발급 현황</a></li>
+              <li><a href="#">#온라인 시설코드 로그인 관리</a></li>
+              <li><a href="#">#온라인 계정 등록</a></li>
+              <li><a href="#">#온라인 계정 등록현황</a></li>
+              <li><a href="#">#온라인 계정 로그인 관리</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus-square"></i>
+              <span>#행정기관관리</span>
+              </a>
+            <ul class="sub">
+              <li><a href="#">#공통 코드 관리</a></li>
+              <li><a href="#">#전국 지역 관리</a></li>
+              <li><a href="#">#전국 지역별 시군 관리</a></li>
+              <li><a href="#">#행정기관 등록</a></li>
+              <li><a href="#">#행정기관 등록 현황</a></li>
+              <li><a href="#">#행정기관 부서별 직원 등록</a></li>
+              <li><a href="#">#행정기관 부서별 직원 등록 현황</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -242,30 +262,10 @@
               <span>#회원관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-plus-square"></i>
-              <span>행정기관관리</span>
-              </a>
-            <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a href="#">#신규 사용자 계정생성 및 권한 등록</a></li>
+              <li><a href="#">#모든 회원 관리</a></li>
+              <li><a href="#">#거래처 회원 관리</a></li>
+              <li><a href="#">#위원회 회원 관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -277,7 +277,7 @@
               <li><a href="#">#</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a href="#">#업무현황</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -286,9 +286,9 @@
               <span>#거래처 관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/festival_account/allAccountView}">#모든거래처관리</a></li>
+              <li><a th:href="@{/festival_account/approvalAccountView}">#승인된거래처관리</a></li>
+              <li><a th:href="@{/festival_account/accountMemberView}">#거래처회원관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -297,10 +297,7 @@
               <span>#위원회관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/festival_committee/allCommitteeView}">#위원회관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -309,8 +306,8 @@
               <span>#축제관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a href="#">지역별 축제 관리</a></li>
+              <li><a href="#">축제별 입장료 관리</a></li>
             </ul>
           </li>
            <li class="sub-menu">
@@ -329,19 +326,20 @@
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
-              <i class=" fa fa-plus-square"></i>
+              <i class="fa fa-plus-square"></i>
               <span>#축제홍보관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/pr_timetable}">#월별타임테이블</a></li>
+              <li><a th:href="@{/pr_detailList}">#홍보사업관리</a></li>
+              <li><a th:href="@{/pr_divList}">#홍보분류관리</a></li>
+              <li><a th:href="@{/pr_comList}">#홍보거래처리스트</a></li>
               <li><a href="#">#</a></li>
             </ul>
           </li>
            <li class="sub-menu">
             <a href="javascript:;">
-              <i class=" fa fa-plus-square"></i>
+              <i class="fa fa-plus-square"></i>
               <span>#축제시설관리</span>
               </a>
             <ul class="sub">
@@ -385,10 +383,14 @@
               <span>#축제모든물품관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+             <li><a th:href="@{/conditionlist}">#물품관리</a></li>
+             <li><a th:href="@{/delbrelist}">#계약물품납품 내역관리</a></li>
+             <li><a th:href="@{/revenuelist}">#보유물품 대여관련 세입관리</a></li>
+             <li><a th:href="@{/g_festival_in}">#축제관련물품입고관리</a></li>
+             <li><a th:href="@{/g_festival_out}">#축제관련물품출고관리</a></li>
+             <li><a th:href="@{/g_divList}">#물품분류관리</a></li>
+             <li><a th:href="@{/g_comList}">#물품거래처관리</a></li>
+             
             </ul>
           </li>
           <li class="sub-menu">
@@ -397,10 +399,12 @@
               <span>#축제내프로그램관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/pro_timetable}">#프로그램타임테이블</a></li>
+              <li><a th:href="@{/pro_proList}">#프로그램 관리</a></li>
+              <li><a th:href="@{/pro_sProList}">#세부프로그램 관리</a></li>
+              <li><a th:href="@{/pro_divList}">#프로그램분류관리</a></li>
+              <li><a th:href="@{/pro_comList}">#프로그램 참가업체리스트</a></li>
+              <li><a th:href="@{/pro_ParList}">#프로그램 참가자리스트</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -409,10 +413,11 @@
               <span>#게시판관리</span>
               </a>
             <ul class="sub">
+              <li><a th:href="@{/festival_announcement/announcementView}">#축제공고관리</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a href="#">#공지사항</a></li>
+              <li><a href="#">#자료실</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -421,23 +426,23 @@
               <span>#일정관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/sche_timetable}">#일정확인</a></li>
+              <li><a th:href="@{/sche_detailList}">#일정세부조회</a></li>
               <li><a href="#">#</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#평가관리</span>
-              </a>
+              <span>#심사관리</span>
+              </a>            
             <ul class="sub">
-              <li><a href="/statistics/festivalBudgetAnalysisView">#축제별 예산액 분석</a></li>
-              <li><a href="/statistics/festivalExecutionAnalysisView">#축제별 집행액 분석</a></li>
-              <li><a href="/statistics/festivalAnalysisView">#축제분석</a></li>
-              <li><a href="/statistics/accountAnalysisView">#거래처분석</a></li>
-              <li><a href="/statistics/festivalEvaluationAnalysisView">#축제평가분석</a></li>
+              <li><a th:href="@{estimatelist}">#전체심사</a></li>              
+              <li><a th:href="@{finalestimatelist}">#완료심사</a></li>
+              <li><a href="/festival_applicationform/serviceAppFormView">#용역신청서관리</a></li>
+              <li><a href="/festival_applicationform/boothAppFormView">#부스신청서관리</a></li>
+              <li><a href="/festival_applicationform/volunteerAppFormView">#자원봉사신청서관리</a></li>
+              <li><a href="/festival_applicationform/committeeAppFormView">#위원회신청서관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -446,7 +451,7 @@
               <span>#통계관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
+              <li><a href="#">#축제별 입장료 수량 통계 관리</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#</a></li>

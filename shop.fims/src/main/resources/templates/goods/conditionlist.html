@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>축제통합관리시스템</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+	<style>
+.button {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			-webkit-transition-duration: 0.4s; /* Safari */
+			transition-duration: 0.4s;
+		}
+
+.input {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+table, td, th {
+	border: 1px solid black;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th {
+	height: 50px;
+}
+</style>
+	<!-- page content -->	
+	   <h2>보유물품 리스트</h2>
+	
+	
+			<table>
+				<tr>
+					<th>모든 행정기관관리</th>				
+					<th>전국 지역관리</th>
+					<th>모든 지역 시군관리</th>
+					<th>모든 축제관리</th>
+					<th>모든 행정기관 부서관리</th>				
+					<th>보유물품</th>
+					<th>수량</th>
+					<th>특이사항</th>
+					<th>물품등록</th>
+					<th>물품수정</th>
+					<th>물품삭제</th>
+				</tr>
+				<tr>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+					<th>8</th>					
+					<th>
+					<a th:href="@{/insertcondition}" >등록하기</a>
+					</th>
+					<th>
+					<a th:href="@{/updatecondition}" >수정하기</a>
+					</th>
+					<th>
+					<a th:href="@{/#}" >삭제하기</a>
+					</th>
+				</tr>							
+			</table>	
+	</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>

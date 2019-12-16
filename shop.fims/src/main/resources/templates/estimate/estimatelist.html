@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>축제통합관리시스템</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+	<style>
+			.button {
+				background-color: #4CAF50; /* Green */
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+				-webkit-transition-duration: 0.4s; /* Safari */
+				transition-duration: 0.4s;
+			}
+			
+			.button2:hover {
+				box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0
+					rgba(0, 0, 0, 0.19);
+			}
+			
+			table, td, th {
+				border: 1px solid black;
+			}
+			
+			table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+			
+			th {
+				height: 50px;
+			}
+</style>
+	<form th:action="@{/reviewindicater}" method="get">
+	 <h2>전체심사</h2>
+		<table>
+			<tr>
+				<th>모든 행정기관관리</th>
+				<th>전국 지역관리</th>
+				<th>모든 지역 시군관리</th>
+				<th>모든 축제관리</th>
+				<!-- 	<th>하나의 축제내 하나의 프로그램 소개관리</th> -->
+				<th>심사 제목</th>
+				<th>등록일자</th>
+				<th>심사현황</th>
+				<th>심사</th>
+				
+			</tr>
+			<tr>
+				<th>전라북도</th>
+				<th>전주시</th>
+				<th>전라북도청</th>
+				<th>소리문화 축제</th>
+				<th>무대설치 용역 심사</th>
+				<th>2019.12.05</th>
+				<th>no</th>
+				<th><input type="submit" name="tlatk" value="심사"></th>
+			</tr>
+		</table>
+	</form>
+
+
+
+
+
+
+
+
+</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>

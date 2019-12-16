@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>축제통합관리시스템</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+		 <h2>물품수정</h2>
+	<form th:action="@{/updatecondition}" method="post">
+		<table>
+			<tr>
+				<td>행정기관관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="행정기관" readonly="readonly"></td>						
+			</tr>			
+			<tr>
+				<td>전국 지역관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="전라북도" readonly="readonly"></td>						
+			</tr>			
+			<tr>
+				<td>모든 지역 시군관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="전주시" readonly="readonly"></td>						
+			</tr>			
+			<tr>
+				<td>모든 축제관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="소리문화축제" readonly="readonly"></td>						
+			</tr>			
+			<tr>
+				<td>모든 행정기관 부서관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="부서기관" readonly="readonly"></td>						
+			</tr>			
+			<tr>
+				<td>보유물품</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="의자" ></td>						
+			</tr>			
+			<tr>
+				<td>수량</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="5" ></td>						
+			</tr>			
+			<tr>
+				<td>특이사항</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="없음" ></td>						
+			</tr>			
+				
+			<tr>			
+				<td><input type="submit" name="insertcon" th:value="물품수정" ></td>
+						
+			</tr>			
+		</table>
+	</form>	      
+	</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>
