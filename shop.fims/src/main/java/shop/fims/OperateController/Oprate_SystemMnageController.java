@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class Oprate_SystemMnageController {
 	
-	@GetMapping("/oprate_systemmanage/SystemManageView")
+	@GetMapping("/SystemManageView")
 	public String SystemManageView() {
 		return "/oprate_systemmanage/SystemManageView";
 		

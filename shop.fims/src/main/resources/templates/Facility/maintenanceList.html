@@ -9,27 +9,63 @@ layout:decorator="layout/main">
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		시설안전점검후유지보수리스트(수정삭제연결확인용 추후 수정)
-		<table border="1">
-				<tr>
-					<td>아이디</td>
-					<td>비밀번호</td>
-					<td>권한</td>
-					<td>이름</td>
-					<td>이메일</td>
-					<td>수정</td>
-					<td>삭제</td>
-					<td>
-						<a th:href="@{/facility/checklistList}">안전점검리스트</a>
-					</td>
-					<td>
-						<a th:href="@{/facility/maintenanceUpdate}">수정연결</a>
-					</td>
-					<td>
-						<a th:href="@{/facility/maintenanceDelete}">삭제연결</a>
-					</td>
-				</tr>
-		</table>
+		시설안전점검후유지보수리스트
+			<style>
+			  table {
+			    width: 100%;
+			    border-top: 1px solid #444444;
+			    border-collapse: collapse;
+			  }
+			  th, td {
+			    border-bottom: 1px solid #444444;
+			    padding: 10px;
+			    text-align: center;
+			  }
+			  th {
+			    background-color: #bbdefb;
+			  }
+			  td /* {
+			    background-color: #e3f2fd;
+			  } */
+			</style>
+			<table>
+					<tr>
+						<th>시설명</th>
+						<th>축제명</th>
+						<th>점검일자</th>
+						<th>점검기관</th>
+						<th>점검기관담당자</th>
+						<th>지적사항</th>
+						<th>재점검일</th>
+						<th>점검상태</th>
+						<th>보완완료일</th>
+						<th>담당자</th>					
+						<th>수정</th>
+						<th>삭제</th>
+						<th>안전점검항목</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<a th:href="@{/maintenanceUpdate}">수정</a>
+						</td>
+						<td>
+							<a th:href="@{/maintenanceDelete}">삭제</a>
+						</td>
+						<td>
+							<a th:href="@{/checkList}">안전점검리스트</a>
+						</td>
+					</tr>
+			</table>
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

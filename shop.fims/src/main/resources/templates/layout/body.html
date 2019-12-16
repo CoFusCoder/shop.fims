@@ -101,7 +101,7 @@
               </li>
               <li>
                 <a href="#">
-                  <span class="photo"><img alt="avatar" src="img/ui-zac.jpg"></span>
+                  <span class="photo"><img alt="avatar" th:src="@{/img/ui-zac.jpg}"></span>
                   <span class="subject">
                   <span class="from">Zac Snider</span>
                   <span class="time">Just now</span>
@@ -113,7 +113,7 @@
               </li>
               <li>
                 <a href="#">
-                  <span class="photo"><img alt="avatar" src="img/ui-divya.jpg"></span>
+                  <span class="photo"><img alt="avatar" th:src="@{/img/ui-divya.jpg}"></span>
                   <span class="subject">
                   <span class="from">Divya Manian</span>
                   <span class="time">40 mins.</span>
@@ -125,7 +125,7 @@
               </li>
               <li>
                 <a href="#">
-                  <span class="photo"><img alt="avatar" src="img/ui-danro.jpg"></span>
+                  <span class="photo"><img alt="avatar" th:src="@{/img/ui-danro.jpg}"></span>
                   <span class="subject">
                   <span class="from">Dan Rogers</span>
                   <span class="time">2 hrs.</span>
@@ -137,7 +137,7 @@
               </li>
               <li>
                 <a href="#">
-                  <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span>
+                  <span class="photo"><img alt="avatar" th:src="@{/img/ui-sherman.jpg}"></span>
                   <span class="subject">
                   <span class="from">Dj Sherman</span>
                   <span class="time">4 hrs.</span>
@@ -216,7 +216,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="#"><img src="img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="#"><img th:src="@{/img/ui-sam.jpg}" class="img-circle" width="80"></a></p>
           <h5 class="centered">#SamSoffes</h5>
           <li class="mt">
             <a class="active" href="#">
@@ -230,7 +230,7 @@
               <span>#운영관리</span>
               </a>
             <ul class="sub">
-              <li><a href="/oprate_systemmanage/SystemManageView">#시스템 사용 대상 등록</a></li>
+              <li><a th:href="@{/SystemManageView}">#시스템 사용 대상 등록</a></li>
               <li><a href="#">#시스템 사용 등록 현황</a></li>
               <li><a href="#">#시스템 사용 신청서 관리</a></li>
               <li><a href="#">#온라인 시설코드발급</a></li>
@@ -286,9 +286,12 @@
               <span>#거래처 관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#업무현황</a></li>
+              <li><a th:href="@{/insertAllAccount}">#모든거래처등록</a></li>
+              <li><a th:href="@{/allAccountView}">#모든거래처관리</a></li>
+              <li><a th:href="@{/insertApprovalAccount}">#승인된거래처등록</a></li>
+              <li><a th:href="@{/approvalAccountView}">#승인된거래처관리</a></li>
+              <li><a th:href="@{/insertAccountMember}">#거래처회원등록</a></li>
+              <li><a th:href="@{/accountMemberView}">#거래처회원관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -297,10 +300,8 @@
               <span>#위원회관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#업무현황</a></li>
+              <li><a th:href="@{/insertAllCommittee}">#위원회등록</a></li>
+              <li><a th:href="@{/allCommitteeView}">#위원회관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -319,7 +320,7 @@
               <span>#축제인적관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/workingpeopleList}">#축제업무별배치인원리스트</a></li>
+
               <li><a th:href="@{/workcategoryList}">#축제업무분류리스트</a></li>
               <li><a th:href="@{/workcategoryInsert}">#축제업무분류등록</a></li>
               <li><a th:href="@{/workdivisionList}">#축제업무리스트</a></li>
@@ -330,30 +331,32 @@
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
-              <i class=" fa fa-plus-square"></i>
+              <i class="fa fa-plus-square"></i>
               <span>#축제홍보관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/pr_timetable}">#월별타임테이블</a></li>
+              <li><a th:href="@{/pr_detailList}">#홍보사업관리</a></li>
+              <li><a th:href="@{/pr_divList}">#홍보분류관리</a></li>
+              <li><a th:href="@{/pr_comList}">#홍보거래처리스트</a></li>
               <li><a href="#">#</a></li>
             </ul>
           </li>
            <li class="sub-menu">
             <a href="javascript:;">
-              <i class=" fa fa-plus-square"></i>
+              <i class="fa fa-plus-square"></i>
               <span>#축제시설관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/facility/classificationList}">#모든시설분류조회</a></li>
-              <li><a th:href="@{/facility/classificationInsert}">#모든시설분류등록</a></li>            
+
+              <li><a th:href="@{/classificationList}">#모든시설분류조회</a></li>
+              <li><a th:href="@{/classificationInsert}">#모든시설분류등록</a></li>            
               <li><a th:href="@{/facilityList}">#보유시설리스트</a></li>
-              <li><a th:href="@{/facility/facilityInsert}">#보유시설등록</a></li>
-              <li><a th:href="@{/facility/temporaryList}">#임시시설설치및철거리스트</a></li>
-              <li><a th:href="@{/facility/temporaryInsert}">#임시시설설치및철거등록</a></li>
-              <li><a th:href="@{/facility/maintenanceList}">#시설안전점검유지보수리스트</a></li>
-              <li><a th:href="@{/facility/maintenanceInsert}">#시설안전점검유지보수등록</a></li>
+              <li><a th:href="@{/facilityInsert}">#보유시설등록</a></li>
+              <li><a th:href="@{/temporaryList}">#임시시설설치및철거리스트</a></li>
+              <li><a th:href="@{/temporaryInsert}">#임시시설설치및철거등록</a></li>
+              <li><a th:href="@{/maintenanceList}">#시설안전점검유지보수리스트</a></li>
+              <li><a th:href="@{/maintenanceInsert}">#시설안전점검유지보수등록</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -389,6 +392,10 @@
              <li><a th:href="@{/conditionlist}">#물품관리</a></li>
              <li><a th:href="@{/delbrelist}">#계약물품납품 내역관리</a></li>
              <li><a th:href="@{/revenuelist}">#보유물품 대여관련 세입관리</a></li>
+             <li><a th:href="@{/g_festival_in}">#축제관련물품입고관리</a></li>
+             <li><a th:href="@{/g_festival_out}">#축제관련물품출고관리</a></li>
+             <li><a th:href="@{/g_divList}">#물품분류관리</a></li>
+             <li><a th:href="@{/g_comList}">#물품거래처관리</a></li>
              
             </ul>
           </li>
@@ -398,10 +405,12 @@
               <span>#축제내프로그램관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/pro_timetable}">#프로그램타임테이블</a></li>
+              <li><a th:href="@{/pro_proList}">#프로그램 관리</a></li>
+              <li><a th:href="@{/pro_sProList}">#세부프로그램 관리</a></li>
+              <li><a th:href="@{/pro_divList}">#프로그램분류관리</a></li>
+              <li><a th:href="@{/pro_comList}">#프로그램 참가업체리스트</a></li>
+              <li><a th:href="@{/pro_ParList}">#프로그램 참가자리스트</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -410,6 +419,7 @@
               <span>#게시판관리</span>
               </a>
             <ul class="sub">
+              <li><a th:href="@{/announcementView}">#축제공고관리</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#공지사항</a></li>
@@ -422,9 +432,8 @@
               <span>#일정관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/sche_timetable}">#일정확인</a></li>
+              <li><a th:href="@{/sche_detailList}">#일정세부조회</a></li>
               <li><a href="#">#</a></li>
             </ul>
           </li>
@@ -436,7 +445,10 @@
             <ul class="sub">
               <li><a th:href="@{estimatelist}">#전체심사</a></li>              
               <li><a th:href="@{finalestimatelist}">#완료심사</a></li>
-              
+              <li><a th:href="@{/serviceAppFormView}">#용역신청서관리</a></li>
+              <li><a th:href="@{/boothAppFormView}">#부스신청서관리</a></li>
+              <li><a th:href="@{/volunteerAppFormView}">#자원봉사신청서관리</a></li>
+              <li><a th:href="@{/committeeAppFormView}">#위원회신청서관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">

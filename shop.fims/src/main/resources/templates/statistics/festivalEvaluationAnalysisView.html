@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+
+<th:block layout:fragment="customHead">
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-festivalEvaluationAnalysisView.html
-</body>
+<title>축제평가분석</title>
+<th:block th:include="layout/customHead"></th:block>
+</th:block>
+	<th:block layout:fragment="customBody">
+		<div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>축제평가분석</h4>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>컬럼1</th>
+                    <th>컬럼2</th>
+                    <th>컬럼3</th>
+                    <th>컬럼4</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>값1</td>
+                    <td>값1</td>
+                    <td>값1</td>
+                    <td>값1</td>
+                  </tr>
+                  <tr>
+                    <td>값2</td>
+                    <td>값2</td>
+                    <td>값2</td>
+                    <td>값2</td>
+                  </tr>
+                  <tr>
+                    <td>값3</td>
+                    <td>값3</td>
+                    <td>값3</td>
+                    <td>값3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+	</th:block>
+<th:block layout:fragment="customJquery">
+	<th:block th:include="layout/customJquery"></th:block>
+</th:block>
 </html>

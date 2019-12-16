@@ -10,23 +10,54 @@ layout:decorator="layout/main">
 	</th:block>
 	<th:block layout:fragment="customBody">
 		모든보유시설리스트(수정삭제연결확인용 추후 수정)
-		<table border="1">
-				<tr>
-					<td>아이디</td>
-					<td>비밀번호</td>
-					<td>권한</td>
-					<td>이름</td>
-					<td>이메일</td>
-					<td>수정</td>
-					<td>삭제</td>
-					<td>
-						<a th:href="@{/facility/facilityUpdate}">수정연결</a>
-					</td>
-					<td>
-						<a th:href="@{/facility/facilityDelete}">삭제연결</a>
-					</td>
-				</tr>
-		</table>
+			<style>
+				  table {
+				    width: 100%;
+				    border-top: 1px solid #444444;
+				    border-collapse: collapse;
+				  }
+				  th, td {
+				    border-bottom: 1px solid #444444;
+				    padding: 10px;
+				    text-align: center;
+				  }
+				  th {
+				    background-color: #bbdefb;
+				  }
+				  td /* {
+				    background-color: #e3f2fd;
+				  } */
+			</style>
+			<table>
+					<tr>
+						<th>시설명</th>
+						<th>시설분류명</th>
+						<th>축제명</th>
+						<th>시설위치</th>
+						<th>시설수량</th>
+						<th>담당자명</th>
+						<th>마감일자</th>
+						<th>마감</th>
+						<th>수정</th>
+						<th>삭제</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<a th:href="@{/facilityUpdate}">수정</a>
+						</td>
+						<td>
+							<a th:href="@{/facilityDelete}">삭제</a>
+						</td>
+					</tr>
+			</table>
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>
