@@ -331,9 +331,10 @@
               <span>#축제홍보관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/pr_timetable}">#월별타임테이블</a></li>
+              <li><a th:href="@{/pr_detailList}">#홍보사업관리</a></li>
+              <li><a th:href="@{/pr_divList}">#홍보분류관리</a></li>
+              <li><a th:href="@{/pr_comList}">#홍보거래처리스트</a></li>
               <li><a href="#">#</a></li>
             </ul>
           </li>
@@ -386,6 +387,10 @@
              <li><a th:href="@{/conditionlist}">#물품관리</a></li>
              <li><a th:href="@{/delbrelist}">#계약물품납품 내역관리</a></li>
              <li><a th:href="@{/revenuelist}">#보유물품 대여관련 세입관리</a></li>
+             <li><a th:href="@{/g_festival_in}">#축제관련물품입고관리</a></li>
+             <li><a th:href="@{/g_festival_out}">#축제관련물품출고관리</a></li>
+             <li><a th:href="@{/g_divList}">#물품분류관리</a></li>
+             <li><a th:href="@{/g_comList}">#물품거래처관리</a></li>
              
             </ul>
           </li>
@@ -395,10 +400,12 @@
               <span>#축제내프로그램관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/pro_timetable}">#프로그램타임테이블</a></li>
+              <li><a th:href="@{/pro_proList}">#프로그램 관리</a></li>
+              <li><a th:href="@{/pro_sProList}">#세부프로그램 관리</a></li>
+              <li><a th:href="@{/pro_divList}">#프로그램분류관리</a></li>
+              <li><a th:href="@{/pro_comList}">#프로그램 참가업체리스트</a></li>
+              <li><a th:href="@{/pro_ParList}">#프로그램 참가자리스트</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -420,9 +427,8 @@
               <span>#일정관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{/sche_timetable}">#일정확인</a></li>
+              <li><a th:href="@{/sche_detailList}">#일정세부조회</a></li>
               <li><a href="#">#</a></li>
             </ul>
           </li>
