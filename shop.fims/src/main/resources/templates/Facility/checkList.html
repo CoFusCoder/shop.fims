@@ -10,16 +10,34 @@ layout:decorator="layout/main">
 	</th:block>
 	<th:block layout:fragment="customBody">
 		안전점검리스트
-		<table border="1">
+			<style>
+			  table {
+			    width: 100%;
+			    border-top: 1px solid #444444;
+			    border-collapse: collapse;
+			  }
+			  th, td {
+			    border-bottom: 1px solid #444444;
+			    padding: 10px;
+			    text-align: center;
+			  }
+			  th {
+			    background-color: #bbdefb;
+			  }
+			  td /* {
+			    background-color: #e3f2fd;
+			  } */
+			</style>
+		<table>
 				<tr>
-					<td>아이디</td>
-					<td>비밀번호</td>
-					<td>권한</td>
-					<td>이름</td>
-					<td>이메일</td>
-					<td>수정</td>
-					<td>삭제</td>
+					<th>구 분</th>
+					<th>점 검 사 항</th>
 				</tr>
+				<tr th:each="l : ${checklist}">
+					<td th:text="${l.checkDiv}"></td>
+					<td th:text="${l.checkCon}"></td>
+				</tr>
+				
 		</table>
 	</th:block>
 	<th:block layout:fragment="customJquery">

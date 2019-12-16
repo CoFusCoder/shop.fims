@@ -2,7 +2,45 @@
 <html xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
 layout:decorator="layout/main">
+	
+	
+		<th:block layout:fragment="customHead">
+			<meta charset="UTF-8">
+			<title>축제통합관리시스템</title>
+			<th:block th:include="layout/customHead"></th:block>
+		</th:block>
+		<th:block layout:fragment="customBody">
+			<style>
+			  table {
+			    width: 100%;
+			    border-top: 1px solid #444444;
+			    border-collapse: collapse;
+			  }
+			  th, td {
+			    border-bottom: 1px solid #444444;
+			    padding: 10px;
+			    text-align: center;
+			  }
+			  th {
+			    background-color: #bbdefb;
+			  }
+			  td /* {
+			    background-color: #e3f2fd;
+			  } */
+			</style>
+			<form th:action="@{/humanSearch}" method="post">
+			<select name ="sk">
+				<option value="">선택</option>
+				<option value="">이름</option>
+				<option value="">축제명</option>
+				<option value="">담당업무</option>
+				<option value="">근무시간</option>
+				<option value="">소속</option>
+				<option value="">담당자명</option>				
+			</select>
+			<input type = "text" name="sv">
 
+<<<<<<< HEAD
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
 		<title>축제통합관리시스템</title>
@@ -31,4 +69,43 @@ layout:decorator="layout/main">
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>
     </th:block>
+=======
+			<button type="submit" value="검색">검색</button>
+		</form>
+			
+			인적사항리스트
+			<table>
+					<tr>
+						<th>번호</th>
+						<th>이름</th>
+						<th>축제명</th>
+						<th>업무</th>
+						<th>연락처</th>
+						<th>근무시간</th>
+						<th>담당자이름</th>
+						<th>수정</th>
+						<th>삭제</th>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>라이언</td>
+						<td>전주세계소리축제</td>
+						<td>축제보조</td>
+						<td>010</td>
+						<td>10:00-16:00</td>
+						<td>조희영</td>
+						<td>
+							<a th:href="@{/humanUpdate}">수정</a>
+						</td>
+						<td>
+							<a th:href="@{/humanDelete}">삭제</a>
+						</td>						
+					</tr>
+			</table>
+		</th:block>
+		<th:block layout:fragment="customJquery">
+			<th:block th:include="layout/customJquery"></th:block>
+	    </th:block>
+    
+>>>>>>> refs/heads/develop
 </html>

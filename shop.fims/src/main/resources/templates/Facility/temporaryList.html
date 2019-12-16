@@ -10,23 +10,66 @@ layout:decorator="layout/main">
 	</th:block>
 	<th:block layout:fragment="customBody">
 		모든축제별임시시설설치및철거관리리스트
-		<table border="1">
+			<style>
+				  table {
+				    width: 100%;
+				    border-top: 1px solid #444444;
+				    border-collapse: collapse;
+				  }
+				  th, td {
+				    border-bottom: 1px solid #444444;
+				    padding: 10px;
+				    text-align: center;
+				  }
+				  th {
+				    background-color: #bbdefb;
+				  }
+				  td /* {
+				    background-color: #e3f2fd;
+				  } */
+			</style>
+			<table>
 				<tr>
-					<td>아이디</td>
-					<td>비밀번호</td>
-					<td>권한</td>
-					<td>이름</td>
-					<td>이메일</td>
-					<td>수정</td>
-					<td>삭제</td>
-					<td>
-						<a th:href="@{/temporaryUpdate}">수정연결</a>
-					</td>
-					<td>
-						<a th:href="@{/temporaryDelete}">삭제연결</a>
-					</td>
+					<th>시설명</th>
+					<th>축제명</th>
+					<th>설치시작일</th>
+					<th>설치종료일</th>
+					<th>계약설치모델명</th>
+					<th>설치장소</th>
+					<th>설치개수</th>
+					<th>설치내용</th>
+					<th>근무인원</th>
+					<th>철거확인일자</th>
+					<th>철거확인자</th>
+					<th>담당자</th>
+					<th>설치상태1</th>
+					<th>설치상태2</th>
+					<th>수정</th>
+					<th>삭제</th>
 				</tr>
-		</table>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<a th:href="@{/temporaryUpdate}">수정</a>
+					</td>
+					<td>
+						<a th:href="@{/temporaryDelete}">삭제</a>
+					</td>				
+				</tr>
+			</table>
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

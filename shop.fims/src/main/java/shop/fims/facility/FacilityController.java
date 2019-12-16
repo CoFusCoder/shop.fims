@@ -1,4 +1,4 @@
-package shop.fims.facility.controller;
+package shop.fims.facility;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -103,8 +103,9 @@ public class FacilityController {
 		return "/facility/maintenanceDelete";
 	}
 	//안전점검리스트표
-	@GetMapping("/checklistList")
+	@GetMapping("/checkList")
 	public String selectChecklist() {
-		return "/facility/checklistList";
+		
+		return "/facility/checkList";
 	}
 }

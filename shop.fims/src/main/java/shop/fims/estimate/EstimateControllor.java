@@ -1,4 +1,4 @@
-package shop.fims.estimate.controllor;
+package shop.fims.estimate;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
