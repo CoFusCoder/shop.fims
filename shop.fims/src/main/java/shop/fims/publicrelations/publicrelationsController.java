@@ -1,4 +1,4 @@
-package shop.fims.festival_publicrelations.controller;
+package shop.fims.publicrelations;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
