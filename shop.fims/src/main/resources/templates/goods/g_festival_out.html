@@ -5,11 +5,31 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
+		<title>축제관련물품출고리스트</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		축제관련물품출고리스트
+		
+		
+		<h2>축제관련물품출고리스트</h2>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>물품명</td>
+	 		<td>출고수량</td>
+	 		<td>재고수량</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="o:${GoodsOut}"}>
+	 		<td th:text="${o.festgoods_out_nm}"></td>
+	 		<td th:text="${o.festgoods_out_amt}"></td>
+	 		<td th:text="${o.festgoods_stock}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+
+	 	</tr>
+	 </table>	
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

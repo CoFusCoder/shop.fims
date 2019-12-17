@@ -5,11 +5,33 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
+		<title>홍보분류관리</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		홍보분류관리
+		
+		
+		<h2>홍보분류관리</h2>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>홍보분류코드</td>
+	 		<td>분류명</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="d:${AllDiv}"}>
+	 		<td th:text="${d.festpr_div_cd}"></td>
+	 		<td th:text="${d.festpr_div_nm}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+	 	</tr>
+	 </table>
+		
+		
+		
+		
+		
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

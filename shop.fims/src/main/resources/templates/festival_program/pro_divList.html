@@ -5,11 +5,68 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
+		<title>프로그램 분류 관리</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		프로그램 분류관리
+		<h2>프로그램 일자 관리</h2>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>일자코드</td>
+	 		<td>일자명</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="d:${ProDivDay}"}>
+	 		<td th:text="${d.festprodiv_day_cd}"></td>
+	 		<td th:text="${d.festprodiv_day_nm}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+
+	 	</tr>
+	 </table>
+		
+		<h2>프로그램 장소 관리</h2>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>장소코드</td>
+	 		<td>축제명</td>
+	 		<td>장소명</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="p:${ProDivPlace}"}>
+	 		<td th:text="${p.festprodiv_pla_cd}"></td>
+	 		<td th:text="${p.fest_nm}"></td>
+	 		<td th:text="${p.festprodiv_pla_nm}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+	 	</tr>
+	 </table>
+	 
+	 
+		<h2>프로그램 성격 관리</h2>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>성격코드</td>
+	 		<td>축제명</td>
+	 		<td>성격명</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="t:${ProDivTheme}"}>
+	 		<td th:text="${t.festprodiv_theme_cd}"></td>
+	 		<td th:text="${t.fest_nm}"></td>
+	 		<td th:text="${t.festprodiv_theme_nm}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+	 	</tr>
+	 </table>
+		
+		
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

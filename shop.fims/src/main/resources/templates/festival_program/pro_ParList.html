@@ -5,11 +5,49 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
+		<title>프로그램 참가자리스트</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		프로그램 참가자리스트
+
+		<h2>프로그램 참가자리스트</h2>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>참가프로그램</td>
+	 		<td>참가명</td>
+	 		<td>이름</td>
+	 		<td>성별</td>
+	 		<td>나이</td>
+	 		<td>연락처</td>
+	 		<td>특이사항</td>
+	 		<td>등록일자</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="p:${AllParti}"}>
+	 		<td th:text="${p.fest_pro_cd}"></td>
+	 		<td th:text="${p.festpro_spro_cd}"></td>
+	 		<td th:text="${p.festpro_par_nm}"></td>
+	 		<td th:text="${p.festpro_par_gender}"></td>
+	 		<td th:text="${p.festpro_par_age}"></td>
+	 		<td th:text="${p.festpro_par_phone}"></td>
+	 		<td th:text="${p.festpro_par_etc}"></td>
+	 		<td th:text="${p.insert_dt}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+
+	 	</tr>
+	 </table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>
