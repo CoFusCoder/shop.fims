@@ -1,6 +1,8 @@
 package shop.fims.account;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -13,6 +15,7 @@ public class AccountController {
 	 * @author ksmart33 김도민
 	 */
 	
+	@Autowired AccountService accountService;
 	
 	//거래처 회원 관리
 	@GetMapping("/accountMemberView")
@@ -34,7 +37,8 @@ public class AccountController {
 	
 	//모든 거래처 관리
 	@GetMapping("/allAccountView")
-	public String AllAccountView() {
+	public String AllAccountView(Model model) {
+		model.addAttribute("allAccountView", accountService.selectAllAccountView());
 		return "/account/allAccountView";
 	}
 	

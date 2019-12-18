@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shop.fims.account.AccountMapper">
+
+	<!-- 모든 거래처 관리 -->
+	 <select id="selectAllAccountView" resultType="shop.fims.vo.Account">
+	 	SELECT
+			*
+		FROM 
+			Cat_Account
+	 </select>
+
+</mapper>
