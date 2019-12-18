@@ -1,5 +1,6 @@
 package shop.fims.goods;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class GoodsController {
 
+		@Autowired GoodsMapper goodslist;
 		//물품보유현황리스트
 		@GetMapping("/conditionlist")
 		public String conditionlist(){
