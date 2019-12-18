@@ -9,6 +9,81 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProgramController {
 		@Autowired ProgramService programservice;
+		
+		
+		//프로그램 신규등록
+		@GetMapping("/pro_insertProgram")
+		public String insertProgram() {
+			return "festival_program/pro_insertProgram";		
+		}
+		
+		
+		
+		//프로그램 일정분류 삭제
+		@GetMapping("/pro_deleteDivDay")
+		public String deleteDivDay(Model modelDay, Model modelPlace, Model modelTheme) {
+			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
+			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace());
+			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme());
+			return "festival_program/pro_divList";		
+		}
+		//프로그램 장소분류 삭제
+		@GetMapping("/pro_deleteDivPlace")
+		public String deleteDivPlace(Model modelDay, Model modelPlace, Model modelTheme) {
+			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
+			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace());
+			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme());
+			return "festival_program/pro_divList";		
+		}
+		//프로그램 성격분류 삭제
+		@GetMapping("/pro_deleteDivTheme")
+		public String deleteDivTheme(Model modelDay, Model modelPlace, Model modelTheme) {
+			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
+			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace());
+			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme());
+			return "festival_program/pro_divList";		
+		}
+		
+		//프로그램 일정분류 수정
+		@GetMapping("/pro_updateDivDay")
+		public String updateDivDay() {
+			return "festival_program/pro_updateDivDay";		
+		}
+		//프로그램 장소분류 수정
+		@GetMapping("/pro_updateDivPlace")
+		public String updateDivPlace() {
+			return "festival_program/pro_updateDivPlace";		
+		}
+		//프로그램 성격분류 수정
+		@GetMapping("/pro_updateDivTheme")
+		public String updateDivTheme() {
+			return "festival_program/pro_updateDivTheme";		
+		}
+		
+		
+		//프로그램 일정분류 신규등록
+		@GetMapping("/pro_insertDivDay")
+		public String insertDivDay() {
+			return "festival_program/pro_insertDivDay";		
+		}
+		//프로그램 장소분류 신규등록
+		@GetMapping("/pro_insertDivPlace")
+		public String insertDivPlace() {
+			return "festival_program/pro_insertDivPlace";		
+		}
+		//프로그램 성격분류 신규등록
+		@GetMapping("/pro_insertDivTheme")
+		public String insertDivTheme() {
+			return "festival_program/pro_insertDivTheme";		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		//프로그램 타임테이블
 		@GetMapping("/pro_timetable")
 		public String timetable() {

@@ -13,8 +13,13 @@ layout:decorator="layout/main">
 		
 		<div class="col-md-12 mt">
             <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>홍보분류관리</h4><hr><table class="table table-hover">
-                
+              <h4><i class="fa fa-angle-right"></i>홍보분류관리</h4>
+              <div align="right">
+              <a th:href="@{/pr_insertDiv}" >
+              <button type="button" class="btn btn-primary btn-lg" align="right">신규홍보분류등록</button></a>  
+              </div>
+              <hr>
+              <table class="table table-hover">
                 
                 <thead>
                   <tr>
@@ -28,8 +33,10 @@ layout:decorator="layout/main">
                   <tr th:each="d:${AllDiv}">
                     <td th:text="${d.festpr_div_cd}"></td>
                     <td th:text="${d.festpr_div_nm}"></td>
-                    <td><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></td>
-                    <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></td>
+                    <td><a th:href="@{/pr_updateDiv}" >
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a th:href="@{/pr_deleteDiv}" >
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
                   </tr>
                 </tbody>
               </table>
