@@ -9,7 +9,7 @@ layout:decorator="layout/main">
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		모든보유시설리스트(수정삭제연결확인용 추후 수정)
+		모든보유시설리스트
 			<style>
 				  table {
 				    width: 100%;
@@ -41,15 +41,15 @@ layout:decorator="layout/main">
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+					<tr th:each= "fl : ${facilityList}">
+						<td th:text= "${fl.staNm}"></td>
+						<td th:text= "${fl.catNm}"></td>
+						<td th:text= "${fl.festNm}"></td>
+						<td th:text= "${fl.staSite}"></td>
+						<td th:text= "${fl.staCount}"></td>
+						<td th:text= "${fl.comNm2}"></td>
+						<td th:text= "${fl.actionDt}"></td>
+						<td th:text= "${fl.actionSta}"></td>
 						<td>
 							<a th:href="@{/facilityUpdate}">수정</a>
 						</td>

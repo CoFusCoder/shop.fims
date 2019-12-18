@@ -28,6 +28,7 @@ layout:decorator="layout/main">
 			    background-color: #e3f2fd;
 			  } */
 			</style>
+			
 			<table>
 					<tr>
 						<th>시설명</th>
@@ -44,17 +45,17 @@ layout:decorator="layout/main">
 						<th>삭제</th>
 						<th>안전점검항목</th>
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+					<tr th:each="ml : ${MaintenanceList}">
+						<td th:text="${ml.staNm}"></td>
+						<td th:text="${ml.festNm}"></td>
+						<td th:text="${ml.maicheDt}"></td>
+						<td th:text="${ml.maiinsIn}"></td>
+						<td th:text="${ml.mairesHuman}"></td>
+						<td th:text="${ml.maiCad}"></td>
+						<td th:text="${ml.mairecDt}"></td>
+						<td th:text="${ml.maistaChe}"></td>
+						<td th:text="${ml.maisupDt}"></td>
+						<td th:text="${ml.comNm2}"></td>
 						<td>
 							<a th:href="@{/maintenanceUpdate}">수정</a>
 						</td>
@@ -66,6 +67,7 @@ layout:decorator="layout/main">
 						</td>
 					</tr>
 			</table>
+			</from>
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

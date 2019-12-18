@@ -34,8 +34,8 @@ layout:decorator="layout/main">
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
-					<tr>
-						<td></td>
+					<tr th:each="cf : ${classificationList}">
+						<td th:text= "${cf.catNm}"></td>
 						<td>
 							<a th:href="@{/classificationUpdate}">수정연결</a>
 						</td>

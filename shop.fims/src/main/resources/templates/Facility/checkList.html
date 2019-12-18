@@ -33,9 +33,9 @@ layout:decorator="layout/main">
 					<th>구 분</th>
 					<th>점 검 사 항</th>
 				</tr>
-				<tr th:each="l : ${checklist}">
-					<td th:text="${l.checkDiv}"></td>
-					<td th:text="${l.checkCon}"></td>
+				<tr th:each="l : ${checkList}">
+					<td th:text="${l.inslistCla}"></td>
+					<td th:text="${l.inslistCon}"></td>
 				</tr>
 				
 		</table>

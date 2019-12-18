@@ -33,17 +33,15 @@ layout:decorator="layout/main">
 					<th>축제명</th>
 					<th>업무분류</th>
 					<th>업무명</th>
-					<th>근무인원</th>
 					<th>담당자</th>
 					<th>수정</th>
 					<th>삭제</th>
 				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<tr th:each="wd : ${WorkdivisionList}">
+					<td th:text = "${wd.festNm}"></td>
+					<td th:text = "${wd.workcatNm}"></td>
+					<td th:text = "${wd.workdivNm}"></td>
+					<td th:text = "${wd.comNm2}"></td>
 					<td>
 						<a th:href="@{/workdivisionUpdate}">수정</a>
 					</td>

@@ -47,21 +47,21 @@ layout:decorator="layout/main">
 					<th>수정</th>
 					<th>삭제</th>
 				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<tr th:each= "tl : ${temporaryList}">
+					<td th:text= "${tl.staNm}"></td>
+					<td th:text= "${tl.festNm}"></td>
+					<td th:text= "${tl.stastaDt}"></td>
+					<td th:text= "${tl.staendDt}"></td>
+					<td th:text= "${tl.stainsMo}"></td>
+					<td th:text= "${tl.stainsSc}"></td>
+					<td th:text= "${tl.stainsNum}"></td>
+					<td th:text= "${tl.stainsCon}"></td>
+					<td th:text= "${tl.staWorksta}"></td>
+					<td th:text= "${tl.stademDt}"></td>
+					<td th:text= "${tl.staChe}"></td>
+					<td th:text= "${tl.comNm2}"></td>
+					<td th:text= "${tl.stainsCon1}"></td>
+					<td th:text= "${tl.stainsCon2}"></td>
 					<td>
 						<a th:href="@{/temporaryUpdate}">수정</a>
 					</td>

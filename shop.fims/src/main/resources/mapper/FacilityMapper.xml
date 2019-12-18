@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="shop.fims.facility.FacilityMapper">
+  
+  <select id="selectClassification" resultType="shop.fims.vo.Facility">
+	SELECT
+		fesfac_cat_nm AS catNm
+	FROM
+		Fes_Fac_Cat
+  </select>
+
+  <select id="selectFacility" resultType="shop.fims.vo.Facility">
+	SELECT
+		fac_sta_nm AS staNm,
+		fesfac_cat_nm AS catNm,
+		fest_nm AS festNm,
+		fac_sta_site AS staSite,
+		fac_sta_count AS staCount,
+		com_mem_nm2 AS comNm2,
+		action_dt AS actionDt,
+		action_status AS actionSta
+	FROM
+		Facility_Status
+  </select>
+  
+   <select id="selectTemporary" resultType="shop.fims.vo.Facility">
+		SELECT
+			fac_sta_nm AS staNm,
+			fest_nm AS festNm,
+			facsta_sta_dt AS stastaDt,
+			facsta_end_dt AS staendDt,
+			facsta_ins_mo AS stainsMo,
+			facsta_ins_sc AS stainsSc,
+			facsta_ins_num AS stainsNum,
+			facsta_ins_con AS stainsCon,
+			facsta_work_sta AS staWorksta,
+			facsta_dem_dt AS stademDt,
+			fac_sta_che AS staChe,
+			com_mem_nm2 AS comNm2,
+			facsta_ins_con1 AS stainsCon1,
+			facsta_ins_con2 AS stainsCon2
+		FROM
+			Temporary_Facility
+  </select>
+	
+	<select id="selectMaintenance" resultType="shop.fims.vo.Facility">
+		SELECT
+			fac_sta_nm AS staNm,
+			fest_nm AS festNm,
+			facmai_che_dt AS maicheDt,
+			facmai_ins_in AS maiinsIn,
+			facmai_res_human AS mairesHuman,
+			fac_mai_cad AS maiCad,
+			facmai_rec_dt AS mairecDt,
+			facmai_sta_che AS maistaChe,
+			facmai_sup_dt AS maisupDt,
+			com_mem_nm2 AS comNm2
+		FROM
+			Facility_Mai
+	
+	</select >
+
+  </mapper>
