@@ -3,10 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="shop.fims.goods.GoodsMapper">
+  <resultMap type="shop.fims.vo.goods_vo" id="goodslistMap">
   
-  
-  
-  
-  
-  
+	<result property="area_cd" column="adm_age_nm"/>  
+	<result property="area_city_cd" column="area_city_nm"/>  
+	<result property="areacity_adm_cd" column="areacity_admin_nm"/>  
+	<result property="fest_cd" column="fest_nm"/>  
+	<result property="admin_dep_cd" column="admim_dep_nm"/>  
+	<result property="goods_nm" column="goods_nm"/>  
+	<result property="goods_amt" column="goods_count"/>  
+	<result property="special_note" column="special_note"/>      
+  </resultMap>
+  <select id="getgoodslist" resultMap="goodslistMap">
+	
+	SELECT
+	*
+	FROM
+	Goods_present_condition
+	
+  </select>
   </mapper>
