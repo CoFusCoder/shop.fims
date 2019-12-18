@@ -45,6 +45,8 @@ layout:decorator="layout/main">
 			인적사항리스트
 			<table>
 					<tr>
+						<th style=display:none;></th>
+						<th style=display:none;></th>
 						<th>번호</th>
 						<th>이름</th>
 						<th>축제명</th>
@@ -56,6 +58,8 @@ layout:decorator="layout/main">
 						<th>삭제</th>
 					</tr>
 					<tr th:each = "h : ${HumanList}">
+						<td th:text = "${h.humancd}" style=display:none;></td>
+						<td th:text = "${h.mamcd}" style=display:none;></td>
 						<td></td>
 						<td th:text = "${h.humanNm}"></td>
 						<td th:text = "${h.festNm}"></td>
@@ -64,7 +68,7 @@ layout:decorator="layout/main">
 						<td th:text = "${h.humanHour}"></td>
 						<td th:text = "${h.comNm2}"></td>
 						<td>
-							<a th:href="@{/humanUpdate}">수정</a>
+							<a th:href="@{/humanUpdate(humancd=${h.humancd})}">수정</a>
 						</td>
 						<td>
 							<a th:href="@{/humanDelete}">삭제</a>

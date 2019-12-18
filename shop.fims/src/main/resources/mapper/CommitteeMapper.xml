@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shop.fims.committee.CommitteeMapper">
+
+	<!-- 모든 위원회 관리 -->
+	<select id="selectAllCommitteeView" resultType="shop.fims.vo.Committee">
+	 	SELECT
+			*
+		FROM 
+			Man_Com
+	</select>
+	  
+	<!-- 위원회 등록 -->
+	<insert id="insertAllCommittee" parameterType="shop.fims.vo.Committee">
+		INSERT INTO Man_Com
+			(man_com_cd, areacity_admin_cd, mem_cd, mem_lev_cd, fest_cd, exa_rep_cd, area_city_cd, area_cd, fest_nm, man_com_cat,
+			man_com_nm1, man_com_dep, man_com_rank, com_mem_nm2, man_com_job, man_com_dt1, man_com_app, man_com_dt2, man_com_con)
+		VALUES 
+			(#{man_com_cd}, #{areacity_admin_cd}, #{mem_cd}, #{mem_lev_cd}, #{fest_cd}, #{exa_rep_cd}, #{area_city_cd}, #{area_cd}, #{fest_nm}, #{man_com_cat},
+			 #{man_com_nm1}, #{man_com_dep}, #{man_com_rank}, #{com_mem_nm2}, #{man_com_job}, now(), #{man_com_app}, now(), #{man_com_con})
+	</insert>
+
+	<!-- 위원회 삭제 -->
+	<delete id="deleteAllCommittee" parameterType="shop.fims.vo.Committee">
+		DELETE 
+		FROM 
+			Man_Com
+		WHERE
+			man_com_cd = #{man_com_cd}
+	</delete>
+	
+	<!-- 위원회 수정화면. 위원회 코드로 조회 -->
+	<select id="selectByAllCommittee" parameterType="String" resultType="shop.fims.vo.Committee">
+		SELECT 
+			*
+		FROM 
+			Man_Com
+		WHERE 
+			man_com_cd = #{man_com_cd}
+	</select>
+
+</mapper>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>축제통합관리시스템</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+		새로운홍보사업등록페이지 : 등록하기 하면 해당코드의 상세페이지가 연결되어야함. 
+		
+		<div>
+		<a th:href="@{/pr_promotionList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">취소</button></a>        
+		<a th:href="@{/pr_promotionList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">등록하기</button></a>        
+        </div>
+        
+	</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>

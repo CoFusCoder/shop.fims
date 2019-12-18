@@ -12,22 +12,124 @@
 		<div class="content-panel">
               <h4><i class="fa fa-angle-right"></i>위원회 등록</h4>
               <hr>
-				<form th:action="@{/InsertAllCommittee}" method="post">
+				<form th:action="@{/insertAllCommittee}" method="post">
 					<table border="1">
 						<tr>
-							<td>ㅌㅌㅌ</td>
+							<td>위원회코드</td>
 							<td>
-								<input type="text" name="#">
+								<input type="text" name="man_com_cd">
 							</td>
 						</tr>
 						<tr>
-							<td>ㅌㅌㅌ</td>
+							<td>모든 행정기관코드</td>
 							<td>
-								<input type="text" name="#">
+								<input type="text" name="areacity_admin_cd">
 							</td>
 						</tr>
 						<tr>
+							<td>회원코드</td>
 							<td>
+								<input type="text" name="mem_cd">
+							</td>
+						</tr>
+						<tr>
+							<td>모든 회원 레벨코드</td>
+							<td>
+								<input type="text" name="mem_lev_cd">
+							</td>
+						</tr>
+						<tr>
+							<td>축제코드</td>
+							<td>
+								<input type="text" name="fest_cd">
+							</td>
+						</tr>
+						<tr>
+							<td>모든 심사 결과</td>
+							<td>
+								<input type="text" name="exa_rep_cd">
+							</td>
+						</tr>
+						<tr>
+							<td>모든 지역 시군코드</td>
+							<td>
+								<input type="text" name="area_city_cd">
+							</td>
+						</tr>
+						<tr>
+							<td>전국지역코드</td>
+							<td>
+								<input type="text" name="area_cd">
+							</td>
+						</tr>
+						<tr>
+							<td>축제명</td>
+							<td>
+								<input type="text" name="fest_nm">
+							</td>
+						</tr>
+						<tr>
+							<td>위원회 분류</td>
+							<td>
+								<input type="text" name="man_com_cat">
+							</td>
+						</tr>
+						<tr>
+							<td>위원회명</td>
+							<td>
+								<input type="text" name="man_com_nm1">
+							</td>
+						</tr>
+						<tr>
+							<td>위원회부서</td>
+							<td>
+								<input type="text" name="man_com_dep">
+							</td>
+						</tr>
+						<tr>
+							<td>직급</td>
+							<td>
+								<input type="text" name="man_com_rank">
+							</td>
+						</tr>
+						<tr>
+							<td>이름</td>
+							<td>
+								<input type="text" name="com_mem_nm2">
+							</td>
+						</tr>
+						<tr>
+							<td>소속</td>
+							<td>
+								<input type="text" name="man_com_job">
+							</td>
+						</tr>
+						<tr>
+							<td>작성일자</td>
+							<td>
+								<input type="text" name="man_com_dt1" readonly>
+							</td>
+						</tr>
+						<tr>
+							<td>승인자</td>
+							<td>
+								<input type="text" name="man_com_app">
+							</td>
+						</tr>
+						<tr>
+							<td>승인일자</td>
+							<td>
+								<input type="text" name="man_com_dt2" readonly>
+							</td>
+						</tr>
+						<tr>
+							<td>승인 상태</td>
+							<td>
+								<input type="text" name="man_com_con">
+							</td>
+						</tr>
+						<tr style="text-align: center;">
+							<td colspan="2">
 								<button type="submit">위원회 등록</button>
 							</td>
 						</tr>

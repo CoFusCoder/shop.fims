@@ -1,38 +1,68 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/main">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
 
 <th:block layout:fragment="customHead">
 <meta charset="UTF-8">
-<title>위원회리스트</title>
+<title>위원회 관리</title>
 <th:block th:include="layout/customHead"></th:block>
 </th:block>
 	<th:block layout:fragment="customBody">
-		<div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>위원회리스트</h4>
-              <hr>
-              <table class="table">
-                <thead>
+		<h1>위원회 관리</h1>
+              <table border="1">
                   <tr>
-                    <th>컬럼1</th>
-                    <th>컬럼2</th>
-                    <th>수정</th>
-                    <th>삭제</th>
+                    <td>위원회코드</td>
+                    <td>모든 행정기관코드</td>
+                    <td>회원코드</td>
+                    <td>모든 회원 레벨코드</td>
+                    <td>축제코드</td>
+                    <td>모든 심사 결과</td>
+                    <td>모든 지역 시군코드</td>
+                    <td>전국지역코드</td>
+                    <td>축제명</td>
+                    <td>위원회 분류</td>
+                    <td>위원회명</td>
+                    <td>위원회부서</td>
+                    <td>직급</td>
+                    <td>이름</td>
+                    <td>소속</td>
+                    <td>작성일자</td>
+                    <td>승인자</td>
+                    <td>승인일자</td>
+                    <td>승인 상태</td>
+                    <td>수정</td>
+                    <td>삭제</td>
                   </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>값1</td>
-                    <td>값1</td>
-                    <td><a th:href="@{/updateAllCommittee}">수정</a></td>
-                    <td><a th:href="@{/}">삭제</a></td>
-                    
-                  </tr>
-
-                </tbody>
+                  <tr th:each="c : ${allCommitteeView}">
+               		<td th:text="${c.man_com_cd}"></td>
+               		<td th:text="${c.areacity_admin_cd}"></td>
+               		<td th:text="${c.mem_cd}"></td>
+               		<td th:text="${c.mem_lev_cd}"></td>
+               		<td th:text="${c.fest_cd}"></td>
+               		<td th:text="${c.exa_rep_cd}"></td>
+               		<td th:text="${c.area_city_cd}"></td>
+               		<td th:text="${c.area_cd}"></td>
+               		<td th:text="${c.fest_nm}"></td>
+               		<td th:text="${c.man_com_cat}"></td>
+               		<td th:text="${c.man_com_nm1}"></td>
+               		<td th:text="${c.man_com_dep}"></td>
+               		<td th:text="${c.man_com_rank}"></td>
+               		<td th:text="${c.com_mem_nm2}"></td>
+               		<td th:text="${c.man_com_job}"></td>
+               		<td th:text="${c.man_com_dt1}"></td>
+               		<td th:text="${c.man_com_app}"></td>
+               		<td th:text="${c.man_com_dt2}"></td>
+               		<td th:text="${c.man_com_con}"></td>
+               		<td>
+						<a th:href="@{/updateAllCommittee(man_com_cd=${c.man_com_cd})}">수정</a>
+					</td>
+					<td>
+						<a th:href="@{/deleteAllCommittee(man_com_cd=${c.man_com_cd})}">삭제</a>
+					</td>
+                </tr>
               </table>
-            </div>
+              
 	</th:block>
 	<th:block layout:fragment="customJquery">
 	<th:block th:include="layout/customJquery"></th:block>

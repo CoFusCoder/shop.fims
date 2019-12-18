@@ -1,38 +1,66 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/main">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
 
-<th:block layout:fragment="customHead">
-<meta charset="UTF-8">
-<title>모든거래처리스트</title>
-<th:block th:include="layout/customHead"></th:block>
-</th:block>
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>거래처 관리</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
 	<th:block layout:fragment="customBody">
-		<div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>모든거래처리스트</h4>
-              <hr>
-              <table class="table">
-                <thead>
+		<h1>거래처 관리</h1>
+              <table border="1">
                   <tr>
-                    <th>컬럼1</th>
-                    <th>컬럼2</th>
-                    <th>수정</th>
-                    <th>삭제</th>
+                    <td>거래처코드</td>
+                    <td>모든 행정기관코드</td>
+                    <td>모든 지역 시군코드</td>
+                    <td>전국지역코드</td>
+                    <td>위원회코드</td>
+                    <td>거래처명</td>
+                    <td>사업자분류</td>
+                    <td>거래처대표자명</td>
+                    <td>거래처사업장주소</td>
+                    <td>거래처사업자등록번호</td>
+                    <td>거래처법인등록번호</td>
+                    <td>거래처팩스번호</td>
+                    <td>대표자 전화번호</td>
+                    <td>거래처 대표번호</td>
+                    <td>거래처이메일</td>
+                    <td>등록일자</td>
+                    <td>승인자</td>
+                    <td>위원회명</td>
+                    <td>승인일자</td>
+                    <td>승인 상태</td>
+                    <td>수정</td>
+                    <td>삭제</td>
                   </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>값1</td>
-                    <td>값1</td>
+                  <tr th:each="a : ${allAccountView}">
+               		<td th:text="${a.cat_acc_cd}"></td>
+               		<td th:text="${a.areacity_admin_cd}"></td>
+               		<td th:text="${a.area_city_cd}"></td>
+               		<td th:text="${a.area_cd}"></td>
+               		<td th:text="${a.man_com_cd}"></td>
+               		<td th:text="${a.cat_acc_nm1}"></td>
+               		<td th:text="${a.cat_acc_oper}"></td>
+               		<td th:text="${a.cat_acc_nm2}"></td>
+               		<td th:text="${a.cat_acc_addr}"></td>
+               		<td th:text="${a.cat_acc_no1}"></td>
+               		<td th:text="${a.cat_acc_no2}"></td>
+               		<td th:text="${a.cat_acc_phone1}"></td>
+               		<td th:text="${a.cat_acc_phone2}"></td>
+               		<td th:text="${a.cat_acc_phone3}"></td>
+               		<td th:text="${a.cat_acc_email}"></td>
+               		<td th:text="${a.cat_acc_dt1}"></td>
+               		<td th:text="${a.cat_acc_app}"></td>
+               		<td th:text="${a.man_com_nm1}"></td>
+               		<td th:text="${a.cat_acc_dt2}"></td>
+               		<td th:text="${a.cat_acc_con}"></td>
                     <td><a th:href="@{/updateAllAccount}">수정</a></td>
-                    <td><a th:href="@{/}">삭제</a></td>
-                    
-                  </tr>
-
-                </tbody>
+                    <td><a th:href="@{/allAccountView}">삭제</a></td>
+                </tr>
               </table>
-            </div>
+              
 	</th:block>
 	<th:block layout:fragment="customJquery">
 	<th:block th:include="layout/customJquery"></th:block>
