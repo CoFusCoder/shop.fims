@@ -5,11 +5,44 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
+		<title>일정세부조회</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		일정세부조회
+		
+		
+		<h1>일정세부조회</h1>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>담당자</td>
+	 		<td>담당자명</td>
+	 		<td>날짜</td>
+	 		<td>차수</td>
+	 		<td>일정명</td>
+	 		<td>세부확인</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="s:${AllSchedule}">
+	 		<td><a>담당부서</a></td>
+	 		<td th:text="${s.man_com_cd}"></td>
+	 		<td th:text="${s.fest_sch_dt}"></td>
+	 		<td th:text="${s.fest_sch_no}"></td>
+	 		<td th:text="${s.fest_sche_nm}"></td>
+	 		<td th:text="${s.fest_sche_task}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td> 		
+	 	</tr>
+	 </table>
+		
+		
+		
+		
+		
+		
+		
+		
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>
