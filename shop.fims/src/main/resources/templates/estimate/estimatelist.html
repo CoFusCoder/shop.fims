@@ -9,38 +9,40 @@ layout:decorator="layout/main">
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-<div class="content-panel">
-	   <h2><i class="fa fa-angle-right"></i>전체심사</h2>		
-	<form th:action="@{/reviewindicater}" method="get">	 
-		<table class="table">
-			<tr>
-				<th>모든 행정기관관리</th>
-				<th>전국 지역관리</th>
-				<th>모든 지역 시군관리</th>
-				<th>모든 축제관리</th>
-				<th>심사 제목</th>
-				<th>등록일자</th>
-				<th>심사일자</th>
-				<th>심사현황</th>
-				<th>담당자</th>
-				
-				
-				
-			</tr>
-			<tr>
-				<th>전라북도</th>
-				<th>전주시</th>
-				<th>전라북도청</th>
-				<th>소리문화 축제</th>
-				<th><a th:href="@{/apply}">무대설치 용역 심사</a></th>
-				<th>2019.12.05</th>
-				<th>2019.12.05</th>
-				<th>no</th>
-				
-			</tr>
-		</table>
-	</form>
-</div>
+	<div class="content-panel">
+		<h2>
+			<i class="fa fa-angle-right"></i>전체심사
+		</h2>
+		<form method="get">
+			<table class="table">
+				<tr>
+					<th>모든 행정기관관리</th>
+					<th>전국 지역관리</th>
+					<th>모든 지역 시군관리</th>
+					<th>모든 축제관리</th>
+					<th>심사 제목</th>
+					<th>등록일자</th>
+					<th>심사일자</th>
+					<th>심사현황</th>
+					<th>담당자</th>
+
+
+
+				</tr>
+				<tr>
+					<th>전라북도</th>
+					<th>전주시</th>
+					<th>전라북도청</th>
+					<th>소리문화 축제</th>
+					<th><a th:href="@{/apply}">무대설치 용역 심사</a></th>
+					<th>2019.12.05</th>
+					<th>2019.12.05</th>
+					<th>no</th>
+
+				</tr>
+			</table>
+		</form>
+	</div>
 </th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

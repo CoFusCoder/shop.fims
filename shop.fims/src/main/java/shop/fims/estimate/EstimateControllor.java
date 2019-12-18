@@ -19,10 +19,10 @@ public class EstimateControllor {
 		return "/estimate/apply";
 	
 	}
-	//완료심사	
-	@GetMapping("/finalestimatelist")
+	//심사지표 이동	
+	@GetMapping("/examination_index")
 	public String finalsetimatlist() {
-		return "/estimate/finalestimatelist";
+		return "/estimate/examination_index";
 	}
 	
 }

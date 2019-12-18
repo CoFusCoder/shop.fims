@@ -40,5 +40,6 @@ public class GoodsController {
 			return "goods/conditionlist";
 			
 		}
+		
 	
 }
