@@ -13,4 +13,5 @@ public interface WorkMapper {
 	
 	//축제업무조회
 	public List<Work> selectWorkDivision();
+	
 }

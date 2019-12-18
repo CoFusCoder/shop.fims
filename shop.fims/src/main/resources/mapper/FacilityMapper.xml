@@ -61,6 +61,12 @@
 		FROM
 			Facility_Mai
 	
-	</select >
-
+	</select>
+	<select id="selectChecklist" resultType="shop.fims.vo.Facility">
+		SELECT
+			safins_list_cla AS inslistCla,
+			safins_list_con AS inslistCon
+		FROM
+			Saf_Ins_List	
+	</select>
   </mapper>
