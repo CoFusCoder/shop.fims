@@ -24,4 +24,5 @@ public class WorkService {
 		
 		return workmapper.selectWorkDivision();
 	}
+	
 }

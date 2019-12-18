@@ -10,6 +10,42 @@ layout:decorator="layout/main">
 	</th:block>
 	<th:block layout:fragment="customBody">
 		축제업무등록
+		<div class="form-panel">
+              <div class=" form">		
+                <form class="cmxform form-horizontal style-form" id="commentForm" method="post" action="@{workdivisionInsert}">
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">축제명</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="festNm" type="text" name="festNm" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="cemail" class="control-label col-lg-2">업무분류</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="workcatNm" type="text" name="workcatNm" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">업무명</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="workdivNm" type="text" name="workdivNm" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="curl" class="control-label col-lg-2">담당자</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="workdivNm" type="text" name="workdivNm" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit" value="등록">등록</button>
+                      <button class="btn btn-theme04" type="button">취소</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

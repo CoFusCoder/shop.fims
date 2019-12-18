@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
@@ -29,10 +30,12 @@ public class FacilityController {
 	}
 	//모든시설분류수정
 	@GetMapping("/classificationUpdate")
-	public String updateClassification() {
+	public String selectupdateClassification() {
 		
 		return "/facility/classificationUpdate";
 	}
+	//모든시설분류수정처리
+
 	//모든시설분류삭제
 	@GetMapping("/classificationDelete")
 	public String delectClassification() {
@@ -55,10 +58,12 @@ public class FacilityController {
 	}
 	//보유시설수정
 	@GetMapping("/facilityUpdate")
-	public String updateFacility() {
+	public String selectupdateFacility() {
 		
 		return "/facility/facilityUpdate";
 	}
+	//보유시설수정처리
+
 	//보유시설삭제
 	@GetMapping("/facilityDelete")
 	public String delectFacility() {
@@ -121,8 +126,8 @@ public class FacilityController {
 	@GetMapping("/checkList")
 	public String selectChecklist(Model model) {
 		
-		//System.out.println("festNm ------>" + festNm);
-		//model.addAttribute("checkList", facilityservice.selectChecklist());
+		
+		model.addAttribute("checkList", facilityservice.selectChecklist());
 		
 		return "/facility/checkList";
 	}
