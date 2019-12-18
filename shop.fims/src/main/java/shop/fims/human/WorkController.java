@@ -1,14 +1,21 @@
 package shop.fims.human;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class WorkController {
 
+	@Autowired
+	private WorkService workservice;
+	
 	//축제업무분류리스트
 	@GetMapping("/workcategoryList")
-	public String selectWorkCategory() {
+	public String selectWorkCategory(Model model) {
+		
+		model.addAttribute("WorkCategoryList", workservice.selectWorkCategory());
 		
 		return "/work/workcategoryList";
 	}
@@ -32,7 +39,9 @@ public class WorkController {
 	}
 	//축제업무리스트
 	@GetMapping("/workdivisionList")
-	public String selectWorkDivision() {
+	public String selectWorkDivision(Model model) {
+		
+		model.addAttribute("WorkdivisionList", workservice.selectWorkDivision());
 		
 		return "/work/workdivisionList";
 	}

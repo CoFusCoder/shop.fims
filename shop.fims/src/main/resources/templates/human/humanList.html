@@ -39,37 +39,6 @@ layout:decorator="layout/main">
 				<option value="">담당자명</option>				
 			</select>
 			<input type = "text" name="sv">
-
-<<<<<<< HEAD
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	<th:block layout:fragment="customBody">
-		인적사항리스트
-		<table border="1">
-				<tr>
-					<td>아이디</td>
-					<td>비밀번호</td>
-					<td>권한</td>
-					<td>이름</td>
-					<td>이메일</td>
-					<td>수정</td>
-					<td>삭제</td>
-					<td>
-						<a th:href="@{/humanUpdate}">수정연결</a>
-					</td>
-					<td>
-						<a th:href="@{/humanDelete}">삭제연결</a>
-					</td>
-				</tr>
-		</table>
-	</th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
-=======
 			<button type="submit" value="검색">검색</button>
 		</form>
 			
@@ -86,14 +55,14 @@ layout:decorator="layout/main">
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td>라이언</td>
-						<td>전주세계소리축제</td>
-						<td>축제보조</td>
-						<td>010</td>
-						<td>10:00-16:00</td>
-						<td>조희영</td>
+					<tr th:each = "h : ${HumanList}">
+						<td></td>
+						<td th:text = "${h.humanNm}"></td>
+						<td th:text = "${h.festNm}"></td>
+						<td th:text = "${h.workdivNm}"></td>
+						<td th:text = "${h.humanPhone}"></td>
+						<td th:text = "${h.humanHour}"></td>
+						<td th:text = "${h.comNm2}"></td>
 						<td>
 							<a th:href="@{/humanUpdate}">수정</a>
 						</td>

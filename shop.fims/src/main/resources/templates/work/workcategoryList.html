@@ -35,9 +35,9 @@ layout:decorator="layout/main">
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
+					<tr th:each = " wc : ${WorkCategoryList}">
+						<td th:text = "${wc.festNm}"></td>
+						<td th:text = "${wc.workcatNm}"></td>
 						<td>
 							<a th:href="@{/workcategoryUpdate}">수정</a>
 						</td>

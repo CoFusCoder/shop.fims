@@ -1,14 +1,23 @@
 package shop.fims.facility;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class FacilityController {
 	
+	@Autowired
+	private FacilityService facilityservice;
+	
 	//모든시설분류리스트
 	@GetMapping("/classificationList")
-	public String selectClassification() {
+	public String selectClassification(Model model) {
+		
+		model.addAttribute("classificationList", facilityservice.selectClassification());
 		
 		return "/facility/classificationList";
 	}
@@ -32,7 +41,9 @@ public class FacilityController {
 	}
 	//보유시설리스트
 	@GetMapping("/facilityList")
-	public String selectFacility() {
+	public String selectFacility(Model model) {
+		
+		model.addAttribute("facilityList", facilityservice.selectFacility());
 		
 		return "/facility/facilityList";
 	}
@@ -56,7 +67,9 @@ public class FacilityController {
 	}
 	//임시시설설치및철거리스트
 	@GetMapping("/temporaryList")
-	public String selectTemporary() {
+	public String selectTemporary(Model model) {
+		
+		model.addAttribute("temporaryList", facilityservice.selectTemporary());
 		
 		return "/facility/temporaryList";
 	}
@@ -80,14 +93,16 @@ public class FacilityController {
 	}
 	//시설안전점검후유지보수리스트
 	@GetMapping("/maintenanceList")
-	public String selectMaintenance() {
+	public String selectMaintenance(Model model) {
+		
+		model.addAttribute("MaintenanceList", facilityservice.selectMaintenance());
 		
 		return "/facility/maintenanceList";
 	}
 	//시설안전점검후유지보수등록
 	@GetMapping("/maintenanceInsert")
 	public String insertMaintenance() {
-		
+
 		return "/facility/maintenanceInsert";
 	}
 	//시설안전점검후유지보수수정 
@@ -104,7 +119,10 @@ public class FacilityController {
 	}
 	//안전점검리스트표
 	@GetMapping("/checkList")
-	public String selectChecklist() {
+	public String selectChecklist(Model model) {
+		
+		//System.out.println("festNm ------>" + festNm);
+		//model.addAttribute("checkList", facilityservice.selectChecklist());
 		
 		return "/facility/checkList";
 	}
