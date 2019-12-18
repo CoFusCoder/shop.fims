@@ -5,11 +5,34 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
+		<title>프로그램 조회</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		대프로그램리스트
+		<h1>대프로그램리스트</h1>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>프로그램명</td>
+	 		<td>시작시간</td>
+	 		<td>종료시간</td>
+	 		<td>프로그램설명</td>
+	 		<td>관람연령</td>
+	 		<td>티켓금액</td>
+	 	</tr>
+	 	<tr th:each="l:${AllProgram}">
+	 		<td th:text="${l.fest_pro_nm}"></td>
+	 		<td th:text="${l.festpro_time_start}"></td>
+	 		<td th:text="${l.festpro_time_end}"></td>
+	 		<td th:text="${l.fest_pro_detail}"></td>
+	 		<td th:text="${l.fest_pro_agelevel}"></td>
+	 		<td th:text="${l.festpro_ticket_cost}"></td>
+	 	</tr>
+	 </table>
+		
+		
+		
+		
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

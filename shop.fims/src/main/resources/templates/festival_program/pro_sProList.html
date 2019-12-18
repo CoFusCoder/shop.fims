@@ -5,11 +5,45 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
+		<title>세부프로그램관리</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		세부프로그램관리
+
+		<h1>세부프로그램관리</h1>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>프로그램명</td>
+	 		<td>세부프로그램명</td>
+	 		<td>세부시간</td>
+	 		<td>내용</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="s:${AllSprogram}">
+	 		<td th:text="${s.fest_pro_cd}"></td>
+	 		<td th:text="${s.festpro_spro_nm}"></td>
+	 		<td th:text="${s.festpro_spro_time}"></td>
+	 		<td th:text="${s.festpro_spro_detail}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+	 	</tr>
+	 </table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

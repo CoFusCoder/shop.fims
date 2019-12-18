@@ -5,11 +5,73 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
+		<title>축제관련물품분류리스트</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		축제관련물품분류리스트
+		
+		<h2>축제물품 대분류</h2>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>대분류코드</td>
+	 		<td>대분류명</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="l:${AllLDiv}"}>
+	 		<td th:text="${l.festgoods_ldiv_cd}"></td>
+	 		<td th:text="${l.festgoods_ldiv_nm}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+
+	 	</tr>
+	 </table>
+	 
+	 
+		<h2>축제물품 중분류</h2>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>중분류코드</td>
+	 		<td>중분류명</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="m:${AllMDiv}"}>
+	 		<td th:text="${m.festgoods_mdiv_cd}"></td>
+	 		<td th:text="${m.festgoods_mdiv_nm}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+
+	 	</tr>
+	 </table>
+	 
+	 
+		<h2>축제물품 소분류</h2>
+		
+		<table border="1px">
+	 	<tr>
+	 		<td>소분류코드</td>
+	 		<td>소분류명</td>
+	 		<td>수정</td>
+	 		<td>삭제</td>
+	 	</tr>
+	 	<tr th:each="s:${AllSDiv}"}>
+	 		<td th:text="${s.festgoods_sdiv_cd}"></td>
+	 		<td th:text="${s.festgoods_sdiv_nm}"></td>
+	 		<td><a>수정</a></td>
+	 		<td><a>삭제</a></td>
+
+	 	</tr>
+	 </table>
+		
+		
+		
+		
+		
+		
+		
 	</th:block>
 	<th:block layout:fragment="customJquery">
 		<th:block th:include="layout/customJquery"></th:block>

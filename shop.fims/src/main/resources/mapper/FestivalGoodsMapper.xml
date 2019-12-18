@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shop.fims.goods.FestivalGoodsMapper">
+  
+
+  <select id="selectAllGoodsOut" resultType="shop.fims.vo.FestivalGoodsOut">
+	SELECT
+		*
+	FROM 
+		Fest_Goods_out
+  
+  </select>
+  
+
+  <select id="selectAllGoodsIn" resultType="shop.fims.vo.FestivalGoodsIn">
+  SELECT
+		*
+	FROM 
+		Fest_Goods_in
+  
+  </select> 
+  
+  
+  
+  
+  <!-- 물품 대분류조회 -->
+  <select id="selectAllLDiv" resultType="shop.fims.vo.GoodsLDiv">
+ 	 SELECT
+		*
+	FROM 
+		Fest_Goods_Ldiv
+  </select>
+  <!-- 물품 중분류조회 -->
+  <select id="selectAllMDiv" resultType="shop.fims.vo.GoodsMDiv">
+ 	 SELECT
+	*
+	FROM 
+		Fest_Goods_Mdiv
+  </select>
+  <!-- 물품 소분류조회 -->
+  <select id="selectAllSDiv" resultType="shop.fims.vo.GoodsSDiv">
+  SELECT
+	*
+	FROM 
+		Fest_Goods_Sdiv
+  </select>
+  
+  
+  
+  </mapper>

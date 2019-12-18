@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shop.fims.program.ProgramMapper">
+  
+  
+  
+  
+  
+<!--  세부프로그램조회 -->
+  <select id="selectAllSpro" resultType="shop.fims.vo.ProSpro">
+  	SELECT
+		*
+	FROM 
+	Fest_Pro_sPro
+  </select>
+  
+  
+  
+<!--   대프로그램조회 -->
+  <select id="selectAllPro" resultType="shop.fims.vo.Program">
+  	SELECT
+		*
+	FROM 
+		Fest_Program
+  </select>
+
+
+<!-- 프로그램 참가자조회 -->
+  <select id="selectAllParticipants" resultType="shop.fims.vo.ProParticipants" >
+	SELECT
+		festpro_par_cd
+		,areacity_admin_cd
+		,festpro_spro_cd
+		,fest_pro_cd
+		,acc_mem_cd
+		,fest_cd
+		,man_com_cd
+		,area_city_cd
+		,area_cd
+		,festpro_par_nm
+		,festpro_par_gender
+		,festpro_par_age
+		,festpro_par_phone
+		,festpro_par_etc
+		,insert_dt
+	FROM
+		Fest_Pro_participants
+  </select>  
+  
+  
+<!-- 프로그램 성격분류조회 -->
+  <select id="selectAllDivTheme" resultType="shop.fims.vo.ProDivTheme" >
+	SELECT
+		festprodiv_theme_cd
+		,areacity_admin_cd
+		,area_city_cd
+		,area_cd
+		,fest_cd
+		,fest_nm
+		,festprodiv_theme_nm
+	FROM
+		Fest_Pro_Div_Theme
+	
+  </select>  
+  
+  
+<!-- 프로그램 장소분류조회   -->
+  <select id="selectAllDivPlace" resultType="shop.fims.vo.ProDivPlace" >
+	SELECT
+		festprodiv_pla_cd
+		,areacity_admin_cd
+		,area_city_cd
+		,area_cd
+		,fest_cd
+		,fest_nm
+		,festprodiv_pla_nm
+	FROM
+		Fest_Pro_Div_Place
+	
+</select>
+
+
+<!-- 프로그램 일자분류조회 -->
+ <select id="selectAllDivDay" resultType="shop.fims.vo.ProDivDay" >
+	SELECT
+	festprodiv_day_cd
+	,festprodiv_day_nm
+	FROM
+	Fest_Pro_Div_Day
+</select>
+  
+
+  
+  </mapper>
