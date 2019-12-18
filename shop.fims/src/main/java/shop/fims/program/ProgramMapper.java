@@ -13,6 +13,9 @@ import shop.fims.vo.Program;
 
 @Mapper
 public interface ProgramMapper {
+	//프로그램코드로 프로그램 상세조회
+	public List<Program> selectByProcd(String fest_pro_cd);
+	
 	//세부프로그램 전체조회
 	public List<ProSpro> selectAllSpro();
 	

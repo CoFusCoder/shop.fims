@@ -4,7 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="shop.fims.program.ProgramMapper">
   
-  
+<!-- 프로그램코드로 상세조회 -->
+  	<select id="selectByProcd" resultType="shop.fims.vo.Program">
+	SELECT
+		f.fest_nm
+		,fg.*
+	FROM
+		Festival AS f
+		INNER JOIN
+		Fest_Program AS fg
+		ON
+		f.fest_cd=fg.fest_cd
+	where fest_pro_cd=(#{fest_pro_cd})
+  	</select>  
   
   
   
