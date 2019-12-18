@@ -1,25 +1,25 @@
 package shop.fims.vo;
 
 public class Committee {
-	private String man_com_cd;
-	private String areacity_admin_cd;
-	private String mem_cd;
-	private String mem_lev_cd;
-	private String fest_cd;
-	private String exa_rep_cd;
-	private String area_city_cd;
-	private String area_cd;
-	private String fest_nm;
-	private String man_com_cat;
-	private String man_com_nm1;
-	private String man_com_dep;
-	private String man_com_rank;
-	private String com_mem_nm2;
-	private String man_com_job;
-	private String man_com_dt1;
-	private String man_com_app;
-	private String man_com_dt2;
-	private String man_com_con;
+	private String man_com_cd;	//위원회코드
+	private String areacity_admin_cd;	//모든 행정기관코드
+	private String mem_cd;	//회원코드
+	private String mem_lev_cd;	//모든 회원 레벨코드
+	private String fest_cd;	//축제코드
+	private String exa_rep_cd;	//모든 심사 결과
+	private String area_city_cd;	//모든 지역 시군코드
+	private String area_cd;	//전국지역코드
+	private String fest_nm;	//축제명
+	private String man_com_cat;	//위원회 분류
+	private String man_com_nm1;	//위원회명
+	private String man_com_dep;	//위원회부서
+	private String man_com_rank;	//직급
+	private String com_mem_nm2;	//이름
+	private String man_com_job;	//소속
+	private String man_com_dt1;	//작성일자
+	private String man_com_app;	//승인자
+	private String man_com_dt2;	//승인일자
+	private String man_com_con;	//승인 상태
 	
 	public String getMan_com_cd() {
 		return man_com_cd;

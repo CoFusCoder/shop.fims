@@ -12,4 +12,7 @@ public interface CommitteeMapper {
 	
 	//모든 위원회 관리
 	public List<Committee> selectAllCommitteeView();
+	
+	//위원회 등록
+	public int insertAllCommittee(Committee committee);
 }

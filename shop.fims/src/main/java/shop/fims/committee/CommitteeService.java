@@ -19,4 +19,10 @@ public class CommitteeService {
 		return committeeMapper.selectAllCommitteeView();
 		
 	}
+	
+	//위원회 등록
+	public int insertAllCommittee(Committee committee) {
+		committeeMapper.insertAllCommittee(committee);
+		return committeeMapper.insertAllCommittee(committee);
+	}
 }

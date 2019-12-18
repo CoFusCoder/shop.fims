@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="shop.fims.account.CommitteeMapper">
+<mapper namespace="shop.fims.committee.CommitteeMapper">
 
 	<!-- 모든 위원회 관리 -->
 	  <select id="selectAllCommitteeView" resultType="shop.fims.vo.Committee">
@@ -12,5 +12,16 @@
 		FROM 
 			Man_Com
 	  </select>
+	  
+	 <!-- 위원회 등록 -->
+		<insert id="insertAllCommittee" parameterType="shop.fims.vo.Committee">
+			INSERT INTO Man_Com
+				(man_com_cd, areacity_admin_cd, mem_cd, mem_lev_cd, fest_cd, exa_rep_cd, area_city_cd, area_cd, fest_nm, man_com_cat,
+				man_com_nm1, man_com_dep, man_com_rank, com_mem_nm2, man_com_job, man_com_dt1, man_com_app, man_com_dt2, man_com_con)
+			VALUES 
+				(#{man_com_cd}, #{areacity_admin_cd}, #{mem_cd}, #{mem_lev_cd}, #{fest_cd}, #{exa_rep_cd}, #{area_city_cd}, #{area_cd}, #{fest_nm}, #{man_com_cat},
+				 #{man_com_nm1}, #{man_com_dep}, #{man_com_rank}, #{com_mem_nm2}, #{man_com_job}, #{man_com_dt1}, #{man_com_app}, #{man_com_dt2}, #{man_com_con})
+		</insert>
+	
 
 </mapper>

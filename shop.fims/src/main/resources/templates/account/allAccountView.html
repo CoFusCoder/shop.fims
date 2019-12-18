@@ -33,7 +33,7 @@ layout:decorator="layout/main">
                     <td>승인일자</td>
                     <td>승인 상태</td>
                   </tr>
-                  <tr th:each="a : ${Cat_Account}">
+                  <tr th:each="a : ${allAccountView}">
                		<td th:text="${a.cat_acc_cd}"></td>
                		<td th:text="${a.areacity_admin_cd}"></td>
                		<td th:text="${a.area_city_cd}"></td>

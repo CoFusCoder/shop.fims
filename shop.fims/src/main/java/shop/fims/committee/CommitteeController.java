@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import shop.fims.vo.Committee;
 
 @Controller
 public class CommitteeController {
@@ -20,13 +23,20 @@ public class CommitteeController {
 	//위원회 관리
 	@GetMapping("/allCommitteeView")
 	public String AllCommitteeView(Model model) {
-		model.addAttribute("allAccountView", committeeService.selectAllCommitteeView());
+		model.addAttribute("allCommitteeView", committeeService.selectAllCommitteeView());
 		return "committee/allCommitteeView";
 	}
 	
-	//위원회 등록
+	//위원회 등록화면
 	@GetMapping("/insertAllCommittee")
 	public String InsertAllCommittee() {
+		return "/committee/insertAllCommittee";
+	}
+	
+	//위원회 등록
+	@PostMapping("/insertAllCommittee")
+	public String InsertAllCommittee(Committee committee) {
+		committeeService.insertAllCommittee(committee);
 		return "/committee/insertAllCommittee";
 	}
 	
