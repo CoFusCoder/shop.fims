@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Revenue {
 
 	//모든 축제별 보유물품 대여관리 리스트 - 세입관리
-	@GetMapping("revenuelist")
+	@GetMapping("/revenuelist/g_revenuelist")
 	public String revenuelist() {
-		return "/goods/revenuelist";
+		return "/revenuelist/g_revenuelist";
 	}
 }

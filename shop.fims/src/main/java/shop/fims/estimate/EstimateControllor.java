@@ -13,10 +13,10 @@ public class EstimateControllor {
 	public String estimatelist() {
 		return "/estimate/estimatelist";		
 	}
-	//심사표 
-	@GetMapping("/reviewindicater")
+	//신청서 내역 이동 
+	@GetMapping("/apply")
 	public String insertindex(Model model) {
-		return "/estimate/reviewindicater";
+		return "/estimate/apply";
 	
 	}
 	//완료심사	

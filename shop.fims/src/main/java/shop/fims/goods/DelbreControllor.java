@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DelbreControllor {
 
 	//계약물품 납품내역리스트
-	@GetMapping("/delbrelist")
+	@GetMapping("/g_delbrelist")
 	public String delbrelist() {
-		return "/delbre/delbrelist";
+		return "/delbre/g_delbrelist";
 	}
 }
