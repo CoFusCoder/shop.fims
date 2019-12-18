@@ -5,30 +5,36 @@
 
 <th:block layout:fragment="customHead">
 <meta charset="UTF-8">
-<title>봉사활동신청서 등록</title>
+<title>축제자원봉사 신청서 등록</title>
 <th:block th:include="layout/customHead"></th:block>
 </th:block>
 	<th:block layout:fragment="customBody">
 		<div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>봉사활동 신청서 등록</h4>
+              <h4><i class="fa fa-angle-right"></i>축제자원봉사 신청서 등록</h4>
               <hr>
 				<form th:action="@{/InsertVolunteerAppForm}" method="post">
 					<table border="1">
 						<tr>
-							<td>ㅌㅌㅌ</td>
+							<td>축제자원봉사 신청서관리</td>
 							<td>
 								<input type="text" name="#">
 							</td>
 						</tr>
 						<tr>
-							<td>ㅌㅌㅌ</td>
+							<td>지원분야</td>
+							<td>
+								<input type="text" name="#">
+							</td>
+						</tr>
+						<tr>
+							<td>신청자이름</td>
 							<td>
 								<input type="text" name="#">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<button type="submit">봉사활동 신청서 등록</button>
+								<button type="submit">축제자원봉사 신청서 등록</button>
 							</td>
 						</tr>
 					</table>

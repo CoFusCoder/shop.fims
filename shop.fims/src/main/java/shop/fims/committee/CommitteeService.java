@@ -17,17 +17,16 @@ public class CommitteeService {
 	//위원회 조회
 	public List<Committee> selectAllCommitteeView(){
 		return committeeMapper.selectAllCommitteeView();
-		
 	}
 	
 	//위원회 등록
-	public int insertAllCommittee(Model model) {
-		return committeeMapper.insertAllCommittee(model);
+	public int insertAllCommittee(Committee committee) {
+		return committeeMapper.insertAllCommittee(committee);
 	}
 	
 	//위원회 삭제
-	public int deleteAllCommittee(Model model) {
-		return committeeMapper.deleteAllCommittee(model);
+	public int deleteAllCommittee(Committee committee) {
+		return committeeMapper.deleteAllCommittee(committee);
 	}
 	
 	//위원회 수정화면. 위원회 코드로 조회

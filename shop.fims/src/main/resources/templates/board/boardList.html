@@ -5,31 +5,33 @@
 
 <th:block layout:fragment="customHead">
 <meta charset="UTF-8">
-<title>위원회신청서리스트</title>
+<title>공지사항</title>
 <th:block th:include="layout/customHead"></th:block>
 </th:block>
 	<th:block layout:fragment="customBody">
 		<div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>위원회신청서리스트</h4>
+              <h4><i class="fa fa-angle-right"></i>공지사항</h4>
               <hr>
               <table class="table">
                 <thead>
                   <tr>
-                    <th>위원회참가신청서관리1</th>
-                    <th>이름</th>
-                    <th>연락처</th>
-                    <th>수정</th>
-                    <th>삭제</th>
+                    <th>공지번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일자</th>
+                    <th>조회수</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>값1</td>
-                    <td>값1</td>
-                    <td>값1</td>
-                    <td><a th:href="@{/updateCommitteeAppForm}">수정</a></td>
-                    <td><a th:href="@{/committeeAppFormView}">삭제</a></td>
-                    
+                    <td>001</td>
+                    <td>
+                    <a th:href="@{/announcementDetail}">
+                    	소리마켓 용역 선정 공고
+                    </td>
+                    <td>최다미</td>
+                    <td>2019-12-18</td>
+                    <td>11</td>
                   </tr>
 
                 </tbody>

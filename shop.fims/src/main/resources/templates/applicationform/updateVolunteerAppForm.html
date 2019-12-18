@@ -12,23 +12,29 @@
 		<div class="content-panel">
               <h4><i class="fa fa-angle-right"></i>봉사활동신청서 수정</h4>
               <hr>
-				<form th:action="@{/UpdateVolunteerAppForm}" method="post">
+				<form th:action="@{/volunteerAppFormView}" method="get">
 					<table border="1">
 						<tr>
-							<td>ㅌㅌㅌ</td>
+							<td>축제자원봉사 신청서관리</td>
 							<td>
 								<input type="text" name="#">
 							</td>
 						</tr>
 						<tr>
-							<td>ㅌㅌㅌ</td>
+							<td>지원분야</td>
+							<td>
+								<input type="text" name="#">
+							</td>
+						</tr>
+						<tr>
+							<td>신청자이름</td>
 							<td>
 								<input type="text" name="#">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<button type="submit">봉사활동신청서 수정</button>
+								<button type="submit">축제자원봉사 신청서 수정</button>
 							</td>
 						</tr>
 					</table>

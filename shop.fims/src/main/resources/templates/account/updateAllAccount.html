@@ -12,23 +12,66 @@
 		<div class="content-panel">
               <h4><i class="fa fa-angle-right"></i>모든 거래처 수정</h4>
               <hr>
-				<form th:action="@{/UpdateAllAccount}" method="post">
+				<form th:action="@{/allAccountView}" method="get">
 					<table border="1">
 						<tr>
-							<td>ㅌㅌㅌ</td>
+							<td>거래처코드</td>
 							<td>
-								<input type="text" name="#">
+								<input type="text" name="">
 							</td>
 						</tr>
 						<tr>
-							<td>ㅌㅌㅌ</td>
+							<td>모든 행정기관코드</td>
 							<td>
-								<input type="text" name="#">
+								<input type="text" name="">
 							</td>
 						</tr>
 						<tr>
+							<td>회원코드</td>
 							<td>
-								<button type="submit">모든 거래처 수정</button>
+								<input type="text" name="">
+							</td>
+						</tr>
+						<tr>
+							<td>모든 회원 레벨코드</td>
+							<td>
+								<input type="text" name="">
+							</td>
+						</tr>
+						<tr>
+							<td>축제코드</td>
+							<td>
+								<input type="text" name="">
+							</td>
+						</tr>
+						<tr>
+							<td>모든 심사 결과</td>
+							<td>
+								<input type="text" name="">
+							</td>
+						</tr>
+						<tr>
+							<td>모든 지역 시군코드</td>
+							<td>
+								<input type="text" name="">
+							</td>
+						</tr>
+						<tr>
+							<td>전국지역코드</td>
+							<td>
+								<input type="text" name="">
+							</td>
+						</tr>
+						<tr>
+							<td>거래처명</td>
+							<td>
+								<input type="text" name="">
+							</td>
+						</tr>
+
+						<tr style="text-align: center;">
+							<td colspan="2">
+								<button type="submit">거래처 수정</button>
 							</td>
 						</tr>
 					</table>

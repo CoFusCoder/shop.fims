@@ -31,4 +31,11 @@ public class FesAnnController {
 	public String UpdateAnnouncement() {
 		return "festival_announcement/updateAnnouncement";
 	}
+	
+	//공고 상세보기
+	@GetMapping("/announcementDetail")
+	public String AnnouncementDetail() {
+		return "festival_announcement/announcementDetail";
+	}
+	
 }
