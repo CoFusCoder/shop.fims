@@ -227,57 +227,55 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#2.운영관리_연</span>
+              <span>#운영관리_연</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/SystemManageView}">#시스템 사용 대상 등록</a></li>
-              <li><a href="#">#시스템 사용 등록 현황</a></li>
-              <li><a href="#">#시스템 사용 신청서 관리</a></li>
-              <li><a href="#">#온라인 시설코드발급</a></li>
-              <li><a href="#">#온라인 시설코드발급 현황</a></li>
-              <li><a href="#">#온라인 시설코드 로그인 관리</a></li>
-              <li><a href="#">#온라인 계정 등록</a></li>
-              <li><a href="#">#온라인 계정 등록현황</a></li>
-              <li><a href="#">#온라인 계정 로그인 관리</a></li>
+              <li><a th:href="@{/oprateInsertAdmin}">#시스템 관리자 계정 등록</a></li>
+              <li><a th:href="@{/oprateSelectAdmin}">#시스템 관리자 계정 조회</a></li>
+              <li><a th:href="@{/oprateInsertCommonCode}">#공통코드 등록</a></li>
+              <li><a th:href="@{/oprateSelectCommonCode}">#공통코드 조회</a></li>
+              <li><a th:href="@{/oprateInsertNotice}">#공지사항 등록</a></li>
+              <li><a th:href="@{/oprateSelectNotice}">#공지사항 조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#3.행정기관관리_연</span>
+              <span>#행정기관관리_연</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#공통 코드 관리</a></li>
-              <li><a href="#">#전국 지역 관리</a></li>
-              <li><a href="#">#전국 지역별 시군 관리</a></li>
-              <li><a href="#">#행정기관 등록</a></li>
-              <li><a href="#">#행정기관 등록 현황</a></li>
-              <li><a href="#">#행정기관 부서별 직원 등록</a></li>
-              <li><a href="#">#행정기관 부서별 직원 등록 현황</a></li>
+              <li><a th:href="@{#}">#전국 지역 및 시군 등록</a></li>
+              <li><a th:href="@{#}">#전국 지역 및 시군 조회</a></li>
+              <li><a th:href="@{#}">#행정기관 등록</a></li>
+              <li><a th:href="@{#}">#행정기관 조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#4.회원관리_연</span>
+              <span>#회원관리_연</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#신규 사용자 계정생성 및 권한 등록</a></li>
-              <li><a href="#">#모든 회원 관리</a></li>
-              <li><a href="#">#거래처 회원 관리</a></li>
-              <li><a href="#">#위원회 회원 관리</a></li>
+              <li><a th:href="@{#}">#회원 권한 등록</a></li>
+              <li><a th:href="@{#}">#회원 권한 조회</a></li>
+              <li><a th:href="@{#}">#권한별 계정 부여</a></li>
+              <li><a th:href="@{#}">#부여된 계정 조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#5.공무원관리_연</span>
+              <span>#공무원관리_연</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#업무현황</a></li>
+              <li><a th:href="@{#}">#행정기관별 부서 등록</a></li>
+              <li><a th:href="@{#}">#행정기관별 부저 조회</a></li>
+              <li><a th:href="@{#}">#부서별 직원 등록</a></li>
+              <li><a th:href="@{#}">#부서별 직원 조회</a></li>
+              <li><a th:href="@{#}">#접수된 위원회 조회</a></li>
+              <li><a th:href="@{#}">#위원회 승인</a></li>
+              <li><a th:href="@{#}">#위원회 승인 조회</a></li>
+              <li><a th:href="@{#}">#업무현황</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -307,11 +305,15 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#8.축제관리_연</span>
+              <span>#축제관리_연</span>
               </a>
             <ul class="sub">
-              <li><a href="#">지역별 축제 관리</a></li>
-              <li><a href="#">축제별 입장료 관리</a></li>
+              <li><a th:href="@{#}">#축제 등록</a></li>
+              <li><a th:href="@{#}">#축제 조회</a></li>
+              <li><a th:href="@{#}">#축제별 담당자 등록</a></li>
+              <li><a th:href="@{#}">#축제별 담당자 조회</a></li>
+              <li><a th:href="@{#}">#축제별 입장료 및 수량 등록</a></li>
+              <li><a th:href="@{#}">#축제별 입장료 및 수량 조회</a></li>
             </ul>
           </li>
            <li class="sub-menu">
@@ -457,7 +459,7 @@
               <span>#19.통계관리_석</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#축제별 입장료 수량 통계 관리</a></li>
+              <li><a href="#">#축제별 입장료 수량 통계 관리_연</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#</a></li>
               <li><a href="#">#</a></li>
@@ -466,13 +468,12 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#20.마이페이지_연</span>
+              <span>#마이페이지_연</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a th:href="@{#}">#회원정보 수정</a></li>
+              <li><a th:href="@{#}">#비밀번호 변경</a></li>
+              <li><a th:href="@{#}">#탈퇴하기</a></li>
             </ul>
           </li>
           <li class="sub-menu">
