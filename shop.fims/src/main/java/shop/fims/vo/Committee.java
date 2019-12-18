@@ -145,4 +145,5 @@ public class Committee {
 				+ man_com_dt1 + ", man_com_app=" + man_com_app + ", man_com_dt2=" + man_com_dt2 + ", man_com_con="
 				+ man_com_con + "]";
 	}
+
 }

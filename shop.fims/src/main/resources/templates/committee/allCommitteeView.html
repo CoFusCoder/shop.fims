@@ -31,6 +31,8 @@ layout:decorator="layout/main">
                     <td>승인자</td>
                     <td>승인일자</td>
                     <td>승인 상태</td>
+                    <td>수정</td>
+                    <td>삭제</td>
                   </tr>
                   <tr th:each="c : ${allCommitteeView}">
                		<td th:text="${c.man_com_cd}"></td>
@@ -52,6 +54,12 @@ layout:decorator="layout/main">
                		<td th:text="${c.man_com_app}"></td>
                		<td th:text="${c.man_com_dt2}"></td>
                		<td th:text="${c.man_com_con}"></td>
+               		<td>
+						<a th:href="@{/updateAllCommittee(man_com_cd=${c.man_com_cd})}">수정</a>
+					</td>
+					<td>
+						<a th:href="@{/deleteAllCommittee(man_com_cd=${c.man_com_cd})}">삭제</a>
+					</td>
                 </tr>
               </table>
               

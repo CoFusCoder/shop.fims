@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.fims.vo.Committee;
 
@@ -15,7 +16,7 @@ public class CommitteeController {
 	 * @file   CommitteeController.java
 	 * @name   CommitteeController
 	 * @brief  위원회 관련 
-	 * @author ksmart33 김도민
+	 * @author fims 김도민
 	 */
 	
 	@Autowired CommitteeService committeeService;
@@ -35,14 +36,28 @@ public class CommitteeController {
 	
 	//위원회 등록
 	@PostMapping("/insertAllCommittee")
-	public String InsertAllCommittee(Committee committee) {
-		committeeService.insertAllCommittee(committee);
-		return "/committee/insertAllCommittee";
+	public String InsertAllCommittee(Model model) {
+		committeeService.insertAllCommittee(model);
+		return "redirect:/allCommitteeView";
 	}
 	
-	//위원회 수정
-	@GetMapping("/updateAllCommittee")
-	public String UpdateAllCommittee() {
-		return "/committee/updateAllCommittee";
+	//위원회 삭제
+	@GetMapping("/deleteAllCommittee")
+	public String DeleteAllCommittee(Model model) {
+		committeeService.deleteAllCommittee(model);
+		return "redirect:/allCommitteeView";
 	}
+	
+	//위원회 수정화면. 위원회 코드로 조회
+	@GetMapping("/updateAllCommittee")
+	public String UpdateAllCommittee(@RequestParam (value="man_com_cd") String man_com_cd, Model model) {
+		model.addAttribute("getAllCommittee", committeeService.selectByAllCommittee(man_com_cd));
+		return "committee/updateAllCommittee";
+	}
+
+	
+	
+	
+	 
+	 
 }
