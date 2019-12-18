@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+ 
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>축제통합관리시스템</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+	
+	<div class="content-panel">
+	   <h2><i class="fa fa-angle-right"></i>보유물품 리스트</h2>	
+			<table class="table">
+				<thead>
+					<tr>
+						<td>모든 행정기관관리</td>				
+						<td>전국 지역관리</td>
+						<td>모든 지역 시군관리</td>
+						<td>모든 축제관리</td>
+						<td>모든 행정기관 부서관리</td>				
+						<td>보유물품</td>
+						<td>수량</td>
+						<td>특이사항</td>
+						<td>물품등록</td>
+						<td>물품수정</td>
+						<td>물품삭제</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="g : ${g_conditionlist}">
+						<td th:text="${g.area_cd}"></td>
+						<td th:text="${g.area_city_cd}"></td>
+						<td th:text="${g.areacity_adm_cd}"></td>
+						<td th:text="${g.fest_cd}"></td>
+						<td th:text="${g.admin_dep_cd}"></td>
+						<td th:text="${g.goods_nm}"></td>
+						<td th:text="${g.goods_amt}"></td>
+						<td th:text="${g.special_note}"></td>									
+						<th>
+						<a th:href="@{/g.insertcondition}" >등록하기</a>
+						</th>
+						<th>
+						<a th:href="@{/g.updatecondition}" >수정하기</a>
+						</th>
+						<th>
+						<a th:href="@{/#}" >삭제하기</a>
+						</th>
+					</tr>
+				</tbody>							
+			</table>
+		</div>		
+	</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>

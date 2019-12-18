@@ -1,16 +1,20 @@
 package shop.fims.goods;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class GoodsController {
 
+		@Autowired Goodsservice getgoodslist;
 		//물품보유현황리스트
-		@GetMapping("/conditionlist")
-		public String conditionlist(){
-			return "/goods/conditionlist";
+		@GetMapping("/g_conditionlist")
+		public String conditionlist(Model model){
+			model.addAttribute("g_conditionlist", getgoodslist.getgoodslist());
+			return "/goods/g_conditionlist";
 			
 		}
 		//물품 등록
