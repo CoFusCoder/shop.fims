@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProgramController {
@@ -14,6 +15,16 @@ public class ProgramController {
 			return "festival_program/pro_timetable";
 		}
 		
+		//프로그램코드로 상세조회 및 프로그램세부조회
+		@GetMapping("/pro_sProList")
+		public String selectByProcd(@RequestParam(value="fest_pro_cd")String fest_pro_cd, Model modelPro, Model modelSpro) {
+			modelPro.addAttribute("selectByProcd", programservice.selectByProcd(fest_pro_cd));
+			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro());
+			return "festival_program/pro_sProList";
+		}		
+		
+
+		
 		//대프로그램 조회 
 		@GetMapping("/pro_proList")
 		public String proList(Model model) {
@@ -21,12 +32,6 @@ public class ProgramController {
 			return "festival_program/pro_proList";
 		}
 		
-		//세부프로그램 조회 
-		@GetMapping("/pro_sProList")
-		public String sProList(Model model) {
-			model.addAttribute("AllSprogram", programservice.selectAllSpro());
-			return "festival_program/pro_sProList";
-		}
 		
 		//프로그램분류 조회
 		@GetMapping("/pro_divList")

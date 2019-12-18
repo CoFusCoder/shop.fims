@@ -5,11 +5,13 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>홍보상세리스트</title>
+		<title>홍보사업리스트</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		<h3>홍보상세리스트</h3>
+	- 페이징 해야함
+	- 검색기능 해야함
+		<h3>홍보사업리스트</h3>
 		
 		<div class="row mt">
           <div class="col-md-12">
@@ -23,12 +25,10 @@ layout:decorator="layout/main">
                     <th>홍보매체명</th>
                     <th>프로모션내용</th>
                     <th>프로모션시작일</th>
-                    <th>프로모션종료일</th>
                     <th>장소/배포처</th>
                     <th>마감여부</th>
                     <th>금액</th>
                     <th>상세확인</th>
-                    <th>수정/삭제</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -37,7 +37,6 @@ layout:decorator="layout/main">
 			 		<td th:text="${p.festpr_pro_nm}"></td>
 			 		<td th:text="${p.festpr_pro_detail}"></td>
 			 		<td th:text="${p.fprpro_start_dt}"></td>
-			 		<td th:text="${p.fprpro_end_dt}"></td>
 			 		<td th:text="${p.festpr_pro_place}"></td>
 			 		<td th:text="${p.action_status}"></td>
 			 		<td th:text="${p.festpr_pro_expense}"></td>
@@ -46,10 +45,6 @@ layout:decorator="layout/main">
 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a>
 			 		 
 			 		</td>
-                    <td>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                    </td>
                   </tr>
                 </tbody>
               </table>

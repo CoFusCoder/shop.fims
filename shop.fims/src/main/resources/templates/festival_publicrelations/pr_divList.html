@@ -9,26 +9,32 @@ layout:decorator="layout/main">
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
+
 		
-		
-		<h2>홍보분류관리</h2>
-		
-		<table border="1px">
-	 	<tr>
-	 		<td>홍보분류코드</td>
-	 		<td>분류명</td>
-	 		<td>수정</td>
-	 		<td>삭제</td>
-	 	</tr>
-	 	<tr th:each="d:${AllDiv}"}>
-	 		<td th:text="${d.festpr_div_cd}"></td>
-	 		<td th:text="${d.festpr_div_nm}"></td>
-	 		<td><a>수정</a></td>
-	 		<td><a>삭제</a></td>
-	 	</tr>
-	 </table>
-		
-		
+		<div class="col-md-12 mt">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>홍보분류관리</h4><hr><table class="table table-hover">
+                
+                
+                <thead>
+                  <tr>
+                    <th>홍보분류코드</th>
+                    <th>분류명</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="d:${AllDiv}">
+                    <td th:text="${d.festpr_div_cd}"></td>
+                    <td th:text="${d.festpr_div_nm}"></td>
+                    <td><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></td>
+                    <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 		
 		
 		

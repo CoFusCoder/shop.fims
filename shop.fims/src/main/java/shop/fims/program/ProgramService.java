@@ -16,6 +16,11 @@ import shop.fims.vo.Program;
 public class ProgramService {
 	@Autowired ProgramMapper programMapper;
 	
+	// 프로그램코드로 대프로그램조회
+	public List<Program> selectByProcd(String fest_pro_cd){
+		return programMapper.selectByProcd(fest_pro_cd);
+	}
+	
 	
 	// 세부프로그램조회
 	public List<ProSpro> selectAllSpro(){
