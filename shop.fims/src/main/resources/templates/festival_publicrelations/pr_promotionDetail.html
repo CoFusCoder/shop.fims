@@ -148,8 +148,10 @@ layout:decorator="layout/main">
           <!-- /col-lg-4 -->
         </div>
         <div align="right">
-		<button type="button" class="btn btn-primary">수정하기</button>
-		<button type="button" class="btn btn-danger">삭제하기</button>
+		<a th:href="@{/pr_updatePromotion}">
+		<button type="button" class="btn btn-primary">수정하기</button></a>
+		<a th:href="@{/pr_deletePromotion}">
+		<button type="button" class="btn btn-danger">삭제하기</button></a>
 		</div>
 		
 		

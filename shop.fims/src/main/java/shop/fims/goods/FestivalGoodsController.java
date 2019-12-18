@@ -10,11 +10,31 @@ public class FestivalGoodsController {
 	@Autowired FestivalGoodsService festivalGoodsService;
 	
 	
-	  @GetMapping("/g_festival_in") public String festivalGoodsInList(Model model)
-	  { model.addAttribute("GoodsIn", festivalGoodsService.selectAllGoodsIn());
-	  return "goods/g_festival_in"; }
+	
+	
+	
+	
+	
+	
+	  //축제물품입고등록	
+	  @GetMapping("/g_insertFestivalIn") 
+	  public String insertFGoodsIn(){ 
+	  return "goods/g_insertFestivalIn"; }
 	  
-	  //축제물품출고관리
+	  
+	  //축제물품출고등록	
+	  @GetMapping("/g_insertFestivalOut") 
+	  public String insertFGoodsOut(){ 
+		  return "goods/g_insertFestivalOut"; }
+	  
+	  
+	  //축제물품입고조회	
+	  @GetMapping("/g_festival_in") 
+	  public String festivalGoodsInList(Model model){ 
+		  model.addAttribute("GoodsIn", festivalGoodsService.selectAllGoodsIn());
+		  return "goods/g_festival_in"; }
+	  
+	  //축제물품출고조회
 	  
 	  @GetMapping("/g_festival_out") public String festivalGoodsOutList(Model
 	  model) { model.addAttribute("GoodsOut",

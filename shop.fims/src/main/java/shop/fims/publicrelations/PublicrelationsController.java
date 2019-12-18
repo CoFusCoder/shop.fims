@@ -14,15 +14,54 @@ public class PublicrelationsController {
 	@Autowired PublicrelationsService publicrelationsService;
 	
 	
+	//홍보분류 수정
+	@GetMapping("/pr_updateDiv")
+	public String updateDiv() {
+		return "festival_publicrelations/pr_updateDiv";
+	}
+	
+	//홍보분류 삭제
+	@GetMapping("/pr_deleteDiv")
+	public String deleteDiv(Model model) {
+		model.addAttribute("AllDiv", publicrelationsService.seletAllPrDiv());
+		return "festival_publicrelations/pr_divList";
+	}
+	
+	//홍보분류 신규등록
+	@GetMapping("/pr_insertDiv")
+	public String insertDiv() {
+		return "festival_publicrelations/pr_insertDiv";
+	}
+
+	
+	//홍보사업삭제
+	@GetMapping("/pr_deletePromotion")
+	public String deletePromotion(Model model) {
+		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion());
+		return "festival_publicrelations/pr_promotionList";	
+	}
+	
+	//홍보사업수정 코드가져와서 다 해야됨. 
+	@GetMapping("/pr_updatePromotion")
+	public String updatePromotion() {
+		return "festival_publicrelations/pr_updatePromotion";
+	}
+	
+	
+	//홍보사업 신규등록
+	 @GetMapping("/pr_insertPromotion")
+	 public String insertPromotion() {
+		return "festival_publicrelations/pr_insertPromotion";
+	 }
+	
+	
+	 //홍보 프로모션코드로 세부사항조회
 	 @GetMapping("/pr_promotionDetail") 
 	 public String selectByPmcd(@RequestParam(value="festpr_pro_cd")String festpr_pro_cd, Model model) { 
 		//System.out.println("festpr_pro_cd"+festpr_pro_cd);
 		model.addAttribute("selectByPmcd", publicrelationsService.selectByPmcd(festpr_pro_cd));
 	 	return "festival_publicrelations/pr_promotionDetail";
 	 }
-
-	
-	
 	
 	//홍보 월별타임테이블
 	@GetMapping("/pr_timetable")
@@ -30,7 +69,7 @@ public class PublicrelationsController {
 		return "festival_publicrelations/pr_timetable";
 	}
 	
-	//홍보사업 세부리스트
+	//홍보사업리스트 조회
 	@GetMapping("/pr_promotionList")
 	public String detailList(Model model) {
 		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion());
