@@ -1,162 +1,154 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/main">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
 
-<th:block layout:fragment="customHead">
-<meta charset="UTF-8">
-<title>위원회 수정</title>
-<th:block th:include="layout/customHead"></th:block>
-</th:block>
-	<th:block layout:fragment="customBody" th:with= "c : ${selectByAllCommittee}">
-		<div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>위원회 수정</h4>
-              <hr>
-				<form th:action="@{/updateAllCommittee}" method="post">
-					<table border="1">
-						<tr>
-							<td>위원회코드</td>
-							<td>
-								<input type="text" name="man_com_cd" 
-									th:value="${c.man_com_cd}" readonly="readonly">
-							</td>
-						</tr>
-						<tr>
-							<td>모든 행정기관코드</td>
-							<td>
-								<input type="text" name="areacity_admin_cd" 
-									th:value="${c.areacity_admin_cd}" >
-							</td>
-						</tr>
-						<tr>
-							<td>회원코드</td>
-							<td>
-								<input type="text" name="mem_cd" 
-									th:value="${c.mem_cd}" >
-							</td>
-						</tr>
-						<tr>
-							<td>모든 회원 레벨코드</td>
-							<td>
-								<input type="text" name="mem_lev_cd" 
-									th:value="${c.mem_lev_cd}" >
-							</td>
-						</tr>
-						<tr>
-							<td>축제코드</td>
-							<td>
-								<input type="text" name="fest_cd" 
-									th:value="${c.fest_cd}" >
-							</td>
-						</tr>
-						<tr>
-							<td>모든 심사 결과</td>
-							<td>
-								<input type="text" name="exa_rep_cd" 
-									th:value="${c.exa_rep_cd}" >
-							</td>
-						</tr>
-						<tr>
-							<td>모든 지역 시군코드</td>
-							<td>
-								<input type="text" name="area_city_cd" 
-									th:value="${c.area_city_cd}" >
-							</td>
-						</tr>
-						<tr>
-							<td>전국지역코드</td>
-							<td>
-								<input type="text" name="area_cd" 
-									th:value="${c.area_cd}" >
-							</td>
-						</tr>
-						<tr>
-							<td>축제명</td>
-							<td>
-								<input type="text" name="fest_nm" 
-									th:value="${c.fest_nm}" >
-							</td>
-						</tr>
-						<tr>
-							<td>위원회 분류</td>
-							<td>
-								<input type="text" name="man_com_cat" 
-									th:value="${c.man_com_cat}" >
-							</td>
-						</tr>
-						<tr>
-							<td>위원회명</td>
-							<td>
-								<input type="text" name="man_com_nm1" 
-									th:value="${c.man_com_nm1}" >
-							</td>
-						</tr>
-						<tr>
-							<td>위원회부서</td>
-							<td>
-								<input type="text" name="man_com_dep" 
-									th:value="${c.man_com_dep}" >
-							</td>
-						</tr>
-						<tr>
-							<td>직급</td>
-							<td>
-								<input type="text" name="man_com_rank" 
-									th:value="${c.man_com_rank}" >
-							</td>
-						</tr>
-						<tr>
-							<td>이름</td>
-							<td>
-								<input type="text" name="com_mem_nm2" 
-									th:value="${c.com_mem_nm2}" >
-							</td>
-						</tr>
-						<tr>
-							<td>소속</td>
-							<td>
-								<input type="text" name="man_com_job" 
-									th:value="${c.man_com_job}" >
-							</td>
-						</tr>
-						<tr>
-							<td>작성일자</td>
-							<td>
-								<input type="text" name="man_com_dt1" 
-									th:value="${c.man_com_dt1}" >
-							</td>
-						</tr>
-						<tr>
-							<td>승인자</td>
-							<td>
-								<input type="text" name="man_com_app" 
-									th:value="${c.man_com_app}" >
-							</td>
-						</tr>
-						<tr>
-							<td>승인일자</td>
-							<td>
-								<input type="text" name=" man_com_dt2" 
-									th:value="${c.man_com_dt2}" >
-							</td>
-						</tr>
-						<tr>
-							<td>승인 상태</td>
-							<td>
-								<input type="text" name="man_com_con" 
-									th:value="${c.man_com_con}">
-							</td>
-						</tr>
-						<tr>
-						<tr style="text-align: center;">
-							<td colspan="2">
-								<button type="submit">위원회수정완료</button>
-							</td>
-						</tr>
-					</table>
-				</form>	
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>위원회 수정</title>
+		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
- 	<th:block layout:fragment="customJquery">
-	<th:block th:include="layout/customJquery"></th:block>
-</th:block>
-</html>
+	위원회 수정화면
+	<th:block layout:fragment="customBody">
+              <h4><i class="fa fa-angle-right"></i></span> 위원회 수정하기 </h4><br>
+			 <div class="form-panel">
+		              <div class="form">
+		                <form th:action="@{/updateAllCommittee}" method="get" class="cmxform form-horizontal style-form" id="commentForm" th:with="c = ${selectByAllCommittee}">
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">위원회코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="man_com_cd" type="text" name="man_com_cd" th:value="${c.man_com_cd}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든 행정기관코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="areacity_admin_cd" type="text" name="areacity_admin_cd" th:value="${c.areacity_admin_cd}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">회원코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="mem_cd" type="text" name="mem_cd" th:value="${c.mem_cd}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든 회원 레벨코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="mem_lev_cd" type="text" name="mem_lev_cd" th:value="${c.mem_lev_cd}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">축제코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="fest_cd" type="text" name="fest_cd" th:value="${c.fest_cd}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든 심사 결과</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="exa_rep_cd" type="text" name="exa_rep_cd" th:value="${c.exa_rep_cd}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든 지역 시군코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="area_city_cd" type="text" name="area_city_cd" th:value="${c.area_city_cd}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">전국지역코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="area_cd" type="text" name="area_cd" th:value="${c.area_cd}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">축제명</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="fest_nm" type="text" name="fest_nm" th:value="${c.fest_nm}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">위원회 분류</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="man_com_cat" type="text" name="man_com_cat" th:value="${c.man_com_cat}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">위원회명</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="man_com_nm1" type="text" name="man_com_nm1" th:value="${c.man_com_nm1}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">위원회부서</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="man_com_dep" type="text" name="man_com_dep" th:value="${c.man_com_dep}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">직급	</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="man_com_rank" type="text" name="man_com_rank" th:value="${c.man_com_rank}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">이름</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="com_mem_nm2" type="text" name="com_mem_nm2" th:value="${c.com_mem_nm2}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">소속</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="man_com_job" type="text" name="man_com_job" th:value="${c.man_com_job}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">작성일자</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="man_com_dt1" type="text" name="man_com_dt1" th:value="${c.man_com_dt1}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">승인자</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="man_com_app" type="text" name="man_com_app" th:value="${c.man_com_app}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">승인일자</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="man_com_dt2" type	="text" name="man_com_dt2" th:value="${c.man_com_dt2}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="ccomment" class="control-label col-lg-2">승인 상태</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="man_com_con" type="text" name="man_com_con" th:value="${c.man_com_con}"/>
+		                    </div>
+		                  </div>
+
+
+		                  <div class="form-group">
+		                    <div class="col-lg-offset-2 col-lg-10">
+		                      <button class="btn btn-theme" type="submit" value="수정">수정하기</button>
+		                   </div>
+		                   </div>
+		                   <div class="form-group">
+		                   	<div class="col-lg-offset-2 col-lg-10">
+			                   <a th:href="@{/allCommitteeView}">
+			                    	<button class="btn btn-theme04" type="button">취소</button>
+			                   </a>
+		                   </div>
+		                   </div>
+		                   
+		                  </div>
+		                </form>
+		              </div>
+		            </div>
+			</th:block>
+			<th:block layout:fragment="customJquery">
+				<th:block th:include="layout/customJquery"></th:block>
+		    </th:block>
+		</html>

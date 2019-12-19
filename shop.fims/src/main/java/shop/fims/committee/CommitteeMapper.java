@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.ui.Model;
 
 import shop.fims.vo.Committee;
+import shop.fims.vo.PrPromotion;
 
 
 @Mapper
@@ -13,6 +14,9 @@ public interface CommitteeMapper {
 	
 	//모든 위원회 관리
 	public List<Committee> selectAllCommitteeView();
+	
+	//위원회 상세조회 위원회 코드로 조회
+	public List<Committee> selectByCommittee(String man_com_cd);
 	
 	//위원회 등록
 	public int insertAllCommittee(Committee committee);

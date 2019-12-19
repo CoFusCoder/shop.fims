@@ -12,6 +12,16 @@
 		FROM 
 			Man_Com
 	</select>
+	
+	<!-- 위원회 상세조회 위원회 코드로 조회 -->
+	<select id="selectByCommittee" resultType="shop.fims.vo.Committee">
+		SELECT 
+			*
+		FROM 
+			Man_Com
+		WHERE 
+			man_com_cd = #{man_com_cd}
+	</select>
 	  
 	<!-- 위원회 등록 -->
 	<insert id="insertAllCommittee" parameterType="shop.fims.vo.Committee">
