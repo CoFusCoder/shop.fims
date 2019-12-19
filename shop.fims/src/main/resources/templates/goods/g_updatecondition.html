@@ -9,8 +9,10 @@ layout:decorator="layout/main">
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
-		 <h2>물품수정</h2>
-	<form th:action="@{/updatecondition}" method="post">
+	<h2>
+		<i class="fa fa-angle-right"></i>물품수정
+	</h2>
+	<form th:action="@{/g_updatecondition}" method="post">
 		<table>
 			<tr>
 				<td>행정기관관리</td>	

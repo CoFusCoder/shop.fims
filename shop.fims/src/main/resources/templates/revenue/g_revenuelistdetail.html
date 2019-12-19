@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>보유물품 대여관리 - 세입상세</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	
+	
+	<th:block layout:fragment="customBody">
+	<a th:href="@{/g_revenuelist}">
+		<button type="button" class="btn btn-default">리스트로 돌아가기</button>
+	</a>
+	
+	
+	<div class="row mt">
+		<div class="col-lg-12">
+			<div class="content-panel">
+				<th:block th:each="r:${revenuelist}">
+					<h4>
+						"<span th:text=${r.fest_cd}><i class="fa fa-angle-right"></i></span>"상세내역
+					</h4>
+					<br>
+					<section id="unseen">
+						<table class="table table-bordered table-striped table-condensed">
+							<thead>
+								<tr>
+									<th colspan="5">축제코드</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td th:text="${r.goodsren_rev_cd}" colspan="5"></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</th:block>
+			</div>
+			<!-- /content-panel -->
+		</div>
+		<!-- /col-lg-4 -->
+	</div>
+	
+	
+	<div align="right">
+		<a th:href="@{/g_revenueupdata}">
+			<button type="button" class="btn btn-primary">수정하기</button>
+		</a> <a th:href="@{/pr_deletePromotion}">
+			<button type="button" class="btn btn-danger">삭제하기</button>
+		</a>
+	</div>
+
+</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>
