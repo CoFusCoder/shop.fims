@@ -12,7 +12,7 @@ layout:decorator="layout/main">
 		<h3>거래처 업종 분류</h3>
 
 		<div align= "right">
-			<a th:href="@{/insertAccountCatBusView}">
+			<a th:href="@{/insertAccountCatBus}">
 				<button type="button" class="btn btn-default">업종 등록하기</button>
 			</a>
 		</div>
@@ -34,7 +34,7 @@ layout:decorator="layout/main">
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="a:${accountCatBusView}">  
+                  <tr th:each="a:${selectAccountCatBusView}">  
                		<td th:text="${a.catbus_acc_cd}"></td>
                		<td th:text="${a.catbus_acc_bus}"></td>
 			 		<td>

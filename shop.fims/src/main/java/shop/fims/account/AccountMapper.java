@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import shop.fims.vo.Account;
+import shop.fims.vo.AccountCatBus;
 
 @Mapper
 public interface AccountMapper {
@@ -24,9 +25,12 @@ public interface AccountMapper {
 	//모든 거래처 수정화면. 거래처코드로 조회
 	public Account selectByAllAccount(String cat_acc_cd);
 	
+	//승인된 거래처 관리
+	public List<Account> selectApprovalAccountView();	
+	
 	//거래처 업종 분류
-	public List<Account> accountCatBusView();
+	public List<Account> selectAccountCatBusView();
 	
 	//거래처 업종 분류 등록
-	public int insertAccountCatBus(Account account);
+	public int insertAccountCatBus(AccountCatBus accountCatBus);
 }

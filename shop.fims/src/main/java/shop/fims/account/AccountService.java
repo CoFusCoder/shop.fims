@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import shop.fims.vo.Account;
+import shop.fims.vo.AccountCatBus;
 
 @Service
 public class AccountService {
@@ -37,13 +38,18 @@ public class AccountService {
 		return accountMapper.selectByAllAccount(cat_acc_cd);
 	}
 	
+	//승인된 거래처 관리
+	public List<Account> selectApprovalAccountView(){
+		return accountMapper.selectApprovalAccountView();
+	}	
+	
 	//거래처 업종 분류
-	public List<Account> accountCatBusView(){
-		return accountMapper.accountCatBusView();
+	public List<Account> selectAccountCatBusView(){
+		return accountMapper.selectAccountCatBusView();
 	}
 	
 	//거래처 업종 분류 등록
-	public int insertAccountCatBus(Account account) {
-		return accountMapper.insertAccountCatBus(account);
+	public int insertAccountCatBus(AccountCatBus accountCatBus) {
+		return accountMapper.insertAccountCatBus(accountCatBus);
 	}
 }

@@ -52,8 +52,17 @@
 			cat_acc_cd = #{cat_acc_cd}
 	</select>
 	
+	<!-- 승인된 거래처 관리 -->
+	 <select id="selectApprovalAccountView" resultType="shop.fims.vo.AppAccount">
+	 	SELECT
+			*
+		FROM 
+			Cat_Approval_Account
+	 </select>
+	
+	
 	<!-- 거래처 업종 분류 -->
-	 <select id="accountCatBusView" resultType="shop.fims.vo.AccountCatBus">
+	 <select id="selectAccountCatBusView" resultType="shop.fims.vo.AccountCatBus">
 	 	SELECT
 			*
 		FROM 

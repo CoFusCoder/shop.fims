@@ -15,7 +15,7 @@ public class CommitteeService {
 	
 	@Autowired CommitteeMapper committeeMapper;
 	
-	//위원회 조회
+	//위원회 관리
 	public List<Committee> selectAllCommitteeView(){
 		return committeeMapper.selectAllCommitteeView();
 	}

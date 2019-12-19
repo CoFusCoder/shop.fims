@@ -23,7 +23,7 @@ public class CommitteeController {
 	
 	//위원회 관리
 	@GetMapping("/allCommitteeView")
-	public String AllCommitteeView(Model model) {
+	public String selectAllCommitteeView(Model model) {
 		model.addAttribute("allCommitteeView", committeeService.selectAllCommitteeView());
 		return "committee/allCommitteeView";
 	}
@@ -37,27 +37,27 @@ public class CommitteeController {
 	
 	//위원회 등록화면
 	@GetMapping("/insertAllCommittee")
-	public String InsertAllCommittee() {
+	public String insertAllCommittee() {
 		return "committee/insertAllCommittee";
 	}
 	
 	//위원회 등록
 	@PostMapping("/insertAllCommittee")
-	public String InsertAllCommittee(Committee committee) {
+	public String insertAllCommittee(Committee committee) {
 		committeeService.insertAllCommittee(committee);
 		return "redirect:/allCommitteeView";
 	}
 	
 	//위원회 삭제
 	@GetMapping("/deleteAllCommittee")
-	public String DeleteAllCommittee(Committee committee) {
+	public String deleteAllCommittee(Committee committee) {
 		committeeService.deleteAllCommittee(committee);
 		return "redirect:/allCommitteeView";
 	}
 	
 	//위원회 수정화면. 위원회 코드로 조회
 	@GetMapping("/updateAllCommittee")
-	public String UpdateAllCommittee(@RequestParam(value="man_com_cd", required = false)String man_com_cd, Model model) { 
+	public String updateAllCommittee(@RequestParam(value="man_com_cd", required = false)String man_com_cd, Model model) { 
 		model.addAttribute("selectByAllCommittee", committeeService.selectByAllCommittee(man_com_cd));
 		return "committee/updateAllCommittee";
 	}
