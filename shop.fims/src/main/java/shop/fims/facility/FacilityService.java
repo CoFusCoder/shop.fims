@@ -22,6 +22,11 @@ public class FacilityService {
 		
 		return facilitymapper.selectFacility();
 	}
+	//보유시설수정화면
+	public Facility selectupdateFacility(String stacd) {
+		
+		return facilitymapper.selectupdateFacility(stacd);
+	}
 	//임시시설설치및철거관리조회
 	public List<Facility> selectTemporary(){
 		
@@ -32,9 +37,15 @@ public class FacilityService {
 		
 		return facilitymapper.selectMaintenance();
 	}
-	//안전점검표조회
-	public List<Facility> selectChecklist(){
+	//안전점검후유지보수수정화면
+	
+	public Facility selectupdateMaintenance(String staNm) {
 		
-		return facilitymapper.selectChecklist();
+		return facilitymapper.selectupdateMaintenance(staNm);
+	}
+	//안전점검표조회
+	public List<Facility> selectChecklist(String staNm){
+		
+		return facilitymapper.selectChecklist(staNm);
 	}
 }
