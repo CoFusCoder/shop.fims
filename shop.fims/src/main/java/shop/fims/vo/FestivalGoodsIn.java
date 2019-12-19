@@ -7,7 +7,6 @@ public class FestivalGoodsIn {
 	private String area_city_cd;
 	private String fest_cd;
 	private String festgoods_ldiv_cd;
-	private String festgoods_mdiv_cd;
 	private String festgoods_sdiv_cd;
 	private String man_com_cd;
 	private String cat_acc_cd;
@@ -57,12 +56,6 @@ public class FestivalGoodsIn {
 	}
 	public void setFestgoods_ldiv_cd(String festgoods_ldiv_cd) {
 		this.festgoods_ldiv_cd = festgoods_ldiv_cd;
-	}
-	public String getFestgoods_mdiv_cd() {
-		return festgoods_mdiv_cd;
-	}
-	public void setFestgoods_mdiv_cd(String festgoods_mdiv_cd) {
-		this.festgoods_mdiv_cd = festgoods_mdiv_cd;
 	}
 	public String getFestgoods_sdiv_cd() {
 		return festgoods_sdiv_cd;
@@ -152,7 +145,7 @@ public class FestivalGoodsIn {
 	public String toString() {
 		return "GoodsIn [festgoods_in_cd=" + festgoods_in_cd + ", areacity_admin_cd=" + areacity_admin_cd + ", area_cd="
 				+ area_cd + ", area_city_cd=" + area_city_cd + ", fest_cd=" + fest_cd + ", festgoods_ldiv_cd="
-				+ festgoods_ldiv_cd + ", festgoods_mdiv_cd=" + festgoods_mdiv_cd + ", festgoods_sdiv_cd="
+				+ festgoods_ldiv_cd + ", festgoods_mdiv_cd=" + ", festgoods_sdiv_cd="
 				+ festgoods_sdiv_cd + ", man_com_cd=" + man_com_cd + ", cat_acc_cd=" + cat_acc_cd + ", acc_mem_cd="
 				+ acc_mem_cd + ", fesrev_bud_cd=" + fesrev_bud_cd + ", fest_nm=" + fest_nm + ", festgoods_in_nm="
 				+ festgoods_in_nm + ", festgoods_in_detail=" + festgoods_in_detail + ", festgoods_in_amt="

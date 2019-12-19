@@ -32,13 +32,6 @@
 	FROM 
 		Fest_Goods_Ldiv
   </select>
-  <!-- 물품 중분류조회 -->
-  <select id="selectAllMDiv" resultType="shop.fims.vo.GoodsMDiv">
- 	 SELECT
-	*
-	FROM 
-		Fest_Goods_Mdiv
-  </select>
   <!-- 물품 소분류조회 -->
   <select id="selectAllSDiv" resultType="shop.fims.vo.GoodsSDiv">
   SELECT

@@ -5,39 +5,133 @@ layout:decorator="layout/main">
 
 	<th:block layout:fragment="customHead">
 		<meta charset="UTF-8">
-		<title>일정세부조회</title>
+		<title>일정 세부조회</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
 	<th:block layout:fragment="customBody">
 		
 		
-		<h1>일정세부조회</h1>
-		
-		<table border="1px">
-	 	<tr>
-	 		<td>담당자</td>
-	 		<td>담당자명</td>
-	 		<td>날짜</td>
-	 		<td>차수</td>
-	 		<td>일정명</td>
-	 		<td>세부확인</td>
-	 		<td>수정</td>
-	 		<td>삭제</td>
-	 	</tr>
-	 	<tr th:each="s:${AllSchedule}">
-	 		<td><a>담당부서</a></td>
-	 		<td th:text="${s.man_com_cd}"></td>
-	 		<td th:text="${s.fest_sch_dt}"></td>
-	 		<td th:text="${s.fest_sch_no}"></td>
-	 		<td th:text="${s.fest_sche_nm}"></td>
-	 		<td th:text="${s.fest_sche_task}"></td>
-	 		<td><a>수정</a></td>
-	 		<td><a>삭제</a></td> 		
-	 	</tr>
-	 </table>
+				<a th:href="@{/sche_List}">
+		<button type="button" class="btn btn-default" >일정 리스트로 돌아가기</button>
+		</a>
 		
 		
-		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <th:block th:each="s:${AllSchedule}">
+              <h2><i class="fa fa-angle-right"></i> "<span th:text=${s.fest_sche_nm}></span>
+              "일정 상세내역</h2><br>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr >
+                      <th colspan="3">축제코드</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr >
+                      <td th:text="${s.fest_cd}" colspan="3"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th>위원회코드</th>
+                      <th>거래처코드</th>
+                      <th>작성일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${s.man_com_cd}" ></td>
+                      <td th:text="${s.acc_mem_cd}" ></td>
+                      <td th:text="${s.insert_dt}" ></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th>날짜</th>
+                      <th>차수</th>
+                      <th>계약서코드</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${s.fest_sch_dt}" ></td>
+                      <td th:text="${s.fest_sch_no}"></td>
+                      <td th:text="${s.fescon_man_cd}" ></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th colspan="3">일정명</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${s.fest_sche_nm}" colspan="3"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th colspan="3">일정내용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${s.fest_sche_task}" colspan="3"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th colspan="3">비고</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${s.fest_sch_etc}" colspan="3"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th colspan="3">첨부파일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${s.fest_sch_attach}" colspan="3"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th colspan="3">코멘트</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr align="right">
+                      <td colspan="3">
+                      <a th:href="@{/sche_updateComment}">
+                      <button type="button" class="btn btn-info btn-xs">코멘트등록/수정</button></a>
+                      <a th:href="@{/sche_deleteComment}">
+                      <button type="button" class="btn btn-danger btn-xs">코멘트삭제</button></a>          
+                      </td>
+                    </tr>
+                    <tr>
+                      <td th:text="${s.fest_sch_comment}" colspan="3"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              </th:block>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+        <div align="right">
+		<a th:href="@{/sche_updateSchedule}"><button type="button" class="btn btn-primary">일정수정하기</button></a>
+		<a th:href="@{/sche_deleteSchedule}"><button type="button" class="btn btn-danger">일정삭제하기</button></a>
+		</div>		
 		
 		
 		

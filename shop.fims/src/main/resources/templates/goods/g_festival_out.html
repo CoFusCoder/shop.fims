@@ -18,7 +18,7 @@ layout:decorator="layout/main">
               <h4>축제관련물품출고리스트</h4>
               <div align="right">
               <a th:href="@{/g_insertFestivalOut}" >
-              <button type="button" class="btn btn-primary btn-lg" align="right">물품 출고 등록</button></a>  
+              <button type="button" class="btn btn-primary" align="right">물품 출고 등록</button></a>  
               </div>
               <hr>
               <section id="unseen">
@@ -32,7 +32,8 @@ layout:decorator="layout/main">
                       <th>출고수량</th>
                       <th>재고수량</th>
                       <th>작성일</th>
-                      <th>수정/삭제</th>
+                      <th>수정</th>
+                      <th>삭제</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -44,7 +45,10 @@ layout:decorator="layout/main">
                       <td th:text="${o.festgoods_out_amt}"></td>
                       <td th:text="${o.festgoods_stock}"></td>
                       <td th:text="${o.insert_dt}"></td>
-                      <td>수정/삭제</td>
+                      <td><a th:href="@{/g_updateFestivalOut}" >
+	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+	                  <td><a th:href="@{/g_deleteFestivalOut}" >
+	                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>  
                     </tr>
                   </tbody>
                 </table>
