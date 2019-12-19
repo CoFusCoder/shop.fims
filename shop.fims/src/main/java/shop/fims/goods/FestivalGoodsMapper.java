@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import shop.fims.vo.FestivalGoodsIn;
 import shop.fims.vo.FestivalGoodsOut;
 import shop.fims.vo.GoodsLDiv;
-import shop.fims.vo.GoodsMDiv;
 import shop.fims.vo.GoodsSDiv;
 
 @Mapper
@@ -25,8 +24,6 @@ public interface FestivalGoodsMapper {
 	
 	//축제물품대분류조회
 	public List<GoodsLDiv> selectAllLDiv();
-	//축제물품중분류조회
-	public List<GoodsMDiv> selectAllMDiv();
 	//축제물품소분류조회
 	public List<GoodsSDiv> selectAllSDiv();
 

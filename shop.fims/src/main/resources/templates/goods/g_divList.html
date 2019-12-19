@@ -8,65 +8,76 @@ layout:decorator="layout/main">
 		<title>축제관련물품분류리스트</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
-	<th:block layout:fragment="customBody">
-		
-		<h2>축제물품 대분류</h2>
-		
-		<table border="1px">
-	 	<tr>
-	 		<td>대분류코드</td>
-	 		<td>대분류명</td>
-	 		<td>수정</td>
-	 		<td>삭제</td>
-	 	</tr>
-	 	<tr th:each="l:${AllLDiv}"}>
-	 		<td th:text="${l.festgoods_ldiv_cd}"></td>
-	 		<td th:text="${l.festgoods_ldiv_nm}"></td>
-	 		<td><a>수정</a></td>
-	 		<td><a>삭제</a></td>
+	<th:block layout:fragment="customBody">		
+	 
+- 담당축제별로 화면다르게 보여야함.
+- 각 항목의 코드는 안보여도 됨.
+- 위에 분류별,전체조회버튼만들고 ajax로 클릭하면 리스트가 보이도록하기
 
-	 	</tr>
-	 </table>
-	 
-	 
-		<h2>축제물품 중분류</h2>
-		
-		<table border="1px">
-	 	<tr>
-	 		<td>중분류코드</td>
-	 		<td>중분류명</td>
-	 		<td>수정</td>
-	 		<td>삭제</td>
-	 	</tr>
-	 	<tr th:each="m:${AllMDiv}"}>
-	 		<td th:text="${m.festgoods_mdiv_cd}"></td>
-	 		<td th:text="${m.festgoods_mdiv_nm}"></td>
-	 		<td><a>수정</a></td>
-	 		<td><a>삭제</a></td>
-
-	 	</tr>
-	 </table>
-	 
-	 
-		<h2>축제물품 소분류</h2>
-		
-		<table border="1px">
-	 	<tr>
-	 		<td>소분류코드</td>
-	 		<td>소분류명</td>
-	 		<td>수정</td>
-	 		<td>삭제</td>
-	 	</tr>
-	 	<tr th:each="s:${AllSDiv}"}>
-	 		<td th:text="${s.festgoods_sdiv_cd}"></td>
-	 		<td th:text="${s.festgoods_sdiv_nm}"></td>
-	 		<td><a>수정</a></td>
-	 		<td><a>삭제</a></td>
-
-	 	</tr>
-	 </table>
-		
-		
+	<!-- 축제물품 대분류 -->
+	 		<div class="col-md-12 mt">
+            <div class="content-panel">
+              <h2><i class="fa fa-angle-right"></i>축제물품 대분류</h2>
+              <div align="right">
+              <a th:href="@{/g_insertDivL}" >
+              <button type="button" class="btn btn-primary">대분류 신규등록</button></a>  
+              </div>
+              <hr>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>대분류코드</th>
+                    <th>대분류명</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="l:${AllLDiv}">
+			 		<td th:text="${l.festgoods_ldiv_cd}"></td>
+			 		<td th:text="${l.festgoods_ldiv_nm}"></td>
+                    <td><a th:href="@{/g_updateDivL}" >
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a th:href="@{/g_deleteDivL}" >
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>	 
+          
+          
+	<!-- 축제물품 소분류 -->
+	 		<div class="col-md-12 mt">
+            <div class="content-panel">
+              <h2><i class="fa fa-angle-right"></i>축제물품 소분류</h2>
+              <div align="right">
+              <a th:href="@{/g_insertDivS}" >
+              <button type="button" class="btn btn-primary">소분류 신규등록</button></a>  
+              </div>
+              <hr>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>소분류코드</th>
+                    <th>소분류명</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <tr th:each="s:${AllSDiv}">
+			 		<td th:text="${s.festgoods_sdiv_cd}"></td>
+			 		<td th:text="${s.festgoods_sdiv_nm}"></td>
+                    <td><a th:href="@{/g_updateDivS}" >
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a th:href="@{/g_deleteDivS}" >
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>			
 		
 		
 		

@@ -14,6 +14,13 @@ public class PublicrelationsController {
 	@Autowired PublicrelationsService publicrelationsService;
 	
 	
+	//이벤트당첨자관리
+	@GetMapping("/pr_eventwinnerList")
+	public String selectEventWinnerByPmcd(@RequestParam(value="festpr_pro_cd")String festpr_pro_cd, Model model) {
+		model.addAttribute("EveByPmcd", publicrelationsService.selectEventWinnerByPmcd(festpr_pro_cd));
+		return "festival_publicrelations/pr_eventwinnerList";
+	}
+	
 	//홍보분류 수정
 	@GetMapping("/pr_updateDiv")
 	public String updateDiv() {
@@ -58,7 +65,7 @@ public class PublicrelationsController {
 	 //홍보 프로모션코드로 세부사항조회
 	 @GetMapping("/pr_promotionDetail") 
 	 public String selectByPmcd(@RequestParam(value="festpr_pro_cd")String festpr_pro_cd, Model model) { 
-		//System.out.println("festpr_pro_cd"+festpr_pro_cd);
+		System.out.println("festpr_pro_cd"+festpr_pro_cd);
 		model.addAttribute("selectByPmcd", publicrelationsService.selectByPmcd(festpr_pro_cd));
 	 	return "festival_publicrelations/pr_promotionDetail";
 	 }
