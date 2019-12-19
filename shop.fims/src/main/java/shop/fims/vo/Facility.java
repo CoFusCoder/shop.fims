@@ -30,6 +30,13 @@ public class Facility {
 	private String stainsCon2;	
 	private String inslistCla;			
 	private String inslistCon;
+	private String accnm1;
+	private String acccd;
+	private String fesconmancd;
+	private String comcd;
+	private String stacd;
+	private String faccd;
+	private String maicd;
 	
 	public String getCatNm() {
 		return catNm;
@@ -199,6 +206,52 @@ public class Facility {
 	public void setInslistCon(String inslistCon) {
 		this.inslistCon = inslistCon;
 	}
+	
+	public String getAccnm1() {
+		return accnm1;
+	}
+	public void setAccnm1(String accnm1) {
+		this.accnm1 = accnm1;
+	}
+	public String getAcccd() {
+		return acccd;
+	}
+	public void setAcccd(String acccd) {
+		this.acccd = acccd;
+	}
+	public String getFesconmancd() {
+		return fesconmancd;
+	}
+	public void setFesconmancd(String fesconmancd) {
+		this.fesconmancd = fesconmancd;
+	}
+	
+	public String getComcd() {
+		return comcd;
+	}
+	public void setComcd(String comcd) {
+		this.comcd = comcd;
+	}
+	public String getStacd() {
+		return stacd;
+	}
+	public void setStacd(String stacd) {
+		this.stacd = stacd;
+	}
+	
+	public String getFaccd() {
+		return faccd;
+	}
+	public void setFaccd(String faccd) {
+		this.faccd = faccd;
+	}
+	
+	public String getMaicd() {
+		return maicd;
+	}
+	public void setMaicd(String maicd) {
+		this.maicd = maicd;
+	}
 	@Override
 	public String toString() {
 		return "Facility [catNm=" + catNm + ", festNm=" + festNm + ", staNm=" + staNm + ", staSite=" + staSite
@@ -208,8 +261,15 @@ public class Facility {
 				+ ", stastaDt=" + stastaDt + ", staendDt=" + staendDt + ", stademDt=" + stademDt + ", staChe=" + staChe
 				+ ", stainsMo=" + stainsMo + ", stainsSc=" + stainsSc + ", stainsNum=" + stainsNum + ", stainsCon="
 				+ stainsCon + ", staWorksta=" + staWorksta + ", stainsCon1=" + stainsCon1 + ", stainsCon2=" + stainsCon2
-				+ ", inslistCla=" + inslistCla + ", inslistCon=" + inslistCon + "]";
+				+ ", inslistCla=" + inslistCla + ", inslistCon=" + inslistCon + ", accnm1=" + accnm1 + ", acccd="
+				+ acccd + ", fesconmancd=" + fesconmancd + ", comcd=" + comcd + ", stacd=" + stacd + ", faccd=" + faccd
+				+ ", maicd=" + maicd + "]";
 	}
+	
+	
+
+	
+
 	
 	
 }

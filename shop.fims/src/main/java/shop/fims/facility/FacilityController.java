@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -56,9 +57,12 @@ public class FacilityController {
 		
 		return "/facility/facilityInsert";
 	}
-	//보유시설수정
+	//보유시설수정화면
 	@GetMapping("/facilityUpdate")
-	public String selectupdateFacility() {
+	public String selectupdateFacility(@RequestParam(value="stacd") String stacd, Model model) {
+		
+		System.out.println("stacd---------->" + stacd);
+		model.addAttribute("facility", facilityservice.selectupdateFacility(stacd));
 		
 		return "/facility/facilityUpdate";
 	}
@@ -77,6 +81,12 @@ public class FacilityController {
 		model.addAttribute("temporaryList", facilityservice.selectTemporary());
 		
 		return "/facility/temporaryList";
+	}
+	//임시시설설치및철거상세보기
+	@GetMapping("/temporaryView")
+	public String selectTemporaryview() {
+		
+		return "/facility/temporaryView";
 	}
 	//임시시설설치및철거등록
 	@GetMapping("/temporaryInsert")
@@ -112,7 +122,10 @@ public class FacilityController {
 	}
 	//시설안전점검후유지보수수정 
 	@GetMapping("/maintenanceUpdate")
-	public String updateMaintenance() {
+	public String updateMaintenance(@RequestParam(value="staNm") String staNm, Model model) {
+		
+		System.out.println("staNm---------->" + staNm);
+		model.addAttribute("facility", facilityservice.selectupdateMaintenance(staNm));
 		
 		return "/facility/maintenanceUpdate";
 	}
@@ -124,10 +137,10 @@ public class FacilityController {
 	}
 	//안전점검리스트표
 	@GetMapping("/checkList")
-	public String selectChecklist(Model model) {
+	public String selectChecklist(@RequestParam(value="staNm") String staNm, Model model) {
 		
-		
-		model.addAttribute("checkList", facilityservice.selectChecklist());
+		System.out.println("staNm--------->" + staNm);
+		model.addAttribute("checkList", facilityservice.selectChecklist(staNm));
 		
 		return "/facility/checkList";
 	}

@@ -30,6 +30,8 @@ layout:decorator="layout/main">
 			</style>
 			<table>
 					<tr>
+						<th style=display:none;>보유시설코드</th>
+						<th style=display:none;>위원회코드</th>
 						<th>시설명</th>
 						<th>시설분류명</th>
 						<th>축제명</th>
@@ -42,6 +44,8 @@ layout:decorator="layout/main">
 						<th>삭제</th>
 					</tr>
 					<tr th:each= "fl : ${facilityList}">
+						<td th:text= "${fl.stacd}" style=display:none;></td>
+						<td th:text= "${fl.comcd}" style=display:none;></td>
 						<td th:text= "${fl.staNm}"></td>
 						<td th:text= "${fl.catNm}"></td>
 						<td th:text= "${fl.festNm}"></td>
@@ -51,7 +55,7 @@ layout:decorator="layout/main">
 						<td th:text= "${fl.actionDt}"></td>
 						<td th:text= "${fl.actionSta}"></td>
 						<td>
-							<a th:href="@{/facilityUpdate}">수정</a>
+							<a th:href="@{/facilityUpdate(stacd=${fl.stacd})}">수정</a>
 						</td>
 						<td>
 							<a th:href="@{/facilityDelete}">삭제</a>

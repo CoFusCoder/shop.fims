@@ -27,7 +27,8 @@ public class WorkController {
 	}
 	//축제업무분류수정
 	@GetMapping("/workcategoryUpdate")
-	public String updateWorkCategory() {
+	public String selectbyWorkCategory() {
+		
 		
 		return "/work/workcategoryUpdate";
 	}
