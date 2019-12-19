@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import shop.fims.vo.FestivalGoodsIn;
 import shop.fims.vo.FestivalGoodsOut;
 import shop.fims.vo.GoodsLDiv;
-import shop.fims.vo.GoodsMDiv;
 import shop.fims.vo.GoodsSDiv;
 
 @Service
@@ -28,10 +27,6 @@ public class FestivalGoodsService {
 	//축제물품대분류조회
 	public List<GoodsLDiv> selectAllLDiv(){
 		return festivalGoodsMapper.selectAllLDiv();
-	}
-	//축제물품중분류조회
-	public List<GoodsMDiv> selectAllMDiv(){
-		return festivalGoodsMapper.selectAllMDiv();
 	}
 	//축제물품소분류조회
 	public List<GoodsSDiv> selectAllSDiv(){

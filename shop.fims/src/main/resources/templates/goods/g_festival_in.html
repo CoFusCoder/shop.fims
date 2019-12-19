@@ -17,7 +17,7 @@ layout:decorator="layout/main">
               <h4>축제관련물품입고리스트</h4>
               <div align="right">
               <a th:href="@{/g_insertFestivalIn}" >
-              <button type="button" class="btn btn-primary btn-lg" align="right">물품 입고등록</button></a>  
+              <button type="button" class="btn btn-primary" align="right">물품 입고등록</button></a>  
               </div>
               <hr>
               <section id="unseen">
@@ -25,7 +25,6 @@ layout:decorator="layout/main">
                   <thead>
                     <tr>
                       <th>대분류</th>
-                      <th>중분류</th>
                       <th>소분류</th>
                       <th>담당부서</th>
                       <th>담당자</th>
@@ -38,13 +37,13 @@ layout:decorator="layout/main">
                       <th>마감하기</th>
                       <th>마감일자</th>
                       <th>작성일</th>
-                      <th>수정/삭제</th>
+                      <th>수정</th>
+                      <th>삭제</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr th:each="i:${GoodsIn}">
                       <td th:text="${i.festgoods_ldiv_cd}"></td>
-                      <td th:text="${i.festgoods_mdiv_cd}"></td>
                       <td th:text="${i.festgoods_sdiv_cd}"></td>
                       <td>무슨무슨부</td>
                       <td th:text="${i.man_com_cd}"></td>
@@ -57,7 +56,10 @@ layout:decorator="layout/main">
                       <td>마감</td>
                       <td th:text="${i.action_dt}"></td>
                       <td th:text="${i.insert_dt}"></td>
-                      <td>수정/삭제</td>
+                      <td><a th:href="@{/g_updateFestivalIn}" >
+	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+	                  <td><a th:href="@{/g_deleteFestivalIn}" >
+	                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>  
                     </tr>
                   </tbody>
                 </table>

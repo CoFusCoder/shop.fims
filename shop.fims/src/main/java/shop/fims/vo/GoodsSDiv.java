@@ -8,7 +8,6 @@ public class GoodsSDiv {
 	private String area_cd;
 	private String fest_nm;
 	private String festgoods_ldiv_cd;
-	private String festgoods_mdiv_cd;
 	private String festgoods_sdiv_nm;
 	public String getFestgoods_sdiv_cd() {
 		return festgoods_sdiv_cd;
@@ -52,12 +51,6 @@ public class GoodsSDiv {
 	public void setFestgoods_ldiv_cd(String festgoods_ldiv_cd) {
 		this.festgoods_ldiv_cd = festgoods_ldiv_cd;
 	}
-	public String getFestgoods_mdiv_cd() {
-		return festgoods_mdiv_cd;
-	}
-	public void setFestgoods_mdiv_cd(String festgoods_mdiv_cd) {
-		this.festgoods_mdiv_cd = festgoods_mdiv_cd;
-	}
 	public String getFestgoods_sdiv_nm() {
 		return festgoods_sdiv_nm;
 	}
@@ -68,8 +61,8 @@ public class GoodsSDiv {
 	public String toString() {
 		return "GoodsSDiv [festgoods_sdiv_cd=" + festgoods_sdiv_cd + ", areacity_admin_cd=" + areacity_admin_cd
 				+ ", fest_cd=" + fest_cd + ", area_city_cd=" + area_city_cd + ", area_cd=" + area_cd + ", fest_nm="
-				+ fest_nm + ", festgoods_ldiv_cd=" + festgoods_ldiv_cd + ", festgoods_mdiv_cd=" + festgoods_mdiv_cd
-				+ ", festgoods_sdiv_nm=" + festgoods_sdiv_nm + "]";
+				+ fest_nm + ", festgoods_ldiv_cd=" + festgoods_ldiv_cd + ", festgoods_sdiv_nm=" + festgoods_sdiv_nm
+				+ "]";
 	}
 	
 	

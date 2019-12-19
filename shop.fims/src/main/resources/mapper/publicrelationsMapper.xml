@@ -4,20 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="shop.fims.publicrelations.PublicrelationsMapper">
   
-
+	<select id="selectEventWinnerByPmcd" resultType="shop.fims.vo.EventWinner">
+	SELECT
+		pm.festpr_pro_nm
+		,ev.*
+	FROM
+		Fest_PR_Promotion AS pm
+		INNER JOIN
+		Fest_PR_Eventwinner AS ev
+		ON
+		pm.festpr_pro_cd=ev.festpr_pro_cd
+	where ev.festpr_pro_cd=(#{festpr_pro_cd})	
+	
+	</select>
   	
-  	<!-- 홍보코드로 상세조회 -->
+  	<!-- 프로모션코드로 프로모션상세조회 -->
   	<select id="selectByPmcd" resultType="shop.fims.vo.PrPromotion">
 	SELECT
 		pd.festpr_div_nm
-		,pp.*
+		,pm.*
 	FROM
 		Fest_PR_Div AS pd
 		INNER JOIN
-		Fest_PR_Promotion AS pp
+		Fest_PR_Promotion AS pm
 		ON
-		pd.festpr_div_cd=pp.festpr_div_cd
-	where festpr_pro_cd=(#{festpr_pro_cd})
+		pd.festpr_div_cd=pm.festpr_div_cd
+	WHERE pm.festpr_pro_cd=(#{festpr_pro_cd})	
   	</select>
   	
   	

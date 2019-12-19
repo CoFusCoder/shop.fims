@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>이벤트당첨자 관리</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+
+		
+		<div class="col-md-12 mt">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>이벤트당첨자 리스트</h4>
+              <div align="right">
+              <a th:href="@{/pr_insertDiv}" >
+              <button type="button" class="btn btn-primary" align="right">당첨자추가</button></a>  
+              </div>
+              <hr>
+              <table class="table table-hover">
+                
+                <thead>
+                  <tr>
+                    <th>이벤트명</th>
+                    <th>당첨자명</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="ev:${EveByPmcd}">
+                    <td th:text="${ev.festpr_pro_cd}"></td>
+                    <td th:text="${ev.festpr_eve_nm}"></td>
+                    <td><a th:href="@{/pr_updateDiv}" >
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a th:href="@{/pr_deleteDiv}" >
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+		
+		
+		
+	</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>
