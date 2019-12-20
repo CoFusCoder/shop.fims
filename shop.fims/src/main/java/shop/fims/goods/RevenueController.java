@@ -19,6 +19,13 @@ public class RevenueController {
 		return "/revenue/g_revenuelist";
 	}
 	
+	//모든 축제별 보유물품 대여관리 리스트 - 세입 코드로 조회
+	@GetMapping("/g_revenuelistdetail")
+	public String coderevenue(@RequestParam(value = "goodsren_rev_cd") String goodsren_rev_cd, Model model) {
+		model.addAttribute("coderevenue", revenueservice.coderevenue(goodsren_rev_cd));
+		return "/revenue/g_revenuelistdetail";
+	}
+	
 	
 	
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 등록
@@ -43,8 +50,5 @@ public class RevenueController {
 	public String g_revenueupdata() {
 		return "redirect:/g_revenuelist";
 	}
-	@GetMapping("/g_revenuelistdetail")
-	public String g_revenuelistdetail() {
-		return "/revenue/g_revenuelistdetail";
-	}
+	
 }

@@ -13,4 +13,15 @@ Goods_rental_revenue
 
 </select>
 
+<select id="coderevenue" resultType="shop.fims.vo.Revenue">
+SELECT
+*
+FROM
+Goods_rental_revenue
+WHERE 
+goodsren_rev_cd = #{goodsren_rev_cd}
+
+
+</select>
+
 </mapper>
