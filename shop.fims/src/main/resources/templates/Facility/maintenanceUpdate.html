@@ -8,7 +8,7 @@ layout:decorator="layout/main">
 		<title>축제통합관리시스템</title>
 		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
-	<th:block layout:fragment="customBody">
+	<th:block layout:fragment="customBody" th:with="f = ${facility}">
 		시설안전점검후지적관리수정
 
 			<div class="form-panel">
@@ -16,62 +16,62 @@ layout:decorator="layout/main">
                 <form class="cmxform form-horizontal style-form" id="commentForm" method="post" action="@{/maintenanceUpdate}">
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">시설명</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="staNm" type="text" name="staNm" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="staNm" type="text" name="staNm" th:value="${f.staNm}" readonly="readonly"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">축제명</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="festNm" type="text" name="festNm" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="festNm" type="text" name="festNm" th:value="${f.festNm}" readonly="readonly"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">점검일자</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="maicheDt" type="text" name="maicheDt" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="maicheDt" type="date" name="maicheDt" th:value="${f.maicheDt}"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">점검기관</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="maiinsIn" type="text" name="maiinsIn" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="maiinsIn" type="text" name="maiinsIn" th:value="${f.maiinsIn}"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">점검기관담당자</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="mairesHuman" type="text" name="mairesHuman" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="mairesHuman" type="text" name="mairesHuman" th:value="${f.mairesHuman}"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">지적사항</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="maiCad" type="text" name="maiCad" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="maiCad" type="text" name="maiCad" th:value="${f.maiCad}"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">재점검일</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="mairecDt" type="text" name="mairecDt" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="mairecDt" type="date" name="mairecDt" th:value="${f.mairecDt}"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">점검상태</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="maistaChe" type="text" name="maistaChe" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="maistaChe" type="text" name="maistaChe" th:value="${f.maistaChe}"/>
                     </div>
                   </div>
                    <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">보완완료일</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="maisupDt" type="text" name="maisupDt" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="maisupDt" type="date" name="maisupDt" th:value="${f.maisupDt}"/>
                     </div>
                   </div>
                    <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">담당자</label>
-                    <div class="col-lg-10">
-                      <input class=" form-control" id="comNm2" type="text" name="comNm2" />
+                    <div class="col-lg-5">
+                      <input class=" form-control" id="comNm2" type="text" name="comNm2" th:value="${f.comNm2}"/>
                     </div>
                   </div>
                    <div class="form-group">

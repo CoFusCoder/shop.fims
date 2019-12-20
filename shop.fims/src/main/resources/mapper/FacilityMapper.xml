@@ -4,6 +4,43 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="shop.fims.facility.FacilityMapper">
+      <resultMap type="shop.fims.vo.Facility" id="facilityResultMap">
+  		<result property="catNm" column="fesfac_cat_nm"/>
+  		<result property="festNm" column="fest_nm"/>
+  		<result property="staNm" column="fac_sta_nm"/>
+   		<result property="staSite" column="fac_sta_site"/>
+   		<result property="staCount" column="fac_sta_count"/>
+   		<result property="comNm2" column="com_mem_nm2"/>
+   		<result property="actionDt" column="action_dt"/>  
+   		<result property="actionSta" column="action_status"/>
+   		<result property="maicheDt" column="facmai_che_dt"/> 
+   		<result property="maiCad" column="fac_mai_cad"/>
+   		<result property="maiinsIn" column="facmai_ins_in"/> 
+   		<result property="mairecDt" column="facmai_rec_dt"/> 
+   		<result property="maisupDt" column="facmai_sup_dt"/> 
+   		<result property="mairesHuman" column="facmai_res_human"/> 
+   		<result property="maistaChe" column="facmai_sta_che"/> 
+   		<result property="stastaDt" column="facsta_sta_dt"/> 
+   		<result property="staendDt" column="facsta_end_dt"/> 
+   		<result property="stademDt" column="facsta_dem_dt"/> 
+   		<result property="staChe" column="fac_sta_che"/> 
+   		<result property="stainsMo" column="facsta_ins_mo"/> 
+   		<result property="stainsSc" column="facsta_ins_sc"/> 
+   		<result property="stainsNum" column="facsta_ins_num"/> 
+   		<result property="stainsCon" column="facsta_ins_con"/> 
+   		<result property="staWorksta" column="facsta_work_sta"/> 
+   		<result property="stainsCon1" column="facsta_ins_con1"/> 
+   		<result property="stainsCon2" column="facsta_ins_con2"/> 
+   		<result property="inslistCla" column="safins_list_cla"/>
+   		<result property="inslistCon" column="safins_list_con"/> 
+   		<result property="accnm1" column="cat_acc_nm1"/> 
+   		<result property="acccd" column="cat_acc_cd"/> 
+   		<result property="fesconmancd" column="fescon_man_cd"/> 
+   		<result property="comcd" column="man_com_cd"/>
+   		<result property="stacd" column="fac_sta_cd"/>
+   		<result property="faccd" column="tem_fac_cd"/>	
+   		<result property="maicd" column="fac_mai_cd"/>		
+  	</resultMap>
   
   <select id="selectClassification" resultType="shop.fims.vo.Facility">
 	SELECT
@@ -14,6 +51,8 @@
 
   <select id="selectFacility" resultType="shop.fims.vo.Facility">
 	SELECT
+		fac_sta_cd AS stacd,
+		man_com_cd AS comcd,
 		fac_sta_nm AS staNm,
 		fesfac_cat_nm AS catNm,
 		fest_nm AS festNm,
@@ -28,6 +67,10 @@
   
    <select id="selectTemporary" resultType="shop.fims.vo.Facility">
 		SELECT
+			tem_fac_cd AS faccd,
+			fescon_man_cd AS fesconmancd,
+			cat_acc_cd AS acccd,
+			cat_acc_nm1 AS accnm1,
 			fac_sta_nm AS staNm,
 			fest_nm AS festNm,
 			facsta_sta_dt AS stastaDt,
@@ -62,11 +105,51 @@
 			Facility_Mai
 	
 	</select>
-	<select id="selectChecklist" resultType="shop.fims.vo.Facility">
+	<select id="selectChecklist" resultMap="facilityResultMap">
 		SELECT
-			safins_list_cla AS inslistCla,
-			safins_list_con AS inslistCon
+			sil.safins_list_cla,
+			sil.safins_list_con
 		FROM
-			Saf_Ins_List	
+			Facility_Mai AS fm
+			JOIN
+			Saf_Ins_List AS sil
+			ON fm.safins_list_cd = sil.safins_list_cd
+		WHERE fm.fac_sta_nm=#{staNm}
+	</select>
+	
+	<select id="selectupdateFacility" resultMap="facilityResultMap">
+		SELECT
+			fac_sta_nm,
+			fesfac_cat_nm,
+			fest_nm,
+			fac_sta_site,
+			fac_sta_count,
+			com_mem_nm2,
+			action_dt,
+			action_status
+		FROM
+			Facility_Status
+		WHERE
+			fac_sta_cd=#{stacd}
+	
+	</select>
+	
+	<select id="selectupdateMaintenance" resultMap="facilityResultMap">
+		SELECT
+			fac_sta_nm,
+			fest_nm,
+			facmai_che_dt,
+			facmai_ins_in,
+			facmai_res_human,
+			fac_mai_cad,
+			facmai_rec_dt,
+			facmai_sta_che,
+			facmai_sup_dt,
+			com_mem_nm2
+		FROM
+			Facility_Mai
+		WHERE
+			fac_sta_nm=#{staNm}
+	
 	</select>
   </mapper>

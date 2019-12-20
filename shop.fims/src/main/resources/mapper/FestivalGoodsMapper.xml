@@ -4,22 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="shop.fims.goods.FestivalGoodsMapper">
   
-
-  <select id="selectAllGoodsOut" resultType="shop.fims.vo.FestivalGoodsOut">
+<!-- 입고코드로 물품 입고리스트 조회 -->
+  <select id="selectGoodsInByIncd" resultType="shop.fims.vo.FestivalGoodsIn">
 	SELECT
-		*
+		f.fest_nm
+		,gi.*
 	FROM 
-		Fest_Goods_out
-  
+		Fest_Goods_in AS gi
+		INNER join
+		Festival AS f
+	ON f.fest_cd=gi.fest_cd
+	WHERE gi.festgoods_in_cd=(#{festgoods_in_cd})
   </select>
   
-
-  <select id="selectAllGoodsIn" resultType="shop.fims.vo.FestivalGoodsIn">
-  SELECT
-		*
+<!-- 물품 출고리스트 조회 -->
+  <select id="selectAllGoodsOut" resultType="shop.fims.vo.FestivalGoodsOut">
+	SELECT
+		f.fest_nm
+		,go.*
 	FROM 
-		Fest_Goods_in
+		Fest_Goods_out AS go
+		INNER join
+		Festival AS f
+	ON f.fest_cd=go.fest_cd
+  </select>
   
+<!-- 물품입고리스트 조회 -->
+  <select id="selectAllGoodsIn" resultType="shop.fims.vo.FestivalGoodsIn">
+	SELECT
+		f.fest_nm
+		,gi.*
+	FROM 
+		Fest_Goods_in AS gi
+		INNER join
+		Festival AS f
+	ON f.fest_cd=gi.fest_cd
   </select> 
   
   
@@ -31,13 +50,6 @@
 		*
 	FROM 
 		Fest_Goods_Ldiv
-  </select>
-  <!-- 물품 중분류조회 -->
-  <select id="selectAllMDiv" resultType="shop.fims.vo.GoodsMDiv">
- 	 SELECT
-	*
-	FROM 
-		Fest_Goods_Mdiv
   </select>
   <!-- 물품 소분류조회 -->
   <select id="selectAllSDiv" resultType="shop.fims.vo.GoodsSDiv">

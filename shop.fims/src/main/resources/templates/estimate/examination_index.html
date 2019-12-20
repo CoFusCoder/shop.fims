@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>축제통합관리시스템</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+	<div class="content-panel">
+		<h2>
+			<i class="fa fa-angle-right"></i>심사
+		</h2>
+		<form method="get">
+			<table>
+				<tr>
+				<th>
+					담당자:<input type="text" name="exe_manager" >
+					<select>
+							<option>축제 추진위원회 심사</option>
+							<option>축제 평가위원회 심사</option>
+							<option>부스 심사</option>
+							<option>대행업체(용역) 심사</option>
+							<option>축제 내 프로그램 심사</option>
+							<option>자원봉사자 심사</option>
+							<option>홍보 관련 심사</option>
+							<option>축제 설문지 조사</option>
+							<option>지역축제 공동 평가지표</option>						
+						</select>
+				</th>
+			</tr>
+				<tr>
+					<th><a th:href="@{/estimatelist}">심사완료</a></th>
+					<th><a th:href="@{/estimatelist}">심사취소</a></th>
+				</tr>
+			</table>
+		</form>
+	</div>
+</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>거래처 업종 분류 수정</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	거래처 업종 분류 수정화면
+	<th:block layout:fragment="customBody">
+              <h4><i class="fa fa-angle-right"></i></span> 거래처 업종 분류 수정하기 </h4><br>
+              
+            <div>
+				<a th:href="@{/accountCatBusView}">
+				<button type="button" class="btn btn-default" >뒤로가기</button>
+				</a>
+			</div>
+			 <div class="form-panel">
+		              <div class="form">
+		                <form th:action="@{/updateAccountCatBus}" method="get" class="cmxform form-horizontal style-form" id="commentForm" th:with="a = ${selectAccountCatBusView}">
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처 업종 분류코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catbus_acc_cd" type="text" name="catbus_acc_cd" th:value="${a.catbus_acc_cd}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처업종분류</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="catbus_acc_bus" type="text" name="catbus_acc_bus" th:value="${a.catbus_acc_bus}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <div class="col-lg-offset-2 col-lg-10">
+		                      <button class="btn btn-theme" type="submit" value="등록">수정하기</button>
+		                   </div>
+		                   </div>
+		                   <div class="form-group">
+		                   	<div class="col-lg-offset-2 col-lg-10">
+			                   <a th:href="@{/accountCatBusView}">
+			                    	<button class="btn btn-theme04" type="button">취소</button>
+			                   </a>
+		                   </div>
+		                   </div>
+		                   
+		                  </div>
+		                </form>
+		              </div>
+		            </div>
+			</th:block>
+			<th:block layout:fragment="customJquery">
+				<th:block th:include="layout/customJquery"></th:block>
+		    </th:block>
+		</html>

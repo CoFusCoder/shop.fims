@@ -19,18 +19,18 @@ layout:decorator="layout/main">
 		<div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
-            <th:block th:each="p:${selectByPmcd}">
+            <th:block th:each="p:${selectByPmcd}" th:with="event='PRw0008'">
               <h4>"<span th:text=${p.festpr_pro_nm}><i class="fa fa-angle-right"></i></span>" 프로모션 상세내역</h4><br>
               <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
                   <thead>
                     <tr >
-                      <th colspan="5">축제코드</th>
+                      <th colspan="5">축제명</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr >
-                      <td th:text="${p.festpr_pro_cd}" colspan="5"></td>
+                      <td>[[${session.F_NM}]] </td>
                     </tr>
                   </tbody>
                    <thead>
@@ -44,9 +44,9 @@ layout:decorator="layout/main">
                   </thead>
                   <tbody>
                     <tr>
-                      <td th:text="${p.area_cd}" ></td>
-                      <td th:text="${p.area_city_cd}" ></td>
-                      <td th:text="${p.areacity_admin_cd}" ></td>
+                      <td>[[${session.F_AREA}]] </td>
+                      <td>[[${session.F_CITY}]] </td>
+                      <td>[[${session.F_ADMIN}]] </td>
                       <td th:text="${p.man_com_cd}" ></td>
                       <td th:text="${p.insert_dt}" ></td>
                     </tr>
@@ -137,6 +137,14 @@ layout:decorator="layout/main">
                   <tbody>
                     <tr>
                       <td th:text="${p.festpr_pro_attach}" colspan="5"></td>
+                    </tr>
+                    <tr align="center">
+                      <td colspan="5">
+                      <span th:if="${p.festpr_div_cd==event}" >
+                      <a th:href="@{/pr_eventwinnerList(festpr_pro_cd=${p.festpr_pro_cd})}">
+			 		  <button type="button" class="btn btn-info ">이벤트 당첨자관리</button></a></span>
+                      <span th:unless="${p.festpr_div_cd==event}" ></span>
+			 		  <td>
                     </tr>
                   </tbody>
                 </table>

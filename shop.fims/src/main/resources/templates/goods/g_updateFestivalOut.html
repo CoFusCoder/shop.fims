@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>축제관련물품 출고내역수정</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+		축제관련물품 출고내역 수정
+		
+		<div>
+		<a th:href="@{/g_festivalOutList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">취소</button></a>        
+		<a th:href="@{/g_festivalOutList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">수정하기</button></a>        
+             
+        </div>
+		
+	</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>

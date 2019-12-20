@@ -18,10 +18,12 @@ layout:decorator="layout/main">
            
             <div class="content-panel">
               <h4><i class="fa fa-angle-right"></i> 사업리스트</h4>   
+              <label>Search: <input type="text" aria-controls="hidden-table-info"></label>
               <div align="right">
               <a th:href="@{/pr_insertPromotion}" >
-              <button type="button" class="btn btn-primary btn-lg" align="right">신규사업등록</button></a>  
+              <button type="button" class="btn btn-primary">신규사업등록</button></a>  
               </div>
+              
               <hr>
              
               <table class="table table-striped table-advance table-hover">
@@ -49,7 +51,7 @@ layout:decorator="layout/main">
 			 		<td th:text="${p.festpr_pro_expense}"></td>
 			 		<td>
 			 		  <a th:href="@{/pr_promotionDetail(festpr_pro_cd=${p.festpr_pro_cd})}">
-			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a>
+			 		  <button type="button" class="btn btn-success btn-sm">상세</button></a>
 			 		 
 			 		</td>
                   </tr>

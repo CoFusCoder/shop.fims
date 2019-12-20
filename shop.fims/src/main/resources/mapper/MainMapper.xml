@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shop.fims.maincontroller.MainMapper">
+  
+<!-- 축제코드로 지역,도시,행정기관,축제 코드및이름조회 -->
+  <select id="selectFestByFestcd" resultType="shop.fims.vo.Main">
+	SELECT 
+	*
+	FROM
+	(SELECT 
+		a.area_cd
+		,a.area_nm
+		,b.area_city_cd
+		,b.area_city_nm
+		,c.areacity_admin_cd
+		,c.areacity_admin_nm
+		,d.fest_cd
+		,d.fest_nm
+	FROM
+		Area AS a
+		,Area_City AS b
+		,Area_City_Admin AS c
+		,Festival AS d
+	where a.area_cd=b.area_cd
+	AND b.area_city_cd=c.area_city_cd
+	AND c.areacity_admin_cd=d.areacity_admin_cd) AS f
+	WHERE f.fest_cd=(#{fest_cd})
+  </select>
+
+  </mapper>

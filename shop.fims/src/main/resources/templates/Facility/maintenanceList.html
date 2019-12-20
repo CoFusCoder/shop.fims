@@ -31,6 +31,7 @@ layout:decorator="layout/main">
 			
 			<table>
 					<tr>
+						<th style=display:none;>안전점검후유지보수관리코드</th>
 						<th>시설명</th>
 						<th>축제명</th>
 						<th>점검일자</th>
@@ -46,6 +47,7 @@ layout:decorator="layout/main">
 						<th>안전점검항목</th>
 					</tr>
 					<tr th:each="ml : ${MaintenanceList}">
+						<td style=display:none;></td>
 						<td th:text="${ml.staNm}"></td>
 						<td th:text="${ml.festNm}"></td>
 						<td th:text="${ml.maicheDt}"></td>
@@ -57,13 +59,13 @@ layout:decorator="layout/main">
 						<td th:text="${ml.maisupDt}"></td>
 						<td th:text="${ml.comNm2}"></td>
 						<td>
-							<a th:href="@{/maintenanceUpdate}">수정</a>
+							<a th:href="@{/maintenanceUpdate(staNm=${ml.staNm})}">수정</a>
 						</td>
 						<td>
 							<a th:href="@{/maintenanceDelete}">삭제</a>
 						</td>
 						<td>
-							<a th:href="@{/checkList}">안전점검리스트</a>
+							<a th:href="@{/checkList(staNm=${ml.staNm})}">안전점검리스트</a>
 						</td>
 					</tr>
 			</table>

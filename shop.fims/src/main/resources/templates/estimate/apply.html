@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="layout/main">
+
+	<th:block layout:fragment="customHead">
+		<meta charset="UTF-8">
+		<title>축제통합관리시스템</title>
+		<th:block th:include="layout/customHead"></th:block>
+	</th:block>
+	<th:block layout:fragment="customBody">
+	<div class="content-panel">
+		<h2>
+			<i class="fa fa-angle-right"></i>신청서 내용
+		</h2>
+		<form method="get">
+			<table class="table">
+				<tr>
+					<th><a th:href="@{/examination_index}">심사시작</a></th>
+					<th><a th:href="@{/estimatelist}">심사취소</a></th>
+				</tr>
+			</table>
+		</form>
+	</div>
+</th:block>
+	<th:block layout:fragment="customJquery">
+		<th:block th:include="layout/customJquery"></th:block>
+    </th:block>
+</html>

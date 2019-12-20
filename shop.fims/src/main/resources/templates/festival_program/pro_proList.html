@@ -25,7 +25,7 @@ layout:decorator="layout/main">
               <h4><i class="fa fa-angle-right"></i>프로그램 조회</h4>
               <div align="right">
               <a th:href="@{pro_insertProgram}" >
-              <button type="button" class="btn btn-primary btn-lg" align="right">신규 프로그램 등록</button></a>  
+              <button type="button" class="btn btn-info" align="right">신규 프로그램 등록</button></a>  
               </div>
               <hr>
               <table class="table table-striped table-advance table-hover">
@@ -52,8 +52,8 @@ layout:decorator="layout/main">
 			 		<td th:text="${l.fest_pro_agelevel}"></td>
 			 		<td th:text="${l.festpro_ticket_cost}"></td>
 			 		<td>
-			 		  <a th:href="@{/pro_sProList(fest_pro_cd=${l.fest_pro_cd})}">
-			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a>
+			 		  <a th:href="@{/pro_proDetailList(fest_pro_cd=${l.fest_pro_cd})}">
+			 		  <button type="button" class="btn btn-success btn-sm">상세</button></a>
 			 		 
 			 		</td>
                   </tr>

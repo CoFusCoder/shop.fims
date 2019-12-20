@@ -13,4 +13,68 @@
 			Cat_Account
 	 </select>
 
+	<!-- 위원회 상세조회 위원회 코드로 조회 -->
+	<select id="selectByAccount" resultType="shop.fims.vo.Account">
+		SELECT 
+			*
+		FROM 
+			Cat_Account
+		WHERE 
+			cat_acc_cd = #{cat_acc_cd}
+	</select>
+	
+	<!-- 거래처 등록 -->
+	<insert id="insertAllAccount" parameterType="shop.fims.vo.Account">
+		INSERT INTO Cat_Account
+			(cat_acc_cd, areacity_admin_cd, area_city_cd, area_cd, man_com_cd, cat_acc_nm1, cat_acc_oper, cat_acc_nm2, cat_acc_addr, cat_acc_no1,
+			cat_acc_no2, cat_acc_phone1, cat_acc_phone2, cat_acc_phone3, cat_acc_email, cat_acc_dt1, cat_acc_app, man_com_nm1, cat_acc_dt2, cat_acc_con)
+		VALUES 
+			(#{cat_acc_cd}, #{areacity_admin_cd}, #{area_city_cd}, #{area_cd}, #{man_com_cd}, #{cat_acc_nm1}, #{cat_acc_oper}, #{cat_acc_nm2}, #{cat_acc_addr}, #{cat_acc_no1},
+			#{cat_acc_no2}, #{cat_acc_phone1}, #{cat_acc_phone2}, #{cat_acc_phone3}, #{cat_acc_email}, now(), #{cat_acc_app}, #{man_com_nm1}, now(), #{cat_acc_con})
+	</insert>
+	
+	<!-- 모든 거래처 삭제 -->
+	<delete id="deleteAllAccount" parameterType="shop.fims.vo.Account">
+		DELETE 
+		FROM 
+			Cat_Account
+		WHERE
+			cat_acc_cd = #{cat_acc_cd}
+	</delete>
+	
+	<!--  위원회 수정화면. 위원회 코드로 조회 -->
+	<select id="selectByAllAccount" parameterType="String" resultType="shop.fims.vo.Account">
+		SELECT 
+			*
+		FROM 
+			Cat_Account
+		WHERE 
+			cat_acc_cd = #{cat_acc_cd}
+	</select>
+	
+	<!-- 승인된 거래처 관리 -->
+	 <select id="selectApprovalAccountView" resultType="shop.fims.vo.AppAccount">
+	 	SELECT
+			*
+		FROM 
+			Cat_Approval_Account
+	 </select>
+	
+	
+	<!-- 거래처 업종 분류 -->
+	 <select id="selectAccountCatBusView" resultType="shop.fims.vo.AccountCatBus">
+	 	SELECT
+			*
+		FROM 
+			Cat_Business_Account
+	 </select>
+	 
+	 <!-- 거래처 업종 분류 등록 -->
+	<insert id="insertAccountCatBus" parameterType="shop.fims.vo.AccountCatBus">
+		INSERT INTO Cat_Business_Account
+			(catbus_acc_cd, catbus_acc_bus)
+		VALUES 
+			(#{catbus_acc_cd}, #{catbus_acc_bus})
+	</insert>
+	
 </mapper>

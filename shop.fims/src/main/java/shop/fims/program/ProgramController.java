@@ -11,6 +11,54 @@ public class ProgramController {
 		@Autowired ProgramService programservice;
 		
 		
+		
+		
+		//참가자 삭제
+		@GetMapping("/pro_deleteParticipant")
+		public String deleteParticipant(Model model) {
+			model.addAttribute("AllParti", programservice.selectAllParticipants());
+			return "festival_program/pro_ParList";		
+		}
+		//참가자 수정
+		@GetMapping("/pro_updateParticipant")
+		public String updateParticipant() {
+			return "festival_program/pro_updateParticipant";		
+		}
+		//참가자 신규등록
+		@GetMapping("/pro_insertParticipant")
+		public String insertParticipant() {
+			return "festival_program/pro_insertParticipant";		
+		}
+		
+		
+		//세부프로그램 삭제
+		@GetMapping("/pro_deleteSprogram")
+		public String deleteSprogram(Model model) {
+			model.addAttribute("AllProgram", programservice.selectAllPro());		
+			return "festival_program/pro_proList";		
+		}
+		//세부프로그램 수정
+		@GetMapping("/pro_updateSprogram")
+		public String updateSprogram() {
+			return "festival_program/pro_updateSProgram";		
+		}
+		//프로그램 신규등록
+		@GetMapping("/pro_insertSprogram")
+		public String insertSprogram() {
+			return "festival_program/pro_insertSprogram";		
+		}
+		
+		//세부프로그램 삭제
+		@GetMapping("/pro_deleteProgram")
+		public String deleteProgram(Model model) {
+			model.addAttribute("AllProgram", programservice.selectAllPro());		
+			return "festival_program/pro_proList";		
+		}
+		//프로그램 수정
+		@GetMapping("/pro_updateProgram")
+		public String updateProgram() {
+			return "festival_program/pro_updateProgram";		
+		}
 		//프로그램 신규등록
 		@GetMapping("/pro_insertProgram")
 		public String insertProgram() {
@@ -44,6 +92,7 @@ public class ProgramController {
 			return "festival_program/pro_divList";		
 		}
 		
+
 		//프로그램 일정분류 수정
 		@GetMapping("/pro_updateDivDay")
 		public String updateDivDay() {
@@ -91,9 +140,16 @@ public class ProgramController {
 		}
 		
 		//프로그램코드로 상세조회 및 프로그램세부조회
-		@GetMapping("/pro_sProList")
+		@GetMapping("/pro_proDetailList")
 		public String selectByProcd(@RequestParam(value="fest_pro_cd")String fest_pro_cd, Model modelPro, Model modelSpro) {
+			System.out.println("fest_pro_cd==>"+fest_pro_cd);
 			modelPro.addAttribute("selectByProcd", programservice.selectByProcd(fest_pro_cd));
+			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro());
+			return "festival_program/pro_proDetailList";
+		}		
+		//프로그램코드로 상세조회 및 프로그램세부조회
+		@GetMapping("/pro_sProList")
+		public String selectSpro(Model modelSpro) {
 			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro());
 			return "festival_program/pro_sProList";
 		}		

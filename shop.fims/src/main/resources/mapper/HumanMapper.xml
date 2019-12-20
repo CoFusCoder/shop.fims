@@ -12,22 +12,29 @@
    		<result property="humanHour" column="fes_human_hour"/>
    		<result property="comNm2" column="com_mem_nm2"/>
    		<result property="humancd" column="fes_human_cd"/>  
-   		<result property="mamcd" column="man_com_cd"/>		  		
+   		<result property="mamcd" column="man_com_cd"/>
+   		<result property="stanm" column="fac_sta_nm"/> 
+   		<result property="stacd" column="fac_sta_cd"/> 		
   	</resultMap>
   <select id="selectHuman" resultMap="humanResultMap">
   
-  		SELECT
-		fest_nm,
-		feswork_div_nm,
-		fes_human_nm, 
-		fes_human_phone, 
-		fes_human_hour, 
-		com_mem_nm2, 
-		fes_human_cd, 
-		man_com_cd 
+		SELECT
+			fh.fest_cd,
+			fh.feswork_div_nm,
+			fh.fes_human_nm, 
+			fh.fes_human_phone, 
+			fh.fes_human_hour, 
+			mc.com_mem_nm2, 
+			fh.fes_human_cd, 
+			mc.man_com_cd,
+			fh.fac_sta_cd,
+			fh.fac_sta_nm
 		FROM
-		Festival_Human
-		
+			Festival_Human AS fh
+			JOIN 
+			Man_Com AS mc
+			ON fh.man_com_cd = mc.man_com_cd
+				
   </select>
   	<select id="selectbyHuman" resultMap="humanResultMap">
 		SELECT
@@ -44,7 +51,6 @@
 		WHERE
 			fes_human_cd=#{humancd}
 	 </select>
-	 
 
  
   </mapper>

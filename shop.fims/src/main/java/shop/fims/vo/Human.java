@@ -10,6 +10,8 @@ public class Human {
 	private String comNm2;
 	private String mamcd;
 	private String humancd;
+	private String stanm;
+	private String stacd;
 	
 	public String getFestNm() {
 		return festNm;
@@ -59,11 +61,23 @@ public class Human {
 	public void setHumancd(String humancd) {
 		this.humancd = humancd;
 	}
+	public String getStanm() {
+		return stanm;
+	}
+	public void setStanm(String stanm) {
+		this.stanm = stanm;
+	}
+	public String getStacd() {
+		return stacd;
+	}
+	public void setStacd(String stacd) {
+		this.stacd = stacd;
+	}
 	@Override
 	public String toString() {
 		return "Human [festNm=" + festNm + ", workdivNm=" + workdivNm + ", humanNm=" + humanNm + ", humanPhone="
 				+ humanPhone + ", humanHour=" + humanHour + ", comNm2=" + comNm2 + ", mamcd=" + mamcd + ", humancd="
-				+ humancd + "]";
+				+ humancd + ", stanm=" + stanm + ", stacd=" + stacd + "]";
 	}
 	
 

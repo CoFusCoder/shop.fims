@@ -18,27 +18,28 @@ public class GoodsController {
 			
 		}
 		//물품 등록
-		@GetMapping("/insertcondition")
+		@GetMapping("/g_insertcondition")
 		public String insertcondition() {
-			return "/goods/insertcondition";
+			return "/goods/g_insertcondition";
 		}
 		
 		//물품등록처리
-		@PostMapping("/insertcondition")
+		@PostMapping("/g_insertcondition")
 		public String addcondition() {
-			return "goods/conditionlist";
+			return "redirect:/g_conditionlist";
 		}
 		
 		//물품 수정
-		@GetMapping("/updatecondition")
+		@GetMapping("/g_updatecondition")
 		public String selectondition() {
-			return "/goods/updatecondition";
+			return "/goods/g_updatecondition";
 		}
 		//물품 수정처리
-		@PostMapping("/updatecondition")
+		@PostMapping("/g_updatecondition")
 		public String updatecondition() {
-			return "goods/conditionlist";
+			return "redirect:/g_conditionlist";
 			
 		}
+		
 	
 }
