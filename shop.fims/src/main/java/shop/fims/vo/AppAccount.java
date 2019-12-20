@@ -2,20 +2,20 @@ package shop.fims.vo;
 
 public class AppAccount {
 	
-	private String catapp_acc_cd;
-	private String areacity_admin_cd;
-	private String catbus_acc_cd;
-	private String cat_acc_cd;
-	private String area_city_cd;
-	private String area_cd;
-	private String man_com_cd;
-	private String cat_acc_nm1;
-	private String catbus_acc_bus;
-	private String catapp_acc_app;
-	private String man_com_nm1;
-	private String catapp_acc_dt;
-	private String catapp_acc_con;
-	private String catapp_acc_pur;
+	private String catapp_acc_cd;	//거래처별 승인 업종 코드
+	private String areacity_admin_cd;	//모든 행정기관코드
+	private String catbus_acc_cd;	//거래처 업종 분류코드
+	private String cat_acc_cd;	//거래처코드
+	private String area_city_cd;	//모든 지역 시군코드
+	private String area_cd;	//전국지역코드
+	private String man_com_cd;	//위원회코드
+	private String cat_acc_nm1;	//거래처명
+	private String catbus_acc_bus;	//거래처업종분류
+	private String catapp_acc_app;	//승인자
+	private String man_com_nm1;	//위원회명
+	private String catapp_acc_dt;	//승인일자
+	private String catapp_acc_con;	//승인 상태
+	private String catapp_acc_pur;	//거래처업무
 	
 	public String getCatapp_acc_cd() {
 		return catapp_acc_cd;

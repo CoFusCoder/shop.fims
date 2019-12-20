@@ -2,26 +2,26 @@ package shop.fims.vo;
 
 public class Account {
 	
-	private String cat_acc_cd;
-	private String areacity_admin_cd;
-	private String area_city_cd;
-	private String area_cd;
-	private String man_com_cd;
-	private String cat_acc_nm1;
-	private String cat_acc_oper;
-	private String cat_acc_nm2;
-	private String cat_acc_addr;
-	private String cat_acc_no1;
-	private String cat_acc_no2;
-	private String cat_acc_phone1;
-	private String cat_acc_phone2;
-	private String cat_acc_phone3;
-	private String cat_acc_email;
-	private String cat_acc_dt1;
-	private String cat_acc_app;
-	private String man_com_nm1;
-	private String cat_acc_dt2;
-	private String cat_acc_con;
+	private String cat_acc_cd;	//거래처코드
+	private String areacity_admin_cd;	//모든 행정기관코드
+	private String area_city_cd;	//모든 지역 시군코드
+	private String area_cd;	//전국지역코드
+	private String man_com_cd;	//위원회코드
+	private String cat_acc_nm1;	//거래처명
+	private String cat_acc_oper;	//사업자분류
+	private String cat_acc_nm2;	//거래처대표자명
+	private String cat_acc_addr;	//거래처사업장주소
+	private String cat_acc_no1;	//거래처사업자등록번호
+	private String cat_acc_no2;	//거래처법인등록번호
+	private String cat_acc_phone1;	//거래처팩스번호
+	private String cat_acc_phone2;	//대표자 전화번호
+	private String cat_acc_phone3;	//거래처 대표번호
+	private String cat_acc_email;	//거래처이메일
+	private String cat_acc_dt1;	//등록일자
+	private String cat_acc_app;	//승인자
+	private String man_com_nm1;	//위원회명
+	private String cat_acc_dt2;	//승인일자
+	private String cat_acc_con;	//승인 상태
 	
 	public String getCat_acc_cd() {
 		return cat_acc_cd;

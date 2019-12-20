@@ -2,8 +2,8 @@ package shop.fims.vo;
 
 public class AccountCatBus {
 	
-	private String catbus_acc_cd;
-	private String catbus_acc_bus;
+	private String catbus_acc_cd;	//거래처 업종 분류코드
+	private String catbus_acc_bus;	//거래처업종분류
 	
 	public String getCatbus_acc_cd() {
 		return catbus_acc_cd;

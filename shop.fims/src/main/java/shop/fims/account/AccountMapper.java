@@ -33,4 +33,8 @@ public interface AccountMapper {
 	
 	//거래처 업종 분류 등록
 	public int insertAccountCatBus(AccountCatBus accountCatBus);
+	
+	//거래처업종 분류 수정화면 거래처 업종 분류코드로 조회
+	public AccountCatBus selectByAccCatBus(String catbus_acc_cd);
+	
 }

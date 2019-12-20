@@ -77,4 +77,15 @@
 			(#{catbus_acc_cd}, #{catbus_acc_bus})
 	</insert>
 	
+	<!-- 거래처업종 분류 수정화면 거래처 업종 분류코드로 조회 -->	
+	<select id="selectByAccCatBus" parameterType="String" resultType="shop.fims.vo.AccountCatBus">
+		SELECT 
+			*
+		FROM 
+			Cat_Business_Account
+		WHERE 
+			catbus_acc_cd = #{catbus_acc_cd}
+	</select>
+
+	
 </mapper>

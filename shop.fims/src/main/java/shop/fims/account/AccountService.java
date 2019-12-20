@@ -52,4 +52,9 @@ public class AccountService {
 	public int insertAccountCatBus(AccountCatBus accountCatBus) {
 		return accountMapper.insertAccountCatBus(accountCatBus);
 	}
+	
+	//거래처업종 분류 수정화면 거래처 업종 분류코드로 조회
+	public AccountCatBus selectByAccCatBus(String catbus_acc_cd) {
+		return accountMapper.selectByAccCatBus(catbus_acc_cd);
+	}	
 }

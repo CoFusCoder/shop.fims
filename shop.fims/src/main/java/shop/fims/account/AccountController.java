@@ -120,11 +120,11 @@ public class AccountController {
 		return "redirect:/accountCatBusView";
 	}
 	
-	//거래처 업종 분류 수정
-	@GetMapping("/updateAccountCatBus")
-	public String updateAccountCatBus() {
-		return "/account/updateAccountCatBus";
-	}	
-	
-	
+	//거래처업종 분류 수정화면 거래처 업종 분류코드로 조회
+	@GetMapping("/updateAccountCatBus") 
+	public String updateAccountCatBus(@RequestParam(value="catbus_acc_cd", required = false)String catbus_acc_cd, Model model) { 
+		model.addAttribute("selectByAccCatBus", accountService.selectByAccCatBus(catbus_acc_cd));
+		return "account/updateAccountCatBus";
+	}
+		
 }

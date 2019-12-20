@@ -73,6 +73,12 @@ public class AppFormController {
 		return "/applicationform/committeeAppFormView";
 	}
 	
+	//위원회신청서 상세보기 위원회참가신청서관리로 조회
+	@GetMapping("/committeeAppFormDetail")
+	public String committeeAppFormDetail() {
+		return "/applicationform/committeeAppFormDetail";
+	}
+	
 	//위원회신청서 등록
 	@GetMapping("/insertCommitteeAppForm")
 	public String InsertCommitteeAppForm() {
