@@ -46,6 +46,7 @@
 		Fest_PR_Promotion AS pp
 		ON
 		pd.festpr_div_cd=pp.festpr_div_cd
+	WHERE fest_cd=(#{fest_cd})	
   	</select>
   	
   	

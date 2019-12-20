@@ -17,19 +17,19 @@ public interface ProgramMapper {
 	public List<Program> selectByProcd(String fest_pro_cd);
 	
 	//세부프로그램 전체조회
-	public List<ProSpro> selectAllSpro();
+	public List<ProSpro> selectAllSpro(String fest_cd);
 	
 	//대프로그램 전체조회
-	public List<Program> selectAllPro();
+	public List<Program> selectAllPro(String fest_cd);
 	
 	//프로그램 참가자리스트조회
 	public List<ProParticipants> selectAllParticipants();	
 	
 	//프로그램 성격분류조회
-	public List<ProDivTheme> selectAllDivTheme();	
+	public List<ProDivTheme> selectAllDivTheme(String fest_cd);	
 	
 	//프로그램 장소분류조회
-	public List<ProDivPlace> selectAllDivPlace();
+	public List<ProDivPlace> selectAllDivPlace(String fest_cd);
 	
 	//프로그램 일자분류조회
 	public List<ProDivDay> selectAllDivDay();

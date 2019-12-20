@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en">
+
+<head th:replace="fragments/festival/festivalhead :: festivalHeadFragment"></head>
+
+<body data-spy="scroll" data-target=".navbar-collapse">
+		<nav class="header black-bg" th:replace="fragments/festival/festivalheader :: festivalHeaderFragment"></nav>
+	
+		
+					<th:block layout:fragment="festivalMainContents"></th:block>
+		
+		 <footer id="footer" class="footer" th:replace="fragments/festival/festivalfooter :: festivalFooterFragment"></footer>
+    <th:block layout:fragment="festivalscript"></th:block>
+</body>
+
+
+</html>

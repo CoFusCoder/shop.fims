@@ -23,13 +23,13 @@ public class ProgramService {
 	
 	
 	// 세부프로그램조회
-	public List<ProSpro> selectAllSpro(){
-		return programMapper.selectAllSpro();
+	public List<ProSpro> selectAllSpro(String fest_cd){
+		return programMapper.selectAllSpro(fest_cd);
 	}
 	
 	// 대프로그램조회
-	public List<Program> selectAllPro(){
-		return programMapper.selectAllPro();
+	public List<Program> selectAllPro(String fest_cd){
+		return programMapper.selectAllPro(fest_cd);
 		
 	}
 	
@@ -39,14 +39,14 @@ public class ProgramService {
 	}
 
 	//프로그램 성격분류조회	
-	public List<ProDivTheme> selectAllDivTheme(){
-		return programMapper.selectAllDivTheme();
+	public List<ProDivTheme> selectAllDivTheme(String fest_cd){
+		return programMapper.selectAllDivTheme(fest_cd);
 	}
 	
 	
 	//프로그램 장소분류조회	
-	public List<ProDivPlace> selectAllDivPlace(){
-		return programMapper.selectAllDivPlace();
+	public List<ProDivPlace> selectAllDivPlace(String fest_cd){
+		return programMapper.selectAllDivPlace(fest_cd);
 	}
 	
 	
