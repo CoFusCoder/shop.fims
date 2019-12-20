@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="shop.fims.publicrelations.PublicrelationsMapper">
   
+  
+<!-- 프로모션코드로 이벤트 당첨자조회   -->
 	<select id="selectEventWinnerByPmcd" resultType="shop.fims.vo.EventWinner">
 	SELECT
 		pm.festpr_pro_nm
