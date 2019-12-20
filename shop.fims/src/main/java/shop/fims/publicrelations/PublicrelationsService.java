@@ -13,7 +13,7 @@ import shop.fims.vo.PrPromotion;
 public class PublicrelationsService {
 	@Autowired PublicrelationsMapper publicrelationsMapper;
 	
-	
+	//홍보코드로 이벤트 당첨자 조회
 	public List<EventWinner> selectEventWinnerByPmcd(String festpr_pro_cd){
 		return publicrelationsMapper.selectEventWinnerByPmcd(festpr_pro_cd);
 	}
