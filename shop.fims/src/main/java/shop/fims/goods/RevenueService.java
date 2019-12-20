@@ -17,4 +17,8 @@ public class RevenueService {
 		return revenuemapper.revenuelist();
 	}
 	
+	public List<Revenue> coderevenue(String goodsren_rev_cd) {
+		return revenuemapper.coderevenue(goodsren_rev_cd);
+	}
+	
 }

@@ -17,6 +17,7 @@ public class PublicrelationsController {
 	//이벤트당첨자관리
 	@GetMapping("/pr_eventwinnerList")
 	public String selectEventWinnerByPmcd(@RequestParam(value="festpr_pro_cd")String festpr_pro_cd, Model model) {
+		System.out.println("festpr_pro_cd==>"+festpr_pro_cd);
 		model.addAttribute("EveByPmcd", publicrelationsService.selectEventWinnerByPmcd(festpr_pro_cd));
 		return "festival_publicrelations/pr_eventwinnerList";
 	}
