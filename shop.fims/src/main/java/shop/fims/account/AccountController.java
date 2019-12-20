@@ -118,6 +118,13 @@ public class AccountController {
 	public String insertAccountCatBus(AccountCatBus accountCatBus) {
 		accountService.insertAccountCatBus(accountCatBus);
 		return "redirect:/accountCatBusView";
+	}
+	
+	//거래처 업종 분류 수정
+	@GetMapping("/updateAccountCatBus")
+	public String updateAccountCatBus() {
+		return "/account/updateAccountCatBus";
 	}	
+	
 	
 }

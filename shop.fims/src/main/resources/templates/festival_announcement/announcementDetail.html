@@ -9,13 +9,18 @@
 <th:block th:include="layout/customHead"></th:block>
 </th:block>
 	<th:block layout:fragment="customBody">
+        <div>
+			<a th:href="@{/boardList}">
+			<button type="button" class="btn btn-default" >뒤로가기</button>
+			</a>
+		</div>
+	
 		<div class="content-panel">
               <h4><i class="fa fa-angle-right"></i>공고 상세보기</h4>
               <hr>
 				공고 상세 화면
 				<br>
 				<br>
-				<button type="button" class="btn btn-primary" >수정하기</button>
 	</th:block>
  	<th:block layout:fragment="customJquery">
 	<th:block th:include="layout/customJquery"></th:block>

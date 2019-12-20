@@ -24,6 +24,7 @@ layout:decorator="layout/main">
                     <td>거래처명</td>
                     <td>거래처업종분류</td>
                     <td>거래처업무</td>
+                    <td>위원회명</td>
                     <td>승인 상태</td>
                     <th>상세확인</th>
                   </tr>
@@ -32,6 +33,7 @@ layout:decorator="layout/main">
                   <tr th:each="a:${selectApprovalAccountView}">  
                		<td th:text="${a.cat_acc_nm1}"></td>
                		<td th:text="${a.catbus_acc_bus}"></td>
+               		<td th:text="${a.catapp_acc_pur}"></td>
                		<td th:text="${a.man_com_nm1}"></td>
                		<td th:text="${a.catapp_acc_con}"></td>
 			 		<td>
