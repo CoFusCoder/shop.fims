@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/festival/festivaldefault}">
+
+<th:block layout:fragment="festivalMainContents">
+<th:block th:include="fragments/festival/festivalmainview"></th:block>
+</th:block>
+<th:block layout:fragment="festivalscript">
+<th:block th:include="fragments/festival/festivalscript"></th:block>
+</th:block>
+
+</html>

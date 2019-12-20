@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="adminisHeadFragment">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>축제통합관리시스템</title>
+
+  <!-- Favicons -->
+  <link href="/adminis/img/favicon.png" rel="icon">
+  <link href="/adminis/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/adminis/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="/adminis/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="/adminis/css/style.css" rel="stylesheet">
+  <link href="/adminis/css/style-responsive.css" rel="stylesheet">
+
+	<!-- 관리자css -->
+	<th:block layout:fragment="adminisCss"></th:block>
+	
+	<!-- 관리자 title -->
+	<th:block layout:fragment="adminisTitle"></th:block>
+	
+	<!-- 관리자 Script -->
+	<th:block layout:fragment="adminisScript"></th:block>
+
+</head>
+</html>

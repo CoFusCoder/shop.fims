@@ -18,7 +18,7 @@ public interface PublicrelationsMapper {
 	public List<PrPromotion> selectByPmcd(String festpr_pro_cd);
 	
 	// 홍보상세조회
-	public List<PrPromotion> selectAllPromotion();
+	public List<PrPromotion> selectAllPromotion(String fest_cd);
 	
 	
 	// 홍보분류조회
