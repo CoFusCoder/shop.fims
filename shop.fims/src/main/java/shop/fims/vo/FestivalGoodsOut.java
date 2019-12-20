@@ -8,12 +8,13 @@ public class FestivalGoodsOut {
 	private String fest_cd;
 	private String festgoods_in_cd;
 	private String acc_mem_cd;
-	private String fest_nm;
+	private String fest_title;
 	private String festgoods_out_nm;
 	private String festgoods_out_detail;
 	private int festgoods_out_amt;
 	private int festgoods_stock;
 	private String insert_dt;
+	private String fest_nm;
 	public String getFestgoods_out_cd() {
 		return festgoods_out_cd;
 	}
@@ -56,11 +57,11 @@ public class FestivalGoodsOut {
 	public void setAcc_mem_cd(String acc_mem_cd) {
 		this.acc_mem_cd = acc_mem_cd;
 	}
-	public String getFest_nm() {
-		return fest_nm;
+	public String getFest_title() {
+		return fest_title;
 	}
-	public void setFest_nm(String fest_nm) {
-		this.fest_nm = fest_nm;
+	public void setFest_title(String fest_title) {
+		this.fest_title = fest_title;
 	}
 	public String getFestgoods_out_nm() {
 		return festgoods_out_nm;
@@ -92,16 +93,24 @@ public class FestivalGoodsOut {
 	public void setInsert_dt(String insert_dt) {
 		this.insert_dt = insert_dt;
 	}
+	public String getFest_nm() {
+		return fest_nm;
+	}
+	public void setFest_nm(String fest_nm) {
+		this.fest_nm = fest_nm;
+	}
 	@Override
 	public String toString() {
 		return "FestivalGoodsOut [festgoods_out_cd=" + festgoods_out_cd + ", areacity_admin_cd=" + areacity_admin_cd
 				+ ", area_cd=" + area_cd + ", area_city_cd=" + area_city_cd + ", fest_cd=" + fest_cd
-				+ ", festgoods_in_cd=" + festgoods_in_cd + ", acc_mem_cd=" + acc_mem_cd + ", fest_nm=" + fest_nm
+				+ ", festgoods_in_cd=" + festgoods_in_cd + ", acc_mem_cd=" + acc_mem_cd + ", fest_title=" + fest_title
 				+ ", festgoods_out_nm=" + festgoods_out_nm + ", festgoods_out_detail=" + festgoods_out_detail
 				+ ", festgoods_out_amt=" + festgoods_out_amt + ", festgoods_stock=" + festgoods_stock + ", insert_dt="
-				+ insert_dt + "]";
+				+ insert_dt + ", fest_nm=" + fest_nm + "]";
 	}
 	
 	
-
+	
+	
+	
 }

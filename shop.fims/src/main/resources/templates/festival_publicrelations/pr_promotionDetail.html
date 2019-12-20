@@ -25,12 +25,12 @@ layout:decorator="layout/main">
                 <table class="table table-bordered table-striped table-condensed">
                   <thead>
                     <tr >
-                      <th colspan="5">축제코드</th>
+                      <th colspan="5">축제명</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr >
-                      <td th:text="${p.festpr_pro_cd}" colspan="5"></td>
+                      <td>[[${session.F_NM}]] </td>
                     </tr>
                   </tbody>
                    <thead>
@@ -44,9 +44,9 @@ layout:decorator="layout/main">
                   </thead>
                   <tbody>
                     <tr>
-                      <td th:text="${p.area_cd}" ></td>
-                      <td th:text="${p.area_city_cd}" ></td>
-                      <td th:text="${p.areacity_admin_cd}" ></td>
+                      <td>[[${session.F_AREA}]] </td>
+                      <td>[[${session.F_CITY}]] </td>
+                      <td>[[${session.F_ADMIN}]] </td>
                       <td th:text="${p.man_com_cd}" ></td>
                       <td th:text="${p.insert_dt}" ></td>
                     </tr>
