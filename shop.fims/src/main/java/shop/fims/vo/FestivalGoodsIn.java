@@ -12,6 +12,7 @@ public class FestivalGoodsIn {
 	private String cat_acc_cd;
 	private String acc_mem_cd;
 	private String fesrev_bud_cd;
+	private String fest_title;
 	private String fest_nm;
 	private String festgoods_in_nm;
 	private String festgoods_in_detail;
@@ -87,6 +88,12 @@ public class FestivalGoodsIn {
 	public void setFesrev_bud_cd(String fesrev_bud_cd) {
 		this.fesrev_bud_cd = fesrev_bud_cd;
 	}
+	public String getFest_title() {
+		return fest_title;
+	}
+	public void setFest_title(String fest_title) {
+		this.fest_title = fest_title;
+	}
 	public String getFest_nm() {
 		return fest_nm;
 	}
@@ -143,16 +150,18 @@ public class FestivalGoodsIn {
 	}
 	@Override
 	public String toString() {
-		return "GoodsIn [festgoods_in_cd=" + festgoods_in_cd + ", areacity_admin_cd=" + areacity_admin_cd + ", area_cd="
-				+ area_cd + ", area_city_cd=" + area_city_cd + ", fest_cd=" + fest_cd + ", festgoods_ldiv_cd="
-				+ festgoods_ldiv_cd + ", festgoods_mdiv_cd=" + ", festgoods_sdiv_cd="
-				+ festgoods_sdiv_cd + ", man_com_cd=" + man_com_cd + ", cat_acc_cd=" + cat_acc_cd + ", acc_mem_cd="
-				+ acc_mem_cd + ", fesrev_bud_cd=" + fesrev_bud_cd + ", fest_nm=" + fest_nm + ", festgoods_in_nm="
-				+ festgoods_in_nm + ", festgoods_in_detail=" + festgoods_in_detail + ", festgoods_in_amt="
-				+ festgoods_in_amt + ", group_cd=" + group_cd + ", action_dt=" + action_dt + ", action_status="
-				+ action_status + ", festgoods_expense=" + festgoods_expense + ", insert_dt=" + insert_dt + "]";
+		return "FestivalGoodsIn [festgoods_in_cd=" + festgoods_in_cd + ", areacity_admin_cd=" + areacity_admin_cd
+				+ ", area_cd=" + area_cd + ", area_city_cd=" + area_city_cd + ", fest_cd=" + fest_cd
+				+ ", festgoods_ldiv_cd=" + festgoods_ldiv_cd + ", festgoods_sdiv_cd=" + festgoods_sdiv_cd
+				+ ", man_com_cd=" + man_com_cd + ", cat_acc_cd=" + cat_acc_cd + ", acc_mem_cd=" + acc_mem_cd
+				+ ", fesrev_bud_cd=" + fesrev_bud_cd + ", fest_title=" + fest_title + ", fest_nm=" + fest_nm
+				+ ", festgoods_in_nm=" + festgoods_in_nm + ", festgoods_in_detail=" + festgoods_in_detail
+				+ ", festgoods_in_amt=" + festgoods_in_amt + ", group_cd=" + group_cd + ", action_dt=" + action_dt
+				+ ", action_status=" + action_status + ", festgoods_expense=" + festgoods_expense + ", insert_dt="
+				+ insert_dt + "]";
 	}
-	
-	
 
+	
+	
+	
 }
