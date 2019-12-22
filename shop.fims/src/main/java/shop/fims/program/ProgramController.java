@@ -19,17 +19,17 @@ public class ProgramController {
 		@GetMapping("/pro_deleteParticipant")
 		public String deleteParticipant(Model model) {
 			model.addAttribute("AllParti", programservice.selectAllParticipants());
-			return "festival_program/pro_ParList";		
+			return "program/pro_ParList";		
 		}
 		//참가자 수정
 		@GetMapping("/pro_updateParticipant")
 		public String updateParticipant() {
-			return "festival_program/pro_updateParticipant";		
+			return "program/pro_updateParticipant";		
 		}
 		//참가자 신규등록
 		@GetMapping("/pro_insertParticipant")
 		public String insertParticipant() {
-			return "festival_program/pro_insertParticipant";		
+			return "program/pro_insertParticipant";		
 		}
 		
 		
@@ -38,17 +38,17 @@ public class ProgramController {
 		public String deleteSprogram(Model model,HttpSession session) {
 			String fest_cd = (String)session.getAttribute("F_CD");
 			model.addAttribute("AllProgram", programservice.selectAllPro(fest_cd));		
-			return "festival_program/pro_proList";		
+			return "program/pro_proList";		
 		}
 		//세부프로그램 수정
 		@GetMapping("/pro_updateSprogram")
 		public String updateSprogram() {
-			return "festival_program/pro_updateSProgram";		
+			return "program/pro_updateSProgram";		
 		}
 		//세부프로그램 신규등록
 		@GetMapping("/pro_insertSprogram")
 		public String insertSprogram() {
-			return "festival_program/pro_insertSprogram";		
+			return "program/pro_insertSprogram";		
 		}
 		
 		//프로그램 삭제
@@ -56,17 +56,17 @@ public class ProgramController {
 		public String deleteProgram(Model model, HttpSession session) {
 			String fest_cd = (String)session.getAttribute("F_CD");
 			model.addAttribute("AllProgram", programservice.selectAllPro(fest_cd));		
-			return "festival_program/pro_proList";		
+			return "program/pro_proList";		
 		}
 		//프로그램 수정
 		@GetMapping("/pro_updateProgram")
 		public String updateProgram() {
-			return "festival_program/pro_updateProgram";		
+			return "program/pro_updateProgram";		
 		}
 		//프로그램 신규등록
 		@GetMapping("/pro_insertProgram")
 		public String insertProgram() {
-			return "festival_program/pro_insertProgram";		
+			return "program/pro_insertProgram";		
 		}
 		
 		
@@ -78,7 +78,7 @@ public class ProgramController {
 			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
 			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(fest_cd));
 			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(fest_cd));
-			return "festival_program/pro_divList";		
+			return "program/pro_divList";		
 		}
 		//프로그램 장소분류 삭제
 		@GetMapping("/pro_deleteDivPlace")
@@ -87,7 +87,7 @@ public class ProgramController {
 			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
 			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(fest_cd));
 			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(fest_cd));
-			return "festival_program/pro_divList";		
+			return "program/pro_divList";		
 		}
 		//프로그램 성격분류 삭제
 		@GetMapping("/pro_deleteDivTheme")
@@ -96,41 +96,41 @@ public class ProgramController {
 			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
 			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(fest_cd));
 			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(fest_cd));
-			return "festival_program/pro_divList";		
+			return "program/pro_divList";		
 		}
 		
 
 		//프로그램 일정분류 수정
 		@GetMapping("/pro_updateDivDay")
 		public String updateDivDay() {
-			return "festival_program/pro_updateDivDay";		
+			return "program/pro_updateDivDay";		
 		}
 		//프로그램 장소분류 수정
 		@GetMapping("/pro_updateDivPlace")
 		public String updateDivPlace() {
-			return "festival_program/pro_updateDivPlace";		
+			return "program/pro_updateDivPlace";		
 		}
 		//프로그램 성격분류 수정
 		@GetMapping("/pro_updateDivTheme")
 		public String updateDivTheme() {
-			return "festival_program/pro_updateDivTheme";		
+			return "program/pro_updateDivTheme";		
 		}
 		
 		
 		//프로그램 일정분류 신규등록
 		@GetMapping("/pro_insertDivDay")
 		public String insertDivDay() {
-			return "festival_program/pro_insertDivDay";		
+			return "program/pro_insertDivDay";		
 		}
 		//프로그램 장소분류 신규등록
 		@GetMapping("/pro_insertDivPlace")
 		public String insertDivPlace() {
-			return "festival_program/pro_insertDivPlace";		
+			return "program/pro_insertDivPlace";		
 		}
 		//프로그램 성격분류 신규등록
 		@GetMapping("/pro_insertDivTheme")
 		public String insertDivTheme() {
-			return "festival_program/pro_insertDivTheme";		
+			return "program/pro_insertDivTheme";		
 		}
 		
 		
@@ -143,7 +143,7 @@ public class ProgramController {
 		//프로그램 타임테이블
 		@GetMapping("/pro_timetable")
 		public String timetable() {
-			return "festival_program/pro_timetable";
+			return "program/pro_timetable";
 		}
 		
 		//프로그램코드로 상세조회 및 프로그램세부조회
@@ -153,14 +153,14 @@ public class ProgramController {
 			String fest_cd = (String)session.getAttribute("F_CD");
 			modelPro.addAttribute("selectByProcd", programservice.selectByProcd(fest_pro_cd));
 			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro(fest_cd));
-			return "festival_program/pro_proDetailList";
+			return "program/pro_proDetailList";
 		}		
 		//프로그램코드로 상세조회 및 프로그램세부조회
 		@GetMapping("/pro_sProList")
 		public String selectSpro(Model modelSpro, HttpSession session) {
 			String fest_cd = (String)session.getAttribute("F_CD");
 			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro(fest_cd));
-			return "festival_program/pro_sProList";
+			return "program/pro_sProList";
 		}		
 		
 
@@ -170,7 +170,7 @@ public class ProgramController {
 		public String proList(Model model, HttpSession session) {
 			String fest_cd = (String)session.getAttribute("F_CD");
 			model.addAttribute("AllProgram", programservice.selectAllPro(fest_cd));		
-			return "festival_program/pro_proList";
+			return "program/pro_proList";
 		}
 		
 		
@@ -185,20 +185,20 @@ public class ProgramController {
 			//System.out.println(model);
 			
 			
-			return "festival_program/pro_divList";
+			return "program/pro_divList";
 		}
 		
 		//프로그램 참가업체리스트조회
 		@GetMapping("/pro_comList")
 		public String proCompanyList() {
-			return "festival_program/pro_comList";
+			return "program/pro_comList";
 		}
 		
 		//프로그램 참가자리스트조회
 		@GetMapping("/pro_ParList")
 		public String ParticipantsList(Model model) {
 			model.addAttribute("AllParti", programservice.selectAllParticipants());
-			return "festival_program/pro_ParList";
+			return "program/pro_ParList";
 		}
 		
 		

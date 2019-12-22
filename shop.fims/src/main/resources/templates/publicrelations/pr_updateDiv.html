@@ -4,15 +4,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle"></th:block>
 <th:block layout:fragment="adminisMainContents">
-		일정 수정
+		홍보분류 수정페이지 
 		
-		<div align="right">
-		<a th:href="@{/sche_detailList}">
-		<button type="button" class="btn btn-primary btn-lg">취소</button></a>        
-		<a th:href="@{/sche_detailList}">
-		<button type="button" class="btn btn-primary btn-lg">등록하기</button></a>        
-             
+		<div>
+		<a th:href="@{/pr_divList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">취소</button></a>        
+		<a th:href="@{/pr_divList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">수정완료</button></a>          
         </div>
+		
+		
 		
 </th:block>
 <th:block layout:fragment="adminisscript">

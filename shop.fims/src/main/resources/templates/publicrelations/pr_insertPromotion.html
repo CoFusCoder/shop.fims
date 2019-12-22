@@ -4,19 +4,19 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle"></th:block>
 <th:block layout:fragment="adminisMainContents">
-		일정 수정
+		새로운홍보사업등록페이지 : 등록하기 하면 해당코드의 상세페이지가 연결되어야함. 
 		
-		<div align="right">
-		<a th:href="@{/sche_detailList}">
-		<button type="button" class="btn btn-primary btn-lg">취소</button></a>        
-		<a th:href="@{/sche_detailList}">
-		<button type="button" class="btn btn-primary btn-lg">등록하기</button></a>        
-             
+		<div>
+		<a th:href="@{/pr_promotionList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">취소</button></a>        
+		<a th:href="@{/pr_promotionList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">등록하기</button></a>        
         </div>
-		
+        
 </th:block>
 <th:block layout:fragment="adminisscript">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
 </th:block>
 
 </html>
+

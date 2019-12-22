@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+
+- 담당축제별로 화면다르게 보여야함.
+- 각 항목의 코드는 안보여도 됨.
+- 위에 분류별,전체조회버튼만들고 ajax로 클릭하면 리스트가 보이도록하기
+	<!-- 프로그램일자분류 -->
+	 		<div class="col-md-12 mt">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>프로그램 일자 분류</h4>
+              <div align="right">
+              <a th:href="@{/pro_insertDivDay}" >
+              <button type="button" class="btn btn-primary btn-lg" align="right">신규 일자분류등록</button></a>  
+              </div>
+              <hr>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>분류</th>
+                    <th>프로그램 일자코드</th>
+                    <th>프로그램 일자명</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="d:${ProDivDay}">
+                    <td>FIMS일자공통</td>
+                    <td th:text="${d.festprodiv_day_cd}"></td>
+                    <td th:text="${d.festprodiv_day_nm}"></td>
+                    <td><a th:href="@{/pro_updateDivDay}" >
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a th:href="@{/pro_deleteDivDay}" >
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+		
+	<!-- 프로그램 장소분류 -->
+	 		<div class="col-md-12 mt">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>프로그램 장소 분류</h4>
+              <div align="right">
+              <a th:href="@{/pro_insertDivPlace}" >
+              <button type="button" class="btn btn-primary btn-lg" align="right">신규 장소분류등록</button></a>  
+              </div>
+              <hr>
+              <table class="table table-hover">
+                
+                
+                <thead>
+                  <tr>
+                    <th>축제명</th>
+                    <th>프로그램 장소코드</th>
+                    <th>프로그램 장소명</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="p:${ProDivPlace}">
+                    <td>[[${session.F_NM}]]</td>
+                    <td th:text="${p.festprodiv_pla_cd}"></td>
+                    <td th:text="${p.festprodiv_pla_nm}"></td>
+					<td><a th:href="@{/pro_updateDivPlace}" >
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a th:href="@{/pro_deleteDivPlace}" >
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+	 
+	
+	<!-- 프로그램 성격분류 -->
+			<div class="col-md-12 mt">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>프로그램 성격 분류</h4>
+              <div align="right">
+              <a th:href="@{/pro_insertDivTheme}" >
+              <button type="button" class="btn btn-primary btn-lg" align="right">신규 성격분류등록</button></a>  
+              </div>
+              <hr>
+              <table class="table table-hover">
+                
+                
+                <thead>
+                  <tr>
+                    <th>축제명</th>
+                    <th>프로그램 성격코드</th>
+                    <th>프로그램 성격명</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="t:${ProDivTheme}">
+                    <td>[[${session.F_NM}]]</td>
+                    <td th:text="${t.festprodiv_theme_cd}"></td>
+                    <td th:text="${t.festprodiv_theme_nm}"></td>
+					<td><a th:href="@{/pro_updateDivTheme}" >
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a th:href="@{/pro_deleteDivTheme}" >
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>	
+		
+
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>
+
