@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title> 보유물품 대여관리 리스트</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	<th:block layout:fragment="customBody">
-	
-		<h3>보유물품 대여관리 리스트</h3>
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<h3>보유물품 대여관리 리스트</h3>
 		
 		<div class="row mt">
           <div class="col-md-12">
@@ -35,11 +30,11 @@ layout:decorator="layout/main">
                     <th>반납유무</th>
                     <th>반납예정일</th>
                     <th>반납완료일</th>
+                    <th>상세보기</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="r:${revenuelist}"> 
-                   
+                  <tr th:each="r:${revenuelist}">                   
 			 		<td th:text="${r.fest_cd}"></td>
 			 		<td th:text="${r.cat_acc_cd}"></td>
 			 		<td th:text="${r.deliver_bre}"></td>
@@ -50,8 +45,7 @@ layout:decorator="layout/main">
 			 		<td th:text="${r.return_dt}"></td>
 			 		<td>
 			 		  <a th:href="@{/g_revenuelistdetail(goodsren_rev_cd=${r.goodsren_rev_cd})}">
-			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button> </a>
-			 		 
+			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> </a>			 		 
 			 		</td>
                   </tr>
                 </tbody>
@@ -61,16 +55,10 @@ layout:decorator="layout/main">
           </div>
           <!-- /col-md-12 -->
         </div>	
-	
-	
-	
-	
-	
-	
-	
-	
-	</th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+>>>>>>> refs/heads/Yun-Sujeong
 </html>

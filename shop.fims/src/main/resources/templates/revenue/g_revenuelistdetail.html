@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>보유물품 대여관리 - 세입상세</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	
-	
-	<th:block layout:fragment="customBody">
-	<a th:href="@{/g_revenuelist}">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<a th:href="@{/g_revenuelist}">
 		<button type="button" class="btn btn-default">리스트로 돌아가기</button>
 	</a>
 	
@@ -26,16 +20,7 @@ layout:decorator="layout/main">
 					<br>
 					<section id="unseen">
 						<table class="table table-bordered table-striped table-condensed">
-							<thead>
-								<tr>
-									<th colspan="5">축제코드</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td th:text="${r.fest_cd}" colspan="5"></td>
-								</tr>
-							</tbody>
+							
 							<thead>
 								<tr>
 									<th colspan="5">행정기관코드</th>
@@ -120,18 +105,10 @@ layout:decorator="layout/main">
 		</div>
 		<!-- /col-lg-4 -->
 	</div>
-	
-	
-	<div align="right">
-		<a th:href="@{/g_revenueupdata}">
-			<button type="button" class="btn btn-primary">수정하기</button>
-		</a> <a th:href="@{/g_revenuelist}">
-			<button type="button" class="btn btn-danger">삭제하기</button>
-		</a>
-	</div>
-
 </th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+>>>>>>> refs/heads/Yun-Sujeong
 </html>

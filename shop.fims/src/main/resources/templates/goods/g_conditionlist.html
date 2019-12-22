@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
- 
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-<th:block layout:fragment="customBody">
-
-	<div class="content-panel">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<div class="content-panel">
 		<h2>
 			<i class="fa fa-angle-right"></i>보유물품 리스트
 		</h2>
+		<div align="right">
+              <a th:href="@{/g_revenueinsert}" >
+              <button type="button" class="btn btn-primary btn-lg" align="right">대여물품 등록</button></a>  
+              </div>
 		<table class="table">
 			<tr>
 				<th><input type="text"> <input type="button"
@@ -23,6 +22,7 @@ layout:decorator="layout/main">
 				<th><input type="text"> <input type="button"
 					value="물품별"></th>
 			</tr>
+			
 			<tr>
 				<td>모든 행정기관관리</td>
 				<td>전국 지역관리</td>
@@ -32,7 +32,7 @@ layout:decorator="layout/main">
 				<td>보유물품</td>
 				<td>수량</td>
 				<td>특이사항</td>
-				<td>물품등록</td>
+			
 				<td>물품수정</td>
 				<td>물품삭제</td>
 			</tr>
@@ -46,15 +46,17 @@ layout:decorator="layout/main">
 				<td th:text="${g.goods_nm}"></td>
 				<td th:text="${g.goods_amt}"></td>
 				<td th:text="${g.special_note}"></td>
-				<th><a th:href="@{/g_insertcondition}">등록하기</a></th>
-				<th><a th:href="@{/g_updatecondition}">수정하기</a></th>
+				<td><a th:href="@{g_updatecondition}" >
+	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>				
 				<th><a th:href="@{/g_conditionlist}">삭제하기</a></th>
 			</tr>
 
 		</table>
 	</div>
 </th:block>
-<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+>>>>>>> refs/heads/Yun-Sujeong
 </html>

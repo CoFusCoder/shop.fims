@@ -13,7 +13,7 @@ public class EstimateControllor {
 	//전체심사
 	@GetMapping("/estimatelist")
 	public String estimatelist() {
-		return "/estimate/estimatelist";		
+		return "estimate/estimatelist";		
 	}
 	//신청서 내역 이동 
 	@GetMapping("/apply")
@@ -25,6 +25,11 @@ public class EstimateControllor {
 	@GetMapping("/examination_index")
 	public String finalsetimatlist() {
 		return "/estimate/examination_index";
+	}
+	//심사결과 상세보기
+	@GetMapping("/estimatelistdetail")
+	public String estimatelistdetail() {
+		return "estimate/estimatelistdetail";
 	}
 	
 }
