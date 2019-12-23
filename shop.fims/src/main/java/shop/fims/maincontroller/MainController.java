@@ -14,11 +14,33 @@ import shop.fims.vo.Main;
 public class MainController {
 	@Autowired MainService mainService;
 	
+	/**
+	 * @file MainController.java
+	 * @name gukminmainview
+	 * @brief 국민 메인화면 - 처음 화면
+	 * @author ksmart33 김동석
+	 * @return gukminview/index
+	 */
 	@GetMapping("/")
-	public String index() {
-
-		return "index";
+	public String gukminmainview() {
+		System.out.println("---국민 메인화면 : gukminmainview 메서드 MainController.java-------");
+		return "gukminview/index";
 	}
+	
+	/**
+	 * @param 없음
+	 * @file MainController.java
+	 * @name commonlogin
+	 * @brief 공통로그인화면(공무원/거래처/국민) - 관리자 홈페이지 클릭시 이동
+	 * @author ksmart33 김동석
+	 * @return login/login
+	 */
+	@GetMapping("/index/login")
+	public String commonlogin() {
+		System.out.println("---공통로그인화면(공무원/거래처/국민) : commonlogin 메서드 MainController.java-------");
+		return "/login/login";
+	}
+	
 	
 	
 	@GetMapping("/getSessionInfo")
@@ -53,19 +75,7 @@ public class MainController {
 		System.out.println("---관리자 메인화면 : dashboard 메서드 MainController.java-------");
 		return "dashboard";
 	}
-	
-	/**
-	 * @file MainController.java
-	 * @name gukminmainview
-	 * @brief 국민 메인화면
-	 * @author ksmart33 김동석
-	 * @return gukminview/index
-	 */
-	@GetMapping("/gukminview/index")
-	public String gukminmainview() {
-		System.out.println("---국민 메인화면 : gukminmainview 메서드 MainController.java-------");
-		return "gukminview/index";
-	}
+
 	
 	/**
 	 * @param 없음
@@ -79,20 +89,6 @@ public class MainController {
 	public String projectintro() {
 		System.out.println("---프로젝트 및 팀원 소개 화면 : projectintro 메서드 MainController.java-------");
 		return "projectintro";
-	}
-	
-	/**
-	 * @param 없음
-	 * @file MainController.java
-	 * @name commonlogin
-	 * @brief 공통로그인화면(공무원/거래처/국민)
-	 * @author ksmart33 김동석
-	 * @return login/login
-	 */
-	@GetMapping("/login/login")
-	public String commonlogin() {
-		System.out.println("---공통로그인화면(공무원/거래처/국민) : commonlogin 메서드 MainController.java-------");
-		return "login";
 	}
 	
 	/**
@@ -122,9 +118,5 @@ public class MainController {
 		System.out.println("---국민초기화면 : gukmindefault MainController.java-------");
 		return "gukminview/gukminblank";
 	}
-	
 
-	
-	
-	
 }
