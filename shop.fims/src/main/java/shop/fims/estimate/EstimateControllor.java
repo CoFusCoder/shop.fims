@@ -2,15 +2,22 @@ package shop.fims.estimate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import groovyjarjarpicocli.CommandLine.Model;
+
 
 @Controller
 public class EstimateControllor {
 	
-	@Autowired Estimateservice estimatelist;
-	//전체심사
+	@Autowired Estimateservice estimateservice;
+	
+	/**
+	 * 심사 대기,결과 리스트
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/estimatelist")
 	public String estimatelist() {
 		return "estimate/estimatelist";		
@@ -20,11 +27,12 @@ public class EstimateControllor {
 	public String insertindex(Model model) {
 		return "/estimate/apply";
 	
-	}
-	//심사지표 이동	
+	}		
+	//심사지표 이동,심사명 선택	
 	@GetMapping("/examination_index")
-	public String finalsetimatlist() {
-		return "/estimate/examination_index";
+	public String examination_index(Model model) {
+		model.addAttribute("examinateionidex", estimateservice.examination_index());
+		return "estimate/examination_index";
 	}
 	//심사결과 상세보기
 	@GetMapping("/estimatelistdetail")

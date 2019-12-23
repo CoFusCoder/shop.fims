@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class RevenueController {
+public class GoodsrevenueController {
 
-	@Autowired RevenueService revenueservice;
+	@Autowired GoodsrevenueService revenueservice;
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 리스트
 	@GetMapping("/g_revenuelist")
 	public String revenuelist(Model model) {
@@ -30,24 +30,24 @@ public class RevenueController {
 	
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 등록
 	@GetMapping("/g_revenueinsert")
-	public String g_revenueinsert() {
+	public String g_insertrevenue() {
 		return "/revenue/g_revenueinsert";		
 	}
 	
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 등록처리
 	@PostMapping("g_revenueinsert")
-	public String adddelbreinsert() {
+	public String addinsertdelbre() {
 		return "redirect:/g_revenuelist";
 	}
 	
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 수정
 	@GetMapping("/g_revenueupdata")
-	public String selectrevenueupdata() {
+	public String selectrevenue() {
 		return "/revenue/g_revenueupdata";
 	}
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 수정
 	@PostMapping("/g_revenueupdata")
-	public String g_revenueupdata() {
+	public String g_updatarevenue() {
 		return "redirect:/g_revenuelist";
 	}
 	

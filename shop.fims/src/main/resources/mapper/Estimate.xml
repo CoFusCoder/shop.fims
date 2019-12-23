@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shop.fims.estimate.EstimateMapper">
+  <select id="examination_index" resultType="shop.fims.vo.Estimate">
+	SELECT
+	eva_index_cd,
+	eva_nm
+	
+	FROM
+	Eva_index
+
+
+  </select>    
+  <select id="" resultType="shop.fims.vo.Estimate">
+  SELECT
+	eva_nm,
+	l_criteria,
+	m_criteria,
+	s_criteria
+	
+	FROM
+	Eva_index AS ei
+	INNER JOIN
+	Eva_index_item AS eii
+	ON
+	ei.eva_index_cd = eii.eva_index_cd
+	
+	WHERE
+	eva_nm = '축제 추진위원회 심사'
+  
+  </select>
+  </mapper>

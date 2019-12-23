@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import shop.fims.vo.Revenue;
 
 @Service
-public class RevenueService {
+public class GoodsrevenueService {
 
-	@Autowired RevenueMapper revenuemapper;
+	@Autowired GoodsrevenueMapper revenuemapper;
 	
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 리스트
 	public List<Revenue> revenuelist(){
