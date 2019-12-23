@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+    <!--header start-->
+<nav th:fragment="festivalHeaderFragment">
+            <div class="container">
+                <div class="nav-top clearfix">
+                    <div class="logo">
+                        <a href="/festivalview/index" class="navbar-brand"><img src="/festival/assets/images/fimslog.jpg" alt="Logo" /></a>
+                    </div>
+
+                    <div class="head_top_social pull-right">
+                        <ul class="list-inline">
+                            <li><a href="/adminisview/dashboard"><i class="fa fa-skype"></i>!관리자홈페이지</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>#축제문의 : 063-263-1004</a></li>
+                            <li class="top_socail">
+                                <a href="/fimsproject/projectintro"><i class="fa fa-facebook"></i>!FIMS프로젝트소개</a>
+                                <a href="/login/login"><i class="fa fa-pinterest-p"></i>!로그인</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                        <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="main-nav navbar-collapse collapse">
+                <div class="container">
+                    <div class="minilogo">
+                        <a  href="" class="navbar-brand"><img src="/festival/assets/images/logo2.png" alt="Logo" /></a>
+                    </div>
+                    <ul class="nav nav-justified">
+                        <li><a class="active" href="#home">#전체</a></li>
+                        <li><a href="#service">#축제ㆍ이벤트</a></li>
+                        <li><a href="#lessons">#시장ㆍ스토어</a></li>
+                        <li><a href="#portfolio">#기획전</a></li>
+                        <li><a href="#blog">#커뮤니티</a></li>
+                        <li><a href="#contact">#고객센터</a></li>
+                    </ul>
+                </div>
+            </div>
+</nav>
+    <!--header end-->
+
+</html>

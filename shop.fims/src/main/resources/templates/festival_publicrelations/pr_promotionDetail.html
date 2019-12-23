@@ -25,28 +25,28 @@ layout:decorator="layout/main">
                 <table class="table table-bordered table-striped table-condensed">
                   <thead>
                     <tr >
-                      <th colspan="5">축제코드</th>
+                      <th colspan="5">축제명</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr >
-                      <td th:text="${p.festpr_pro_cd}" colspan="5"></td>
+                      <td colspan="5">[[${session.F_NM}]] </td>
                     </tr>
                   </tbody>
                    <thead>
                     <tr>
-                      <th>지역코드</th>
-                      <th>시군코드</th>
-                      <th>행정기관코드</th>
+                      <th>담당지역</th>
+                      <th>담당시군</th>
+                      <th>담당행정기관</th>
                       <th>위원회코드</th>
                       <th>작성일</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td th:text="${p.area_cd}" ></td>
-                      <td th:text="${p.area_city_cd}" ></td>
-                      <td th:text="${p.areacity_admin_cd}" ></td>
+                      <td>[[${session.F_AREA}]] </td>
+                      <td>[[${session.F_CITY}]] </td>
+                      <td>[[${session.F_ADMIN}]] </td>
                       <td th:text="${p.man_com_cd}" ></td>
                       <td th:text="${p.insert_dt}" ></td>
                     </tr>
@@ -79,7 +79,7 @@ layout:decorator="layout/main">
                   </thead>
                   <tbody>
                     <tr>
-                      <td th:text="${p.festpr_div_cd}" ></td>
+                      <td th:text="${p.festpr_div_nm}" ></td>
                       <td th:text="${p.festpr_pro_cd}" ></td>
                       <td th:text="${p.festpr_pro_nm}" colspan="2"></td>
                       <td th:text="${p.festpr_pro_amt}" ></td>
