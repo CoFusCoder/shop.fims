@@ -49,8 +49,8 @@ public class AccountController {
 	
 	//모든 거래처 상세조회 거래처코드로 조회
 	@GetMapping("/allAccountDetail") 
-		public String selectByAccount(@RequestParam(value="cat_acc_cd", required = false)String cat_acc_cd, Model model) { 
-		model.addAttribute("selectByAccount", accountService.selectByAccount(cat_acc_cd));
+		public String selectByAccount(@RequestParam(value="catAccCd", required = false)String catAccCd, Model model) { 
+		model.addAttribute("selectByAccount", accountService.selectByAccount(catAccCd));
 		return "account/allAccountDetail";
 	}
 	
@@ -76,8 +76,8 @@ public class AccountController {
 	
 	//모든 거래처 수정화면. 거래처코드로 조회
 	@GetMapping("/updateAllAccount")
-	public String updateAllAccount(@RequestParam(value="cat_acc_cd", required = false)String cat_acc_cd, Model model) { 
-		model.addAttribute("selectByAllAccount", accountService.selectByAllAccount(cat_acc_cd));
+	public String updateAllAccount(@RequestParam(value="catAccCd", required = false)String catAccCd, Model model) { 
+		model.addAttribute("selectByAllAccount", accountService.selectByAllAccount(catAccCd));
 		return "account/updateAllAccount";
 	}
 	
@@ -129,8 +129,8 @@ public class AccountController {
 	
 	//거래처업종 분류 수정화면 거래처 업종 분류코드로 조회
 	@GetMapping("/updateAccountCatBus") 
-	public String updateAccountCatBus(@RequestParam(value="catbus_acc_cd", required = false)String catbus_acc_cd, Model model) { 
-		model.addAttribute("selectByAccCatBus", accountService.selectByAccCatBus(catbus_acc_cd));
+	public String updateAccountCatBus(@RequestParam(value="catBusAccCd", required = false)String catBusAccCd, Model model) { 
+		model.addAttribute("selectByAccCatBus", accountService.selectByAccCatBus(catBusAccCd));
 		return "account/updateAccountCatBus";
 	}
 		

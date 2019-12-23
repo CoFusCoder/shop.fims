@@ -19,8 +19,8 @@ public class CommitteeService {
 	}
 	
 	//위원회 상세조회 위원회 코드로 조회
-	public List<Committee> selectByCommittee(String man_com_cd){
-		return committeeMapper.selectByCommittee(man_com_cd);
+	public List<Committee> selectByCommittee(String manComCd){
+		return committeeMapper.selectByCommittee(manComCd);
 	}
 	
 	//위원회 등록
@@ -34,8 +34,8 @@ public class CommitteeService {
 	}
 	
 	//위원회 수정화면. 위원회 코드로 조회
-	public Committee selectByAllCommittee(String man_com_cd) {
-		return committeeMapper.selectByAllCommittee(man_com_cd);
+	public Committee selectByAllCommittee(String manComCd) {
+		return committeeMapper.selectByAllCommittee(manComCd);
 	}
 	
 	//위원회 수정

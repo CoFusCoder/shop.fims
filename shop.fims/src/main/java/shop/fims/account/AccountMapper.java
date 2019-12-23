@@ -14,7 +14,7 @@ public interface AccountMapper {
 	public List<Account> selectAllAccountView();
 	
 	//모든 거래처 상세조회 거래처코드로 조회
-	public List<Account> selectByAccount(String cat_acc_cd);
+	public List<Account> selectByAccount(String catAccCd);
 	
 	//모든 거래처 등록
 	public int insertAllAccount(Account account);
@@ -23,7 +23,7 @@ public interface AccountMapper {
 	public int deleteAllAccount(Account account);
 	
 	//모든 거래처 수정화면. 거래처코드로 조회
-	public Account selectByAllAccount(String cat_acc_cd);
+	public Account selectByAllAccount(String catAccCd);
 	
 	//거래처 수정
 	public int updateAllAccount(Account account);
@@ -38,6 +38,6 @@ public interface AccountMapper {
 	public int insertAccountCatBus(AccountCatBus accountCatBus);
 	
 	//거래처업종 분류 수정화면 거래처 업종 분류코드로 조회
-	public AccountCatBus selectByAccCatBus(String catbus_acc_cd);
+	public AccountCatBus selectByAccCatBus(String catBusAccCd);
 	
 }

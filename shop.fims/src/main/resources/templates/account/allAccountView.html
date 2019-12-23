@@ -34,14 +34,14 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 </thead>
                 <tbody>
                   <tr th:each="a:${selectAllAccountView}">  
-               		<td th:text="${a.cat_acc_nm1}"></td>
-               		<td th:text="${a.cat_acc_oper}"></td>
-               		<td th:text="${a.cat_acc_nm2}"></td>
-               		<td th:text="${a.cat_acc_no1}"></td>
-               		<td th:text="${a.cat_acc_phone3}"></td>
-               		<td th:text="${a.cat_acc_con}"></td>
+               		<td th:text="${a.catAccNm1}"></td>
+               		<td th:text="${a.catAccOper}"></td>
+               		<td th:text="${a.catAccNm2}"></td>
+               		<td th:text="${a.catAccNo1}"></td>
+               		<td th:text="${a.catAccPhone3}"></td>
+               		<td th:text="${a.catAccCon}"></td>
 			 		<td>
-			 		  <a th:href="@{/allAccountDetail(cat_acc_cd=${a.cat_acc_cd})}">
+			 		  <a th:href="@{/allAccountDetail(catAccCd=${a.catAccCd})}">
 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a> 
 			 		</td>
                   </tr>

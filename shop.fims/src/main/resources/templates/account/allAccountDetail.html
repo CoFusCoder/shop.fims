@@ -32,10 +32,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </thead>	
                   <tbody>
                     <tr>
-						<td th:text="${a.cat_acc_cd}"></td>
-	               		<td th:text="${a.areacity_admin_cd}"></td>
-	               		<td th:text="${a.area_city_cd}"></td>
-	               		<td th:text="${a.area_cd}"></td>
+						<td th:text="${a.catAccCd}"></td>
+	               		<td th:text="${a.areacityAdminCd}"></td>
+	               		<td th:text="${a.areaCityCd}"></td>
+	               		<td th:text="${a.areaCd}"></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -50,10 +50,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </thead>	
                   <tbody>
                     <tr>	
-						<td th:text="${a.man_com_cd}"></td>
-	               		<td th:text="${a.cat_acc_nm1}"></td>
-	               		<td th:text="${a.cat_acc_oper}"></td>
-	               		<td th:text="${a.cat_acc_nm2}"></td>
+						<td th:text="${a.manComCd}"></td>
+	               		<td th:text="${a.catAccNm1}"></td>
+	               		<td th:text="${a.catAccOper}"></td>
+	               		<td th:text="${a.catAccNm2}"></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -68,10 +68,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </thead>	
                   <tbody>
                     <tr>
-	               		<td th:text="${a.cat_acc_addr}"></td>
-	               		<td th:text="${a.cat_acc_no1}"></td>
-	               		<td th:text="${a.cat_acc_no2}"></td>
-	               		<td th:text="${a.cat_acc_phone1}"></td>
+	               		<td th:text="${a.catAccAddr}"></td>
+	               		<td th:text="${a.catAccNo1}"></td>
+	               		<td th:text="${a.catAccNo2}"></td>
+	               		<td th:text="${a.catAccPhone1}"></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -86,10 +86,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </thead>	
                   <tbody>
                     <tr>
-	               		<td th:text="${a.cat_acc_phone2}"></td>
-	               		<td th:text="${a.cat_acc_phone3}"></td>
-	               		<td th:text="${a.cat_acc_email}"></td>
-	               		<td th:text="${a.cat_acc_dt1}"></td>
+	               		<td th:text="${a.catAccPhone2}"></td>
+	               		<td th:text="${a.catAccPhone3}"></td>
+	               		<td th:text="${a.catAccEmail}"></td>
+	               		<td th:text="${a.catAccDt1}"></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -104,10 +104,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </thead>	
                   <tbody>
                     <tr>
-	               		<td th:text="${a.cat_acc_app}"></td>
-	               		<td th:text="${a.man_com_nm1}"></td>
-	               		<td th:text="${a.cat_acc_dt2}"></td>
-	               		<td th:text="${a.cat_acc_con}"></td>
+	               		<td th:text="${a.catAccApp}"></td>
+	               		<td th:text="${a.manComNm1}"></td>
+	               		<td th:text="${a.catAccDt2}"></td>
+	               		<td th:text="${a.catAccCon}"></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -121,11 +121,11 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   <tbody>
                     <tr>
 	                    <td colspan="2">
-		                    <a th:href="@{/updateAllAccount(cat_acc_cd=${a.cat_acc_cd})}">
+		                    <a th:href="@{/updateAllAccount(catAccCd=${a.catAccCd})}">
 		                    <button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
 	                    </td>
 	                    <td colspan="2">
-	                    	<a th:href="@{/deleteAllAccount(cat_acc_cd=${a.cat_acc_cd})}">
+	                    	<a th:href="@{/deleteAllAccount(catAccCd=${a.catAccCd})}">
 	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
 	                    </td>
                     </tr>

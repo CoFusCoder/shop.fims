@@ -2,158 +2,159 @@ package shop.fims.vo;
 
 public class Account {
 	
-	private String cat_acc_cd;	//거래처코드
-	private String areacity_admin_cd;	//모든 행정기관코드
-	private String area_city_cd;	//모든 지역 시군코드
-	private String area_cd;	//전국지역코드
-	private String man_com_cd;	//위원회코드
-	private String cat_acc_nm1;	//거래처명
-	private String cat_acc_oper;	//사업자분류
-	private String cat_acc_nm2;	//거래처대표자명
-	private String cat_acc_addr;	//거래처사업장주소
-	private String cat_acc_no1;	//거래처사업자등록번호
-	private String cat_acc_no2;	//거래처법인등록번호
-	private String cat_acc_phone1;	//거래처팩스번호
-	private String cat_acc_phone2;	//대표자 전화번호
-	private String cat_acc_phone3;	//거래처 대표번호
-	private String cat_acc_email;	//거래처이메일
-	private String cat_acc_dt1;	//등록일자
-	private String cat_acc_app;	//승인자
-	private String man_com_nm1;	//위원회명
-	private String cat_acc_dt2;	//승인일자
-	private String cat_acc_con;	//승인 상태
+	private String catAccCd;	//거래처코드
+	private String areacityAdminCd;	//모든 행정기관코드
+	private String areaCityCd;	//모든 지역 시군코드
+	private String areaCd;	//전국지역코드
+	private String manComCd;	//위원회코드
+	private String catAccNm1;	//거래처명
+	private String catAccOper;	//사업자분류
+	private String catAccNm2;	//거래처대표자명
+	private String catAccAddr;	//거래처사업장주소
+	private String catAccNo1;	//거래처사업자등록번호
+	private String catAccNo2;	//거래처법인등록번호
+	private String catAccPhone1;	//거래처팩스번호
+	private String catAccPhone2;	//대표자 전화번호
+	private String catAccPhone3;	//거래처 대표번호
+	private String catAccEmail;	//거래처이메일
+	private String catAccDt1;	//등록일자
+	private String catAccApp;	//승인자
+	private String manComNm1;	//위원회명
+	private String catAccDt2;	//승인일자
+	private String catAccCon;	//승인 상태
 	
-	public String getCat_acc_cd() {
-		return cat_acc_cd;
+	public String getCatAccCd() {
+		return catAccCd;
 	}
-	public void setCat_acc_cd(String cat_acc_cd) {
-		this.cat_acc_cd = cat_acc_cd;
+	public void setCatAccCd(String catAccCd) {
+		this.catAccCd = catAccCd;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getMan_com_cd() {
-		return man_com_cd;
+	public String getManComCd() {
+		return manComCd;
 	}
-	public void setMan_com_cd(String man_com_cd) {
-		this.man_com_cd = man_com_cd;
+	public void setManComCd(String manComCd) {
+		this.manComCd = manComCd;
 	}
-	public String getCat_acc_nm1() {
-		return cat_acc_nm1;
+	public String getCatAccNm1() {
+		return catAccNm1;
 	}
-	public void setCat_acc_nm1(String cat_acc_nm1) {
-		this.cat_acc_nm1 = cat_acc_nm1;
+	public void setCatAccNm1(String catAccNm1) {
+		this.catAccNm1 = catAccNm1;
 	}
-	public String getCat_acc_oper() {
-		return cat_acc_oper;
+	public String getCatAccOper() {
+		return catAccOper;
 	}
-	public void setCat_acc_oper(String cat_acc_oper) {
-		this.cat_acc_oper = cat_acc_oper;
+	public void setCatAccOper(String catAccOper) {
+		this.catAccOper = catAccOper;
 	}
-	public String getCat_acc_nm2() {
-		return cat_acc_nm2;
+	public String getCatAccNm2() {
+		return catAccNm2;
 	}
-	public void setCat_acc_nm2(String cat_acc_nm2) {
-		this.cat_acc_nm2 = cat_acc_nm2;
+	public void setCatAccNm2(String catAccNm2) {
+		this.catAccNm2 = catAccNm2;
 	}
-	public String getCat_acc_addr() {
-		return cat_acc_addr;
+	public String getCatAccAddr() {
+		return catAccAddr;
 	}
-	public void setCat_acc_addr(String cat_acc_addr) {
-		this.cat_acc_addr = cat_acc_addr;
+	public void setCatAccAddr(String catAccAddr) {
+		this.catAccAddr = catAccAddr;
 	}
-	public String getCat_acc_no1() {
-		return cat_acc_no1;
+	public String getCatAccNo1() {
+		return catAccNo1;
 	}
-	public void setCat_acc_no1(String cat_acc_no1) {
-		this.cat_acc_no1 = cat_acc_no1;
+	public void setCatAccNo1(String catAccNo1) {
+		this.catAccNo1 = catAccNo1;
 	}
-	public String getCat_acc_no2() {
-		return cat_acc_no2;
+	public String getCatAccNo2() {
+		return catAccNo2;
 	}
-	public void setCat_acc_no2(String cat_acc_no2) {
-		this.cat_acc_no2 = cat_acc_no2;
+	public void setCatAccNo2(String catAccNo2) {
+		this.catAccNo2 = catAccNo2;
 	}
-	public String getCat_acc_phone1() {
-		return cat_acc_phone1;
+	public String getCatAccPhone1() {
+		return catAccPhone1;
 	}
-	public void setCat_acc_phone1(String cat_acc_phone1) {
-		this.cat_acc_phone1 = cat_acc_phone1;
+	public void setCatAccPhone1(String catAccPhone1) {
+		this.catAccPhone1 = catAccPhone1;
 	}
-	public String getCat_acc_phone2() {
-		return cat_acc_phone2;
+	public String getCatAccPhone2() {
+		return catAccPhone2;
 	}
-	public void setCat_acc_phone2(String cat_acc_phone2) {
-		this.cat_acc_phone2 = cat_acc_phone2;
+	public void setCatAccPhone2(String catAccPhone2) {
+		this.catAccPhone2 = catAccPhone2;
 	}
-	public String getCat_acc_phone3() {
-		return cat_acc_phone3;
+	public String getCatAccPhone3() {
+		return catAccPhone3;
 	}
-	public void setCat_acc_phone3(String cat_acc_phone3) {
-		this.cat_acc_phone3 = cat_acc_phone3;
+	public void setCatAccPhone3(String catAccPhone3) {
+		this.catAccPhone3 = catAccPhone3;
 	}
-	public String getCat_acc_email() {
-		return cat_acc_email;
+	public String getCatAccEmail() {
+		return catAccEmail;
 	}
-	public void setCat_acc_email(String cat_acc_email) {
-		this.cat_acc_email = cat_acc_email;
+	public void setCatAccEmail(String catAccEmail) {
+		this.catAccEmail = catAccEmail;
 	}
-	public String getCat_acc_dt1() {
-		return cat_acc_dt1;
+	public String getCatAccDt1() {
+		return catAccDt1;
 	}
-	public void setCat_acc_dt1(String cat_acc_dt1) {
-		this.cat_acc_dt1 = cat_acc_dt1;
+	public void setCatAccDt1(String catAccDt1) {
+		this.catAccDt1 = catAccDt1;
 	}
-	public String getCat_acc_app() {
-		return cat_acc_app;
+	public String getCatAccApp() {
+		return catAccApp;
 	}
-	public void setCat_acc_app(String cat_acc_app) {
-		this.cat_acc_app = cat_acc_app;
+	public void setCatAccApp(String catAccApp) {
+		this.catAccApp = catAccApp;
 	}
-	public String getMan_com_nm1() {
-		return man_com_nm1;
+	public String getManComNm1() {
+		return manComNm1;
 	}
-	public void setMan_com_nm1(String man_com_nm1) {
-		this.man_com_nm1 = man_com_nm1;
+	public void setManComNm1(String manComNm1) {
+		this.manComNm1 = manComNm1;
 	}
-	public String getCat_acc_dt2() {
-		return cat_acc_dt2;
+	public String getCatAccDt2() {
+		return catAccDt2;
 	}
-	public void setCat_acc_dt2(String cat_acc_dt2) {
-		this.cat_acc_dt2 = cat_acc_dt2;
+	public void setCatAccDt2(String catAccDt2) {
+		this.catAccDt2 = catAccDt2;
 	}
-	public String getCat_acc_con() {
-		return cat_acc_con;
+	public String getCatAccCon() {
+		return catAccCon;
 	}
-	public void setCat_acc_con(String cat_acc_con) {
-		this.cat_acc_con = cat_acc_con;
+	public void setCatAccCon(String catAccCon) {
+		this.catAccCon = catAccCon;
 	}
 	@Override
 	public String toString() {
-		return "Account [cat_acc_cd=" + cat_acc_cd + ", areacity_admin_cd=" + areacity_admin_cd + ", area_city_cd="
-				+ area_city_cd + ", area_cd=" + area_cd + ", man_com_cd=" + man_com_cd + ", cat_acc_nm1=" + cat_acc_nm1
-				+ ", cat_acc_oper=" + cat_acc_oper + ", cat_acc_nm2=" + cat_acc_nm2 + ", cat_acc_addr=" + cat_acc_addr
-				+ ", cat_acc_no1=" + cat_acc_no1 + ", cat_acc_no2=" + cat_acc_no2 + ", cat_acc_phone1=" + cat_acc_phone1
-				+ ", cat_acc_phone2=" + cat_acc_phone2 + ", cat_acc_phone3=" + cat_acc_phone3 + ", cat_acc_email="
-				+ cat_acc_email + ", cat_acc_dt1=" + cat_acc_dt1 + ", cat_acc_app=" + cat_acc_app + ", man_com_nm1="
-				+ man_com_nm1 + ", cat_acc_dt2=" + cat_acc_dt2 + ", cat_acc_con=" + cat_acc_con + "]";
+		return "Account [catAccCd=" + catAccCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCityCd=" + areaCityCd
+				+ ", areaCd=" + areaCd + ", manComCd=" + manComCd + ", catAccNm1=" + catAccNm1 + ", catAccOper="
+				+ catAccOper + ", catAccNm2=" + catAccNm2 + ", catAccAddr=" + catAccAddr + ", catAccNo1=" + catAccNo1
+				+ ", catAccNo2=" + catAccNo2 + ", catAccPhone1=" + catAccPhone1 + ", catAccPhone2=" + catAccPhone2
+				+ ", catAccPhone3=" + catAccPhone3 + ", catAccEmail=" + catAccEmail + ", catAccDt1=" + catAccDt1
+				+ ", catAccApp=" + catAccApp + ", manComNm1=" + manComNm1 + ", catAccDt2=" + catAccDt2 + ", catAccCon="
+				+ catAccCon + "]";
 	}
 	
+
 
 	
 }

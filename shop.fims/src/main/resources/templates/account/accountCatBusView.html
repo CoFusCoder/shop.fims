@@ -33,14 +33,14 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 </thead>
                 <tbody>
                   <tr th:each="a:${selectAccountCatBusView}">  
-               		<td th:text="${a.catbus_acc_cd}"></td>
-               		<td th:text="${a.catbus_acc_bus}"></td>
+               		<td th:text="${a.catBusAccCd}"></td>
+               		<td th:text="${a.catBusAccBus}"></td>
 			 		<td>
-			 		  <a th:href="@{/updateAccountCatBus(catbus_acc_cd=${a.catbus_acc_cd})}">
+			 		  <a th:href="@{/updateAccountCatBus(catBusAccCd=${a.catBusAccCd})}">
 			 		  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a> 
 			 		</td>
 			 		<td>
-			 		  <a th:href="@{/accountCatBusView(catbus_acc_cd=${a.catbus_acc_cd})}">
+			 		  <a th:href="@{/accountCatBusView(catBusAccCd=${a.catBusAccCd})}">
 			 		  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
 			 		</td>
                   </tr>

@@ -37,8 +37,8 @@ public class CommitteeController {
 	
 	//위원회 상세조회 위원회 코드로 조회
 	@GetMapping("/allCommitteeDetail") 
-		public String selectByCommittee(@RequestParam(value="man_com_cd", required = false)String man_com_cd, Model model) { 
-		model.addAttribute("selectByCommittee", committeeService.selectByCommittee(man_com_cd));
+		public String selectByCommittee(@RequestParam(value="manComCd", required = false)String manComCd, Model model) { 
+		model.addAttribute("selectByCommittee", committeeService.selectByCommittee(manComCd));
 		return "committee/allCommitteeDetail";
 	}
 	
@@ -71,8 +71,8 @@ public class CommitteeController {
 	
 	//위원회 수정화면. 위원회 코드로 조회
 	@GetMapping("/updateAllCommittee")
-	public String updateAllCommittee(@RequestParam(value="man_com_cd", required = false)String man_com_cd, Model model) { 
-		model.addAttribute("selectByAllCommittee", committeeService.selectByAllCommittee(man_com_cd));
+	public String updateAllCommittee(@RequestParam(value="manComCd", required = false)String manComCd, Model model) { 
+		model.addAttribute("selectByAllCommittee", committeeService.selectByAllCommittee(manComCd));
 		return "committee/updateAllCommittee";
 	}
 	
@@ -91,7 +91,7 @@ public class CommitteeController {
 	 */
 	
 	//위원회 검색
-	@PostMapping("/allCommitteeView")
+	@PostMapping("/searchCommittee")
 	public String searchCommittee(@RequestParam(value="sk")String sk,  @RequestParam(value="sv")String sv, Model model) {
 		model.addAttribute("searchCommittee", committeeService.searchCommittee(sk,sv));
 		return "committee/allCommitteeView";

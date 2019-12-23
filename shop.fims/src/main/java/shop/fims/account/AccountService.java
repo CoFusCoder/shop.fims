@@ -19,8 +19,8 @@ public class AccountService {
 	}
 	
 	//모든 거래처 상세조회 거래처코드로 조회
-	public List<Account> selectByAccount(String cat_acc_cd){
-		return accountMapper.selectByAccount(cat_acc_cd);
+	public List<Account> selectByAccount(String catAccCd){
+		return accountMapper.selectByAccount(catAccCd);
 	}
 	
 	//모든 거래처 등록
@@ -34,8 +34,8 @@ public class AccountService {
 	}
 	
 	//모든 거래처 수정화면. 거래처코드로 조회
-	public Account selectByAllAccount(String cat_acc_cd) {
-		return accountMapper.selectByAllAccount(cat_acc_cd);
+	public Account selectByAllAccount(String catAccCd) {
+		return accountMapper.selectByAllAccount(catAccCd);
 	}
 	
 	//거래처 수정
@@ -59,7 +59,7 @@ public class AccountService {
 	}
 	
 	//거래처업종 분류 수정화면 거래처 업종 분류코드로 조회
-	public AccountCatBus selectByAccCatBus(String catbus_acc_cd) {
-		return accountMapper.selectByAccCatBus(catbus_acc_cd);
+	public AccountCatBus selectByAccCatBus(String catBusAccCd) {
+		return accountMapper.selectByAccCatBus(catBusAccCd);
 	}	
 }

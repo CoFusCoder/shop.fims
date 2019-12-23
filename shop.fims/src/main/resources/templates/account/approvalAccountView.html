@@ -33,13 +33,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 </thead>
                 <tbody>
                   <tr th:each="a:${selectApprovalAccountView}">  
-               		<td th:text="${a.cat_acc_nm1}"></td>
-               		<td th:text="${a.catbus_acc_bus}"></td>
-               		<td th:text="${a.catapp_acc_pur}"></td>
-               		<td th:text="${a.man_com_nm1}"></td>
-               		<td th:text="${a.catapp_acc_con}"></td>
+               		<td th:text="${a.catAccNm1}"></td>
+               		<td th:text="${a.catBusAccBus}"></td>
+               		<td th:text="${a.catAppAccPur}"></td>
+               		<td th:text="${a.manComNm1}"></td>
+               		<td th:text="${a.catAppAccCon}"></td>
 			 		<td>
-			 		  <a th:href="@{/allApprovalAccountDetail(catapp_acc_cd=${a.catapp_acc_cd})}">
+			 		  <a th:href="@{/allApprovalAccountDetail(catAppAccCd=${a.catAppAccCd})}">
 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a> 
 			 		</td>
                   </tr>
