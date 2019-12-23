@@ -13,6 +13,15 @@ import shop.fims.vo.Program;
 
 @Mapper
 public interface ProgramMapper {
+	
+	
+	//프로그램 참가자 조건검색
+	public List<ProParticipants> searchParticipant(String fest_pro_nm, String festpro_spro_nm
+			,String festpro_par_nm, String festpro_par_gender, String festpro_par_phone, String fest_cd);
+	
+	//세부 프로그램 조건검색
+	public List<ProSpro> searchSpro(String fest_pro_nm, String festpro_spro_nm);
+	
 	//프로그램코드로 프로그램 상세조회
 	public List<Program> selectByProcd(String fest_pro_cd);
 	
@@ -23,7 +32,7 @@ public interface ProgramMapper {
 	public List<Program> selectAllPro(String fest_cd);
 	
 	//프로그램 참가자리스트조회
-	public List<ProParticipants> selectAllParticipants();	
+	public List<ProParticipants> selectAllParticipants(String fest_cd);	
 	
 	//프로그램 성격분류조회
 	public List<ProDivTheme> selectAllDivTheme(String fest_cd);	

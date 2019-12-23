@@ -1,6 +1,6 @@
 package shop.fims.vo;
 
-public class ProSpro {
+public class ProSpro {	
 	private String festpro_spro_cd;
 	private String areacity_admin_cd;
 	private String festprodiv_theme_cd;
@@ -11,12 +11,12 @@ public class ProSpro {
 	private String area_city_cd;
 	private String area_cd;
 	private String festpro_spro_nm;
+	private String fest_pro_nm;
 	private String festpro_spro_place;
 	private String festpro_spro_time;
 	private String festpro_spro_detail;
 	private int festpro_spro_expense;
 	private String insert_dt;
-	
 	public String getFestpro_spro_cd() {
 		return festpro_spro_cd;
 	}
@@ -77,6 +77,12 @@ public class ProSpro {
 	public void setFestpro_spro_nm(String festpro_spro_nm) {
 		this.festpro_spro_nm = festpro_spro_nm;
 	}
+	public String getFest_pro_nm() {
+		return fest_pro_nm;
+	}
+	public void setFest_pro_nm(String fest_pro_nm) {
+		this.fest_pro_nm = fest_pro_nm;
+	}
 	public String getFestpro_spro_place() {
 		return festpro_spro_place;
 	}
@@ -95,7 +101,6 @@ public class ProSpro {
 	public void setFestpro_spro_detail(String festpro_spro_detail) {
 		this.festpro_spro_detail = festpro_spro_detail;
 	}
-
 	public int getFestpro_spro_expense() {
 		return festpro_spro_expense;
 	}
@@ -113,11 +118,13 @@ public class ProSpro {
 		return "ProSpro [festpro_spro_cd=" + festpro_spro_cd + ", areacity_admin_cd=" + areacity_admin_cd
 				+ ", festprodiv_theme_cd=" + festprodiv_theme_cd + ", fest_pro_cd=" + fest_pro_cd + ", acc_mem_cd="
 				+ acc_mem_cd + ", fest_cd=" + fest_cd + ", man_com_cd=" + man_com_cd + ", area_city_cd=" + area_city_cd
-				+ ", area_cd=" + area_cd + ", festpro_spro_nm=" + festpro_spro_nm + ", festpro_spro_place="
-				+ festpro_spro_place + ", festpro_spro_time=" + festpro_spro_time + ", festpro_spro_detail="
-				+ festpro_spro_detail + ", festpro_spro_expense=" + festpro_spro_expense + ", insert_dt=" + insert_dt
-				+ "]";
+				+ ", area_cd=" + area_cd + ", festpro_spro_nm=" + festpro_spro_nm + ", fest_pro_nm=" + fest_pro_nm
+				+ ", festpro_spro_place=" + festpro_spro_place + ", festpro_spro_time=" + festpro_spro_time
+				+ ", festpro_spro_detail=" + festpro_spro_detail + ", festpro_spro_expense=" + festpro_spro_expense
+				+ ", insert_dt=" + insert_dt + "]";
 	}
+
+	
 	
 	
 }

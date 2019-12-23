@@ -6,19 +6,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProgramController {
 		@Autowired ProgramService programservice;
 		
+		//프로그램 참가자 조건검색
+		@PostMapping("/searchPar")
+		public String searchParticipant(@RequestParam(value="fest_pro_nm")String fest_pro_nm
+								,@RequestParam(value="festpro_spro_nm")String festpro_spro_nm	  
+								,@RequestParam(value="festpro_par_nm")String festpro_par_nm	  
+								,@RequestParam(value="festpro_par_gender")String festpro_par_gender
+								,@RequestParam(value="festpro_par_phone")String festpro_par_phone  
+								, HttpSession session
+								, Model model) {
+			String fest_cd = (String)session.getAttribute("F_CD");
+			System.out.println("찍혔니? ==>"+fest_cd);
+			model.addAttribute("AllParti", programservice.searchParticipant(fest_pro_nm, festpro_spro_nm, festpro_par_nm, festpro_par_gender, festpro_par_phone, fest_cd ));
+			return "program/pro_ParList";
+		}
 		
+		
+		//세부프로그램 조건검색
+		@PostMapping("/searchSpro")
+		public String searchSpro(@RequestParam(value="fest_pro_nm")String fest_pro_nm
+				,@RequestParam(value="festpro_spro_nm")String festpro_spro_nm	  
+				, Model model) {
+			model.addAttribute("AllSprogram",programservice.searchSpro(fest_pro_nm, festpro_spro_nm));
+			return "program/pro_sProList";
+		}
 		
 		
 		//참가자 삭제
 		@GetMapping("/pro_deleteParticipant")
-		public String deleteParticipant(Model model) {
-			model.addAttribute("AllParti", programservice.selectAllParticipants());
+		public String deleteParticipant(Model model, HttpSession session) {
+			String fest_cd = (String)session.getAttribute("F_CD");
+			model.addAttribute("AllParti", programservice.selectAllParticipants(fest_cd));
 			return "program/pro_ParList";		
 		}
 		//참가자 수정
@@ -155,7 +180,7 @@ public class ProgramController {
 			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro(fest_cd));
 			return "program/pro_proDetailList";
 		}		
-		//프로그램코드로 상세조회 및 프로그램세부조회
+		//축제코드로 상세조회 및 프로그램세부조회
 		@GetMapping("/pro_sProList")
 		public String selectSpro(Model modelSpro, HttpSession session) {
 			String fest_cd = (String)session.getAttribute("F_CD");
@@ -196,8 +221,9 @@ public class ProgramController {
 		
 		//프로그램 참가자리스트조회
 		@GetMapping("/pro_ParList")
-		public String ParticipantsList(Model model) {
-			model.addAttribute("AllParti", programservice.selectAllParticipants());
+		public String ParticipantsList(Model model, HttpSession session ) {
+			String fest_cd = (String)session.getAttribute("F_CD");
+			model.addAttribute("AllParti", programservice.selectAllParticipants(fest_cd));
 			return "program/pro_ParList";
 		}
 		

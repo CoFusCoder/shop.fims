@@ -1,6 +1,8 @@
 package shop.fims.vo;
 
 public class ProParticipants {
+	private String fest_pro_nm;
+	private String festpro_spro_nm;
 	private String festpro_par_cd;
 	private String areacity_admin_cd;
 	private String festpro_spro_cd;
@@ -16,6 +18,7 @@ public class ProParticipants {
 	private String festpro_par_phone;
 	private String festpro_par_etc;
 	private String insert_dt;
+
 	public String getFestpro_par_cd() {
 		return festpro_par_cd;
 	}
@@ -106,6 +109,18 @@ public class ProParticipants {
 	public void setInsert_dt(String insert_dt) {
 		this.insert_dt = insert_dt;
 	}
+	public String getFest_pro_nm() {
+		return fest_pro_nm;
+	}
+	public void setFest_pro_nm(String fest_pro_nm) {
+		this.fest_pro_nm = fest_pro_nm;
+	}
+	public String getFestpro_spro_nm() {
+		return festpro_spro_nm;
+	}
+	public void setFestpro_spro_nm(String festpro_spro_nm) {
+		this.festpro_spro_nm = festpro_spro_nm;
+	}
 	@Override
 	public String toString() {
 		return "ProParticipants [festpro_par_cd=" + festpro_par_cd + ", areacity_admin_cd=" + areacity_admin_cd
@@ -113,8 +128,10 @@ public class ProParticipants {
 				+ ", fest_cd=" + fest_cd + ", man_com_cd=" + man_com_cd + ", area_city_cd=" + area_city_cd
 				+ ", area_cd=" + area_cd + ", festpro_par_nm=" + festpro_par_nm + ", festpro_par_gender="
 				+ festpro_par_gender + ", festpro_par_age=" + festpro_par_age + ", festpro_par_phone="
-				+ festpro_par_phone + ", festpro_par_etc=" + festpro_par_etc + ", insert_dt=" + insert_dt + "]";
+				+ festpro_par_phone + ", festpro_par_etc=" + festpro_par_etc + ", insert_dt=" + insert_dt
+				+ ", fest_pro_nm=" + fest_pro_nm + ", festpro_spro_nm=" + festpro_spro_nm + "]";
 	}
+	
 	
 	
 	
