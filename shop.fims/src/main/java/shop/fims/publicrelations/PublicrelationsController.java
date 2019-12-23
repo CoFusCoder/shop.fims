@@ -1,5 +1,7 @@
 package shop.fims.publicrelations;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,8 +46,9 @@ public class PublicrelationsController {
 	
 	//홍보사업삭제
 	@GetMapping("/pr_deletePromotion")
-	public String deletePromotion(Model model) {
-		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion());
+	public String deletePromotion(Model model, HttpSession session) {
+		String fest_cd = (String)session.getAttribute("F_CD");
+		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(fest_cd));
 		return "festival_publicrelations/pr_promotionList";	
 	}
 	
@@ -79,8 +82,9 @@ public class PublicrelationsController {
 	
 	//홍보사업리스트 조회
 	@GetMapping("/pr_promotionList")
-	public String detailList(Model model) {
-		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion());
+	public String detailList(Model model,HttpSession session) {
+		String fest_cd = (String)session.getAttribute("F_CD");
+		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(fest_cd));
 		return "festival_publicrelations/pr_promotionList";
 	}
 	

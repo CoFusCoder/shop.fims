@@ -1,5 +1,7 @@
 package shop.fims.maincontroller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletResponse;
@@ -19,8 +21,8 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String index() {
-		
-		return "/index";
+
+		return "index";
 	}
 	
 	
@@ -38,13 +40,42 @@ public class MainController {
 		session.setAttribute("F_CITY_NM", main.getArea_city_nm());
 		session.setAttribute("F_ADMIN_CD", main.getAreacity_admin_cd());
 		session.setAttribute("F_ADMIN_NM", main.getAreacity_admin_nm());
-		session.setAttribute("F_NM", main.getFest_cd());		
+		session.setAttribute("F_CD", main.getFest_cd());		
 		session.setAttribute("F_NM", main.getFest_nm());		
 		return "index";		
 	}
 	
 	
 	
+
+	
+	/**
+	 * @file MainController.java
+	 * @name dashboard
+	 * @brief 관리자 메인화면
+	 * @author ksmart33 김동석
+	 * @return adminisview/dashboard
+	 */
+	@GetMapping("/dashboard")
+	public String dashboard() {
+		
+		return "/dashboard";
+	}
+	
+	/**
+	 * @file MainController.java
+	 * @name festivalmainview
+	 * @brief 국민 메인화면
+	 * @author ksmart33 김동석
+	 * @return festivalview/index
+	 */
+	@GetMapping("/festivalview/index")
+	public String festivalmainview() {
+		
+		return "festivalview/index";
+	}
+	
+
 	
 	
 	

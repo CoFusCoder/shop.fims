@@ -1,5 +1,7 @@
 package shop.fims.program;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,8 +35,9 @@ public class ProgramController {
 		
 		//세부프로그램 삭제
 		@GetMapping("/pro_deleteSprogram")
-		public String deleteSprogram(Model model) {
-			model.addAttribute("AllProgram", programservice.selectAllPro());		
+		public String deleteSprogram(Model model,HttpSession session) {
+			String fest_cd = (String)session.getAttribute("F_CD");
+			model.addAttribute("AllProgram", programservice.selectAllPro(fest_cd));		
 			return "festival_program/pro_proList";		
 		}
 		//세부프로그램 수정
@@ -42,16 +45,17 @@ public class ProgramController {
 		public String updateSprogram() {
 			return "festival_program/pro_updateSProgram";		
 		}
-		//프로그램 신규등록
+		//세부프로그램 신규등록
 		@GetMapping("/pro_insertSprogram")
 		public String insertSprogram() {
 			return "festival_program/pro_insertSprogram";		
 		}
 		
-		//세부프로그램 삭제
+		//프로그램 삭제
 		@GetMapping("/pro_deleteProgram")
-		public String deleteProgram(Model model) {
-			model.addAttribute("AllProgram", programservice.selectAllPro());		
+		public String deleteProgram(Model model, HttpSession session) {
+			String fest_cd = (String)session.getAttribute("F_CD");
+			model.addAttribute("AllProgram", programservice.selectAllPro(fest_cd));		
 			return "festival_program/pro_proList";		
 		}
 		//프로그램 수정
@@ -69,26 +73,29 @@ public class ProgramController {
 		
 		//프로그램 일정분류 삭제
 		@GetMapping("/pro_deleteDivDay")
-		public String deleteDivDay(Model modelDay, Model modelPlace, Model modelTheme) {
+		public String deleteDivDay(HttpSession session, Model modelDay, Model modelPlace, Model modelTheme) {
+			String fest_cd = (String)session.getAttribute("F_CD");
 			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
-			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace());
-			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme());
+			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(fest_cd));
+			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(fest_cd));
 			return "festival_program/pro_divList";		
 		}
 		//프로그램 장소분류 삭제
 		@GetMapping("/pro_deleteDivPlace")
-		public String deleteDivPlace(Model modelDay, Model modelPlace, Model modelTheme) {
+		public String deleteDivPlace(HttpSession session, Model modelDay, Model modelPlace, Model modelTheme) {
+			String fest_cd = (String)session.getAttribute("F_CD");
 			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
-			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace());
-			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme());
+			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(fest_cd));
+			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(fest_cd));
 			return "festival_program/pro_divList";		
 		}
 		//프로그램 성격분류 삭제
 		@GetMapping("/pro_deleteDivTheme")
-		public String deleteDivTheme(Model modelDay, Model modelPlace, Model modelTheme) {
+		public String deleteDivTheme(HttpSession session, Model modelDay, Model modelPlace, Model modelTheme) {
+			String fest_cd = (String)session.getAttribute("F_CD");
 			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
-			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace());
-			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme());
+			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(fest_cd));
+			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(fest_cd));
 			return "festival_program/pro_divList";		
 		}
 		
@@ -141,16 +148,18 @@ public class ProgramController {
 		
 		//프로그램코드로 상세조회 및 프로그램세부조회
 		@GetMapping("/pro_proDetailList")
-		public String selectByProcd(@RequestParam(value="fest_pro_cd")String fest_pro_cd, Model modelPro, Model modelSpro) {
+		public String selectByProcd(@RequestParam(value="fest_pro_cd")String fest_pro_cd, Model modelPro, Model modelSpro, HttpSession session) {
 			System.out.println("fest_pro_cd==>"+fest_pro_cd);
+			String fest_cd = (String)session.getAttribute("F_CD");
 			modelPro.addAttribute("selectByProcd", programservice.selectByProcd(fest_pro_cd));
-			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro());
+			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro(fest_cd));
 			return "festival_program/pro_proDetailList";
 		}		
 		//프로그램코드로 상세조회 및 프로그램세부조회
 		@GetMapping("/pro_sProList")
-		public String selectSpro(Model modelSpro) {
-			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro());
+		public String selectSpro(Model modelSpro, HttpSession session) {
+			String fest_cd = (String)session.getAttribute("F_CD");
+			modelSpro.addAttribute("AllSprogram", programservice.selectAllSpro(fest_cd));
 			return "festival_program/pro_sProList";
 		}		
 		
@@ -158,19 +167,21 @@ public class ProgramController {
 		
 		//대프로그램 조회 
 		@GetMapping("/pro_proList")
-		public String proList(Model model) {
-			model.addAttribute("AllProgram", programservice.selectAllPro());		
+		public String proList(Model model, HttpSession session) {
+			String fest_cd = (String)session.getAttribute("F_CD");
+			model.addAttribute("AllProgram", programservice.selectAllPro(fest_cd));		
 			return "festival_program/pro_proList";
 		}
 		
 		
 		//프로그램분류 조회
 		@GetMapping("/pro_divList")
-		public String ProDivList(Model modelDay, Model modelPlace, Model modelTheme) {
-			System.out.println("프로그램분류시작");
+		public String ProDivList(HttpSession session, Model modelDay, Model modelPlace, Model modelTheme) {
+			String fest_cd = (String)session.getAttribute("F_CD");
+			//System.out.println("프로그램분류시작");
 			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
-			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace());
-			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme());
+			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(fest_cd));
+			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(fest_cd));
 			//System.out.println(model);
 			
 			

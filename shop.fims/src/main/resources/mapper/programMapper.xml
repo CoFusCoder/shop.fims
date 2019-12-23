@@ -26,6 +26,7 @@
 		*
 	FROM 
 	Fest_Pro_sPro
+	WHERE fest_cd=(#{fest_cd})
   </select>
   
   
@@ -36,6 +37,7 @@
 		*
 	FROM 
 		Fest_Program
+	WHERE fest_cd=(#{fest_cd})
   </select>
 
 
@@ -74,6 +76,7 @@
 		,festprodiv_theme_nm
 	FROM
 		Fest_Pro_Div_Theme
+	WHERE fest_cd=(#{fest_cd})
 	
   </select>  
   
@@ -90,7 +93,7 @@
 		,festprodiv_pla_nm
 	FROM
 		Fest_Pro_Div_Place
-	
+	WHERE fest_cd=(#{fest_cd})	
 </select>
 
 

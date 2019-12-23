@@ -25,8 +25,8 @@ public class PublicrelationsService {
 	}
 
 	// 홍보상세내역조회
-	public List<PrPromotion> selectAllPromotion(){
-		return publicrelationsMapper.selectAllPromotion();
+	public List<PrPromotion> selectAllPromotion(String fest_cd){
+		return publicrelationsMapper.selectAllPromotion(fest_cd);
 	}
 	
 	// 홍보분류조회
