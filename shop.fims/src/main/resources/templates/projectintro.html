@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{layout/festival/festivaldefault}">
+layout:decorate="~{layout/gukmin/gukmindefault}">
 
-<th:block layout:fragment="festivalCss">
+<th:block layout:fragment="gukminCss">
 <style>
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
@@ -28,7 +28,7 @@ p{margin: 0;}
 
 </th:block>
 
-<th:block layout:fragment="festivalMainContents">
+<th:block layout:fragment="gukminMainContents">
 
 <section class="row-section">
     <div class="container">
@@ -37,7 +37,7 @@ p{margin: 0;}
 	        
 	            <li><div class="media">
 	            <div class="media-left align-self-center">
-	                <img class="rounded-circle" src="/festival/assets/images/intrologo.jpg">
+	                <img class="rounded-circle" src="/gukmin/assets/images/intrologo.jpg">
 	            </div>
 	            <div class="media-body">
 	                <h4>축제통합관리시스템 프로젝트 개요</h4>
@@ -52,7 +52,7 @@ p{margin: 0;}
 	        
 	            <li><div class="media">
 	            <div class="media-left align-self-center">
-	                <img class="rounded-circle" src="/festival/assets/images/kds.jpg">
+	                <img class="rounded-circle" src="/gukmin/assets/images/kds.jpg">
 	            </div>
 	            <div class="media-body">
 	                <h4>김동석</h4>
@@ -148,8 +148,8 @@ p{margin: 0;}
 </section>
 
 </th:block>
-<th:block layout:fragment="festivalscript">
-<th:block th:include="fragments/festival/festivalscript"></th:block>
+<th:block layout:fragment="gukminscript">
+<th:block th:include="fragments/gukmin/gukminscript"></th:block>
 </th:block>
 
 </html>

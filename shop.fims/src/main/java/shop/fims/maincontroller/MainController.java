@@ -56,15 +56,15 @@ public class MainController {
 	
 	/**
 	 * @file MainController.java
-	 * @name festivalmainview
+	 * @name gukminmainview
 	 * @brief 국민 메인화면
 	 * @author ksmart33 김동석
-	 * @return festivalview/index
+	 * @return gukminview/index
 	 */
-	@GetMapping("/festivalview/index")
-	public String festivalmainview() {
-		System.out.println("---국민 메인화면 : festivalmainview 메서드 MainController.java-------");
-		return "festivalview/index";
+	@GetMapping("/gukminview/index")
+	public String gukminmainview() {
+		System.out.println("---국민 메인화면 : gukminmainview 메서드 MainController.java-------");
+		return "gukminview/index";
 	}
 	
 	/**
@@ -117,10 +117,10 @@ public class MainController {
 	 * @author ksmart33 김동석
 	 * @return gukminview/gukminblank
 	 */
-	@GetMapping("/festivalview/gukminblank")
+	@GetMapping("/gukminview/gukminblank")
 	public String gukmindefault() {
 		System.out.println("---국민초기화면 : gukmindefault MainController.java-------");
-		return "festivalview/gukminblank";
+		return "gukminview/gukminblank";
 	}
 	
 
