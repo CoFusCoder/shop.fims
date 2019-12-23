@@ -29,10 +29,10 @@ public class EstimateControllor {
 	
 	}		
 	//심사지표 이동,심사명 선택	
-	@GetMapping("/examination_index")
-	public String examination_index(Model model) {
-		model.addAttribute("examinateionidex", estimateservice.examination_index());
-		return "estimate/examination_index";
+	@GetMapping("/examinationIndex")
+	public String examinationIndex(Model model) {
+		model.addAttribute("examinateionidex", estimateservice.examinationIndex());
+		return "estimate/examinationIndex";
 	}
 	//심사결과 상세보기
 	@GetMapping("/estimatelistdetail")

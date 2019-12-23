@@ -17,7 +17,7 @@ public class Estimateservice {
 		return estimatemapper.estimatelist();
 	}
 	//심사명 선택
-	public List<Estimate> examination_index(){
-		return estimatemapper.examination_index();
+	public List<Estimate> examinationIndex(){
+		return estimatemapper.examinationIndex();
 	}
 }

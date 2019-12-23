@@ -15,3 +15,4 @@ public interface GoodsrevenueMapper {
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 코드로 조회
 	public List<Revenue> coderevenue(String goodsren_rev_cd);
 }
+	

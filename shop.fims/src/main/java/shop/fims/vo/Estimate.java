@@ -2,114 +2,114 @@ package shop.fims.vo;
 
 public class Estimate {
 
-	private String exa_rep_cd;
-	private String areacity_admin_cd;
-	private String area_cd;
-	private String area_city_cd;
-	private String fest_cd;
-	private String mem_cd;
-	private String acc_mem_cd;
-	private String fest_pro_cd;
-	private String eva_index_cd;
-	private String exa_condition;
-	private String exa_dt;
-	private String exa_total_score;
-	private String est_cla_cd;
-	private String eva_nm;
-	
-	
-	public String getEva_nm() {
-		return eva_nm;
+	private String exaRepCd;// 모든 심사 결과
+	private String areacityAdminCd;// 모든 행정기관코드
+	private String areaCd;// 전국지역코드
+	private String areaCityCd;// 모든 지역 시군코드
+	private String festCd;// 축제코드
+	private String memCd;// 회원코드
+	private String accMemCd;// 하나의 거래처별 소속 회원코드
+	private String festProCd;// 하나의 축제내 여러개 프로그램 소개코드
+	private String evaIndexCd;// 심사 평가지표명코드
+	private String exaCondition;// 심사 유무
+	private String exaDt;// 심사일자
+	private String exaTotalScore;// 총점
+	private String estClaCd;// 심사구분
+	private String evaNm;// 평가명
+	public String getExaRepCd() {
+		return exaRepCd;
 	}
-	public void setEva_nm(String eva_nm) {
-		this.eva_nm = eva_nm;
+	public void setExaRepCd(String exaRepCd) {
+		this.exaRepCd = exaRepCd;
 	}
-	public String getExa_rep_cd() {
-		return exa_rep_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setExa_rep_cd(String exa_rep_cd) {
-		this.exa_rep_cd = exa_rep_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getFestCd() {
+		return festCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setFestCd(String festCd) {
+		this.festCd = festCd;
 	}
-	public String getFest_cd() {
-		return fest_cd;
+	public String getMemCd() {
+		return memCd;
 	}
-	public void setFest_cd(String fest_cd) {
-		this.fest_cd = fest_cd;
+	public void setMemCd(String memCd) {
+		this.memCd = memCd;
 	}
-	public String getMem_cd() {
-		return mem_cd;
+	public String getAccMemCd() {
+		return accMemCd;
 	}
-	public void setMem_cd(String mem_cd) {
-		this.mem_cd = mem_cd;
+	public void setAccMemCd(String accMemCd) {
+		this.accMemCd = accMemCd;
 	}
-	public String getAcc_mem_cd() {
-		return acc_mem_cd;
+	public String getFestProCd() {
+		return festProCd;
 	}
-	public void setAcc_mem_cd(String acc_mem_cd) {
-		this.acc_mem_cd = acc_mem_cd;
+	public void setFestProCd(String festProCd) {
+		this.festProCd = festProCd;
 	}
-	public String getFest_pro_cd() {
-		return fest_pro_cd;
+	public String getEvaIndexCd() {
+		return evaIndexCd;
 	}
-	public void setFest_pro_cd(String fest_pro_cd) {
-		this.fest_pro_cd = fest_pro_cd;
+	public void setEvaIndexCd(String evaIndexCd) {
+		this.evaIndexCd = evaIndexCd;
 	}
-	public String getEva_index_cd() {
-		return eva_index_cd;
+	public String getExaCondition() {
+		return exaCondition;
 	}
-	public void setEva_index_cd(String eva_index_cd) {
-		this.eva_index_cd = eva_index_cd;
+	public void setExaCondition(String exaCondition) {
+		this.exaCondition = exaCondition;
 	}
-	public String getExa_condition() {
-		return exa_condition;
+	public String getExaDt() {
+		return exaDt;
 	}
-	public void setExa_condition(String exa_condition) {
-		this.exa_condition = exa_condition;
+	public void setExaDt(String exaDt) {
+		this.exaDt = exaDt;
 	}
-	public String getExa_dt() {
-		return exa_dt;
+	public String getExaTotalScore() {
+		return exaTotalScore;
 	}
-	public void setExa_dt(String exa_dt) {
-		this.exa_dt = exa_dt;
+	public void setExaTotalScore(String exaTotalScore) {
+		this.exaTotalScore = exaTotalScore;
 	}
-	public String getExa_total_score() {
-		return exa_total_score;
+	public String getEstClaCd() {
+		return estClaCd;
 	}
-	public void setExa_total_score(String exa_total_score) {
-		this.exa_total_score = exa_total_score;
+	public void setEstClaCd(String estClaCd) {
+		this.estClaCd = estClaCd;
 	}
-	public String getEst_cla_cd() {
-		return est_cla_cd;
+	public String getEvaNm() {
+		return evaNm;
 	}
-	public void setEst_cla_cd(String est_cla_cd) {
-		this.est_cla_cd = est_cla_cd;
+	public void setEvaNm(String evaNm) {
+		this.evaNm = evaNm;
 	}
 	@Override
 	public String toString() {
-		return "Estimate [exa_rep_cd=" + exa_rep_cd + ", areacity_admin_cd=" + areacity_admin_cd + ", area_cd="
-				+ area_cd + ", area_city_cd=" + area_city_cd + ", fest_cd=" + fest_cd + ", mem_cd=" + mem_cd
-				+ ", acc_mem_cd=" + acc_mem_cd + ", fest_pro_cd=" + fest_pro_cd + ", eva_index_cd=" + eva_index_cd
-				+ ", exa_condition=" + exa_condition + ", exa_dt=" + exa_dt + ", exa_total_score=" + exa_total_score
-				+ ", est_cla_cd=" + est_cla_cd + ", eva_nm=" + eva_nm + "]";
+		return "Estimate [exaRepCd=" + exaRepCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd
+				+ ", areaCityCd=" + areaCityCd + ", festCd=" + festCd + ", memCd=" + memCd + ", accMemCd=" + accMemCd
+				+ ", festProCd=" + festProCd + ", evaIndexCd=" + evaIndexCd + ", exaCondition=" + exaCondition
+				+ ", exaDt=" + exaDt + ", exaTotalScore=" + exaTotalScore + ", estClaCd=" + estClaCd + ", evaNm="
+				+ evaNm + "]";
 	}
+	
+	
 	
 	
 }

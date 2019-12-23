@@ -9,18 +9,17 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		<div class="col-lg-12">
 			<div class="content-panel">
 				<script type="text/javascript">
-					(document).on('click','#evaindexid',function(){
-						
-						
+					(document).on('click', '#evaindexid', function() {
+
 					})
-					
-					</script>
+				</script>
 				<br>
 				<h2>
 					<i class="fa fa-angle-right"></i>심사
 				</h2>
 				담당자:<input type="text" name="exe_manager"> 
-				<select id="evaindexid">
+				<select
+					id="evaindexid">
 					<option>::심사 선택::</option>
 					<option value="evaindex1">축제 추진위원회 심사</option>
 					<option value="evaindex2">축제 평가위원회 심사</option>
@@ -33,7 +32,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 					<option value="evaindex9">지역축제 공동 평가지표</option>
 				</select>
 				<th:block th:each="e:${examinateionidex}">
-				
+
 					<table class="table table-bordered table-striped table-condensed">
 
 						<tr>
@@ -45,7 +44,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 						<tr>
 
-							<td th:text="${e.eva_nm}" colspan="5"></td>
+							<td th:text="${e.evaNm}" colspan="5"></td>
 
 						</tr>
 
@@ -53,6 +52,16 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 
 				</th:block>
+				<div align="right">
+					<div>
+						<a th:href="@{/estimatelist}">
+							<button type="button" class="btn btn-primary btn-lg">취소</button>
+						</a> <a th:href="@{/estimatelist}">
+							<button type="button" class="btn btn-primary btn-lg">심사완료</button>
+						</a>
+
+					</div>
+				</div>
 			</div>
 			<!-- /content-panel -->
 		</div>

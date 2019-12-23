@@ -11,5 +11,5 @@ public interface EstimateMapper {
 	//심사대기 리스트
 	public List<String> estimatelist();
 	//심사명 선택
-	public List<Estimate> examination_index();
+	public List<Estimate> examinationIndex();
 }

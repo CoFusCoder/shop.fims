@@ -10,8 +10,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			<i class="fa fa-angle-right"></i>보유물품 리스트
 		</h2>
 		<div align="right">
-              <a th:href="@{/g_revenueinsert}" >
-              <button type="button" class="btn btn-primary btn-lg" align="right">대여물품 등록</button></a>  
+              <a th:href="@{/insertCondition}" >
+              <button type="button" class="btn btn-primary btn-lg" >대여물품 등록</button></a>  
               </div>
 		<table class="table">
 			<tr>
@@ -31,24 +31,23 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 				<td>모든 행정기관 부서관리</td>
 				<td>보유물품</td>
 				<td>수량</td>
-				<td>특이사항</td>
-			
+				<td>특이사항</td>			
 				<td>물품수정</td>
 				<td>물품삭제</td>
 			</tr>
 
-			<tr th:each="g : ${g_conditionlist}">
-				<td th:text="${g.area_cd}"></td>
-				<td th:text="${g.area_city_cd}"></td>
-				<td th:text="${g.areacity_adm_cd}"></td>
-				<td th:text="${g.fest_cd}"></td>
-				<td th:text="${g.admin_dep_cd}"></td>
-				<td th:text="${g.goods_nm}"></td>
-				<td th:text="${g.goods_amt}"></td>
-				<td th:text="${g.special_note}"></td>
-				<td><a th:href="@{g_updatecondition}" >
+			<tr th:each="g : ${conditionList}">
+				<td th:text="${g.areacityAdmCd}"></td>
+				<td th:text="${g.areaCd}"></td>
+				<td th:text="${g.areaCityCd}"></td>
+				<td th:text="${g.festCd}"></td>
+				<td th:text="${g.adminDepCd}"></td>
+				<td th:text="${g.goodsNm}"></td>
+				<td th:text="${g.goodsAmt}"></td>
+				<td th:text="${g.specialNote}"></td>
+				<td><a th:href="@{updateCondition}" >
 	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>				
-				<th><a th:href="@{/g_conditionlist}">삭제하기</a></th>
+				<th><a th:href="@{/deleteCondition}">삭제하기</a></th>
 			</tr>
 
 		</table>
