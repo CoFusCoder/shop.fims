@@ -13,7 +13,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
             <div class="content-panel">
               <h4><i class="fa fa-angle-right"></i>보유물품 대여관리 리스트</h4>   
               <div align="right">
-              <a th:href="@{/g_revenueinsert}" >
+              <a th:href="@{/insertRevenue}" >
               <button type="button" class="btn btn-primary btn-lg" align="right">대여물품 등록</button></a>  
               </div>
               <hr>
@@ -35,16 +35,16 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 </thead>
                 <tbody>
                   <tr th:each="r:${revenuelist}">                   
-			 		<td th:text="${r.fest_cd}"></td>
-			 		<td th:text="${r.cat_acc_cd}"></td>
-			 		<td th:text="${r.deliver_bre}"></td>
+			 		<td th:text="${r.festCd}"></td>
+			 		<td th:text="${r.catAccCd}"></td>
+			 		<td th:text="${r.deliverBre}"></td>
+			 		<td th:text="${r.goodsAmt}"></td>
 			 		<td th:text="${r.money}"></td>
-			 		<td th:text="${r.goods_amt}"></td>
-			 		<td th:text="${r.return_situation}"></td>
-			 		<td th:text="${r.return_due_dt}"></td>
-			 		<td th:text="${r.return_dt}"></td>
+			 		<td th:text="${r.returnSituation}"></td>
+			 		<td th:text="${r.returnDueDt}"></td>
+			 		<td th:text="${r.returnDt}"></td>
 			 		<td>
-			 		  <a th:href="@{/g_revenuelistdetail(goodsren_rev_cd=${r.goodsren_rev_cd})}">
+			 		  <a th:href="@{/revenueListDetail(goodsren_rev_cd=${r.goodsrenRevCd})}">
 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> </a>			 		 
 			 		</td>
                   </tr>

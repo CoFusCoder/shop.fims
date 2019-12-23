@@ -10,8 +10,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 				<i class="fa fa-angle-right"></i>계약물품 납품내역 리스트
 			</h2>
 			<div align="right">
-              <a th:href="@{/g_delbreinsert}" >
-              <button type="button" class="btn btn-primary btn-lg" align="right">대여물품 등록</button></a>  
+              <a th:href="@{/insertDelbre}" >
+              <button type="button" class="btn btn-primary btn-lg" >대여물품 등록</button></a>  
               </div>
 			<table class="table">
 				
@@ -52,7 +52,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						<th>2019-8-10</th>
 						<th>2019-8-18</th>
 						<th>대형조명</th>
-						<td><a th:href="@{g_delbreupdata}" >
+						<td><a th:href="@{updataDelbre}" >
 	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
 						
 					</tr>
@@ -67,7 +67,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						<th>2019-8-12</th>
 						<th>2019-8-19</th>
 						<th>대형조명</th>					
-						<td><a th:href="@{g_delbreupdata}" >
+						<td><a th:href="@{updataDelbre}" >
 	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
 					</tr>
 				

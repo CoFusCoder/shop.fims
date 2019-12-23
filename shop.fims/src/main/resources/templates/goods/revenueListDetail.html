@@ -6,7 +6,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisMainContents">
 <!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
 	<br>
-	<a th:href="@{/g_revenuelist}">
+	<a th:href="@{/revenueList}">
 		<button type="button" class="btn btn-default">리스트로 돌아가기</button>
 	</a>
 	
@@ -32,10 +32,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							</thead>
 							<tbody>
 								<tr>
-									<td th:text="${r.areacity_admin_cd}" colspan="5"></td>
-									<td th:text="${r.area_cd}" colspan="5"></td>
-									<td th:text="${r.area_city_cd}" colspan="5"></td>
-									<td th:text="${r.fest_cd}" colspan="5"></td>
+									<td th:text="${r.areacityAdminCd}" colspan="5"></td>
+									<td th:text="${r.areaCd}" colspan="5"></td>
+									<td th:text="${r.areaCityCd}" colspan="5"></td>
+									<td th:text="${r.festCd}" colspan="5"></td>
 								</tr>
 							</tbody>
 							<thead>
@@ -48,10 +48,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							</thead>
 							<tbody>
 								<tr>
-									<td th:text="${r.catbus_acc_cd}" colspan="5"></td>
-									<td th:text="${r.cat_acc_cd}" colspan="5"></td>
-									<td th:text="${r.catapp_acc_cd}" colspan="5"></td>
-									<td th:text="${r.fesrev_bud_cd}" colspan="5"></td>
+									<td th:text="${r.catbusAccCd}" colspan="5"></td>
+									<td th:text="${r.catAccCd}" colspan="5"></td>
+									<td th:text="${r.catappAccCd}" colspan="5"></td>
+									<td th:text="${r.fesrevBudCd}" colspan="5"></td>
 								</tr>
 							</tbody>
 							<thead>
@@ -64,10 +64,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							</thead>
 							<tbody>
 								<tr>
-									<td th:text="${r.man_com_cd}" colspan="5"></td>
-									<td th:text="${r.deliver_bre}" colspan="5"></td>
+									<td th:text="${r.manComCd}" colspan="5"></td>
+									<td th:text="${r.deliverBre}" colspan="5"></td>
 									<td th:text="${r.money}" colspan="5"></td>
-									<td th:text="${r.goods_amt}" colspan="5"></td>
+									<td th:text="${r.goodsAmt}" colspan="5"></td>
 								</tr>
 							</tbody>
 							<thead>
@@ -81,9 +81,9 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							<tbody>
 								<tr>
 									<td th:text="${r.lender}" colspan="5"></td>
-									<td th:text="${r.return_due_dt}" colspan="5"></td>
-									<td th:text="${r.return_dt}" colspan="5"></td>
-									<td th:text="${r.group_cd}" colspan="5"></td>
+									<td th:text="${r.returnDueDt}" colspan="5"></td>
+									<td th:text="${r.returnDt}" colspan="5"></td>
+									<td th:text="${r.groupCd}" colspan="5"></td>
 								</tr>
 							</tbody>
 							<thead>
@@ -94,8 +94,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							</thead>
 							<tbody>
 								<tr>
-									<td th:text="${r.action_dt}" colspan="5"></td>
-									<td th:text="${r.action_status}" colspan="5"></td>									
+									<td th:text="${r.actionDt}" colspan="5"></td>
+									<td th:text="${r.actionStatus}" colspan="5"></td>									
 								</tr>
 							</tbody>
 						</table>
