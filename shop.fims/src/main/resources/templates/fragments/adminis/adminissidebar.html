@@ -6,12 +6,12 @@
        <div th:fragment="adminisLeftmenuFragment" id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="/adminisview/adminisprofile/allprofile"><img src="/adminis/img/asugi.jpg" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="/allprofile"><img src="/adminis/img/asugi.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">!총괄관리자</h5>
           <li class="mt">
-            <a href="/adminisview/dashboard">
+            <a href="/dashboard">
               <i class="fa fa-dashboard"></i>
-<span>#1.Dashboard</span>
+			<span>#1.Dashboard</span>
               </a>
           </li>
           <li class="sub-menu">
@@ -155,25 +155,23 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#12.축제예산관리_석</span>
+              <span>!12.축제예산관리_석</span>
               </a>
             <ul class="sub">
-              <li><a href="/festival_budget/revenueBudgetView">#세입예산관리</a></li>
-              <li><a href="/festival_budget/expenditureBudgetView">#세출예산관리</a></li>
-              <li><a href="/festival_budget/revenueExecutionView">#세입집행관리</a></li>
-              <li><a href="/festival_budget/expenditureExecutionView">#세출집행관리</a></li>
+              <li><a href="/revExpBudgetView">!세입세출예산조회</a></li>
+              <li><a href="#">#세입세출예산등록</a></li>
+              <li><a href="/revExpBudgetList">!세입세출예산리스트</a></li>
+              <li><a href="/revExpExecutionList">!세입세출집행리스트</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#13.축제계약관리_석</span>
+              <span>!13.축제계약관리_석</span>
               </a>
             <ul class="sub">
-              <li><a href="/festival_contract/privateContractView">#수의계약관리</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a href="/contractList">!계약리스트</a></li>
+              <li><a href="#">#계약등록</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -242,13 +240,14 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#19.통계관리_석</span>
+              <span>!19.통계관리_석</span>
               </a>
             <ul class="sub">
-              <li><a href="#">#축제별 입장료 수량 통계 관리_연</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
+              <li><a href="/accountAnalysisView">!거래처분석</a></li>
+              <li><a href="/festivalAnalysisView">!축제분석</a></li>
+              <li><a href="/budgetAnalysisView">!축제예산분석</a></li>
+              <li><a href="/executionAnalysisView">!축제집행액분석</a></li>
+              <li><a href="/evaluationAnalysisView">!축제평가분석</a></li>
             </ul>
           </li>
           <li class="sub-menu">
