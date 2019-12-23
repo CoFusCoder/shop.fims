@@ -42,7 +42,7 @@
 			cat_acc_cd = #{cat_acc_cd}
 	</delete>
 	
-	<!--  위원회 수정화면. 위원회 코드로 조회 -->
+	<!--  거래처 수정화면. 거래처 코드로 조회 -->
 	<select id="selectByAllAccount" parameterType="String" resultType="shop.fims.vo.Account">
 		SELECT 
 			*
@@ -51,6 +51,34 @@
 		WHERE 
 			cat_acc_cd = #{cat_acc_cd}
 	</select>
+	
+	<!-- 거래처 수정 -->
+	<update id="updateAllAccount" parameterType="shop.fims.vo.Account">
+	UPDATE Cat_Account
+	SET
+		cat_acc_cd = #{cat_acc_cd}
+		,areacity_admin_cd = #{areacity_admin_cd}
+		,area_city_cd = #{area_city_cd}
+		,area_cd = #{area_cd}
+		,man_com_cd = #{man_com_cd}
+		,cat_acc_nm1 = #{cat_acc_nm1}
+		,cat_acc_oper = #{cat_acc_oper}
+		,cat_acc_nm2 = #{cat_acc_nm2}
+		,cat_acc_addr = #{cat_acc_addr}
+		,cat_acc_no1 = #{cat_acc_no1}
+		,cat_acc_no2 = #{cat_acc_no2}
+		,cat_acc_phone1 = #{cat_acc_phone1}
+		,cat_acc_phone2 = #{cat_acc_phone2}
+		,cat_acc_phone3 = #{cat_acc_phone3}
+		,cat_acc_email = #{cat_acc_email}
+		,cat_acc_dt1 = #{cat_acc_dt1}
+		,cat_acc_app = #{cat_acc_app}
+		,man_com_nm1 = #{man_com_nm1}
+		,cat_acc_dt2 = #{cat_acc_dt2}
+		,cat_acc_con = #{cat_acc_con}
+	WHERE
+		cat_acc_cd = #{cat_acc_cd}
+	</update>
 	
 	<!-- 승인된 거래처 관리 -->
 	 <select id="selectApprovalAccountView" resultType="shop.fims.vo.AppAccount">

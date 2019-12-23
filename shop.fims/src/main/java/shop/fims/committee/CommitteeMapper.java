@@ -3,10 +3,8 @@ package shop.fims.committee;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.ui.Model;
 
 import shop.fims.vo.Committee;
-import shop.fims.vo.PrPromotion;
 
 
 @Mapper
@@ -26,4 +24,11 @@ public interface CommitteeMapper {
 	
 	//위원회 수정화면. 위원회 코드로 조회
 	public Committee selectByAllCommittee(String man_com_cd);
+	
+	//위원회 수정
+	public int updateAllCommittee(Committee committee);
+	
+	//위원회 검색
+	public List<Committee> searchCommittee(String sk, String sv);
+	
 }

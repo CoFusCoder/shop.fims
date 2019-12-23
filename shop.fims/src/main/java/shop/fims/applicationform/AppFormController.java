@@ -22,7 +22,7 @@ public class AppFormController {
 	//용역신청서 등록
 	@GetMapping("/insertServiceAppForm")
 	public String InsertServiceAppForm() {
-		return "/applicationform/serviceAppFormView";
+		return "/applicationform/insertServiceAppForm";
 	}
 	
 	//용역신청서 수정

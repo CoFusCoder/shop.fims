@@ -32,7 +32,7 @@
 			(#{man_com_cd}, #{areacity_admin_cd}, #{mem_cd}, #{mem_lev_cd}, #{fest_cd}, #{exa_rep_cd}, #{area_city_cd}, #{area_cd}, #{fest_nm}, #{man_com_cat},
 			 #{man_com_nm1}, #{man_com_dep}, #{man_com_rank}, #{com_mem_nm2}, #{man_com_job}, now(), #{man_com_app}, now(), #{man_com_con})
 	</insert>
-
+	
 	<!-- 위원회 삭제 -->
 	<delete id="deleteAllCommittee" parameterType="shop.fims.vo.Committee">
 		DELETE 
@@ -50,6 +50,29 @@
 			Man_Com
 		WHERE 
 			man_com_cd = #{man_com_cd}
+	</select>
+	
+	<!-- 위원회 수정 -->
+	<update id="updateAllCommittee" parameterType="shop.fims.vo.Committee">
+	UPDATE Man_Com
+	SET
+		man_com_cd = #{man_com_cd}, areacity_admin_cd = #{areacity_admin_cd}, mem_cd = #{mem_cd}, mem_lev_cd = #{mem_lev_cd}, fest_cd = #{fest_cd},
+		exa_rep_cd = #{exa_rep_cd}, area_city_cd = #{area_city_cd}, area_cd = #{area_cd}, fest_nm = #{fest_nm}, man_com_cat = #{man_com_cat}, 
+		man_com_nm1 = #{man_com_nm1}, man_com_dep = #{man_com_dep}, man_com_rank = #{man_com_rank}, com_mem_nm2 = #{com_mem_nm2}, man_com_job = #{man_com_job}, 
+		man_com_dt1 = #{man_com_dt1}, man_com_app = #{man_com_app}, man_com_dt2 = #{man_com_dt2}, man_com_con = #{man_com_con}
+	WHERE
+		man_com_cd = #{man_com_cd}
+	</update>
+	
+	<!-- 위원회 검색 -->
+	<select id="searchCommittee" parameterType="String" resultType="shop.fims.vo.Committee">
+	  	SELECT 
+			*
+		FROM Man_Com
+		<if test="sv != null and sv neq ''.toString()">
+			WHERE 
+				${sk} Like CONCAT('%',#{sv},'%')		
+		</if>
 	</select>
 
 </mapper>

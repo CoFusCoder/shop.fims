@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
 
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>위원회 수정</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	위원회 수정화면
-	<th:block layout:fragment="customBody">
+
+
               <h4><i class="fa fa-angle-right"></i></span> 위원회 수정하기 </h4><br>
 			 <div class="form-panel">
 		              <div class="form">
-		                <form th:action="@{/updateAllCommittee}" method="get" class="cmxform form-horizontal style-form" id="commentForm" th:with="c = ${selectByAllCommittee}">
+		                <form th:action="@{/updateAllCommittee}" method="post" class="cmxform form-horizontal style-form" id="commentForm" th:with="c = ${selectByAllCommittee}">
 		                  <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">위원회코드</label>
 		                    <div class="col-lg-10">
@@ -147,8 +146,9 @@ layout:decorator="layout/main">
 		                </form>
 		              </div>
 		            </div>
-			</th:block>
-			<th:block layout:fragment="customJquery">
-				<th:block th:include="layout/customJquery"></th:block>
-		    </th:block>
-		</html>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

@@ -25,6 +25,9 @@ public interface AccountMapper {
 	//모든 거래처 수정화면. 거래처코드로 조회
 	public Account selectByAllAccount(String cat_acc_cd);
 	
+	//거래처 수정
+	public int updateAllAccount(Account account);
+	
 	//승인된 거래처 관리
 	public List<Account> selectApprovalAccountView();	
 	

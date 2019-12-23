@@ -81,6 +81,13 @@ public class AccountController {
 		return "account/updateAllAccount";
 	}
 	
+	//거래처 수정
+	@PostMapping("/updateAllAccount")
+	public String updateAllAccount(Account account) {
+		accountService.updateAllAccount(account);
+		return "redirect:/allAccountView";
+	}	
+	
 	//승인된 거래처 관리
 	@GetMapping("/approvalAccountView")
 	public String selectApprovalAccountView(Model model) {

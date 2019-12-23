@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>위원회관리</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	<th:block layout:fragment="customBody">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
 		<h3>위원회관리</h3>
-		
+		<div align= "right">
+			<a th:href="@{/insertAllCommittee}">
+				<button type="button" class="btn btn-default">위원회 등록하기</button>
+			</a>
+		</div>		
+		<br/>
+		<form class="form-inline" role="form" align="right" th:action="@{/allCommitteeView}" method="post">
+					<select class="form-control" name="sk">
+	                  <option value="com_mem_nm2">이름</option>
+	                  <option value="man_com_rank">직급</option>
+	                </select>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="sv">
+                </div>
+                <button type="submit" class="btn btn-theme">검색</button>
+        </form>
 		<div class="row mt">
           <div class="col-md-12">
             <div class="content-panel">
@@ -53,8 +65,9 @@ layout:decorator="layout/main">
           <!-- /col-md-12 -->
         </div>	
 	
-	</th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
 </html>

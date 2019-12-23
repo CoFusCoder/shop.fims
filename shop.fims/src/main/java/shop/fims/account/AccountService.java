@@ -38,6 +38,11 @@ public class AccountService {
 		return accountMapper.selectByAllAccount(cat_acc_cd);
 	}
 	
+	//거래처 수정
+	public int updateAllAccount(Account account) {
+		return accountMapper.updateAllAccount(account);
+	}
+	
 	//승인된 거래처 관리
 	public List<Account> selectApprovalAccountView(){
 		return accountMapper.selectApprovalAccountView();

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
 
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>거래처 업종 분류</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	<th:block layout:fragment="customBody">
 		<h3>거래처 업종 분류</h3>
 
 		<div align= "right">
@@ -27,10 +25,10 @@ layout:decorator="layout/main">
                 
                 <thead>
                   <tr>
-                    <td>거래처 업종 분류코드</td>
-                    <td>거래처업종분류</td>
-                    <td>수정</td>
-                    <td>삭제</td>
+                    <th>거래처 업종 분류코드</th>
+                    <th>거래처업종분류</th>
+                    <th>수정</th>
+                    <th>삭제</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,8 +52,9 @@ layout:decorator="layout/main">
           <!-- /col-md-12 -->
         </div>	
 	
-	</th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
 </html>

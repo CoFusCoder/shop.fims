@@ -34,22 +34,42 @@ p{margin: 0;}
     <div class="container">
 	    <div class="col-md-10 offset-md-1 row-block">
 	        
-	    <h3>부스신청하기</h3>		
+	    <h3>공지상세보기</h3>		
 		
 		<div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>부스신청하기</h4>
+              <h4><i class="fa fa-angle-right"></i>공지상세보기</h4>
               <hr>
-        부스신청내용~
+        공지상세내용~
         <br>
+         <td>
+             <a th:href="@{/insertVolunteerAppForm}">
+             	자원봉사신청하러가기
+         </td>
+           <br>
+         <td>
+             <a th:href="@{/insertCommitteeAppForm}">
+             	위원회신청하러가기
+         </td>
+           <br>
+         <td>
+             <a th:href="@{/insertBoothAppForm}">
+             	부스참가신청하러가기	
+         </td>
+           <br>
+         <td>
+             <a th:href="@{/insertServiceAppForm}">
+             	용역신청하러가기
+         </td>
+            </div>
             
         <div align= "right">
-			<a th:href="@{/boardList}">
-				<button type="button" class="btn btn-default">신청하기</button>
+			<a th:href="@{/updateBoard}">
+				<button type="button" class="btn btn-default">수정하기</button>
 			</a>
 		</div>
         <div align= "right">
 			<a th:href="@{/boardList}">
-				<button type="button" class="btn btn-default">공지로</button>
+				<button type="button" class="btn btn-default">삭제하기</button>
 			</a>
 		</div>
 

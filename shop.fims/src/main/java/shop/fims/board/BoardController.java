@@ -18,4 +18,22 @@ public class BoardController {
 	public String BoardList() {
 		return "board/boardList";
 	}
+	
+	//공지사항 등록
+	@GetMapping("/insertBoard")
+	public String InsertBoard() {
+		return "board/insertBoard";
+	}
+	
+	//공지사항 상세
+	@GetMapping("/boardDetail")
+	public String BoardDetail() {
+		return "board/boardDetail";
+	}
+	
+	//공지사항 수정
+	@GetMapping("/updateBoard")
+	public String UpdateBoard() {
+		return "board/updateBoard";
+	}
 }

@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import shop.fims.account.AccountMapper;
 import shop.fims.vo.Committee;
-import shop.fims.vo.PrPromotion;
 
 @Service
 public class CommitteeService {
@@ -40,4 +38,13 @@ public class CommitteeService {
 		return committeeMapper.selectByAllCommittee(man_com_cd);
 	}
 	
+	//위원회 수정
+	public int updateAllCommittee(Committee committee) {
+		return committeeMapper.updateAllCommittee(committee);
+	}
+	
+	//위원회 검색
+	public List<Committee> searchCommittee(String sk, String sv){
+		return committeeMapper.searchCommittee(sk,sv);
+	}
 }
