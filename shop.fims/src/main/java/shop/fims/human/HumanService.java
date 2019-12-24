@@ -19,9 +19,9 @@ public class HumanService {
 		return humanmapper.selectHuman();
 	}
 	//인적수정화면정보가져오기
-	public Human selectbyHuman(String humancd) {
+	public Human selectbyHuman(String humanCd) {
 		
-		return humanmapper.selectbyHuman(humancd);
+		return humanmapper.selectbyHuman(humanCd);
 	}
 
 }

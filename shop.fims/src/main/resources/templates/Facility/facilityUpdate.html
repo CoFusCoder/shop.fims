@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
 	<th:block layout:fragment="customBody" th:with="f = ${facility}">
-		모든보유시설수정
+		<h1>모든보유시설수정</h1>
               <div class="form-panel">
               <div class=" form">		
                 <form class="cmxform form-horizontal style-form" id="commentForm" method="post" action="@{/facilityUpdate.html}">
+                   <div class="form-group " style=display:none;>
+                    <label for="cname" class="control-label col-lg-2">보유시설코드</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="staCd" type="text" name="staCd" th:value="${f.staCd}" readonly="readonly"/>
+                    </div>
+                  </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">시설명</label>
                     <div class="col-lg-10">
@@ -70,8 +74,8 @@ layout:decorator="layout/main">
                 </form>
               </div>
             </div>
-	</th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
 </html>

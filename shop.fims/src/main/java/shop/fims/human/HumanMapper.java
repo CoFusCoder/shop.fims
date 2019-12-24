@@ -13,7 +13,6 @@ public interface HumanMapper {
 	public List<Human> selectHuman();
 	
 	//인적수정화면정보가져오기
-	Human selectbyHuman(String humancd);
+	Human selectbyHuman(String humanCd);
 	
-
 }

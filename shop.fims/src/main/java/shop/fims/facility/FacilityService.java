@@ -23,14 +23,24 @@ public class FacilityService {
 		return facilitymapper.selectFacility();
 	}
 	//보유시설수정화면
-	public Facility selectupdateFacility(String stacd) {
+	public Facility selectupdateFacility(String staCd) {
 		
-		return facilitymapper.selectupdateFacility(stacd);
+		return facilitymapper.selectupdateFacility(staCd);
 	}
 	//임시시설설치및철거관리조회
 	public List<Facility> selectTemporary(){
 		
 		return facilitymapper.selectTemporary();
+	}
+	//임시시설설치및철거관리상세보기
+	public Facility selectTemporaryview(String facCd) {
+		
+		return facilitymapper.selectTemporaryview(facCd);
+	}
+	//임시시설설치및철거관리수정화면
+	public Facility selectupdateTemporary(String facCd) {
+		
+		return facilitymapper.selectupdateTemporary(facCd);
 	}
 	//안전점검후유지보수리스트
 	public List<Facility> selectMaintenance(){
@@ -39,9 +49,9 @@ public class FacilityService {
 	}
 	//안전점검후유지보수수정화면
 	
-	public Facility selectupdateMaintenance(String staNm) {
+	public Facility selectupdateMaintenance(String maiCd) {
 		
-		return facilitymapper.selectupdateMaintenance(staNm);
+		return facilitymapper.selectupdateMaintenance(maiCd);
 	}
 	//안전점검표조회
 	public List<Facility> selectChecklist(String staNm){

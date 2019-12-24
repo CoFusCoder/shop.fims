@@ -11,17 +11,26 @@
    		<result property="humanPhone" column="fes_human_phone"/>
    		<result property="humanHour" column="fes_human_hour"/>
    		<result property="comNm2" column="com_mem_nm2"/>
-   		<result property="humancd" column="fes_human_cd"/>  
-   		<result property="mamcd" column="man_com_cd"/>
-   		<result property="stanm" column="fac_sta_nm"/> 
-   		<result property="stacd" column="fac_sta_cd"/> 		
+   		<result property="humanCd" column="fes_human_cd"/>  
+   		<result property="mamCd" column="man_com_cd"/>
+   		<result property="staNm" column="fac_sta_nm"/> 
+   		<result property="staCd" column="fac_sta_cd"/>
+   		<result property="memNm" column="mem_nm"/>
+   		<result property="memAddr" column="mem_addr"/>
+   		<result property="memPhone" column="mem_phone"/>
+   		<result property="memEmail" column="mem_email"/>
+   		<result property="memBirth" column="mem_birth"/>
+   		<result property="joinDt" column="mem_join_dt"/>
+   		<result property="loginCd" column="login_cd"/>
+   		<result property="levNm" column="mem_lev_nm"/>	
   	</resultMap>
+  	<!--인적리스트조회-->
   <select id="selectHuman" resultMap="humanResultMap">
-  
 		SELECT
 			fh.fest_cd,
 			fh.feswork_div_nm,
-			fh.fes_human_nm, 
+			fh.fes_human_nm,
+			fh.fest_nm,
 			fh.fes_human_phone, 
 			fh.fes_human_hour, 
 			mc.com_mem_nm2, 
@@ -36,21 +45,22 @@
 			ON fh.man_com_cd = mc.man_com_cd
 				
   </select>
+  <!--인적수정화면-->
   	<select id="selectbyHuman" resultMap="humanResultMap">
 		SELECT
-			fest_nm,
-			feswork_div_nm,
-			fes_human_nm,
-			fes_human_phone,
-			fes_human_hour,
-			man_com_cd,
-			com_mem_nm2,
-			fes_human_cd
+			fh.fest_nm,
+			fh.feswork_div_nm,
+			fh.fes_human_nm,
+			fh.fes_human_phone,
+			fh.fes_human_hour,
+			mc.man_com_cd,
+			mc.com_mem_nm2,
+			fh.fes_human_cd
 		FROM
-			Festival_Human
+			Festival_Human AS fh
+			JOIN Man_Com AS mc ON fh.man_com_cd = mc.man_com_cd
 		WHERE
-			fes_human_cd=#{humancd}
+			fh.fes_human_cd=#{humanCd}
 	 </select>
-
- 
+ <!--인적사항상세조회-->
   </mapper>

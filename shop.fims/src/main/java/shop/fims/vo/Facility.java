@@ -30,13 +30,13 @@ public class Facility {
 	private String stainsCon2;	
 	private String inslistCla;			
 	private String inslistCon;
-	private String accnm1;
-	private String acccd;
-	private String fesconmancd;
-	private String comcd;
-	private String stacd;
-	private String faccd;
-	private String maicd;
+	private String accNm1;
+	private String accCd;
+	private String fesconmanCd;
+	private String comCd;
+	private String staCd;
+	private String facCd;
+	private String maiCd;
 	
 	public String getCatNm() {
 		return catNm;
@@ -206,51 +206,47 @@ public class Facility {
 	public void setInslistCon(String inslistCon) {
 		this.inslistCon = inslistCon;
 	}
-	
-	public String getAccnm1() {
-		return accnm1;
+	public String getAccNm1() {
+		return accNm1;
 	}
-	public void setAccnm1(String accnm1) {
-		this.accnm1 = accnm1;
+	public void setAccNm1(String accNm1) {
+		this.accNm1 = accNm1;
 	}
-	public String getAcccd() {
-		return acccd;
+	public String getAccCd() {
+		return accCd;
 	}
-	public void setAcccd(String acccd) {
-		this.acccd = acccd;
+	public void setAccCd(String accCd) {
+		this.accCd = accCd;
 	}
-	public String getFesconmancd() {
-		return fesconmancd;
+	public String getFesconmanCd() {
+		return fesconmanCd;
 	}
-	public void setFesconmancd(String fesconmancd) {
-		this.fesconmancd = fesconmancd;
+	public void setFesconmanCd(String fesconmanCd) {
+		this.fesconmanCd = fesconmanCd;
 	}
-	
-	public String getComcd() {
-		return comcd;
+	public String getComCd() {
+		return comCd;
 	}
-	public void setComcd(String comcd) {
-		this.comcd = comcd;
+	public void setComCd(String comCd) {
+		this.comCd = comCd;
 	}
-	public String getStacd() {
-		return stacd;
+	public String getStaCd() {
+		return staCd;
 	}
-	public void setStacd(String stacd) {
-		this.stacd = stacd;
+	public void setStaCd(String staCd) {
+		this.staCd = staCd;
 	}
-	
-	public String getFaccd() {
-		return faccd;
+	public String getFacCd() {
+		return facCd;
 	}
-	public void setFaccd(String faccd) {
-		this.faccd = faccd;
+	public void setFacCd(String facCd) {
+		this.facCd = facCd;
 	}
-	
-	public String getMaicd() {
-		return maicd;
+	public String getMaiCd() {
+		return maiCd;
 	}
-	public void setMaicd(String maicd) {
-		this.maicd = maicd;
+	public void setMaiCd(String maiCd) {
+		this.maiCd = maiCd;
 	}
 	@Override
 	public String toString() {
@@ -261,11 +257,12 @@ public class Facility {
 				+ ", stastaDt=" + stastaDt + ", staendDt=" + staendDt + ", stademDt=" + stademDt + ", staChe=" + staChe
 				+ ", stainsMo=" + stainsMo + ", stainsSc=" + stainsSc + ", stainsNum=" + stainsNum + ", stainsCon="
 				+ stainsCon + ", staWorksta=" + staWorksta + ", stainsCon1=" + stainsCon1 + ", stainsCon2=" + stainsCon2
-				+ ", inslistCla=" + inslistCla + ", inslistCon=" + inslistCon + ", accnm1=" + accnm1 + ", acccd="
-				+ acccd + ", fesconmancd=" + fesconmancd + ", comcd=" + comcd + ", stacd=" + stacd + ", faccd=" + faccd
-				+ ", maicd=" + maicd + "]";
+				+ ", inslistCla=" + inslistCla + ", inslistCon=" + inslistCon + ", accNm1=" + accNm1 + ", accCd="
+				+ accCd + ", fesconmanCd=" + fesconmanCd + ", comCd=" + comCd + ", staCd=" + staCd + ", facCd=" + facCd
+				+ ", maiCd=" + maiCd + "]";
 	}
 	
+
 	
 
 	

@@ -33,13 +33,13 @@
    		<result property="stainsCon2" column="facsta_ins_con2"/> 
    		<result property="inslistCla" column="safins_list_cla"/>
    		<result property="inslistCon" column="safins_list_con"/> 
-   		<result property="accnm1" column="cat_acc_nm1"/> 
-   		<result property="acccd" column="cat_acc_cd"/> 
-   		<result property="fesconmancd" column="fescon_man_cd"/> 
-   		<result property="comcd" column="man_com_cd"/>
-   		<result property="stacd" column="fac_sta_cd"/>
-   		<result property="faccd" column="tem_fac_cd"/>	
-   		<result property="maicd" column="fac_mai_cd"/>		
+   		<result property="accNm1" column="cat_acc_nm1"/> 
+   		<result property="accCd" column="cat_acc_cd"/> 
+   		<result property="fesconmanCd" column="fescon_man_cd"/> 
+   		<result property="comCd" column="man_com_cd"/>
+   		<result property="staCd" column="fac_sta_cd"/>
+   		<result property="facCd" column="tem_fac_cd"/>	
+   		<result property="maiCd" column="fac_mai_cd"/>		
   	</resultMap>
   
   <select id="selectClassification" resultType="shop.fims.vo.Facility">
@@ -51,8 +51,8 @@
 
   <select id="selectFacility" resultType="shop.fims.vo.Facility">
 	SELECT
-		fac_sta_cd AS stacd,
-		man_com_cd AS comcd,
+		fac_sta_cd AS staCd,
+		man_com_cd AS comCd,
 		fac_sta_nm AS staNm,
 		fesfac_cat_nm AS catNm,
 		fest_nm AS festNm,
@@ -65,32 +65,45 @@
 		Facility_Status
   </select>
   
-   <select id="selectTemporary" resultType="shop.fims.vo.Facility">
+   <select id="selectTemporary" resultMap="facilityResultMap">
 		SELECT
-			tem_fac_cd AS faccd,
-			fescon_man_cd AS fesconmancd,
-			cat_acc_cd AS acccd,
-			cat_acc_nm1 AS accnm1,
-			fac_sta_nm AS staNm,
-			fest_nm AS festNm,
-			facsta_sta_dt AS stastaDt,
-			facsta_end_dt AS staendDt,
-			facsta_ins_mo AS stainsMo,
-			facsta_ins_sc AS stainsSc,
-			facsta_ins_num AS stainsNum,
-			facsta_ins_con AS stainsCon,
-			facsta_work_sta AS staWorksta,
-			facsta_dem_dt AS stademDt,
-			fac_sta_che AS staChe,
-			com_mem_nm2 AS comNm2,
-			facsta_ins_con1 AS stainsCon1,
-			facsta_ins_con2 AS stainsCon2
+			tem_fac_cd,
+			fescon_man_cd,
+			cat_acc_cd,
+			cat_acc_nm1,
+			fac_sta_nm,
+			fest_nm,
+			com_mem_nm2,
+			facsta_ins_con1,
+			facsta_ins_con2
 		FROM
 			Temporary_Facility
   </select>
-	
+	<select id="selectTemporaryview" resultMap="facilityResultMap">
+		SELECT
+			tem_fac_cd,
+			fac_sta_nm,
+			fest_nm,
+			com_mem_nm2,
+			facsta_sta_dt,
+			facsta_end_dt,
+			facsta_ins_sc,
+			facsta_ins_con,
+			facsta_ins_num,
+			facsta_work_sta,
+			facsta_dem_dt,
+			fac_sta_che,
+			facsta_ins_mo,
+			facsta_ins_con1,
+			facsta_ins_con2
+		FROM
+			Temporary_Facility
+		WHERE
+			tem_fac_cd=#{facCd}
+	</select>
 	<select id="selectMaintenance" resultType="shop.fims.vo.Facility">
 		SELECT
+			fac_mai_cd AS maiCd,
 			fac_sta_nm AS staNm,
 			fest_nm AS festNm,
 			facmai_che_dt AS maicheDt,
@@ -119,6 +132,7 @@
 	
 	<select id="selectupdateFacility" resultMap="facilityResultMap">
 		SELECT
+			fac_sta_cd,
 			fac_sta_nm,
 			fesfac_cat_nm,
 			fest_nm,
@@ -130,12 +144,13 @@
 		FROM
 			Facility_Status
 		WHERE
-			fac_sta_cd=#{stacd}
+			fac_sta_cd=#{staCd}
 	
 	</select>
 	
 	<select id="selectupdateMaintenance" resultMap="facilityResultMap">
 		SELECT
+			fac_mai_cd,
 			fac_sta_nm,
 			fest_nm,
 			facmai_che_dt,
@@ -149,7 +164,29 @@
 		FROM
 			Facility_Mai
 		WHERE
-			fac_sta_nm=#{staNm}
+			fac_mai_cd=#{maiCd}
 	
+	</select>
+	<select id="selectupdateTemporary" resultMap="facilityResultMap">
+		SELECT
+			tem_fac_cd,
+			fac_sta_nm,
+			fest_nm,
+			facsta_sta_dt,
+			facsta_end_dt,
+			facsta_ins_mo,
+			facsta_ins_sc,
+			facsta_ins_num,
+			facsta_ins_con,
+			facsta_work_sta,
+			facsta_dem_dt,
+			fac_sta_che,
+			com_mem_nm2,
+			facsta_ins_con1,
+			facsta_ins_con2
+		FROM
+			Temporary_Facility
+		WHERE
+			tem_fac_cd=#{facCd}
 	</select>
   </mapper>

@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
 	<th:block layout:fragment="customBody"  th:with="h = ${Human}">
-		인적사항수정화면
+		<h1>인적사항수정화면</h1>
 			 <div class="form-panel">
 		              <div class=" form">		
 		                <form th:action="@{/humanUpdate}" method="post"  class="cmxform form-horizontal style-form" id="commentForm">
 		                  <div class="form-group " style=display:none>
 		                    <label for="cname" class="control-label col-lg-2">회원코드</label>
 		                    <div class="col-lg-10">
-		                      <input class=" form-control" id="humancd" type="text" name="humancd" readonly="readonly" th:value="${h.humancd}"/>
+		                      <input class=" form-control" id="humanCd" type="text" name="humanCd" readonly="readonly" th:value="${h.humanCd}"/>
 		                    </div>
 		                  </div>
 		                   <div class="form-group " style=display:none>
-		                    <label for="ccomment" class="control-label col-lg-2">담당자명</label>
+		                    <label for="ccomment" class="control-label col-lg-2">담당자코드</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control " id="mamcd" type="text" name="mamcd"/>
+		                      <input class="form-control " id="mamCd" type="text" name="mamCd"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group ">
@@ -70,8 +68,8 @@ layout:decorator="layout/main">
 		                </form>
 		              </div>
 		            </div>
-			</th:block>
-			<th:block layout:fragment="customJquery">
-				<th:block th:include="layout/customJquery"></th:block>
-		    </th:block>
-		</html>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>

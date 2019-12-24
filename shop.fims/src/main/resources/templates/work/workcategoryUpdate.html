@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	<th:block layout:fragment="customBody">
-		축제업무분류수정
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
+	<th:block layout:fragment="customBody" th:with="w = ${Work}">
+		<h1>축제업무분류수정</h1>
 				<div class="form-panel">
               <div class=" form">		
                 <form class="cmxform form-horizontal style-form" id="commentForm" method="post" action="@{/workcategoryUpdate}">
+                   <div class="form-group" style=display:none;>
+                    <label for="cname" class="control-label col-lg-2">축제업무분류코드</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="workcatCd" type="text" name="workcatCd" th:value="${w.workcatCd}" readonly="readonly"/>
+                    </div>
+                  </div>
                   <div class="form-group ">
                     <label for="cname" class="control-label col-lg-2">축제명</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="humanNm" type="text" name="humanNm"/>
+                      <input class=" form-control" id="festNm" type="text" name="festNm" th:value="${w.festNm}" readonly="readonly"/>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="cemail" class="control-label col-lg-2">업무분류</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="humanPhone" type="text" name="humanPhone" />
+                      <input class="form-control " id="workcatNm" type="text" name="workcatNm" th:value="${w.workcatNm}"/>
                     </div>
                   </div>
                    <div class="form-group">
@@ -34,8 +38,8 @@ layout:decorator="layout/main">
                 </form>
               </div>
             </div>
-	</th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
 </html>
