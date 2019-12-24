@@ -1,6 +1,7 @@
 package shop.fims.estimate;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,9 @@ public class Estimateservice {
 	//심사명 선택
 	public List<Estimate> examinationIndex(){
 		return estimatemapper.examinationIndex();
+	}
+	
+	public Estimate testSelect(String stnId) {
+		return estimatemapper.testSelect(stnId);
 	}
 }

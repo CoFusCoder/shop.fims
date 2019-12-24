@@ -29,6 +29,12 @@
 	Eva_index
 
 
-  </select>    
+  </select>
+  
+  <select id="testSelect" parameterType="String" resultMap="examinationIndexMap">
+  	SELECT *
+	FROM Eva_index
+	WHERE eva_index_cd = ${stnId}
+  </select>
 
   </mapper>

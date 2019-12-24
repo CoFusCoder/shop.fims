@@ -16,6 +16,11 @@ public class Estimate {
 	private String exaTotalScore;// 총점
 	private String estClaCd;// 심사구분
 	private String evaNm;// 평가명
+	private String l_criteria;// 대평가항목
+	private String m_criteria;// 중평가항목
+	private String s_criteria;// 소평가항목
+	private String scoring_criteria;// 배점기준
+	private String scoring;// 배점
 	public String getExaRepCd() {
 		return exaRepCd;
 	}
@@ -100,14 +105,47 @@ public class Estimate {
 	public void setEvaNm(String evaNm) {
 		this.evaNm = evaNm;
 	}
+	public String getL_criteria() {
+		return l_criteria;
+	}
+	public void setL_criteria(String l_criteria) {
+		this.l_criteria = l_criteria;
+	}
+	public String getM_criteria() {
+		return m_criteria;
+	}
+	public void setM_criteria(String m_criteria) {
+		this.m_criteria = m_criteria;
+	}
+	public String getS_criteria() {
+		return s_criteria;
+	}
+	public void setS_criteria(String s_criteria) {
+		this.s_criteria = s_criteria;
+	}
+	public String getScoring_criteria() {
+		return scoring_criteria;
+	}
+	public void setScoring_criteria(String scoring_criteria) {
+		this.scoring_criteria = scoring_criteria;
+	}
+	public String getScoring() {
+		return scoring;
+	}
+	public void setScoring(String scoring) {
+		this.scoring = scoring;
+	}
 	@Override
 	public String toString() {
 		return "Estimate [exaRepCd=" + exaRepCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd
 				+ ", areaCityCd=" + areaCityCd + ", festCd=" + festCd + ", memCd=" + memCd + ", accMemCd=" + accMemCd
 				+ ", festProCd=" + festProCd + ", evaIndexCd=" + evaIndexCd + ", exaCondition=" + exaCondition
 				+ ", exaDt=" + exaDt + ", exaTotalScore=" + exaTotalScore + ", estClaCd=" + estClaCd + ", evaNm="
-				+ evaNm + "]";
+				+ evaNm + ", l_criteria=" + l_criteria + ", m_criteria=" + m_criteria + ", s_criteria=" + s_criteria
+				+ ", scoring_criteria=" + scoring_criteria + ", scoring=" + scoring + "]";
 	}
+	
+	
 	
 	
 	
