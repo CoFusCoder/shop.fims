@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<div class="content-panel">
+		<h2>
+			<i class="fa fa-angle-right"></i>보유물품 리스트
+		</h2>
+		<div align="right">
+              <a th:href="@{/insertCondition}" >
+              <button type="button" class="btn btn-primary btn-lg" >대여물품 등록</button></a>  
+              </div>
+		<table class="table">
+			<tr>
+				<th><input type="text"> <input type="button"
+					value="시군별"></th>
+				<th><input type="text"> <input type="button"
+					value="부서별"></th>
+				<th><input type="text"> <input type="button"
+					value="물품별"></th>
+			</tr>
+			
+			<tr>
+				<td>모든 행정기관관리</td>
+				<td>전국 지역관리</td>
+				<td>모든 지역 시군관리</td>
+				<td>모든 축제관리</td>
+				<td>모든 행정기관 부서관리</td>
+				<td>보유물품</td>
+				<td>수량</td>
+				<td>특이사항</td>			
+				<td>물품수정</td>
+				<td>물품삭제</td>
+			</tr>
+
+			<tr th:each="g : ${conditionList}">
+				<td th:text="${g.areacityAdmCd}"></td>
+				<td th:text="${g.areaCd}"></td>
+				<td th:text="${g.areaCityCd}"></td>
+				<td th:text="${g.festCd}"></td>
+				<td th:text="${g.adminDepCd}"></td>
+				<td th:text="${g.goodsNm}"></td>
+				<td th:text="${g.goodsAmt}"></td>
+				<td th:text="${g.specialNote}"></td>
+				<td><a th:href="@{updateCondition}" >
+	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>				
+				<th><a th:href="@{/deleteCondition}">삭제하기</a></th>
+			</tr>
+
+		</table>
+	</div>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+
+</th:block>
+
+</html>

@@ -9,46 +9,52 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class RevenueController {
+public class GoodsrevenueController {
 
-	@Autowired RevenueService revenueservice;
+	@Autowired GoodsrevenueService revenueservice;
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 리스트
-	@GetMapping("/g_revenuelist")
+	@GetMapping("/revenueList")
 	public String revenuelist(Model model) {
 		model.addAttribute("revenuelist" , revenueservice.revenuelist());
-		return "/revenue/g_revenuelist";
+		return "/goods/revenueList";
 	}
 	
+//	//모든 축제별 보유물품 대여관리 리스트 - 세입 코드로 조회
+//	@GetMapping("/revenueListDetail")
+//	public String coderevenue(@RequestParam(value = "goodsren_rev_cd") String goodsren_rev_cd, Model model) {
+//		model.addAttribute("coderevenue", revenueservice.coderevenue(goodsren_rev_cd));
+//		return "/goods/revenueListDetail";
+//	}
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 코드로 조회
-	@GetMapping("/g_revenuelistdetail")
+	@GetMapping("/revenueListDetail")
 	public String coderevenue(@RequestParam(value = "goodsren_rev_cd") String goodsren_rev_cd, Model model) {
 		model.addAttribute("coderevenue", revenueservice.coderevenue(goodsren_rev_cd));
-		return "/revenue/g_revenuelistdetail";
+		return "/goods/revenueListDetail";
 	}
 	
 	
 	
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 등록
-	@GetMapping("/g_revenueinsert")
-	public String g_revenueinsert() {
-		return "/revenue/g_revenueinsert";		
+	@GetMapping("/insertRevenue")
+	public String g_insertrevenue() {
+		return "/goods/insertRevenue";		
 	}
 	
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 등록처리
-	@PostMapping("g_revenueinsert")
-	public String adddelbreinsert() {
-		return "redirect:/g_revenuelist";
+	@PostMapping("insertRevenue")
+	public String addinsertdelbre() {
+		return "redirect:/revenueList";
 	}
 	
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 수정
-	@GetMapping("/g_revenueupdata")
-	public String selectrevenueupdata() {
-		return "/revenue/g_revenueupdata";
+	@GetMapping("/updataRevenue")
+	public String selectrevenue() {
+		return "/goods/updataRevenue";
 	}
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 수정
-	@PostMapping("/g_revenueupdata")
-	public String g_revenueupdata() {
-		return "redirect:/g_revenuelist";
+	@PostMapping("/updataRevenue")
+	public String g_updatarevenue() {
+		return "redirect:/revenueList";
 	}
 	
 }

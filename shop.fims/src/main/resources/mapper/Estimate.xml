@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shop.fims.estimate.EstimateMapper">
+  <resultMap type="shop.fims.vo.Estimate" id="examinationIndexMap">
+  <result property="exaRepCd" column="exa_rep_cd"/>
+  <result property="areacityAdminCd" column="areacity_admin_cd"/>
+  <result property="areaCd" column="area_cd"/>
+  <result property="areaCityCd" column="area_city_cd"/>
+  <result property="festCd" column="fest_cd"/>
+  <result property="memCd" column="mem_cd"/>
+  <result property="accMemCd" column="acc_mem_cd"/>
+  <result property="festProCd" column="fest_pro_cd"/>
+  <result property="evaIndexCd" column="eva_index_cd"/>
+  <result property="exaCondition" column="exa_condition"/>
+  <result property="exaDt" column="exa_dt"/>
+  <result property="exaTotalScore" column="exa_total_score"/>
+  <result property="estClaCd" column="est_cla_cd"/>
+  <result property="evaNm" column="eva_nm"/>
+ 
+  </resultMap>
+  <select id="examinationIndex" resultMap="examinationIndexMap">
+	SELECT
+	eva_index_cd,
+	eva_nm
+	
+	FROM
+	Eva_index
+
+
+  </select>
+  
+  <select id="testSelect" parameterType="String" resultMap="examinationIndexMap">
+  	SELECT *
+	FROM Eva_index
+	WHERE eva_index_cd = ${stnId}
+  </select>
+
+  </mapper>

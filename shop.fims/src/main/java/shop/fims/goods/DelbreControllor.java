@@ -8,29 +8,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DelbreControllor {
 
 	//계약물품 납품내역리스트
-	@GetMapping("/g_delbrelist")
+	@GetMapping("/delbreList")
 	public String delbrelist() {
-		return "/delbre/g_delbrelist";
+		return "/goods/delbreList";
 	}
 	// 계약물품 납품 등록화면
-	@GetMapping("/g_delbreinsert")
+	@GetMapping("/insertDelbre")
 	public String g_delbrelistinsert() {
-		return "/delbre/g_delbreinsert";
+		return "/goods/insertDelbre";
 	}
 	//계약물품 납품 수정화면
-	@GetMapping("/g_delbreupdata")
+	@GetMapping("/updataDelbre")
 	public String g_delbreupdata() {
-		return "/delbre/g_delbreupdata";
+		return "/goods/updataDelbre";
 	}
 	//계약물품 남품 등록처리
-	@PostMapping("/g_delbreinsert")
+	@PostMapping("/insertDelbre")
 	public String adddelbrelist() {
-		return "redirect:/g_delbrelist";
+		return "redirect:/delbreList";
 	}
 	//계약물품 남품 수정처리
-	@PostMapping("/g_delbreupdata")
+	@PostMapping("/updataDelbre")
 	public String updataelbrelist() {
-		return "redirect:/g_delbrelist";
+		return "redirect:/delbreList";
 	}
 
 }

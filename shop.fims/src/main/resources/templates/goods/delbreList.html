@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	<th:block layout:fragment="customBody">
-		<div class="content-panel">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<div class="content-panel">
 			<h2>
 				<i class="fa fa-angle-right"></i>계약물품 납품내역 리스트
 			</h2>
+			<div align="right">
+              <a th:href="@{/insertDelbre}" >
+              <button type="button" class="btn btn-primary btn-lg" >대여물품 등록</button></a>  
+              </div>
 			<table class="table">
 				
 					<tr>
@@ -37,7 +37,7 @@ layout:decorator="layout/main">
 						<th>계약물품날짜</th>
 						<th>계약물품만료날짜</th>
 						<th>계약물품내역</th>
-						<th>계약물품 등록</th>
+						
 						<th>계약물품 수정</th>
 					</tr>
 				
@@ -52,8 +52,9 @@ layout:decorator="layout/main">
 						<th>2019-8-10</th>
 						<th>2019-8-18</th>
 						<th>대형조명</th>
-						<th><a th:href="@{/g_delbreinsert}">계약물품 등록</a></th>
-						<th><a th:href="@{/g_delbreupdata}">계약물품 수정</a></th>
+						<td><a th:href="@{updataDelbre}" >
+	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+						
 					</tr>
 					<tr>
 						<th>전라북도청</th>
@@ -65,15 +66,17 @@ layout:decorator="layout/main">
 						<!-- <th>전주세계소리축제조직위원회</th> -->
 						<th>2019-8-12</th>
 						<th>2019-8-19</th>
-						<th>대형조명</th>
-						<th><a th:href="@{/g_delbreinsert}">계약물품 등록</a></th>
-						<th><a th:href="@{/g_delbreupdata}">계약물품 수정</a></th>
+						<th>대형조명</th>					
+						<td><a th:href="@{updataDelbre}" >
+	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
 					</tr>
 				
 			</table>
 		</div>
-	</th:block>
-<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+>>>>>>> refs/heads/Yun-Sujeong
 </html>

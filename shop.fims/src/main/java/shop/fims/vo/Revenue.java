@@ -2,91 +2,92 @@ package shop.fims.vo;
 
 public class Revenue {
 
-	private String goodsren_rev_cd;
-	private String areacity_admin_cd;
-	private String area_cd;
-	private String area_city_cd;
-	private String fest_cd;	
-	private String catbus_acc_cd;
-	private String cat_acc_cd;
-	private String catapp_acc_cd;
-	private String fesrev_bud_cd;
-	private String man_com_cd;
-	private String deliver_bre;
-	private String money;
-	private String goods_amt;
-	private String lender;
-	private String return_situation;
-	private String return_due_dt;
-	private String return_dt;
-	private String group_cd;
-	private String action_dt;
-	private String action_status;
-	public String getGoodsren_rev_cd() {
-		return goodsren_rev_cd;
+	private String goodsrenRevCd;// 모든축제별 보유물품대여관리코드
+	private String areacityAdminCd;// 모든 행정기관코드
+	private String areaCd;// 전국지역코드
+	private String areaCityCd;// 모든 지역 시군코드
+	private String festCd; // 축제코드
+	private String catbusAccCd;// 거래처 업종 분류코드
+	private String catAccCd; // 거래처코드
+	private String catappAccCd;// 거래처별 승인 업종 코드
+	private String fesrevBudCd;// 모든축제세입세출예산관리코드
+	private String manComCd;// 위원회코드
+	private String deliverBre;// 보유물품사용내역
+	private String money;// 대여료
+	private String goodsAmt;// 수량
+	private String lender;// 대여자
+	private String returnSituation;// 반납유무
+	private String returnDueDt;// 반납예정일
+	private String returnDt;// 반납완료일
+	private String groupCd;// 세입상세그룹코드
+	private String actionDt;// 마감일자
+	private String actionStatus;// 마감유무
+	
+	public String getGoodsrenRevCd() {
+		return goodsrenRevCd;
 	}
-	public void setGoodsren_rev_cd(String goodsren_rev_cd) {
-		this.goodsren_rev_cd = goodsren_rev_cd;
+	public void setGoodsrenRevCd(String goodsrenRevCd) {
+		this.goodsrenRevCd = goodsrenRevCd;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getFest_cd() {
-		return fest_cd;
+	public String getFestCd() {
+		return festCd;
 	}
-	public void setFest_cd(String fest_cd) {
-		this.fest_cd = fest_cd;
+	public void setFestCd(String festCd) {
+		this.festCd = festCd;
 	}
-	public String getCatbus_acc_cd() {
-		return catbus_acc_cd;
+	public String getCatbusAccCd() {
+		return catbusAccCd;
 	}
-	public void setCatbus_acc_cd(String catbus_acc_cd) {
-		this.catbus_acc_cd = catbus_acc_cd;
+	public void setCatbusAccCd(String catbusAccCd) {
+		this.catbusAccCd = catbusAccCd;
 	}
-	public String getCat_acc_cd() {
-		return cat_acc_cd;
+	public String getCatAccCd() {
+		return catAccCd;
 	}
-	public void setCat_acc_cd(String cat_acc_cd) {
-		this.cat_acc_cd = cat_acc_cd;
+	public void setCatAccCd(String catAccCd) {
+		this.catAccCd = catAccCd;
 	}
-	public String getCatapp_acc_cd() {
-		return catapp_acc_cd;
+	public String getCatappAccCd() {
+		return catappAccCd;
 	}
-	public void setCatapp_acc_cd(String catapp_acc_cd) {
-		this.catapp_acc_cd = catapp_acc_cd;
+	public void setCatappAccCd(String catappAccCd) {
+		this.catappAccCd = catappAccCd;
 	}
-	public String getFesrev_bud_cd() {
-		return fesrev_bud_cd;
+	public String getFesrevBudCd() {
+		return fesrevBudCd;
 	}
-	public void setFesrev_bud_cd(String fesrev_bud_cd) {
-		this.fesrev_bud_cd = fesrev_bud_cd;
+	public void setFesrevBudCd(String fesrevBudCd) {
+		this.fesrevBudCd = fesrevBudCd;
 	}
-	public String getMan_com_cd() {
-		return man_com_cd;
+	public String getManComCd() {
+		return manComCd;
 	}
-	public void setMan_com_cd(String man_com_cd) {
-		this.man_com_cd = man_com_cd;
+	public void setManComCd(String manComCd) {
+		this.manComCd = manComCd;
 	}
-	public String getDeliver_bre() {
-		return deliver_bre;
+	public String getDeliverBre() {
+		return deliverBre;
 	}
-	public void setDeliver_bre(String deliver_bre) {
-		this.deliver_bre = deliver_bre;
+	public void setDeliverBre(String deliverBre) {
+		this.deliverBre = deliverBre;
 	}
 	public String getMoney() {
 		return money;
@@ -94,11 +95,11 @@ public class Revenue {
 	public void setMoney(String money) {
 		this.money = money;
 	}
-	public String getGoods_amt() {
-		return goods_amt;
+	public String getGoodsAmt() {
+		return goodsAmt;
 	}
-	public void setGoods_amt(String goods_amt) {
-		this.goods_amt = goods_amt;
+	public void setGoodsAmt(String goodsAmt) {
+		this.goodsAmt = goodsAmt;
 	}
 	public String getLender() {
 		return lender;
@@ -106,51 +107,50 @@ public class Revenue {
 	public void setLender(String lender) {
 		this.lender = lender;
 	}
-	public String getReturn_situation() {
-		return return_situation;
+	public String getReturnSituation() {
+		return returnSituation;
 	}
-	public void setReturn_situation(String return_situation) {
-		this.return_situation = return_situation;
+	public void setReturnSituation(String returnSituation) {
+		this.returnSituation = returnSituation;
 	}
-	public String getReturn_due_dt() {
-		return return_due_dt;
+	public String getReturnDueDt() {
+		return returnDueDt;
 	}
-	public void setReturn_due_dt(String return_due_dt) {
-		this.return_due_dt = return_due_dt;
+	public void setReturnDueDt(String returnDueDt) {
+		this.returnDueDt = returnDueDt;
 	}
-	public String getReturn_dt() {
-		return return_dt;
+	public String getReturnDt() {
+		return returnDt;
 	}
-	public void setReturn_dt(String return_dt) {
-		this.return_dt = return_dt;
+	public void setReturnDt(String returnDt) {
+		this.returnDt = returnDt;
 	}
-	public String getGroup_cd() {
-		return group_cd;
+	public String getGroupCd() {
+		return groupCd;
 	}
-	public void setGroup_cd(String group_cd) {
-		this.group_cd = group_cd;
+	public void setGroupCd(String groupCd) {
+		this.groupCd = groupCd;
 	}
-	public String getAction_dt() {
-		return action_dt;
+	public String getActionDt() {
+		return actionDt;
 	}
-	public void setAction_dt(String action_dt) {
-		this.action_dt = action_dt;
+	public void setActionDt(String actionDt) {
+		this.actionDt = actionDt;
 	}
-	public String getAction_status() {
-		return action_status;
+	public String getActionStatus() {
+		return actionStatus;
 	}
-	public void setAction_status(String action_status) {
-		this.action_status = action_status;
+	public void setActionStatus(String actionStatus) {
+		this.actionStatus = actionStatus;
 	}
 	@Override
 	public String toString() {
-		return "Revenue [goodsren_rev_cd=" + goodsren_rev_cd + ", areacity_admin_cd=" + areacity_admin_cd + ", area_cd="
-				+ area_cd + ", area_city_cd=" + area_city_cd + ", fest_cd=" + fest_cd + ", catbus_acc_cd="
-				+ catbus_acc_cd + ", cat_acc_cd=" + cat_acc_cd + ", catapp_acc_cd=" + catapp_acc_cd + ", fesrev_bud_cd="
-				+ fesrev_bud_cd + ", man_com_cd=" + man_com_cd + ", deliver_bre=" + deliver_bre + ", money=" + money
-				+ ", goods_amt=" + goods_amt + ", lender=" + lender + ", return_situation=" + return_situation
-				+ ", return_due_dt=" + return_due_dt + ", return_dt=" + return_dt + ", group_cd=" + group_cd
-				+ ", action_dt=" + action_dt + ", action_status=" + action_status + "]";
+		return "Revenue [goodsrenRevCd=" + goodsrenRevCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd
+				+ ", areaCityCd=" + areaCityCd + ", festCd=" + festCd + ", catbusAccCd=" + catbusAccCd + ", catAccCd="
+				+ catAccCd + ", catappAccCd=" + catappAccCd + ", fesrevBudCd=" + fesrevBudCd + ", manComCd=" + manComCd
+				+ ", deliverBre=" + deliverBre + ", money=" + money + ", goodsAmt=" + goodsAmt + ", lender=" + lender
+				+ ", returnSituation=" + returnSituation + ", returnDueDt=" + returnDueDt + ", returnDt=" + returnDt
+				+ ", groupCd=" + groupCd + ", actionDt=" + actionDt + ", actionStatus=" + actionStatus + "]";
 	}
 	
 	

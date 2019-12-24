@@ -5,19 +5,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle"></th:block>
 <th:block layout:fragment="adminisMainContents">
 <!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
-<div class="content-panel">
-		<h2>
-			<i class="fa fa-angle-right"></i>신청서 내용
-		</h2>
-		<form method="get">
-			<table class="table">
-				<tr>
-					<th><a th:href="@{/examinationIndex}">심사시작</a></th>
-					<th><a th:href="@{/estimatelist}">심사취소</a></th>
-				</tr>
-			</table>
-		</form>
-	</div>
+
+삭제 화면
+
+
+
+
 </th:block>
 <th:block layout:fragment="adminisscript">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
