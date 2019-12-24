@@ -58,11 +58,11 @@ public class FestivalGoodsIn {
 	public void setFestgoodsLdivCd(String festgoodsLdivCd) {
 		this.festgoodsLdivCd = festgoodsLdivCd;
 	}
-	public String getFestgoodsCdivCd() {
+	public String getFestgoodsSdivCd() {
 		return festgoodsSdivCd;
 	}
-	public void setFestgoodsCdivCd(String festgoodsCdivCd) {
-		this.festgoodsSdivCd = festgoodsCdivCd;
+	public void setFestgoodsSdivCd(String festgoodsSdivCd) {
+		this.festgoodsSdivCd = festgoodsSdivCd;
 	}
 	public String getManComCd() {
 		return manComCd;
@@ -152,13 +152,14 @@ public class FestivalGoodsIn {
 	public String toString() {
 		return "FestivalGoodsIn [festgoodsInCd=" + festgoodsInCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd="
 				+ areaCd + ", areaCityCd=" + areaCityCd + ", festCd=" + festCd + ", festgoodsLdivCd=" + festgoodsLdivCd
-				+ ", festgoodsCdivCd=" + festgoodsSdivCd + ", manComCd=" + manComCd + ", catAccCd=" + catAccCd
+				+ ", festgoodsSdivCd=" + festgoodsSdivCd + ", manComCd=" + manComCd + ", catAccCd=" + catAccCd
 				+ ", accMemCd=" + accMemCd + ", fesrevBudCd=" + fesrevBudCd + ", festTitle=" + festTitle + ", festNm="
 				+ festNm + ", festgoodsInNm=" + festgoodsInNm + ", festgoodsInDetail=" + festgoodsInDetail
 				+ ", festgoodsInAmt=" + festgoodsInAmt + ", groupCd=" + groupCd + ", actionDt=" + actionDt
 				+ ", actionStatus=" + actionStatus + ", festgoodsExpense=" + festgoodsExpense + ", insertDt=" + insertDt
 				+ "]";
 	}
+
 	
 	
 	

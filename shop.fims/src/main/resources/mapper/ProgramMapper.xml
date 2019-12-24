@@ -128,7 +128,7 @@ FROM
 	AND c.festpro_spro_cd=a.festpro_spro_cd
 	)AS f 
 	where f.fest_cd=(#{festCd})
-	<trim prefixOverrides="and">
+	<trim prefix="and" prefixOverrides="and">
 		<if test="festProNm neq null and festProNm neq ''.toString()">
 			and f.fest_pro_nm like CONCAT ('%',#{festProNm},'%') 
 		</if>
@@ -235,7 +235,7 @@ FROM
 		,area_city_cd
 		,area_cd
 		,fest_cd
-		,fest_nm
+		,fest_title
 		,festprodiv_theme_nm
 	FROM
 		Fest_Pro_Div_Theme
@@ -252,7 +252,7 @@ FROM
 		,area_city_cd
 		,area_cd
 		,fest_cd
-		,fest_nm
+		,fest_title
 		,festprodiv_pla_nm
 	FROM
 		Fest_Pro_Div_Place

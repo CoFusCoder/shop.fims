@@ -30,8 +30,8 @@ public class PublicrelationsController {
 	//이벤트당첨자 삭제
 	@GetMapping("/prDeleteEventwinner")
 	public String deleteEventWinnerByPmcd(Model model,HttpSession session) {
-		String fest_cd = (String)session.getAttribute("F_CD");
-		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(fest_cd));
+		String festCd = (String)session.getAttribute("F_CD");
+		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(festCd));
 		return "publicrelations/prPromotionList";
 	}
 	//이벤트당첨자 조회
