@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shop.fims.program.ProgramMapper">
+
+
+<!-- 프로그램 일자분류 resultMap -->
+	<resultMap type="shop.fims.vo.ProDivDay" id="proDivDayResultmap">
+		<result property="festprodivDayCd" column="festprodiv_day_cd"/>
+		<result property="festprodivDayNm" column="festprodiv_day_nm"/>
+	</resultMap>  
+
+<!-- 프로그램 장소분류 resultMap -->
+	<resultMap type="shop.fims.vo.ProDivPlace" id="proDivPlaceResultmap">
+		<result property="festprodivPlaCd" column="festprodiv_pla_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="festTitle" column="fest_title"/>
+		<result property="festprodivPlaNm" column="festprodiv_pla_nm"/>
+	</resultMap> 
+
+<!-- 프로그램 성격분류 resultMap -->
+	<resultMap type="shop.fims.vo.ProDivTheme" id="proDivThemeResultmap">
+		<result property="festprodivThemeCd" column="festprodiv_theme_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="area_CityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="festTitle" column="fest_title"/>
+		<result property="festprodivThemeNm" column="festprodiv_theme_nm"/>
+	</resultMap>  
+
+	
+<!-- 프로그램 resultMap -->
+	<resultMap type="shop.fims.vo.Program" id="programResultmap">
+		<result property="festProCd" column="fest_pro_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="festprodivDayCd" column="festprodiv_day_cd"/>
+		<result property="festprodivPlaCd" column="festprodiv_pla_cd"/>
+		<result property="festprodivThemeCd" column="festprodiv_theme_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="manComCd" column="v"/>
+		<result property="exaRepCd" column="exa_rep_cd"/>
+		<result property="fesrevBudCd" column="fesrev_bud_cd"/>
+		<result property="accMemCd" column="acc_mem_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="festTitle" column="fest_title"/>
+		<result property="festProNm" column="fest_pro_nm"/>
+		<result property="festProImg" column="fest_pro_img"/>
+		<result property="festproTimeStart" column="festpro_time_start"/>
+		<result property="festproTimeEnd" column="festpro_time_end"/>
+		<result property="festProRuntime" column="fest_pro_runtime"/>
+		<result property="festProDetail" column="fest_pro_detail"/>
+		<result property="groupCd" column="group_cd"/>
+		<result property="actionDt" column="action_dt"/>
+		<result property="actionStatus" column="action_status"/>
+		<result property="festProExpense" column="fest_pro_expense"/>
+		<result property="festProAgelevel" column="fest_pro_agelevel"/>
+		<result property="festproTicketCost" column="festpro_ticket_cost"/>
+		<result property="festproReservDiv" column="festpro_reserv_div"/>
+		<result property="festproReflectDiv" column="festpro_reflect_div"/>
+		<result property="festproReflectDt" column="festpro_reflect_dt"/>
+		<result property="proApprove" column="pro_approve"/>
+		<result property="insertDt" column="insert_dt"/>
+	</resultMap>  
+	
+<!-- 프로그램내 세부프로그램 resultMap -->
+	<resultMap type="shop.fims.vo.ProSpro" id="proSproResultmap">
+		<result property="festproSproCd" column="festpro_spro_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="festprodivThemeCd" column="festprodiv_theme_cd"/>
+		<result property="festProCd" column="fest_pro_cd"/>
+		<result property="accMemCd" column="acc_mem_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="festproSproNm" column="festpro_spro_nm"/>
+		<result property="festProNm" column="fest_pro_nm"/>
+		<result property="festproSproPlace" column="festpro_spro_place"/>
+		<result property="festproSproTime" column="festpro_spro_time"/>
+		<result property="festproSproDetail" column="festpro_spro_detail"/>
+		<result property="festproSproExpense" column="festpro_spro_expense"/>
+		<result property="insertDt" column="insert_dt"/>
+	</resultMap>  
+	
+<!-- 프로그램 참가자 resultMap -->
+	<resultMap type="shop.fims.vo.ProParticipants" id="proParticipantsResultmap">
+		<result property="festProNm" column="fest_pro_nm"/>
+		<result property="festproSproNm" column="festpro_spro_nm"/>
+		<result property="festproParCd" column="festpro_par_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="festproSproCd" column="festpro_spro_cd"/>
+		<result property="festProCd" column="fest_pro_cd"/>
+		<result property="accMemCd" column="acc_mem_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="festproParNm" column="festpro_par_nm"/>
+		<result property="festproParGender" column="festpro_par_gender"/>
+		<result property="festproParAge" column="festpro_par_age"/>
+		<result property="festproParPhone" column="festpro_par_phone"/>
+		<result property="festproParEtc" column="festpro_par_etc"/>
+		<result property="insertDt" column="insert_dt"/>
+
+	</resultMap>  
+
+  
+<select id="searchParticipant" resultMap="proParticipantsResultmap">
+SELECT
+	f.*
+FROM
+	(
+	SELECT
+	a.festpro_spro_nm
+	,b.fest_pro_nm
+	,c.*
+	from
+	Fest_Pro_sPro AS a,
+	Fest_Program AS b,
+	Fest_Pro_participants AS c
+	where a.fest_pro_cd=b.fest_pro_cd
+	AND c.festpro_spro_cd=a.festpro_spro_cd
+	)AS f 
+	where f.fest_cd=(#{festCd})
+	<trim prefixOverrides="and">
+		<if test="festProNm neq null and festProNm neq ''.toString()">
+			and f.fest_pro_nm like CONCAT ('%',#{festProNm},'%') 
+		</if>
+		<if test="festproSproNm neq null and festproSproNm neq ''.toString()">
+			and f.festpro_spro_nm like CONCAT ('%',#{festproSproNm},'%') 
+		</if>
+		<if test="festproParNm neq null and festproParNm neq ''.toString()">
+			and f.festpro_par_nm like CONCAT ('%',#{festproParNm},'%') 
+		</if>
+		<if test="festproParGender neq null and festproParGender neq ''.toString()">
+			and f.festpro_par_gender=#{festproParGender}
+		</if>
+		<if test="festproParPhone neq null and festproParPhone neq ''.toString()">
+			and f.festpro_par_phone like CONCAT ('%',#{festproParPhone},'%') 
+		</if>
+	</trim>
+</select>
+  
+  
+<!-- 세부프로그램 다섯가지 조건검색  -->
+  	<select id="searchSpro" resultMap="proSproResultmap">
+		SELECT
+			a.fest_pro_nm
+			,b.*
+			from
+		Fest_Program AS a
+		INNER JOIN 
+		Fest_Pro_sPro AS b
+		ON a.fest_pro_cd=b.fest_pro_cd
+ 		<trim prefix="WHERE" prefixOverrides="and">
+ 			<if test="festProNm neq null and festProNm neq ''.toString()">
+ 				fest_pro_nm like CONCAT ('%',#{festProNm},'%') 
+ 			</if>
+ 			<if test="festproSproNm neq null and festproSproNm neq ''.toString()">
+ 				and festpro_spro_nm like CONCAT ('%',#{festproSproNm},'%') 
+ 			</if>
+ 		</trim>
+  	</select>  
+  
+  
+  
+<!-- 프로그램코드로 상세조회 -->
+  	<select id="selectByProcd" resultMap="programResultmap">
+	SELECT
+		f.fest_nm
+		,fg.*
+	FROM
+		Festival AS f
+		INNER JOIN
+		Fest_Program AS fg
+		ON
+		f.fest_cd=fg.fest_cd
+	where fest_pro_cd=(#{festProCd})
+  	</select>  
+  
+  
+  
+<!--  세부프로그램조회 -->
+  <select id="selectAllSpro" resultMap="proSproResultmap">
+  	SELECT
+  		b.fest_pro_nm
+		,a.*
+	FROM 
+	Fest_Pro_sPro AS a
+	INNER join
+	Fest_Program AS b
+	ON a.fest_pro_cd=b.fest_pro_cd
+	WHERE b.fest_cd=(#{festCd})
+  </select>
+  
+  
+  
+<!--   대프로그램조회 -->
+  <select id="selectAllPro" resultMap="programResultmap">
+  	SELECT
+		*
+	FROM 
+		Fest_Program
+	WHERE fest_cd=(#{festCd})
+  </select>
+
+
+<!-- 프로그램 참가자조회 -->
+  <select id="selectAllParticipants" resultMap="proParticipantsResultmap" >
+	SELECT
+		a.festpro_spro_nm
+		,b.fest_pro_nm
+		,c.*
+	from
+		Fest_Pro_sPro AS a,
+		Fest_Program AS b,
+		Fest_Pro_participants AS c
+	where a.fest_pro_cd=b.fest_pro_cd
+		AND c.festpro_spro_cd=a.festpro_spro_cd
+		AND c.fest_cd=(#{festCd})
+  </select>  
+  
+  
+<!-- 프로그램 성격분류조회 -->
+  <select id="selectAllDivTheme" resultMap="proDivThemeResultmap" >
+	SELECT
+		festprodiv_theme_cd
+		,areacity_admin_cd
+		,area_city_cd
+		,area_cd
+		,fest_cd
+		,fest_nm
+		,festprodiv_theme_nm
+	FROM
+		Fest_Pro_Div_Theme
+	WHERE fest_cd=(#{festCd})
+	
+  </select>  
+  
+  
+<!-- 프로그램 장소분류조회   -->
+  <select id="selectAllDivPlace" resultMap="proDivPlaceResultmap" >
+	SELECT
+		festprodiv_pla_cd
+		,areacity_admin_cd
+		,area_city_cd
+		,area_cd
+		,fest_cd
+		,fest_nm
+		,festprodiv_pla_nm
+	FROM
+		Fest_Pro_Div_Place
+	WHERE fest_cd=(#{festCd})	
+</select>
+
+
+<!-- 프로그램 일자분류조회 -->
+ <select id="selectAllDivDay" resultMap="proDivDayResultmap" >
+	SELECT
+	festprodiv_day_cd
+	,festprodiv_day_nm
+	FROM
+	Fest_Pro_Div_Day
+</select>
+  
+
+  
+  </mapper>

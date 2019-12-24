@@ -11,55 +11,55 @@ public class ScheduleController {
 	
 	
 	//코멘트 삭제
-	@GetMapping("/sche_deleteComment")
+	@GetMapping("/scheDeleteComment")
 	public String deleteComment(Model model) {
 		model.addAttribute("AllSchedule", scheduleService.selectAllSchedule());		
-		return "schedule/sche_detailList";
+		return "schedule/scheDetailList";
 	}
 	//코멘트 수정
-	@GetMapping("/sche_updateComment")
+	@GetMapping("/scheUpdateComment")
 	public String updateComment() {
-		return "schedule/sche_updateComment";
+		return "schedule/scheUpdateComment";
 	}
 	
 	//일정 삭제
-	@GetMapping("/sche_deleteSchedule")
+	@GetMapping("/scheDeleteSchedule")
 	public String deleteSchedule(Model model) {
 		model.addAttribute("AllSchedule", scheduleService.selectAllSchedule());
-		return "schedule/sche_List";
+		return "schedule/scheList";
 	}
 	//일정 수정
-	@GetMapping("/sche_updateSchedule")
+	@GetMapping("/scheUpdateSchedule")
 	public String updateSchedule() {
-		return "schedule/sche_updateSchedule";
+		return "schedule/scheUpdateSchedule";
 	}
 	//신규일정 등록
-	@GetMapping("/sche_insertSchedule")
+	@GetMapping("/scheInsertSchedule")
 	public String insertSchedule() {
-		return "schedule/sche_insertSchedule";
+		return "schedule/scheInsertSchedule";
 	}
 	
 	
 	
 	//일정세부확인
-	@GetMapping("/sche_detailList")
+	@GetMapping("/scheDetailList")
 	public String scheDetailList2(Model model) {
 		model.addAttribute("AllSchedule", scheduleService.selectAllSchedule());
-		return "schedule/sche_detailList";
+		return "schedule/scheDetailList";
 	}
 	
 	
 	//일정확인
-	@GetMapping("/sche_timetable")
+	@GetMapping("/scheTimetable")
 	public String scheTimetable() {
-		return "schedule/sche_timetable";
+		return "schedule/scheTimetable";
 	}
 	
 	//일정리스트
-	@GetMapping("/sche_List")
+	@GetMapping("/scheList")
 	public String scheDetailList(Model model) {
 		model.addAttribute("AllSchedule", scheduleService.selectAllSchedule());
-		return "schedule/sche_List";
+		return "schedule/scheList";
 	}
 	
 	

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+프로그램 참가자조회페이지 : 검색가능추가할것
+
+		<div class="row mt">
+          <div class="col-md-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>프로그램 참가자 조회</h4>
+ 
+              <div align="right">
+              <a th:href="@{/proInsertParticipant}">
+              <button type="button" class="btn btn-info" >참가자 신규 등록</button></a>  
+              </div>
+              
+              <!-- 세부프로그램검색 start -->
+				
+              <form class="form-inline" role="form" align="center" th:action="@{/searchPar}" method="post">
+              	 <div class="form-group">
+              	 
+                  <label class="sr-only" for="programName"></label>
+                  <input type="text" class="form-control" id="programName" name="festProNm" placeholder="프로그램명">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="sProgramName"></label>
+                  <input type="text" class="form-control" id="sProgramName" name="festproSproNm" placeholder="세부프로그램명">
+                </div>             
+                <div class="form-group">
+                  <label class="sr-only" for="parName"></label>
+                  <input type="text" class="form-control" id="parName" name="festproParNm" placeholder="참가자명">
+                </div>             
+                <div class="form-group">
+                  <label class="sr-only" for="parGender"></label>
+                  <input type="text" class="form-control" id="parGender" name="festproParGender" placeholder="성별">
+                </div>             
+                <div class="form-group">
+                  <label class="sr-only" for="parPhone"></label>
+                  <input type="text" class="form-control" id="parPhone" name="festproParPhone" placeholder="연락처">
+                </div>             
+                <button type="submit" class="btn btn-theme">검색</button>
+                <a th:href="@{/pro_ParList}"> 
+                <button type="button" class="btn btn-theme04">결과초기화</button></a>
+               
+              </form><br>
+  <!-- 세부프로그램검색 end-->  
+              
+              
+              
+              
+              <hr>
+              <table class="table table-striped table-advance table-hover">
+                
+                <thead>
+                  <tr>
+                    <th>참가프로그램</th>
+                    <th>참가명</th>
+                    <th>이름</th>
+                    <th>성별</th>
+                    <th>나이</th>
+                    <th>연락처</th>
+                    <th>특이사항</th>
+                    <th>등록일자</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+				  <tr th:each="p:${AllParti}">
+			 		<td th:text="${p.festProNm}"></td>
+			 		<td th:text="${p.festproSproNm}"></td>
+			 		<td th:text="${p.festproParNm}"></td>
+			 		<td th:text="${p.festproParGender}"></td>
+			 		<td th:text="${p.festproParAge}"></td>
+			 		<td th:text="${p.festproParPhone}"></td>
+			 		<td th:text="${p.festproParEtc}"></td>
+			 		<td th:text="${p.insertDt}"></td>
+					<td><a th:href="@{/proUpdateParticipant}" >
+	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+	                <td><a th:href="@{/proDeleteParticipant}" >
+	                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>     
+			 	  </tr> 
+                </tbody>
+              </table>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-md-12 -->
+        </div>		
+		
+		
+		
+		
+		
+		
+		
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

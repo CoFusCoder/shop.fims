@@ -20,7 +20,7 @@ public interface FestivalGoodsMapper {
 	public List<FestivalGoodsIn> selectAllGoodsIn();
 	
 	//입고코드로 물품 입고 상세조회 
-	public List<FestivalGoodsIn> selectGoodsInByIncd(String festgoods_in_cd);
+	public List<FestivalGoodsIn> selectGoodsInByIncd(String festgoodsInCd);
 
 	
 	

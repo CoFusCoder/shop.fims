@@ -1,204 +1,204 @@
 package shop.fims.vo;
 
 public class PrPromotion {
-	private String festpr_pro_cd;
-	private String festpr_div_nm;
-	private String areacity_admin_cd;
-	private String area_cd;
-	private String area_city_cd;
-	private String fest_cd;
-	private String festpr_div_cd;
-	private String man_com_cd;
-	private String acc_mem_cd;
-	private String fesrev_bud_cd;
-	private String cat_acc_cd;
-	private String fest_nm;
-	private String festpr_pro_nm;
-	private String festpr_pro_detail;
-	private String fprpro_order_dt;
-	private String fprpro_start_dt;
-	private String fprpro_end_dt;
-	private String festpr_pro_place;
-	private int festpr_pro_amt;
-	private String festpr_pro_attach;
-	private String group_cd;
-	private String action_dt;
-	private String action_status;
-	private int festpr_pro_expense;
-	private String festpr_pro_etc;
-	private String insert_dt;
-	
-	
-	public String getFestpr_div_nm() {
-		return festpr_div_nm;
+	private String festprProCd;
+	private String festprDivNm;
+	private String areacityAdminCd;
+	private String areaCd;
+	private String areaCityCd;
+	private String festCd;
+	private String festprDivCd;
+	private String manComCd;
+	private String accMemCd;
+	private String fesrevBudCd;
+	private String catAccCd;
+	private String festTitle;
+	private String festprProNm;
+	private String festprProDetail;
+	private String fprproOrderDt;
+	private String fprproStartDt;
+	private String fprproEndDt;
+	private String festprProPlace;
+	private int festprProAmt;
+	private String festprProAttach;
+	private String groupCd;
+	private String actionDt;
+	private String actionStatus;
+	private int festprProExpense;
+	private String festprProEtc;
+	private String insertDt;
+	public String getFestprProCd() {
+		return festprProCd;
 	}
-	public void setFestpr_div_nm(String festpr_div_nm) {
-		this.festpr_div_nm = festpr_div_nm;
+	public void setFestprProCd(String festprProCd) {
+		this.festprProCd = festprProCd;
 	}
-	public String getFestpr_pro_cd() {
-		return festpr_pro_cd;
+	public String getFestprDivNm() {
+		return festprDivNm;
 	}
-	public void setFestpr_pro_cd(String festpr_pro_cd) {
-		this.festpr_pro_cd = festpr_pro_cd;
+	public void setFestprDivNm(String festprDivNm) {
+		this.festprDivNm = festprDivNm;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getFest_cd() {
-		return fest_cd;
+	public String getFestCd() {
+		return festCd;
 	}
-	public void setFest_cd(String fest_cd) {
-		this.fest_cd = fest_cd;
+	public void setFestCd(String festCd) {
+		this.festCd = festCd;
 	}
-	public String getFestpr_div_cd() {
-		return festpr_div_cd;
+	public String getFestprDivCd() {
+		return festprDivCd;
 	}
-	public void setFestpr_div_cd(String festpr_div_cd) {
-		this.festpr_div_cd = festpr_div_cd;
+	public void setFestprDivCd(String festprDivCd) {
+		this.festprDivCd = festprDivCd;
 	}
-	public String getMan_com_cd() {
-		return man_com_cd;
+	public String getManComCd() {
+		return manComCd;
 	}
-	public void setMan_com_cd(String man_com_cd) {
-		this.man_com_cd = man_com_cd;
+	public void setManComCd(String manComCd) {
+		this.manComCd = manComCd;
 	}
-	public String getAcc_mem_cd() {
-		return acc_mem_cd;
+	public String getAccMemCd() {
+		return accMemCd;
 	}
-	public void setAcc_mem_cd(String acc_mem_cd) {
-		this.acc_mem_cd = acc_mem_cd;
+	public void setAccMemCd(String accMemCd) {
+		this.accMemCd = accMemCd;
 	}
-	public String getFesrev_bud_cd() {
-		return fesrev_bud_cd;
+	public String getFesrevBudCd() {
+		return fesrevBudCd;
 	}
-	public void setFesrev_bud_cd(String fesrev_bud_cd) {
-		this.fesrev_bud_cd = fesrev_bud_cd;
+	public void setFesrevBudCd(String fesrevBudCd) {
+		this.fesrevBudCd = fesrevBudCd;
 	}
-	public String getCat_acc_cd() {
-		return cat_acc_cd;
+	public String getCatAccCd() {
+		return catAccCd;
 	}
-	public void setCat_acc_cd(String cat_acc_cd) {
-		this.cat_acc_cd = cat_acc_cd;
+	public void setCatAccCd(String catAccCd) {
+		this.catAccCd = catAccCd;
 	}
-	public String getFest_nm() {
-		return fest_nm;
+	public String getFestTitle() {
+		return festTitle;
 	}
-	public void setFest_nm(String fest_nm) {
-		this.fest_nm = fest_nm;
+	public void setFestTitle(String festTitle) {
+		this.festTitle = festTitle;
 	}
-	public String getFestpr_pro_nm() {
-		return festpr_pro_nm;
+	public String getFestprProNm() {
+		return festprProNm;
 	}
-	public void setFestpr_pro_nm(String festpr_pro_nm) {
-		this.festpr_pro_nm = festpr_pro_nm;
+	public void setFestprProNm(String festprProNm) {
+		this.festprProNm = festprProNm;
 	}
-	public String getFestpr_pro_detail() {
-		return festpr_pro_detail;
+	public String getFestprProDetail() {
+		return festprProDetail;
 	}
-	public void setFestpr_pro_detail(String festpr_pro_detail) {
-		this.festpr_pro_detail = festpr_pro_detail;
+	public void setFestprProDetail(String festprProDetail) {
+		this.festprProDetail = festprProDetail;
 	}
-	public String getFprpro_order_dt() {
-		return fprpro_order_dt;
+	public String getFprproOrderDt() {
+		return fprproOrderDt;
 	}
-	public void setFprpro_order_dt(String fprpro_order_dt) {
-		this.fprpro_order_dt = fprpro_order_dt;
+	public void setFprproOrderDt(String fprproOrderDt) {
+		this.fprproOrderDt = fprproOrderDt;
 	}
-	public String getFprpro_start_dt() {
-		return fprpro_start_dt;
+	public String getFprproStartDt() {
+		return fprproStartDt;
 	}
-	public void setFprpro_start_dt(String fprpro_start_dt) {
-		this.fprpro_start_dt = fprpro_start_dt;
+	public void setFprproStartDt(String fprproStartDt) {
+		this.fprproStartDt = fprproStartDt;
 	}
-	public String getFprpro_end_dt() {
-		return fprpro_end_dt;
+	public String getFprproEndDt() {
+		return fprproEndDt;
 	}
-	public void setFprpro_end_dt(String fprpro_end_dt) {
-		this.fprpro_end_dt = fprpro_end_dt;
+	public void setFprproEndDt(String fprproEndDt) {
+		this.fprproEndDt = fprproEndDt;
 	}
-	public String getFestpr_pro_place() {
-		return festpr_pro_place;
+	public String getFestprProPlace() {
+		return festprProPlace;
 	}
-	public void setFestpr_pro_place(String festpr_pro_place) {
-		this.festpr_pro_place = festpr_pro_place;
+	public void setFestprProPlace(String festprProPlace) {
+		this.festprProPlace = festprProPlace;
 	}
-	public int getFestpr_pro_amt() {
-		return festpr_pro_amt;
+	public int getFestprProAmt() {
+		return festprProAmt;
 	}
-	public void setFestpr_pro_amt(int festpr_pro_amt) {
-		this.festpr_pro_amt = festpr_pro_amt;
+	public void setFestprProAmt(int festprProAmt) {
+		this.festprProAmt = festprProAmt;
 	}
-	public String getFestpr_pro_attach() {
-		return festpr_pro_attach;
+	public String getFestprProAttach() {
+		return festprProAttach;
 	}
-	public void setFestpr_pro_attach(String festpr_pro_attach) {
-		this.festpr_pro_attach = festpr_pro_attach;
+	public void setFestprProAttach(String festprProAttach) {
+		this.festprProAttach = festprProAttach;
 	}
-	public String getGroup_cd() {
-		return group_cd;
+	public String getGroupCd() {
+		return groupCd;
 	}
-	public void setGroup_cd(String group_cd) {
-		this.group_cd = group_cd;
+	public void setGroupCd(String groupCd) {
+		this.groupCd = groupCd;
 	}
-	public String getAction_dt() {
-		return action_dt;
+	public String getActionDt() {
+		return actionDt;
 	}
-	public void setAction_dt(String action_dt) {
-		this.action_dt = action_dt;
+	public void setActionDt(String actionDt) {
+		this.actionDt = actionDt;
 	}
-	public String getAction_status() {
-		return action_status;
+	public String getActionStatus() {
+		return actionStatus;
 	}
-	public void setAction_status(String action_status) {
-		this.action_status = action_status;
+	public void setActionStatus(String actionStatus) {
+		this.actionStatus = actionStatus;
 	}
-	public int getFestpr_pro_expense() {
-		return festpr_pro_expense;
+	public int getFestprProExpense() {
+		return festprProExpense;
 	}
-	public void setFestpr_pro_expense(int festpr_pro_expense) {
-		this.festpr_pro_expense = festpr_pro_expense;
+	public void setFestprProExpense(int festprProExpense) {
+		this.festprProExpense = festprProExpense;
 	}
-	public String getFestpr_pro_etc() {
-		return festpr_pro_etc;
+	public String getFestprProEtc() {
+		return festprProEtc;
 	}
-	public void setFestpr_pro_etc(String festpr_pro_etc) {
-		this.festpr_pro_etc = festpr_pro_etc;
+	public void setFestprProEtc(String festprProEtc) {
+		this.festprProEtc = festprProEtc;
 	}
-	public String getInsert_dt() {
-		return insert_dt;
+	public String getInsertDt() {
+		return insertDt;
 	}
-	public void setInsert_dt(String insert_dt) {
-		this.insert_dt = insert_dt;
+	public void setInsertDt(String insertDt) {
+		this.insertDt = insertDt;
 	}
 	@Override
 	public String toString() {
-		return "PrPromotion [festpr_pro_cd=" + festpr_pro_cd + ", festpr_div_nm=" + festpr_div_nm
-				+ ", areacity_admin_cd=" + areacity_admin_cd + ", area_cd=" + area_cd + ", area_city_cd=" + area_city_cd
-				+ ", fest_cd=" + fest_cd + ", festpr_div_cd=" + festpr_div_cd + ", man_com_cd=" + man_com_cd
-				+ ", acc_mem_cd=" + acc_mem_cd + ", fesrev_bud_cd=" + fesrev_bud_cd + ", cat_acc_cd=" + cat_acc_cd
-				+ ", fest_nm=" + fest_nm + ", festpr_pro_nm=" + festpr_pro_nm + ", festpr_pro_detail="
-				+ festpr_pro_detail + ", fprpro_order_dt=" + fprpro_order_dt + ", fprpro_start_dt=" + fprpro_start_dt
-				+ ", fprpro_end_dt=" + fprpro_end_dt + ", festpr_pro_place=" + festpr_pro_place + ", festpr_pro_amt="
-				+ festpr_pro_amt + ", festpr_pro_attach=" + festpr_pro_attach + ", group_cd=" + group_cd
-				+ ", action_dt=" + action_dt + ", action_status=" + action_status + ", festpr_pro_expense="
-				+ festpr_pro_expense + ", festpr_pro_etc=" + festpr_pro_etc + ", insert_dt=" + insert_dt + "]";
+		return "PrPromotion [festprProCd=" + festprProCd + ", festprDivNm=" + festprDivNm + ", areacityAdminCd="
+				+ areacityAdminCd + ", areaCd=" + areaCd + ", areaCityCd=" + areaCityCd + ", festCd=" + festCd
+				+ ", festprDivCd=" + festprDivCd + ", manComCd=" + manComCd + ", accMemCd=" + accMemCd
+				+ ", fesrevBudCd=" + fesrevBudCd + ", catAccCd=" + catAccCd + ", festTitle=" + festTitle
+				+ ", festprProNm=" + festprProNm + ", festprProDetail=" + festprProDetail + ", fprproOrderDt="
+				+ fprproOrderDt + ", fprproStartDt=" + fprproStartDt + ", fprproEndDt=" + fprproEndDt
+				+ ", festprProPlace=" + festprProPlace + ", festprProAmt=" + festprProAmt + ", festprProAttach="
+				+ festprProAttach + ", groupCd=" + groupCd + ", actionDt=" + actionDt + ", actionStatus=" + actionStatus
+				+ ", festprProExpense=" + festprProExpense + ", festprProEtc=" + festprProEtc + ", insertDt=" + insertDt
+				+ "]";
 	}
 
+	
+	
 	
 	
 }

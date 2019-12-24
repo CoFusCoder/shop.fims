@@ -1,61 +1,62 @@
 package shop.fims.vo;
 
 public class GoodsLDiv {
-	private String festgoods_ldiv_cd;
-	private String areacity_admin_cd;
-	private String fest_cd;
-	private String area_city_cd;
-	private String area_cd;
-	private String fest_nm;
-	private String festgoods_ldiv_nm;
-	public String getFestgoods_ldiv_cd() {
-		return festgoods_ldiv_cd;
+	private String festgoodsLdivCd;
+	private String areacityAdminCd;
+	private String festCd;
+	private String areaCityCd;
+	private String areaCd;
+	private String festTitle;
+	private String festgoodsLdivNm;
+	public String getFestgoodsLdivCd() {
+		return festgoodsLdivCd;
 	}
-	public void setFestgoods_ldiv_cd(String festgoods_ldiv_cd) {
-		this.festgoods_ldiv_cd = festgoods_ldiv_cd;
+	public void setFestgoodsLdivCd(String festgoodsLdivCd) {
+		this.festgoodsLdivCd = festgoodsLdivCd;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getFest_cd() {
-		return fest_cd;
+	public String getFestCd() {
+		return festCd;
 	}
-	public void setFest_cd(String fest_cd) {
-		this.fest_cd = fest_cd;
+	public void setFestCd(String festCd) {
+		this.festCd = festCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getFest_nm() {
-		return fest_nm;
+	public String getFestTitle() {
+		return festTitle;
 	}
-	public void setFest_nm(String fest_nm) {
-		this.fest_nm = fest_nm;
+	public void setFestTitle(String festTitle) {
+		this.festTitle = festTitle;
 	}
-	public String getFestgoods_ldiv_nm() {
-		return festgoods_ldiv_nm;
+	public String getFestgoodsLdivNm() {
+		return festgoodsLdivNm;
 	}
-	public void setFestgoods_ldiv_nm(String festgoods_ldiv_nm) {
-		this.festgoods_ldiv_nm = festgoods_ldiv_nm;
+	public void setFestgoodsLdivNm(String festgoodsLdivNm) {
+		this.festgoodsLdivNm = festgoodsLdivNm;
 	}
 	@Override
 	public String toString() {
-		return "GoodsLDiv [festgoods_ldiv_cd=" + festgoods_ldiv_cd + ", areacity_admin_cd=" + areacity_admin_cd
-				+ ", fest_cd=" + fest_cd + ", area_city_cd=" + area_city_cd + ", area_cd=" + area_cd + ", fest_nm="
-				+ fest_nm + ", festgoods_ldiv_nm=" + festgoods_ldiv_nm + "]";
+		return "GoodsLDiv [festgoodsLdivCd=" + festgoodsLdivCd + ", areacityAdminCd=" + areacityAdminCd + ", festCd="
+				+ festCd + ", areaCityCd=" + areaCityCd + ", areaCd=" + areaCd + ", festTitle=" + festTitle
+				+ ", festgoodsLdivNm=" + festgoodsLdivNm + "]";
 	}
+
 
 	
 	
