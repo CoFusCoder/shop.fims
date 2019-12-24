@@ -15,4 +15,8 @@ public interface AdminMapper {
 	// 전국 지역 조회
 	public List<Area> areaList();
 	
+	// 전국 지역 수정
+	
+	
+	
 }
