@@ -19,6 +19,12 @@ public class GoodsrevenueController {
 		return "/goods/revenueList";
 	}
 	
+//	//모든 축제별 보유물품 대여관리 리스트 - 세입 코드로 조회
+//	@GetMapping("/revenueListDetail")
+//	public String coderevenue(@RequestParam(value = "goodsren_rev_cd") String goodsren_rev_cd, Model model) {
+//		model.addAttribute("coderevenue", revenueservice.coderevenue(goodsren_rev_cd));
+//		return "/goods/revenueListDetail";
+//	}
 	//모든 축제별 보유물품 대여관리 리스트 - 세입 코드로 조회
 	@GetMapping("/revenueListDetail")
 	public String coderevenue(@RequestParam(value = "goodsren_rev_cd") String goodsren_rev_cd, Model model) {

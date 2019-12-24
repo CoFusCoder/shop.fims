@@ -44,8 +44,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			 		<td th:text="${r.returnDueDt}"></td>
 			 		<td th:text="${r.returnDt}"></td>
 			 		<td>
-			 		  <a th:href="@{/revenueListDetail(goodsren_rev_cd=${r.goodsrenRevCd})}">
-			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> </a>			 		 
+<!--  			 		  <a th:href="@{/revenueListDetail(goodsren_rev_cd=${r.goodsrenRevCd})}" onclick="window.open('revenueListDetail','window팝업','width=300, height=300, menubar=no, status=no, toolbar=no');">  -->
+<!--  			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> </a>			 		   -->
+ 			 		  <a onclick="window.open('/revenueListDetail?=	','window팝업','width=300, height=300, menubar=no, status=no, toolbar=no');"> 
+ 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> </a>			 		  
 			 		</td>
                   </tr>
                 </tbody>

@@ -81,11 +81,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th>no</th>
 								<th>김혜진</th>
 								<th>
-								<a th:href="@{/estimatelistdetail}">
+								<!-- <a th:href="@{/estimatelistdetail}">
 										<button class="btn btn-success btn-xs">
 											<i class="fa fa-check">상세보기</i>
 										</button>
-								</a>
+								</a> -->
+								<a onclick="window.open('/estimatelistdetail','상세페이지','width=700, height=500,left=500,top=200  ');"> 
+ 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> </a>	
 								</th>
 							</tr>
 						</table>
