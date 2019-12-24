@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8">
+<!-- 날짜입력에 달력넣기스크립트 -->
+<!--
+<link rel="stylesheet" type="text/css" href="/adminis/ebudget/css/tcal.css">
+<script type="text/javascript" src="/adminis/ebudget/js/tcal.js"></script>
+-->
+
+
+<link rel="stylesheet" href="/adminis/ebudget/css/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/adminis/ebudget/css/jqplot/jquery.jqplot.css"/>
+<script src="/adminis/ebudget/js/jquery-1.7.2.min.js"></script>
+<script src="/adminis/ebudget/js/jquery-ui.js"></script>
+<script src="/adminis/ebudget/js/bcal.js"></script>
+
+<script src="/adminis/ebudget/js/selectivizr.js"></script>
+<script src="/adminis/ebudget/js/selectivizr-min.js"></script>
+<script src="/adminis/ebudget/js/respond.min.js"></script>
+<script src="/adminis/ebudget/js/html5shiv.js"></script>
+<script src="/adminis/ebudget/js/jquery.h5validate.js"></script>
+
+<!--<script src="/adminis/ebudget/js/jquery-1.11.3.min.js"></script>-->
+<script src='/adminis/ebudget/js/bootstrap-treefy.js'></script>
+
+<link rel='stylesheet' href='/adminis/ebudget/css/main.css' type='text/css'>
+<link rel='stylesheet' href='/adminis/ebudget/css/mediaquery.css' type='text/css' media = "screen" />
+
+<!--<meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1"> -->
+
+<title>
+축제통합관리시스템</title>
+</head>
+<body>
+<header>
+
+  <div id="headerW">
+  <label for="toggle" id="togglemenu" onclick>MENU</label>
+
+
+    <div id="topW" style="background-color:#2B2B2B;">
+    <div class="top">
+
+    <ul>
+
+    		<!--<li style="color:#efefef;" class="jest"><a href="http://www.jeongeup.go.kr/index.jeongeup?menuCd=DOM_000000104007003000" title='홈으로이동'>정읍시에 바란다</a></li>-->
+		<li style="color:#efefef;"><a href="/dashboard" title='관리자 홈페이지로 이동'>!관리자 홈페이지</a></li>
+	<li ><a href="/gukminview/index" title='축제 홈페이지로 이동'  target='_blank'>!축제 홈페이지</a></li>
+
+	</ul>
+  </div>
+ </div><!--topW-->
+
+
+
+
+
+   <!--<div id="bg"></div>-->
+
+<nav>
+   <div id="navW">
+		<div class="sub_logo">
+		  <a href="/revExpBudgetView">
+			<img src="/gukmin/assets/images/fimslog.jpg" alt='홈으로이동' title='홈으로이동'>
+			<span title='세입세출재정정보공개시스템'>!세입·세출재정정보공개시스템</span>
+		  </a>
+		</div>
+
+
+
+
+		<div class="sub_menu">
+
+           <!--<nav id="navigation-list">-->
+
+            <input type="checkbox" id="toggle"/>
+			<ul class="clearfix" id="nav">
+							    <li><a href="/fundManStatusView" class="menu0" title='자금운용현황'>!자금운용현황</a></li>
+				
+				<li><a href="/revBudgetView" class="menu1" title='세입현황'>!세입현황</a></li>
+				<li>
+				<a href='/revExpExecutionView' class='menu2' title='세출현황'>!세출현황</a></li>
+				<li><a href='#' class='menu3' target='_blank'  title='세입세출예산'>#세입·세출예산</a></li><li><a href='#' class='menu4' target='_blank'  title='세입세출결산'>#세입·세출결산</a></li>			  </ul>
+		 </div><!--.sub_menu-->
+
+		 </div><!--navW-->
+
+			</nav>
+
+
+	</div><!--headerW-->
+
+
+
+
+
+
+
+
+</header>
+
+
+
+<div id="contentW">
+<div class="content">
+
+
+
+
+
+<div id="sub_title">사업 및 예산정보</div>
+<div id="sub_menu">
+	<ul>
+	<li><a href="/revExpExecutionView" title='예산집행현황'>!예산집행현황</a></li>	<li><a href="/expEntBudgetView" class="tab2" title='사업 및 예산정보'>!사업 및 예산정보</a></li>	<li><a href="/expExecutionView" title='지출정보'>!지출정보</a></li>    	
+	</ul>
+</div>
+
+<div id="ex">
+	<p>- 부서별, 세부사업별로 예산액과 현재까지의 지출액을 보실 수 있습니다.<br>
+	   - 위에 사업 및 예산정보를 클릭하시면 검색조건이 초기화 됩니다.
+	</p>
+</div>
+
+<div id="search_table">
+<!-- 검색항목출력 폼 -->
+	<form name="board_form" method="post" action="#"> 	
+		<table>
+		<caption>#사업 및 예산정보 검색</caption>
+			<tr>
+				<th scope="col">회계년도</th><td><label for='year'>년도선택</label><select name='year' title='년도선택' id='year'><option value='2019' selected>2019</option><option value='2018'>2018</option><option value='2017'>2017</option><option value='2016'>2016</option><option value='2015'>2015</option><option value='2014'>2014</option> </select></td>
+				<th scope="col">회계구분</th><td><label for='hg'>년도선택</label><select name='hg' title='년도선택' id='hg'><option value='all' selected>전체</option><option value='공기업회계'>공기업회계</option><option value='기금회계'>기금회계</option><option value='기타특별회계'>기타특별회계</option><option value='농공단지조성 특별회계'>농공단지조성 특별회계</option><option value='상수도사업 특별회계'>상수도사업 특별회계</option><option value='식품진흥기금'>식품진흥기금</option><option value='양성평등기금'>양성평등기금</option><option value='옥외광고발전기금'>옥외광고발전기금</option><option value='의료보호비 특별회계'>의료보호비 특별회계</option><option value='일반회계'>일반회계</option><option value='자활기금'>자활기금</option><option value='재난관리기금'>재난관리기금</option><option value='주민소득사업 특별회계'>주민소득사업 특별회계</option><option value='주차장사업 특별회계'>주차장사업 특별회계</option><option value='중소기업육성기금'>중소기업육성기금</option><option value='지역문화진흥기금'>지역문화진흥기금</option><option value='폐기물처리시설주민지원기금'>폐기물처리시설주민지원기금</option><option value='하수도사업 특별회계'>하수도사업 특별회계</option> </select></td>
+			</tr>
+			<tr>
+				<th scope="col">부서명</th><td><label for='dept'>년도선택</label><select name='dept' title='년도선택' id='dept'><option value='all' selected>전체</option><option value='감사실'>감사실</option><option value='건설과'>건설과</option><option value='건축과'>건축과</option><option value='관광과'>관광과</option><option value='관광시설사업소'>관광시설사업소</option><option value='교육체육과'>교육체육과</option><option value='교통과'>교통과</option><option value='금동'>금동</option><option value='금지면'>금지면</option><option value='기업지원과'>기업지원과</option><option value='기획실'>기획실</option><option value='노암동'>노암동</option><option value='농업기술센터'>농업기술센터</option><option value='농정과'>농정과</option><option value='농촌활력과'>농촌활력과</option><option value='대강면'>대강면</option><option value='대산면'>대산면</option><option value='덕과면'>덕과면</option><option value='도시과'>도시과</option><option value='도통동'>도통동</option><option value='동충동'>동충동</option><option value='문화예술과'>문화예술과</option><option value='민원과'>민원과</option><option value='보건소'>보건소</option><option value='보절면'>보절면</option><option value='복지과'>복지과</option><option value='사매면'>사매면</option><option value='산내면'>산내면</option><option value='산동면'>산동면</option><option value='산림녹지과'>산림녹지과</option><option value='상수도사업소'>상수도사업소</option><option value='서울사무소'>서울사무소</option><option value='송동면'>송동면</option><option value='수지면'>수지면</option><option value='시민소통실'>시민소통실</option><option value='아영면'>아영면</option><option value='안전재난과'>안전재난과</option><option value='여성가족과'>여성가족과</option><option value='여성문화센터'>여성문화센터</option><option value='왕정동'>왕정동</option><option value='운봉읍'>운봉읍</option><option value='원예산업과'>원예산업과</option><option value='의회사무국'>의회사무국</option><option value='이백면'>이백면</option><option value='인월면'>인월면</option><option value='일자리경제과'>일자리경제과</option><option value='재정과'>재정과</option><option value='주민복지과'>주민복지과</option><option value='주생면'>주생면</option><option value='주천면'>주천면</option><option value='죽항동'>죽항동</option><option value='총무과'>총무과</option><option value='축산과'>축산과</option><option value='향교동'>향교동</option><option value='홍보전산과'>홍보전산과</option><option value='환경과'>환경과</option><option value='환경사업소'>환경사업소</option> </select></td>
+				<th scope="col">세부사업명</th><td><input type="text" name="saup" value="" id="ime">
+				<label for="ime"></label></td>
+			</tr>
+		</table>
+		<div class="searchbtn">
+		<input type="image" src="http://gyeyak.namwon.go.kr/ebudget/img/search_btn.gif" class="btn" alt='검색버튼' title='검색'>
+		</div>
+	</form>
+</div>
+<!--search_table-->
+
+
+<div id="list_wrap">
+<span class="total">전체 <span class="style02">1809</span> 개의 사업이 있습니다.</span>
+<span class="ex_2">(※ 지출금액을 클릭하시면 지출정보를 세부적으로 보실 수 있습니다. / 단위 : 원)</span>
+<table id="list_table" class="page202">
+<caption>사업 및 예산정보</caption>
+	  <thead>
+		 <tr>
+			<th scope="col" rowspan="3" class="num numeric">번호</th>
+			<th scope="col" rowspan="3" class="numeric">회계<br>구분</th>
+			<th scope="col" rowspan="3" class="numeric">부서</th>
+			<th scope="col" rowspan="3" class="numeric">세부사업명</th>
+			<th scope="col" rowspan="3" class="numeric">사업<br>구분</th>
+			<th scope="col" colspan="7" class="numeric">예산현액(소계)</th>
+			<th scope="col" rowspan="2" class="numeric">지출액</th>
+			<th scope="col" rowspan="3" class="numeric">분야</th>
+		 </tr>
+
+		 <tr>
+			<th scope="col" colspan="4">계</th>
+			<th scope="col" rowspan="2" class="numeric" >편성액</th>
+			<th scope="col" rowspan="2" class="numeric abf">이월액</th>
+			<th scope="col" class="numeric">변경금액</th>
+			
+		 </tr>
+
+		 <tr>
+			<th scope="col" class="numeric">소계</th>
+			<th scope="col" class="numeric">국비</th>
+			<th scope="col" class="numeric">도비<br/>(시비)</th>
+			<th scope="col" class="numeric">시군구비</th>
+			<th scope="col" class="numeric">수입대체<br/>경비</th>
+			<th scope="col" class="numeric">집행잔액</th>
+		 </tr>
+	</thead>
+	<tbody>
+		<tr><td rowspan='2' data-title='번호' class='numeric' >1809</td><td rowspan='2' data-title='회계구분' class='numeric' >일반회계</td><td rowspan='2' data-title='부서' class='numeric' >교통과</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=9151' target='_blank' title='세부사업 상세보기 페이지로 이동'>자전거도로 사고위험지...</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >자체</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >380,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >190,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >190,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >380,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >0</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%25259D%2525BC%2525EB%2525B0%252598%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EA%2525B5%252590%2525ED%252586%2525B5%2525EA%2525B3%2525BC&saup2=%2525EC%25259E%252590%2525EC%2525A0%252584%2525EA%2525B1%2525B0%2525EB%25258F%252584%2525EB%2525A1%25259C%252B%2525EC%252582%2525AC%2525EA%2525B3%2525A0%2525EC%25259C%252584%2525ED%252597%252598%2525EC%2525A7%252580%2525EC%252597%2525AD%252B%2525EC%252595%252588%2525EC%2525A0%252584%2525EA%2525B0%25259C%2525EC%252584%2525A0%252B%2525EC%25258B%25259C%2525EB%2525B2%252594%2525EC%252582%2525AC%2525EC%252597%252585&mode=mv&code=202' title='지출정보 페이지로 이동'>0</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >수송및교통</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >380,000,000</td></tr><tr><td rowspan='2' data-title='번호' class='numeric' >1808</td><td rowspan='2' data-title='회계구분' class='numeric' >일반회계</td><td rowspan='2' data-title='부서' class='numeric' >농촌활력과</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=9148' target='_blank' title='세부사업 상세보기 페이지로 이동'>문화누리센터 정비</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >보조</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >170,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >170,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >170,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >0</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%25259D%2525BC%2525EB%2525B0%252598%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EB%252586%25258D%2525EC%2525B4%25258C%2525ED%252599%25259C%2525EB%2525A0%2525A5%2525EA%2525B3%2525BC&saup2=%2525EB%2525AC%2525B8%2525ED%252599%252594%2525EB%252588%252584%2525EB%2525A6%2525AC%2525EC%252584%2525BC%2525ED%252584%2525B0%252B%2525EC%2525A0%252595%2525EB%2525B9%252584&mode=mv&code=202' title='지출정보 페이지로 이동'>0</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >농림해양수산</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >170,000,000</td></tr><tr><td rowspan='2' data-title='번호' class='numeric' >1807</td><td rowspan='2' data-title='회계구분' class='numeric' >일반회계</td><td rowspan='2' data-title='부서' class='numeric' >농촌활력과</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=8980' target='_blank' title='세부사업 상세보기 페이지로 이동'>마을단위 마을종합[창...</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >보조</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >320,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >224,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >22,400,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >73,600,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >320,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >0</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%25259D%2525BC%2525EB%2525B0%252598%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EB%252586%25258D%2525EC%2525B4%25258C%2525ED%252599%25259C%2525EB%2525A0%2525A5%2525EA%2525B3%2525BC&saup2=%2525EB%2525A7%252588%2525EC%25259D%252584%2525EB%25258B%2525A8%2525EC%25259C%252584%252B%2525EB%2525A7%252588%2525EC%25259D%252584%2525EC%2525A2%252585%2525ED%252595%2525A9%25255B%2525EC%2525B0%2525BD%2525EC%2525A1%2525B0%2525EC%2525A0%252581%2525EB%2525A7%252588%2525EC%25259D%252584%2525EB%2525A7%25258C%2525EB%252593%2525A4%2525EA%2525B8%2525B0%25255D%252528%2525EC%252595%252584%2525EC%252598%252581%252B%2525EB%2525B4%252589%2525EB%25258C%252580%252529&mode=mv&code=202' title='지출정보 페이지로 이동'>318,000,000</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >농림해양수산</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >2,000,000</td></tr><tr><td rowspan='2' data-title='번호' class='numeric' >1806</td><td rowspan='2' data-title='회계구분' class='numeric' >일반회계</td><td rowspan='2' data-title='부서' class='numeric' >농촌활력과</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=8892' target='_blank' title='세부사업 상세보기 페이지로 이동'>기초생활인프라(농촌생...</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >보조</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >466,987,530</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >335,105,037</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >131,882,493</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >407,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >59,987,530</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%25259D%2525BC%2525EB%2525B0%252598%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EB%252586%25258D%2525EC%2525B4%25258C%2525ED%252599%25259C%2525EB%2525A0%2525A5%2525EA%2525B3%2525BC&saup2=%2525EA%2525B8%2525B0%2525EC%2525B4%252588%2525EC%252583%25259D%2525ED%252599%25259C%2525EC%25259D%2525B8%2525ED%252594%252584%2525EB%25259D%2525BC%252528%2525EB%252586%25258D%2525EC%2525B4%25258C%2525EC%252583%25259D%2525ED%252599%25259C%2525ED%252599%252598%2525EA%2525B2%2525BD%2525EC%2525A0%252595%2525EB%2525B9%252584%252529%252528%2525EB%2525B3%2525B4%2525EC%2525A1%2525B0%252529&mode=mv&code=202' title='지출정보 페이지로 이동'>441,630,910</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >농림해양수산</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >25,356,620</td></tr><tr><td rowspan='2' data-title='번호' class='numeric' >1805</td><td rowspan='2' data-title='회계구분' class='numeric' >일반회계</td><td rowspan='2' data-title='부서' class='numeric' >농촌활력과</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=8882' target='_blank' title='세부사업 상세보기 페이지로 이동'>마을만들기 자율개발사...</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >보조</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >1,209,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >843,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >366,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >1,209,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >0</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%25259D%2525BC%2525EB%2525B0%252598%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EB%252586%25258D%2525EC%2525B4%25258C%2525ED%252599%25259C%2525EB%2525A0%2525A5%2525EA%2525B3%2525BC&saup2=%2525EB%2525A7%252588%2525EC%25259D%252584%2525EB%2525A7%25258C%2525EB%252593%2525A4%2525EA%2525B8%2525B0%252B%2525EC%25259E%252590%2525EC%25259C%2525A8%2525EA%2525B0%25259C%2525EB%2525B0%25259C%2525EC%252582%2525AC%2525EC%252597%252585&mode=mv&code=202' title='지출정보 페이지로 이동'>254,930,100</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >농림해양수산</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >954,069,900</td></tr><tr><td rowspan='2' data-title='번호' class='numeric' >1804</td><td rowspan='2' data-title='회계구분' class='numeric' >일반회계</td><td rowspan='2' data-title='부서' class='numeric' >건설과</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=7205' target='_blank' title='세부사업 상세보기 페이지로 이동'>소하천 정비(보조)</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >보조</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >5,338,504,270</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >1,608,990,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >3,729,514,270</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >5,104,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >234,504,270</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%25259D%2525BC%2525EB%2525B0%252598%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EA%2525B1%2525B4%2525EC%252584%2525A4%2525EA%2525B3%2525BC&saup2=%2525EC%252586%25258C%2525ED%252595%252598%2525EC%2525B2%25259C%252B%2525EC%2525A0%252595%2525EB%2525B9%252584%252528%2525EB%2525B3%2525B4%2525EC%2525A1%2525B0%252529&mode=mv&code=202' title='지출정보 페이지로 이동'>3,495,519,120</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >국토및지역개발</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >1,842,985,150</td></tr><tr><td rowspan='2' data-title='번호' class='numeric' >1803</td><td rowspan='2' data-title='회계구분' class='numeric' >일반회계</td><td rowspan='2' data-title='부서' class='numeric' >원예산업과</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=8990' target='_blank' title='세부사업 상세보기 페이지로 이동'>효율적인 원예산업 추...</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >자체</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >6,600,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >6,600,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >6,600,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >0</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%25259D%2525BC%2525EB%2525B0%252598%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EC%25259B%252590%2525EC%252598%252588%2525EC%252582%2525B0%2525EC%252597%252585%2525EA%2525B3%2525BC&saup2=%2525ED%25259A%2525A8%2525EC%25259C%2525A8%2525EC%2525A0%252581%2525EC%25259D%2525B8%252B%2525EC%25259B%252590%2525EC%252598%252588%2525EC%252582%2525B0%2525EC%252597%252585%252B%2525EC%2525B6%252594%2525EC%2525A7%252584&mode=mv&code=202' title='지출정보 페이지로 이동'>6,600,000</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >농림해양수산</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >0</td></tr><tr><td rowspan='2' data-title='번호' class='numeric' >1802</td><td rowspan='2' data-title='회계구분' class='numeric' >일반회계</td><td rowspan='2' data-title='부서' class='numeric' >원예산업과</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=7828' target='_blank' title='세부사업 상세보기 페이지로 이동'>원예시설확충(원예작물...</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >자체</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >531,220,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >531,220,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >500,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >31,220,000</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%25259D%2525BC%2525EB%2525B0%252598%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EC%25259B%252590%2525EC%252598%252588%2525EC%252582%2525B0%2525EC%252597%252585%2525EA%2525B3%2525BC&saup2=%2525EC%25259B%252590%2525EC%252598%252588%2525EC%25258B%25259C%2525EC%252584%2525A4%2525ED%252599%252595%2525EC%2525B6%2525A9%252528%2525EC%25259B%252590%2525EC%252598%252588%2525EC%25259E%252591%2525EB%2525AC%2525BC%252B%2525EB%2525B9%252584%2525EA%2525B0%252580%2525EB%2525A6%2525BC%2525ED%252595%252598%2525EC%25259A%2525B0%2525EC%25258A%2525A4%252B%2525EC%25258B%25259C%2525EC%252584%2525A4%252B%2525EC%2525A7%252580%2525EC%25259B%252590%252529&mode=mv&code=202' title='지출정보 페이지로 이동'>373,237,000</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >농림해양수산</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >157,983,000</td></tr><tr><td rowspan='2' data-title='번호' class='numeric' >1801</td><td rowspan='2' data-title='회계구분' class='numeric' >상수도사업 특별회계</td><td rowspan='2' data-title='부서' class='numeric' >상수도사업소</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=8090' target='_blank' title='세부사업 상세보기 페이지로 이동'>광역상수도 마을권 상...</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >자체</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >455,462,530</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >0</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >455,462,530</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >300,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >155,462,530</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%252583%252581%2525EC%252588%252598%2525EB%25258F%252584%2525EC%252582%2525AC%2525EC%252597%252585%252B%2525ED%25258A%2525B9%2525EB%2525B3%252584%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EC%252583%252581%2525EC%252588%252598%2525EB%25258F%252584%2525EC%252582%2525AC%2525EC%252597%252585%2525EC%252586%25258C&saup2=%2525EA%2525B4%252591%2525EC%252597%2525AD%2525EC%252583%252581%2525EC%252588%252598%2525EB%25258F%252584%252B%2525EB%2525A7%252588%2525EC%25259D%252584%2525EA%2525B6%25258C%252B%2525EC%252583%252581%2525EC%252588%252598%2525EB%25258F%252584%2525EC%252582%2525AC%2525EC%252597%252585&mode=mv&code=202' title='지출정보 페이지로 이동'>0</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >환경보호</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >455,462,530</td></tr><tr><td rowspan='2' data-title='번호' class='numeric' >1800</td><td rowspan='2' data-title='회계구분' class='numeric' >일반회계</td><td rowspan='2' data-title='부서' class='numeric' >농촌활력과</td><td class='view_link numeric' rowspan='2'  data-title='세부사업명'>					
+				<a href='./eBudgetView202_2017.html?pay=8920' target='_blank' title='세부사업 상세보기 페이지로 이동'>권역단위 종합개발[창...</a>
+			 </td><td rowspan='2' data-title='사업구분' class='numeric' >보조</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-소계' >204,300,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-국비' >143,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-도비(시비)' >14,300,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-계-시군구비' >47,000,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-편성액' >204,300,000</td><td class='num_align numeric' rowspan='2' data-title='예산현액(소계)-이월액' >0</td><td class='num_align numeric line01' data-title='변경금액' >0</td><td class='num_align3 numeric line01' data-title='지출액' >
+				<a href='./eBudgetList203.html?year=2019&hg=%2525EC%25259D%2525BC%2525EB%2525B0%252598%2525ED%25259A%25258C%2525EA%2525B3%252584&dept=%2525EB%252586%25258D%2525EC%2525B4%25258C%2525ED%252599%25259C%2525EB%2525A0%2525A5%2525EA%2525B3%2525BC&saup2=%2525EA%2525B6%25258C%2525EC%252597%2525AD%2525EB%25258B%2525A8%2525EC%25259C%252584%252B%2525EC%2525A2%252585%2525ED%252595%2525A9%2525EA%2525B0%25259C%2525EB%2525B0%25259C%25255B%2525EC%2525B0%2525BD%2525EC%2525A1%2525B0%2525EC%2525A0%252581%2525EB%2525A7%252588%2525EC%25259D%252584%2525EB%2525A7%25258C%2525EB%252593%2525A4%2525EA%2525B8%2525B0%25255D%252528%2525EB%2525B3%2525B4%2525EC%2525A1%2525B0%252529&mode=mv&code=202' title='지출정보 페이지로 이동'>204,300,000</a>
+			</td><td rowspan='2'  data-title='분야' class='numeric' >농림해양수산</td></tr><tr><td class='num_align numeric' data-title='수입대체경비' >0</td><td class='num_align numeric' data-title='집행잔액' >0</td></tr>	</tbody>
+</table>
+
+
+ 
+<div class="btn01" id="noprint">
+<div class="hidden_icon"></div>
+<div class="down_icon"><form method="POST" action = "./eBudgetDown202.html"><input type="hidden" name="data" value="a%3A10%3A%7Bi%3A0%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1809%3Bi%3A1%3Bs%3A12%3A%22%EC%9D%BC%EB%B0%98%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A9%3A%22%EA%B5%90%ED%86%B5%EA%B3%BC%22%3Bi%3A3%3Bs%3A60%3A%22%EC%9E%90%EC%A0%84%EA%B1%B0%EB%8F%84%EB%A1%9C+%EC%82%AC%EA%B3%A0%EC%9C%84%ED%97%98%EC%A7%80%EC%97%AD+%EC%95%88%EC%A0%84%EA%B0%9C%EC%84%A0+%EC%8B%9C%EB%B2%94%EC%82%AC%EC%97%85%22%3Bi%3A4%3Bs%3A6%3A%22%EC%9E%90%EC%B2%B4%22%3Bi%3A5%3Bs%3A11%3A%22380%2C000%2C000%22%3Bi%3A6%3Bs%3A11%3A%22190%2C000%2C000%22%3Bi%3A7%3Bs%3A1%3A%220%22%3Bi%3A8%3Bs%3A11%3A%22190%2C000%2C000%22%3Bi%3A9%3Bs%3A11%3A%22380%2C000%2C000%22%3Bi%3A10%3Bs%3A1%3A%220%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A1%3A%220%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A11%3A%22380%2C000%2C000%22%3Bi%3A15%3Bs%3A15%3A%22%EC%88%98%EC%86%A1%EB%B0%8F%EA%B5%90%ED%86%B5%22%3B%7Di%3A1%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1808%3Bi%3A1%3Bs%3A12%3A%22%EC%9D%BC%EB%B0%98%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A15%3A%22%EB%86%8D%EC%B4%8C%ED%99%9C%EB%A0%A5%EA%B3%BC%22%3Bi%3A3%3Bs%3A25%3A%22%EB%AC%B8%ED%99%94%EB%88%84%EB%A6%AC%EC%84%BC%ED%84%B0+%EC%A0%95%EB%B9%84%22%3Bi%3A4%3Bs%3A6%3A%22%EB%B3%B4%EC%A1%B0%22%3Bi%3A5%3Bs%3A11%3A%22170%2C000%2C000%22%3Bi%3A6%3Bs%3A1%3A%220%22%3Bi%3A7%3Bs%3A11%3A%22170%2C000%2C000%22%3Bi%3A8%3Bs%3A1%3A%220%22%3Bi%3A9%3Bs%3A11%3A%22170%2C000%2C000%22%3Bi%3A10%3Bs%3A1%3A%220%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A1%3A%220%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A11%3A%22170%2C000%2C000%22%3Bi%3A15%3Bs%3A18%3A%22%EB%86%8D%EB%A6%BC%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%22%3B%7Di%3A2%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1807%3Bi%3A1%3Bs%3A12%3A%22%EC%9D%BC%EB%B0%98%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A15%3A%22%EB%86%8D%EC%B4%8C%ED%99%9C%EB%A0%A5%EA%B3%BC%22%3Bi%3A3%3Bs%3A66%3A%22%EB%A7%88%EC%9D%84%EB%8B%A8%EC%9C%84+%EB%A7%88%EC%9D%84%EC%A2%85%ED%95%A9%5B%EC%B0%BD%EC%A1%B0%EC%A0%81%EB%A7%88%EC%9D%84%EB%A7%8C%EB%93%A4%EA%B8%B0%5D%28%EC%95%84%EC%98%81+%EB%B4%89%EB%8C%80%29%22%3Bi%3A4%3Bs%3A6%3A%22%EB%B3%B4%EC%A1%B0%22%3Bi%3A5%3Bs%3A11%3A%22320%2C000%2C000%22%3Bi%3A6%3Bs%3A11%3A%22224%2C000%2C000%22%3Bi%3A7%3Bs%3A10%3A%2222%2C400%2C000%22%3Bi%3A8%3Bs%3A10%3A%2273%2C600%2C000%22%3Bi%3A9%3Bs%3A11%3A%22320%2C000%2C000%22%3Bi%3A10%3Bs%3A1%3A%220%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A11%3A%22318%2C000%2C000%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A9%3A%222%2C000%2C000%22%3Bi%3A15%3Bs%3A18%3A%22%EB%86%8D%EB%A6%BC%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%22%3B%7Di%3A3%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1806%3Bi%3A1%3Bs%3A12%3A%22%EC%9D%BC%EB%B0%98%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A15%3A%22%EB%86%8D%EC%B4%8C%ED%99%9C%EB%A0%A5%EA%B3%BC%22%3Bi%3A3%3Bs%3A55%3A%22%EA%B8%B0%EC%B4%88%EC%83%9D%ED%99%9C%EC%9D%B8%ED%94%84%EB%9D%BC%28%EB%86%8D%EC%B4%8C%EC%83%9D%ED%99%9C%ED%99%98%EA%B2%BD%EC%A0%95%EB%B9%84%29%28%EB%B3%B4%EC%A1%B0%29%22%3Bi%3A4%3Bs%3A6%3A%22%EB%B3%B4%EC%A1%B0%22%3Bi%3A5%3Bs%3A11%3A%22466%2C987%2C530%22%3Bi%3A6%3Bs%3A11%3A%22335%2C105%2C037%22%3Bi%3A7%3Bs%3A1%3A%220%22%3Bi%3A8%3Bs%3A11%3A%22131%2C882%2C493%22%3Bi%3A9%3Bs%3A11%3A%22407%2C000%2C000%22%3Bi%3A10%3Bs%3A10%3A%2259%2C987%2C530%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A11%3A%22441%2C630%2C910%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A10%3A%2225%2C356%2C620%22%3Bi%3A15%3Bs%3A18%3A%22%EB%86%8D%EB%A6%BC%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%22%3B%7Di%3A4%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1805%3Bi%3A1%3Bs%3A12%3A%22%EC%9D%BC%EB%B0%98%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A15%3A%22%EB%86%8D%EC%B4%8C%ED%99%9C%EB%A0%A5%EA%B3%BC%22%3Bi%3A3%3Bs%3A34%3A%22%EB%A7%88%EC%9D%84%EB%A7%8C%EB%93%A4%EA%B8%B0+%EC%9E%90%EC%9C%A8%EA%B0%9C%EB%B0%9C%EC%82%AC%EC%97%85%22%3Bi%3A4%3Bs%3A6%3A%22%EB%B3%B4%EC%A1%B0%22%3Bi%3A5%3Bs%3A13%3A%221%2C209%2C000%2C000%22%3Bi%3A6%3Bs%3A11%3A%22843%2C000%2C000%22%3Bi%3A7%3Bs%3A1%3A%220%22%3Bi%3A8%3Bs%3A11%3A%22366%2C000%2C000%22%3Bi%3A9%3Bs%3A13%3A%221%2C209%2C000%2C000%22%3Bi%3A10%3Bs%3A1%3A%220%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A11%3A%22254%2C930%2C100%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A11%3A%22954%2C069%2C900%22%3Bi%3A15%3Bs%3A18%3A%22%EB%86%8D%EB%A6%BC%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%22%3B%7Di%3A5%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1804%3Bi%3A1%3Bs%3A12%3A%22%EC%9D%BC%EB%B0%98%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A9%3A%22%EA%B1%B4%EC%84%A4%EA%B3%BC%22%3Bi%3A3%3Bs%3A24%3A%22%EC%86%8C%ED%95%98%EC%B2%9C+%EC%A0%95%EB%B9%84%28%EB%B3%B4%EC%A1%B0%29%22%3Bi%3A4%3Bs%3A6%3A%22%EB%B3%B4%EC%A1%B0%22%3Bi%3A5%3Bs%3A13%3A%225%2C338%2C504%2C270%22%3Bi%3A6%3Bs%3A13%3A%221%2C608%2C990%2C000%22%3Bi%3A7%3Bs%3A1%3A%220%22%3Bi%3A8%3Bs%3A13%3A%223%2C729%2C514%2C270%22%3Bi%3A9%3Bs%3A13%3A%225%2C104%2C000%2C000%22%3Bi%3A10%3Bs%3A11%3A%22234%2C504%2C270%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A13%3A%223%2C495%2C519%2C120%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A13%3A%221%2C842%2C985%2C150%22%3Bi%3A15%3Bs%3A21%3A%22%EA%B5%AD%ED%86%A0%EB%B0%8F%EC%A7%80%EC%97%AD%EA%B0%9C%EB%B0%9C%22%3B%7Di%3A6%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1803%3Bi%3A1%3Bs%3A12%3A%22%EC%9D%BC%EB%B0%98%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A15%3A%22%EC%9B%90%EC%98%88%EC%82%B0%EC%97%85%EA%B3%BC%22%3Bi%3A3%3Bs%3A32%3A%22%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B8+%EC%9B%90%EC%98%88%EC%82%B0%EC%97%85+%EC%B6%94%EC%A7%84%22%3Bi%3A4%3Bs%3A6%3A%22%EC%9E%90%EC%B2%B4%22%3Bi%3A5%3Bs%3A9%3A%226%2C600%2C000%22%3Bi%3A6%3Bs%3A1%3A%220%22%3Bi%3A7%3Bs%3A1%3A%220%22%3Bi%3A8%3Bs%3A9%3A%226%2C600%2C000%22%3Bi%3A9%3Bs%3A9%3A%226%2C600%2C000%22%3Bi%3A10%3Bs%3A1%3A%220%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A9%3A%226%2C600%2C000%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A1%3A%220%22%3Bi%3A15%3Bs%3A18%3A%22%EB%86%8D%EB%A6%BC%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%22%3B%7Di%3A7%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1802%3Bi%3A1%3Bs%3A12%3A%22%EC%9D%BC%EB%B0%98%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A15%3A%22%EC%9B%90%EC%98%88%EC%82%B0%EC%97%85%EA%B3%BC%22%3Bi%3A3%3Bs%3A65%3A%22%EC%9B%90%EC%98%88%EC%8B%9C%EC%84%A4%ED%99%95%EC%B6%A9%28%EC%9B%90%EC%98%88%EC%9E%91%EB%AC%BC+%EB%B9%84%EA%B0%80%EB%A6%BC%ED%95%98%EC%9A%B0%EC%8A%A4+%EC%8B%9C%EC%84%A4+%EC%A7%80%EC%9B%90%29%22%3Bi%3A4%3Bs%3A6%3A%22%EC%9E%90%EC%B2%B4%22%3Bi%3A5%3Bs%3A11%3A%22531%2C220%2C000%22%3Bi%3A6%3Bs%3A1%3A%220%22%3Bi%3A7%3Bs%3A1%3A%220%22%3Bi%3A8%3Bs%3A11%3A%22531%2C220%2C000%22%3Bi%3A9%3Bs%3A11%3A%22500%2C000%2C000%22%3Bi%3A10%3Bs%3A10%3A%2231%2C220%2C000%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A11%3A%22373%2C237%2C000%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A11%3A%22157%2C983%2C000%22%3Bi%3A15%3Bs%3A18%3A%22%EB%86%8D%EB%A6%BC%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%22%3B%7Di%3A8%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1801%3Bi%3A1%3Bs%3A28%3A%22%EC%83%81%EC%88%98%EB%8F%84%EC%82%AC%EC%97%85+%ED%8A%B9%EB%B3%84%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A18%3A%22%EC%83%81%EC%88%98%EB%8F%84%EC%82%AC%EC%97%85%EC%86%8C%22%3Bi%3A3%3Bs%3A41%3A%22%EA%B4%91%EC%97%AD%EC%83%81%EC%88%98%EB%8F%84+%EB%A7%88%EC%9D%84%EA%B6%8C+%EC%83%81%EC%88%98%EB%8F%84%EC%82%AC%EC%97%85%22%3Bi%3A4%3Bs%3A6%3A%22%EC%9E%90%EC%B2%B4%22%3Bi%3A5%3Bs%3A11%3A%22455%2C462%2C530%22%3Bi%3A6%3Bs%3A1%3A%220%22%3Bi%3A7%3Bs%3A1%3A%220%22%3Bi%3A8%3Bs%3A11%3A%22455%2C462%2C530%22%3Bi%3A9%3Bs%3A11%3A%22300%2C000%2C000%22%3Bi%3A10%3Bs%3A11%3A%22155%2C462%2C530%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A1%3A%220%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A11%3A%22455%2C462%2C530%22%3Bi%3A15%3Bs%3A12%3A%22%ED%99%98%EA%B2%BD%EB%B3%B4%ED%98%B8%22%3B%7Di%3A9%3Ba%3A16%3A%7Bi%3A0%3Bi%3A1800%3Bi%3A1%3Bs%3A12%3A%22%EC%9D%BC%EB%B0%98%ED%9A%8C%EA%B3%84%22%3Bi%3A2%3Bs%3A15%3A%22%EB%86%8D%EC%B4%8C%ED%99%9C%EB%A0%A5%EA%B3%BC%22%3Bi%3A3%3Bs%3A59%3A%22%EA%B6%8C%EC%97%AD%EB%8B%A8%EC%9C%84+%EC%A2%85%ED%95%A9%EA%B0%9C%EB%B0%9C%5B%EC%B0%BD%EC%A1%B0%EC%A0%81%EB%A7%88%EC%9D%84%EB%A7%8C%EB%93%A4%EA%B8%B0%5D%28%EB%B3%B4%EC%A1%B0%29%22%3Bi%3A4%3Bs%3A6%3A%22%EB%B3%B4%EC%A1%B0%22%3Bi%3A5%3Bs%3A11%3A%22204%2C300%2C000%22%3Bi%3A6%3Bs%3A11%3A%22143%2C000%2C000%22%3Bi%3A7%3Bs%3A10%3A%2214%2C300%2C000%22%3Bi%3A8%3Bs%3A10%3A%2247%2C000%2C000%22%3Bi%3A9%3Bs%3A11%3A%22204%2C300%2C000%22%3Bi%3A10%3Bs%3A1%3A%220%22%3Bi%3A11%3Bs%3A1%3A%220%22%3Bi%3A12%3Bs%3A11%3A%22204%2C300%2C000%22%3Bi%3A13%3Bs%3A1%3A%220%22%3Bi%3A14%3Bs%3A1%3A%220%22%3Bi%3A15%3Bs%3A18%3A%22%EB%86%8D%EB%A6%BC%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%22%3B%7D%7D"><input type="hidden" name="todaySumYN" value=""><input type="hidden" name="seibType" value=""><input type="submit" value="" title="엑셀파일 다운로드"></form></div>
+<span class="print_icon"><button onclick="content_print()" title="인쇄하기"></button></span>
+</div>
+
+
+<div id='page_wrap'><div class='current_page'>1</div>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=2&mode=mv&year=2019&hg=&dept=&saup='>2</a>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=3&mode=mv&year=2019&hg=&dept=&saup='>3</a>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=4&mode=mv&year=2019&hg=&dept=&saup='>4</a>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=5&mode=mv&year=2019&hg=&dept=&saup='>5</a>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=6&mode=mv&year=2019&hg=&dept=&saup='>6</a>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=7&mode=mv&year=2019&hg=&dept=&saup='>7</a>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=8&mode=mv&year=2019&hg=&dept=&saup='>8</a>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=9&mode=mv&year=2019&hg=&dept=&saup='>9</a>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=10&mode=mv&year=2019&hg=&dept=&saup='>10</a>&nbsp;&nbsp;<div class='prev_wrap'><a href='/ebudget/rxd_bd/eBudgetList202.html?page=11&mode=mv&year=2019&hg=&dept=&saup=' title='다음 10페이지 이동'><img src = 'http://gyeyak.namwon.go.kr/ebudget/img/next.gif' alt='다음 10페이지 이동버튼'></a>&nbsp;&nbsp;<a href='/ebudget/rxd_bd/eBudgetList202.html?page=181&mode=mv&year=2019&hg=&dept=&saup=' title='마지막페이지로 이동'><img src = 'http://gyeyak.namwon.go.kr/ebudget/img/next_end.gif' alt='마지막페이지 이동버튼'></a></div></div></div>
+
+ </div>
+ </div>
+
+
+ <footer>
+   
+   <div id="footer">
+   <div class="foot_bar"></div>
+      <ul>
+		  <li class="count">
+		  		  </li>
+         <li class="logo2"><img src="/gukmin/assets/images/fimslog.jpg" alt="축제통합관리시스템" title='축제통합관리시스템'></li>
+	     <li class="address">
+			 전라북도 전주시 덕진구 기린대로 446<br>Tel. 063) 1212-1004 Fax. 063) 1212-1005<br>Copyright ⓒ NAMWON CITY. All Rights Reserved.<br>          </li>
+
+        </ul>
+    </div>
+ </footer>
+
+
+
+
+<script>
+$('.menu2').addClass('munu_2');
+</script>
+
+</body>
+</html>
+
