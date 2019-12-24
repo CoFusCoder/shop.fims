@@ -51,7 +51,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
             </div>
 	</th:block>
 <th:block layout:fragment="adminisscript">
-<th:block th:include="fragments/adminis/adminisscript"></th:block>
+<th:block th:include="fragments/adminis/adminisscript">
 <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
 <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
@@ -116,5 +116,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
       });
     });
   </script>
+</th:block>
 </th:block>
 </html>
