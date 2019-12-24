@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+		세부프로그램 수정
+		
+		<div>
+		<a th:href="@{/proProList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">취소</button></a>        
+		<a th:href="@{/proProList}">
+		<button type="button" class="btn btn-primary btn-lg" align="right">수정하기</button></a>        
+             
+        </div>
+		
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

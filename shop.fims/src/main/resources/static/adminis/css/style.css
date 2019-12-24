@@ -110,6 +110,12 @@ a, a:hover, a:focus {
   border-color: #48bcb4;
 }
 
+.btn_both{overflow:hidden;clear:both;width:100%} 
+.btn_both .fl{float:left} 
+.btn_both .fr{float:right}
+
+
+
 .btn-theme02 {
   color: #fff;
   background-color: #ac92ec;

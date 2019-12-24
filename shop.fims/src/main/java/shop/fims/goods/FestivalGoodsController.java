@@ -14,112 +14,112 @@ public class FestivalGoodsController {
 	
 	
 	  //축제물품 대분류 등록
-	  @GetMapping("/g_festivalInDetail") 
-	  public String selectGoodsInByIncd(@RequestParam(value="festgoods_in_cd")String festgoods_in_cd, Model model){ 
-		  model.addAttribute("GoodsInDetail", festivalGoodsService.selectGoodsInByIncd(festgoods_in_cd));
-		  return "goods/g_festivalInDetail"; 
+	  @GetMapping("/gFestivalInDetail") 
+	  public String selectGoodsInByIncd(@RequestParam(value="festgoodsInCd")String festgoodsInCd, Model model){ 
+		  model.addAttribute("GoodsInDetail", festivalGoodsService.selectGoodsInByIncd(festgoodsInCd));
+		  return "goods/gFestivalInDetail"; 
 		  }
 	  
 	  
 	  
 	  //축제물품 대분류 등록
-	  @GetMapping("/g_insertDivL") 
+	  @GetMapping("/gInsertDivL") 
 	  public String insertDivL(){ 
-		  return "goods/g_insertDivL"; 
+		  return "goods/gInsertDivL"; 
 		  }
 	  //축제물품 대분류 수정	
-	  @GetMapping("/g_updateDivL") 
+	  @GetMapping("/gUpdateDivL") 
 	  public String updateDivL(){ 
-		  return "goods/g_updateDivL"; 
+		  return "goods/gUpdateDivL"; 
 		  }
 	  //축제물품 대분류 삭제	
-	  @GetMapping("/g_deleteDivL") 
+	  @GetMapping("/gDeleteDivL") 
 	  public String deleteDivL(Model model){ 
 		  model.addAttribute("AllLDiv", festivalGoodsService.selectAllLDiv());
-		  return "goods/g_divList"; }
+		  return "goods/gDivList"; }
 	  //축제물품 소분류 등록
-	  @GetMapping("/g_insertDivS") 
+	  @GetMapping("/gInsertDivS") 
 	  public String insertDivS(){ 
-		  return "goods/g_insertDivS"; 
+		  return "goods/gInsertDivS"; 
 		  }
 	  //축제물품 소분류 수정	
-	  @GetMapping("/g_updateDivS") 
+	  @GetMapping("/gUpdateDivS") 
 	  public String updateDivS(){ 
-		  return "goods/g_updateDivS"; 
+		  return "goods/gUpdateDivS"; 
 		  }
 	  //축제물품 소분류 삭제	
-	  @GetMapping("/g_deleteDivS") 
+	  @GetMapping("/gDeleteDivS") 
 	  public String deleteDivS(Model model){ 
 		  model.addAttribute("AllSDiv", festivalGoodsService.selectAllSDiv());
-		  return "goods/g_divList"; 
+		  return "goods/gDivList"; 
 		  }
 	  
 	  //축제물품입고내역수정	
-	  @GetMapping("/g_updateFestivalIn") 
+	  @GetMapping("/gUpdateFestivalIn") 
 	  public String updateGoodsIn(){ 
-		  return "goods/g_updateFestivalIn"; 
+		  return "goods/gUpdateFestivalIn"; 
 		  }
 	  //축제물품입고내역삭제	
-	  @GetMapping("/g_deleteFestivalIn") 
+	  @GetMapping("/gDeleteFestivalIn") 
 	  public String deleteGoodsIn(Model model){ 
 		  model.addAttribute("GoodsIn", festivalGoodsService.selectAllGoodsIn());
-		  return "goods/g_festivalInList"; 
+		  return "goods/gFestivalInList"; 
 		  }
 	  
 	  //축제물품출고내역수정	
-	  @GetMapping("/g_updateFestivalOut") 
+	  @GetMapping("/gUpdateFestivalOut") 
 	  public String updateGoodsOut(){ 
-		  return "goods/g_updateFestivalOut"; 
+		  return "goods/gUpdateFestivalOut"; 
 		  }
 	  //축제물품출고내역삭제	
-	  @GetMapping("/g_deleteFestivalOut") 
+	  @GetMapping("/gDeleteFestivalOut") 
 	  public String deleteGoodsOut(Model model){ 
 		  model.addAttribute("GoodsOut",festivalGoodsService.selectAllGoodsOut()); 
-		  return "goods/g_festivalOutList"; 
+		  return "goods/gFestivalOutList"; 
 		  }
 	  
 	  
 	  //축제물품입고등록	
-	  @GetMapping("/g_insertFestivalIn") 
+	  @GetMapping("/gInsertFestivalIn") 
 	  public String insertFGoodsIn(){ 
-		  return "goods/g_insertFestivalIn"; 
+		  return "goods/gInsertFestivalIn"; 
 		  }
 	  
 	  
 	  //축제물품출고등록	
-	  @GetMapping("/g_insertFestivalOut") 
+	  @GetMapping("/gInsertFestivalOut") 
 	  public String insertFGoodsOut(){ 
-		  return "goods/g_insertFestivalOut"; 
+		  return "goods/gInsertFestivalOut"; 
 		  }
 	  
 	  
 	  //축제물품입고조회	
-	  @GetMapping("/g_festivalInList") 
+	  @GetMapping("/gFestivalInList") 
 	  public String festivalGoodsInList(Model model){ 
 		  model.addAttribute("GoodsIn", festivalGoodsService.selectAllGoodsIn());
-		  return "goods/g_festivalInList"; 
+		  return "goods/gFestivalInList"; 
 		  }
 	  
 	  //축제물품출고조회
 	  
-	  @GetMapping("/g_festivalOutList") public String festivalGoodsOutList(Model
+	  @GetMapping("/gFestivalOutList") public String festivalGoodsOutList(Model
 	  model) { model.addAttribute("GoodsOut",festivalGoodsService.selectAllGoodsOut()); 
-	  return "goods/g_festivalOutList"; 
+	  return "goods/gFestivalOutList"; 
 	  }
 	 
 	
 	//축제물품분류관리
-	@GetMapping("/g_divList")
+	@GetMapping("/gDivList")
 	public String festivalGoodsDivList(Model modelLDiv, Model modelSDiv) {
 		modelLDiv.addAttribute("AllLDiv", festivalGoodsService.selectAllLDiv());
 		modelSDiv.addAttribute("AllSDiv", festivalGoodsService.selectAllSDiv());
-		return "goods/g_divList";
+		return "goods/gDivList";
 	}
 	
 	//축제거래처관리
-	@GetMapping("/g_comList")
+	@GetMapping("/gComList")
 	public String gCompanyList() {
-		return "goods/g_comList";
+		return "goods/gComList";
 	}
 	
 	

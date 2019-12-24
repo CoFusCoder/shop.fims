@@ -44,21 +44,19 @@ public class MainController {
 	
 	
 	@GetMapping("/getSessionInfo")
-	public String selectFestByFestcd(@RequestParam(value="fest_cd")String fest_cd,  
+	public String selectFestByFestcd(@RequestParam(value="festCd")String festCd,  
 			ServletResponse response, HttpSession session) {
 		response.setContentType("text/html; charset=UTF-8");
-		System.out.println("fest_cd==>"+fest_cd);
-		Main main = mainService.selectFestByFestcd(fest_cd);		
-		System.out.println("세션이름값 : "+main.getArea_nm()+main.getArea_city_nm()+main.getAreacity_admin_nm()+main.getFest_nm());
-		System.out.println("세션코드값 : "+main.getArea_cd()+main.getArea_city_cd()+main.getAreacity_admin_cd()+main.getFest_cd());
-		session.setAttribute("F_AREA_CD", main.getArea_cd());
-		session.setAttribute("F_AREA_NM", main.getArea_nm());
-		session.setAttribute("F_CITY_CD", main.getArea_city_cd());
-		session.setAttribute("F_CITY_NM", main.getArea_city_nm());
-		session.setAttribute("F_ADMIN_CD", main.getAreacity_admin_cd());
-		session.setAttribute("F_ADMIN_NM", main.getAreacity_admin_nm());
-		session.setAttribute("F_CD", main.getFest_cd());		
-		session.setAttribute("F_NM", main.getFest_nm());		
+		//System.out.println("festCd==>"+festCd);
+		Main main = mainService.selectFestByFestcd(festCd);		
+		session.setAttribute("F_AREA_CD", main.getAreaCd());
+		session.setAttribute("F_AREA_NM", main.getAreaNm());
+		session.setAttribute("F_CITY_CD", main.getAreaCityCd());
+		session.setAttribute("F_CITY_NM", main.getAreaCityNm());
+		session.setAttribute("F_ADMIN_CD", main.getAreacityAdminCd());
+		session.setAttribute("F_ADMIN_NM", main.getAreacityAdminNm());
+		session.setAttribute("F_CD", main.getFestCd());		
+		session.setAttribute("F_NM", main.getFestNm());		
 		return "index";		
 	}
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+		축제관련물품 입고내역수정
+		
+		<div align="right">
+		<a th:href="@{/gFestivalInList}">
+		<button type="button" class="btn btn-primary" >취소</button></a>        
+		<a th:href="@{/gFestivalInList}">
+		<button type="button" class="btn btn-primary">수정하기</button></a>        
+             
+        </div>
+		
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

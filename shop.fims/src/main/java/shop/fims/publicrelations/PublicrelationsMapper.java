@@ -12,13 +12,13 @@ import shop.fims.vo.PrPromotion;
 @Mapper
 public interface PublicrelationsMapper {
 	
-	public List<EventWinner> selectEventWinnerByPmcd(String festpr_pro_cd);
+	public List<EventWinner> selectEventWinnerByPmcd(String festprProCd);
 	
 	// 홍보코드로 상세조회
-	public List<PrPromotion> selectByPmcd(String festpr_pro_cd);
+	public List<PrPromotion> selectByPmcd(String festprProCd);
 	
 	// 홍보상세조회
-	public List<PrPromotion> selectAllPromotion(String fest_cd);
+	public List<PrPromotion> selectAllPromotion(String festCd);
 	
 	
 	// 홍보분류조회
