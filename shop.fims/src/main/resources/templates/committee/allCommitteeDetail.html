@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+	
+	<th:block layout:fragment="adminisTitle">
 		<meta charset="UTF-8">
-		<title>위원회 상세보기</title>
-		<th:block th:include="layout/customHead"></th:block>
 	</th:block>
-	<th:block layout:fragment="customBody">
+	<th:block layout:fragment="adminisMainContents">	
+		
+		<h3>위원회관리</h3>
 		<div>
 		<a th:href="@{/allCommitteeView}">
 		<button type="button" class="btn btn-default" >뒤로가기</button>
 		</a>
 		</div>
-		
+				
 		<div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
@@ -33,10 +33,10 @@ layout:decorator="layout/main">
                   </thead>	
                   <tbody>
                     <tr>
-						<td th:text="${c.man_com_cd}"></td>
-	               		<td th:text="${c.areacity_admin_cd}"></td>
-	               		<td th:text="${c.mem_cd}"></td>
-	               		<td th:text="${c.mem_lev_cd}"></td>
+						<td th:text="${c.manComCd}"></td>
+	               		<td th:text="${c.areacityAdminCd}"></td>
+	               		<td th:text="${c.memCd}"></td>
+	               		<td th:text="${c.memLevCd}"></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -51,10 +51,10 @@ layout:decorator="layout/main">
                   </thead>	
                   <tbody>
                     <tr>
-						<td th:text="${c.fest_cd}"></td>
-	               		<td th:text="${c.exa_rep_cd}"></td>
-	               		<td th:text="${c.area_city_cd}"></td>
-	               		<td th:text="${c.area_cd}"></td>
+						<td th:text="${c.festCd}"></td>
+	               		<td th:text="${c.exaRepCd}"></td>
+	               		<td th:text="${c.areaCityCd}"></td>
+	               		<td th:text="${c.areaCd}"></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -69,10 +69,10 @@ layout:decorator="layout/main">
                   </thead>	
                   <tbody>
                     <tr>
-	               		<td th:text="${c.fest_nm}"></td>
-	               		<td th:text="${c.man_com_cat}"></td>
-	               		<td th:text="${c.man_com_nm1}"></td>
-	               		<td th:text="${c.man_com_dep}"></td>
+	               		<td th:text="${c.festNm}"></td>
+	               		<td th:text="${c.manComCat}"></td>
+	               		<td th:text="${c.manComNm1}"></td>
+	               		<td th:text="${c.manComDep}"></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -87,10 +87,10 @@ layout:decorator="layout/main">
                   </thead>	
                   <tbody>
                     <tr>
-	               		<td th:text="${c.man_com_rank}"></td>
-	               		<td th:text="${c.com_mem_nm2}"></td>
-	               		<td th:text="${c.man_com_job}"></td>
-	               		<td th:text="${c.man_com_dt1}"></td>
+	               		<td th:text="${c.manComRank}"></td>
+	               		<td th:text="${c.comMemNm2}"></td>
+	               		<td th:text="${c.manComJob}"></td>
+	               		<td th:text="${c.manComDt1}"></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -105,9 +105,9 @@ layout:decorator="layout/main">
                   </thead>	
                   <tbody>
                     <tr>
-	               		<td th:text="${c.man_com_app}"></td>
-	               		<td th:text="${c.man_com_dt2}"></td>
-	               		<td th:text="${c.man_com_con}"></td>
+	               		<td th:text="${c.manComApp}"></td>
+	               		<td th:text="${c.manComDt2}"></td>
+	               		<td th:text="${c.manComCon}"></td>
 	               		<td></td>
                     </tr>
                   </tbody>
@@ -122,11 +122,11 @@ layout:decorator="layout/main">
                   <tbody>
                     <tr>
 	                    <td colspan="2">
-	                    	<a th:href="@{/updateAllCommittee(man_com_cd=${c.man_com_cd})}">
+	                    	<a th:href="@{/updateAllCommittee(manComCd=${c.manComCd})}">
 	                    	<button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
 	                    </td>
 	                    <td colspan="2">
-	                    	<a th:href="@{/deleteAllCommittee(man_com_cd=${c.man_com_cd})}">
+	                    	<a th:href="@{/deleteAllCommittee(manComCd=${c.manComCd})}">
 	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
 	                    </td>
                     </tr>
@@ -142,8 +142,9 @@ layout:decorator="layout/main">
           <!-- /col-lg-4 -->
         </div>
 
-	</th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
 </html>

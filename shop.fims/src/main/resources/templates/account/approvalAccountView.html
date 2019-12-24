@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
 
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>승인된거래처관리</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	<th:block layout:fragment="customBody">
 		<h3>승인된거래처관리</h3>
+		<div align= "right">
+			<a th:href="@{/insertApprovalAccount}">
+				<button type="button" class="btn btn-default">승인된 거래처 등록하기</button>
+			</a>
+		</div>
+		<br/>
+		<form class="form-inline" role="form" align="right" th:action="@{#}" method="get">
+			<select class="form-control" name="sk">
+	                <option value="#">이름</option>
+	              </select>
+	             <div class="form-group">
+	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="#">
+	             </div>
+	             <button type="submit" class="btn btn-theme">검색</button>
+        </form>		
 		
 		<div class="row mt">
           <div class="col-md-12">
@@ -21,23 +34,23 @@ layout:decorator="layout/main">
                 
                 <thead>
                   <tr>
-                    <td>거래처명</td>
-                    <td>거래처업종분류</td>
-                    <td>거래처업무</td>
-                    <td>위원회명</td>
-                    <td>승인 상태</td>
+                    <th>거래처명</th>
+                    <th>거래처업종분류</th>
+                    <th>거래처업무</th>
+                    <th>위원회명</th>
+                    <th>승인 상태</th>
                     <th>상세확인</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr th:each="a:${selectApprovalAccountView}">  
-               		<td th:text="${a.cat_acc_nm1}"></td>
-               		<td th:text="${a.catbus_acc_bus}"></td>
-               		<td th:text="${a.catapp_acc_pur}"></td>
-               		<td th:text="${a.man_com_nm1}"></td>
-               		<td th:text="${a.catapp_acc_con}"></td>
+               		<td th:text="${a.catAccNm1}"></td>
+               		<td th:text="${a.catBusAccBus}"></td>
+               		<td th:text="${a.catAppAccPur}"></td>
+               		<td th:text="${a.manComNm1}"></td>
+               		<td th:text="${a.catAppAccCon}"></td>
 			 		<td>
-			 		  <a th:href="@{/allApprovalAccountDetail(catapp_acc_cd=${a.catapp_acc_cd})}">
+			 		  <a th:href="@{/allApprovalAccountDetail(catAppAccCd=${a.catAppAccCd})}">
 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a> 
 			 		</td>
                   </tr>
@@ -49,8 +62,9 @@ layout:decorator="layout/main">
           <!-- /col-md-12 -->
         </div>	
 	
-	</th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
 </html>

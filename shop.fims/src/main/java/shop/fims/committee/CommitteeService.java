@@ -4,11 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
-import shop.fims.account.AccountMapper;
 import shop.fims.vo.Committee;
-import shop.fims.vo.PrPromotion;
 
 @Service
 public class CommitteeService {
@@ -21,8 +18,8 @@ public class CommitteeService {
 	}
 	
 	//위원회 상세조회 위원회 코드로 조회
-	public List<Committee> selectByCommittee(String man_com_cd){
-		return committeeMapper.selectByCommittee(man_com_cd);
+	public List<Committee> selectByCommittee(String manComCd){
+		return committeeMapper.selectByCommittee(manComCd);
 	}
 	
 	//위원회 등록
@@ -36,8 +33,17 @@ public class CommitteeService {
 	}
 	
 	//위원회 수정화면. 위원회 코드로 조회
-	public Committee selectByAllCommittee(String man_com_cd) {
-		return committeeMapper.selectByAllCommittee(man_com_cd);
+	public Committee selectByAllCommittee(String manComCd) {
+		return committeeMapper.selectByAllCommittee(manComCd);
 	}
 	
+	//위원회 수정
+	public int updateAllCommittee(Committee committee) {
+		return committeeMapper.updateAllCommittee(committee);
+	}
+	
+	//위원회 검색
+	public List<Committee> searchCommittee(String sk, String sv){
+		return committeeMapper.searchCommittee(sk,sv);
+	}
 }

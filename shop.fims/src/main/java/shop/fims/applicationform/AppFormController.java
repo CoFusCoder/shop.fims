@@ -22,7 +22,7 @@ public class AppFormController {
 	//용역신청서 등록
 	@GetMapping("/insertServiceAppForm")
 	public String InsertServiceAppForm() {
-		return "/applicationform/serviceAppFormView";
+		return "/applicationform/insertServiceAppForm";
 	}
 	
 	//용역신청서 수정
@@ -71,6 +71,12 @@ public class AppFormController {
 	@GetMapping("/committeeAppFormView")
 	public String CommitteeAppFormView() {
 		return "/applicationform/committeeAppFormView";
+	}
+	
+	//위원회신청서 상세보기 위원회참가신청서관리로 조회
+	@GetMapping("/committeeAppFormDetail")
+	public String committeeAppFormDetail() {
+		return "/applicationform/committeeAppFormDetail";
 	}
 	
 	//위원회신청서 등록

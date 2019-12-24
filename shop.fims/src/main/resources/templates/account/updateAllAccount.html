@@ -1,137 +1,135 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
 
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>거래처 수정</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	거래처 수정화면
-	<th:block layout:fragment="customBody">
+
               <h4><i class="fa fa-angle-right"></i></span> 거래처 수정하기 </h4><br>
 			 <div class="form-panel">
 		              <div class="form">
-		                <form th:action="@{/updateAllAccount}" method="get" class="cmxform form-horizontal style-form" id="commentForm" th:with="a = ${selectByAllAccount}">
+		                <form th:action="@{/updateAllAccount}" method="post" class="cmxform form-horizontal style-form" id="commentForm" th:with="a = ${selectByAllAccount}">
 		                  <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">거래처코드</label>
 		                    <div class="col-lg-10">
-		                      <input class=" form-control" id="cat_acc_cd" type="text" name="cat_acc_cd" th:value="${a.cat_acc_cd}"/>
+		                      <input class=" form-control" id="catAccCd" type="text" name="catAccCd" th:value="${a.catAccCd}"/>
 		                    </div>
 		                  </div>
 		                   <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">모든 행정기관코드</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="areacity_admin_cd" type="text" name="areacity_admin_cd" th:value="${a.areacity_admin_cd}"/>
+		                      <input class="form-control" id="catAccCd" type="text" name="areacityAdminCd" th:value="${a.areacityAdminCd}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">모든 지역 시군코드</label>
 		                    <div class="col-lg-10">
-		                      <input class=" form-control" id="area_city_cd" type="text" name="area_city_cd" th:value="${a.area_city_cd}"/>
+		                      <input class=" form-control" id="catAccCd" type="text" name="areaCityCd" th:value="${a.areaCityCd}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">전국지역코드</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="area_cd" type="text" name="area_cd" th:value="${a.area_cd}"/>
+		                      <input class="form-control" id="areaCd" type="text" name="areaCd" th:value="${a.areaCd}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">위원회코드</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="man_com_cd" type="text" name="man_com_cd" th:value="${a.man_com_cd}"/>
+		                      <input class="form-control" id="manComCd" type="text" name="manComCd" th:value="${a.manComCd}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">거래처명</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_nm1" type="text" name="cat_acc_nm1" th:value="${a.cat_acc_nm1}"/>
+		                      <input class="form-control" id="catAccNm1" type="text" name="catAccNm1" th:value="${a.catAccNm1}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">사업자분류</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_oper" type="text" name="cat_acc_oper" th:value="${a.cat_acc_oper}"/>
+		                      <input class="form-control" id="catAccOper" type="text" name="catAccOper" th:value="${a.catAccOper}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">거래처대표자명</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_nm2" type="text" name="cat_acc_nm2" th:value="${a.cat_acc_nm2}"/>
+		                      <input class="form-control" id="catAccNm2" type="text" name="catAccNm2" th:value="${a.catAccNm2}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">거래처사업장주소</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_addr" type="text" name="cat_acc_addr" th:value="${a.cat_acc_addr}"/>
+		                      <input class="form-control" id="catAccAddr" type="text" name="catAccAddr" th:value="${a.catAccAddr}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">거래처사업자등록번호</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_no1" type="text" name="cat_acc_no1" th:value="${a.cat_acc_no1}"/>
+		                      <input class="form-control" id="catAccNo1" type="text" name="catAccNo1" th:value="${a.catAccNo1}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">거래처법인등록번호</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_no2" type="text" name="cat_acc_no2" th:value="${a.cat_acc_no2}"/>
+		                      <input class="form-control" id="catAccNo2" type="text" name="catAccNo2" th:value="${a.catAccNo2}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">거래처팩스번호</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_phone1" type="text" name="cat_acc_phone1" th:value="${a.cat_acc_phone1}"/>
+		                      <input class="form-control" id="catAccPhone1" type="text" name="catAccPhone1" th:value="${a.catAccPhone1}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">대표자 전화번호</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_phone2" type="text" name="cat_acc_phone2" th:value="${a.cat_acc_phone2}"/>
+		                      <input class="form-control" id="catAccPhone2" type="text" name="catAccPhone2" th:value="${a.catAccPhone2}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">거래처 대표번호</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_phone3" type="text" name="cat_acc_phone3" th:value="${a.cat_acc_phone3}"/>
+		                      <input class="form-control" id="catAccPhone3" type="text" name="catAccPhone3" th:value="${a.catAccPhone3}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">거래처이메일</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_email" type="text" name="cat_acc_email" th:value="${a.cat_acc_email}"/>
+		                      <input class="form-control" id="catAccEmail" type="text" name="catAccEmail" th:value="${a.catAccEmail}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">등록일자</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_dt1" type="text" name="cat_acc_dt1" th:value="${a.cat_acc_dt1}"/>
+		                      <input class="form-control" id="catAccDt1" type="text" name="catAccDt1" th:value="${a.catAccDt1}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">승인자</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_app" type="text" name="cat_acc_app" th:value="${a.cat_acc_app}"/>
+		                      <input class="form-control" id="catAccApp" type="text" name="catAccApp" th:value="${a.catAccApp}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">위원회명</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="man_com_nm1" type	="text" name="man_com_nm1" th:value="${a.man_com_nm1}"/>
+		                      <input class="form-control" id="manComNm1" type="text" name="manComNm1" th:value="${a.manComNm1}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">승인일자</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_dt2" type="text" name="cat_acc_dt2" th:value="${a.cat_acc_dt2}"/>
+		                      <input class="form-control" id="catAccDt2" type="text" name="catAccDt2" th:value="${a.catAccDt2}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="ccomment" class="control-label col-lg-2">승인 상태</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="cat_acc_con" type="text" name="cat_acc_con" th:value="${a.cat_acc_con}"/>
+		                      <input class="form-control" id="catAccCon" type="text" name="catAccCon" th:value="${a.catAccCon}"/>
 		                    </div>
 		                  </div>
 
@@ -153,8 +151,10 @@ layout:decorator="layout/main">
 		                </form>
 		              </div>
 		            </div>
-			</th:block>
-			<th:block layout:fragment="customJquery">
-				<th:block th:include="layout/customJquery"></th:block>
-		    </th:block>
-		</html>
+		            
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>
