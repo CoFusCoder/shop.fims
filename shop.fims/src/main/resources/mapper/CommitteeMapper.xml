@@ -25,6 +25,7 @@
 		<result property="manComDt2" column="man_com_dt2"/>
 		<result property="manComCon" column="man_com_con"/>
 	</resultMap>
+	
 	<!-- 모든 위원회 관리 -->
 	<select id="selectAllCommitteeView" resultMap="committeeResultMap">
 	 	SELECT
@@ -88,10 +89,11 @@
 	<select id="searchCommittee" parameterType="String" resultMap="committeeResultMap">
 	  	SELECT 
 			*
-		FROM Man_Com
+		FROM 
+			Man_Com
 		<if test="sv != null and sv neq ''.toString()">
 			WHERE 
-				${sk} Like CONCAT('%',#{sv},'%')		
+				${sk} Like CONCAT('%',#{sv},'%')	
 		</if>
 	</select>
 

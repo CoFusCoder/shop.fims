@@ -13,6 +13,16 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 				<button type="button" class="btn btn-default">거래처회원 등록하기</button>
 			</a>
 		</div>
+		<br/>
+		<form class="form-inline" role="form" align="right" th:action="@{#}" method="get">
+			<select class="form-control" name="sk">
+	                <option value="#">이름</option>
+	              </select>
+	             <div class="form-group">
+	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="#">
+	             </div>
+	             <button type="submit" class="btn btn-theme">검색</button>
+        </form>
 		<div class="content-panel">
               <h4><i class="fa fa-angle-right"></i>거래처회원리스트</h4>
               <hr>

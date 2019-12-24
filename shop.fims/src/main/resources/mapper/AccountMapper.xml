@@ -30,7 +30,23 @@
 		<result property="catBusAccCd" column="catbus_acc_cd"/>
 		<result property="catBusAccBus" column="catbus_acc_bus"/>
 	</resultMap>
-	
+	<resultMap type="shop.fims.vo.AppAccount" id="approvalAccountCatBusResultMap">
+		<result property="catAppAccCd" column="catapp_acc_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="catBusAccCd" column="catbus_acc_cd"/>
+		<result property="catAccCd" column="cat_acc_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="catAccNm1" column="cat_acc_nm1"/>
+		<result property="catBusAccBus" column="catbus_acc_bus"/>
+		<result property="catAppAccApp" column="catapp_acc_app"/>
+		<result property="manComNm1" column="man_com_nm1"/>
+		<result property="catAppAccDt" column="catapp_acc_dt"/>
+		<result property="catAppAccCon" column="catapp_acc_con"/>
+		<result property="catAppAccPur" column="catapp_acc_pur"/>
+
+	</resultMap>	
 
 	<!-- 모든 거래처 관리 -->
 	 <select id="selectAllAccountView" resultMap="accountResultMap">
@@ -108,12 +124,14 @@
 	</update>
 	
 	<!-- 승인된 거래처 관리 -->
-	 <select id="selectApprovalAccountView" resultMap="accountResultMap">
+	 <select id="selectApprovalAccountView" resultMap="approvalAccountCatBusResultMap">
 	 	SELECT
 			*
 		FROM 
 			Cat_Approval_Account
 	 </select>
+	 
+
 	
 	
 	<!-- 거래처 업종 분류 -->

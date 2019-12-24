@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.fims.vo.Account;
 import shop.fims.vo.AccountCatBus;
+import shop.fims.vo.AppAccount;
 
 @Controller
 public class AccountController {
@@ -44,7 +45,7 @@ public class AccountController {
 	@GetMapping("/allAccountView")
 	public String selectAllAccountView(Model model) {
 		model.addAttribute("selectAllAccountView", accountService.selectAllAccountView());
-		return "/account/allAccountView";
+		return "account/allAccountView";
 	}
 	
 	//모든 거래처 상세조회 거래처코드로 조회
@@ -95,11 +96,13 @@ public class AccountController {
 		return "account/approvalAccountView";
 	}
 	
-	//승인된 거래처 등록
+	//승인된 거래처 등록화면
 	@GetMapping("/insertApprovalAccount")
 	public String insertApprovalAccount() {
-		return "/account/insertApprovalAccount";
+		return "account/insertApprovalAccount";
 	}
+	
+
 	
 	//승인된 거래처 수정
 	@GetMapping("/updateApprovalAccount")

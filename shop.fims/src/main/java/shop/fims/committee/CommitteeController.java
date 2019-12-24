@@ -1,5 +1,7 @@
 package shop.fims.committee;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -92,8 +94,10 @@ public class CommitteeController {
 	
 	//위원회 검색
 	@PostMapping("/searchCommittee")
-	public String searchCommittee(@RequestParam(value="sk")String sk,  @RequestParam(value="sv")String sv, Model model) {
-		model.addAttribute("searchCommittee", committeeService.searchCommittee(sk,sv));
+	public String searchCommittee(	@RequestParam(value="sk")String sk,  
+									@RequestParam(value="sv")String sv,
+									Model model) {
+		model.addAttribute("searchCommittee", committeeService.searchCommittee(sk, sv));
 		return "committee/allCommitteeView";
 	}
 	

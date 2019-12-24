@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import shop.fims.vo.Account;
 import shop.fims.vo.AccountCatBus;
+import shop.fims.vo.AppAccount;
 
 @Mapper
 public interface AccountMapper {
@@ -30,6 +31,8 @@ public interface AccountMapper {
 	
 	//승인된 거래처 관리
 	public List<Account> selectApprovalAccountView();	
+	
+
 	
 	//거래처 업종 분류
 	public List<Account> selectAccountCatBusView();

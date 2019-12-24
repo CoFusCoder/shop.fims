@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import shop.fims.vo.Account;
 import shop.fims.vo.AccountCatBus;
+import shop.fims.vo.AppAccount;
 
 @Service
 public class AccountService {
@@ -46,7 +47,9 @@ public class AccountService {
 	//승인된 거래처 관리
 	public List<Account> selectApprovalAccountView(){
 		return accountMapper.selectApprovalAccountView();
-	}	
+	}
+	
+
 	
 	//거래처 업종 분류
 	public List<Account> selectAccountCatBusView(){
