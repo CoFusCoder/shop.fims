@@ -18,11 +18,20 @@ public class WorkService {
 		
 		return workmapper.selectWorkCategory();
 	}
-	
+	//축제업무수정화면
+	public Work selectupdateWorkCategory(String workcatCd) {
+		
+		return workmapper.selectupdateWorkCategory(workcatCd);
+	}
 	//축제업무조회
 	public List<Work> selectWorkDivision() {
 		
 		return workmapper.selectWorkDivision();
+	}
+	//축제업무수정화면
+	public Work selectupdateWorkDivision(String workdivCd) {
+		
+		return workmapper.selectupdateWorkDivision(workdivCd);
 	}
 	
 }

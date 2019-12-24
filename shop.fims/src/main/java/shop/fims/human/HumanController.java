@@ -38,17 +38,18 @@ public class HumanController {
 	}
 	//인적사항 수정
 	@GetMapping("/humanUpdate")
-	public String selectbyHuman(@RequestParam(value="humancd") String humancd, Model model) {
+	public String selectbyHuman(@RequestParam(value="humanCd") String humanCd, Model model) {
 		
-		System.out.println("humancd---------->" + humancd);
-		model.addAttribute("Human", humanservice.selectbyHuman(humancd));
+		System.out.println("humancd---------->" + humanCd);
+		model.addAttribute("Human", humanservice.selectbyHuman(humanCd));
 		
 		return "/human/humanUpdate";
 	}
 	//인적사항수정처리
 	@PostMapping("/humanUpdate")
-	public String updateHuman() {
+	public String updateHuman(Human human) {
 		
+		System.out.println("human--------->"+human);
 		
 		return "redirect:/humanList";
 	}
@@ -59,4 +60,23 @@ public class HumanController {
 		return "/human/humanDelete";
 	}
 	
+	//인적검색화면
+	@GetMapping("/humanSearch")
+	public String searchH() {
+		
+		return "/human/humanList";
+	}
+	//인적검색처리
+	@PostMapping("/humanSearch")
+	public String searchHuman(@RequestParam(value="sk") String sk, @RequestParam(value="sv") String sv, Model model) {
+		System.out.println("sk---------->" + sk);
+		System.out.println("sv---------->" + sv);
+		return "/human/humanList";
+	}
+	//인적사항 상세보기
+	@GetMapping("/humanView")
+	public String selecthumanView() {
+		
+		return "/human/humanView";
+	}
 }

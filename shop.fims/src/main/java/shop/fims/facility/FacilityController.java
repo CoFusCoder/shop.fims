@@ -59,10 +59,10 @@ public class FacilityController {
 	}
 	//보유시설수정화면
 	@GetMapping("/facilityUpdate")
-	public String selectupdateFacility(@RequestParam(value="stacd") String stacd, Model model) {
+	public String selectupdateFacility(@RequestParam(value="staCd") String staCd, Model model) {
 		
-		System.out.println("stacd---------->" + stacd);
-		model.addAttribute("facility", facilityservice.selectupdateFacility(stacd));
+		System.out.println("stacd---------->" + staCd);
+		model.addAttribute("facility", facilityservice.selectupdateFacility(staCd));
 		
 		return "/facility/facilityUpdate";
 	}
@@ -84,7 +84,9 @@ public class FacilityController {
 	}
 	//임시시설설치및철거상세보기
 	@GetMapping("/temporaryView")
-	public String selectTemporaryview() {
+	public String selectTemporaryview(@RequestParam(value="facCd") String facCd, Model model) {
+		
+		model.addAttribute("facility", facilityservice.selectTemporaryview(facCd));
 		
 		return "/facility/temporaryView";
 	}
@@ -94,10 +96,11 @@ public class FacilityController {
 		
 		return "/facility/temporaryInsert";
 	}
-	//임시시설설치및철거수정
+	//임시시설설치및철거수정화면
 	@GetMapping("/temporaryUpdate")
-	public String updateTemporary( ) {
-		
+	public String selectupdateTemporary(@RequestParam(value="facCd") String facCd, Model model) {
+		System.out.println("facCd---------->" + facCd);
+		model.addAttribute("facility", facilityservice.selectupdateTemporary(facCd));
 		return "/facility/temporaryUpdate";
 	}
 	//임시시설설치및철거삭제
@@ -122,10 +125,10 @@ public class FacilityController {
 	}
 	//시설안전점검후유지보수수정 
 	@GetMapping("/maintenanceUpdate")
-	public String updateMaintenance(@RequestParam(value="staNm") String staNm, Model model) {
+	public String updateMaintenance(@RequestParam(value="maiCd") String maiCd, Model model) {
 		
-		System.out.println("staNm---------->" + staNm);
-		model.addAttribute("facility", facilityservice.selectupdateMaintenance(staNm));
+		System.out.println("staNm---------->" + maiCd);
+		model.addAttribute("facility", facilityservice.selectupdateMaintenance(maiCd));
 		
 		return "/facility/maintenanceUpdate";
 	}

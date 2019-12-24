@@ -1,90 +1,111 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-	
-	
-		<th:block layout:fragment="customHead">
-			<meta charset="UTF-8">
-			<title>축제통합관리시스템</title>
-			<th:block th:include="layout/customHead"></th:block>
-		</th:block>
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+		<meta charset="UTF-8">
 		<th:block layout:fragment="customBody">
-			<style>
-			  table {
-			    width: 100%;
-			    border-top: 1px solid #444444;
-			    border-collapse: collapse;
-			  }
-			  th, td {
-			    border-bottom: 1px solid #444444;
-			    padding: 10px;
-			    text-align: center;
-			  }
-			  th {
-			    background-color: #bbdefb;
-			  }
-			  td /* {
-			    background-color: #e3f2fd;
-			  } */
-			</style>
-			<form th:action="@{/humanSearch}" method="post">
-			<select name ="sk">
-				<option value="">선택</option>
-				<option value="">이름</option>
-				<option value="">축제명</option>
-				<option value="">담당업무</option>
-				<option value="">근무시간</option>
-				<option value="">소속</option>
-				<option value="">담당자명</option>				
-			</select>
-			<input type = "text" name="sv">
-			<button type="submit" value="검색">검색</button>
-		</form>
-			
-			인적사항리스트
-			<table>
-					<tr>
-						<th style=display:none;>인적코드</th>
-						<th style=display:none;>위원회코드</th>
-						<th style=display:none;>보유시설코드</th>
-						<th>이름</th>
-						<th>축제명</th>
-						<th>업무</th>
-						<th>연락처</th>
-						<th>근무장소</th>						
-						<th>근무시간</th>
-						<th>담당자이름</th>
-						<th>근무장소상세</th>
-						<th>수정</th>
-						<th>삭제</th>
-					</tr>
-					<tr th:each = "h : ${HumanList}">
-						<td th:text = "${h.humancd}" style=display:none;></td>
-						<td th:text = "${h.mamcd}" style=display:none;></td>
-						<td th:text = "${h.stacd }" style=display:none;></td>
-						<td th:text = "${h.humanNm}"></td>
-						<td th:text = "${h.festNm}"></td>
-						<td th:text = "${h.workdivNm}"></td>
-						<td th:text = "${h.humanPhone}"></td>
-						<td th:text = "${h.stanm}"></td>
-						<td th:text = "${h.humanHour}"></td>
-						<td th:text = "${h.comNm2}"></td>
-						<td>
-						<a th:href = "@{/facilityList}">상세보기</a> <!--모든보유시설리스트연결-->
-						</td>
-						<td>
-							<a th:href="@{/humanUpdate(humancd=${h.humancd})}">수정</a>
-						</td>
-						<td>
-							<a th:href="@{/humanDelete}">삭제</a>
-						</td>						
-					</tr>
-			</table>
-		</th:block>
-		<th:block layout:fragment="customJquery">
-			<th:block th:include="layout/customJquery"></th:block>
-	    </th:block>
-    
->>>>>>> refs/heads/develop
+
+		    <section id="main-content" style="margin: 100px; margin-top: 0px;">
+		      <section class="wrapper">
+		        <h3><i class="fa fa-angle-right"></i>축제업무인적리스트</h3>
+		        <div class="row">
+		          <div class="col-md-12">
+		            <div class="content-panel">
+		              <h4><i class="fa fa-angle-right"></i>인적리스트</h4>
+		              	<div>
+							<form>
+							  <div class="form-row">
+							    <div class="form-group col-md-4">
+							      <label for="inputEmail4"></label>
+							      <input type="email" class="form-control" id="inputEmail4" placeholder="축제명을 입력해주세요">
+							    </div>
+							    <div class="form-group col-md-4">
+							      <label for="inputPassword4"></label>
+							      <input type="password" class="form-control" id="inputPassword4" placeholder="업무명을 입력해주세요">
+							    </div>
+							  </div>
+							  <div class="form-row">
+							    <div class="form-group col-md-4">
+							      <label for="inputEmail4"></label>
+							      <input type="email" class="form-control" id="inputEmail4" placeholder="이름을 입력해주세요">
+							    </div>
+							    <div class="form-group col-md-4">
+							      <label for="inputPassword4"></label>
+							      <input type="password" class="form-control" id="inputPassword4" placeholder="연락처를 입력해주세요">
+							    </div>
+								  </div>
+								  <div class="form-row">
+								    <div class="form-group col-md-4">
+								      <label for="inputEmail4"></label>
+								      <input type="email" class="form-control" id="inputEmail4" placeholder="근무시간을 입력해주세요">
+								    </div>
+								    <div class="form-group col-md-4">
+								      <label for="inputPassword4"></label>
+								      <input type="password" class="form-control" id="inputPassword4" placeholder="담당자명을 입력해주세요">
+								    </div>
+								  </div>
+								 <button type="submit" class="btn btn-primary">검색</button>
+
+							 </form>
+		           		 </div>
+		              <table class="table">
+		                <thead>
+							<tr>
+								<th style=display:none;>인적코드</th>
+								<th style=display:none;>위원회코드</th>
+								<th style=display:none;>보유시설코드</th>
+								<th>이름</th>
+								<th>축제명</th>
+								<th>업무</th>
+								<th>연락처</th>
+								<th>근무장소</th>						
+								<th>근무시간</th>
+								<th>담당자이름</th>
+								<th>인적사항상세보기</th>
+								<th>근무장소상세</th>
+								<th>수정</th>
+								<th>삭제</th>
+							</tr>
+		                </thead>
+		                <tbody>
+		  					<tr th:each = "h : ${HumanList}">
+								<td th:text = "${h.humanCd}" style=display:none;></td>
+								<td th:text = "${h.mamCd}" style=display:none;></td>
+								<td th:text = "${h.staCd}" style=display:none;></td>
+								<td th:text = "${h.humanNm}"></td>
+								<td th:text = "${h.festNm}"></td>
+								<td th:text = "${h.workdivNm}"></td>
+								<td th:text = "${h.humanPhone}"></td>
+								<td th:text = "${h.staNm}"></td>
+								<td th:text = "${h.humanHour}"></td>
+								<td th:text = "${h.comNm2}"></td>
+								<td>
+								<a th:href = "@{/humanView}">상세보기</a>
+								</td>
+								<td>
+								<a th:href = "@{/facilityList}">상세보기</a> <!--모든보유시설리스트연결-->
+								</td>
+								<td>
+									<a th:href="@{/humanUpdate(humanCd=${h.humanCd})}">수정</a>
+								</td>
+								<td>
+									<a th:href="@{/humanDelete}">삭제</a>
+								</td>						
+							</tr>
+		                </tbody>
+		              </table>
+		            </div>
+		          </div>
+		          <!-- /col-md-12 -->
+		          <!-- /col-md-12 -->
+		        </div>
+		      </section>
+		    </section>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
 </html>

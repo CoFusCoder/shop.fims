@@ -9,27 +9,52 @@
   		<result property="workcatNm" column="feswork_cat_nm"/>
   		<result property="workdivNm" column="feswork_div_nm"/>
    		<result property="comNm2" column="com_mem_nm2"/>
-   		<result property="workdivcd" column="feswork_div_cd"/> 		  		
+   		<result property="workdivCd" column="feswork_div_cd"/>
+   		<result property="workcatCd" column="feswork_cat_cd"/>		  		
   	</resultMap> 
-  <select id="selectWorkCategory" resultType="shop.fims.vo.Work">
+  <select id="selectWorkCategory" resultMap="workResultMap">
   
 		SELECT
-			fest_nm AS festNm,
-			feswork_cat_nm AS workcatNm
+			fest_nm,
+			feswork_cat_nm,
+			feswork_cat_cd
 		FROM
 			Festival_Work_Category
   
   </select>
+  <select id="selectupdateWorkCategory" resultMap="workResultMap">
+		SELECT
+			fest_nm,
+			feswork_cat_nm
+		FROM
+			Festival_Work_Category
+		WHERE
+			feswork_cat_cd = #{workcatCd}
   
-  <select id="selectWorkDivision" resultType="shop.fims.vo.Work">
+  </select>
+  <select id="selectWorkDivision" resultMap="workResultMap">
   
 		SELECT
-			fest_nm AS festNm,
-			feswork_cat_nm AS workcatNm,
-			feswork_div_nm AS workdivNm,
-			com_mem_nm2 AS comNm2
+			feswork_div_cd,
+			fest_nm,
+			feswork_cat_nm,
+			feswork_div_nm,
+			com_mem_nm2
 		FROM
 			Festival_Work_Division
   
+  </select>
+  <select id="selectupdateWorkDivision" resultMap="workResultMap">
+  
+ 		SELECT
+			feswork_div_cd,
+			fest_nm,
+			feswork_cat_nm,
+			feswork_div_nm,
+			com_mem_nm2
+		FROM
+			Festival_Work_Division
+		WHERE
+			feswork_div_cd=#{workdivCd}
   </select>
   </mapper>
