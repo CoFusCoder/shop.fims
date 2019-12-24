@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+
+<div class="form-panel">
+	<h4 class="mb"><i class="fa fa-angle-right"></i> 전국 지역 등록</h4>
+	<form class="form-horizontal style-form" th:action="@{/admin/areaInsert}" method="post">
+	  <div class="form-group">
+	    <label class="col-sm-2 col-sm-2 control-label">전국지역코드</label>
+	    <div class="col-sm-6">
+	      <input type="text" class="form-control" name="areaCd" placeholder="*전국지역코드를 입력해주세요">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-sm-2 col-sm-2 control-label">지역명</label>
+	    <div class="col-sm-6">
+	      <input type="text" class="form-control" name="areaNm" placeholder="*지역명을 입력해주세요">
+	    </div>
+	  </div>
+	 		  <button type="submit" class="btn btn btn-success">확인</button>
+	           <button type="submit" class="btn btn btn-danger">취소</button>
+	</form>
+</div>
+
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

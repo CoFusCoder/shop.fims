@@ -70,10 +70,10 @@ public class MainController {
 	 * @author ksmart33 김동석
 	 * @return dashboard
 	 */
-	@GetMapping("/dashboard")
+	@GetMapping("/admin/main")
 	public String dashboard() {
 		System.out.println("---관리자 메인화면 : dashboard 메서드 MainController.java-------");
-		return "dashboard";
+		return "/admin/main";
 	}
 
 	
