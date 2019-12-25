@@ -9,7 +9,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 
 		<div>
-		<a th:href="@{/announcementView}">
+		<a th:href="@{/approvalAccountView}">
 		<button type="button" class="btn btn-default" >뒤로가기</button>
 		</a>
 		</div>
@@ -18,7 +18,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
           <div class="col-lg-12">
             <div class="content-panel">
 <!--             <th:block th:each="#"> -->
-              <h4><i class="fa fa-angle-right"></i></span> 공고상세보기</h4><br>
+              <h4><i class="fa fa-angle-right"></i></span> 거래처회원상세보기</h4><br>
               <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
                   <!-- 한세트 시작 -->
@@ -49,11 +49,11 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   <tbody>
                     <tr>
 	                    <td colspan="2">
-		                    <a th:href="@{/updateAnnouncement}">
+		                    <a th:href="@{/updateAccountMember}">
 		                    <button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
 	                    </td>
 	                    <td colspan="2">
-	                    	<a th:href="@{/announcementView}">
+	                    	<a th:href="@{/accountMemberView}">
 	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
 	                    </td>
                     </tr>

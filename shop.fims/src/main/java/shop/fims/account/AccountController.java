@@ -26,13 +26,19 @@ public class AccountController {
 	//거래처 회원 관리
 	@GetMapping("/accountMemberView")
 	public String selectAccountMember() {
-		return "/account/accountMemberView";
+		return "account/accountMemberView";
 	}
 	
 	//거래처 회원 등록
 	@GetMapping("/insertAccountMember")
 	public String insertAccountMember() {
 		return "/account/insertAccountMember";
+	}
+	
+	//승인된 거래처 상세화면
+	@GetMapping("/accountMemberDetail") 
+		public String selectByAccountMember() { 
+		return "account/accountMemberDetail";
 	}
 	
 	//거래처 회원 수정
@@ -102,7 +108,11 @@ public class AccountController {
 		return "account/insertApprovalAccount";
 	}
 	
-
+	//승인된 거래처 상세화면
+	@GetMapping("/approvalAccountDetail") 
+		public String selectByApprovalAccount() { 
+		return "account/approvalAccountDetail";
+	}
 	
 	//승인된 거래처 수정
 	@GetMapping("/updateApprovalAccount")
