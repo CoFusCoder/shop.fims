@@ -1,9 +1,9 @@
-OCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{layout/festival/festivaldefault}">
+layout:decorate="~{layout/gukmin/gukmindefault}">
 
-<th:block layout:fragment="festivalCss">
+<th:block layout:fragment="gukminCss">
 <style>
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
@@ -28,12 +28,11 @@ p{margin: 0;}
 
 </th:block>
 
-<th:block layout:fragment="festivalMainContents">
-
+<th:block layout:fragment="gukminMainContents">
 
 <section class="row-section">
     <div class="container">
-	    <div class="col-md-30 row-block">
+	    <div class="col-md-10 offset-md-1 row-block">
 	        
 <link type="text/css" rel="stylesheet" th:href="@{/board/css/@sub-default.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/board/board/css/slick.css}">
@@ -141,11 +140,9 @@ p{margin: 0;}
 </div>
 </section>
 
-
 </th:block>
-<th:block layout:fragment="festivalscript">
-
-<th:block th:include="fragments/festival/festivalscript"></th:block>
+<th:block layout:fragment="gukminscript">
+<th:block th:include="fragments/gukmin/gukminscript"></th:block>
 </th:block>
 
 </html>

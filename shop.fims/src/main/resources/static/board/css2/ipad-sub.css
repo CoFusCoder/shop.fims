@@ -1,0 +1,30 @@
+@media screen and (max-width:1024px) {
+	.sub_bg_tit{width:1024px;}
+	.sub_guide > div{width:1024px;}
+	.sub_cons{width:1024px;}
+
+	.subiw_rt{width:620px;}
+	.sub003_img > div{margin:50px 20px 0;}
+
+	.sub003_img > div.imgs{margin:65px 2px 0 2px;width:23%;}
+	.sub003_img > div.imgs > img{width:100%;}
+
+
+	#btn_prev{left:0;}
+	#btn_next{right:0;}
+
+	.sub04_gallery_bt > div{width:24%;margin:5px 3px;}
+	.sub04_gallery_bt > div > img{width:100%;}
+	.ml0{margin-left: 11px !important;}
+
+	#gallery_lab03{width:82%;}
+	#community_lab03{width:82%;}
+	.pop01{left:326px;}
+	.pop02{left:326px;}
+	.pop03{left:326px;}
+
+	.message img{width:100%;}
+.qaq > dl > dt > a{width:90%;}
+.clearlove8.ppk2{margin-right:0;}/*2017-08-29*/
+
+}
