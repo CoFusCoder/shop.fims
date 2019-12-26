@@ -38,6 +38,8 @@ p{margin: 0;}
 <link rel="stylesheet" type="text/css" th:href="@{/board/board/css/slick.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/board/css/board.css}">
 <link type="text/css" rel="stylesheet" charset="utf-8" th:href="@{/_core/css/sys.css?nFlag=201912}" />
+
+
 <div class="sub-con">
 
 <div class="sub-Title area">  
@@ -181,9 +183,10 @@ p{margin: 0;}
 	</table>
 
         <div class="viewBut">
-            <a th:href="@{/insertBoard}" class="list">등록하기</a>
+            <a type="button" th:href="@{/insertBoard}" class="btn btn-default">등록하기</a>
         </div>
-    
+	
+    	
 
 	<div class="PageBox">
 			<div class="allPage">
