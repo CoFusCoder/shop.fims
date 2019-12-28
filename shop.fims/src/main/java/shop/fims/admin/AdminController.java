@@ -20,13 +20,13 @@ public class AdminController {
 	 * @author fims 한소연
 	 */
 	
-	//전국 지역 등록
+	//전국 지역 및 시군 등록
 	@GetMapping("/admin/areaInsert")
 	public String areaInsert() {
 		return "admin/areaInsert";
 	}
 	
-	//전국 지역 등록 처리 메서드
+	//전국 지역 및 시군 등록 처리 메서드
 	@PostMapping("/admin/areaInsert")
 	public String addArea(Area area) {
 		
@@ -38,25 +38,13 @@ public class AdminController {
 	}
 
 	
-	//전국 지역 조회
+	//전국 지역 및 시군 조회
 	@GetMapping("/admin/areaList")
 	public String areaList(Model model) {
 		
 		model.addAttribute("areaList", adminService.areaList());
 		
 		return "admin/areaList";
-	}
-	
-	//전국 지역 시군 등록
-	@GetMapping("/admin/areaCityInsert")
-	public String areaCityInsert() {
-		return "admin/areaCityInsert";
-	}
-	
-	//전국 지역 시군 조회
-	@GetMapping("/admin/areaCityList")
-	public String areaCityList() {
-		return "admin/areaCityList";
 	}
 	
 	//행정기관 등록

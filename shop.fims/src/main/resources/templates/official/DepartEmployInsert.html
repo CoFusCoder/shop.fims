@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<br>
+<div class="form-panel">
+	<h4 class="mb"><i class="fa fa-angle-right"></i>행정기관별 부서 등록</h4>
+	<form class="form-horizontal style-form" th:action="@{/admin/areaInsert}" method="post">
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">행정기관 부서코드</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="adminDepCd" placeholder="*부서코드는 자동으로 생성됩니다." readonly="readonly">
+		  </div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">전국지역명</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>전라북도</option>
+				<option>서울특별시</option>
+				<option>충청남도</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">시군명</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>전주시</option>
+				<option>남원시</option>
+				<option>부안군</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">행정기관명</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>전라북도청</option>
+				<option>남원시청</option>
+				<option>부안군청</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">실국명</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="adminDepCd" placeholder="*실국명을 입력해주세요">
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">부서명</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="adminDepCd" placeholder="*실국명을 입력해주세요">
+		  </div>
+		</div>
+	<button type="submit" class="btn btn btn-success">등록하기</button>
+	<button type="submit" class="btn btn btn-danger">취소</button>
+	</form>
+</div>
+<br>
+<div class="form-panel">
+	<h4 class="mb"><i class="fa fa-angle-right"></i>부서별 직원 등록</h4>
+	<form class="form-horizontal style-form" th:action="@{/admin/areaInsert}" method="post">
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">부서별 직원코드</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="admindepEmpCd" placeholder="*직원코드는 자동으로 생성됩니다." readonly="readonly">
+		  </div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">전국지역명</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>전라북도</option>
+				<option>서울특별시</option>
+				<option>충청남도</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">시군명</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>전주시</option>
+				<option>남원시</option>
+				<option>부안군</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">행정기관명</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>전라북도청</option>
+				<option>남원시청</option>
+				<option>부안군청</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">실국명</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>기획조정실</option>
+				<option>도민안전실</option>
+				<option>농축수산식품국</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">부서명</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>정보화총괄과</option>
+				<option>사회재난과</option>
+				<option>농촌활력과</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">이름</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="admindepEmpNm" placeholder="*이름을 입력해주세요">
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">직위</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="admindepEmpPosition" placeholder="*직위를 입력해주세요">
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">전화번호</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="admindepEmpPhone" placeholder="*전화번호를 입력해주세요">
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">업무</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="admindepEmpTesk" placeholder="*맡은 업무의 내용을 간략히 입력해주세요">
+		  </div>
+		</div>
+	<button type="submit" class="btn btn btn-success">등록하기</button>
+	<button type="submit" class="btn btn btn-danger">취소</button>
+	</form>
+</div>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

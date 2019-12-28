@@ -4,9 +4,46 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle"></th:block>
 <th:block layout:fragment="adminisMainContents">
-<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
-
-administrativeInsert.html
+<br>
+<div class="form-panel">
+	<h4 class="mb"><i class="fa fa-angle-right"></i> 행정기관 등록 </h4>
+	<form class="form-horizontal style-form" method="post">
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">행정기관코드</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="areacityAdminCd" placeholder="행정기관코드는 자동으로 생성됩니다." readonly="readonly">
+		  </div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">전국 지역코드</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>전라북도</option>
+				<option>서울특별시</option>
+				<option>충청남도</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">전국 지역 시군 코드</label>
+			<div class="col-sm-6">
+			<select class="form-control">
+				<option>전주시</option>
+				<option>남원시</option>
+				<option>부안군</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">행정기관명</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="areacityAdminCd" placeholder="행정기관명을 입력해주세요.">
+		  </div>
+		</div>
+	<button type="submit" class="btn btn btn-success">등록하기</button>
+	<button type="submit" class="btn btn btn-danger">취소</button>
+	</form>
+</div>
 
 
 </th:block>
