@@ -5,44 +5,67 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle"></th:block>
 <th:block layout:fragment="adminisMainContents">
 <br>
+<div class="row">
+	<div class="col-md-12 mt" >
+		<div class="col-md-4">    	
+			<h4> 대분류 </h4>
+			<hr>
+				<table class="table table-striped table-advance table-hover" id="areaCate">
+					<thead>
+		                 <tr>
+		                   <th>지역 분류</th>
+		                 </tr>
+		               </thead>
+		               <tbody>
+		                 <tr>
+		                   <td>전라북도</td>
+		                 </tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="col-md-4">    	
+			<h4> 중분류 </h4>
+			<hr>
+				<table class="table table-striped table-advance table-hover">
+					<thead>
+		                 <tr>
+		                   <th>시군 분류</th>
+		                 </tr>
+		               </thead>
+		               <tbody>
+		                 <tr>
+		                   <td>전주시</td>
+		                 </tr>
+					</tbody>
+				</table>
+		</div>
+		<div class="col-md-4">    	
+			<h4> 소분류 선택 </h4>
+			<hr>
+				<table class="table table-striped table-advance table-hover">
+					<thead>
+		                 <tr>
+		                   <th>행정기관 분류</th>
+		                 </tr>
+		               </thead>
+		               <tbody>
+		                 <tr>
+		                   <td>전라북도청</td>
+		                 </tr>
+					</tbody>
+				</table>
+		</div>
+	</div>
+</div>
 <div class="form-panel">
 	<h4 class="mb"><i class="fa fa-angle-right"></i>행정기관별 부서 등록</h4>
 	<form class="form-horizontal style-form" th:action="@{/admin/areaInsert}" method="post">
+	
 		<div class="form-group">
 		  <label class="col-sm-2 col-sm-2 control-label">행정기관 부서코드</label>
 		  <div class="col-sm-6">
 		    <input type="text" class="form-control" name="adminDepCd" placeholder="*부서코드는 자동으로 생성됩니다." readonly="readonly">
 		  </div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 col-sm-2 control-label">전국지역명</label>
-			<div class="col-sm-6">
-			<select class="form-control">
-				<option>전라북도</option>
-				<option>서울특별시</option>
-				<option>충청남도</option>
-			</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 col-sm-2 control-label">시군명</label>
-			<div class="col-sm-6">
-			<select class="form-control">
-				<option>전주시</option>
-				<option>남원시</option>
-				<option>부안군</option>
-			</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 col-sm-2 control-label">행정기관명</label>
-			<div class="col-sm-6">
-			<select class="form-control">
-				<option>전라북도청</option>
-				<option>남원시청</option>
-				<option>부안군청</option>
-			</select>
-			</div>
 		</div>
 		<div class="form-group">
 		  <label class="col-sm-2 col-sm-2 control-label">실국명</label>
@@ -69,36 +92,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		  <div class="col-sm-6">
 		    <input type="text" class="form-control" name="admindepEmpCd" placeholder="*직원코드는 자동으로 생성됩니다." readonly="readonly">
 		  </div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 col-sm-2 control-label">전국지역명</label>
-			<div class="col-sm-6">
-			<select class="form-control">
-				<option>전라북도</option>
-				<option>서울특별시</option>
-				<option>충청남도</option>
-			</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 col-sm-2 control-label">시군명</label>
-			<div class="col-sm-6">
-			<select class="form-control">
-				<option>전주시</option>
-				<option>남원시</option>
-				<option>부안군</option>
-			</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 col-sm-2 control-label">행정기관명</label>
-			<div class="col-sm-6">
-			<select class="form-control">
-				<option>전라북도청</option>
-				<option>남원시청</option>
-				<option>부안군청</option>
-			</select>
-			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">실국명</label>
