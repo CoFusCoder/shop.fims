@@ -48,17 +48,17 @@ public class MainController {
 			ServletResponse response, HttpSession session) {
 		response.setContentType("text/html; charset=UTF-8");
 
-		Main main = mainService.selectFestByFestcd(fest_cd);		
-		System.out.println("세션이름값 : "+main.getArea_nm()+main.getArea_city_nm()+main.getAreacity_admin_nm()+main.getFest_nm());
-		System.out.println("세션코드값 : "+main.getArea_cd()+main.getArea_city_cd()+main.getAreacity_admin_cd()+main.getFest_cd());
-		session.setAttribute("F_AREA_CD", main.getArea_cd());	//전국지역코드
-		session.setAttribute("F_AREA_NM", main.getArea_nm());	//지역명
-		session.setAttribute("F_CITY_CD", main.getArea_city_cd());	//모든 지역 시군코드
-		session.setAttribute("F_CITY_NM", main.getArea_city_nm());	//시군명
-		session.setAttribute("F_ADMIN_CD", main.getAreacity_admin_cd());	//모든 행정기관코드
-		session.setAttribute("F_ADMIN_NM", main.getAreacity_admin_nm());	//행정기관명
-		session.setAttribute("F_CD", main.getFest_cd());	//축제코드		
-		session.setAttribute("F_NM", main.getFest_nm());	//축제명		
+		Main main = mainService.selectFestByFestcd(festCd);		
+		System.out.println("세션이름값 : "+main.getAreaCityCd()+main.getAreaCityNm()+main.getAreacityAdminCd()+main.getAreacityAdminNm());
+		System.out.println("세션코드값 : "+main.getAreaCd()+main.getAreaNm()+main.getFestCd()+main.getFestNm());
+		session.setAttribute("F_AREA_CD", main.getAreaCd());	//전국지역코드
+		session.setAttribute("F_AREA_NM", main.getAreaNm());	//지역명
+		session.setAttribute("F_CITY_CD", main.getAreaCityCd());	//모든 지역 시군코드
+		session.setAttribute("F_CITY_NM", main.getAreaCityNm());	//시군명
+		session.setAttribute("F_ADMIN_CD", main.getAreacityAdminCd());	//모든 행정기관코드
+		session.setAttribute("F_ADMIN_NM", main.getAreacityAdminNm());	//행정기관명
+		session.setAttribute("F_CD", main.getFestCd());	//축제코드		
+		session.setAttribute("F_NM", main.getFestNm());	//축제명		
 		return "index";		
 	}
 
