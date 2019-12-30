@@ -14,19 +14,19 @@ public class PublicrelationsService {
 	@Autowired PublicrelationsMapper publicrelationsMapper;
 	
 	//홍보코드로 이벤트 당첨자 조회
-	public List<EventWinner> selectEventWinnerByPmcd(String festpr_pro_cd){
-		return publicrelationsMapper.selectEventWinnerByPmcd(festpr_pro_cd);
+	public List<EventWinner> selectEventWinnerByPmcd(String festprProCd){
+		return publicrelationsMapper.selectEventWinnerByPmcd(festprProCd);
 	}
 	
 	//홍보코드로 상세내역조회
-	public List<PrPromotion> selectByPmcd(String festpr_pro_cd){
-		return publicrelationsMapper.selectByPmcd(festpr_pro_cd);
+	public List<PrPromotion> selectByPmcd(String festprProCd){
+		return publicrelationsMapper.selectByPmcd(festprProCd);
 		
 	}
 
 	// 홍보상세내역조회
-	public List<PrPromotion> selectAllPromotion(String fest_cd){
-		return publicrelationsMapper.selectAllPromotion(fest_cd);
+	public List<PrPromotion> selectAllPromotion(String festCd){
+		return publicrelationsMapper.selectAllPromotion(festCd);
 	}
 	
 	// 홍보분류조회

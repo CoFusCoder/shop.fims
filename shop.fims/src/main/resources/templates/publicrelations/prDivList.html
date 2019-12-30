@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+
+
+		<div class="col-md-12 mt">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>홍보분류관리</h4>
+              <div align="right">
+              <a th:href="@{/prInsertDiv}" >
+              <button type="button" class="btn btn-primary btn-lg" align="right">신규홍보분류등록</button></a>  
+              </div>
+              <hr>
+              <table class="table table-hover">
+                
+                <thead>
+                  <tr>
+                    <th>홍보분류코드</th>
+                    <th>분류명</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="d:${AllDiv}">
+                    <td th:text="${d.festprDivCd}"></td>
+                    <td th:text="${d.festprDivNm}"></td>
+                    <td><a th:href="@{/prUpdateDiv}" >
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a th:href="@{/prDeleteDiv}" >
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+>>>>>>> refs/heads/Yun-Sujeong
+</html>

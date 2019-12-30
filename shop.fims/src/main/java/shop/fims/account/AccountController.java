@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.fims.vo.Account;
 import shop.fims.vo.AccountCatBus;
+import shop.fims.vo.AppAccount;
 
 @Controller
 public class AccountController {
@@ -44,13 +45,13 @@ public class AccountController {
 	@GetMapping("/allAccountView")
 	public String selectAllAccountView(Model model) {
 		model.addAttribute("selectAllAccountView", accountService.selectAllAccountView());
-		return "/account/allAccountView";
+		return "account/allAccountView";
 	}
 	
 	//모든 거래처 상세조회 거래처코드로 조회
 	@GetMapping("/allAccountDetail") 
-		public String selectByAccount(@RequestParam(value="cat_acc_cd", required = false)String cat_acc_cd, Model model) { 
-		model.addAttribute("selectByAccount", accountService.selectByAccount(cat_acc_cd));
+		public String selectByAccount(@RequestParam(value="catAccCd", required = false)String catAccCd, Model model) { 
+		model.addAttribute("selectByAccount", accountService.selectByAccount(catAccCd));
 		return "account/allAccountDetail";
 	}
 	
@@ -76,10 +77,17 @@ public class AccountController {
 	
 	//모든 거래처 수정화면. 거래처코드로 조회
 	@GetMapping("/updateAllAccount")
-	public String updateAllAccount(@RequestParam(value="cat_acc_cd", required = false)String cat_acc_cd, Model model) { 
-		model.addAttribute("selectByAllAccount", accountService.selectByAllAccount(cat_acc_cd));
+	public String updateAllAccount(@RequestParam(value="catAccCd", required = false)String catAccCd, Model model) { 
+		model.addAttribute("selectByAllAccount", accountService.selectByAllAccount(catAccCd));
 		return "account/updateAllAccount";
 	}
+	
+	//거래처 수정
+	@PostMapping("/updateAllAccount")
+	public String updateAllAccount(Account account) {
+		accountService.updateAllAccount(account);
+		return "redirect:/allAccountView";
+	}	
 	
 	//승인된 거래처 관리
 	@GetMapping("/approvalAccountView")
@@ -88,11 +96,13 @@ public class AccountController {
 		return "account/approvalAccountView";
 	}
 	
-	//승인된 거래처 등록
+	//승인된 거래처 등록화면
 	@GetMapping("/insertApprovalAccount")
 	public String insertApprovalAccount() {
-		return "/account/insertApprovalAccount";
+		return "account/insertApprovalAccount";
 	}
+	
+
 	
 	//승인된 거래처 수정
 	@GetMapping("/updateApprovalAccount")
@@ -120,11 +130,11 @@ public class AccountController {
 		return "redirect:/accountCatBusView";
 	}
 	
-	//거래처 업종 분류 수정
-	@GetMapping("/updateAccountCatBus")
-	public String updateAccountCatBus() {
-		return "/account/updateAccountCatBus";
-	}	
-	
-	
+	//거래처업종 분류 수정화면 거래처 업종 분류코드로 조회
+	@GetMapping("/updateAccountCatBus") 
+	public String updateAccountCatBus(@RequestParam(value="catBusAccCd", required = false)String catBusAccCd, Model model) { 
+		model.addAttribute("selectByAccCatBus", accountService.selectByAccCatBus(catBusAccCd));
+		return "account/updateAccountCatBus";
+	}
+		
 }

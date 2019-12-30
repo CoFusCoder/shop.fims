@@ -1,133 +1,133 @@
 package shop.fims.vo;
 
 public class Schedule {
-	private String fest_sch_cd;
-	private String areacity_admin_cd;
-	private String area_cd;
-	private String area_city_cd;
-	private String fest_cd;
-	private String man_com_cd;
-	private String acc_mem_cd;
-	private String fescon_man_cd;
-	private String fest_nm;
-	private String fest_sch_no;
-	private String fest_sch_dt;
-	private String fest_sche_nm;
-	private String fest_sche_task;
-	private String fest_sch_comment;
-	private String fest_sch_etc;
-	private String fest_sch_attach;
-	private String insert_dt;
-	public String getFest_sch_cd() {
-		return fest_sch_cd;
+	private String festSchCd;
+	private String areacityAdminCd;
+	private String areaCd;
+	private String areaCityCd;
+	private String festCd;
+	private String manComCd;
+	private String accMemCd;
+	private String fesconManCd;
+	private String festTitle;
+	private String festSchNo;
+	private String festSchDt;
+	private String festScheNm;
+	private String festScheTask;
+	private String festSchComment;
+	private String festSchEtc;
+	private String festSchAttach;
+	private String insertDt;
+	public String getFestSchCd() {
+		return festSchCd;
 	}
-	public void setFest_sch_cd(String fest_sch_cd) {
-		this.fest_sch_cd = fest_sch_cd;
+	public void setFestSchCd(String festSchCd) {
+		this.festSchCd = festSchCd;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getFest_cd() {
-		return fest_cd;
+	public String getFestCd() {
+		return festCd;
 	}
-	public void setFest_cd(String fest_cd) {
-		this.fest_cd = fest_cd;
+	public void setFestCd(String festCd) {
+		this.festCd = festCd;
 	}
-	public String getMan_com_cd() {
-		return man_com_cd;
+	public String getManComCd() {
+		return manComCd;
 	}
-	public void setMan_com_cd(String man_com_cd) {
-		this.man_com_cd = man_com_cd;
+	public void setManComCd(String manComCd) {
+		this.manComCd = manComCd;
 	}
-	public String getAcc_mem_cd() {
-		return acc_mem_cd;
+	public String getAccMemCd() {
+		return accMemCd;
 	}
-	public void setAcc_mem_cd(String acc_mem_cd) {
-		this.acc_mem_cd = acc_mem_cd;
+	public void setAccMemCd(String accMemCd) {
+		this.accMemCd = accMemCd;
 	}
-	public String getFescon_man_cd() {
-		return fescon_man_cd;
+	public String getFesconManCd() {
+		return fesconManCd;
 	}
-	public void setFescon_man_cd(String fescon_man_cd) {
-		this.fescon_man_cd = fescon_man_cd;
+	public void setFesconManCd(String fesconManCd) {
+		this.fesconManCd = fesconManCd;
 	}
-	public String getFest_nm() {
-		return fest_nm;
+	public String getFestTitle() {
+		return festTitle;
 	}
-	public void setFest_nm(String fest_nm) {
-		this.fest_nm = fest_nm;
+	public void setFestTitle(String festTitle) {
+		this.festTitle = festTitle;
 	}
-	public String getFest_sch_no() {
-		return fest_sch_no;
+	public String getFestSchNo() {
+		return festSchNo;
 	}
-	public void setFest_sch_no(String fest_sch_no) {
-		this.fest_sch_no = fest_sch_no;
+	public void setFestSchNo(String festSchNo) {
+		this.festSchNo = festSchNo;
 	}
-	public String getFest_sch_dt() {
-		return fest_sch_dt;
+	public String getFestSchDt() {
+		return festSchDt;
 	}
-	public void setFest_sch_dt(String fest_sch_dt) {
-		this.fest_sch_dt = fest_sch_dt;
+	public void setFestSchDt(String festSchDt) {
+		this.festSchDt = festSchDt;
 	}
-	public String getFest_sche_nm() {
-		return fest_sche_nm;
+	public String getFestScheNm() {
+		return festScheNm;
 	}
-	public void setFest_sche_nm(String fest_sche_nm) {
-		this.fest_sche_nm = fest_sche_nm;
+	public void setFestScheNm(String festScheNm) {
+		this.festScheNm = festScheNm;
 	}
-	public String getFest_sche_task() {
-		return fest_sche_task;
+	public String getFestScheTask() {
+		return festScheTask;
 	}
-	public void setFest_sche_task(String fest_sche_task) {
-		this.fest_sche_task = fest_sche_task;
+	public void setFestScheTask(String festScheTask) {
+		this.festScheTask = festScheTask;
 	}
-	public String getFest_sch_comment() {
-		return fest_sch_comment;
+	public String getFestSchComment() {
+		return festSchComment;
 	}
-	public void setFest_sch_comment(String fest_sch_comment) {
-		this.fest_sch_comment = fest_sch_comment;
+	public void setFestSchComment(String festSchComment) {
+		this.festSchComment = festSchComment;
 	}
-	public String getFest_sch_etc() {
-		return fest_sch_etc;
+	public String getFestSchEtc() {
+		return festSchEtc;
 	}
-	public void setFest_sch_etc(String fest_sch_etc) {
-		this.fest_sch_etc = fest_sch_etc;
+	public void setFestSchEtc(String festSchEtc) {
+		this.festSchEtc = festSchEtc;
 	}
-	public String getFest_sch_attach() {
-		return fest_sch_attach;
+	public String getFestSchAttach() {
+		return festSchAttach;
 	}
-	public void setFest_sch_attach(String fest_sch_attach) {
-		this.fest_sch_attach = fest_sch_attach;
+	public void setFestSchAttach(String festSchAttach) {
+		this.festSchAttach = festSchAttach;
 	}
-	public String getInsert_dt() {
-		return insert_dt;
+	public String getInsertDt() {
+		return insertDt;
 	}
-	public void setInsert_dt(String insert_dt) {
-		this.insert_dt = insert_dt;
+	public void setInsertDt(String insertDt) {
+		this.insertDt = insertDt;
 	}
 	@Override
 	public String toString() {
-		return "Schedule [fest_sch_cd=" + fest_sch_cd + ", areacity_admin_cd=" + areacity_admin_cd + ", area_cd="
-				+ area_cd + ", area_city_cd=" + area_city_cd + ", fest_cd=" + fest_cd + ", man_com_cd=" + man_com_cd
-				+ ", acc_mem_cd=" + acc_mem_cd + ", fescon_man_cd=" + fescon_man_cd + ", fest_nm=" + fest_nm
-				+ ", fest_sch_no=" + fest_sch_no + ", fest_sch_dt=" + fest_sch_dt + ", fest_sche_nm=" + fest_sche_nm
-				+ ", fest_sche_task=" + fest_sche_task + ", fest_sch_comment=" + fest_sch_comment + ", fest_sch_etc="
-				+ fest_sch_etc + ", fest_sch_attach=" + fest_sch_attach + ", insert_dt=" + insert_dt + "]";
+		return "Schedule [festSchCd=" + festSchCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd
+				+ ", areaCityCd=" + areaCityCd + ", festCd=" + festCd + ", manComCd=" + manComCd + ", accMemCd="
+				+ accMemCd + ", fesconManCd=" + fesconManCd + ", festTitle=" + festTitle + ", festSchNo=" + festSchNo
+				+ ", festSchDt=" + festSchDt + ", festScheNm=" + festScheNm + ", festScheTask=" + festScheTask
+				+ ", festSchComment=" + festSchComment + ", festSchEtc=" + festSchEtc + ", festSchAttach="
+				+ festSchAttach + ", insertDt=" + insertDt + "]";
 	}
 
 	

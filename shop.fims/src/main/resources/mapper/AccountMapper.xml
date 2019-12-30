@@ -4,23 +4,66 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="shop.fims.account.AccountMapper">
+	<resultMap type="shop.fims.vo.Account" id="accountResultMap">
+		<result property="catAccCd" column="cat_acc_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="catAccNm1" column="cat_acc_nm1"/>
+		<result property="catAccOper" column="cat_acc_oper"/>
+		<result property="catAccNm2" column="cat_acc_nm2"/>
+		<result property="catAccAddr" column="cat_acc_addr"/>
+		<result property="catAccNo1" column="cat_acc_no1"/>
+		<result property="catAccNo2" column="cat_acc_no2"/>
+		<result property="catAccPhone1" column="cat_acc_phone1"/>
+		<result property="catAccPhone2" column="cat_acc_phone2"/>
+		<result property="catAccPhone3" column="cat_acc_phone3"/>
+		<result property="catAccEmail" column="cat_acc_email"/>
+		<result property="catAccDt1" column="cat_acc_dt1"/>
+		<result property="catAccApp" column="cat_acc_app"/>
+		<result property="manComNm1" column="man_com_nm1"/>
+		<result property="catAccDt2" column="cat_acc_dt2"/>
+		<result property="catAccCon" column="cat_acc_con"/>
+	</resultMap>
+	<resultMap type="shop.fims.vo.AccountCatBus" id="accountCatBusResultMap">
+		<result property="catBusAccCd" column="catbus_acc_cd"/>
+		<result property="catBusAccBus" column="catbus_acc_bus"/>
+	</resultMap>
+	<resultMap type="shop.fims.vo.AppAccount" id="approvalAccountCatBusResultMap">
+		<result property="catAppAccCd" column="catapp_acc_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="catBusAccCd" column="catbus_acc_cd"/>
+		<result property="catAccCd" column="cat_acc_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="catAccNm1" column="cat_acc_nm1"/>
+		<result property="catBusAccBus" column="catbus_acc_bus"/>
+		<result property="catAppAccApp" column="catapp_acc_app"/>
+		<result property="manComNm1" column="man_com_nm1"/>
+		<result property="catAppAccDt" column="catapp_acc_dt"/>
+		<result property="catAppAccCon" column="catapp_acc_con"/>
+		<result property="catAppAccPur" column="catapp_acc_pur"/>
+
+	</resultMap>	
 
 	<!-- 모든 거래처 관리 -->
-	 <select id="selectAllAccountView" resultType="shop.fims.vo.Account">
+	 <select id="selectAllAccountView" resultMap="accountResultMap">
 	 	SELECT
 			*
 		FROM 
 			Cat_Account
 	 </select>
 
-	<!-- 위원회 상세조회 위원회 코드로 조회 -->
-	<select id="selectByAccount" resultType="shop.fims.vo.Account">
+	<!-- 거래처 상세조회 거래처 코드로 조회 -->
+	<select id="selectByAccount" resultMap="accountResultMap">
 		SELECT 
 			*
 		FROM 
 			Cat_Account
 		WHERE 
-			cat_acc_cd = #{cat_acc_cd}
+			cat_acc_cd = #{catAccCd}
 	</select>
 	
 	<!-- 거래처 등록 -->
@@ -29,8 +72,8 @@
 			(cat_acc_cd, areacity_admin_cd, area_city_cd, area_cd, man_com_cd, cat_acc_nm1, cat_acc_oper, cat_acc_nm2, cat_acc_addr, cat_acc_no1,
 			cat_acc_no2, cat_acc_phone1, cat_acc_phone2, cat_acc_phone3, cat_acc_email, cat_acc_dt1, cat_acc_app, man_com_nm1, cat_acc_dt2, cat_acc_con)
 		VALUES 
-			(#{cat_acc_cd}, #{areacity_admin_cd}, #{area_city_cd}, #{area_cd}, #{man_com_cd}, #{cat_acc_nm1}, #{cat_acc_oper}, #{cat_acc_nm2}, #{cat_acc_addr}, #{cat_acc_no1},
-			#{cat_acc_no2}, #{cat_acc_phone1}, #{cat_acc_phone2}, #{cat_acc_phone3}, #{cat_acc_email}, now(), #{cat_acc_app}, #{man_com_nm1}, now(), #{cat_acc_con})
+			(#{catAccCd}, #{areacityAdminCd}, #{areaCityCd}, #{areaCd}, #{manComCd}, #{catAccNm1}, #{catAccOper}, #{catAccNm2}, #{catAccAddr}, #{catAccNo1},
+			#{catAccNo2}, #{catAccPhone1}, #{catAccPhone2}, #{catAccPhone3}, #{catAccEmail}, now(), #{catAccApp}, #{manComNm1}, now(), #{catAccCon})
 	</insert>
 	
 	<!-- 모든 거래처 삭제 -->
@@ -39,30 +82,60 @@
 		FROM 
 			Cat_Account
 		WHERE
-			cat_acc_cd = #{cat_acc_cd}
+			cat_acc_cd = #{catAccCd}
 	</delete>
 	
-	<!--  위원회 수정화면. 위원회 코드로 조회 -->
-	<select id="selectByAllAccount" parameterType="String" resultType="shop.fims.vo.Account">
+	<!--  거래처 수정화면. 거래처 코드로 조회 -->
+	<select id="selectByAllAccount" parameterType="String" resultMap="accountResultMap">
 		SELECT 
 			*
 		FROM 
 			Cat_Account
 		WHERE 
-			cat_acc_cd = #{cat_acc_cd}
+			cat_acc_cd = #{catAccCd}
 	</select>
 	
+	<!-- 거래처 수정 -->
+	<update id="updateAllAccount" parameterType="shop.fims.vo.Account">
+	UPDATE Cat_Account
+	SET
+		cat_acc_cd = #{catAccCd}
+		,areacity_admin_cd = #{areacityAdminCd}
+		,area_city_cd = #{areaCityCd}
+		,area_cd = #{areaCd}
+		,man_com_cd = #{manComCd}
+		,cat_acc_nm1 = #{catAccNm1}
+		,cat_acc_oper = #{catAccOper}
+		,cat_acc_nm2 = #{catAccNm2}
+		,cat_acc_addr = #{catAccAddr}
+		,cat_acc_no1 = #{catAccNo1}
+		,cat_acc_no2 = #{catAccNo2}
+		,cat_acc_phone1 = #{catAccPhone1}
+		,cat_acc_phone2 = #{catAccPhone2}
+		,cat_acc_phone3 = #{catAccPhone3}
+		,cat_acc_email = #{catAccEmail}
+		,cat_acc_dt1 = #{catAccDt1}
+		,cat_acc_app = #{catAccApp}
+		,man_com_nm1 = #{manComNm1}
+		,cat_acc_dt2 = #{catAccDt2}
+		,cat_acc_con = #{catAccCon}
+	WHERE
+		cat_acc_cd = #{catAccCd}
+	</update>
+	
 	<!-- 승인된 거래처 관리 -->
-	 <select id="selectApprovalAccountView" resultType="shop.fims.vo.AppAccount">
+	 <select id="selectApprovalAccountView" resultMap="approvalAccountCatBusResultMap">
 	 	SELECT
 			*
 		FROM 
 			Cat_Approval_Account
 	 </select>
+	 
+
 	
 	
 	<!-- 거래처 업종 분류 -->
-	 <select id="selectAccountCatBusView" resultType="shop.fims.vo.AccountCatBus">
+	 <select id="selectAccountCatBusView" resultMap="accountCatBusResultMap">
 	 	SELECT
 			*
 		FROM 
@@ -74,7 +147,18 @@
 		INSERT INTO Cat_Business_Account
 			(catbus_acc_cd, catbus_acc_bus)
 		VALUES 
-			(#{catbus_acc_cd}, #{catbus_acc_bus})
+			(#{catBusAccCd}, #{catBusAccBus})
 	</insert>
+	
+	<!-- 거래처업종 분류 수정화면 거래처 업종 분류코드로 조회 -->	
+	<select id="selectByAccCatBus" parameterType="String" resultMap="accountCatBusResultMap">
+		SELECT 
+			*
+		FROM 
+			Cat_Business_Account
+		WHERE 
+			catbus_acc_cd = #{catBusAccCd}
+	</select>
+
 	
 </mapper>

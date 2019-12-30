@@ -1,0 +1,120 @@
+﻿OCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/festival/festivaldefault}">
+
+<th:block layout:fragment="festivalCss">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+}
+.row-section h2{float:left; width:100%; color:#fff; margin-bottom:30px; font-size: 14px;}
+.row-section h2 span{font-family: 'Libre Baskerville', serif; display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px;font-weight:700;}
+.row-section h2 a{color:#d2abce;}
+.row-section .row-block{background:#fff; padding:20px; margin-bottom:50px; margin-top: 230px;}
+.row-section .row-block ul{margin:0; padding:0;}
+.row-section .row-block ul li{list-style:none; margin-bottom:20px;}
+.row-section .row-block ul li:last-child{margin-bottom:0;}
+.row-section .row-block ul li:hover{cursor:grabbing;}
+.row-section .row-block .media{border:1px solid #d5dbdd; padding:5px 20px; border-radius: 5px; box-shadow:0px 2px 1px rgba(0,0,0,0.04); background:#fff;}
+.row-section .media .media-left img{width:75px;}
+.row-section .media .media-body p{padding: 0 15px; font-size:14px;}
+.row-section .media .media-body h4 {color: #6b456a; font-size: 18px; font-weight: 600; margin-bottom: 0; padding-left: 14px; margin-top:12px;}
+.btn-default{background:#6B456A; color:#fff; border-radius:30px; border:none; font-size:16px;}
+.rounded-circle{min-width: 150px;}
+hr{margin: 0;}
+p{margin: 0;}
+</style>
+
+</th:block>
+
+<th:block layout:fragment="festivalMainContents">
+
+
+<section class="row-section">
+    <div class="container">
+	    <div class="col-md-30 row-block">
+	        
+<link type="text/css" rel="stylesheet" th:href="@{/board/css/@sub-default.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/board/board/css/slick.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/board/css/board.css}">
+
+<div class="sub-con">
+
+<div class="sub-Title area">
+                
+                    공지사항
+
+          
+            </div>
+    	<div class="sub-txt-con area">
+		<script type='text/javascript' src='/zzAppModule/editors/se2/js/HuskyEZCreator.js' charset='utf-8'></script>
+		<script language='javascript' src='/zzAppModule/module/script/common.js'></script>
+		<script language='javascript' src='/zzAppModule/module/script/board.js'></script>
+		<script language='javascript' src='/zzAppModule/module/script/ajax.js'></script>
+		<link rel='stylesheet' href='/zzAppModule/bskin__collect/css/default.css'/>
+		<script type="text/javascript">
+<!--
+function boardPop(id,no) {
+	window.open("/bpop.php?id="+id+"&no="+no,'pop',"width=1200,height=500,scrollbars=yes");
+}
+//-->
+</script>
+<link rel="stylesheet" type="text/css" href="/css/board.css">
+<div class="ViewLayout">
+	<!--p class="printer"><img src="/img/printer.gif" onclick="boardPop('bbs1','419');" style="cursor:pointer"/></p-->
+          	<div class="Viewboard">
+            	<div class="ViewTop">
+                	<div class="ViewTitle">
+                    	<strong>[제89회 춘향제] 춘향제평가위원 공고  </strong>
+                    </div>
+                    <div class="ViewName">
+                    	<strong>Name</strong>관리자                    </div>
+                    <div class="ViewDate">
+                    	<strong>Date</strong>2019.11.19                    </div>
+                    <div class="ViewHit">
+                    	<strong>Hit</strong>187                    </div>
+                </div>
+                
+            
+            <div class="ViewCon">
+				<p align="center"><span style="font-size: 36pt;">﻿</span>&nbsp;</p><p align="center"><span style="font-size: 36pt;">﻿[제89회 춘향제] 춘향제평가위원 공고 &nbsp;</span>&nbsp;</p>
+            </div>
+            
+             <div class="attach">
+                	<a th:href="@{/insertCommitteeAppForm}">위원 신청하기</a>
+			 </div>
+						
+<script type="text/javascript">
+<!--
+	function imgDel(bbs,code,no,_zidx,bnum) {
+		document.location.href="/zzAppModule/process/img_del.php?bbs="+bbs+"&code="+code+"&no="+no+"&_zidx="+_zidx+"&bnum="+bnum;
+	}
+//-->
+</script>
+     
+        </div>
+         
+        <div class="viewBut">
+            <a th:href="@{/boardList}" class="list">리스트</a>
+            <a th:href="@{/boardList}" class="list">수정</a>
+            <a th:href="@{/boardList}" class="list">삭제</a>  
+        </div>
+            
+</div>            
+
+</div>
+
+
+	  </div>
+</div>
+</section>
+
+
+</th:block>
+<th:block layout:fragment="festivalscript">
+
+<th:block th:include="fragments/festival/festivalscript"></th:block>
+</th:block>
+
+</html>

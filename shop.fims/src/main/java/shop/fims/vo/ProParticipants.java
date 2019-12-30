@@ -1,121 +1,134 @@
 package shop.fims.vo;
 
 public class ProParticipants {
-	private String festpro_par_cd;
-	private String areacity_admin_cd;
-	private String festpro_spro_cd;
-	private String fest_pro_cd;
-	private String acc_mem_cd;
-	private String fest_cd;
-	private String man_com_cd;
-	private String area_city_cd;
-	private String area_cd;
-	private String festpro_par_nm;
-	private String festpro_par_gender;
-	private String festpro_par_age;
-	private String festpro_par_phone;
-	private String festpro_par_etc;
-	private String insert_dt;
-	public String getFestpro_par_cd() {
-		return festpro_par_cd;
+	private String festProNm;
+	private String festproSproNm;
+	private String festproParCd;
+	private String areacityAdminCd;
+	private String festproSproCd;
+	private String festProCd;
+	private String accMemCd;
+	private String festCd;
+	private String manComCd;
+	private String areaCityCd;
+	private String areaCd;
+	private String festproParNm;
+	private String festproParGender;
+	private String festproParAge;
+	private String festproParPhone;
+	private String festproParEtc;
+	private String insertDt;
+	public String getFestProNm() {
+		return festProNm;
 	}
-	public void setFestpro_par_cd(String festpro_par_cd) {
-		this.festpro_par_cd = festpro_par_cd;
+	public void setFestProNm(String festProNm) {
+		this.festProNm = festProNm;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getFestproSproNm() {
+		return festproSproNm;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setFestproSproNm(String festproSproNm) {
+		this.festproSproNm = festproSproNm;
 	}
-	public String getFestpro_spro_cd() {
-		return festpro_spro_cd;
+	public String getFestproParCd() {
+		return festproParCd;
 	}
-	public void setFestpro_spro_cd(String festpro_spro_cd) {
-		this.festpro_spro_cd = festpro_spro_cd;
+	public void setFestproParCd(String festproParCd) {
+		this.festproParCd = festproParCd;
 	}
-	public String getFest_pro_cd() {
-		return fest_pro_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setFest_pro_cd(String fest_pro_cd) {
-		this.fest_pro_cd = fest_pro_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getAcc_mem_cd() {
-		return acc_mem_cd;
+	public String getFestproSproCd() {
+		return festproSproCd;
 	}
-	public void setAcc_mem_cd(String acc_mem_cd) {
-		this.acc_mem_cd = acc_mem_cd;
+	public void setFestproSproCd(String festproSproCd) {
+		this.festproSproCd = festproSproCd;
 	}
-	public String getFest_cd() {
-		return fest_cd;
+	public String getFestProCd() {
+		return festProCd;
 	}
-	public void setFest_cd(String fest_cd) {
-		this.fest_cd = fest_cd;
+	public void setFestProCd(String festProCd) {
+		this.festProCd = festProCd;
 	}
-	public String getMan_com_cd() {
-		return man_com_cd;
+	public String getAccMemCd() {
+		return accMemCd;
 	}
-	public void setMan_com_cd(String man_com_cd) {
-		this.man_com_cd = man_com_cd;
+	public void setAccMemCd(String accMemCd) {
+		this.accMemCd = accMemCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getFestCd() {
+		return festCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setFestCd(String festCd) {
+		this.festCd = festCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getManComCd() {
+		return manComCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setManComCd(String manComCd) {
+		this.manComCd = manComCd;
 	}
-	public String getFestpro_par_nm() {
-		return festpro_par_nm;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setFestpro_par_nm(String festpro_par_nm) {
-		this.festpro_par_nm = festpro_par_nm;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getFestpro_par_gender() {
-		return festpro_par_gender;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setFestpro_par_gender(String festpro_par_gender) {
-		this.festpro_par_gender = festpro_par_gender;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getFestpro_par_age() {
-		return festpro_par_age;
+	public String getFestproParNm() {
+		return festproParNm;
 	}
-	public void setFestpro_par_age(String festpro_par_age) {
-		this.festpro_par_age = festpro_par_age;
+	public void setFestproParNm(String festproParNm) {
+		this.festproParNm = festproParNm;
 	}
-	public String getFestpro_par_phone() {
-		return festpro_par_phone;
+	public String getFestproParGender() {
+		return festproParGender;
 	}
-	public void setFestpro_par_phone(String festpro_par_phone) {
-		this.festpro_par_phone = festpro_par_phone;
+	public void setFestproParGender(String festproParGender) {
+		this.festproParGender = festproParGender;
 	}
-	public String getFestpro_par_etc() {
-		return festpro_par_etc;
+	public String getFestproParAge() {
+		return festproParAge;
 	}
-	public void setFestpro_par_etc(String festpro_par_etc) {
-		this.festpro_par_etc = festpro_par_etc;
+	public void setFestproParAge(String festproParAge) {
+		this.festproParAge = festproParAge;
 	}
-	public String getInsert_dt() {
-		return insert_dt;
+	public String getFestproParPhone() {
+		return festproParPhone;
 	}
-	public void setInsert_dt(String insert_dt) {
-		this.insert_dt = insert_dt;
+	public void setFestproParPhone(String festproParPhone) {
+		this.festproParPhone = festproParPhone;
+	}
+	public String getFestproParEtc() {
+		return festproParEtc;
+	}
+	public void setFestproParEtc(String festproParEtc) {
+		this.festproParEtc = festproParEtc;
+	}
+	public String getInsertDt() {
+		return insertDt;
+	}
+	public void setInsertDt(String insertDt) {
+		this.insertDt = insertDt;
 	}
 	@Override
 	public String toString() {
-		return "ProParticipants [festpro_par_cd=" + festpro_par_cd + ", areacity_admin_cd=" + areacity_admin_cd
-				+ ", festpro_spro_cd=" + festpro_spro_cd + ", fest_pro_cd=" + fest_pro_cd + ", acc_mem_cd=" + acc_mem_cd
-				+ ", fest_cd=" + fest_cd + ", man_com_cd=" + man_com_cd + ", area_city_cd=" + area_city_cd
-				+ ", area_cd=" + area_cd + ", festpro_par_nm=" + festpro_par_nm + ", festpro_par_gender="
-				+ festpro_par_gender + ", festpro_par_age=" + festpro_par_age + ", festpro_par_phone="
-				+ festpro_par_phone + ", festpro_par_etc=" + festpro_par_etc + ", insert_dt=" + insert_dt + "]";
+		return "ProParticipants [festProNm=" + festProNm + ", festproSproNm=" + festproSproNm + ", festproParCd="
+				+ festproParCd + ", areacityAdminCd=" + areacityAdminCd + ", festproSproCd=" + festproSproCd
+				+ ", festProCd=" + festProCd + ", accMemCd=" + accMemCd + ", festCd=" + festCd + ", manComCd="
+				+ manComCd + ", areaCityCd=" + areaCityCd + ", areaCd=" + areaCd + ", festproParNm=" + festproParNm
+				+ ", festproParGender=" + festproParGender + ", festproParAge=" + festproParAge + ", festproParPhone="
+				+ festproParPhone + ", festproParEtc=" + festproParEtc + ", insertDt=" + insertDt + "]";
 	}
-	
-	
+
 	
 }

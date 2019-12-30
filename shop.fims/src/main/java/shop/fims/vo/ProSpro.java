@@ -1,123 +1,127 @@
 package shop.fims.vo;
 
-public class ProSpro {
-	private String festpro_spro_cd;
-	private String areacity_admin_cd;
-	private String festprodiv_theme_cd;
-	private String fest_pro_cd;
-	private String acc_mem_cd;
-	private String fest_cd;
-	private String man_com_cd;
-	private String area_city_cd;
-	private String area_cd;
-	private String festpro_spro_nm;
-	private String festpro_spro_place;
-	private String festpro_spro_time;
-	private String festpro_spro_detail;
-	private int festpro_spro_expense;
-	private String insert_dt;
-	
-	public String getFestpro_spro_cd() {
-		return festpro_spro_cd;
+public class ProSpro {	
+	private String festproSproCd;
+	private String areacityAdminCd;
+	private String festprodivThemeCd;
+	private String festProCd;
+	private String accMemCd;
+	private String festCd;
+	private String manComCd;
+	private String areaCityCd;
+	private String areaCd;
+	private String festproSproNm;
+	private String festProNm;
+	private String festproSproPlace;
+	private String festproSproTime;
+	private String festproSproDetail;
+	private int festproSproExpense;
+	private String insertDt;
+	public String getFestproSproCd() {
+		return festproSproCd;
 	}
-	public void setFestpro_spro_cd(String festpro_spro_cd) {
-		this.festpro_spro_cd = festpro_spro_cd;
+	public void setFestproSproCd(String festproSproCd) {
+		this.festproSproCd = festproSproCd;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getFestprodiv_theme_cd() {
-		return festprodiv_theme_cd;
+	public String getFestprodivThemeCd() {
+		return festprodivThemeCd;
 	}
-	public void setFestprodiv_theme_cd(String festprodiv_theme_cd) {
-		this.festprodiv_theme_cd = festprodiv_theme_cd;
+	public void setFestprodivThemeCd(String festprodivThemeCd) {
+		this.festprodivThemeCd = festprodivThemeCd;
 	}
-	public String getFest_pro_cd() {
-		return fest_pro_cd;
+	public String getFestProCd() {
+		return festProCd;
 	}
-	public void setFest_pro_cd(String fest_pro_cd) {
-		this.fest_pro_cd = fest_pro_cd;
+	public void setFestProCd(String festProCd) {
+		this.festProCd = festProCd;
 	}
-	public String getAcc_mem_cd() {
-		return acc_mem_cd;
+	public String getAccMemCd() {
+		return accMemCd;
 	}
-	public void setAcc_mem_cd(String acc_mem_cd) {
-		this.acc_mem_cd = acc_mem_cd;
+	public void setAccMemCd(String accMemCd) {
+		this.accMemCd = accMemCd;
 	}
-	public String getFest_cd() {
-		return fest_cd;
+	public String getFestCd() {
+		return festCd;
 	}
-	public void setFest_cd(String fest_cd) {
-		this.fest_cd = fest_cd;
+	public void setFestCd(String festCd) {
+		this.festCd = festCd;
 	}
-	public String getMan_com_cd() {
-		return man_com_cd;
+	public String getManComCd() {
+		return manComCd;
 	}
-	public void setMan_com_cd(String man_com_cd) {
-		this.man_com_cd = man_com_cd;
+	public void setManComCd(String manComCd) {
+		this.manComCd = manComCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getFestpro_spro_nm() {
-		return festpro_spro_nm;
+	public String getFestproSproNm() {
+		return festproSproNm;
 	}
-	public void setFestpro_spro_nm(String festpro_spro_nm) {
-		this.festpro_spro_nm = festpro_spro_nm;
+	public void setFestproSproNm(String festproSproNm) {
+		this.festproSproNm = festproSproNm;
 	}
-	public String getFestpro_spro_place() {
-		return festpro_spro_place;
+	public String getFestProNm() {
+		return festProNm;
 	}
-	public void setFestpro_spro_place(String festpro_spro_place) {
-		this.festpro_spro_place = festpro_spro_place;
+	public void setFestProNm(String festProNm) {
+		this.festProNm = festProNm;
 	}
-	public String getFestpro_spro_time() {
-		return festpro_spro_time;
+	public String getFestproSproPlace() {
+		return festproSproPlace;
 	}
-	public void setFestpro_spro_time(String festpro_spro_time) {
-		this.festpro_spro_time = festpro_spro_time;
+	public void setFestproSproPlace(String festproSproPlace) {
+		this.festproSproPlace = festproSproPlace;
 	}
-	public String getFestpro_spro_detail() {
-		return festpro_spro_detail;
+	public String getFestproSproTime() {
+		return festproSproTime;
 	}
-	public void setFestpro_spro_detail(String festpro_spro_detail) {
-		this.festpro_spro_detail = festpro_spro_detail;
+	public void setFestproSproTime(String festproSproTime) {
+		this.festproSproTime = festproSproTime;
 	}
-
-	public int getFestpro_spro_expense() {
-		return festpro_spro_expense;
+	public String getFestproSproDetail() {
+		return festproSproDetail;
 	}
-	public void setFestpro_spro_expense(int festpro_spro_expense) {
-		this.festpro_spro_expense = festpro_spro_expense;
+	public void setFestproSproDetail(String festproSproDetail) {
+		this.festproSproDetail = festproSproDetail;
 	}
-	public String getInsert_dt() {
-		return insert_dt;
+	public int getFestproSproExpense() {
+		return festproSproExpense;
 	}
-	public void setInsert_dt(String insert_dt) {
-		this.insert_dt = insert_dt;
+	public void setFestproSproExpense(int festproSproExpense) {
+		this.festproSproExpense = festproSproExpense;
+	}
+	public String getInsertDt() {
+		return insertDt;
+	}
+	public void setInsertDt(String insertDt) {
+		this.insertDt = insertDt;
 	}
 	@Override
 	public String toString() {
-		return "ProSpro [festpro_spro_cd=" + festpro_spro_cd + ", areacity_admin_cd=" + areacity_admin_cd
-				+ ", festprodiv_theme_cd=" + festprodiv_theme_cd + ", fest_pro_cd=" + fest_pro_cd + ", acc_mem_cd="
-				+ acc_mem_cd + ", fest_cd=" + fest_cd + ", man_com_cd=" + man_com_cd + ", area_city_cd=" + area_city_cd
-				+ ", area_cd=" + area_cd + ", festpro_spro_nm=" + festpro_spro_nm + ", festpro_spro_place="
-				+ festpro_spro_place + ", festpro_spro_time=" + festpro_spro_time + ", festpro_spro_detail="
-				+ festpro_spro_detail + ", festpro_spro_expense=" + festpro_spro_expense + ", insert_dt=" + insert_dt
-				+ "]";
+		return "ProSpro [festproSproCd=" + festproSproCd + ", areacityAdminCd=" + areacityAdminCd
+				+ ", festprodivThemeCd=" + festprodivThemeCd + ", festProCd=" + festProCd + ", accMemCd=" + accMemCd
+				+ ", festCd=" + festCd + ", manComCd=" + manComCd + ", areaCityCd=" + areaCityCd + ", areaCd=" + areaCd
+				+ ", festproSproNm=" + festproSproNm + ", festProNm=" + festProNm + ", festproSproPlace="
+				+ festproSproPlace + ", festproSproTime=" + festproSproTime + ", festproSproDetail=" + festproSproDetail
+				+ ", festproSproExpense=" + festproSproExpense + ", insertDt=" + insertDt + "]";
 	}
-	
+
 	
 }

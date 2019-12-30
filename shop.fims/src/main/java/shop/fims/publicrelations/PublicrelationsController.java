@@ -15,90 +15,115 @@ import shop.fims.vo.PrPromotion;
 public class PublicrelationsController {
 	@Autowired PublicrelationsService publicrelationsService;
 	
-	
-	//이벤트당첨자관리
-	@GetMapping("/pr_eventwinnerList")
-	public String selectEventWinnerByPmcd(@RequestParam(value="festpr_pro_cd")String festpr_pro_cd, Model model) {
-		System.out.println("festpr_pro_cd==>"+festpr_pro_cd);
-		model.addAttribute("EveByPmcd", publicrelationsService.selectEventWinnerByPmcd(festpr_pro_cd));
-		return "festival_publicrelations/pr_eventwinnerList";
+	//이벤트당첨자 등록
+	@GetMapping("/prInsertEventwinner")
+	public String pr_insertEventwinner(@RequestParam(value="festprProCd")String festprProCd, Model model2) {
+		System.out.println("festprProCd==>"+festprProCd);
+		model2.addAttribute("code", festprProCd);
+		return "publicrelations/prInsertEventwinner";
+	}
+	//이벤트당첨자 수정
+	@GetMapping("/prUpdateEventwinner")
+	public String pr_updateEventwinner() {
+		return "publicrelations/prUpdateEventwinner";
+	}
+	//이벤트당첨자 삭제
+	@GetMapping("/prDeleteEventwinner")
+	public String deleteEventWinnerByPmcd(Model model,HttpSession session) {
+		String festCd = (String)session.getAttribute("F_CD");
+		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(festCd));
+		return "publicrelations/prPromotionList";
+	}
+	//이벤트당첨자 조회
+	@GetMapping("/prEventwinnerList")
+	public String selectEventWinnerByPmcd(@RequestParam(value="festprProCd")String festprProCd, Model model, Model model2) {
+		System.out.println("festprProCd==>"+festprProCd);
+		model.addAttribute("EveByPmcd", publicrelationsService.selectEventWinnerByPmcd(festprProCd));
+		model2.addAttribute("code", festprProCd);
+		return "publicrelations/prEventwinnerList";
 	}
 	
+	
+	
+	
+	
+	
 	//홍보분류 수정
-	@GetMapping("/pr_updateDiv")
+	@GetMapping("/prUpdateDiv")
 	public String updateDiv() {
-		return "festival_publicrelations/pr_updateDiv";
+		return "publicrelations/prUpdateDiv";
 	}
 	
 	//홍보분류 삭제
-	@GetMapping("/pr_deleteDiv")
+	@GetMapping("/prDeleteDiv")
 	public String deleteDiv(Model model) {
 		model.addAttribute("AllDiv", publicrelationsService.seletAllPrDiv());
-		return "festival_publicrelations/pr_divList";
+		return "publicrelations/prDivList";
+		
 	}
 	
 	//홍보분류 신규등록
-	@GetMapping("/pr_insertDiv")
+	@GetMapping("/prInsertDiv")
 	public String insertDiv() {
-		return "festival_publicrelations/pr_insertDiv";
+		return "publicrelations/prInsertDiv";
 	}
 
 	
 	//홍보사업삭제
-	@GetMapping("/pr_deletePromotion")
+	@GetMapping("/prDeletePromotion")
 	public String deletePromotion(Model model, HttpSession session) {
-		String fest_cd = (String)session.getAttribute("F_CD");
-		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(fest_cd));
-		return "festival_publicrelations/pr_promotionList";	
+		String festCd = (String)session.getAttribute("F_CD");
+		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(festCd));
+		return "publicrelations/prPromotionList";	
 	}
 	
 	//홍보사업수정 코드가져와서 다 해야됨. 
-	@GetMapping("/pr_updatePromotion")
+	@GetMapping("/prUpdatePromotion")
 	public String updatePromotion() {
-		return "festival_publicrelations/pr_updatePromotion";
+		return "publicrelations/prUpdatePromotion";
 	}
 	
 	
 	//홍보사업 신규등록
-	 @GetMapping("/pr_insertPromotion")
+	 @GetMapping("/prInsertPromotion")
 	 public String insertPromotion() {
-		return "festival_publicrelations/pr_insertPromotion";
+		return "publicrelations/prInsertPromotion";
 	 }
 	
 	
 	 //홍보 프로모션코드로 세부사항조회
-	 @GetMapping("/pr_promotionDetail") 
-	 public String selectByPmcd(@RequestParam(value="festpr_pro_cd")String festpr_pro_cd, Model model) { 
-		System.out.println("festpr_pro_cd"+festpr_pro_cd);
-		model.addAttribute("selectByPmcd", publicrelationsService.selectByPmcd(festpr_pro_cd));
-	 	return "festival_publicrelations/pr_promotionDetail";
+	 @GetMapping("/prPromotionDetail") 
+	 public String selectByPmcd(@RequestParam(value="festprProCd")String festprProCd, Model model) { 
+		System.out.println("festprProCd"+festprProCd);
+		model.addAttribute("selectByPmcd", publicrelationsService.selectByPmcd(festprProCd));
+	 	return "publicrelations/prPromotionDetail";
 	 }
 	
 	//홍보 월별타임테이블
-	@GetMapping("/pr_timetable")
+	@GetMapping("/prTimetable")
 	public String Timetable() {
-		return "festival_publicrelations/pr_timetable";
+		return "publicrelations/prTimetable";
 	}
 	
 	//홍보사업리스트 조회
-	@GetMapping("/pr_promotionList")
+	@GetMapping("/prPromotionList")
 	public String detailList(Model model,HttpSession session) {
-		String fest_cd = (String)session.getAttribute("F_CD");
-		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(fest_cd));
-		return "festival_publicrelations/pr_promotionList";
+		String festCd = (String)session.getAttribute("F_CD");
+		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(festCd));
+		return "publicrelations/prPromotionList";
 	}
 	
 	//홍보 분류리스트
-	@GetMapping("/pr_divList")
+	@GetMapping("/prDivList")
 	public String divList(Model model) {
 		model.addAttribute("AllDiv", publicrelationsService.seletAllPrDiv());
-		return "festival_publicrelations/pr_divList";
+		return "publicrelations/prDivList";
 	}
 	
 	//홍보 거래처리스트
-	@GetMapping("/pr_comList")
+	@GetMapping("/prComList")
 	public String prCompanyList() {
-		return "festival_publicrelations/pr_comList";
+		return "publicrelations/prComList";
 	}
 	
 	

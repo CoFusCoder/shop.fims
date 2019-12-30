@@ -2,113 +2,114 @@ package shop.fims.vo;
 
 public class AppAccount {
 	
-	private String catapp_acc_cd;
-	private String areacity_admin_cd;
-	private String catbus_acc_cd;
-	private String cat_acc_cd;
-	private String area_city_cd;
-	private String area_cd;
-	private String man_com_cd;
-	private String cat_acc_nm1;
-	private String catbus_acc_bus;
-	private String catapp_acc_app;
-	private String man_com_nm1;
-	private String catapp_acc_dt;
-	private String catapp_acc_con;
-	private String catapp_acc_pur;
+	private String catAppAccCd;	//거래처별 승인 업종 코드
+	private String areacityAdminCd;	//모든 행정기관코드
+	private String catBusAccCd;	//거래처 업종 분류코드
+	private String catAccCd;	//거래처코드
+	private String areaCityCd;	//모든 지역 시군코드
+	private String areaCd;	//전국지역코드
+	private String manComCd;	//위원회코드
+	private String catAccNm1;	//거래처명
+	private String catBusAccBus;	//거래처업종분류
+	private String catAppAccApp;	//승인자
+	private String manComNm1;	//위원회명
+	private String catAppAccDt;	//승인일자
+	private String catAppAccCon;	//승인 상태
+	private String catAppAccPur;	//거래처업무
 	
-	public String getCatapp_acc_cd() {
-		return catapp_acc_cd;
+	public String getCatAppAccCd() {
+		return catAppAccCd;
 	}
-	public void setCatapp_acc_cd(String catapp_acc_cd) {
-		this.catapp_acc_cd = catapp_acc_cd;
+	public void setCatAppAccCd(String catAppAccCd) {
+		this.catAppAccCd = catAppAccCd;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getCatbus_acc_cd() {
-		return catbus_acc_cd;
+	public String getCatBusAccCd() {
+		return catBusAccCd;
 	}
-	public void setCatbus_acc_cd(String catbus_acc_cd) {
-		this.catbus_acc_cd = catbus_acc_cd;
+	public void setCatBusAccCd(String catBusAccCd) {
+		this.catBusAccCd = catBusAccCd;
 	}
-	public String getCat_acc_cd() {
-		return cat_acc_cd;
+	public String getCatAccCd() {
+		return catAccCd;
 	}
-	public void setCat_acc_cd(String cat_acc_cd) {
-		this.cat_acc_cd = cat_acc_cd;
+	public void setCatAccCd(String catAccCd) {
+		this.catAccCd = catAccCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getMan_com_cd() {
-		return man_com_cd;
+	public String getManComCd() {
+		return manComCd;
 	}
-	public void setMan_com_cd(String man_com_cd) {
-		this.man_com_cd = man_com_cd;
+	public void setManComCd(String manComCd) {
+		this.manComCd = manComCd;
 	}
-	public String getCat_acc_nm1() {
-		return cat_acc_nm1;
+	public String getCatAccNm1() {
+		return catAccNm1;
 	}
-	public void setCat_acc_nm1(String cat_acc_nm1) {
-		this.cat_acc_nm1 = cat_acc_nm1;
+	public void setCatAccNm1(String catAccNm1) {
+		this.catAccNm1 = catAccNm1;
 	}
-	public String getCatbus_acc_bus() {
-		return catbus_acc_bus;
+	public String getCatBusAccBus() {
+		return catBusAccBus;
 	}
-	public void setCatbus_acc_bus(String catbus_acc_bus) {
-		this.catbus_acc_bus = catbus_acc_bus;
+	public void setCatBusAccBus(String catBusAccBus) {
+		this.catBusAccBus = catBusAccBus;
 	}
-	public String getCatapp_acc_app() {
-		return catapp_acc_app;
+	public String getCatAppAccApp() {
+		return catAppAccApp;
 	}
-	public void setCatapp_acc_app(String catapp_acc_app) {
-		this.catapp_acc_app = catapp_acc_app;
+	public void setCatAppAccApp(String catAppAccApp) {
+		this.catAppAccApp = catAppAccApp;
 	}
-	public String getMan_com_nm1() {
-		return man_com_nm1;
+	public String getManComNm1() {
+		return manComNm1;
 	}
-	public void setMan_com_nm1(String man_com_nm1) {
-		this.man_com_nm1 = man_com_nm1;
+	public void setManComNm1(String manComNm1) {
+		this.manComNm1 = manComNm1;
 	}
-	public String getCatapp_acc_dt() {
-		return catapp_acc_dt;
+	public String getCatAppAccDt() {
+		return catAppAccDt;
 	}
-	public void setCatapp_acc_dt(String catapp_acc_dt) {
-		this.catapp_acc_dt = catapp_acc_dt;
+	public void setCatAppAccDt(String catAppAccDt) {
+		this.catAppAccDt = catAppAccDt;
 	}
-	public String getCatapp_acc_con() {
-		return catapp_acc_con;
+	public String getCatAppAccCon() {
+		return catAppAccCon;
 	}
-	public void setCatapp_acc_con(String catapp_acc_con) {
-		this.catapp_acc_con = catapp_acc_con;
+	public void setCatAppAccCon(String catAppAccCon) {
+		this.catAppAccCon = catAppAccCon;
 	}
-	public String getCatapp_acc_pur() {
-		return catapp_acc_pur;
+	public String getCatAppAccPur() {
+		return catAppAccPur;
 	}
-	public void setCatapp_acc_pur(String catapp_acc_pur) {
-		this.catapp_acc_pur = catapp_acc_pur;
+	public void setCatAppAccPur(String catAppAccPur) {
+		this.catAppAccPur = catAppAccPur;
 	}
 	@Override
 	public String toString() {
-		return "AppAccount [catapp_acc_cd=" + catapp_acc_cd + ", areacity_admin_cd=" + areacity_admin_cd
-				+ ", catbus_acc_cd=" + catbus_acc_cd + ", cat_acc_cd=" + cat_acc_cd + ", area_city_cd=" + area_city_cd
-				+ ", area_cd=" + area_cd + ", man_com_cd=" + man_com_cd + ", cat_acc_nm1=" + cat_acc_nm1
-				+ ", catbus_acc_bus=" + catbus_acc_bus + ", catapp_acc_app=" + catapp_acc_app + ", man_com_nm1="
-				+ man_com_nm1 + ", catapp_acc_dt=" + catapp_acc_dt + ", catapp_acc_con=" + catapp_acc_con
-				+ ", catapp_acc_pur=" + catapp_acc_pur + "]";
+		return "AppAccount [catAppAccCd=" + catAppAccCd + ", areacityAdminCd=" + areacityAdminCd + ", catBusAccCd="
+				+ catBusAccCd + ", catAccCd=" + catAccCd + ", areaCityCd=" + areaCityCd + ", areaCd=" + areaCd
+				+ ", manComCd=" + manComCd + ", catAccNm1=" + catAccNm1 + ", catBusAccBus=" + catBusAccBus
+				+ ", catAppAccApp=" + catAppAccApp + ", manComNm1=" + manComNm1 + ", catAppAccDt=" + catAppAccDt
+				+ ", catAppAccCon=" + catAppAccCon + ", catAppAccPur=" + catAppAccPur + "]";
 	}
+	
+
 	
 }

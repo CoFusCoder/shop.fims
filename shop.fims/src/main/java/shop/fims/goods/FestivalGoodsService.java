@@ -27,8 +27,8 @@ public class FestivalGoodsService {
 		  }
 	  
 	  //입고코드로 축제물품 입고리스트 상세조회
-	  public List<FestivalGoodsIn> selectGoodsInByIncd(String festgoods_in_cd){ 
-		  return festivalGoodsMapper.selectGoodsInByIncd(festgoods_in_cd); 
+	  public List<FestivalGoodsIn> selectGoodsInByIncd(String festgoodsInCd){ 
+		  return festivalGoodsMapper.selectGoodsInByIncd(festgoodsInCd); 
 	  }
 	 
 	
