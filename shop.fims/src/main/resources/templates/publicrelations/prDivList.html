@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
-<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisTitle">
+<title>홍보분류관리</title>
+</th:block>
 <th:block layout:fragment="adminisMainContents">
 
 
@@ -11,7 +13,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
               <h4><i class="fa fa-angle-right"></i>홍보분류관리</h4>
               <div align="right">
               <a th:href="@{/prInsertDiv}" >
-              <button type="button" class="btn btn-primary btn-lg" align="right">신규홍보분류등록</button></a>  
+              <button type="button" class="btn btn-primary" align="right">신규홍보분류등록</button></a>  
               </div>
               <hr>
               <table class="table table-hover">
@@ -44,5 +46,4 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
 </th:block>
 
->>>>>>> refs/heads/Yun-Sujeong
 </html>

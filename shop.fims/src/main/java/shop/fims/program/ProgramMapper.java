@@ -14,6 +14,8 @@ import shop.fims.vo.Program;
 @Mapper
 public interface ProgramMapper {
 	
+	//프로그램 일자코드등록
+	public int insertDivDay(ProDivDay prodivday);
 	
 	//프로그램 참가자 조건검색
 	public List<ProParticipants> searchParticipant(String festProNm, String festproSproNm
