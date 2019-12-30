@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import shop.fims.vo.Area;
 import shop.fims.vo.AreaCity;
+import shop.fims.vo.AreaCityAdmin;
 
 @Mapper
 public interface AdminMapper {
@@ -21,4 +22,10 @@ public interface AdminMapper {
 	
 	// 전국 지역 조회
 	public List<AreaCity> areaCityList();
+	
+	// 전국 행정기관 등록
+	public int areaCityAdminInsert(AreaCityAdmin areaCityAdmin);
+	
+	// 전국 행정기관 조회
+	public List<AreaCityAdmin> areaCityAdminList();
 }

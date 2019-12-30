@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import shop.fims.vo.Area;
 import shop.fims.vo.AreaCity;
+import shop.fims.vo.AreaCityAdmin;
 
 @Service
 public class AdminService {
@@ -47,6 +48,24 @@ public class AdminService {
 		System.out.println(areaCityList + " : 전국 지역 시군 조회 ");
 		
 		return areaCityList;
+	}
+	
+	// 전국 행정기관 등록
+	public int areaCityAdminInsert(AreaCityAdmin areaCityAdmin) {
+		
+		int areaCityAdminInsert = adminMapper.areaCityAdminInsert(areaCityAdmin);
+		System.out.println(areaCityAdminInsert + " : 전국 행정기관 등록");
+		
+		return areaCityAdminInsert;
+		
+	}
+	
+	//전국 행정기관 조회
+	public List<AreaCityAdmin> areaCityAdminList() {
+		List<AreaCityAdmin> areaCityAdminList = adminMapper.areaCityAdminList();
+		System.out.println(areaCityAdminList + " : 전국 행정기관 조회");
+		
+		return areaCityAdminList;
 	}
 
 }

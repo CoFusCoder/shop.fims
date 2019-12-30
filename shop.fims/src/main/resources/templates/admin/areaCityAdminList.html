@@ -19,16 +19,14 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		      </tr>
 		    </thead>
 		    <tbody>
-		      <tr >
-		        <td>admin_37</td>
-		        <td>35:전라북도</td>
-		        <td>35010:전주시</td>
-		        <td>전라북도청</td>
+		      <tr th:each="acl:${areaCityAdminList}">
+		        <td th:text="${acl.areacityAdminCd}"></td>
+		        <td th:text="${acl.areaCd}"></td>
+		        <td th:text="${acl.areaCityCd}"></td>
+		        <td th:text="${acl.areacityAdminNm}"></td>
 		        <td>
-		          <button class="btn btn-success btn-xs">
-		          	<i class="fa fa-plus">
-		          		<a href="/admin/administrativeInsert" style="color: white;">등록</a>
-		          	</i>
+		          <button class="btn btn-success btn-xs" onclick="location.href='areaCityAdminInsert'">
+		          	<i class="fa fa-plus">등록</i>
 		          </button>
 		          <button class="btn btn-primary btn-xs"><i class="fa fa-pencil">수정</i></button>
 		          <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o ">삭제</i></button>
