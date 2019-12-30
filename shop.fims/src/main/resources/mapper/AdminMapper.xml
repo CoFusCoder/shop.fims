@@ -31,9 +31,21 @@
 		Area
 </select>
 
-<!--전국 지역 수정 쿼리문 -->
+<!--전국 지역 시군 등록 쿼리문 -->
+<insert	id="areaCityInsert" parameterType="shop.fims.vo.AreaCity">
+	INSERT INTO 
+		Area_City(area_city_cd, area_cd, area_city_nm)
+	VALUES
+		(#{areaCityCd}, #{areaCd}, #{areaCityNm})	
+</insert>
 
-
+<!--전국 지역 시군 조회 쿼리문 -->
+<select id="areaCityList" resultMap="areaCityResultMap">
+	SELECT
+		*
+	FROM
+		Area_City
+</select>
 
 
 

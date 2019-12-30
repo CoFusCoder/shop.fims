@@ -27,27 +27,25 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <br>
 <div class="form-panel">
 	<h4 class="mb"><i class="fa fa-angle-right"></i> 전국 지역 시군 등록</h4>
-	<form class="form-horizontal style-form" th:action="@{/admin/areaInsert}" method="post">
+	<form class="form-horizontal style-form" th:action="@{/admin/areaCityInsert}" method="post">
 		<div class="form-group">
-		  <label class="col-sm-2 col-sm-2 control-label">전국지역코드</label>
+		  <label class="col-sm-2 col-sm-2 control-label">전국지역시군코드</label>
 		  <div class="col-sm-6">
-		    <input type="text" class="form-control" name="areaCd" placeholder="*전국지역코드를 입력해주세요">
+		    <input type="text" class="form-control" name="areaCityCd" placeholder="*전국지역시군코드를 입력해주세요">
 		  </div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 col-sm-2 control-label">지역명</label>
+			<label class="col-sm-2 col-sm-2 control-label">전국지역코드</label>
 			<div class="col-sm-6">
-			<select class="form-control">
-				<option>전라북도</option>
-				<option>서울특별시</option>
-				<option>충청남도</option>
+			<select class="form-control" name="areaCd">
+				<option th:each="l: ${areaList}" th:value="${l.areaCd}" th:text="${l.areaNm}"></option>
 			</select>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 col-sm-2 control-label">지역명</label>
+			<label class="col-sm-2 col-sm-2 control-label">시군명</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*지역명을 입력해주세요">
+			    <input type="text" class="form-control" name="areaCityNm" placeholder="*시군명을 입력해주세요">
 			</div>
 		</div>
 	<button type="submit" class="btn btn btn-success">등록하기</button>
