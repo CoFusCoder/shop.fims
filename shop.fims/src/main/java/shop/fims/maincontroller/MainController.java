@@ -49,8 +49,8 @@ public class MainController {
 		response.setContentType("text/html; charset=UTF-8");
 
 		Main main = mainService.selectFestByFestcd(festCd);		
-		System.out.println("세션이름값 : "+main.getAreaNm()+main.getAreaCityNm()+main.getAreacityAdminNm()+main.getFestNm());
-		System.out.println("세션코드값 : "+main.getAreaCd()+main.getAreaCityCd()+main.getAreacityAdminCd()+main.getFestCd());
+		System.out.println("세션이름값 : "+main.getAreaCityCd()+main.getAreaCityNm()+main.getAreacityAdminCd()+main.getAreacityAdminNm());
+		System.out.println("세션코드값 : "+main.getAreaCd()+main.getAreaNm()+main.getFestCd()+main.getFestNm());
 		session.setAttribute("F_AREA_CD", main.getAreaCd());	//전국지역코드
 		session.setAttribute("F_AREA_NM", main.getAreaNm());	//지역명
 		session.setAttribute("F_CITY_CD", main.getAreaCityCd());	//모든 지역 시군코드
