@@ -1,23 +1,24 @@
 package shop.fims.vo;
 
 public class PrDiv {
-	private String festpr_div_cd;
-	private String festpr_div_nm;
-	public String getFestpr_div_cd() {
-		return festpr_div_cd;
+	private String festprDivCd;
+	private String festprDivNm;
+	public String getFestprDivCd() {
+		return festprDivCd;
 	}
-	public void setFestpr_div_cd(String festpr_div_cd) {
-		this.festpr_div_cd = festpr_div_cd;
+	public void setFestprDivCd(String festprDivCd) {
+		this.festprDivCd = festprDivCd;
 	}
-	public String getFestpr_div_nm() {
-		return festpr_div_nm;
+	public String getFestprDivNm() {
+		return festprDivNm;
 	}
-	public void setFestpr_div_nm(String festpr_div_nm) {
-		this.festpr_div_nm = festpr_div_nm;
+	public void setFestprDivNm(String festprDivNm) {
+		this.festprDivNm = festprDivNm;
 	}
 	@Override
 	public String toString() {
-		return "PrDiv [festpr_div_cd=" + festpr_div_cd + ", festpr_div_nm=" + festpr_div_nm + "]";
+		return "PrDiv [festprDivCd=" + festprDivCd + ", festprDivNm=" + festprDivNm + "]";
 	}
+	
 	
 }

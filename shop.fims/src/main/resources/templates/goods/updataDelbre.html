@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<h2>
+			<i class="fa fa-angle-right"></i>계약물품 납품내역 수정
+		</h2>
+	<form th:action="@{/updataDelbre}" method="post">
+		<table>
+			<tr>
+				<td>행정기관관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="전라북도청" readonly="readonly"></td>						
+			</tr>			
+			<tr>
+				<td>전국 지역관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="전라북도" readonly="readonly" ></td>						
+			</tr>			
+			<tr>
+				<td>모든 지역 시군관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="전주시" readonly="readonly" ></td>						
+			</tr>			
+			<tr>
+				<td>모든 축제관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="소리문화축제" readonly="readonly" ></td>						
+			</tr>			
+			<tr>
+				<td>거래처관리</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="주식회사유원전력조명	" readonly="readonly" ></td>						
+			</tr>			
+			<tr>
+				<td>거래처 업종 분류</td>	
+				<td><input type="text" name="areacity_admin_cd" th:value="무대설치대행업체" readonly="readonly" ></td>						
+			</tr>			
+			<tr>
+				<td>계약물품날짜</td>	
+				<td><input type="text" name="areacity_admin_cd" ></td>						
+			</tr>			
+			<tr>
+				<td>계약물품만료날짜</td>	
+				<td><input type="text" name="areacity_admin_cd" ></td>						
+			</tr>			
+			<tr>
+				<td>계약물품내역</td>	
+				<td><input type="text" name="areacity_admin_cd" ></td>						
+			</tr>			
+			<tr>
+				<td>계약물품 등록</td>	
+				<td><input type="text" name="areacity_admin_cd" ></td>						
+			</tr>			
+			<tr>
+				<td>계약물품 수정</td>	
+				<td><input type="text" name="areacity_admin_cd" ></td>						
+			</tr>			
+				
+			<tr>			
+				<td><input type="submit" name="insertcon" value="계약물품 수정" ></td>
+						
+			</tr>			
+		</table>
+	</form>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+>>>>>>> refs/heads/Yun-Sujeong
+</html>

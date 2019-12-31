@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import shop.fims.vo.goods_vo;
+import shop.fims.vo.Goods;
 
 @Service
 public class Goodsservice {
 	
-	@Autowired private GoodsMapper getgoodslist;
+	@Autowired private GoodsMapper goodsmapper;
 	
-	public List<goods_vo> getgoodslist(){
-		return getgoodslist.getgoodslist();
+	public List<Goods> goodslist(){
+		return goodsmapper.goodslist();
 		
 	}
 }

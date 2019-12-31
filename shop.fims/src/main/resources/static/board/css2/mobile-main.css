@@ -1,0 +1,117 @@
+@media screen and (max-width:768px) {
+	#head{width:100%;position:fixed;top:0;left:0;z-index:150;background-color:#FFF;}
+	.mb_head{display:block;}
+	.hd_rt{display:none;}
+	.mb_menu_but{display:block;}
+	.mb_login_but{display:block;}
+
+	.main_menu_bg{display:none;}
+
+	#slide_bg{display:none;}
+	.mobile_slide{display:block;width:100%;}
+	.hiSlider-item > a > img{width:100%;}
+	.slide1_con_pngbg{padding:0;width:100%;}
+	.slide1_con{width:auto;}
+	.slide1_con > div{background-color:#103a7d;text-align:center;}
+	.slide1_con > div > strong{color:#fff;background-color:#103a7d;font-size:17px;font-weight:300;padding:0 0;}
+	.slide1_con > div > span{border:none;color:#fff;font-size:17px;font-weight:300;padding:0 0 0 5px;}
+	.slide1_con > img{margin-top:17px;margin-left:40px;}
+	.slide1_con > h2{font-size:33px;width:auto;margin-bottom:50px;margin-left:40px;}
+	.slide1_con > p{font-size:15px;background:url('../img/main/main_tit01.png') no-repeat left center;margin-left:40px;}
+	.slide1_con > p > strong{font-size:15px;}
+	.slide1_con > p.last{background:url('../img/main/main_tit01.png') no-repeat left center;}
+
+
+	.main_cons_bg{padding:10px 0 50px;}
+	.main_cons{width:100%;}
+	.mcon_tp{background-color:#f8f8f8;}
+	.mcon_tp > div{float:none;margin:30px auto 0;width:96%;}
+	.mcon_tp > div > img{width:100%;}
+	.mcon_tp > div > div{background-size:100% 100%;}
+
+	.mcon_btm{padding:0 2%;background-color:#f8f8f8;}
+	.mcon_btm > div{width:100%;float:none;margin-left:0;}
+	.mcon_btm > div > div > h3{padding:10px 0 0 0;}
+	.mcon_btm > div.mcon_btm_d2{position:static;margin-left:0;}
+	.mcon_btm_d2 > img{width:100%;}
+	.mcon_btm > div > ul{margin-top:15px;border-top:1px solid #333333;border-bottom:1px solid #333333;}
+	.mcon_btm > div.mcon_btm_d3{margin-right:0;}
+	.mcon_btm > div > ul > li{background:none;margin-top:0;border-bottom:1px solid #d0d0d0;padding:14px 0;}
+	.mcon_btm > div > ul > li:last-child{border-bottom:none;}
+
+
+	.main_berzone{width:100%;}
+	.main_berzone > h3{display:none;}
+	.img_frame{width:59%;float:none;margin:0 auto;}
+	.banner_control{left:0;width:100%;}
+	.banner_control li.prev_banner{position:absolute;left:5%;top:0;}
+	.banner_control li.pause_banner{display:none;}
+	.banner_control li.next_banner{position:absolute;right:5%;top:0;}
+	.img_frame li{text-align:center;}
+	.hd_lf{    position: initial;}
+
+	#foot{display:none;}
+	.mb_foot{display:block;background-color:#454545;text-align:center;padding:20px 20px 15px;position:relative;}
+	.mb_foot > div{color:#8c8b8b;font-size:20px;margin-bottom:17px;}
+	.mb_foot > p{color:#8c8b8b;font-size:13px;margin-bottom:5px;}
+	.mb_foot > a{color:#fff;font-size:13px;background-color:#212121;width:122px;line-height:35px;text-align:center;position:absolute;right:10px;top:13px;}
+	/*****20190701*******/
+	.d-day{left: 50%;bottom: 30px;margin-left: -60px;}
+	/*****20190701*******/
+}
+
+
+
+@media screen and (max-width:640px) {
+	.img_frame li{width:185px;}
+
+}
+
+
+
+@media screen and (max-width:570px) {
+	.slide1_con > img{margin-top:10px;}
+	.slide1_con > h2{font-size:30px;margin-bottom:20px;}
+	.hiSlider-pages{bottom:5px;}
+
+}
+
+
+
+@media screen and (max-width:470px) {
+	
+	.slide1_con > img{margin-top:10px;width:110px;}
+	.slide1_con > h2{font-size:23px;margin-bottom:13px;letter-spacing:-2px;}
+	.slide1_con > p{margin-bottom:5px;}
+
+}
+
+
+
+@media screen and (max-width:450px) {
+	.head_logo{width:60%;}
+	.head_logo > img{width:100%;}
+
+	.mb_menu{width:320px;}
+	.mb_menu_close{right:0;}
+
+	.img_frame li{width:260px;}
+	.mb_foot > a{position:static;margin:10px 0;}
+    .hd_lf > img{width: 38%;}
+}
+
+
+
+@media screen and (max-width:380px) {
+	.slide1_con > div > strong{font-size:14px;line-height:30px;}
+	.slide1_con > div > span{font-size:14px;line-height:30px;}
+	.slide1_con > img{margin-top:5px;width:90px;}
+	.slide1_con > h2{font-size:18px;margin-bottom:5px;margin-top:5px;letter-spacing:-1px;}
+	.slide1_con > p{margin-bottom:0;font-size:13px;background:none;padding-left:0;}
+	.slide1_con > p.last{background:none;}
+	.slide1_con > p > strong{font-size:13px;}
+
+}
+
+
+

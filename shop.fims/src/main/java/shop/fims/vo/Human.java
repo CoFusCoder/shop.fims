@@ -8,10 +8,18 @@ public class Human {
 	private String humanPhone;
 	private String humanHour;
 	private String comNm2;
-	private String mamcd;
-	private String humancd;
-	private String stanm;
-	private String stacd;
+	private String mamCd;
+	private String humanCd;
+	private String staNm;
+	private String staCd;
+	private String memNm;
+	private String memAddr;
+	private String memPhone;
+	private String memEmail;
+	private String memBirth;
+	private String joinDt;
+	private String loginCd;
+	private String levNm;
 	
 	public String getFestNm() {
 		return festNm;
@@ -49,37 +57,86 @@ public class Human {
 	public void setComNm2(String comNm2) {
 		this.comNm2 = comNm2;
 	}
-	public String getMamcd() {
-		return mamcd;
+	public String getMamCd() {
+		return mamCd;
 	}
-	public void setMamcd(String mamcd) {
-		this.mamcd = mamcd;
+	public void setMamCd(String mamCd) {
+		this.mamCd = mamCd;
 	}
-	public String getHumancd() {
-		return humancd;
+	public String getHumanCd() {
+		return humanCd;
 	}
-	public void setHumancd(String humancd) {
-		this.humancd = humancd;
+	public void setHumanCd(String humanCd) {
+		this.humanCd = humanCd;
 	}
-	public String getStanm() {
-		return stanm;
+	public String getStaNm() {
+		return staNm;
 	}
-	public void setStanm(String stanm) {
-		this.stanm = stanm;
+	public void setStaNm(String staNm) {
+		this.staNm = staNm;
 	}
-	public String getStacd() {
-		return stacd;
+	public String getStaCd() {
+		return staCd;
 	}
-	public void setStacd(String stacd) {
-		this.stacd = stacd;
+	public void setStaCd(String staCd) {
+		this.staCd = staCd;
+	}
+	public String getMemNm() {
+		return memNm;
+	}
+	public void setMemNm(String memNm) {
+		this.memNm = memNm;
+	}
+	public String getMemAddr() {
+		return memAddr;
+	}
+	public void setMemAddr(String memAddr) {
+		this.memAddr = memAddr;
+	}
+	public String getMemPhone() {
+		return memPhone;
+	}
+	public void setMemPhone(String memPhone) {
+		this.memPhone = memPhone;
+	}
+	public String getMemEmail() {
+		return memEmail;
+	}
+	public void setMemEmail(String memEmail) {
+		this.memEmail = memEmail;
+	}
+	public String getMemBirth() {
+		return memBirth;
+	}
+	public void setMemBirth(String memBirth) {
+		this.memBirth = memBirth;
+	}
+	public String getJoinDt() {
+		return joinDt;
+	}
+	public void setJoinDt(String joinDt) {
+		this.joinDt = joinDt;
+	}
+	public String getLoginCd() {
+		return loginCd;
+	}
+	public void setLoginCd(String loginCd) {
+		this.loginCd = loginCd;
+	}
+	public String getLevNm() {
+		return levNm;
+	}
+	public void setLevNm(String levNm) {
+		this.levNm = levNm;
 	}
 	@Override
 	public String toString() {
 		return "Human [festNm=" + festNm + ", workdivNm=" + workdivNm + ", humanNm=" + humanNm + ", humanPhone="
-				+ humanPhone + ", humanHour=" + humanHour + ", comNm2=" + comNm2 + ", mamcd=" + mamcd + ", humancd="
-				+ humancd + ", stanm=" + stanm + ", stacd=" + stacd + "]";
+				+ humanPhone + ", humanHour=" + humanHour + ", comNm2=" + comNm2 + ", mamCd=" + mamCd + ", humanCd="
+				+ humanCd + ", staNm=" + staNm + ", staCd=" + staCd + ", memNm=" + memNm + ", memAddr=" + memAddr
+				+ ", memPhone=" + memPhone + ", memEmail=" + memEmail + ", memBirth=" + memBirth + ", joinDt=" + joinDt
+				+ ", loginCd=" + loginCd + ", levNm=" + levNm + "]";
 	}
-	
 
 	
 }

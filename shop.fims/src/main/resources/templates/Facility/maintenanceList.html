@@ -1,77 +1,116 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
 	<th:block layout:fragment="customBody">
-		시설안전점검후유지보수리스트
-			<style>
-			  table {
-			    width: 100%;
-			    border-top: 1px solid #444444;
-			    border-collapse: collapse;
-			  }
-			  th, td {
-			    border-bottom: 1px solid #444444;
-			    padding: 10px;
-			    text-align: center;
-			  }
-			  th {
-			    background-color: #bbdefb;
-			  }
-			  td /* {
-			    background-color: #e3f2fd;
-			  } */
-			</style>
-			
-			<table>
-					<tr>
-						<th style=display:none;>안전점검후유지보수관리코드</th>
-						<th>시설명</th>
-						<th>축제명</th>
-						<th>점검일자</th>
-						<th>점검기관</th>
-						<th>점검기관담당자</th>
-						<th>지적사항</th>
-						<th>재점검일</th>
-						<th>점검상태</th>
-						<th>보완완료일</th>
-						<th>담당자</th>					
-						<th>수정</th>
-						<th>삭제</th>
-						<th>안전점검항목</th>
-					</tr>
-					<tr th:each="ml : ${MaintenanceList}">
-						<td style=display:none;></td>
-						<td th:text="${ml.staNm}"></td>
-						<td th:text="${ml.festNm}"></td>
-						<td th:text="${ml.maicheDt}"></td>
-						<td th:text="${ml.maiinsIn}"></td>
-						<td th:text="${ml.mairesHuman}"></td>
-						<td th:text="${ml.maiCad}"></td>
-						<td th:text="${ml.mairecDt}"></td>
-						<td th:text="${ml.maistaChe}"></td>
-						<td th:text="${ml.maisupDt}"></td>
-						<td th:text="${ml.comNm2}"></td>
-						<td>
-							<a th:href="@{/maintenanceUpdate(staNm=${ml.staNm})}">수정</a>
-						</td>
-						<td>
-							<a th:href="@{/maintenanceDelete}">삭제</a>
-						</td>
-						<td>
-							<a th:href="@{/checkList(staNm=${ml.staNm})}">안전점검리스트</a>
-						</td>
-					</tr>
-			</table>
-			</from>
-	</th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+	    <section id="main-content" style="margin: 100px; margin-top: 0px;">
+	      <section class="wrapper">
+	        <h3><i class="fa fa-angle-right"></i>안전점검후지적관리조회</h3>
+	        <div class="row">
+	          <div class="col-md-12">
+	            <div class="content-panel">
+	              <h4><i class="fa fa-angle-right"></i>안전점검후지적관리조회</h4>
+	              <div>
+							<form th:action="@{/maintenanceSearch}" method="post">
+							  <div class="form-row">
+							    <div class="form-group col-md-4">
+							      <label for="festNm"></label>
+							      <input type="text" class="form-control" id="festNm" name="fest_nm"  placeholder="축제명을 입력해주세요">
+							    </div>
+							    <div class="form-group col-md-4">
+							      <label for="staNm"></label>
+							      <input type="text" class="form-control" id="staNm" name="fac_sta_nm"  placeholder="시설명을 입력해주세요">
+							    </div>
+							  </div>
+							  <div class="form-row">
+							    <div class="form-group col-md-4">
+							      <label for="maicheDt"></label>
+							      <input type="date" class="form-control" id="maicheDt" name="facmai_che_dt" >
+							    </div>
+							    <div class="form-group col-md-4">
+							      <label for="maiinsIn"></label>
+							      <input type="text" class="form-control" id="maiinsIn" name="facmai_ins_in"  placeholder="점검기관명을 입력해주세요">
+							    </div>
+								  </div>
+								  <div class="form-group col-md-4">
+								     <label for="comNm2"></label>
+								     <input type="text" class="form-control" id="comNm2" name="com_mem_nm2" placeholder="담당자명을 입력해주세요">
+								   </div>
+								  <div class="form-row">
+								    <div class="form-group col-md-4">
+								      <label for="maistaChe"></label>
+								      <select class="form-control" id="maistaChe" name="facmai_sta_che">
+								      	<option value="">점검상태를 선택해주세요</option>
+								      	<option value="점검중">점검중</option>
+								      	<option value="보완중">보완중</option>
+								      	<option value="보완완료">보완완료</option>
+								      	<option value="점검완료">점검완료</option>
+								      </select>
+								    </div>
+
+								  </div>
+								 <button type="submit" value="search" class="btn btn-primary">검색</button>
+								 <button type="button" class="btn btn-primary" onclick="location.href='/maintenanceList'">초기화</button>
+								 
+								</form>	              
+	              <table class="table">
+	                <thead>
+						<tr>
+							<th style="display:none;">안전점검후지적관리코드</th>
+							<th>시설명</th>
+							<th>축제명</th>
+							<th>점검일자</th>
+							<th>점검기관</th>
+							<th>점검기관담당자</th>
+							<th>지적사항</th>
+							<th>재점검일</th>
+							<th>점검상태</th>
+							<th>보완완료일</th>
+							<th>담당자</th>					
+							<th>수정</th>
+							<th>삭제</th>
+							<th>안전점검항목</th>
+						</tr>
+	                </thead>
+	                <tbody>
+						<tr th:each="ml : ${MaintenanceList}">
+							<td th:text="${ml.maiCd}" style="display:none;"></td>
+							<td th:text="${ml.staNm}"></td>
+							<td th:text="${ml.festNm}"></td>
+							<td th:text="${ml.maicheDt}"></td>
+							<td th:text="${ml.maiinsIn}"></td>
+							<td th:text="${ml.mairesHuman}"></td>
+							<td th:text="${ml.maiCad}"></td>
+							<td th:text="${ml.mairecDt}"></td>
+							<td th:text="${ml.maistaChe}"></td>
+							<td th:text="${ml.maisupDt}"></td>
+							<td th:text="${ml.comNm2}"></td>
+							<td>
+								<a th:href="@{/maintenanceUpdate(maiCd=${ml.maiCd})}">수정</a>
+							</td>
+							<td>
+								<a th:href="@{/maintenanceDelete}">삭제</a>
+							</td>
+							<td>
+								<a th:href="@{/checkList(staNm=${ml.staNm})}">안전점검리스트</a>
+							</td>
+						</tr>
+	                </tbody>
+	              </table>
+	              </div>
+	            </div>
+	          </div>
+	          <!-- /col-md-12 -->
+	          <!-- /col-md-12 -->
+	        </div>
+	      </section>
+	    </section>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
 </html>

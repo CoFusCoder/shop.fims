@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+-계약서확인여부, 예약처<br>
+			
+				<a th:href="@{/proProList}">
+		<button type="button" class="btn btn-default" >프로그램 리스트로 돌아가기</button>
+		</a>
+		
+		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+            <th:block th:each="p:${selectByProcd}">
+              <h2>"<span th:text=${p.festProNm}><i class="fa fa-angle-right"></i></span>" 프로그램 상세내역</h2><br>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr >
+                      <th colspan="2">축제코드</th>
+                      <th colspan="3">작성일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr >
+                      <td th:text="${p.festCd}" colspan="2"></td>
+                      <td th:text="${p.insertDt}" colspan="2"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th>지역코드</th>
+                      <th>시군코드</th>
+                      <th>행정기관코드</th>
+                      <th>위원회코드</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${p.areaCd}" ></td>
+                      <td th:text="${p.areaCityCd}" ></td>
+                      <td th:text="${p.areacityAdminCd}" ></td>
+                      <td th:text="${p.manComCd}" ></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th>일차분류</th>
+                      <th colspan="2">장소분류</th>
+                      <th>성격분류</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${p.festprodivDayCd}" ></td>
+                      <td th:text="${p.festprodivPlaCd}" colspan="2"></td>
+                      <td th:text="${p.festprodivThemeCd}" ></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th colspan="4">프로그램명</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${p.festProNm}" colspan="4"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th>시작시간</th>
+                      <th>종료시간</th>
+                      <th>소요시간</th>                    
+                      <th>거래처코드</th>                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${p.festproTimeStart}"></td>
+                      <td th:text="${p.festproTimeEnd}" ></td>
+                      <td th:text="${p.festProRuntime}"></td>
+                      <td th:text="${p.accMemCd}"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th>관람연령</th>
+                      <th>입장료금액</th>
+                      <th>예약가능여부</th>                    
+                      <th>예약처</th>                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${p.festProAgelevel}"></td>
+                      <td th:text="${p.festproTicketCost}" ></td>
+                      <td th:text="${p.festproReservDiv}" ></td>
+                      <td>예약처추가하기</td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th>비용</th>
+                      <th>마감여부</th>
+                      <th>마감하기</th>
+                      <th>마감일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${p.festProExpense}"></td>
+                      <td th:text="${p.actionStatus}" ></td>
+                      <td><a>마감하기</a></td>
+                      <td th:text="${p.actionDt}" ></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th colspan="5">프로그램 상세내용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${p.festProDetail}" colspan="5"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th colspan="5">이미지</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${p.festProImg}" colspan="5"></td>
+                    </tr>
+                  </tbody>
+                   <thead>
+                    <tr>
+                      <th>심사결과</th>
+                      <th>평가결과반영여부</th>
+                      <th>평가결과반영일자</th>
+                      <th>승인자</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td th:text="${p.exaRepCd}"></td>
+                      <td th:text="${p.festproReflectDiv}"></td>
+                      <td th:text="${p.festproReflectDt}"></td>
+                      <td th:text="${p.proApprove}"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              </th:block>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+        <div align="right">
+		<a th:href="@{/proUpdateProgram}"><button type="button" class="btn btn-primary">수정하기</button></a>
+		<a th:href="@{/proDeleteProgram}"><button type="button" class="btn btn-danger">삭제하기</button></a>
+		</div>
+		
+		
+		
+		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h2><i class="fa fa-angle-right"></i>세부 프로그램리스트</h2><br>
+              <div align="right">
+              <a th:href="@{/proInsertSprogram}">
+              <button type="button" class="btn btn-info">세부프로그램 신규등록</button></a>
+              </div>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr >
+                      <th>세부프로그램명</th>                   
+                      <th>성격분류</th>                   
+                      <th>장소</th>                   
+                      <th>세부시간</th>                   
+                      <th>내용</th>                   
+                      <th>섭외계약금액</th>     
+                      <th>거래처코드</th>     
+                      <th>위원회코드</th>     
+                      <th>작성일</th>                                   
+                      <th>참가자확인</th>                                   
+                      <th>수정</th>                                   
+                      <th>삭제</th>                                   
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="s:${AllSprogram}">
+                      <td th:text="${s.festproSproNm}"></td>
+                      <td th:text="${s.festprodivThemeCd}"></td>
+                      <td th:text="${s.festproSproPlace}"></td>
+                      <td th:text="${s.festproSproTime}"></td>
+                      <td th:text="${s.festproSproDetail}"></td>
+                      <td th:text="${s.festproSproExpense}"></td>
+                      <td>거래처코드 추가하기</td>
+                      <td th:text="${s.manComCd}"></td>
+                      <td th:text="${s.insertDt}"></td>             
+	                  <td><a th:href="@{/proParList}" >
+	                  	<button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a></td>
+	                  <td><a th:href="@{/proUpdateSprogram}" >
+	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+	                  <td><a th:href="@{/proDeleteSprogram}" >
+	                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>     
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>		
+		
+		
+		
+		
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>
+

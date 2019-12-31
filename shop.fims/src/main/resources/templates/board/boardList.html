@@ -1,44 +1,235 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/main">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
 
-<th:block layout:fragment="customHead">
-<meta charset="UTF-8">
-<title>공지사항</title>
-<th:block th:include="layout/customHead"></th:block>
+<th:block layout:fragment="gukminCss">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+}
+.row-section h2{float:left; width:100%; color:#fff; margin-bottom:30px; font-size: 14px;}
+.row-section h2 span{font-family: 'Libre Baskerville', serif; display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px;font-weight:700;}
+.row-section h2 a{color:#d2abce;}
+.row-section .row-block{background:#fff; padding:20px; margin-bottom:50px; margin-top: 230px;}
+.row-section .row-block ul{margin:0; padding:0;}
+.row-section .row-block ul li{list-style:none; margin-bottom:20px;}
+.row-section .row-block ul li:last-child{margin-bottom:0;}
+.row-section .row-block ul li:hover{cursor:grabbing;}
+.row-section .row-block .media{border:1px solid #d5dbdd; padding:5px 20px; border-radius: 5px; box-shadow:0px 2px 1px rgba(0,0,0,0.04); background:#fff;}
+.row-section .media .media-left img{width:75px;}
+.row-section .media .media-body p{padding: 0 15px; font-size:14px;}
+.row-section .media .media-body h4 {color: #6b456a; font-size: 18px; font-weight: 600; margin-bottom: 0; padding-left: 14px; margin-top:12px;}
+.btn-default{background:#6B456A; color:#fff; border-radius:30px; border:none; font-size:16px;}
+.rounded-circle{min-width: 150px;}
+hr{margin: 0;}
+p{margin: 0;}
+</style>
+
 </th:block>
-	<th:block layout:fragment="customBody">
-		<div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>공지사항</h4>
-              <hr>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>공지번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성일자</th>
-                    <th>조회수</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>001</td>
-                    <td>
-                    <a th:href="@{/announcementDetail}">
-                    	소리마켓 용역 선정 공고
-                    </td>
-                    <td>최다미</td>
-                    <td>2019-12-18</td>
-                    <td>11</td>
-                  </tr>
 
-                </tbody>
-              </table>
+<th:block layout:fragment="gukminMainContents">
+
+<section class="row-section">
+    <div class="container">
+	    <div class="col-md-10 offset-md-1 row-block">
+	        
+<link type="text/css" rel="stylesheet" th:href="@{/board/css/@sub-default.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/board/board/css/slick.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/board/css/board.css}">
+<link type="text/css" rel="stylesheet" charset="utf-8" th:href="@{/_core/css/sys.css?nFlag=201912}" />
+
+
+<div class="sub-con">
+
+<div class="sub-Title area">  
+                    공지사항
             </div>
-	</th:block>
-	<th:block layout:fragment="customJquery">
-	<th:block th:include="layout/customJquery"></th:block>
+    	<div class="sub-txt-con area"><script language="javascript" src="/zzAppModule/module/script/ajax.js"></script>
+<script type='text/javascript' src='/zzAppModule/editors/se2/js/HuskyEZCreator.js' charset='utf-8'></script>
+		<script language='javascript' src='/zzAppModule/module/script/common.js'></script>
+		<script language='javascript' src='/zzAppModule/module/script/board.js'></script>
+		<script language='javascript' src='/zzAppModule/module/script/ajax.js'></script>
+		<link rel='stylesheet' href='/zzAppModule/bskin__collect/css/default.css'/>
+
+<link rel="stylesheet" type="text/css" href="/css/board.css">
+
+<div class="listboard">
+
+	<form name="bSchForm" method="get" action="">
+		<input type="hidden" name="_zidx" value="1517992993^1^1517993002">
+		<input type="hidden" name="viewMode" value="">
+		<input type="hidden" name="bflag" value="">	
+	<div class="search">
+		<input class="nType" type="text"  name="sword" placeholder="search word">
+		<input type="submit" value=" 검색 " class="btngray" />
+		</div>
+	</form>
+	
+		<table class="listboardStyle">
+				<colgroup>
+						<col width="10%" class="colW">
+						<col width="*">
+						<col width="18%" class="Mno">
+						<col width="18%" class="Mno">
+				</colgroup>
+				<thead>
+						<tr>
+								<th><span>No.</span></th>
+								<th><span>Title</span></th>
+								<th class="Mno"><span>Date</span></th>
+								<th class="Mno"><span>Hit</span></th>
+						</tr>
+				</thead>
+				 <tbody>
+				
+<!-- 	<tr class='not'>일반글
+			<td><span>공지</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=419&"> [제90회 춘향제] 개최일 공지 </a>&nbsp;</td>
+			<td class="Mno"><span>2019.11.19</span></td>
+			<td class="Mno"><span>184</span></td>
+	</tr> -->
+
+
+				
+	<tr ><!-- 일반글 -->
+			<td><span>406</span></td>
+			<td class="title"><a th:href="@{/boardDetail}"> -> 클릭 [제89회 춘향제] 춘향제평가위원 공고 </a>&nbsp;</td>
+			<td class="Mno"><span>2019.05.29</span></td>
+			<td class="Mno"><span>690</span></td>
+	</tr>
+	
+	
+	
+	<tr ><!-- 일반글 -->
+			<td><span>405</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=417&"> [제89회 춘향제]  방자춤판 수상자 </a>&nbsp;</td>
+			<td class="Mno"><span>2019.05.29</span></td>
+			<td class="Mno"><span>690</span></td>
+	</tr>
+
+
+				
+	<tr ><!-- 일반글 -->
+			<td><span>404</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=416&"> [제89회 춘향제] 「춘향사랑 백일장대회」 입상자</a>&nbsp;</td>
+			<td class="Mno"><span>2019.05.09</span></td>
+			<td class="Mno"><span>928</span></td>
+	</tr>
+
+
+				
+	<tr ><!-- 일반글 -->
+			<td><span>403</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=415&"> [제89회 춘향제] 춘향선발대회 시상부문 변경공고</a>&nbsp;</td>
+			<td class="Mno"><span>2019.04.10</span></td>
+			<td class="Mno"><span>1313</span></td>
+	</tr>
+
+
+				
+	<tr ><!-- 일반글 -->
+			<td><span>402</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=414&"> [제89회 춘향제] 춘향길놀이 남, 여 아르바이트생 모집 안내..</a>&nbsp;</td>
+			<td class="Mno"><span>2019.04.10</span></td>
+			<td class="Mno"><span>1115</span></td>
+	</tr>
+
+
+				
+	<tr ><!-- 일반글 -->
+			<td><span>401</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=412&"> [제89회 춘향제] 춘향선발대회 2차 예선심사 결과</a>&nbsp;</td>
+			<td class="Mno"><span>2019.04.07</span></td>
+			<td class="Mno"><span>1849</span></td>
+	</tr>
+
+
+				
+	<tr ><!-- 일반글 -->
+			<td><span>400</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=411&"> [제89회 춘향제] 춘향선발대회 1차 예선심사 결과발표</a>&nbsp;</td>
+			<td class="Mno"><span>2019.04.06</span></td>
+			<td class="Mno"><span>1863</span></td>
+	</tr>
+
+
+				
+	<tr ><!-- 일반글 -->
+			<td><span>399</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=409&"> [제89회 춘향제] 축제 진행 요원 춘향애인 모집 공고</a>&nbsp;</td>
+			<td class="Mno"><span>2019.03.28</span></td>
+			<td class="Mno"><span>846</span></td>
+	</tr>
+
+
+				
+	<tr ><!-- 일반글 -->
+			<td><span>398</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=408&"> [제89회 춘향제] 춘향선발대회 서류합격자 발표 및 예선심사 안내..</a>&nbsp;</td>
+			<td class="Mno"><span>2019.03.27</span></td>
+			<td class="Mno"><span>2291</span></td>
+	</tr>
+
+
+				
+	<tr ><!-- 일반글 -->
+			<td><span>397</span></td>
+			<td class="title"><a href="?_zidx=1517992993^1^1517993002&bmode=view&skey=&sword=&page=&set=&viewMode=&ul=&ttest=&bnum=407&"> [제89회 춘향제]  사랑등불행렬 참가자 모집 안내 </a>&nbsp;</td>
+			<td class="Mno"><span>2019.03.25</span></td>
+			<td class="Mno"><span>527</span></td>
+	</tr>
+	
+	
+         
+</tbody> 
+	</table>
+
+
+        <br>
+        <br>
+ 
+					<div class="txtcenter buttonDiv">
+					<div class="login_bt_img_sty">
+						
+							
+								<a th:href="@{/insertBoard}">
+							
+							
+						
+								<img src="http://www.baekjefest.com/aboutstyle/images/sub/sub05_02.gif" alt="등록하기" class="imgBorder" />
+							</a>
+					</div>
+				</div>
+    	
+
+	<div class="PageBox">
+			<div class="allPage">
+			  <div class='allPage'><a href='?_zidx=1517992993^1^1517993002&page=1&set=1&&ttest=' class='owl-prev'><img alt='앞페이지로' src="http://www.chunhyang.org/sub5/img/btn_pr.gif"></a><strong>1</strong><a href='?_zidx=1517992993^1^1517993002&page=2&set=1&&ttest='>2</a><a href='?_zidx=1517992993^1^1517993002&page=3&set=1&&ttest='>3</a><a href='?_zidx=1517992993^1^1517993002&page=4&set=1&&ttest='>4</a><a href='?_zidx=1517992993^1^1517993002&page=5&set=1&&ttest='>5</a><a href='?_zidx=1517992993^1^1517993002&page=6&set=1&&ttest='>6</a><a href='?_zidx=1517992993^1^1517993002&page=7&set=1&&ttest='>7</a><a href='?_zidx=1517992993^1^1517993002&page=8&set=1&&ttest='>8</a><a href='?_zidx=1517992993^1^1517993002&page=9&set=1&&ttest='>9</a><a href='?_zidx=1517992993^1^1517993002&page=10&set=1&&ttest='>10</a><a href='?_zidx=1517992993^1^1517993002&page=11&set=2&&ttest=' class='owl-next'><img alt='뒤페이지로' src="http://www.chunhyang.org/sub5/img/btn_ne.gif"></a></div>			</div>
+	</div>
+
+	
+</div>
+         
+	
+
+
+
+
+  
+
+
+</div>
+</div>
+
+
+	  </div>
+</div>
+</section>
+
 </th:block>
+<th:block layout:fragment="gukminscript">
+<th:block th:include="fragments/gukmin/gukminscript"></th:block>
+</th:block>
+
 </html>

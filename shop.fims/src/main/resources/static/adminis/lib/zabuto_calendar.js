@@ -547,16 +547,23 @@ $.fn.zabuto_calendar_defaults = function () {
  */
 $.fn.zabuto_calendar_language = function (lang) {
     if (typeof(lang) == 'undefined' || lang === false) {
-        lang = 'en';
+        lang = 'kr';
     }
 
     switch (lang.toLowerCase()) {
-        case 'de':
+        case 'kr':
             return {
-                month_labels: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
-                dow_labels: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+                month_labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+                dow_labels: ["월", "화", "수", "목", "금", "토", "일"]
             };
             break;
+            
+        case 'de':
+        	return {
+        	month_labels: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+        	dow_labels: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+        };
+        break;
 
         case 'en':
             return {

@@ -1,51 +1,70 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout/main">
-
-<th:block layout:fragment="customHead">
-<meta charset="UTF-8">
-<title>공고관리</title>
-<th:block th:include="layout/customHead"></th:block>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
 </th:block>
-	<th:block layout:fragment="customBody">
-		<div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>공고관리</h4>
+<th:block layout:fragment="adminisMainContents">
+
+		<h3>공고관리</h3>
+		<div align= "right">
+			<a th:href="@{/insertAccountMember}">
+				<button type="button" class="btn btn-default">공고등록하기</button>
+			</a>
+		</div>
+		<br/>
+		<form class="form-inline" role="form" align="right" th:action="@{#}" method="get">
+			<select class="form-control" name="sk">
+	                <option value="#">이름</option>
+	              </select>
+	             <div class="form-group">
+	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="#">
+	             </div>
+	             <button type="submit" class="btn btn-theme">검색</button>
+        </form>		
+		
+		<div class="row mt">
+          <div class="col-md-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> 공고 관리</h4>
               <hr>
-              <table class="table">
+             
+              <table class="table table-striped table-advance table-hover">
+                
                 <thead>
                   <tr>
-                    <td>모든축제공고코드</td>
-                    <td>모든 행정기관코드</td>
-                    <td>모든 지역 시군코드</td>
-                    <td>전국지역코드</td>
-                    <td>위원회코드</td>
-                    <td>거래처명</td>
-                    <td>사업자분류</td>
-                    <td>수정</td>
-                    <td>삭제</td>
+                    <th>거래처명</th>
+                    <th>거래처업종분류</th>
+                    <th>거래처업무</th>
+                    <th>위원회명</th>
+                    <th>승인 상태</th>
+                    <th>상세확인</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>값1</td>
-                    <td>값1</td>
-                    <td>값1</td>
-                    <td>값1</td>
-                    <td>값1</td>
-                    <td>값1</td>
-                    <td>값1</td>
-                    <td><a th:href="@{/updateAnnouncement}">수정</a></td>
-                    <td><a th:href="@{/announcementView}">삭제</a></td>
-                    
+<!--                   <tr th:each="a:${selectApprovalAccountView}">  --> 
+               		<td th:text="1"></td>
+               		<td th:text="1"></td>
+               		<td th:text="1"></td>
+               		<td th:text="1"></td>
+               		<td th:text="1"></td>
+			 		<td>
+			 		  <a th:href="@{/announcementDetail}">
+			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a> 
+			 		</td>
                   </tr>
-
                 </tbody>
               </table>
             </div>
-
-	</th:block>
-	<th:block layout:fragment="customJquery">
-	<th:block th:include="layout/customJquery"></th:block>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-md-12 -->
+        </div>	
+	
 </th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
 </html>

@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class WorkController {
@@ -25,10 +27,11 @@ public class WorkController {
 		
 		return "/work/workcategoryInsert";
 	}
-	//축제업무분류수정
+	//축제업무분류수정화면
 	@GetMapping("/workcategoryUpdate")
-	public String selectbyWorkCategory() {
+	public String selectupdateWorkCategory(@RequestParam(value="workcatCd") String workcatCd, Model model) {
 		
+		model.addAttribute("Work", workservice.selectupdateWorkCategory(workcatCd));
 		
 		return "/work/workcategoryUpdate";
 	}
@@ -46,6 +49,12 @@ public class WorkController {
 		
 		return "/work/workdivisionList";
 	}
+	//축제업무검색
+	 @PostMapping("/workdivisionSearch")
+	 public String searchWorkdivision() {
+		 
+		 return "/work/workdivisionList";
+	 }
 	//축제업무등록
 	@GetMapping("/workdivisionInsert")
 	public String insertWorkDivision() {
@@ -54,8 +63,9 @@ public class WorkController {
 	}
 	//축제업무수정
 	@GetMapping("/workdivisionUpdate")
-	public String updateWorkDivision() {
+	public String selectupdateWorkDivision(@RequestParam(value="workdivCd") String workdivCd, Model model) {
 		
+		model.addAttribute("Work", workservice.selectupdateWorkDivision(workdivCd));
 		return "/work/workdivisionUpdate";
 	}
 	//축제업무삭제

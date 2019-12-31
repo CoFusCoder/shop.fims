@@ -1,86 +1,114 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorator="layout/main">
-
-	<th:block layout:fragment="customHead">
-		<meta charset="UTF-8">
-		<title>축제통합관리시스템</title>
-		<th:block th:include="layout/customHead"></th:block>
-	</th:block>
-	<th:block layout:fragment="customBody">
-	<style>
-			.button {
-				background-color: #4CAF50; /* Green */
-				border: none;
-				color: white;
-				padding: 15px 32px;
-				text-align: center;
-				text-decoration: none;
-				display: inline-block;
-				font-size: 16px;
-				margin: 4px 2px;
-				cursor: pointer;
-				-webkit-transition-duration: 0.4s; /* Safari */
-				transition-duration: 0.4s;
-			}
-			
-			.button2:hover {
-				box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0
-					rgba(0, 0, 0, 0.19);
-			}
-			
-			table, td, th {
-				border: 1px solid black;
-			}
-			
-			table {
-				border-collapse: collapse;
-				width: 100%;
-			}
-			
-			th {
-				height: 50px;
-			}
-</style>
-	<form th:action="@{/reviewindicater}" method="get">
-	 <h2>심사완료 리스트</h2>
-		<table>
-			<tr>
-				<th>모든 행정기관관리</th>
-				<th>전국 지역관리</th>
-				<th>모든 지역 시군관리</th>
-				<th>모든 축제관리</th>
-				<!-- 	<th>하나의 축제내 하나의 프로그램 소개관리</th> -->
-				<th>심사 제목</th>
-				<th>심사일자</th>
-				<th>심사현황</th>				
-				<th>심사담당자</th>
-			</tr>
-			<tr>
-				<th>전라북도</th>
-				<th>전주시</th>
-				<th>전라북도청</th>
-				<th>소리문화 축제</th>
-				<th>무대설치 용역 심사</th>
-				<th>2019.12.05</th>
-				<th>yes</th>
-				<th>김혜진</th>
-
-				
-			</tr>
-		</table>
-	</form>
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+ <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button>
+<div class="modal fade" id="myModal" role="dialog">
+    
+    <a href="#" onclick="window.open('http://www.naver.com', 'naver', 'top=100px, left=100px, height=400px, width=400px')"></a>
+        <div class="modal-body">
+	<div class="row mt">
+		<div class="col-md-12">
+			<div class="content-panel">
+				<div class="content-panel">
+					<h1>품목 상세내역</h1>
+					<div class="pd-10">
+						<h2>공통속성정보</h2>
+						<div class="fr"></div>
+						<div class="listWrap">
+							<article>
+								<div class="list pop_mobileWrap">
 
 
-
-
-
-
-
-
+									<table class="tableType_ViewPop"
+										summary="공통속성정보(분류, 분류명, 등록일자)의 내용입니다.">
+										<caption>공통속성정보</caption>
+										<colgroup>
+											<col style="width: 50%;">
+											<col style="width: 15%;">
+											<col style="width: *%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<td rowspan="10" class="txt-center"><img alt="물품이미지"
+													class="common_img_tags"
+													id="imgTag_cfff9b1f-9ef7-4083-a449-6dde284e06cc"
+													data-file-full-path="2011/02/11/20110211143238-5.jpg"
+													data-file-path-euckr="2011%2F02%2F11%2F20110211143238-5.jpg"
+													data-file-path-utf8="2011%2F02%2F11%2F20110211143238-5.jpg"
+													data-unity-atch-file-no="" data-atch-file-sn=""
+													data-primary-key="" data-file-download-section=""
+													data-img-width="400" data-img-height="400"
+													data-size-unlimited-yn="" data-is-multi-img-yn=""
+													data-is-image-change-yn="" data-error-cnt="0"
+													data-is-load-done-yn="N" data-is-error-yn="N"
+													data-is-no-data-yn="N"
+													src="http://img.g2b.go.kr:7070/Resource/CataAttach/XezCatalog/XZMOK/item_image/2011%2F02%2F11%2F20110211143238-5.jpg"
+													style="max-width: 400px; max-height: 400px;"> 
+													<script
+														type="text/javascript">
+														fn_common_initCommonImgTag('imgTag_cfff9b1f-9ef7-4083-a449-6dde284e06cc');
+													</script></td>
+												<th>물품목록번호</th>
+												<td>39101699-22076574</td>
+											</tr>
+											<tr>
+												<th>물품분류번호</th>
+												<td>39101699</td>
+											</tr>
+											<tr>
+												<th>물품식별번호</th>
+												<td>22076574</td>
+											</tr>
+											<tr>
+												<th>품명</th>
+												<td>LED램프</td>
+											</tr>
+											<tr>
+												<th>세부품명번호</th>
+												<td>3910169901(LED램프)</td>
+											</tr>
+											<tr>
+												<th>영문명</th>
+												<td>Light emitting diode lamp</td>
+											</tr>
+											<tr>
+												<th>단위</th>
+												<td>개</td>
+											</tr>
+											<tr>
+												<th>내용연수</th>
+												<td></td>
+											</tr>
+											<tr>
+												<th>상품원산지국가명</th>
+												<td>대한민국(KR)</td>
+											</tr>
+											<tr>
+												<th>품목등록일</th>
+												<td>2011-02-15</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+ 
 </th:block>
-	<th:block layout:fragment="customJquery">
-		<th:block th:include="layout/customJquery"></th:block>
-    </th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
 </html>

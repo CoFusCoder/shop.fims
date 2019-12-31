@@ -1,166 +1,166 @@
 package shop.fims.vo;
 
 public class FestivalGoodsIn {
-	private String festgoods_in_cd;
-	private String areacity_admin_cd;
-	private String area_cd;
-	private String area_city_cd;
-	private String fest_cd;
-	private String festgoods_ldiv_cd;
-	private String festgoods_sdiv_cd;
-	private String man_com_cd;
-	private String cat_acc_cd;
-	private String acc_mem_cd;
-	private String fesrev_bud_cd;
-	private String fest_title;
-	private String fest_nm;
-	private String festgoods_in_nm;
-	private String festgoods_in_detail;
-	private int festgoods_in_amt;
-	private String group_cd;
-	private String action_dt;
-	private String action_status;
-	private int festgoods_expense;
-	private String insert_dt;
-	public String getFestgoods_in_cd() {
-		return festgoods_in_cd;
+	private String festgoodsInCd;
+	private String areacityAdminCd;
+	private String areaCd;
+	private String areaCityCd;
+	private String festCd;
+	private String festgoodsLdivCd;
+	private String festgoodsSdivCd;
+	private String manComCd;
+	private String catAccCd;
+	private String accMemCd;
+	private String fesrevBudCd;
+	private String festTitle;
+	private String festNm;
+	private String festgoodsInNm;
+	private String festgoodsInDetail;
+	private int festgoodsInAmt;
+	private String groupCd;
+	private String actionDt;
+	private String actionStatus;
+	private int festgoodsExpense;
+	private String insertDt;
+	public String getFestgoodsInCd() {
+		return festgoodsInCd;
 	}
-	public void setFestgoods_in_cd(String festgoods_in_cd) {
-		this.festgoods_in_cd = festgoods_in_cd;
+	public void setFestgoodsInCd(String festgoodsInCd) {
+		this.festgoodsInCd = festgoodsInCd;
 	}
-	public String getAreacity_admin_cd() {
-		return areacity_admin_cd;
+	public String getAreacityAdminCd() {
+		return areacityAdminCd;
 	}
-	public void setAreacity_admin_cd(String areacity_admin_cd) {
-		this.areacity_admin_cd = areacity_admin_cd;
+	public void setAreacityAdminCd(String areacityAdminCd) {
+		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getArea_cd() {
-		return area_cd;
+	public String getAreaCd() {
+		return areaCd;
 	}
-	public void setArea_cd(String area_cd) {
-		this.area_cd = area_cd;
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
 	}
-	public String getArea_city_cd() {
-		return area_city_cd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_city_cd(String area_city_cd) {
-		this.area_city_cd = area_city_cd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
-	public String getFest_cd() {
-		return fest_cd;
+	public String getFestCd() {
+		return festCd;
 	}
-	public void setFest_cd(String fest_cd) {
-		this.fest_cd = fest_cd;
+	public void setFestCd(String festCd) {
+		this.festCd = festCd;
 	}
-	public String getFestgoods_ldiv_cd() {
-		return festgoods_ldiv_cd;
+	public String getFestgoodsLdivCd() {
+		return festgoodsLdivCd;
 	}
-	public void setFestgoods_ldiv_cd(String festgoods_ldiv_cd) {
-		this.festgoods_ldiv_cd = festgoods_ldiv_cd;
+	public void setFestgoodsLdivCd(String festgoodsLdivCd) {
+		this.festgoodsLdivCd = festgoodsLdivCd;
 	}
-	public String getFestgoods_sdiv_cd() {
-		return festgoods_sdiv_cd;
+	public String getFestgoodsSdivCd() {
+		return festgoodsSdivCd;
 	}
-	public void setFestgoods_sdiv_cd(String festgoods_sdiv_cd) {
-		this.festgoods_sdiv_cd = festgoods_sdiv_cd;
+	public void setFestgoodsSdivCd(String festgoodsSdivCd) {
+		this.festgoodsSdivCd = festgoodsSdivCd;
 	}
-	public String getMan_com_cd() {
-		return man_com_cd;
+	public String getManComCd() {
+		return manComCd;
 	}
-	public void setMan_com_cd(String man_com_cd) {
-		this.man_com_cd = man_com_cd;
+	public void setManComCd(String manComCd) {
+		this.manComCd = manComCd;
 	}
-	public String getCat_acc_cd() {
-		return cat_acc_cd;
+	public String getCatAccCd() {
+		return catAccCd;
 	}
-	public void setCat_acc_cd(String cat_acc_cd) {
-		this.cat_acc_cd = cat_acc_cd;
+	public void setCatAccCd(String catAccCd) {
+		this.catAccCd = catAccCd;
 	}
-	public String getAcc_mem_cd() {
-		return acc_mem_cd;
+	public String getAccMemCd() {
+		return accMemCd;
 	}
-	public void setAcc_mem_cd(String acc_mem_cd) {
-		this.acc_mem_cd = acc_mem_cd;
+	public void setAccMemCd(String accMemCd) {
+		this.accMemCd = accMemCd;
 	}
-	public String getFesrev_bud_cd() {
-		return fesrev_bud_cd;
+	public String getFesrevBudCd() {
+		return fesrevBudCd;
 	}
-	public void setFesrev_bud_cd(String fesrev_bud_cd) {
-		this.fesrev_bud_cd = fesrev_bud_cd;
+	public void setFesrevBudCd(String fesrevBudCd) {
+		this.fesrevBudCd = fesrevBudCd;
 	}
-	public String getFest_title() {
-		return fest_title;
+	public String getFestTitle() {
+		return festTitle;
 	}
-	public void setFest_title(String fest_title) {
-		this.fest_title = fest_title;
+	public void setFestTitle(String festTitle) {
+		this.festTitle = festTitle;
 	}
-	public String getFest_nm() {
-		return fest_nm;
+	public String getFestNm() {
+		return festNm;
 	}
-	public void setFest_nm(String fest_nm) {
-		this.fest_nm = fest_nm;
+	public void setFestNm(String festNm) {
+		this.festNm = festNm;
 	}
-	public String getFestgoods_in_nm() {
-		return festgoods_in_nm;
+	public String getFestgoodsInNm() {
+		return festgoodsInNm;
 	}
-	public void setFestgoods_in_nm(String festgoods_in_nm) {
-		this.festgoods_in_nm = festgoods_in_nm;
+	public void setFestgoodsInNm(String festgoodsInNm) {
+		this.festgoodsInNm = festgoodsInNm;
 	}
-	public String getFestgoods_in_detail() {
-		return festgoods_in_detail;
+	public String getFestgoodsInDetail() {
+		return festgoodsInDetail;
 	}
-	public void setFestgoods_in_detail(String festgoods_in_detail) {
-		this.festgoods_in_detail = festgoods_in_detail;
+	public void setFestgoodsInDetail(String festgoodsInDetail) {
+		this.festgoodsInDetail = festgoodsInDetail;
 	}
-	public int getFestgoods_in_amt() {
-		return festgoods_in_amt;
+	public int getFestgoodsInAmt() {
+		return festgoodsInAmt;
 	}
-	public void setFestgoods_in_amt(int festgoods_in_amt) {
-		this.festgoods_in_amt = festgoods_in_amt;
+	public void setFestgoodsInAmt(int festgoodsInAmt) {
+		this.festgoodsInAmt = festgoodsInAmt;
 	}
-	public String getGroup_cd() {
-		return group_cd;
+	public String getGroupCd() {
+		return groupCd;
 	}
-	public void setGroup_cd(String group_cd) {
-		this.group_cd = group_cd;
+	public void setGroupCd(String groupCd) {
+		this.groupCd = groupCd;
 	}
-	public String getAction_dt() {
-		return action_dt;
+	public String getActionDt() {
+		return actionDt;
 	}
-	public void setAction_dt(String action_dt) {
-		this.action_dt = action_dt;
+	public void setActionDt(String actionDt) {
+		this.actionDt = actionDt;
 	}
-	public String getAction_status() {
-		return action_status;
+	public String getActionStatus() {
+		return actionStatus;
 	}
-	public void setAction_status(String action_status) {
-		this.action_status = action_status;
+	public void setActionStatus(String actionStatus) {
+		this.actionStatus = actionStatus;
 	}
-	public int getFestgoods_expense() {
-		return festgoods_expense;
+	public int getFestgoodsExpense() {
+		return festgoodsExpense;
 	}
-	public void setFestgoods_expense(int festgoods_expense) {
-		this.festgoods_expense = festgoods_expense;
+	public void setFestgoodsExpense(int festgoodsExpense) {
+		this.festgoodsExpense = festgoodsExpense;
 	}
-	public String getInsert_dt() {
-		return insert_dt;
+	public String getInsertDt() {
+		return insertDt;
 	}
-	public void setInsert_dt(String insert_dt) {
-		this.insert_dt = insert_dt;
+	public void setInsertDt(String insertDt) {
+		this.insertDt = insertDt;
 	}
 	@Override
 	public String toString() {
-		return "FestivalGoodsIn [festgoods_in_cd=" + festgoods_in_cd + ", areacity_admin_cd=" + areacity_admin_cd
-				+ ", area_cd=" + area_cd + ", area_city_cd=" + area_city_cd + ", fest_cd=" + fest_cd
-				+ ", festgoods_ldiv_cd=" + festgoods_ldiv_cd + ", festgoods_sdiv_cd=" + festgoods_sdiv_cd
-				+ ", man_com_cd=" + man_com_cd + ", cat_acc_cd=" + cat_acc_cd + ", acc_mem_cd=" + acc_mem_cd
-				+ ", fesrev_bud_cd=" + fesrev_bud_cd + ", fest_title=" + fest_title + ", fest_nm=" + fest_nm
-				+ ", festgoods_in_nm=" + festgoods_in_nm + ", festgoods_in_detail=" + festgoods_in_detail
-				+ ", festgoods_in_amt=" + festgoods_in_amt + ", group_cd=" + group_cd + ", action_dt=" + action_dt
-				+ ", action_status=" + action_status + ", festgoods_expense=" + festgoods_expense + ", insert_dt="
-				+ insert_dt + "]";
+		return "FestivalGoodsIn [festgoodsInCd=" + festgoodsInCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd="
+				+ areaCd + ", areaCityCd=" + areaCityCd + ", festCd=" + festCd + ", festgoodsLdivCd=" + festgoodsLdivCd
+				+ ", festgoodsSdivCd=" + festgoodsSdivCd + ", manComCd=" + manComCd + ", catAccCd=" + catAccCd
+				+ ", accMemCd=" + accMemCd + ", fesrevBudCd=" + fesrevBudCd + ", festTitle=" + festTitle + ", festNm="
+				+ festNm + ", festgoodsInNm=" + festgoodsInNm + ", festgoodsInDetail=" + festgoodsInDetail
+				+ ", festgoodsInAmt=" + festgoodsInAmt + ", groupCd=" + groupCd + ", actionDt=" + actionDt
+				+ ", actionStatus=" + actionStatus + ", festgoodsExpense=" + festgoodsExpense + ", insertDt=" + insertDt
+				+ "]";
 	}
 
+	
 	
 	
 	

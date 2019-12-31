@@ -16,37 +16,49 @@ import shop.fims.vo.Program;
 public class ProgramService {
 	@Autowired ProgramMapper programMapper;
 	
+	// 참가자 조건검색
+	public List<ProParticipants> searchParticipant(String festProNm, String festproSproNm
+			,String festproParNm, String festproParGender, String festproParPhone, String festCd){
+		return programMapper.searchParticipant(festProNm, festproSproNm, festproParNm, festproParGender, festproParPhone, festCd);
+	}
+	
+	// 세부프로그램 다섯가지 조건검색
+	public List<ProSpro> searchSpro(String festProNm, String festproSproNm){
+		return programMapper.searchSpro(festProNm, festproSproNm);
+	}
+	
+	
 	// 프로그램코드로 대프로그램조회
-	public List<Program> selectByProcd(String fest_pro_cd){
-		return programMapper.selectByProcd(fest_pro_cd);
+	public List<Program> selectByProcd(String festProCd){
+		return programMapper.selectByProcd(festProCd);
 	}
 	
 	
 	// 세부프로그램조회
-	public List<ProSpro> selectAllSpro(String fest_cd){
-		return programMapper.selectAllSpro(fest_cd);
+	public List<ProSpro> selectAllSpro(String festCd){
+		return programMapper.selectAllSpro(festCd);
 	}
 	
 	// 대프로그램조회
-	public List<Program> selectAllPro(String fest_cd){
-		return programMapper.selectAllPro(fest_cd);
+	public List<Program> selectAllPro(String festCd){
+		return programMapper.selectAllPro(festCd);
 		
 	}
 	
-	//프로그램 성격분류조회	
-	public List<ProParticipants> selectAllParticipants(){
-		return programMapper.selectAllParticipants();
+	//프로그램 참가자 조회	
+	public List<ProParticipants> selectAllParticipants(String festCd){
+		return programMapper.selectAllParticipants(festCd);
 	}
 
 	//프로그램 성격분류조회	
-	public List<ProDivTheme> selectAllDivTheme(String fest_cd){
-		return programMapper.selectAllDivTheme(fest_cd);
+	public List<ProDivTheme> selectAllDivTheme(String festCd){
+		return programMapper.selectAllDivTheme(festCd);
 	}
 	
 	
 	//프로그램 장소분류조회	
-	public List<ProDivPlace> selectAllDivPlace(String fest_cd){
-		return programMapper.selectAllDivPlace(fest_cd);
+	public List<ProDivPlace> selectAllDivPlace(String festCd){
+		return programMapper.selectAllDivPlace(festCd);
 	}
 	
 	

@@ -7,5 +7,5 @@ import shop.fims.vo.Main;
 @Mapper
 public interface MainMapper {
 
-		public Main selectFestByFestcd(String fest_cd);
+		public Main selectFestByFestcd(String festCd);
 }

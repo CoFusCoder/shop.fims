@@ -9,35 +9,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class GoodsController {
 
-		@Autowired Goodsservice getgoodslist;
+		@Autowired Goodsservice goodsservice;
 		//물품보유현황리스트
-		@GetMapping("/g_conditionlist")
+		@GetMapping("/conditionList")
 		public String conditionlist(Model model){
-			model.addAttribute("g_conditionlist", getgoodslist.getgoodslist());
-			return "/goods/g_conditionlist";
+			model.addAttribute("conditionList", goodsservice.goodslist());
+			return "/goods/conditionList";
 			
 		}
 		//물품 등록
-		@GetMapping("/g_insertcondition")
+		@GetMapping("/insertCondition")
 		public String insertcondition() {
-			return "/goods/g_insertcondition";
+			return "/goods/insertCondition";
 		}
 		
 		//물품등록처리
-		@PostMapping("/g_insertcondition")
+		@PostMapping("/insertCondition")
 		public String addcondition() {
-			return "redirect:/g_conditionlist";
+			return "redirect:/conditionList";
 		}
 		
 		//물품 수정
-		@GetMapping("/g_updatecondition")
+		@GetMapping("/updateCondition")
 		public String selectondition() {
-			return "/goods/g_updatecondition";
+			return "/goods/updateCondition";
 		}
 		//물품 수정처리
-		@PostMapping("/g_updatecondition")
+		@PostMapping("/updateCondition")
 		public String updatecondition() {
-			return "redirect:/g_conditionlist";
+			return "redirect:/conditionList	";
 			
 		}
 		

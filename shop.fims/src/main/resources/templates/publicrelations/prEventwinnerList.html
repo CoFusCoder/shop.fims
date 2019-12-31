@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+
+		
+		<div class="col-md-12 mt">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>이벤트당첨자 리스트</h4>
+              <div class="btn_both" th:with="cd=${code}">
+	              <div class="fl">
+	              	<a th:href="@{/prPromotionDetail(festprProCd=${cd})}">
+	              	<button type="button" class="btn btn-default" align="left" >이벤트상세페이지로 돌아가기</button></a>
+	              </div>
+	              <div class="fr">
+	             	<a th:href="@{/prInsertEventwinner(festprProCd=${cd})}" >
+	              <button type="button" class="btn btn-primary" align="right" >당첨자추가</button></a> 
+	              </div>
+ 
+              </div>
+              <hr>
+              <table class="table table-hover">
+                
+                <thead>
+                  <tr>
+                    <th>이벤트명</th>
+                    <th>당첨자번호</th>
+                    <th>이름</th>
+                    <th>연락처</th>
+                    <th>주소</th>
+                    <th>경품전달일</th>
+                    <th>비고</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="ev:${EveByPmcd}">
+                    <td th:text="${ev.festprEveCd}"></td>
+                    <td th:text="${ev.festprEveNo}"></td>
+                    <td th:text="${ev.festprProNm}"></td>
+                    <td th:text="${ev.festprEvePhone}"></td>
+                    <td th:text="${ev.festprEveAddr}"></td>
+                    <td th:text="${ev.festpreveDeliDt}"></td>
+                    <td th:text="${ev.festprEveEtc}"></td>
+                    <td><a th:href="@{/prUpdateEventwinner}" >
+                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+                    <td><a th:href="@{/prDeleteEventwinner}" >
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+		
+		
+		
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>
