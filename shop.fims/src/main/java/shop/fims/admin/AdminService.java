@@ -57,13 +57,13 @@ public class AdminService {
 		System.out.println(areaCityAdminInsert + " : 전국 행정기관 등록");
 		
 		return areaCityAdminInsert;
-		
 	}
 	
-	//전국 행정기관 조회
+	// 전국 행정기관 조회
 	public List<AreaCityAdmin> areaCityAdminList() {
+		
 		List<AreaCityAdmin> areaCityAdminList = adminMapper.areaCityAdminList();
-		System.out.println(areaCityAdminList + " : 전국 행정기관 조회");
+		System.out.println(areaCityAdminList + " : 전국 행정기관 조회 ");
 		
 		return areaCityAdminList;
 	}

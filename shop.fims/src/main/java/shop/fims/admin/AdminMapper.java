@@ -28,4 +28,5 @@ public interface AdminMapper {
 	
 	// 전국 행정기관 조회
 	public List<AreaCityAdmin> areaCityAdminList();
+	
 }

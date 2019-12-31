@@ -63,11 +63,11 @@
 </insert>
 
 <!--전국 행정기관 조회 쿼리문 -->
-<select id="areaCityAdminList" resultMap="areaCityResultMap">
+<select id="areaCityAdminList" resultMap="areaCityAdminResultMap">
 	SELECT
 		*
 	FROM
-		Area_City
+		Area_City_Admin
 </select>
 
 

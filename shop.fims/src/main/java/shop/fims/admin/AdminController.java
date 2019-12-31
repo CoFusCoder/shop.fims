@@ -14,7 +14,6 @@ import shop.fims.vo.AreaCityAdmin;
 public class AdminController {
 	
 	@Autowired private AdminService adminService;
-	
 	/*
 	 * @file   AdminController.java
 	 * @name   AdminController
@@ -49,7 +48,7 @@ public class AdminController {
 		return "admin/areaCityList";
 	}
 	
-	//전국 지역 등록 처리 메서드
+	//전국 지역 시군 등록 처리 메서드
 	@PostMapping("/admin/areaCityInsert")
 	public String areaCityInsert(AreaCity areaCity) {
 		
@@ -68,25 +67,27 @@ public class AdminController {
 		return "admin/areaCityAdminInsert";
 	}
 	
-	//행정기관 등록 처리 메서드
+	//전국 지역 등록 처리 메서드
 	@PostMapping("/admin/areaCityAdminInsert")
-	public String areaCityAdminInsert(AreaCityAdmin areaCityAdmin) {
-		adminService.areaCityAdminInsert(areaCityAdmin);
-		System.out.println("areaCityAdmin >>>>>" + areaCityAdmin.toString());
-		System.out.println(areaCityAdmin.getAreacityAdminCd() + "<- 생성된 코드");
+	public String addareaCityAdmin(AreaCityAdmin areaCityAdmin) {
 		
+		adminService.areaCityAdminInsert(areaCityAdmin);
+		System.out.println("areaCityAdmin >>>>>>> " + areaCityAdmin.toString());
+		System.out.println(areaCityAdmin.getAreacityAdminCd() + "<-생성된 코드");
+
 		return "redirect:/admin/areaCityAdminList";
 	}
 	
-	//행정기관 조회
+	//전국 지역 및 시군 조회
 	@GetMapping("/admin/areaCityAdminList")
 	public String areaCityAdminList(Model areaList, Model areaCityList, Model areaCityAdminList) {
-		
 		areaList.addAttribute("areaList", adminService.areaList());
 		areaCityList.addAttribute("areaCityList", adminService.areaCityList());
 		areaCityAdminList.addAttribute("areaCityAdminList", adminService.areaCityAdminList());
 		
+		System.out.println("행정기관 >>>>" + areaCityAdminList.toString());
 		return "admin/areaCityAdminList";
 	}
+
 		
 }
