@@ -46,8 +46,11 @@ p{margin: 0;}
                     공지사항
             </div>
     	<div class="sub-txt-con area"><script language="javascript" src="/zzAppModule/module/script/ajax.js"></script>
-<script language="javascript" src="/zzAppModule/module/script/board.js"></script>
-<script language="javascript" src="/zzAppModule/module/script/common.js"></script>
+<script type='text/javascript' src='/zzAppModule/editors/se2/js/HuskyEZCreator.js' charset='utf-8'></script>
+		<script language='javascript' src='/zzAppModule/module/script/common.js'></script>
+		<script language='javascript' src='/zzAppModule/module/script/board.js'></script>
+		<script language='javascript' src='/zzAppModule/module/script/ajax.js'></script>
+		<link rel='stylesheet' href='/zzAppModule/bskin__collect/css/default.css'/>
 
 <link rel="stylesheet" type="text/css" href="/css/board.css">
 
@@ -182,10 +185,22 @@ p{margin: 0;}
 </tbody> 
 	</table>
 
-        <div class="viewBut">
-            <a type="button" th:href="@{/insertBoard}" class="btn btn-default">등록하기</a>
-        </div>
-	
+
+        <br>
+        <br>
+ 
+					<div class="txtcenter buttonDiv">
+					<div class="login_bt_img_sty">
+						
+							
+								<a th:href="@{/insertBoard}">
+							
+							
+						
+								<img src="http://www.baekjefest.com/aboutstyle/images/sub/sub05_02.gif" alt="등록하기" class="imgBorder" />
+							</a>
+					</div>
+				</div>
     	
 
 	<div class="PageBox">
