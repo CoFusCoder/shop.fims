@@ -9,12 +9,40 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 	<th:block layout:fragment="customBody">
 		<section id="main-content" style="margin: 100px; margin-top: 0px;">
 	      <section class="wrapper">
-	        <h3><i class="fa fa-angle-right"></i>임시시설설치및철거관리리스트</h3>
+	        <h3><i class="fa fa-angle-right"></i>임시시설설치및철거관리조회</h3>
 	        <div class="row">
 	          <div class="col-md-12">
 	            <div class="content-panel">
-	              <h4><i class="fa fa-angle-right"></i>임시시설설치및철거관리리스트</h4>
-	              <hr>
+	              <h4><i class="fa fa-angle-right"></i>임시시설설치및철거관리조회</h4>
+	              <div>
+	              	<form th:action="@{/temporarySearch}" method="post"> 
+	              		<div class="form-row">
+							    <div class="form-group col-md-3">
+							      <label for="festNm"></label>
+							      <input type="text" class="form-control" id="festNm" name="fest_nm"  placeholder="축제명을 입력해주세요">
+							    </div>
+							    <div class="form-group col-md-3">
+							      <label for="staNm"></label>
+							      <input type="text" class="form-control" id="staNm" name="fac_sta_nm"  placeholder="시설명을 입력해주세요">
+							    </div>
+							  </div>
+							  <div>
+							 	<div class="form-group col-md-3">
+								     <label for="comNm2"></label>
+								     <input type="text" class="form-control" id="comNm2" name="com_mem_nm2" placeholder="담당자명을 입력해주세요">
+								   </div>
+							    <div class="form-group col-md-3">
+							      <label for="accNm1"></label>
+							      <input type="text" class="form-control" id="accNm1" name="cat_acc_nm1"  placeholder="설치거래처명을 입력해주세요">
+							    </div>
+							</div>
+							<button type="submit" value="search" class="btn btn-primary">검색</button>
+							<button type="button" class="btn btn-primary" onclick="location.href='/temporaryList'">초기화</button>
+						</form>
+
+								 
+						
+	              
 	              <table class="table">
 	                <thead>
 					<tr>

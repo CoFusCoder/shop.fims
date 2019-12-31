@@ -9,16 +9,58 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 	<th:block layout:fragment="customBody">
 	    <section id="main-content" style="margin: 100px; margin-top: 0px;">
 	      <section class="wrapper">
-	        <h3><i class="fa fa-angle-right"></i>안전점검후유지보수리스트</h3>
+	        <h3><i class="fa fa-angle-right"></i>안전점검후지적관리조회</h3>
 	        <div class="row">
 	          <div class="col-md-12">
 	            <div class="content-panel">
-	              <h4><i class="fa fa-angle-right"></i>안전점검후유지보수리스트</h4>
-	              <hr>
+	              <h4><i class="fa fa-angle-right"></i>안전점검후지적관리조회</h4>
+	              <div>
+							<form th:action="@{/maintenanceSearch}" method="post">
+							  <div class="form-row">
+							    <div class="form-group col-md-4">
+							      <label for="festNm"></label>
+							      <input type="text" class="form-control" id="festNm" name="fest_nm"  placeholder="축제명을 입력해주세요">
+							    </div>
+							    <div class="form-group col-md-4">
+							      <label for="staNm"></label>
+							      <input type="text" class="form-control" id="staNm" name="fac_sta_nm"  placeholder="시설명을 입력해주세요">
+							    </div>
+							  </div>
+							  <div class="form-row">
+							    <div class="form-group col-md-4">
+							      <label for="maicheDt"></label>
+							      <input type="date" class="form-control" id="maicheDt" name="facmai_che_dt" >
+							    </div>
+							    <div class="form-group col-md-4">
+							      <label for="maiinsIn"></label>
+							      <input type="text" class="form-control" id="maiinsIn" name="facmai_ins_in"  placeholder="점검기관명을 입력해주세요">
+							    </div>
+								  </div>
+								  <div class="form-group col-md-4">
+								     <label for="comNm2"></label>
+								     <input type="text" class="form-control" id="comNm2" name="com_mem_nm2" placeholder="담당자명을 입력해주세요">
+								   </div>
+								  <div class="form-row">
+								    <div class="form-group col-md-4">
+								      <label for="maistaChe"></label>
+								      <select class="form-control" id="maistaChe" name="facmai_sta_che">
+								      	<option value="">점검상태를 선택해주세요</option>
+								      	<option value="점검중">점검중</option>
+								      	<option value="보완중">보완중</option>
+								      	<option value="보완완료">보완완료</option>
+								      	<option value="점검완료">점검완료</option>
+								      </select>
+								    </div>
+
+								  </div>
+								 <button type="submit" value="search" class="btn btn-primary">검색</button>
+								 <button type="button" class="btn btn-primary" onclick="location.href='/maintenanceList'">초기화</button>
+								 
+								</form>	              
 	              <table class="table">
 	                <thead>
 						<tr>
-							<th style=display:none;>안전점검후유지보수관리코드</th>
+							<th style="display:none;">안전점검후지적관리코드</th>
 							<th>시설명</th>
 							<th>축제명</th>
 							<th>점검일자</th>
@@ -36,7 +78,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 	                </thead>
 	                <tbody>
 						<tr th:each="ml : ${MaintenanceList}">
-							<td th:text="${ml.maiCd}"style=display:none;></td>
+							<td th:text="${ml.maiCd}" style="display:none;"></td>
 							<td th:text="${ml.staNm}"></td>
 							<td th:text="${ml.festNm}"></td>
 							<td th:text="${ml.maicheDt}"></td>
@@ -59,6 +101,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						</tr>
 	                </tbody>
 	              </table>
+	              </div>
 	            </div>
 	          </div>
 	          <!-- /col-md-12 -->

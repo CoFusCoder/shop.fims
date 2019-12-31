@@ -23,5 +23,15 @@ public class HumanService {
 		
 		return humanmapper.selectbyHuman(humanCd);
 	}
-
+	//인적사항상세화면조회
+	public Human selecthumanView(String humanCd) {
+		
+		return humanmapper.selecthumanView(humanCd);
+	}
+	//인적검색
+	public List<Human> searchHuman(String fest_nm, String feswork_div_nm, String com_mem_nm2,
+			String fes_human_nm, String fes_human_phone, String fes_human_hour) {
+		
+		return humanmapper.searchHuman(fest_nm, feswork_div_nm, com_mem_nm2, fes_human_nm, fes_human_phone, fes_human_hour);
+	}
 }

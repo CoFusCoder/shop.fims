@@ -39,16 +39,17 @@
    		<result property="comCd" column="man_com_cd"/>
    		<result property="staCd" column="fac_sta_cd"/>
    		<result property="facCd" column="tem_fac_cd"/>	
-   		<result property="maiCd" column="fac_mai_cd"/>		
+   		<result property="maiCd" column="fac_mai_cd"/>
+   		<result property="faccatNm" column="fesfac_cat_nm"/>		
   	</resultMap>
-  
+  <!-- 모든시설분류 -->
   <select id="selectClassification" resultType="shop.fims.vo.Facility">
 	SELECT
 		fesfac_cat_nm AS catNm
 	FROM
 		Fes_Fac_Cat
   </select>
-
+<!-- 보유시설리스트 -->
   <select id="selectFacility" resultType="shop.fims.vo.Facility">
 	SELECT
 		fac_sta_cd AS staCd,
@@ -63,6 +64,38 @@
 		action_status AS actionSta
 	FROM
 		Facility_Status
+  </select>
+  <!--보유시설검색-->
+  <select id="searchClassification" resultMap="facilityResultMap">
+	SELECT
+		fs.fest_nm ,
+		fs.action_dt,
+		fs.action_status,
+		fs.fac_sta_nm,
+		fs.fac_sta_site,
+		fs.fac_sta_count,
+		ffc.fesfac_cat_nm,
+		mc.com_mem_nm2
+		
+	FROM
+		Facility_Status AS fs JOIN Fes_Fac_Cat AS ffc ON fs.fesfac_cat_cd = ffc.fesfac_cat_cd
+		JOIN Man_Com AS mc ON fs.man_com_cd = mc.man_com_cd
+	WHERE 1=1
+		<if test="fest_nm != null and fest_nm != '' ">
+		       AND fs.fest_nm = #{fest_nm}
+		</if>
+		<if test="fac_sta_nm != null and fac_sta_nm != '' ">
+		       AND fs.fac_sta_nm = #{fac_sta_nm}
+		</if>
+		<if test="fesfac_cat_nm != null and fesfac_cat_nm != '' ">
+		       AND ffc.fesfac_cat_nm = #{fesfac_cat_nm}
+		</if>
+		<if test="man_com_nm2 != null and man_com_nm2 != '' ">
+		       AND mc.man_com_nm2 = #{man_com_nm2}
+		</if>
+		<if test="action_status != null and action_status != '' ">
+		       AND fs.action_status = #{action_status}
+		</if>
   </select>
   
    <select id="selectTemporary" resultMap="facilityResultMap">
@@ -79,6 +112,7 @@
 		FROM
 			Temporary_Facility
   </select>
+  <!--임시시설설치및철거관리 조회-->
 	<select id="selectTemporaryview" resultMap="facilityResultMap">
 		SELECT
 			tem_fac_cd,
@@ -101,6 +135,35 @@
 		WHERE
 			tem_fac_cd=#{facCd}
 	</select>
+	<!-- 임시시설설치및철거관리 검색 -->
+	<select id="searchTemporary" resultMap="facilityResultMap">
+		SELECT
+			fs.fac_sta_nm,
+			f.fest_nm,
+			ca.cat_acc_nm1,
+			tf.facsta_ins_con1,
+			tf.facsta_ins_con2
+		FROM
+			Temporary_Facility AS tf JOIN Cat_Account AS ca ON tf.cat_acc_cd=ca.cat_acc_cd
+			JOIN Man_Com AS mc ON tf.man_com_cd=mc.man_com_cd
+			JOIN Facility_Status AS fs ON tf.fac_sta_cd = fs.fac_sta_cd
+			JOIN Festival AS f ON tf.fest_cd=f.fest_cd
+		WHERE 1=1
+			<if test="fest_nm != null and fest_nm != '' ">
+			       AND f.fest_nm = #{fest_nm}
+			</if>
+			<if test="fac_sta_nm != null and fac_sta_nm != '' ">
+			       AND fs.fac_sta_nm = #{fac_sta_nm}
+			</if>
+			<if test="com_mem_nm2 != null and com_mem_nm2 != '' ">
+			       AND cm.com_mem_nm2 = #{com_mem_nm2}
+			</if>
+			<if test="cat_acc_nm1 != null and cat_acc_nm1 != '' ">
+			       AND ca.cat_acc_nm1 = #{cat_acc_nm1}
+			</if>							
+		
+	</select>
+	<!-- 안전점검후지적관리조회 -->
 	<select id="selectMaintenance" resultType="shop.fims.vo.Facility">
 		SELECT
 			fac_mai_cd AS maiCd,
@@ -118,6 +181,44 @@
 			Facility_Mai
 	
 	</select>
+	<!-- 안전점검후지적관리검색 -->
+	<select id="searchMaintenance" resultMap="facilityResultMap">
+		SELECT
+			fm.fest_nm,
+			fm.facmai_che_dt,
+			fm.fac_mai_cad,
+			fm.facmai_ins_in,
+			fm.facmai_rec_dt,
+			fm.facmai_sup_dt,
+			fm.facmai_res_human,
+			fm.facmai_sta_che,
+			fs.fac_sta_nm,
+			mc.com_mem_nm2
+		FROM
+			Facility_Mai AS fm JOIN Facility_Status AS fs ON fm.fac_sta_cd=fs.fac_sta_cd
+			JOIN Man_Com AS mc ON fm.man_com_cd=mc.man_com_cd
+		WHERE 1=1
+			<if test="fest_nm != null and fest_nm != '' ">
+		       AND fm.fest_nm = #{fest_nm}
+			</if>
+			<if test="fac_sta_nm != null and fac_sta_nm != '' ">
+		       AND fs.fac_sta_nm = #{fac_sta_nm}
+			</if>
+			<if test="facmai_che_dt != null and facmai_che_dt != '' ">
+		       AND fm.facmai_che_dt = #{facmai_che_dt}
+			</if>
+			<if test="facmai_ins_in != null and facmai_ins_in != '' ">
+		       AND fm.facmai_ins_in = #{facmai_ins_in}
+			</if>
+			<if test="com_mem_nm2 != null and com_mem_nm2 != '' ">
+		       AND mc.com_mem_nm2 = #{com_mem_nm2}
+			</if>
+			<if test="facmai_sta_che != null and facmai_sta_che != '' ">
+		       AND fm.facmai_sta_che = #{facmai_sta_che}
+			</if>
+			 	
+	</select>
+	<!-- 안전점검표 조회 -->
 	<select id="selectChecklist" resultMap="facilityResultMap">
 		SELECT
 			sil.safins_list_cla,
@@ -189,4 +290,5 @@
 		WHERE
 			tem_fac_cd=#{facCd}
 	</select>
+	
   </mapper>

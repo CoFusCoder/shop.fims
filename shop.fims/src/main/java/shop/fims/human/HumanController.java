@@ -68,14 +68,18 @@ public class HumanController {
 	}
 	//인적검색처리
 	@PostMapping("/humanSearch")
-	public String searchHuman(@RequestParam(value="sk") String sk, @RequestParam(value="sv") String sv, Model model) {
-		System.out.println("sk---------->" + sk);
-		System.out.println("sv---------->" + sv);
+	public String searchHuman(@RequestParam(value="fest_nm") String fest_nm, @RequestParam(value="feswork_div_nm") String feswork_div_nm,
+							@RequestParam(value="fes_human_nm") String fes_human_nm, @RequestParam(value="fes_human_phone") String fes_human_phone,
+							@RequestParam(value="fes_human_hour") String fes_human_hour ,@RequestParam(value="com_mem_nm2") String com_mem_nm2, Model model) {
+		
+		model.addAttribute("HumanList", humanservice.searchHuman(fest_nm, feswork_div_nm, com_mem_nm2, fes_human_nm, fes_human_phone, fes_human_hour));
 		return "/human/humanList";
 	}
 	//인적사항 상세보기
 	@GetMapping("/humanView")
-	public String selecthumanView() {
+	public String selecthumanView(@RequestParam(value="humanCd") String humanCd, Model model) {
+		
+		model.addAttribute("Human", humanservice.selecthumanView(humanCd));
 		
 		return "/human/humanView";
 	}
