@@ -68,7 +68,7 @@ public class MainController {
 	 * @name dashboard
 	 * @brief 관리자 메인화면
 	 * @author ksmart33 김동석
-	 * @return dashboard
+	 * @return /admin/main
 	 */
 	@GetMapping("/admin/main")
 	public String dashboard() {
