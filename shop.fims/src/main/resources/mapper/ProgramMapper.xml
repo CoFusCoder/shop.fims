@@ -109,7 +109,7 @@
 
 	</resultMap>  
 
-
+<!-- 프로그램 일차분류 등록 -->
 <insert id="insertDivDay" parameterType="shop.fims.vo.ProDivDay">
 	<selectKey keyProperty="festprodivDayCd" resultType="String" order="BEFORE">
 	SELECT
@@ -125,7 +125,7 @@ INTO
 values (#{festprodivDayCd},#{festprodivDayNm})
 </insert>
 
-  
+<!-- 프로그램 참가자 조건검색   -->
 <select id="searchParticipant" resultMap="proParticipantsResultmap">
 SELECT
 	f.*

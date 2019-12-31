@@ -24,14 +24,44 @@
  	<result property="festSchAttach" column="fest_sch_attach"/>
  	<result property="insertDt" column="insert_dt"/>
  </resultMap>
-  
-  <select id="selectAllSchedule" resultMap="scheduleResultmap">
-  SELECT
+
+<select id="searchSchedule" resultMap="scheduleResultmap">
+SELECT
+ 	*
+FROM
+	Fest_Schedule as f
+WHERE fest_cd=#{festCd}	
+	<trim prefix="and" prefixOverrides="and">
+		<if test="accMemCd neq null and accMemCd neq ''.toString()">
+			and f.acc_mem_cd like CONCAT ('%',#{accMemCd},'%') 
+		</if>
+		<if test="festScheNm neq null and festScheNm neq ''.toString()">
+			and f.fest_sche_nm like CONCAT ('%',#{festScheNm},'%') 
+		</if>
+		<choose>
+			<when test="date1 neq null and date1 neq ''.toString() and date2 neq null and date2 neq ''.toString()">
+				f.fest_sch_dt between DATE(#{date1}) and DATE(#{date2})
+			</when>			
+			<when test="date1 neq null and date1 neq ''.toString() and (date2 eq null or date2 eq ''.toString())">
+				and f.fest_sch_dt = #{date1}
+			</when>
+			<when test="(date1 eq null or date1 eq ''.toString()) and date2 neq null and date2 neq ''.toString()">
+				and f.fest_sch_dt = #{date2}
+			</when>
+		</choose>
+		
+	</trim>
+</select>
+
+
+
+<!-- 전체 스케줄 조회 -->
+ <select id="selectAllSchedule" resultMap="scheduleResultmap">
+ 	SELECT
 		*
 	FROM 
 		Fest_Schedule
-
-  </select>
+ </select>
   
   
   

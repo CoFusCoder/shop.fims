@@ -11,8 +11,15 @@ import shop.fims.vo.Schedule;
 public class ScheduleService {
 	@Autowired ScheduleMapper scheduleMapper;
 	
+	public List<Schedule> searchSchedule(String accMemCd, String festScheNm, String date1, String date2, String festCd){		
+		return scheduleMapper.searchSchedule(accMemCd, festScheNm, date1, date2, festCd);	
+	}
+	
+	
+	
+	
+	//스케줄 전체조회
 	public List<Schedule> selectAllSchedule(){
 		return scheduleMapper.selectAllSchedule();
-		
 	}
 }
