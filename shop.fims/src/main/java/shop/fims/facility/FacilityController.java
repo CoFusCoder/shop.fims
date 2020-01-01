@@ -20,8 +20,17 @@ public class FacilityController {
 	public String selectClassification(Model model) {
 		
 		model.addAttribute("classificationList", facilityservice.selectClassification());
-		
 		return "/facility/classificationList";
+	}
+	//모든시설검색
+	@PostMapping("/classificationSearch")
+	public String searchClassification(@RequestParam(value="fest_nm") String fest_nm, @RequestParam(value="fac_sta_nm") String fac_sta_nm,
+							@RequestParam(value="fesfac_cat_nm") String fesfac_cat_nm, @RequestParam(value="man_com_nm2") String man_com_nm2,
+							@RequestParam(value="action_status") String action_status, Model model) {
+
+		model.addAttribute("facilityList", facilityservice.searchClassification(fest_nm, fac_sta_nm, fesfac_cat_nm, man_com_nm2, action_status));
+		
+		return "/Facility/facilityList";
 	}
 	//모든시설분류등록
 	@GetMapping("/classificationInsert")
@@ -82,6 +91,15 @@ public class FacilityController {
 		
 		return "/facility/temporaryList";
 	}
+	//임시시설설치및철거 검색
+	@PostMapping("/temporarySearch")
+	public String searchTemporary(@RequestParam(value="fest_nm") String fest_nm, @RequestParam(value="fac_sta_nm") String fac_sta_nm,
+								@RequestParam(value="com_mem_nm2") String com_mem_nm2, @RequestParam(value="cat_acc_nm1") String cat_acc_nm1,
+								Model model) {
+		model.addAttribute("temporaryList", facilityservice.searchTemporary(fest_nm, fac_sta_nm, com_mem_nm2, cat_acc_nm1));
+		
+		return "/facility/temporaryList";
+	}
 	//임시시설설치및철거상세보기
 	@GetMapping("/temporaryView")
 	public String selectTemporaryview(@RequestParam(value="facCd") String facCd, Model model) {
@@ -109,7 +127,7 @@ public class FacilityController {
 		
 		return "/facility/temporaryDelete";
 	}
-	//시설안전점검후유지보수리스트
+	//시설안전점검후지적관리리스트
 	@GetMapping("/maintenanceList")
 	public String selectMaintenance(Model model) {
 		
@@ -117,13 +135,23 @@ public class FacilityController {
 		
 		return "/facility/maintenanceList";
 	}
-	//시설안전점검후유지보수등록
+	//시설안전점검후지적관리검색
+	@PostMapping("/maintenanceSearch")
+	public String searchMaintenance(@RequestParam(value="fest_nm") String fest_nm, @RequestParam(value="fac_sta_nm") String fac_sta_nm,
+								@RequestParam(value="facmai_che_dt") String facmai_che_dt, @RequestParam(value="facmai_ins_in") String facmai_ins_in,
+								@RequestParam(value="com_mem_nm2") String com_mem_nm2, @RequestParam(value="facmai_sta_che") String facmai_sta_che, Model model) {
+		
+		model.addAttribute("MaintenanceList", facilityservice.searchMaintenance(fest_nm, fac_sta_nm, facmai_che_dt, facmai_ins_in, com_mem_nm2, facmai_sta_che));
+		
+		return "/facility/maintenanceList";
+	}
+	//시설안전점검후지적관리등록
 	@GetMapping("/maintenanceInsert")
 	public String insertMaintenance() {
 
 		return "/facility/maintenanceInsert";
 	}
-	//시설안전점검후유지보수수정 
+	//시설안전점검후지적관리수정 
 	@GetMapping("/maintenanceUpdate")
 	public String updateMaintenance(@RequestParam(value="maiCd") String maiCd, Model model) {
 		
@@ -132,7 +160,7 @@ public class FacilityController {
 		
 		return "/facility/maintenanceUpdate";
 	}
-	//시설안전점검후유지보수삭제 
+	//시설안전점검후지적관리삭제 
 	@GetMapping("/maintenanceDelete")
 	public String delectMaintenance() {
 		

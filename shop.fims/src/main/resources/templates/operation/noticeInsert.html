@@ -4,10 +4,83 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle"></th:block>
 <th:block layout:fragment="adminisMainContents">
-<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
-
-noticeInsert.html
-
+<div class="col-lg-12 mt">
+	<div class="row content-panel">
+		<div class="col-lg-10 col-lg-offset-1">
+			 <div class="invoice-body">
+				<div class="pull-left">
+					<h1>공지사항</h1>
+					<address>
+						<strong>SW개발사 유지보수 관련</strong><br>
+						1:1문의 및 내용<br>
+						H: 010-0000-0000<br>
+						<abbr title="Phone">P:</abbr> (123) 456-7890
+					</address>
+				</div>
+				<!-- /pull-left -->
+				<div class="pull-right">
+				  <h2>NOTICE</h2>
+				</div>
+				<!-- /pull-right -->
+				<div class="clearfix"></div>
+				<br>
+				<br>
+				<br>
+				<div class="row">
+					<!-- /col-md-9 -->
+					<div class="col-md-3">
+					  	<br>
+						<div>
+						  <div class="pull-left"> NOTICE : </div>
+						  <div class="pull-right"> 00100 </div>
+						  <div class="clearfix"></div>
+						</div>
+						<div>
+						  <!-- /col-md-3 -->
+						  <div class="pull-left"> NOTICE DATE : </div>
+						  <div class="pull-right"> 19/12/29 </div>
+						  <div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<table class="table table-hover">
+					<hr>
+					<thead>
+					  <tr>
+					    <th>#</th>
+					    <th>First Name</th>
+					    <th>Last Name</th>
+					    <th>Username</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr>
+					    <td>1</td>
+					    <td>Mark</td>
+					    <td>Otto</td>
+					    <td>@mdo</td>
+					  </tr>
+					  <tr>
+					    <td>2</td>
+					    <td>Jacob</td>
+					    <td>Thornton</td>
+					    <td>@fat</td>
+					  </tr>
+					  <tr>
+					    <td>3</td>
+					    <td>Simon</td>
+					    <td>Mosa</td>
+					    <td>@twitter</td>
+					  </tr>
+					</tbody>
+				</table>
+				<br>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>
 
 </th:block>
 <th:block layout:fragment="adminisscript">

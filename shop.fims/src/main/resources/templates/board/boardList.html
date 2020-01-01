@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{layout/festival/festivaldefault}">
+layout:decorate="~{layout/gukmin/gukmindefault}">
 
-<th:block layout:fragment="festivalCss">
+<th:block layout:fragment="gukminCss">
 <style>
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
@@ -28,28 +28,44 @@ p{margin: 0;}
 
 </th:block>
 
-<th:block layout:fragment="festivalMainContents">
-
+<th:block layout:fragment="gukminMainContents">
 
 <section class="row-section">
     <div class="container">
-	    <div class="col-md-30 row-block">
+	    <div class="col-md-10 offset-md-1 row-block">
 	        
 <link type="text/css" rel="stylesheet" th:href="@{/board/css/@sub-default.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/board/board/css/slick.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/board/css/board.css}">
+<link type="text/css" rel="stylesheet" charset="utf-8" th:href="@{/_core/css/sys.css?nFlag=201912}" />
+
+
 <div class="sub-con">
 
 <div class="sub-Title area">  
                     공지사항
             </div>
     	<div class="sub-txt-con area"><script language="javascript" src="/zzAppModule/module/script/ajax.js"></script>
-<script language="javascript" src="/zzAppModule/module/script/board.js"></script>
-<script language="javascript" src="/zzAppModule/module/script/common.js"></script>
+<script type='text/javascript' src='/zzAppModule/editors/se2/js/HuskyEZCreator.js' charset='utf-8'></script>
+		<script language='javascript' src='/zzAppModule/module/script/common.js'></script>
+		<script language='javascript' src='/zzAppModule/module/script/board.js'></script>
+		<script language='javascript' src='/zzAppModule/module/script/ajax.js'></script>
+		<link rel='stylesheet' href='/zzAppModule/bskin__collect/css/default.css'/>
 
 <link rel="stylesheet" type="text/css" href="/css/board.css">
 
-<div class="listboard">	
+<div class="listboard">
+
+	<form name="bSchForm" method="get" action="">
+		<input type="hidden" name="_zidx" value="1517992993^1^1517993002">
+		<input type="hidden" name="viewMode" value="">
+		<input type="hidden" name="bflag" value="">	
+	<div class="search">
+		<input class="nType" type="text"  name="sword" placeholder="search word">
+		<input type="submit" value=" 검색 " class="btngray" />
+		</div>
+	</form>
+	
 		<table class="listboardStyle">
 				<colgroup>
 						<col width="10%" class="colW">
@@ -166,20 +182,36 @@ p{margin: 0;}
 	
 	
          
-</tbody>
+</tbody> 
 	</table>
-	<div class="BottBut">
-		<div class="writeBut"></div>
-	</div>
+
+
+        <br>
+        <br>
+ 
+					<div class="txtcenter buttonDiv">
+					<div class="login_bt_img_sty">
+						
+							
+								<a th:href="@{/insertBoard}">
+							
+							
+						
+								<img src="http://www.baekjefest.com/aboutstyle/images/sub/sub05_02.gif" alt="등록하기" class="imgBorder" />
+							</a>
+					</div>
+				</div>
+    	
+
 	<div class="PageBox">
 			<div class="allPage">
-			  <div class='allPage'><a href='?_zidx=1517992993^1^1517993002&page=1&set=1&&ttest=' class='owl-prev'><img alt='앞페이지로' src='/sub5/img/btn_pr.gif'></a><strong>1</strong><a href='?_zidx=1517992993^1^1517993002&page=2&set=1&&ttest='>2</a><a href='?_zidx=1517992993^1^1517993002&page=3&set=1&&ttest='>3</a><a href='?_zidx=1517992993^1^1517993002&page=4&set=1&&ttest='>4</a><a href='?_zidx=1517992993^1^1517993002&page=5&set=1&&ttest='>5</a><a href='?_zidx=1517992993^1^1517993002&page=6&set=1&&ttest='>6</a><a href='?_zidx=1517992993^1^1517993002&page=7&set=1&&ttest='>7</a><a href='?_zidx=1517992993^1^1517993002&page=8&set=1&&ttest='>8</a><a href='?_zidx=1517992993^1^1517993002&page=9&set=1&&ttest='>9</a><a href='?_zidx=1517992993^1^1517993002&page=10&set=1&&ttest='>10</a><a href='?_zidx=1517992993^1^1517993002&page=11&set=2&&ttest=' class='owl-next'><img alt='뒤페이지로' src='/sub5/img/btn_ne.gif'></a></div>			</div>
+			  <div class='allPage'><a href='?_zidx=1517992993^1^1517993002&page=1&set=1&&ttest=' class='owl-prev'><img alt='앞페이지로' src="http://www.chunhyang.org/sub5/img/btn_pr.gif"></a><strong>1</strong><a href='?_zidx=1517992993^1^1517993002&page=2&set=1&&ttest='>2</a><a href='?_zidx=1517992993^1^1517993002&page=3&set=1&&ttest='>3</a><a href='?_zidx=1517992993^1^1517993002&page=4&set=1&&ttest='>4</a><a href='?_zidx=1517992993^1^1517993002&page=5&set=1&&ttest='>5</a><a href='?_zidx=1517992993^1^1517993002&page=6&set=1&&ttest='>6</a><a href='?_zidx=1517992993^1^1517993002&page=7&set=1&&ttest='>7</a><a href='?_zidx=1517992993^1^1517993002&page=8&set=1&&ttest='>8</a><a href='?_zidx=1517992993^1^1517993002&page=9&set=1&&ttest='>9</a><a href='?_zidx=1517992993^1^1517993002&page=10&set=1&&ttest='>10</a><a href='?_zidx=1517992993^1^1517993002&page=11&set=2&&ttest=' class='owl-next'><img alt='뒤페이지로' src="http://www.chunhyang.org/sub5/img/btn_ne.gif"></a></div>			</div>
 	</div>
-	
+
 	
 </div>
          
-			
+	
 
 
 
@@ -195,11 +227,9 @@ p{margin: 0;}
 </div>
 </section>
 
-
 </th:block>
-<th:block layout:fragment="festivalscript">
-
-<th:block th:include="fragments/festival/festivalscript"></th:block>
+<th:block layout:fragment="gukminscript">
+<th:block th:include="fragments/gukmin/gukminscript"></th:block>
 </th:block>
 
 </html>

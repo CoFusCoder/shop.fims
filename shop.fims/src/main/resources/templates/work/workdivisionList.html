@@ -9,12 +9,37 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 	<th:block layout:fragment="customBody">
 			<section id="main-content" style="margin: 100px; margin-top: 0px;">
 		      <section class="wrapper">
-		        <h3><i class="fa fa-angle-right"></i>축제업무리스트</h3>
+		        <h3><i class="fa fa-angle-right"></i>축제업무조회</h3>
 		        <div class="row">
 		          <div class="col-md-12">
 		            <div class="content-panel">
-		              <h4><i class="fa fa-angle-right"></i>업무리스트</h4>
-		              <hr>
+		              <h4><i class="fa fa-angle-right"></i>업무조회</h4>
+		              <div>
+		              	<form th:action="@{/workdivisionSearch}" method="post"> 
+	              		<div class="form-row">
+							    <div class="form-group col-md-3">
+							      <label for="festNm"></label>
+							      <input type="text" class="form-control" id="festNm" name="fest_nm"  placeholder="축제명을 입력해주세요">
+							    </div>
+							    <div class="form-group col-md-3">
+							      <label for="workcatNm"></label>
+							      <input type="text" class="form-control" id="workcatNm" name="feswork_cat_nm"  placeholder="업무분류명을 입력해주세요">
+							    </div>
+							  </div>
+							  <div>
+							 	<div class="form-group col-md-3">
+								     <label for="workdivNm"></label>
+								     <input type="text" class="form-control" id="workdivNm" name="feswork_div_nm" placeholder="업무명을 입력해주세요">
+								   </div>
+							    <div class="form-group col-md-3">
+							      <label for="comNm2"></label>
+							      <input type="text" class="form-control" id="comNm2" name="com_mem_nm2"  placeholder="담당자명을 입력해주세요">
+							    </div>
+							</div>
+							<button type="submit" value="search" class="btn btn-primary">검색</button>
+							<button type="button" class="btn btn-primary" onclick="location.href='/workdivisionList'">초기화</button>
+						</form>
+		              
 		              <table class="table">
 		                <thead>
 							<tr>
@@ -44,6 +69,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		                </tbody>
 		              </table>
 		            </div>
+		          </div>
 		          </div>
 		          <!-- /col-md-12 -->
 		          <!-- /col-md-12 -->

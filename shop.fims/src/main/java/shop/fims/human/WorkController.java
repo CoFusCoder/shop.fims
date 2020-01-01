@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -48,6 +49,12 @@ public class WorkController {
 		
 		return "/work/workdivisionList";
 	}
+	//축제업무검색
+	 @PostMapping("/workdivisionSearch")
+	 public String searchWorkdivision() {
+		 
+		 return "/work/workdivisionList";
+	 }
 	//축제업무등록
 	@GetMapping("/workdivisionInsert")
 	public String insertWorkDivision() {

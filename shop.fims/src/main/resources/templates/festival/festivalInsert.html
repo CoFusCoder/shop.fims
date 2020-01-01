@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<br>
+<div class="form-panel">
+	<h4 class="mb"><i class="fa fa-angle-right"></i>축제 등록</h4>
+	<form class="form-horizontal style-form" th:action="@{/festival/festivalInsert}" method="post">
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제코드</label>
+			<div class="col-sm-6">
+			  <input type="text" class="form-control" name="areaCd" placeholder="*축제코드는 자동으로 생성됩니다.">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">전국지역</label>
+			<div class="col-sm-6">
+			<select class="form-control" name="areaCd">
+				<option></option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">지역시군</label>
+			<div class="col-sm-6">
+			<select class="form-control" name="areaCd">
+				<option></option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">행정기관</label>
+			<div class="col-sm-6">
+			<select class="form-control" name="areaCd">
+				<option></option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제명</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="areaNm" placeholder="*축제명을 입력해주세요">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제개최지역</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="areaNm" placeholder="*축제개최지역을 입력해주세요">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제개최장소</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="areaNm" placeholder="*축제개최장소를 입력해주세요">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제시작일자</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="areaNm" placeholder="*축제시작일자를 입력해주세요">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제내용</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="areaNm" placeholder="*축제시작일자를 입력해주세요">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제주관기관</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="areaNm" placeholder="*축제주관기관을 입력해주세요">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제후원기관</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="areaNm" placeholder="*축제후원기관을 입력해주세요">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제개최주소</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="areaNm" placeholder="*축제개최주소를 입력해주세요">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제전화문의</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="areaNm" placeholder="*축제문의에 대한 전화번로를 입력해주세요">
+			</div>
+		</div>
+	<button type="submit" class="btn btn btn-success">등록하기</button>
+	<button type="submit" class="btn btn btn-danger">취소</button>
+	</form>
+</div>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

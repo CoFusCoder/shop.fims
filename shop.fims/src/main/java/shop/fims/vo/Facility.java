@@ -37,6 +37,7 @@ public class Facility {
 	private String staCd;
 	private String facCd;
 	private String maiCd;
+	private String faccatNm;
 	
 	public String getCatNm() {
 		return catNm;
@@ -248,6 +249,12 @@ public class Facility {
 	public void setMaiCd(String maiCd) {
 		this.maiCd = maiCd;
 	}
+	public String getFaccatNm() {
+		return faccatNm;
+	}
+	public void setFaccatNm(String faccatNm) {
+		this.faccatNm = faccatNm;
+	}
 	@Override
 	public String toString() {
 		return "Facility [catNm=" + catNm + ", festNm=" + festNm + ", staNm=" + staNm + ", staSite=" + staSite
@@ -259,8 +266,9 @@ public class Facility {
 				+ stainsCon + ", staWorksta=" + staWorksta + ", stainsCon1=" + stainsCon1 + ", stainsCon2=" + stainsCon2
 				+ ", inslistCla=" + inslistCla + ", inslistCon=" + inslistCon + ", accNm1=" + accNm1 + ", accCd="
 				+ accCd + ", fesconmanCd=" + fesconmanCd + ", comCd=" + comCd + ", staCd=" + staCd + ", facCd=" + facCd
-				+ ", maiCd=" + maiCd + "]";
+				+ ", maiCd=" + maiCd + ", faccatNm=" + faccatNm + "]";
 	}
+
 	
 
 	

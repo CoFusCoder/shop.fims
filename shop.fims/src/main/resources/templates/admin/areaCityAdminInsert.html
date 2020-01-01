@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<br>
+<div class="form-panel">
+	<h4 class="mb"><i class="fa fa-angle-right"></i> 행정기관 등록 </h4>
+	<form class="form-horizontal style-form" method="post" th:action="@{/admin/areaCityAdminInsert}">
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">행정기관코드</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="areacityAdminCd" placeholder="행정기관코드는 자동으로 생성됩니다.">
+		  </div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">전국지역</label>
+			<div class="col-sm-6">
+			<select class="form-control" name="areaCd">
+				<option th:each="l: ${areaList}" th:value="${l.areaCd}" th:text="${l.areaNm}"></option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">전국지역시군</label>
+			<div class="col-sm-6">
+			<select class="form-control" name="areaCityCd">
+				<option th:each="cl: ${areaCityList}" th:value="${cl.areaCityCd}" th:text="${cl.areaCityNm}"></option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+		  <label class="col-sm-2 col-sm-2 control-label">행정기관명</label>
+		  <div class="col-sm-6">
+		    <input type="text" class="form-control" name="areacityAdminNm" placeholder="행정기관명을 입력해주세요.">
+		  </div>
+		</div>
+	<button type="submit" class="btn btn btn-success">등록하기</button>
+	<button type="submit" class="btn btn btn-danger">취소</button>
+	</form>
+</div>
+
+
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>
