@@ -43,16 +43,23 @@ WHERE fest_cd=#{festCd}
 				f.fest_sch_dt between DATE(#{date1}) and DATE(#{date2})
 			</when>			
 			<when test="date1 neq null and date1 neq ''.toString() and (date2 eq null or date2 eq ''.toString())">
-				and f.fest_sch_dt = #{date1}
+				and f.fest_sch_dt BETWEEN DATE(#{date1}) AND (SELECT DATE_add(#{date1}, INTERVAL 31 DAY))
 			</when>
 			<when test="(date1 eq null or date1 eq ''.toString()) and date2 neq null and date2 neq ''.toString()">
-				and f.fest_sch_dt = #{date2}
+				and f.fest_sch_dt BETWEEN (SELECT DATE_sub(#{date2}, INTERVAL 31 DAY)) and DATE(#{date2})
 			</when>
 		</choose>
 		
 	</trim>
 </select>
 
+<select id="scheDetail"  resultMap="scheduleResultmap">
+SELECT
+	*
+FROM Fest_Schedule AS f
+WHERE fest_cd=#{festCd}
+	AND f.fest_sch_cd=#{festSchCd}
+</select>
 
 
 <!-- 전체 스케줄 조회 -->

@@ -68,7 +68,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			 		<td th:text="${s.festScheNm}"></td>
 			 		<td>코멘트달렸냐</td>
 			 		<td th:text="${s.insertDt}"></td>
-	                <td><a th:href="@{/scheDetailList}" >
+	                <td><a th:href="@{/scheDetailList(festSchCd=${s.festSchCd})}" >
 	                    <button type="button" class="btn btn-success btn-sm">상세</button>
 	                    
 	                    </a></td>     
