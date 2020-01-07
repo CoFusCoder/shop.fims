@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.fims.vo.Area;
 import shop.fims.vo.AreaCity;
@@ -36,6 +39,17 @@ public class AdminController {
 		System.out.println("area >>>>>>> " + area.toString());
 		System.out.println(area.getAreaCd() + "<-생성된 코드");
 
+		return "redirect:/admin/areaCityList";
+	}
+	
+	//전국 지역 수정 메서드
+	@PostMapping("/admin/areaUpdate")
+	public String areaUpdate(Area area, Model areaList) {
+		
+		adminService.areaUpdate(area);
+		areaList.addAttribute("areaUpList", adminService.areaCityAdminList());
+		System.out.println("area 지역 수정 >>>>>>>" + area.toString());
+		
 		return "redirect:/admin/areaCityList";
 	}
 	

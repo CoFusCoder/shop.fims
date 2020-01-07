@@ -32,6 +32,15 @@ public class AdminService {
 		return areaList;
 	}
 	
+	//전국 지역 수정
+	public int areaUpdate(Area area) {
+		
+		int areaUpdate = adminMapper.areaUpdate(area);
+		System.out.println(areaUpdate + " : 전국 지역 수정");
+		
+		return areaUpdate;
+	}
+	
 	// 전국 지역 시군 등록
 	public int areaCityInsert(AreaCity areaCity) {
 		
