@@ -1,5 +1,9 @@
 package shop.fims.publicrelations;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +13,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.fims.vo.PrDiv;
 import shop.fims.vo.PrPromotion;
 
 @Controller
 public class PublicrelationsController {
 	@Autowired PublicrelationsService publicrelationsService;
+	
+	//홍보사업상세 조건검색
+	@PostMapping("/searchPrDetail")
+	public String searchPrDetail(@RequestParam(value="festprDivNm")String festprDivNm
+								,@RequestParam(value="catAccNm1")String catAccNm1
+								,@RequestParam(value="festprProNm")String festprProNm
+								,@RequestParam(value="date1")String date1
+								,@RequestParam(value="date2")String date2
+								,@RequestParam(value="actionStatus")String actionStatus
+								,HttpSession session, Model model1, Model model2) {									
+		//System.out.println("홍보분류명:"+festprDivNm+"거래처명:"+catAccNm1+"홍보매체명:"+festprProNm+"날짜1:"+date1+"날짜2:"+date2+"마감여부:"+actionStatus);
+		String festCd = (String)session.getAttribute("F_CD");
+		model1.addAttribute("AllPromotion", publicrelationsService.searchPrDetail(festprDivNm, catAccNm1, festprProNm, date1, date2, actionStatus, festCd));
+		model2.addAttribute("prDiv",publicrelationsService.selectAllPrDiv());
+		return "publicrelations/prPromotionList";
+	}
+	
 	
 	//이벤트당첨자 등록
 	@GetMapping("/prInsertEventwinner")
@@ -49,23 +71,41 @@ public class PublicrelationsController {
 	
 	
 	//홍보분류 수정
-	@GetMapping("/prUpdateDiv")
-	public String updateDiv() {
-		return "publicrelations/prUpdateDiv";
+	@PostMapping("/prUpdateDiv")
+	public String updateDiv(PrDiv prdiv, ServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		//System.out.println("prdiv:"+prdiv);
+		publicrelationsService.updateDiv(prdiv);
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('홍보분류가 수정되었습니다.'); location.href='/prDivList';</script>");
+		out.flush();
+		return "redirect:/prDivList";
 	}
 	
 	//홍보분류 삭제
 	@GetMapping("/prDeleteDiv")
-	public String deleteDiv(Model model) {
-		model.addAttribute("AllDiv", publicrelationsService.seletAllPrDiv());
-		return "publicrelations/prDivList";
+	public String deleteDiv(@RequestParam(value="festprDivCd")String festprDivCd, 
+			ServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		//System.out.println("festprDivCd:"+festprDivCd);
+		publicrelationsService.deleteDiv(festprDivCd);
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('홍보분류가 삭제되었습니다.'); location.href='/prDivList';</script>");
+		out.flush();
+		return "redirect:/prDivList";
 		
 	}
 	
 	//홍보분류 신규등록
-	@GetMapping("/prInsertDiv")
-	public String insertDiv() {
-		return "publicrelations/prInsertDiv";
+	@PostMapping("/prInsertDiv")
+	public String insertDiv(PrDiv prdiv, Model model, ServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		System.out.println("prdiv:"+prdiv);
+		publicrelationsService.insertPrDiv(prdiv);
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('홍보분류가 등록되었습니다.'); location.href='/prDivList';</script>");
+		out.flush();
+		return "redirect:/prDivList";
 	}
 
 	
@@ -87,7 +127,7 @@ public class PublicrelationsController {
 	//홍보사업 신규등록
 	 @GetMapping("/prInsertPromotion")
 	 public String insertPromotion() {
-		return "publicrelations/prInsertPromotion";
+		return "publicrelations/prDivList";
 	 }
 	
 	
@@ -107,16 +147,17 @@ public class PublicrelationsController {
 	
 	//홍보사업리스트 조회
 	@GetMapping("/prPromotionList")
-	public String detailList(Model model,HttpSession session) {
+	public String detailList(Model model1, Model model2, HttpSession session) {
 		String festCd = (String)session.getAttribute("F_CD");
-		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(festCd));
+		model1.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(festCd));
+		model2.addAttribute("prDiv",publicrelationsService.selectAllPrDiv());
 		return "publicrelations/prPromotionList";
 	}
 	
 	//홍보 분류리스트
 	@GetMapping("/prDivList")
 	public String divList(Model model) {
-		model.addAttribute("AllDiv", publicrelationsService.seletAllPrDiv());
+		model.addAttribute("AllDiv", publicrelationsService.selectAllPrDiv());
 		return "publicrelations/prDivList";
 	}
 	

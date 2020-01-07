@@ -3,13 +3,13 @@ package shop.fims.vo;
 public class PrPromotion {
 	private String festprProCd;
 	private String festprDivNm;
+	private String catAccNm1;	
 	private String areacityAdminCd;
 	private String areaCd;
 	private String areaCityCd;
 	private String festCd;
 	private String festprDivCd;
 	private String manComCd;
-	private String accMemCd;
 	private String fesrevBudCd;
 	private String catAccCd;
 	private String festTitle;
@@ -38,6 +38,12 @@ public class PrPromotion {
 	}
 	public void setFestprDivNm(String festprDivNm) {
 		this.festprDivNm = festprDivNm;
+	}
+	public String getCatAccNm1() {
+		return catAccNm1;
+	}
+	public void setCatAccNm1(String catAccNm1) {
+		this.catAccNm1 = catAccNm1;
 	}
 	public String getAreacityAdminCd() {
 		return areacityAdminCd;
@@ -74,12 +80,6 @@ public class PrPromotion {
 	}
 	public void setManComCd(String manComCd) {
 		this.manComCd = manComCd;
-	}
-	public String getAccMemCd() {
-		return accMemCd;
-	}
-	public void setAccMemCd(String accMemCd) {
-		this.accMemCd = accMemCd;
 	}
 	public String getFesrevBudCd() {
 		return fesrevBudCd;
@@ -185,20 +185,17 @@ public class PrPromotion {
 	}
 	@Override
 	public String toString() {
-		return "PrPromotion [festprProCd=" + festprProCd + ", festprDivNm=" + festprDivNm + ", areacityAdminCd="
-				+ areacityAdminCd + ", areaCd=" + areaCd + ", areaCityCd=" + areaCityCd + ", festCd=" + festCd
-				+ ", festprDivCd=" + festprDivCd + ", manComCd=" + manComCd + ", accMemCd=" + accMemCd
-				+ ", fesrevBudCd=" + fesrevBudCd + ", catAccCd=" + catAccCd + ", festTitle=" + festTitle
-				+ ", festprProNm=" + festprProNm + ", festprProDetail=" + festprProDetail + ", fprproOrderDt="
-				+ fprproOrderDt + ", fprproStartDt=" + fprproStartDt + ", fprproEndDt=" + fprproEndDt
-				+ ", festprProPlace=" + festprProPlace + ", festprProAmt=" + festprProAmt + ", festprProAttach="
-				+ festprProAttach + ", groupCd=" + groupCd + ", actionDt=" + actionDt + ", actionStatus=" + actionStatus
-				+ ", festprProExpense=" + festprProExpense + ", festprProEtc=" + festprProEtc + ", insertDt=" + insertDt
-				+ "]";
+		return "PrPromotion [festprProCd=" + festprProCd + ", festprDivNm=" + festprDivNm + ", catAccNm1=" + catAccNm1
+				+ ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd + ", areaCityCd=" + areaCityCd
+				+ ", festCd=" + festCd + ", festprDivCd=" + festprDivCd + ", manComCd=" + manComCd + ", fesrevBudCd="
+				+ fesrevBudCd + ", catAccCd=" + catAccCd + ", festTitle=" + festTitle + ", festprProNm=" + festprProNm
+				+ ", festprProDetail=" + festprProDetail + ", fprproOrderDt=" + fprproOrderDt + ", fprproStartDt="
+				+ fprproStartDt + ", fprproEndDt=" + fprproEndDt + ", festprProPlace=" + festprProPlace
+				+ ", festprProAmt=" + festprProAmt + ", festprProAttach=" + festprProAttach + ", groupCd=" + groupCd
+				+ ", actionDt=" + actionDt + ", actionStatus=" + actionStatus + ", festprProExpense=" + festprProExpense
+				+ ", festprProEtc=" + festprProEtc + ", insertDt=" + insertDt + "]";
 	}
 
-	
-	
-	
+
 	
 }

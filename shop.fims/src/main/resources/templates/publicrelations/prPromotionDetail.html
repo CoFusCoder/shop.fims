@@ -48,41 +48,40 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </tbody>
                    <thead>
                     <tr>
+                      <th colspan="2">담당업체</th>
                       <th>계약일</th>
                       <th>홍보시작일</th>
                       <th>홍보종료일</th>
-                      <th>담당업체1</th>
-                      <th>담당업체2</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
+                      <td th:text="${p.catAccNm1}" colspan="2"></td>
                       <td th:text="${p.fprproOrderDt}" ></td>
                       <td th:text="${p.fprproStartDt}" ></td>
                       <td th:text="${p.fprproEndDt}" ></td>
-                      <td th:text="${p.catAccCd}" ></td>
-                      <td th:text="${p.accMemCd}" ></td>
                     </tr>
                   </tbody>
                    <thead>
                     <tr>
-                      <th>홍보방식</th>
                       <th>홍보상세코드</th>
-                      <th colspan="2">매체명</th>
-                      <th>수량</th>
+                      <th>홍보방식</th>
+                      <th colspan="3">매체명</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td th:text="${p.festprDivNm}" ></td>
                       <td th:text="${p.festprProCd}" ></td>
-                      <td th:text="${p.festprProNm}" colspan="2"></td>
-                      <td th:text="${p.festprProAmt}" ></td>
+                      <td th:text="${p.festprDivNm}" ></td>
+                      <td th:text="${p.festprProNm}" colspan="3"></td>
                     </tr>
                   </tbody>
                    <thead>
                     <tr>
-                      <th colspan="2">계약금액</th>
+                      <th>수량</th>
+                      <th>계약금액(천원)</th>
                       <th>마감여부</th>
                       <th>마감하기</th>
                       <th>마감일</th>
@@ -90,7 +89,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </thead>
                   <tbody>
                     <tr>
-                      <td th:text="${p.festprProExpense}" colspan="2"></td>
+                      <td th:text="${p.festprProAmt}" ></td>
+                      <td th:text="${p.festprProExpense}"></td>
                       <td th:text="${p.actionStatus}" ></td>
                       <td><a>마감하기</a></td>
                       <td th:text="${p.actionDt}" ></td>

@@ -40,7 +40,7 @@ WHERE fest_cd=#{festCd}
 		</if>
 		<choose>
 			<when test="date1 neq null and date1 neq ''.toString() and date2 neq null and date2 neq ''.toString()">
-				f.fest_sch_dt between DATE(#{date1}) and DATE(#{date2})
+				and f.fest_sch_dt between DATE(#{date1}) and DATE(#{date2})
 			</when>			
 			<when test="date1 neq null and date1 neq ''.toString() and (date2 eq null or date2 eq ''.toString())">
 				and f.fest_sch_dt BETWEEN DATE(#{date1}) AND (SELECT DATE_add(#{date1}, INTERVAL 31 DAY))
