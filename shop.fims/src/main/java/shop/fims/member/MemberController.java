@@ -1,10 +1,13 @@
-package shop.fims.mamber;
+package shop.fims.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MemberController {
+	
+	@Autowired private MemberService memberService;
 	
 	/*
 	 * @file   MemberController.java
@@ -19,9 +22,10 @@ public class MemberController {
 		return "member/MemberLevInsert";
 	}
 	
-	//권한별 회원 조회
-	@GetMapping("/member/MemberLevList")
+	//모든 회원 조회
+	@GetMapping("/member/MemberList")
 	public String MemberLevList() {
-		return "member/MemberLevList";
+		return "member/MemberList";
 	}
+	
 }

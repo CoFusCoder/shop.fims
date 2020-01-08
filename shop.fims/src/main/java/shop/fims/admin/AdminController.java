@@ -35,11 +35,19 @@ public class AdminController {
 	@PostMapping("/admin/areaInsert")
 	public String addArea(Area area) {
 		
-		adminService.areaInsert(area);
-		System.out.println("area >>>>>>> " + area.toString());
-		System.out.println(area.getAreaCd() + "<-생성된 코드");
-
-		return "redirect:/admin/areaCityList";
+		String a = area.getAreaCd();
+		String b = area.getAreaNm();
+		
+		if(a == "" || b == "") {
+			return  "redirect:/admin/areaInsert";
+			
+		}else {
+			adminService.areaInsert(area);
+			System.out.println("area >>>>>>> " + area.toString());
+			System.out.println(area.getAreaCd() + "<-생성된 코드");
+			
+			return "redirect:/admin/areaCityList";
+		}
 	}
 	
 	//전국 지역 수정 메서드
@@ -65,12 +73,22 @@ public class AdminController {
 	//전국 지역 시군 등록 처리 메서드
 	@PostMapping("/admin/areaCityInsert")
 	public String areaCityInsert(AreaCity areaCity) {
+		String a = areaCity.getAreaCityCd();
+		String b = areaCity.getAreaCd();
+		String c = areaCity.getAreaCityNm();
 		
-		adminService.areaCityInsert(areaCity);
-		System.out.println("areaCity >>>>>" + areaCity.toString());
-		System.out.println(areaCity.getAreaCityCd() + "<- 생성된 코드");
-		
-		return "redirect:/admin/areaCityList";
+		if(a == "" || b == "" || c == "") {
+			
+			return "redirect:/admin/areaInsert";
+		}else {
+			
+			adminService.areaCityInsert(areaCity);
+			System.out.println("areaCity >>>>>" + areaCity.toString());
+			System.out.println(areaCity.getAreaCityCd() + "<- 생성된 코드");
+			
+			return "redirect:/admin/areaCityList";
+		}
+			
 	}
 	
 	//행정기관 등록
@@ -81,18 +99,28 @@ public class AdminController {
 		return "admin/areaCityAdminInsert";
 	}
 	
-	//전국 지역 등록 처리 메서드
+	//행정기관 등록 처리 메서드
 	@PostMapping("/admin/areaCityAdminInsert")
 	public String addareaCityAdmin(AreaCityAdmin areaCityAdmin) {
 		
-		adminService.areaCityAdminInsert(areaCityAdmin);
-		System.out.println("areaCityAdmin >>>>>>> " + areaCityAdmin.toString());
-		System.out.println(areaCityAdmin.getAreacityAdminCd() + "<-생성된 코드");
-
-		return "redirect:/admin/areaCityAdminList";
+		String a = areaCityAdmin.getAreacityAdminCd();
+		String b = areaCityAdmin.getAreaCd();
+		String c = areaCityAdmin.getAreaCityCd();
+		String d = areaCityAdmin.getAreacityAdminNm();
+		
+		if(a == "" || b == "" || c == "" || d == "") {
+			return "redirect:/admin/areaCityAdminInsert";
+		}else {
+			adminService.areaCityAdminInsert(areaCityAdmin);
+			System.out.println("areaCityAdmin >>>>>>> " + areaCityAdmin.toString());
+			System.out.println(areaCityAdmin.getAreacityAdminCd() + "<-생성된 코드");
+			
+			return "redirect:/admin/areaCityAdminList";			
+		}
+		 
 	}
 	
-	//전국 지역 및 시군 조회
+	//행정기관 조회
 	@GetMapping("/admin/areaCityAdminList")
 	public String areaCityAdminList(Model areaList, Model areaCityList, Model areaCityAdminList) {
 		areaList.addAttribute("areaList", adminService.areaList());

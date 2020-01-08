@@ -31,8 +31,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		          <button class="btn btn-danger btn-xs">
 		          	<i class="fa fa-trash-o ">삭제</i>
 		          </button>
-		          
-		          
 					<!-- Modal -->
 					<div th:id="${'areaUpModal' + i.index}" class="modal fade" role="dialog" th:action="@{/admin/areaUpdate}">
 						<div class="modal-dialog">
@@ -66,6 +64,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						    </div>
 						</div>
 					</div>
+					<!-- End Modal -->
 		        </td>
 		      </tr>
 		    </tbody>
@@ -111,17 +110,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 <!-- 전국 지역 수정 시작 -->
 
-
 </th:block>
 <th:block layout:fragment="adminisscript">
-
-<script type="text/javascript" src="/adminis/ebudget/js/jquery-1.7.2.min.js">
-
-$("#areaUpBtn").click(function () {
-     $('#areaModal').modal('show');
-});
-</script>
-
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
 </th:block>
 
