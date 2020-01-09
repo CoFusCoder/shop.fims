@@ -103,5 +103,24 @@ public class AdminService {
 		
 		return areaCityAdminList;
 	}
+	
+	// 전국 행정기관 수정
+	public int areaCityAdmUpdate(AreaCityAdmin areaCityAdmin) {
+		
+		int areaCityAdmUpdate = adminMapper.areaCityAdmUpdate(areaCityAdmin);
+		System.out.println(areaCityAdmUpdate + " : 전국 행정기관 수정");
+		
+		return areaCityAdmUpdate;
+	}
+	
+	// 전국 행정기관 삭제
+	public int areaCityAdmDelete(String areacityAdminCd) {
+		
+		int areaCityAdmDelete = adminMapper.areaCityAdmDelete(areacityAdminCd);
+		System.out.println(areaCityAdmDelete + " : 전국 행정기관 삭제");
+		
+		return areaCityAdmDelete;
+		
+	}
 
 }

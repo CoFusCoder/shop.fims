@@ -41,4 +41,9 @@ public interface AdminMapper {
 	// 전국 행정기관 조회
 	public List<AreaCityAdmin> areaCityAdminList();
 	
+	// 전국 행정기관 수정
+	public int areaCityAdmUpdate(AreaCityAdmin areaCityAdmin);
+	
+	// 전국 행정기관 삭제
+	public int areaCityAdmDelete(String areacityAdminCd);
 }

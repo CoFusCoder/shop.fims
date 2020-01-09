@@ -172,6 +172,30 @@ public class AdminController {
 		System.out.println("행정기관 >>>>" + areaCityAdminList.toString());
 		return "admin/areaCityAdminList";
 	}
+	
+	//전국 행정기관 수정 메서드
+	@PostMapping("/admin/areaCityAdmUpdate")
+	public String areaCityAdmUpdate(AreaCityAdmin areaCityAdmin, ServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		System.out.println("areaCityAdmin >>>> " + areaCityAdmin);
+		adminService.areaCityAdmUpdate(areaCityAdmin);
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('행정기관이 수정되었습니다.'); location.href='/admin/areaCityAdminList';</script>");
+		out.flush();
+		System.out.println("행정기관  수정 >>>>>>>" + areaCityAdmin.toString());
+		
+		return null;
+	}
+	
+	//전국 행정기관 삭제 메서드
+	@RequestMapping(value="/admin/areaCityAdmDelete", method=RequestMethod.GET)
+	public String areaCityAdmDelete(@RequestParam(value = "areacityAdminCd") String areacityAdminCd) {
+
+		adminService.areaDelete(areacityAdminCd);
+		System.out.println(areacityAdminCd + " : 전국 행정기관 삭제");
+		return "redirect:/admin/areaCityAdminList";
+	}
+	
 
 		
 }

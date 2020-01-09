@@ -93,10 +93,10 @@
 <!-- 전국 지역 시군삭제 쿼리문 -->
 <delete id="areaCityDelete" parameterType="String">
 	DELETE
-		FROM
-			Area_City
-		WHERE
-			area_city_cd = #{areaCityCd}
+	FROM
+		Area_City
+	WHERE
+		area_city_cd = #{areaCityCd}
 </delete>
 
 
@@ -116,9 +116,26 @@
 		Area_City_Admin
 </select>
 
+<!-- 전국 행정기관 수정 쿼리문 -->
+<update id="areaCityAdmUpdate" parameterType="shop.fims.vo.AreaCityAdmin">	
+	UPDATE
+		Area_City_Admin
+	SET
+		area_city_cd=#{areaCityCd},
+		area_cd=#{areaCd},
+		areacity_admin_nm=#{areacityAdminNm}
+	WHERE
+		areacity_admin_cd=#{areacityAdminCd}
+</update>
 
-
-
+<!-- 전국 행정기관 삭제 쿼리문 -->
+<delete id="areaCityAdmDelete" parameterType="String">
+	DELETE
+	FROM
+		Area_City_Admin
+	WHERE
+		areacity_admin_cd = #{areacityAdminCd}
+</delete>
 
 
 
