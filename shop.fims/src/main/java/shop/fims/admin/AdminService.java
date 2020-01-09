@@ -41,6 +41,15 @@ public class AdminService {
 		return areaUpdate;
 	}
 	
+	//전국 지역 삭제
+	public int areaDelete(String area) {
+		
+		int areaDelete = adminMapper.areaDelete(area);
+		System.out.println(adminMapper + " : 전국 지역 삭제");
+		
+		return areaDelete;
+	}
+	
 	// 전국 지역 시군 등록
 	public int areaCityInsert(AreaCity areaCity) {
 		
@@ -57,6 +66,24 @@ public class AdminService {
 		System.out.println(areaCityList + " : 전국 지역 시군 조회 ");
 		
 		return areaCityList;
+	}
+	
+	//전국 지역 시군 수정
+	public int areaCityUpdate(AreaCity areaCity) {
+		
+		int areaCityUpdate = adminMapper.areaCityUpdate(areaCity);
+		System.out.println(areaCityUpdate + " : 전국 지역 시군 수정");
+		
+		return areaCityUpdate;
+	}
+	
+	//전국 지역 시군 삭제
+	public int areaCityDelete(String areaCity) {
+		
+		int areaCityDelete = adminMapper.areaCityDelete(areaCity);
+		System.out.println(areaCityDelete + " : 전국 지역 시군 삭제");
+	
+		return areaCityDelete;
 	}
 	
 	// 전국 행정기관 등록

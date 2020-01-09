@@ -20,11 +20,20 @@ public interface AdminMapper {
 	// 전국 지역 수정
 	public int areaUpdate (Area area);
 	
+	// 전국 지역 삭제
+	public int areaDelete (String area);
+	
 	// 전국 지역 시군 등록
 	public int areaCityInsert(AreaCity areaCity);
 	
-	// 전국 지역 조회
+	// 전국 지역 시군 조회
 	public List<AreaCity> areaCityList();
+	
+	// 전국 지역 시군 수정
+	public int areaCityUpdate(AreaCity areaCity);
+	
+	// 전국 지역 시군 삭제
+	public int areaCityDelete(String areaCity);
 	
 	// 전국 행정기관 등록
 	public int areaCityAdminInsert(AreaCityAdmin areaCityAdmin);

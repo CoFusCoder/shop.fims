@@ -32,7 +32,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		<div class="form-group">
 		  <label class="col-sm-2 col-sm-2 control-label">전국지역시군코드</label>
 		  <div class="col-sm-6">
-		    <input type="text" class="form-control" name="areaCityCd" placeholder="*전국지역시군코드는 자동으로 생성됩니다.">
+		    <input type="text" class="form-control readonly" name="areaCityCd" style="background-color: #e2e2e2;" placeholder="*전국지역시군코드는 자동으로 생성됩니다." readonly="readonly">
 		  </div>
 		</div>
 		<div class="form-group">
@@ -92,7 +92,7 @@ $(document).ready(function(){
 		var areaCd = parent.find('select[name=areaCd]').val();
 		var areaCityNm = parent.find('input[name=areaCityNm]').val();
 		
-		if(areaCityCd == "" || areaCd == "" || areaCityNm == ""){
+		if(areaCd == "" || areaCityNm == ""){
 			alert('비어있는 값이 있습니다. 올바르게 입력해주세요');
 		}else{
 			if(confirm('등록하시겠습니까?')){

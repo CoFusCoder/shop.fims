@@ -1,5 +1,11 @@
 package shop.fims.admin;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.fims.vo.Area;
 import shop.fims.vo.AreaCity;
@@ -52,13 +59,25 @@ public class AdminController {
 	
 	//전국 지역 수정 메서드
 	@PostMapping("/admin/areaUpdate")
-	public String areaUpdate(Area area, Model areaList) {
-		
+	public String areaUpdate(Area area, ServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		System.out.println("area >>>> " + area);
 		adminService.areaUpdate(area);
-		areaList.addAttribute("areaUpList", adminService.areaCityAdminList());
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('전국 지역이 수정되었습니다.'); location.href='/admin/areaCityList';</script>");
+		out.flush();
 		System.out.println("area 지역 수정 >>>>>>>" + area.toString());
 		
-		return "redirect:/admin/areaCityList";
+		return null;
+	}
+	
+	//전국 지역 삭제 메서드
+	@GetMapping("/admin/areaDelete")
+	public String areaDelete(@RequestParam(value = "areaCd") String areaCd) {
+
+		adminService.areaDelete(areaCd);
+		System.out.println(areaCd + " : 전국 지역 삭제");
+		return "/admin/areaCityList";
 	}
 	
 	//전국 지역 및 시군 조회
@@ -73,11 +92,10 @@ public class AdminController {
 	//전국 지역 시군 등록 처리 메서드
 	@PostMapping("/admin/areaCityInsert")
 	public String areaCityInsert(AreaCity areaCity) {
-		String a = areaCity.getAreaCityCd();
 		String b = areaCity.getAreaCd();
 		String c = areaCity.getAreaCityNm();
 		
-		if(a == "" || b == "" || c == "") {
+		if(b == "" || c == "") {
 			
 			return "redirect:/admin/areaInsert";
 		}else {
@@ -89,6 +107,30 @@ public class AdminController {
 			return "redirect:/admin/areaCityList";
 		}
 			
+	}
+	
+	//전국 지역 시군 수정 메서드
+	@PostMapping("/admin/areaCityUpdate")
+	public String areaCityUpdate(AreaCity areaCity, ServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		System.out.println("areaCity >>>> " + areaCity);
+		adminService.areaCityUpdate(areaCity);
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('지역에 대한 시군명이 수정되었습니다.'); location.href='/admin/areaCityList';</script>");
+		out.flush();
+		System.out.println("areaCity 지역 시군 수정 >>>>>>>" + areaCity.toString());
+		
+		//return "redirect:/admin/areaCityList";
+		return null;
+	}
+	
+	//전국 지역 시군 삭제 메서드
+	@GetMapping("/admin/areaCityDelete")
+	public String areaCityDelete(@RequestParam(value = "areaCityCd") String areaCityCd) {
+
+		adminService.areaDelete(areaCityCd);
+		System.out.println(areaCityCd + " : 전국 지역 시군 삭제");
+		return "/admin/areaCityList";
 	}
 	
 	//행정기관 등록
