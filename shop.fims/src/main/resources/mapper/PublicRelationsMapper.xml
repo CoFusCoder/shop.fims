@@ -76,6 +76,44 @@ WHERE
 ORDER BY p.group_cd
 </select>
 
+<select id="selectGroupCd" resultType="String">
+SELECT distinct
+	p.group_cd
+FROM
+	Fest_PR_Promotion AS p
+WHERE
+	p.group_nm=(#{groupNm}) 
+</select>
+
+<!-- 홍보 그룹 코드 생성 -->
+<select id="newGroupCd" resultType="String">
+	SELECT
+		CONCAT('gr_' ,(lpad(max(SUBSTRING(group_cd,4))+1,4,'0'))) as group_cd
+	FROM
+		Fest_PR_Promotion
+</select>
+
+
+<!-- 홍보 첨부파일 등록 -->
+<!-- <insert id="insertFiles" parameterType="shop.fims.vo.AttatchFile">
+	<selectKey keyProperty="fileCd" resultType="String" order="BEFORE">
+	SELECT
+		CONCAT('file_' ,(lpad(max(SUBSTRING(file_cd,6))+1,5,'0'))) as file_cd
+	FROM
+		Attatch_Files
+	</selectKey>
+INSERT
+INTO
+	Attatch_Files (file_cd,file_nm,file_no,file_path,file_size,file_writer,file_insertdt)
+	VALUES (#{fileCd},#{fileNm},#{fileNo},#{filePath},#{fileSize},#{fileWriter},NOW())
+</insert> -->
+
+
+
+
+
+
+
 
 <!-- 홍보 프로모션 등록 -->
 <insert id="insertPromotionPro" parameterType="shop.fims.vo.PrPromotion">
@@ -254,6 +292,7 @@ from
 	LEFT OUTER join
 	   Cat_Approval_Account AS a
 	 on a.catapp_acc_cd=f.catapp_acc_cd
+	ORDER BY f.festpr_pro_cd DESC
   	</select>
   	
   	

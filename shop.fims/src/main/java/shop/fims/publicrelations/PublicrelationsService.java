@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import shop.fims.vo.EventWinner;
 import shop.fims.vo.PrDiv;
 import shop.fims.vo.PrPromotion;
@@ -13,7 +14,7 @@ import shop.fims.vo.PrPromotion;
 @Service
 public class PublicrelationsService {
 	@Autowired PublicrelationsMapper publicrelationsMapper;
-	
+
 //**********홍보 분류 ***********			
 	// 홍보분류조회
 	public List<PrDiv> selectAllPrDiv(){
@@ -41,10 +42,38 @@ public class PublicrelationsService {
 //**********홍보 프로모션 ***********	
 	
 	// 홍보 사업 신규 등록
-	public int insertPromotionPro(PrPromotion promotion) {			
-		publicrelationsMapper.insertPromotionPro(promotion);
-		return 0;
+	public int insertPromotionPro(PrPromotion promotion, String groupNm2) {
+		System.out.println("groupNm2"+groupNm2);
+		if(promotion.getGroupNm().equals("")) {
+			promotion.setGroupNm(groupNm2);	
+		}
+		
+		System.out.println(promotion);
+		String groupCd = publicrelationsMapper.selectGroupCd(promotion.getGroupNm());
+		if(groupCd==null) {
+			groupCd=publicrelationsMapper.newGroupCd();
+			promotion.setGroupCd(groupCd);
+		}else {
+			promotion.setGroupCd(groupCd);
+		}
+		return publicrelationsMapper.insertPromotionPro(promotion);
 	}
+	
+	/*
+	 * public int insertFiles(MultipartFile files) { AttatchFiles thisfile = new
+	 * AttatchFiles();
+	 * 
+	 * if(files!=null) { String filename =
+	 * StringUtils.cleanPath(files.getOriginalFilename()); try (InputStream
+	 * inputStream = files.getInputStream()){ Files.copy(inputStream,
+	 * Paths.get(location).resolve(filename), StandardCopyOption.REPLACE_EXISTING);
+	 * thisfile.setFileNm(files.getName()); thisfile.setFileSize(files.getSize());
+	 * Files.delete(Paths.get(location).resolve(filename)); } catch (IOException e)
+	 * { e.printStackTrace(); try {
+	 * Files.delete(Paths.get(location).resolve(filename)); }catch (IOException e1)
+	 * { e1.printStackTrace(); } } } return
+	 * publicrelationsMapper.insertFiles(thisfile); }
+	 */
 	
 	// 홍보관련 계정과목명 조회
 	public List<Map<String, Object>> selectBudget(String festCd) {

@@ -49,9 +49,16 @@ public interface PublicrelationsMapper {
 	public List<PrPromotion> selectByPmcd(String festprProCd);	
 	
 	// 홍보 그룹코드 조회
-	public List<Map<String, Object>> selectGroup(String festCd);
-
+	public List<Map<String, Object>> selectGroup(String festCd);	
 	
+	// 그룹명으로 그룹코드 조회
+	public String selectGroupCd(String groupNm);
+	
+	// 새로운 홍보예산그룹코드 생성
+	public String newGroupCd();
+	
+	// 첨부파일 올리기
+	//public int insertFiles(AttatchFiles files);
 	
 //**********홍보 이벤트당첨자 ***********		
 	// 홍보코드로 이벤트 당첨자 조회

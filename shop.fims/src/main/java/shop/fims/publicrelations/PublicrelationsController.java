@@ -138,9 +138,11 @@ public class PublicrelationsController {
 	
 	  //홍보사업 신규등록 처리
 	  @PostMapping("/prInsertPromotionPro") 
-	  public String insertPromotionPro(PrPromotion promotion) {
+	  public String insertPromotionPro(@RequestParam(value="groupNm2")String groupNm2
+									  ,PrPromotion promotion) {
 		  System.out.println(promotion);	 
-		  publicrelationsService.insertPromotionPro(promotion);
+		  System.out.println("groupNm2"+groupNm2);
+		  publicrelationsService.insertPromotionPro(promotion, groupNm2);
 		  
 		  return "redirect:/prPromotionList";   
 	  }

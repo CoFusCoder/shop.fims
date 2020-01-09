@@ -1,5 +1,9 @@
 package shop.fims.vo;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class PrPromotion {
 	private String festprProCd;
 	private String festprDivNm;
@@ -28,6 +32,7 @@ public class PrPromotion {
 	private int festprProExpense;
 	private String festprProEtc;
 	private String insertDt;
+	private List<MultipartFile> files;
 	public String getFestprProCd() {
 		return festprProCd;
 	}
@@ -190,6 +195,12 @@ public class PrPromotion {
 	public void setInsertDt(String insertDt) {
 		this.insertDt = insertDt;
 	}
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
+	}
 	@Override
 	public String toString() {
 		return "PrPromotion [festprProCd=" + festprProCd + ", festprDivNm=" + festprDivNm + ", catAccNm1=" + catAccNm1
@@ -201,7 +212,7 @@ public class PrPromotion {
 				+ festprProPlace + ", festprProAmt=" + festprProAmt + ", festprProAttach=" + festprProAttach
 				+ ", groupCd=" + groupCd + ", groupNm=" + groupNm + ", actionDt=" + actionDt + ", actionStatus="
 				+ actionStatus + ", festprProExpense=" + festprProExpense + ", festprProEtc=" + festprProEtc
-				+ ", insertDt=" + insertDt + "]";
+				+ ", insertDt=" + insertDt + ", files=" + files + "]";
 	}
 
 	
