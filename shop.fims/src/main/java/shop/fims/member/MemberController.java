@@ -2,6 +2,7 @@ package shop.fims.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -12,19 +13,20 @@ public class MemberController {
 	/*
 	 * @file   MemberController.java
 	 * @name   MemberController
-	 * @brief  회원 관리
+	 * @brief  모든 회원 관리
 	 * @author ksmart33 한소연
 	 */
 	
-	//회원 권한 등록
-	@GetMapping("/member/MemberLevInsert")
-	public String MemberLevInsert() {
-		return "member/MemberLevInsert";
-	}
-	
 	//모든 회원 조회
 	@GetMapping("/member/MemberList")
-	public String MemberLevList() {
+	public String MemberList(Model memberList, Model memberLevList) {
+		
+		memberList.addAttribute("memberList", memberService.memberList());
+		memberLevList.addAttribute("memberLevList", memberService.memberLevList());
+		
+		System.out.println(memberList + " : 모든 회원 조회");
+		System.out.println(memberLevList + " : 회원 권한 리스트");
+		
 		return "member/MemberList";
 	}
 	

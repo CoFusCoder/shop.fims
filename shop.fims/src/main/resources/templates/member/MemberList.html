@@ -21,13 +21,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		</div>
 		<br>
 		<table class="table table-striped table-advance table-hover">
-		  <h4><i class="fa fa-angle-right"></i> 권한별 회원 조회 </h4>
+		  <h4><i class="fa fa-angle-right"></i> 모든 회원 조회 </h4>
 		  <hr>
 		  <thead>
 		    <tr>
 		      <th><i class="fa fa-bullhorn"></i> 회원코드 </th>
 		      <th><i class="fa fa-question-circle"></i>모든 회원 레벨코드</th>
-		      <th><i class="fa fa-question-circle"></i>권한명</th>
 		      <th><i class="fa fa-bullhorn"></i> 이름 </th>
 		      <th><i class="fa fa-question-circle"></i>주소</th>
 		      <th><i class="fa fa-bullhorn"></i>전화번호</th>
@@ -37,24 +36,22 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr>
-		      <td>mem_001</td>
-		      <td>level_010</td>
-		      <td>개발사</td>
-		      <td>송하진</td>
-		      <td>나</td>
-		      <td>010-1234-5679</td>
-		      <td>@</td>
-		      <td>1980-12-06</td>
-		      <td>2019-12-06 </td>
+		    <tr th:each="ml, m:${memberList}">
+		      <td class="hidden-phone" th:text="${ml.memCd}"></td>
+		      <td class="hidden-phone" th:text="${ml.memLevCd}"></td>
+		      <td class="hidden-phone" th:text="${ml.memNm}"></td>
+		      <td class="hidden-phone" th:text="${ml.memAddr}"></td>
+		      <td class="hidden-phone" th:text="${ml.memPhone}"></td>
+		      <td class="hidden-phone" th:text="${ml.memEmail}"></td>
+		      <td class="hidden-phone" th:text="${ml.memBirth}"></td>
+		      <td class="hidden-phone" th:text="${ml.memJoinDt}"></td>
 		      <td>
-		        <button class="btn btn-success btn-xs">
-		        	<i class="fa fa-plus">
-		        		<a href="/member/MemberLevInsert" style="color: white;">등록</a>
-		        	</i>
-		        </button>
-		        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil">수정</i></button>
-		        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o">삭제</i></button>
+		        <button class="btn btn-primary btn-xs">
+					<i class="fa fa-pencil">수정</i>
+				</button>
+				<button class="btn btn-danger btn-xs">
+					<i class="fa fa-trash-o ">삭제</i>
+				</button>
 		      </td>
 		    </tr>
 		  </tbody>
