@@ -11,7 +11,7 @@ public class PrPromotion {
 	private String festprDivCd;
 	private String manComCd;
 	private String fesrevBudCd;
-	private String catAccCd;
+	private String catappAccCd;
 	private String festTitle;
 	private String festprProNm;
 	private String festprProDetail;
@@ -21,7 +21,8 @@ public class PrPromotion {
 	private String festprProPlace;
 	private int festprProAmt;
 	private String festprProAttach;
-	private String groupCd;
+	private String groupCd;	
+	private String groupNm;		
 	private String actionDt;
 	private String actionStatus;
 	private int festprProExpense;
@@ -87,11 +88,11 @@ public class PrPromotion {
 	public void setFesrevBudCd(String fesrevBudCd) {
 		this.fesrevBudCd = fesrevBudCd;
 	}
-	public String getCatAccCd() {
-		return catAccCd;
+	public String getCatappAccCd() {
+		return catappAccCd;
 	}
-	public void setCatAccCd(String catAccCd) {
-		this.catAccCd = catAccCd;
+	public void setCatappAccCd(String catappAccCd) {
+		this.catappAccCd = catappAccCd;
 	}
 	public String getFestTitle() {
 		return festTitle;
@@ -153,6 +154,12 @@ public class PrPromotion {
 	public void setGroupCd(String groupCd) {
 		this.groupCd = groupCd;
 	}
+	public String getGroupNm() {
+		return groupNm;
+	}
+	public void setGroupNm(String groupNm) {
+		this.groupNm = groupNm;
+	}
 	public String getActionDt() {
 		return actionDt;
 	}
@@ -188,14 +195,16 @@ public class PrPromotion {
 		return "PrPromotion [festprProCd=" + festprProCd + ", festprDivNm=" + festprDivNm + ", catAccNm1=" + catAccNm1
 				+ ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd + ", areaCityCd=" + areaCityCd
 				+ ", festCd=" + festCd + ", festprDivCd=" + festprDivCd + ", manComCd=" + manComCd + ", fesrevBudCd="
-				+ fesrevBudCd + ", catAccCd=" + catAccCd + ", festTitle=" + festTitle + ", festprProNm=" + festprProNm
-				+ ", festprProDetail=" + festprProDetail + ", fprproOrderDt=" + fprproOrderDt + ", fprproStartDt="
-				+ fprproStartDt + ", fprproEndDt=" + fprproEndDt + ", festprProPlace=" + festprProPlace
-				+ ", festprProAmt=" + festprProAmt + ", festprProAttach=" + festprProAttach + ", groupCd=" + groupCd
-				+ ", actionDt=" + actionDt + ", actionStatus=" + actionStatus + ", festprProExpense=" + festprProExpense
-				+ ", festprProEtc=" + festprProEtc + ", insertDt=" + insertDt + "]";
+				+ fesrevBudCd + ", catappAccCd=" + catappAccCd + ", festTitle=" + festTitle + ", festprProNm="
+				+ festprProNm + ", festprProDetail=" + festprProDetail + ", fprproOrderDt=" + fprproOrderDt
+				+ ", fprproStartDt=" + fprproStartDt + ", fprproEndDt=" + fprproEndDt + ", festprProPlace="
+				+ festprProPlace + ", festprProAmt=" + festprProAmt + ", festprProAttach=" + festprProAttach
+				+ ", groupCd=" + groupCd + ", groupNm=" + groupNm + ", actionDt=" + actionDt + ", actionStatus="
+				+ actionStatus + ", festprProExpense=" + festprProExpense + ", festprProEtc=" + festprProEtc
+				+ ", insertDt=" + insertDt + "]";
 	}
 
-
+	
+	
 	
 }

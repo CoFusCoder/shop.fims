@@ -12,47 +12,249 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <div class="col-lg-12">
             <div class="form-panel">
               <div class="form">
-                <form class="cmxform form-horizontal style-form" id="signupForm" method="get" action="">
-                  <div class="form-group ">
-                    <label for="firstname" class="control-label col-lg-1"><font style="vertical-align: inherit;">이름</font></label>
-                    <div class="col-lg-5">
-                      <input class=" form-control" id="firstname" name="firstname" type="text" th:value="${session.F_NM}" readonly>
+                <form th:action="@{/prInsertPromotionPro}" class="cmxform form-horizontal style-form"  method="post" >
+                  <br><strong><font style="color: red">  *</font> 표시는 필수입력사항 입니다.</strong><br><hr>
+                 
+                 	<div class="form-group ">
+                    	<label for="festCd" class="control-label col-lg-2"><font style="vertical-align: inherit;">축제명</font></label>
+                  	  	<div class="col-lg-10">
+                  	  		<h4><strong><th:text>[[${session.F_NM} ]]</th:text></strong></h4>
+                      		<input class=" form-control" id="festCd" name="festCd" type="hidden" th:value="${session.F_CD}">
+                      		<input class=" form-control" id="festTitle" name="festTitle" type="hidden" th:value="${session.F_NM}">
+                    	</div>
+                  	</div>
+                  	
+                 	<div class="form-group ">
+                    	<label for="areaCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">지역명</font></label>
+                  	  	<div class="col-lg-2">
+                      		<h4><strong><th:text>[[${session.F_AREA_NM} ]]</th:text></strong></h4>
+                      		<input class=" form-control" id="areaCd" name="areaCd" type="hidden" th:value="${session.F_AREA_CD}">
+                    	</div>
+                    	<label for="areaCityCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">도시명</font></label>
+                  	  	<div class="col-lg-2">
+                      		<h4><strong><th:text>[[${session.F_CITY_NM} ]]</th:text></strong></h4>
+                      		<input class=" form-control" id="areaCityCd" name="areaCityCd" type="hidden" th:value="${session.F_CITY_CD}">
+                    	</div>
+                    	<label for="areacityAdminCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">담당기관</font></label>
+                  	  	<div class="col-lg-2">
+                      		<h4><strong><th:text>[[${session.F_ADMIN_NM} ]]</th:text></strong></h4>
+                      		<input class=" form-control" id="areacityAdminCd" name="areacityAdminCd" type="hidden" th:value="${session.F_ADMIN_CD}">
+                    	</div>
+                    	<label for="manComCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">작성자</font></label>
+                  	  	<div class="col-lg-2">
+                      		<h4><strong><th:text>계정주인이름</th:text></strong></h4>
+                      		<!-- 계정주인이름 세션에서 연동되면 수정할 것 지금은 미리 넣어둔값 -->
+                      		<input class=" form-control" id="manComCd" name="manComCd" type="hidden" th:value="man_com_019" readonly>
+                    	</div>
+                 	</div>
+                  	                 	
+                  <div class="form-group ">                
+                    <label for="catappAccCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">거래처명</font></label>
+                    <div class="col-lg-3">		
+			            <label class="sr-only" for="catappAccCd"></label>
+			            <select class="form-control" id="catappAccCd" name="catappAccCd" >
+			            	<option value="" >:: 거래처선택 ::</option>
+			            	<th:block th:each="p:${partners}">
+			            		<option th:value="${p.catapp_acc_cd}" th:text="${p.cat_acc_nm1}"></option>	
+			            	</th:block>
+			            </select>   
+			            
+			            
+			            </div>   
+			            <div class="col-lg-8">
+			      		      <font><strong>선택란에 없는 승인 전 거래처는 비고란에 적고, 승인 후 수정하시기 바랍니다.</strong></font> 
+			             </div>               
+                  </div>
+                  
+                  <div class="form-group ">       
+                    <label for="fprproOrderDt" class="control-label col-lg-1"><font style="vertical-align: inherit;">
+                     <font style="color: red"><strong>*</strong></font>계약/주문일
+                    </font></label>
+                    <div class="col-lg-3">
+                      <input type="date" class="form-control" id="fprproOrderDt" name="fprproOrderDt">             
                     </div>
-                    <label for="firstname" class="control-label col-lg-1"><font style="vertical-align: inherit;"></font></label>
-                    <div class="col-lg-5">
-                      <input class=" form-control" id="firstname" name="firstname" type="text">
+                    <label for="fprproStartDt" class="control-label col-lg-1"><font style="vertical-align: inherit;">
+                     <font style="color: red"><strong>*</strong></font>홍보시작일</font></label>
+                    <div class="col-lg-3">
+                      <input type="date" class="form-control" id="fprproStartDt" name="fprproStartDt">             
+                    </div>
+                    <label for="fprproEndDt" class="control-label col-lg-1"><font style="vertical-align: inherit;">
+                     <font style="color: red"><strong>*</strong></font>홍보종료일</font></label>
+                    <div class="col-lg-3">
+                      <input type="date" class="form-control" id="fprproEndDt" name="fprproEndDt">             
+                    </div>                     
+                  </div>
+                  
+                  <div class="form-group ">
+                    <label for="festprDivCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">
+                     <font style="color: red"><strong>*</strong></font>홍보분류</font></label>
+                    <div class="col-lg-2">		
+			            <label class="sr-only" for="festprDivCd"></label>
+			            <select class="form-control" id="festprDivCd" name="festprDivCd" >
+			            	<option value="" >:: 홍보분류선택 ::</option>
+			            	<th:block th:each="d:${div}">
+			            		<option th:value="${d.festprDivCd}" th:text="${d.festprDivNm}"></option>	
+			            	</th:block>
+			            </select> 
+                    </div>
+                    <div class="col-lg-1">
+                    	<a th:href="@{/prDivList}">
+                    	<button type="button" class="btn btn-theme04 btn-xs"><font style="vertical-align: inherit;">홍보<br>분류관리</font></button></a>
+                    </div>
+                    <label for="festprProNm" class="control-label col-lg-1"><font style="vertical-align: inherit;">
+                     <font style="color: red"><strong>*</strong></font>홍보매체명</font></label>
+                    <div class="col-lg-3">
+                      <input class="form-control " id="festprProNm" name="festprProNm" type="text">
+                    </div>               
+                    <label for="festprProAmt" class="control-label col-lg-1"><font style="vertical-align: inherit;">
+                     <font style="color: red"><strong>*</strong></font>수량</font></label>
+                    <div class="col-lg-3">
+                      <input class="form-control " id="festprProAmt" name="festprProAmt" type="text" placeholder="숫자로 입력해주세요">
+                    </div>               
+                  </div>
+                  
+                  <div class="form-group ">       
+                    <label for="fesrevBudCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">
+                     <font style="color: red"><strong>*</strong></font>예산분류</font></label>
+                    <div class="col-lg-3">		
+			            <label class="sr-only" for="fesrevBudCd"></label>
+			            <select class="form-control" id="fesrevBudCd" name="fesrevBudCd" >
+			            	<option value="" >:: 세출계정과목선택 ::</option>
+			            	<th:block th:each="b:${budget}">
+			            		<option th:value="${b.fesrev_bud_cd}" th:text="${b.accsub_medium_nm + ' - ' + b.accsub_nm}"></option>	
+			            	</th:block>			            	            	
+			            </select>           
+                    </div>
+                    
+                    <label for="groupCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">
+                     <font style="color: red"><strong>*</strong></font>홍보그룹</font></label>
+                     
+                    <div class="col-lg-3">		
+			            <label class="sr-only" for="groupCd"></label>
+			            <select class="form-control" id="groupCd" name="groupNm"
+			            onchange="setPrGroup(groupNm.options[this.selectedIndex].value)">
+			            	<option value="" >:: 홍보예산그룹선택 ::</option>
+							<th:block th:each="g:${group}">
+							<option th:text="${g.group_nm}"></option>
+							</th:block>
+			            	<option value="etc">직접입력하기</option>		            	    	
+			            </select>           
+                    </div>
+                    <div class="col-lg-2">
+                    
+                                    
+                    	  	<input class="form-control " id="newGroup" name="groupNm2" type="text" ReadOnly="true">                    
+                    </div>
+                    <div class="col-lg-2">                   	                   	
+						 <!-- Button trigger modal -->
+						<button type="button" class="btn btn-theme04 btn-xs" data-toggle="modal" data-target="#prGroup">
+						  홍보예산<br>그룹관리 </button>
+						
+						<!-- Modal -->
+						<div class="modal fade" id="prGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="myModalLabel">홍보예산 그룹관리</h4>
+						      </div>
+						      <div class="modal-body">
+						        
+
+									<h4><Strong>그룹명 수정하기</Strong></h4><br>
+					                <table class="table table-bordered table-striped table-condensed">
+					                  <thead>
+					                    <tr align="center">
+					                      <th>그룹코드</th>
+					                      <th>그룹명</th>
+					                      <th>수정</th>
+					                    </tr>
+					                  </thead>
+					                  <tbody th:each="g:${group}">
+					                    <tr>
+					                      <td th:text="${g.group_cd}"></td>
+					                      <td>
+					                      <input type="text" th:value="${g.group_nm}">
+					                      </td>
+					                      <td><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></td>
+					                    </tr>
+					                  </tbody>
+					                </table>				        
+									<font style="color: red">*</font>그룹명을 수정하면 해당 그룹의 그룹명 모두가 변경되니 유의하시기 바랍니다.
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>					       
+						      </div>
+						    </div>
+						  </div>
+						</div>  
+						<!-- Modal end  -->                	                  	
+                    	
+                    </div>
+                    
+                  </div>
+                      
+                  <div class="form-group ">    
+                   <label for="festprProExpense" class="control-label col-lg-2"><font style="vertical-align: inherit;">
+                     <font style="color: red"><strong>*</strong></font>계약금액</font></label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="festprProExpense" name="festprProExpense" placeholder="천원 단위로 입력해주세요">             
+                    </div>     
+                   </div>
+                                                     
+                  <div class="form-group ">
+                    <label for="festprProPlace" class="control-label col-lg-2"><font style="vertical-align: inherit;">장소/배포처</font></label>
+                    <div class="col-lg-10">
+       	             <textarea rows="2" cols="100" class="form-control " id="festprProPlace" name="festprProPlace"></textarea>                     
                     </div>
                   </div>
+                  
                   <div class="form-group ">
-                    <label for="username" class="control-label col-lg-2"><font style="vertical-align: inherit;">ㅇㅇㅇ</font></label>
+                    <label for="festprProDetail" class="control-label col-lg-2"><font style="vertical-align: inherit;">홍보상세내용</font></label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="username" name="username" type="text">
+       	             <textarea rows="5" cols="100" class="form-control " id="festprProDetail" name="festprProDetail"></textarea>                     
                     </div>
                   </div>
+                  
                   <div class="form-group ">
-                    <label for="password" class="control-label col-lg-2"><font style="vertical-align: inherit;">ㅇㅇ</font></label>
+                    <label for="festprProEtc" class="control-label col-lg-2"><font style="vertical-align: inherit;">비고</font></label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="password" name="password" type="password">
+       	             <textarea rows="1" cols="100" class="form-control " id="festprProEtc" name="festprProEtc"></textarea>                     
                     </div>
                   </div>
+                  
                   <div class="form-group ">
-                    <label for="confirm_password" class="control-label col-lg-2"><font style="vertical-align: inherit;">ㅇㅇ</font></label>
+                    <label for="festprProAttach" class="control-label col-lg-2"><font style="vertical-align: inherit;">파일첨부</font></label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="confirm_password" name="confirm_password" type="password">
+                    	<input type="file" value="">               
                     </div>
                   </div>
-                  <div class="form-group ">
-                    <label for="email" class="control-label col-lg-2"><font style="vertical-align: inherit;">ㅇㅇㅇ</font></label>
-                    <div class="col-lg-10">
-                      <input class="form-control " id="email" name="email" type="email">
-                    </div>
+                  
+                  
+                  <div class="form-group">
+                  <div class="col-lg-12">
+<div> 
+ <select name="select_email" onChange="selectEmail(this)">
+  <option value="" selected>선택하세요</option> 
+  <option value="naver.com">naver.com</option> 
+  <option value="gmail.com">gmail.com</option> 
+  <option value="hanmail.com">hanmail.com</option> 
+  <option value="1">직접입력</option> 
+  </select> </div>
+<input name="email2" type="text">
+
+
+            
+                  
+                  
+                  </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
+                    <div class="col-lg-12" align="center">
                       <a th:href="@{/prPromotionList}">
-                      <button class="btn btn-theme" type="submit"><font style="vertical-align: inherit;">저장</font></button></a>
-                      <a th:href="@{/prPromotionList}">
-                      <button class="btn btn-theme04" type="button"><font style="vertical-align: inherit;">취소</font></button></a>
+                      <button class="btn btn-theme04  btn-lg" type="button"><font style="vertical-align: inherit;">취소하기</font></button></a>
+                      <a>
+                      <button class="btn btn-theme  btn-lg" type="submit"><font style="vertical-align: inherit;">등록하기</font></button></a>
                     </div>
                   </div>
                 </form>
@@ -61,10 +263,28 @@ layout:decorate="~{layout/adminis/adminisdefault}">
             <!-- /form-panel -->
           </div>		
 	
-		
 
 </th:block>
 <th:block layout:fragment="adminisscript">
+<script>
+
+function selectEmail(ele){ 
+	var $ele = $(ele); 
+	var $email2 = $('input[name=email2]'); // '1'인 경우 직접입력
+if($ele.val() == "1"){ 
+	$email2.attr('readonly', false); 
+	$email2.val(''); 
+} else if($ele.val() == null){
+	$email2.css('display','none'); 
+}	
+else { 
+	$email2.attr('readonly', true); 
+			$email2.val($ele.val());
+			} }
+
+
+
+</script>
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
 </th:block>
 

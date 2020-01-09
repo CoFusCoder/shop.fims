@@ -7,22 +7,17 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 </th:block>
 <th:block layout:fragment="adminisMainContents">
 
-
+<h1 align="center"><span >《[[${session.F_NM}]]》 홍보 분류 관리</span></h1>	
 		<div class="col-md-12 mt">
-		
-		
             <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>홍보분류관리</h4>
-<!--               <div align="right">
-              <a th:href="@{/prInsertDiv}" >
-              <button type="button" class="btn btn-primary" align="right">신규홍보분류등록</button></a>  
-              </div> -->
-              
               
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertPrDiv">
+<div align="right">
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#insertPrDiv">
   홍보분류 신규등록
 </button>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="insertPrDiv" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -105,10 +100,9 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                     </td>
                     <td>
                     
-                    
                     	
                     	<!-- Button trigger modal -->
-	                    <button class="btn btn-danger btn-xs" data-toggle="modal" th:data-target="${'#deletePrDiv'+i.index}"><i class="fa fa-pencil"></i></button>
+	                    <button class="btn btn-danger btn-xs" data-toggle="modal" th:data-target="${'#deletePrDiv'+i.index}"><i class="fa fa-trash-o"></i></button>
 						<!-- Modal -->
 						<div class="modal fade" th:id="${'deletePrDiv' + i.index}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 						  <div class="modal-dialog modal-dialog-centered" role="document">
@@ -137,6 +131,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						    </div>
 						  </div>
 						</div>  
+                   <!--  Modal end -->
+                    
                     
                     </td>
                   </tr>

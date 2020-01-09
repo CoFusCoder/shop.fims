@@ -124,11 +124,27 @@ public class PublicrelationsController {
 	}
 	
 	
-	//홍보사업 신규등록
+	//홍보사업 신규등록 화면출력
 	 @GetMapping("/prInsertPromotion")
-	 public String insertPromotion() {
-		return "publicrelations/prDivList";
+	 public String insertPromotion(Model modelbudget, Model modelDiv, Model modelPartners, Model modelGroup, HttpSession session) {
+		String festCd = (String)session.getAttribute("F_CD");
+		modelDiv.addAttribute("div", publicrelationsService.selectAllPrDiv());
+		modelbudget.addAttribute("budget", publicrelationsService.selectBudget(festCd));
+		modelPartners.addAttribute("partners", publicrelationsService.selectParners());
+		modelGroup.addAttribute("group", publicrelationsService.selectGroup(festCd));
+		
+		return "publicrelations/prInsertPromotion";
 	 }
+	
+	  //홍보사업 신규등록 처리
+	  @PostMapping("/prInsertPromotionPro") 
+	  public String insertPromotionPro(PrPromotion promotion) {
+		  System.out.println(promotion);	 
+		  publicrelationsService.insertPromotionPro(promotion);
+		  
+		  return "redirect:/prPromotionList";   
+	  }
+	 
 	
 	
 	 //홍보 프로모션코드로 세부사항조회
