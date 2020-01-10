@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shop.fims.schedule.ScheduleMapper">
+  
+
+   <resultMap type="shop.fims.vo.Schedule" id="scheduleResultmap">
+ 	<result property="festSchCd" column="fest_sch_cd"/>
+ 	<result property="areacityAdminCd" column="areacity_admin_cd"/>
+ 	<result property="areaCd" column="area_cd"/>
+ 	<result property="areaCityCd" column="area_city_cd"/>
+ 	<result property="festCd" column="fest_cd"/>
+ 	<result property="manComCd" column="man_com_cd"/>
+ 	<result property="accMemCd" column="acc_mem_cd"/>
+ 	<result property="fesconManCd" column="fescon_man_cd"/>
+ 	<result property="festTitle" column="fest_title"/>
+ 	<result property="festSchNo" column="fest_sch_no"/>
+ 	<result property="festSchDt" column="fest_sch_dt"/>
+ 	<result property="festScheNm" column="fest_sche_nm"/>
+ 	<result property="festScheTask" column="fest_sche_task"/>
+ 	<result property="festSchComment" column="fest_sch_comment"/>
+ 	<result property="festSchEtc" column="fest_sch_etc"/>
+ 	<result property="festSchAttach" column="fest_sch_attach"/>
+ 	<result property="insertDt" column="insert_dt"/>
+ </resultMap>
+
+<select id="searchSchedule" resultMap="scheduleResultmap">
+SELECT
+ 	*
+FROM
+	Fest_Schedule as f
+WHERE fest_cd=#{festCd}	
+	<trim prefix="and" prefixOverrides="and">
+		<if test="accMemCd neq null and accMemCd neq ''.toString()">
+			and f.acc_mem_cd like CONCAT ('%',#{accMemCd},'%') 
+		</if>
+		<if test="festScheNm neq null and festScheNm neq ''.toString()">
+			and f.fest_sche_nm like CONCAT ('%',#{festScheNm},'%') 
+		</if>
+		<choose>
+			<when test="date1 neq null and date1 neq ''.toString() and date2 neq null and date2 neq ''.toString()">
+				f.fest_sch_dt between DATE(#{date1}) and DATE(#{date2})
+			</when>			
+			<when test="date1 neq null and date1 neq ''.toString() and (date2 eq null or date2 eq ''.toString())">
+				and f.fest_sch_dt = #{date1}
+			</when>
+			<when test="(date1 eq null or date1 eq ''.toString()) and date2 neq null and date2 neq ''.toString()">
+				and f.fest_sch_dt = #{date2}
+			</when>
+		</choose>
+		
+	</trim>
+</select>
+
+
+
+<!-- 전체 스케줄 조회 -->
+ <select id="selectAllSchedule" resultMap="scheduleResultmap">
+ 	SELECT
+		*
+	FROM 
+		Fest_Schedule
+ </select>
+  
+  
+  
+  
+  
+  
+  </mapper>

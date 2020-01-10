@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="shop.fims.human.HumanMapper">
+    <resultMap type="shop.fims.vo.Human" id="humanResultMap">
+  		<result property="festNm" column="fest_nm"/>
+  		<result property="workdivNm" column="feswork_div_nm"/>
+  		<result property="humanNm" column="fes_human_nm"/>
+   		<result property="humanPhone" column="fes_human_phone"/>
+   		<result property="humanHour" column="fes_human_hour"/>
+   		<result property="comNm2" column="com_mem_nm2"/>
+   		<result property="humanCd" column="fes_human_cd"/>  
+   		<result property="mamCd" column="man_com_cd"/>
+   		<result property="staNm" column="fac_sta_nm"/> 
+   		<result property="staCd" column="fac_sta_cd"/>
+   		<result property="memNm" column="mem_nm"/>
+   		<result property="memAddr" column="mem_addr"/>
+   		<result property="memPhone" column="mem_phone"/>
+   		<result property="memEmail" column="mem_email"/>
+   		<result property="memBirth" column="mem_birth"/>
+   		<result property="joinDt" column="mem_join_dt"/>
+   		<result property="loginCd" column="login_cd"/>
+   		<result property="levNm" column="mem_lev_nm"/>	
+  	</resultMap>
+  	<!--인적리스트조회-->
+  <select id="selectHuman" resultMap="humanResultMap">
+		SELECT
+			fh.fest_cd,
+			fh.feswork_div_nm,
+			fh.fes_human_nm,
+			fh.fest_nm,
+			fh.fes_human_phone, 
+			fh.fes_human_hour, 
+			mc.com_mem_nm2, 
+			fh.fes_human_cd, 
+			mc.man_com_cd,
+			fh.fac_sta_cd,
+			fh.fac_sta_nm
+		FROM
+			Festival_Human AS fh
+			JOIN 
+			Man_Com AS mc
+			ON fh.man_com_cd = mc.man_com_cd
+				
+  </select>
+  <!--인적수정화면-->
+  	<select id="selectbyHuman" resultMap="humanResultMap">
+		SELECT
+			fh.fest_nm,
+			fh.feswork_div_nm,
+			fh.fes_human_nm,
+			fh.fes_human_phone,
+			fh.fes_human_hour,
+			mc.man_com_cd,
+			mc.com_mem_nm2,
+			fh.fes_human_cd
+		FROM
+			Festival_Human AS fh
+			JOIN Man_Com AS mc ON fh.man_com_cd = mc.man_com_cd
+		WHERE
+			fh.fes_human_cd=#{humanCd}
+	 </select>
+ <!--인적사항상세조회-->
+ 	<select id="selecthumanView" resultMap="humanResultMap">
+		 SELECT
+			m.mem_nm,
+			m.mem_addr,
+			m.mem_phone,
+			m.mem_email,
+			m.mem_birth,
+			m.mem_join_dt,
+			l.login_cd,
+			ml.mem_lev_nm	
+		FROM
+			Festival_Human AS fh,
+			Member AS m,
+			Login AS l,
+			Member_Lev AS ml
+		WHERE
+			fh.mem_cd = m.mem_cd
+			AND m.mem_cd = l.mem_cd
+			AND l.mem_lev_cd = ml.mem_lev_cd
+			AND fh.fes_human_cd = #{humanCd}
+ 	</select>
+ 	<!--인적검색-->
+	<select id="searchHuman" resultMap="humanResultMap">
+		SELECT 
+			fest_nm,
+			feswork_div_nm,
+			fes_human_nm,
+			fes_human_phone,
+			fes_human_hour,
+			com_mem_nm2
+		FROM Festival_Human
+		 where 1=1
+		    <if test="fest_nm != null and fest_nm != '' ">
+		       AND fest_nm = #{fest_nm}
+		    </if>
+		    <if test="feswork_div_nm != null and feswork_div_nm != '' ">
+		        AND feswork_div_nm like #{feswork_div_nm}
+		    </if>
+		    <if test="fes_human_phone != null and fes_human_phone != '' ">
+		        AND fes_human_phone like #{fes_human_phone}
+		    </if>
+		    <if test="fes_human_hour != null and fes_human_hour != '' ">
+		        AND fes_human_hour like #{fes_human_hour}
+		    </if>
+		    <if test="com_mem_nm2 != null and com_mem_nm2 != ''">
+		        AND com_mem_nm2 like #{com_mem_nm2}
+		    </if>
+		    <if test="fes_human_nm != null and fes_human_nm != ''">
+		        AND fes_human_nm like #{fes_human_nm}
+		    </if>
+	</select>
+  </mapper>

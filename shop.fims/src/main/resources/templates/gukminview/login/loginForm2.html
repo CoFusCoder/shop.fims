@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<form id="loginform" name="loginform" action="/gukminview/login/loginForm" method="post">
+	<table class="wwFormTable">
+		<input type="hidden" name="redirectUrl" id="redirectUrl"
+			value="">
+		<section>
+			<p class="loginTit">#로그인</p>
+			<p class="loginTxt">#반갑습니다! 조이페스타에 로그인해주세요.</p>
+			<div class="loginBox">
+				<div class="fl">
+					<input type="text" id="loginid" name="LoginCd" class="inp"
+						placeholder="아이디" value="id003" /> <input type="password" id="password"
+						name="LoginPw" class="inp"
+						onkeydown="javascript:if(event.keyCode==13){$.fn.login();}"
+						placeholder="비밀번호" />
+					<div class="chkArea">
+						<input type="checkbox" id="idsave" name="idsave" /> <label
+							for="idsave">로그인기억하기</label>
+					</div>
+					<button type="submit" id="loginbutton" class="btnLogin">!공무원 로그인</button>
+					<div class="ebox">
+						<a href="javascript:void(0)" class="txtLink">#가입정보를 잊으셨나요?</a> <a
+							href="javascript:void(0)"
+							onclick="javascript:$('#passwordfinddialog').show();"
+							class="btnLink">#비밀번호 찾기</a>
+					</div>
+				</div>
+				<div class="fr">
+					<ul class="snsLoginList">
+						<li class="ico02">
+							<button type="button" value="1">!거래처 로그인</button>
+						</li>
+						<li class="ico03">
+							<button type="button" value="2">!국민 로그인</button>
+						</li>
+						<li class="ico04">
+							<button type="button" value="3">!개발사 로그인</button>
+						</li>
+					</ul>
+					<div class="ebox">
+						<a href="/gukminview/member/memberRegisterForm" class="txtLink">!아직 회원이
+							아니신가요?</a> <a href="/gukminview/member/memberRegisterForm" class="btnLink">!회원가입</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	
+		<input type="hidden" name="membertype" id="membertype" value="1">
+		<div class="dialog" id="passwordfinddialog"
+			style="display: none; z-index: 1000;">
+			<div class="popBox">
+				<div class="popHeader">
+					<h1>#비밀번호 찾기</h1>
+					<a href="javascript:void(0)"
+						onclick="javascript:$('#passwordfinddialog').hide();"><img
+						src="https://joyfesta.kr/include/img/ico/ico_close02.png" /></a>
+				</div>
+				<div class="popCont">
+					<ul class="commTabs t02">
+						<li class="indi"><a href="javascript:void(0)"
+							onclick="javascript:setMemberType('1');" class="on">개인회원</a></li>
+						<li class="host"><a href="javascript:void(0)"
+							onclick="javascript:setMemberType('2');">호스트회원</a></li>
+					</ul>
+					<div id="indi">
+						<div class="findForm">
+							<input type="email" id="memberemail" name="memberemail"
+								class="inp" placeholder="아이디(이메일)" /> <input type="text"
+								id="membername" name="membername" class="inp" placeholder="이름" />
+							<div class="tel">
+								<select id="contact01" name="contact01" class="select w60"><option
+										value="">연락처</option>
+									<option value="02">서울 (02)</option>
+									<option value="031">경기 (031)</option>
+									<option value="032">인천 (032)</option>
+									<option value="033">강원 (033)</option>
+									<option value="041">충남 (041)</option>
+									<option value="042">대전 (042)</option>
+									<option value="043">충북 (043)</option>
+									<option value="051">부산 (051)</option>
+									<option value="052">울산 (052)</option>
+									<option value="053">대구 (053)</option>
+									<option value="054">경북 (054)</option>
+									<option value="055">경남 (055)</option>
+									<option value="061">전남 (061)</option>
+									<option value="062">광주 (062)</option>
+									<option value="063">전북 (063)</option>
+									<option value="064">제주 (064)</option>
+									<option value="070">인터넷전화 (070)</option>
+									<option value="050">평생전화 (050)</option>
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+									<option value="017">017</option>
+									<option value="018">018</option>
+									<option value="019">019</option></select> - <input type="text"
+									id="contact02" name="contact02" class="inp w60" /> - <input
+									type="text" id="contact03" name="contact03" class="inp w60" />
+							</div>
+							<p class="txt">가입시 등록한 회원정보를 입력하시면, 해당 이메일로 임시 비밀번호를 발송해드립니다.</p>
+						</div>
+						<div class="btnBox">
+							<a href="javascript:void(0)" onclick="javascript:findPassword();"
+								class="btnType01">임시비밀번호 받기</a>
+						</div>
+					</div>
+					<div id="host">
+						<div class="findForm">
+							<input type="email" class="inp" id="hostemail" name="hostemail"
+								placeholder="아이디(이메일)" /> <input type="text" id="hostname"
+								name="hostname" class="inp" placeholder="호스트명" />
+							<div class="tel">
+								<select id="managercontact01" name="managercontact01"
+									class="select w60"><option value="">담당자연락처</option>
+									<option value="02">서울 (02)</option>
+									<option value="031">경기 (031)</option>
+									<option value="032">인천 (032)</option>
+									<option value="033">강원 (033)</option>
+									<option value="041">충남 (041)</option>
+									<option value="042">대전 (042)</option>
+									<option value="043">충북 (043)</option>
+									<option value="051">부산 (051)</option>
+									<option value="052">울산 (052)</option>
+									<option value="053">대구 (053)</option>
+									<option value="054">경북 (054)</option>
+									<option value="055">경남 (055)</option>
+									<option value="061">전남 (061)</option>
+									<option value="062">광주 (062)</option>
+									<option value="063">전북 (063)</option>
+									<option value="064">제주 (064)</option>
+									<option value="070">인터넷전화 (070)</option>
+									<option value="050">평생전화 (050)</option>
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+									<option value="017">017</option>
+									<option value="018">018</option>
+									<option value="019">019</option></select> - <input type="text"
+									id="managercontact02" name="managercontact02" class="inp w60" />
+								- <input type="text" id="managercontact03"
+									name="managercontact03" class="inp w60" />
+							</div>
+							<p class="txt">가입시 등록한 회원정보를 입력하시면, 해당 이메일로 임시 비밀번호를 발송해드립니다.</p>
+						</div>
+						<div class="btnBox">
+							<a href="javascript:void(0)" onclick="javascript:findPassword();"
+								class="btnType01">임시비밀번호 받기</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</table>
+	<label th:if="${result ne null}" th:text="${result}"></label>
+</form>
+
+<!-- <script>
+	function setMemberType(membertype) {
+		$('#membertype').val(membertype);
+	}
+
+	function findPassword() {
+		resetCommonDialog();
+		indicatorOn();
+		$.ajax({
+			type : 'POST',
+			url : 'JSONPasswordFind.festa',
+			data : {
+				membertype : $('#membertype').val(),
+
+				memberemail : $('#memberemail').val(),
+				membername : $('#membername').val(),
+				contact : $('#contact01').val() + '-' + $('#contact02').val()
+						+ '-' + $('#contact03').val(),
+
+				hostemail : $('#hostemail').val(),
+				hostname : $('#hostname').val(),
+				managercontact : $('#managercontact01').val() + '-'
+						+ $('#managercontact02').val() + '-'
+						+ $('#managercontact03').val()
+			},
+			dataType : 'json',
+			success : function(data, textStatus, jqXHR) {
+				indicatorOff();
+				if (data.resultcode == 0) {
+					$('#dialogtitle').append('비밀번호 찾기');
+					$('#dialogcontent').append('해당 이메일로 임시 비밀번호를 발송해 드렸습니다.');
+					$('#commondialog').show();
+					$('#passwordfinddialog').hide();
+				} else {
+					$('#dialogtitle').append('비밀번호 찾기');
+					$('#dialogcontent').append(data.resultmessage);
+					$('#commondialog').show();
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				indicatorOff();
+				$('#dialogtitle').append('System Error!');
+				$('#dialogcontent').append('시스템관리자에서 문의해주세요.');
+				$('#commondialog').show();
+			},
+			complete : function(jqXHR, textStatus) {
+				indicatorOff();
+			}
+		});
+	}
+
+	$('#idsave').click(function() {
+		thisform = document.loginform;
+		if ($('input[name=idsave]').is(':checked')) {
+			saveCookie("joyfestaid", $('#loginid').val(), true);
+		} else {
+			saveCookie("joyfestaid", "", true);
+		}
+	});
+
+	function saveCookie(name, value, expires) {
+		var today = new Date();
+		var expiry = new Date(today.getTime() + 365 * 24 * 60 * 60 * 1000);
+		document.cookie = name + "=" + escape(value)
+				+ ((expires) ? ";expires=" + expiry.toGMTString() : "");
+	}
+
+	function setLoginID() {
+		var idjoyfesta = getCookie("joyfestaid");
+		if (idjoyfesta != null && idjoyfesta != "") {
+			$('#loginid').val(idjoyfesta);
+			$('input[name=idsave]').attr('checked', true);
+		}
+	}
+
+	function getCookie(name) {
+		var index = document.cookie.indexOf(name + "=");
+		if (index == -1)
+			return null;
+		index = document.cookie.indexOf("=", index) + 1;
+		var endstr = document.cookie.indexOf(";", index);
+		if (endstr == -1)
+			endstr = document.cookie.length;
+		return unescape(document.cookie.substring(index, endstr));
+	}
+
+	$(document).ready(function() {
+		setLoginID();
+	});
+
+	$('#loginbutton').click(function() {
+		$.fn.login();
+	});
+
+	$.fn.login = function() {
+		resetCommonDialog();
+		indicatorOn();
+		$.ajax({
+			type : 'POST',
+			url : 'JSONLogin.festa',
+			data : {
+				loginid : $('#loginid').val(),
+				password : $('#password').val(),
+				redirectUrl : $('#redirectUrl').val()
+			},
+			dataType : 'json',
+			success : function(data, textStatus, jqXHR) {
+				if (data.resultcode == 0) {
+					if (data.redirectUrl != null && data.redirectUrl != '') {
+						location.href = data.redirectUrl;
+					} else {
+						window.location.href = 'MyPage.festa';
+					}
+				} else {
+					indicatorOff();
+					$('#dialogtitle').append('로그인');
+					$('#dialogcontent').append(data.resultmessage);
+					$('#commondialog').show();
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				indicatorOff();
+				$('#dialogtitle').append('System Error!');
+				$('#dialogcontent').append('시스템관리자에서 문의해주세요.');
+				$('#commondialog').show();
+			},
+			complete : function(jqXHR, textStatus) {
+				indicatorOff();
+			}
+		});
+	};
+</script> -->
+
+<script>
+	function onSuccess(googleUser) {
+		resetCommonDialog();
+		indicatorOn();
+		var profile = googleUser.getBasicProfile();
+		$.ajax({
+			url : 'JSONSnsLogin.festa',
+			type : 'POST',
+			data : {
+				snstype : 2,
+				clientid : profile.getId(),
+				membername : profile.getName(),
+				email : profile.getEmail(),
+				profileimageurl : profile.getImageUrl()
+			},
+			dataType : 'json',
+			success : function(data, textStatus, jqXHR) {
+				indicatorOff();
+				if (data.resultcode == 0) {
+					location.href = 'MyPage.festa';
+				} else {
+					$('#dialogtitle').append('로그인');
+					$('#dialogcontent').append(data.resultmessage);
+					$('#commondialog').show();
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				indicatorOff();
+				$('#dialogtitle').append('로그인');
+				$('#dialogcontent').append(textStatus);
+				$('#commondialog').show();
+			}
+		});
+
+	}
+	function onFailure(error) {
+		console.log(error);
+	}
+/* 	function renderButton() {
+		gapi.signin2.render('my-signin2', {
+			'scope' : 'profile email',
+			'width' : 280,
+			'height' : 46,
+			'longtitle' : true,
+			'theme' : 'light',
+			'onsuccess' : onSuccess,
+			'onfailure' : onFailure
+		});
+
+		setTimeout(function() {
+			$('#my-signin2 div div span span:last').text('구글 아이디로 로그인');
+			$('#my-signin2 div div span span:first').text('구글 아이디로 로그인　　');
+			$('#my-signin2 div div span span:first').css('color', '#000000');
+		}, 100);
+
+		setTimeout(function() {
+			$('#my-signin2 div div span span:last').text('구글 아이디로 로그인');
+			$('#my-signin2 div div span span:first').text('구글 아이디로 로그인　　');
+			$('#my-signin2 div div span span:first').css('color', '#000000');
+		}, 1000);
+		
+	} */
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton"
+	async defer>
+	
+</script>
+
+<!-- <script type="text/javascript">
+	var servicedomain = $(location).attr('protocol') + '//'
+			+ $(location).attr('host');
+	var naver_id_login = new naver_id_login('V5TONEn9NIXh6LacwjnS',/*0k219s_txfQAXV_gT4Op:dev*/
+			servicedomain + '/jsp/pc/login/naverlogincallback.jsp');
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton('', 99); // Set Custom Button
+	naver_id_login.setDomain(servicedomain);
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+</script> -->
+<script>
+	window.fbAsyncInit = function() {
+		// FB JavaScript SDK configuration and setup
+		FB.init({
+			appId : '593893424470735',
+			cookie : true,
+			xfbml : true,
+			version : 'v3.1'
+		});
+
+		FB.AppEvents.logPageView();
+
+	};
+
+	// Load the JavaScript SDK asynchronously
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "https://connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+	function checkLoginState() {
+		// Check whether the user already logged in
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+			if (response.status === 'connected') {
+				//display user data
+				getFbUserData();
+			}
+		});
+	}
+
+	// Facebook login with JavaScript SDK
+	function fbLogin() {
+		FB.login(function(response) {
+			if (response.authResponse) {
+				// Get and display the user profile data
+				getFbUserData();
+			} else {
+				//document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+			}
+		}, {
+			scope : 'email'
+		});
+	}
+
+	// Fetch the user profile data from facebook
+	function getFbUserData() {
+		FB.api('/me', {
+			locale : 'en_US',
+			fields : 'id,first_name,last_name,email,gender,picture'
+		}, function(response) {
+			resetCommonDialog();
+			indicatorOn();
+			$
+					.ajax({
+						url : 'JSONSnsLogin.festa',
+						type : 'POST',
+						data : {
+							snstype : 3,
+							clientid : response.id,
+							membername : response.first_name + ' '
+									+ response.last_name,
+							email : response.email,
+							profileimageurl : response.picture.data.url
+						},
+						dataType : 'json',
+						success : function(data, textStatus, jqXHR) {
+							indicatorOff();
+							if (data.resultcode == 0) {
+								location.href = 'MyPage.festa';
+							} else {
+								$('#dialogtitle').append('로그인');
+								$('#dialogcontent').append(data.resultmessage);
+								$('#commondialog').show();
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							indicatorOff();
+							$('#dialogtitle').append('로그인');
+							$('#dialogcontent').append(textStatus);
+							$('#commondialog').show();
+						}
+					});
+
+			// Save user data
+			//saveUserData(response);
+		});
+	}
+</script>
+<script type='text/javascript'>
+	//<![CDATA[
+	//Kakao.init('d83b1d0da9f7f2cf91d72a800b5107a1');//dev
+	function loginWithKakao() {
+		// 로그인 창을 띄웁니다.
+		Kakao.Auth.login({
+			success : function(authObj) {
+				//alert(JSON.stringify(authObj));
+				Kakao.API.request({
+					url : '/v1/user/me',
+					success : function(res) {
+						//console.log(res);
+						resetCommonDialog();
+						indicatorOn();
+						$.ajax({
+							url : 'JSONSnsLogin.festa',
+							type : 'POST',
+							data : {
+								snstype : 4,
+								clientid : res.id,
+								membername : res.properties.nickname,
+								email : res.kaccount_email,
+								profileimageurl : res.properties.profile_image
+							},
+							dataType : 'json',
+							success : function(data, textStatus, jqXHR) {
+								indicatorOff();
+								if (data.resultcode == 0) {
+									location.href = 'MyPage.festa';
+								} else {
+									$('#dialogtitle').append('로그인');
+									$('#dialogcontent').append(
+											data.resultmessage);
+									$('#commondialog').show();
+								}
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								indicatorOff();
+								$('#dialogtitle').append('로그인');
+								$('#dialogcontent').append(textStatus);
+								$('#commondialog').show();
+							}
+						});
+					},
+					fail : function(error) {
+						console.log(JSON.stringify(error));
+						alert('카카오계정 로그인 실패.');
+					}
+				});
+			},
+			fail : function(err) {
+				console.log(JSON.stringify(err));
+				alert('카카오계정 로그인 실패..');
+			}
+		});
+	};
+	//]]>
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('[type="button"]').click(function() {
+		var a = $(this).val()
+		if(a=="1"){
+			$('[name="h_id"]').val("id013")
+			$('[name="h_pw"]').val("pw013")
+		}else if(a=="2"){
+			$('[name="h_id"]').val("id024")
+			$('[name="h_pw"]').val("pw024")
+		}else if(a=="3"){
+			$('[name="h_id"]').val("id002")
+			$('[name="h_pw"]').val("pw002")
+		}
+	})
+})
+</script>
+
+
+</th:block>
+
+</html>

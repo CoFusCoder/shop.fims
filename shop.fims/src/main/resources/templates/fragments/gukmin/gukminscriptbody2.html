@@ -1,0 +1,434 @@
+<script>
+	function searchHashtag(url) {
+		window.location.href = url;
+	}
+
+	function setSearchType(searchtype) {
+		$('#searchtype').val(searchtype);
+	}
+
+	$('#startdate').on('changeDate', function() {
+		var startdate = $('#startdate').val();
+		var enddate = $('#enddate').val();
+		if (startdate != '' && enddate != '') {
+			checkDate(startdate, enddate, 'startdate');
+		}
+	});
+
+	$('#enddate').on('changeDate', function() {
+		var startdate = $('#startdate').val();
+		var enddate = $('#enddate').val();
+		if (startdate != '' && enddate != '') {
+			checkDate(startdate, enddate, 'enddate');
+		}
+	});
+
+	function checkDate(startDate, endDate, target) {
+		var startDateArr = startDate.split('.');
+		var endDateArr = endDate.split('.');
+		var startDateCompare = new Date(startDateArr[0], startDateArr[1],
+				startDateArr[2]);
+		var endDateCompare = new Date(endDateArr[0], endDateArr[1],
+				endDateArr[2]);
+		if (startDateCompare.getTime() > endDateCompare.getTime()) {
+			alert("방문예정일 날짜를 확인해 주세요.");
+			$('#' + target).val('');
+		}
+	}
+
+	$('#sidofestival').on('change', function() {
+		$('#sigungufestival').val('');
+		$.setSigungu($('#sidofestival').val(), 'sigungufestival');
+		$('#regionfestival').val('');
+	});
+
+	$('#regionfestival').on('change', function() {
+		$('#sidofestival').val('');
+		$.setSigungu($('#sidofestival').val(), 'sigungufestival');
+	});
+
+	$('#sidomarket').on('change', function() {
+		$('#sigungumarket').val('');
+		$.setSigungu($('#sidomarket').val(), 'sigungumarket');
+		$('#regionmarket').val('');
+	});
+
+	$('#regionmarket').on('change', function() {
+		$('#sidomarket').val('');
+		$.setSigungu($('#sidomarket').val(), 'sigungumarket');
+	});
+
+	function setFestivalTypes(typeseq) {
+		var festivaltypeseqs = [];
+		if (typeseq == '') {
+			$('#festivaltypeseqs').val('');
+			$('#allfestivaltypes').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allfestivaltypes').removeClass("on");
+			if ($('#festivaltypeseqs').val() != '') {
+				festivaltypeseqs = $('#festivaltypeseqs').val().split(',');
+			}
+			//alert(festivaltypeseqs);
+			if (checkValue(typeseq, festivaltypeseqs) == 'Exist') {
+				festivaltypeseqs
+						.splice($.inArray(typeseq, festivaltypeseqs), 1);
+				$('#festivaltypeseqs').val(festivaltypeseqs);
+			} else {
+				festivaltypeseqs.push(typeseq);
+				$('#festivaltypeseqs').val(festivaltypeseqs);
+			}
+		}
+	}
+
+	function setFestivalSituations(situationseq) {
+		var festivalsituationseqs = [];
+		if (situationseq == '') {
+			$('#festivalsituationseqs').val('');
+			$('#allfestivalsituations').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allfestivalsituations').removeClass("on");
+			if ($('#festivalsituationseqs').val() != '') {
+				festivalsituationseqs = $('#festivalsituationseqs').val()
+						.split(',');
+			}
+			if (checkValue(situationseq, festivalsituationseqs) == 'Exist') {
+				festivalsituationseqs.splice($.inArray(situationseq,
+						festivalsituationseqs), 1);
+				$('#festivalsituationseqs').val(festivalsituationseqs);
+			} else {
+				festivalsituationseqs.push(situationseq);
+				$('#festivalsituationseqs').val(festivalsituationseqs);
+			}
+		}
+		//alert($('#festivalsituationseqs').val());
+	}
+
+	function setFestivalSeasons(seasonseq) {
+		var festivalseasonseqs = [];
+		if (seasonseq == '') {
+			$('#festivalseasonseqs').val('');
+			$('#allfestivalseasons').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allfestivalseasons').removeClass("on");
+			if ($('#festivalseasonseqs').val() != '') {
+				festivalseasonseqs = $('#festivalseasonseqs').val().split(',');
+			}
+			if (checkValue(seasonseq, festivalseasonseqs) == 'Exist') {
+				festivalseasonseqs.splice($.inArray(seasonseq,
+						festivalseasonseqs), 1);
+				$('#festivalseasonseqs').val(festivalseasonseqs);
+			} else {
+				festivalseasonseqs.push(seasonseq);
+				$('#festivalseasonseqs').val(festivalseasonseqs);
+			}
+		}
+		//alert($('#festivalseasonseqs').val());
+	}
+
+	function setFestivalTerms(termseq) {
+		var festivaltermseqs = [];
+		if (termseq == '') {
+			$('#festivaltermseqs').val('');
+			$('#allfestivalterms').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allfestivalterms').removeClass("on");
+			if ($('#festivaltermseqs').val() != '') {
+				festivaltermseqs = $('#festivaltermseqs').val().split(',');
+			}
+			if (checkValue(termseq, festivaltermseqs) == 'Exist') {
+				festivaltermseqs
+						.splice($.inArray(termseq, festivaltermseqs), 1);
+				$('#festivaltermseqs').val(festivaltermseqs);
+			} else {
+				festivaltermseqs.push(termseq);
+				$('#festivaltermseqs').val(festivaltermseqs);
+			}
+		}
+		//alert($('#festivaltermseqs').val());
+	}
+
+	function setMarketTypes(typeseq) {
+		var markettypeseqs = [];
+		if (typeseq == '') {
+			$('#markettypeseqs').val('');
+			$('#allmarkettypes').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmarkettypes').removeClass("on");
+			if ($('#markettypeseqs').val() != '') {
+				markettypeseqs = $('#markettypeseqs').val().split(',');
+			}
+			if (checkValue(typeseq, markettypeseqs) == 'Exist') {
+				markettypeseqs.splice($.inArray(typeseq, markettypeseqs), 1);
+				$('#markettypeseqs').val(markettypeseqs);
+			} else {
+				markettypeseqs.push(typeseq);
+				$('#markettypeseqs').val(markettypeseqs);
+			}
+		}
+	}
+
+	function setStoreTypes(typeseq) {
+		var storetypeseqs = [];
+		if (typeseq == '') {
+			$('#storetypeseqs').val('');
+			$('#allstoretypes').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allstoretypes').removeClass("on");
+			if ($('#storetypeseqs').val() != '') {
+				storetypeseqs = $('#storetypeseqs').val().split(',');
+			}
+			if (checkValue(typeseq, storetypeseqs) == 'Exist') {
+				storetypeseqs.splice($.inArray(typeseq, storetypeseqs), 1);
+				$('#storetypeseqs').val(storetypeseqs);
+			} else {
+				storetypeseqs.push(typeseq);
+				$('#storetypeseqs').val(storetypeseqs);
+			}
+		}
+	}
+
+	function setMarketSituations(situationseq) {
+		var marketsituationseqs = [];
+		if (situationseq == '') {
+			$('#marketsituationseqs').val('');
+			$('#allmarketsituations').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmarketsituations').removeClass("on");
+			if ($('#marketsituationseqs').val() != '') {
+				marketsituationseqs = $('#marketsituationseqs').val()
+						.split(',');
+			}
+			if (checkValue(situationseq, marketsituationseqs) == 'Exist') {
+				marketsituationseqs.splice($.inArray(situationseq,
+						marketsituationseqs), 1);
+				$('#marketsituationseqs').val(marketsituationseqs);
+			} else {
+				marketsituationseqs.push(situationseq);
+				$('#marketsituationseqs').val(marketsituationseqs);
+			}
+		}
+		//alert($('#marketsituationseqs').val());
+	}
+
+	function setMarketSeasons(seasonseq) {
+		var marketseasonseqs = [];
+		if (seasonseq == '') {
+			$('#marketseasonseqs').val('');
+			$('#allmarketseasons').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmarketseasons').removeClass("on");
+			if ($('#marketseasonseqs').val() != '') {
+				marketseasonseqs = $('#marketseasonseqs').val().split(',');
+			}
+			if (checkValue(seasonseq, marketseasonseqs) == 'Exist') {
+				marketseasonseqs.splice($.inArray(seasonseq, marketseasonseqs),
+						1);
+				$('#marketseasonseqs').val(marketseasonseqs);
+			} else {
+				marketseasonseqs.push(seasonseq);
+				$('#marketseasonseqs').val(marketseasonseqs);
+			}
+		}
+		//alert($('#marketseasonseqs').val());
+	}
+
+	function setMarketTerms(termseq) {
+		var markettermseqs = [];
+		if (termseq == '') {
+			$('#markettermseqs').val('');
+			$('#allmarketterms').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmarketterms').removeClass("on");
+			if ($('#markettermseqs').val() != '') {
+				markettermseqs = $('#markettermseqs').val().split(',');
+			}
+			if (checkValue(termseq, markettermseqs) == 'Exist') {
+				markettermseqs.splice($.inArray(termseq, markettermseqs), 1);
+				$('#markettermseqs').val(markettermseqs);
+			} else {
+				markettermseqs.push(termseq);
+				$('#markettermseqs').val(markettermseqs);
+			}
+		}
+		//alert($('#markettermseqs').val());
+	}
+
+	function checkValue(value, arr) {
+		var status = 'Not exist';
+
+		for (var i = 0; i < arr.length; i++) {
+			var name = arr[i];
+			if (name == value) {
+				status = 'Exist';
+				break;
+			}
+		}
+
+		return status;
+	}
+
+	$('#searchbutton').click(function() {
+		$("#searchkeyword").val('');
+		$('#searchform').submit();
+	});
+
+	$('.btnSmartSearch').click(function() {
+		$(".searchTabs a").removeClass("on");
+		if ($('#searchtype').val() == 'festival') {
+			$('#searchTabs01').addClass("on");
+			$('#optionTable02').hide();
+			$('#optionTable01').show();
+		} else {
+			$('#searchTabs02').addClass("on");
+			$('#optionTable01').hide();
+			$('#optionTable02').show();
+		}
+	});
+
+	if ($('#sidofestival').val() != '') {
+		$.setSigungu($('#sidofestival').val(), 'sigungufestival');
+		$('#sigungufestival').val('');
+	}
+
+	if ($('#sidomarket').val() != '') {
+		$.setSigungu($('#sidomarket').val(), 'sigungumarket');
+		$('#sigungumarket').val('');
+	}
+</script>
+<script src="/gukmin/js/jquery.cookie.js"></script>
+<script>
+	var cookieList = function(cookieName) {
+		var cookie = $.cookie(cookieName);
+		var items = cookie ? cookie.split(/,/) : new Array();
+		return {
+			"add" : function(val) {
+				items.unshift(val);
+				//alert(items.join(','));
+				$.cookie(cookieName, items.join(','));
+			},
+			"remove" : function(val) {
+				items.splice($.inArray(val, items), 1);
+				$.cookie(cookieName, items.join(','));
+			},
+			"clear" : function() {
+				items = [];
+				$.cookie(cookieName, []);
+			},
+			"items" : function() {
+				return items;
+			},
+			"checkValue" : function(val) {
+				var status = 'Not exist';
+				for (var i = 0; i < items.length; i++) {
+					var name = items[i];
+					if (name == val) {
+						status = 'Exist';
+						break;
+					}
+				}
+				return status;
+			}
+		}
+	}
+
+	var keywordList = new cookieList("keywordList");
+
+	$('.btnSearch').click(
+			function() {
+				$('.keywordList').empty();
+				$.each(keywordList.items(), function(key, value) {
+					if (key < 15) {
+						$('.keywordList').append(
+								'<li><a href="Search.festa?searchkeyword='
+										+ value + '">' + value + '</a></li>');
+					} else {
+						keywordList.remove(value);
+					}
+				});
+			});
+
+	$('#keywordsearchbutton').click(function() {
+		if ($("#tagSearch").val() != '') {
+			$("#searchkeyword").val($("#tagSearch").val());
+			$('#searchform').submit();
+		}
+	});
+
+	$("#tagSearch").keydown(function(key) {
+		if (key.keyCode == 13) {
+			var val = $("#tagSearch").val();
+			if (keywordList.checkValue(val) == 'Exist') {
+				keywordList.remove(val);
+			}
+			keywordList.add(val);
+			$("#searchkeyword").val(val);
+			$('#searchform').submit();
+		}
+	});
+
+	function deleteSearchKeyword() {
+		keywordList.clear();
+		$('.keywordList').empty();
+	}
+</script>
+
+<script>
+	var auth2;
+	function logout(logintype) {
+		if (logintype == '1') {
+			location.href = 'Logout.festa';
+		} else if (logintype == '2') {
+			auth2 = gapi.auth2.getAuthInstance();
+
+			auth2.signOut().then(function() {
+				location.href = 'Logout.festa';
+			});
+		} else if (logintype == '3') {
+			location.href = 'Logout.festa';
+		} else if (logintype == '4') {
+			//Kakao.init('d83b1d0da9f7f2cf91d72a800b5107a1');
+			Kakao.Auth.logout();
+			location.href = 'Logout.festa';
+		} else {
+			location.href = 'Logout.festa';
+		}
+	}
+
+	function init() {
+		gapi.load('auth2', function() {
+			auth2 = gapi.auth2.init();
+		});
+	}
+</script>
+<script>
+	$(document).ready(function() {
+		var pathname = $(location).attr('pathname');
+		if (pathname.indexOf('Main.festa') != -1) {
+			$('#mainli').addClass('on');
+			$('#mainhref').addClass('bold');
+		} else if (pathname.indexOf('Festival.festa') != -1) {
+			$('#festivalli').addClass('on');
+			$('#festivalhref').addClass('bold');
+		} else if (pathname.indexOf('Market.festa') != -1) {
+			$('#marketli').addClass('on');
+			$('#markethref').addClass('bold');
+		} else if (pathname.indexOf('Promotion.festa') != -1) {
+			$('#promotionli').addClass('on');
+			$('#promotionhref').addClass('bold');
+		} else if (pathname.indexOf('Community.festa') != -1) {
+			$('#communityli').addClass('on');
+			$('#communityhref').addClass('bold');
+		}
+	});
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async
+	defer></script>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<h2>
+					<i class="fa fa-angle-right"></i>전체심사
+				</h2>
+	<div class="row mt">
+		<div class="col-md-12">
+			<div class="content-panel">
+				<div class="content-panel">
+					<h2>
+						<i class="fa fa-angle-right"></i>심사대기
+					</h2>
+					<form method="get">
+						<table class="table">
+							<tr>
+								<th>모든 행정기관관리</th>
+								<th>전국 지역관리</th>
+								<th>모든 지역 시군관리</th>
+								<th>모든 축제관리</th>
+								<th>심사 제목</th>
+								<th>심사분류</th>
+								<th>등록일자</th>
+								<th>심사일자</th>
+								<th>심사현황</th>
+								<th>담당자</th>
+
+
+
+							</tr>
+							<tr>
+								<th>전라북도</th>
+								<th>전주시</th>
+								<th>전라북도청</th>
+								<th>소리문화 축제</th>
+								<th><a th:href="@{/apply}">무대설치 용역 심사</a></th>
+								<th>심사</th>
+								<th>2019.12.05</th>
+								<th>2019.12.05</th>
+								<th>no</th>
+
+							</tr>
+						</table>
+					</form>
+				</div>
+				<h2>
+					<i></i>
+				</h2>
+				<div class="content-panel">
+					<h2>
+						<i class="fa fa-angle-right"></i>심사 완료
+					</h2>
+				
+						<table class="table">
+							<tr>
+								<th>모든 행정기관관리</th>
+								<th>전국 지역관리</th>
+								<th>모든 지역 시군관리</th>
+								<th>모든 축제관리</th>
+								<th>심사 제목</th>
+								<th>심사분류</th>
+								<th>등록일자</th>
+								<th>심사일자</th>
+								<th>심사현황</th>
+								<th>담당자</th>
+								<th>상세보기</th>
+							</tr>
+							<tr>
+								<th>전라북도</th>
+								<th>전주시</th>
+								<th>전라북도청</th>
+								<th>소리문화 축제</th>
+								<th>무대설치 용역 심사</th>
+								<th>심사</th>
+								<th>2019.12.05</th>
+								<th>2019.12.05</th>
+								<th>no</th>
+								<th>김혜진</th>
+								<th>
+								<!-- <a th:href="@{/estimatelistdetail}">
+										<button class="btn btn-success btn-xs">
+											<i class="fa fa-check">상세보기</i>
+										</button>
+								</a> -->
+								<a onclick="window.open('/estimatelistdetail','상세페이지','width=700, height=500,left=500,top=200  ');"> 
+ 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> </a>	
+								</th>
+							</tr>
+						</table>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+
+
+</html>

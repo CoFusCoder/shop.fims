@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+
+
+		<div>
+		<a th:href="@{/allAccountView}">
+		<button type="button" class="btn btn-default" >뒤로가기</button>
+		</a>
+		</div>
+		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+            <th:block th:each="a : ${selectByAccount}">
+              <h4><i class="fa fa-angle-right"></i></span> 거래처 상세보기 </h4><br>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>거래처코드</th>
+                      <th>모든 행정기관코드</th>
+                      <th>모든 지역 시군코드</th>
+                      <th>전국지역코드</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${a.catAccCd}"></td>
+	               		<td th:text="${a.areacityAdminCd}"></td>
+	               		<td th:text="${a.areaCityCd}"></td>
+	               		<td th:text="${a.areaCd}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th>위원회코드</th>
+                    	<th>거래처명</th>
+                    	<th>사업자분류</th>
+                    	<th>거래처대표자명</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>	
+						<td th:text="${a.manComCd}"></td>
+	               		<td th:text="${a.catAccNm1}"></td>
+	               		<td th:text="${a.catAccOper}"></td>
+	               		<td th:text="${a.catAccNm2}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+	                    <th>거래처사업장주소</th>
+	                    <th>거래처사업자등록번호</th>
+	                    <th>거래처법인등록번호</th>
+	                    <th>거래처팩스번호</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	               		<td th:text="${a.catAccAddr}"></td>
+	               		<td th:text="${a.catAccNo1}"></td>
+	               		<td th:text="${a.catAccNo2}"></td>
+	               		<td th:text="${a.catAccPhone1}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+	                    <th>대표자 전화번호</th>
+	                    <th>거래처 대표번호</th>
+	                    <th>거래처이메일</th>
+	                    <th>등록일자</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	               		<td th:text="${a.catAccPhone2}"></td>
+	               		<td th:text="${a.catAccPhone3}"></td>
+	               		<td th:text="${a.catAccEmail}"></td>
+	               		<td th:text="${a.catAccDt1}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th>승인자</th>
+						<th>위원회명</th>
+						<th>승인일자</th>
+						<th>승인 상태</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	               		<td th:text="${a.catAccApp}"></td>
+	               		<td th:text="${a.manComNm1}"></td>
+	               		<td th:text="${a.catAccDt2}"></td>
+	               		<td th:text="${a.catAccCon}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th colspan="2">수정ㅤㅤㅤㅤㅤㅤㅤ</th>
+						<th colspan="2">삭제ㅤㅤㅤㅤㅤㅤㅤ</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	                    <td colspan="2">
+		                    <a th:href="@{/updateAllAccount(catAccCd=${a.catAccCd})}">
+		                    <button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
+	                    </td>
+	                    <td colspan="2">
+	                    	<a th:href="@{/deleteAllAccount(catAccCd=${a.catAccCd})}">
+	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
+	                    </td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  
+                </table>
+              </section>
+              </th:block>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>
+

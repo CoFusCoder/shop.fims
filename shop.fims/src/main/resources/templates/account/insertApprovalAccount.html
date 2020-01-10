@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+
+
+              <h4><i class="fa fa-angle-right"></i></span> 승인된 거래처 등록하기 </h4><br>
+			 <div class="form-panel">
+		              <div class="form">
+		                <form th:action="@{/insertApprovalAccount}" method="post" class="cmxform form-horizontal style-form" id="commentForm">
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처별 승인 업종 코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catAppAccCd" type="text" name="catAppAccCd" required/>
+		                    </div>
+		                  </div> 
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든 행정기관코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="areacityAdminCd" type="text" name="areacityAdminCd"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처 업종 분류코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catBusAccCd" type="text" name="catBusAccCd"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catAccCd" type="text" name="catAccCd"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든 지역 시군코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="areaCityCd" type="text" name="areaCityCd"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">전국지역코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="areaCd" type="text" name="areaCd"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">위원회코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="manComCd" type="text" name="manComCd"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처명</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catAccNm1" type="text" name="catAccNm1"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처업종분류</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catBusAccBus" type="text" name="catBusAccBus"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">승인자</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catAppAccApp" type="text" name="catAppAccApp"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">위원회명</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="manComNm1" type="text" name="manComNm1"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">승인일자</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catAppAccDt" type="text" name="catAppAccDt"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">승인 상태</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catAppAccCon" type="text" name="catAppAccCon"/>
+		                    </div>
+		                  </div>   
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처업무</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catAppAccPur" type="text" name="catAppAccPur"/>
+		                    </div>
+		                  </div>   
+
+		                  <div class="form-group">
+		                    <div class="col-lg-offset-2 col-lg-10">
+		                      <button class="btn btn-theme" type="submit" value="등록">등록하기</button>
+		                   </div>
+		                   </div>
+		                   <div class="form-group">
+		                   	<div class="col-lg-offset-2 col-lg-10">
+			                   <a th:href="@{/approvalAccountView}">
+			                    	<button class="btn btn-theme04" type="button">취소</button>
+			                   </a>
+		                   </div>
+		                   </div>
+		                   
+		                  </div>
+		                </form>
+		              </div>
+		            </div>
+		            
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

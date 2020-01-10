@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shop.fims.goods.FestivalGoodsMapper">
+  
+<!-- 축제물품 대분류 resultMap -->
+	<resultMap type="shop.fims.vo.GoodsLDiv" id="goodsLDivResultmap">
+		<result property="festgoodsLdivCd" column="festgoods_ldiv_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="festTitle" column="fest_title"/>
+		<result property="festgoodsLdivNm" column="festgoods_ldiv_nm"/>
+	</resultMap>
+
+<!-- 축제물품 소분류 resultMap -->  
+	<resultMap type="shop.fims.vo.GoodsSDiv" id="goodsSDivResultmap">
+		<result property="festgoodsSdivCd" column="festgoods_sdiv_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="festTitle" column="fest_title"/>
+		<result property="festgoodsLdivCd" column="festgoods_ldiv_cd"/>
+		<result property="festgoodsSdivNm" column="festgoods_sdiv_nm"/>
+	</resultMap>
+	
+
+<!-- 축제물품 입고 resultMap -->  
+	<resultMap type="shop.fims.vo.FestivalGoodsIn" id="festivalGoodsInResultmap">
+		<result property="festgoodsInCd" column="festgoods_in_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="festgoodsLdivCd" column="festgoods_ldiv_cd"/>
+		<result property="festgoodsSdivCd" column="festgoods_sdiv_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="catAccCd" column="cat_acc_cd"/>
+		<result property="accMemCd" column="acc_mem_cd"/>
+		<result property="fesrevBudCd" column="fesrev_bud_cd"/>
+		<result property="festTitle" column="fest_title"/>
+		<result property="festNm" column="fest_nm"/>
+		<result property="festgoodsInNm" column="festgoods_in_nm"/>
+		<result property="festgoodsInDetail" column="festgoods_in_detail"/>
+		<result property="festgoodsInAmt" column="festgoods_in_amt"/>
+		<result property="groupCd" column="group_cd"/>
+		<result property="actionDt" column="action_dt"/>
+		<result property="actionStatus" column="action_status"/>
+		<result property="festgoodsExpense" column="festgoods_expense"/>
+		<result property="insertDt" column="insert_dt"/>
+	</resultMap>
+
+ 
+<!-- 축제물품 출고 resultMap -->  
+	<resultMap type="shop.fims.vo.FestivalGoodsOut" id="festivalGoodsOutResultmap">
+		<result property="festgoodsOutCd" column="festgoods_out_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="festgoodsInCd" column="festgoods_in_cd"/>
+		<result property="accMemCd" column="acc_mem_cd"/>
+		<result property="festTitle" column="fest_title"/>
+		<result property="festgoodsOutNm" column="festgoods_out_nm"/>
+		<result property="festgoodsOutDetail" column="festgoods_out_detail"/>
+		<result property="festgoodsOutAmt" column="festgoods_out_amt"/>
+		<result property="festgoodsStock" column="festgoods_stock"/>
+		<result property="insertDt" column="insert_dt"/>
+		<result property="festNm" column="fest_nm"/>
+	</resultMap>
+ 
+<!-- 입고코드로 물품 입고리스트 조회 -->
+  <select id="selectGoodsInByIncd" resultMap="festivalGoodsInResultmap">
+	SELECT
+		f.fest_nm
+		,gi.*
+	FROM 
+		Fest_Goods_in AS gi
+		INNER join
+		Festival AS f
+	ON f.fest_cd=gi.fest_cd
+	WHERE gi.festgoods_in_cd=(#{festgoodsInCd})
+  </select>
+  
+<!-- 물품 출고리스트 조회 -->
+  <select id="selectAllGoodsOut" resultMap="festivalGoodsOutResultmap">
+	SELECT
+		f.fest_nm
+		,go.*
+	FROM 
+		Fest_Goods_out AS go
+		INNER join
+		Festival AS f
+	ON f.fest_cd=go.fest_cd
+  </select>
+  
+<!-- 물품입고리스트 조회 -->
+  <select id="selectAllGoodsIn" resultMap="festivalGoodsInResultmap">
+	SELECT
+		f.fest_nm
+		,gi.*
+	FROM 
+		Fest_Goods_in AS gi
+		INNER join
+		Festival AS f
+	ON f.fest_cd=gi.fest_cd
+  </select> 
+  
+  
+  
+  
+  <!-- 물품 대분류조회 -->
+  <select id="selectAllLDiv" resultMap="goodsLDivResultmap">
+ 	 SELECT
+		*
+	FROM 
+		Fest_Goods_Ldiv
+  </select>
+  <!-- 물품 소분류조회 -->
+  <select id="selectAllSDiv" resultMap="goodsSDivResultmap">
+  SELECT
+	*
+	FROM 
+		Fest_Goods_Sdiv
+  </select>
+  
+  
+  
+  </mapper>

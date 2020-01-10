@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop.fims.goods.GoodsrevenueMapper">
+<!-- 모든 축제별 보유물품 대여관리 리스트 - 세입 -->
+<resultMap type="shop.fims.vo.Revenue" id="revenueMap">
+	<result property="goodsrenRevCd" column="goodsren_rev_cd"/>
+	<result property="areacityAdminCd" column="areacity_admin_cd"/>
+	<result property="areaCd" column="area_cd"/>
+	<result property="areaCityCd" column="area_city_cd"/>
+	<result property="festCd" column="fest_cd"/>
+	<result property="catbusAccCd" column="catbus_acc_cd"/>
+	<result property="catAccCd" column="cat_acc_cd"/>
+	<result property="catappAccCd" column="catapp_acc_cd"/>
+	<result property="fesrevBudCd" column="fesrev_bud_cd"/>
+	<result property="manComCd" column="man_com_cd"/>
+	<result property="deliverBre" column="deliver_bre"/>
+	<result property="goodsAmt" column="goods_amt"/>
+	<result property="money" column="money"/>
+	<result property="lender" column="lender"/>
+	<result property="returnSituation" column="return_situation"/>
+	<result property="returnDueDt" column="return_due_dt"/>
+	<result property="returnDt" column="return_dt"/>
+	<result property="groupCd" column="group_cd"/>
+	<result property="actionDt" column="action_dt"/>
+	<result property="actionStatus" column="action_status"/>
+
+
+
+</resultMap>
+<select id="revenuelist" resultMap="revenueMap">
+SELECT
+*
+FROM
+Goods_rental_revenue
+
+
+</select>
+
+<select id="coderevenue" resultMap="revenueMap">
+SELECT
+*
+FROM
+Goods_rental_revenue
+WHERE 
+goodsren_rev_cd = #{goodsren_rev_cd}
+
+
+</select>
+
+</mapper>

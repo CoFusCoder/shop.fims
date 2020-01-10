@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+
+<th:block layout:fragment="adminisTitle"></th:block>
+	<title>거래처분석</title>
+</th:block>
+	<th:block layout:fragment="adminisMainContents">
+		<h3><i class="fa fa-angle-right"></i>거래처분석</h3>
+        <!-- page start-->
+        <div class="flot-chart">
+          <!-- page start-->
+          <div class="row mt">
+            <div class="col-lg-12">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i>거래처분석</h4>
+                <div class="panel-body">
+                  <div id="chart-1" class="chart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt">
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Selection Chart</h4>
+                <div class="panel-body">
+                  <div id="chart-2" class="chart"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Live Chart</h4>
+                <div class="panel-body">
+                  <div id="chart-3" class="chart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt">
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Support Chart</h4>
+                <div class="panel-body">
+                  <div id="chart-4" class="chart"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Bar Chart</h4>
+                <div class="panel-body">
+                  <div id="chart-5" style="height:350px;"></div>
+                  <div class="btn-toolbar">
+                    <div class="btn-group stackControls">
+                      <input type="button" class="btn btn-info" value="With stacking" />
+                      <input type="button" class="btn btn-danger" value="Without stacking" />
+                    </div>
+                    <div class="space5"></div>
+                    <div class="btn-group graphControls">
+                      <input type="button" class="btn" value="Bars" />
+                      <input type="button" class="btn" value="Lines" />
+                      <input type="button" class="btn" value="Lines with steps" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--/coontent-panel -->
+            </div>
+            <!-- /col-lg-6 --->
+          </div>
+          <!-- row -->
+        </div>
+        <!--/flot-chart -->
+        <!-- page end-->
+
+	</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+  <script src="/adminis/lib/flot/jquery.flot.js"></script>
+  <script src="/adminis/lib/flot/jquery.flot.resize.js"></script>
+  <script src="/adminis/lib/flot/jquery.flot.stack.js"></script>
+  <script src="/adminis/lib/flot/jquery.flot.crosshair.js"></script>
+  <script src="/adminis/lib/flotchart-conf.js"></script>
+
+</th:block>
+</html>

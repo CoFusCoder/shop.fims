@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+
+
+              <h4><i class="fa fa-angle-right"></i></span> 거래처 업종 분류 수정하기 </h4><br>
+			 <div class="form-panel">
+		              <div class="form">
+		                <form th:action="@{/updateAccountCatBus}" method="post" class="cmxform form-horizontal style-form" id="commentForm" th:with="a = ${selectByAccCatBus}">
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처 업종 분류코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="catbus_acc_cd" type="text" name="catBusAccCd" th:value="${a.catBusAccCd}" readonly/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처업종분류</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="catbus_acc_bus" type="text" name="catBusAccBus" th:value="${a.catBusAccBus}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <div class="col-lg-offset-2 col-lg-10">
+		                      <button class="btn btn-theme" type="submit" value="등록">수정하기</button>
+		                   </div>
+		                   </div>
+		                   <div class="form-group">
+		                   	<div class="col-lg-offset-2 col-lg-10">
+			                   <a th:href="@{/accountCatBusView}">
+			                    	<button class="btn btn-theme04" type="button">취소</button>
+			                   </a>
+		                   </div>
+		                   </div>
+		                   
+		                  </div>
+		                </form>
+		              </div>
+		            </div>
+		            
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

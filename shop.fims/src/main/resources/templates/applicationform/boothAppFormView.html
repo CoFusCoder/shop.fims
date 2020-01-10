@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+
+		<h3>부스신청서관리</h3>
+		<div align= "right">
+			<a th:href="@{/insertBoothAppForm}">
+				<button type="button" class="btn btn-default">부스신청하기</button>
+			</a>
+		</div>		
+		<div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>부스신청서리스트</h4>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>부스 참가신청서관리</th>
+                    <th>부스명</th>
+                    <th>신청자</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>값1</td>
+                    <td>값1</td>
+                    <td>값1</td>
+                    <td><a th:href="@{/updateBoothAppForm}">수정</a></td>
+                    <td><a th:href="@{/boothAppFormView}">삭제</a></td>
+                    
+                  </tr>	
+
+                </tbody>
+              </table>
+            </div>
+            
+            
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

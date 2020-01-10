@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8">
+<!-- 날짜입력에 달력넣기스크립트 -->
+<!--
+<link rel="stylesheet" type="text/css" href="/adminis/ebudget/css/tcal.css">
+<script type="text/javascript" src="/adminis/ebudget/js/tcal.js"></script>
+-->
+
+
+<link rel="stylesheet" href="/adminis/ebudget/css/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/adminis/ebudget/css/jqplot/jquery.jqplot.css"/>
+<script src="/adminis/ebudget/js/jquery-1.7.2.min.js"></script>
+<script src="/adminis/ebudget/js/jquery-ui.js"></script>
+<script src="/adminis/ebudget/js/bcal.js"></script>
+
+<script src="/adminis/ebudget/js/selectivizr.js"></script>
+<script src="/adminis/ebudget/js/selectivizr-min.js"></script>
+<script src="/adminis/ebudget/js/respond.min.js"></script>
+<script src="/adminis/ebudget/js/html5shiv.js"></script>
+<script src="/adminis/ebudget/js/jquery.h5validate.js"></script>
+
+<!--<script src="/adminis/ebudget/js/jquery-1.11.3.min.js"></script>-->
+<script src='/adminis/ebudget/js/bootstrap-treefy.js'></script>
+
+<link rel='stylesheet' href='/adminis/ebudget/css/main.css' type='text/css'>
+<link rel='stylesheet' href='/adminis/ebudget/css/mediaquery.css' type='text/css' media = "screen" />
+
+<!--<meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1"> -->
+
+<title>
+축제통합관리시스템</title>
+</head>
+<body>
+<header>
+
+  <div id="headerW">
+  <label for="toggle" id="togglemenu" onclick>MENU</label>
+
+
+    <div id="topW" style="background-color:#2B2B2B;">
+    <div class="top">
+
+    <ul>
+
+    		<!--<li style="color:#efefef;" class="jest"><a href="http://www.jeongeup.go.kr/index.jeongeup?menuCd=DOM_000000104007003000" title='홈으로이동'>정읍시에 바란다</a></li>-->
+		<li style="color:#efefef;"><a href="/dashboard" title='관리자 홈페이지로 이동'>!관리자 홈페이지</a></li>
+	<li ><a href="/gukminview/index" title='축제 홈페이지로 이동'  target='_blank'>!축제 홈페이지</a></li>
+
+	</ul>
+  </div>
+ </div><!--topW-->
+
+
+
+
+
+   <!--<div id="bg"></div>-->
+
+<nav>
+   <div id="navW">
+		<div class="sub_logo">
+		  <a href="/revExpBudgetView">
+			<img src="/gukmin/assets/images/fimslog.jpg" alt='홈으로이동' title='홈으로이동'>
+			<span title='세입세출재정정보공개시스템'>!세입·세출재정정보공개시스템</span>
+		  </a>
+		</div>
+
+
+
+
+		<div class="sub_menu">
+
+           <!--<nav id="navigation-list">-->
+
+            <input type="checkbox" id="toggle"/>
+			<ul class="clearfix" id="nav">
+							    <li><a href="/fundManStatusView" class="menu0" title='자금운용현황'>!자금운용현황</a></li>
+				
+				<li><a href="/revBudgetView" class="menu1" title='세입현황'>!세입현황</a></li>
+				<li>
+				<a href='/revExpExecutionView' class='menu2' title='세출현황'>!세출현황</a></li>
+				<li><a href='#' class='menu3' target='_blank'  title='세입세출예산'>#세입·세출예산</a></li><li><a href='#' class='menu4' target='_blank'  title='세입세출결산'>#세입·세출결산</a></li>			  </ul>
+		 </div><!--.sub_menu-->
+
+		 </div><!--navW-->
+
+			</nav>
+
+
+	</div><!--headerW-->
+
+
+
+
+
+
+
+
+</header>
+
+
+
+<div id="contentW">
+<div class="content">
+
+
+
+
+
+<div id="sub_title">예산집행현황</div>
+<div id="sub_menu">
+	<ul>
+	<li><a href="/revExpExecutionView" title='예산집행현황'>!예산집행현황</a></li>	<li><a href="/expEntBudgetView" class="tab2" title='사업 및 예산정보'>!사업 및 예산정보</a></li>	<li><a href="/expExecutionView" title='지출정보'>!지출정보</a></li>    	</ul>
+</div>
+
+<div id="ex">
+	<p>- 총 예산액과 현재까지의 지출총액을 분야별로 나누어 보실 수 있습니다.<br>
+	   - 위에 예산집행현황을 클릭하시면 검색조건이 초기화됩니다.
+	</p>
+</div>
+
+<div id="search_table">
+	<!-- 검색항목출력 폼 -->
+<!-- 	<form name="board_form" method="post" action="./eBudgetList201.html?mode=search&code=201"> 	 -->
+	<form name="board_form" method="post" action="#"> 	
+		<table>
+		<caption>#예산집행현황 검색</caption>
+			<tr>
+				<th scope="col">회계년도</th><td><label for='select'>년도선택</label><select name='year' title='년도선택' id='select'><option value='2019'>2019</option><option value='2018'>2018</option><option value='2017'>2017</option><option value='2016'>2016</option><option value='2015'>2015</option><option value='2014'>2014</option> </select></td>
+				<th scope="col">기간</th>
+				<td>
+					<input type="text" id="dp1" name="day1" value="2019-12-22" title='시작날짜선택' readonly>-
+					<label for="dp1"></label>
+					<input type="text" id="dp2" name="day2" value="2019-12-23" title='끝날짜선택' readonly>
+					<label for="dp2"></label>
+				</td>
+			</tr>
+		</table>
+		<div class="searchbtn">
+		<input type="image" src="http://gyeyak.namwon.go.kr/ebudget/img/search_btn.gif" class="btn" alt='검색버튼' title='검색'>
+		</div>
+	</form>
+</div><!--search_table-->
+
+
+<div id="list_wrap">
+<span class="ex_2">(단위 : 원)</span>
+  <table id="list_table" class="page201">
+  <caption>#예산집행현황</caption>
+	<thead>
+		<tr>
+			<th scope="col" rowspan="2" class="numeric">분야별</th>
+			<th scope="col" rowspan="2" class="numeric">예산액(A)</th>
+			<th scope="col" colspan="3" class="numeric">지출액</th>
+			<th scope='col' rowspan='2' class='numeric'>비율(B/A)</th>		</tr>
+		<tr>
+			<th scope="col" class="numeric">조회기간전</th><th scope='col' class="numeric">조회기간내</th><th scope='col'  class="numeric">누계(B)</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		<tr><th scope='col'>일반공공행정</th><td data-title='예산액' class='numeric' >37,845,960,000</td><td data-title='지출액-조회기간전' class='numeric' >29,833,904,615</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >29,833,904,615</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>78.83 <span class='style01'>%</span></td></tr><tr><th scope='col'>공공질서및안전</th><td data-title='예산액' class='numeric' >11,187,159,000</td><td data-title='지출액-조회기간전' class='numeric' >5,697,891,115</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >5,697,891,115</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>50.93 <span class='style01'>%</span></td></tr><tr><th scope='col'>교육</th><td data-title='예산액' class='numeric' >8,458,780,000</td><td data-title='지출액-조회기간전' class='numeric' >8,229,889,220</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >8,229,889,220</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>97.29 <span class='style01'>%</span></td></tr><tr><th scope='col'>문화및관광</th><td data-title='예산액' class='numeric' >83,065,877,000</td><td data-title='지출액-조회기간전' class='numeric' >61,187,907,800</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >61,187,907,800</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>73.66 <span class='style01'>%</span></td></tr><tr><th scope='col'>환경보호</th><td data-title='예산액' class='numeric' >92,306,231,000</td><td data-title='지출액-조회기간전' class='numeric' >34,230,256,995</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >34,230,256,995</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>37.08 <span class='style01'>%</span></td></tr><tr><th scope='col'>사회복지</th><td data-title='예산액' class='numeric' >168,487,768,000</td><td data-title='지출액-조회기간전' class='numeric' >152,423,603,875</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >152,423,603,875</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>90.47 <span class='style01'>%</span></td></tr><tr><th scope='col'>보건</th><td data-title='예산액' class='numeric' >13,023,103,000</td><td data-title='지출액-조회기간전' class='numeric' >12,451,727,570</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >12,451,727,570</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>95.61 <span class='style01'>%</span></td></tr><tr><th scope='col'>농림해양수산</th><td data-title='예산액' class='numeric' >198,967,429,000</td><td data-title='지출액-조회기간전' class='numeric' >173,003,701,286</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >173,003,701,286</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>86.95 <span class='style01'>%</span></td></tr><tr><th scope='col'>산업ㆍ중소기업</th><td data-title='예산액' class='numeric' >31,774,228,000</td><td data-title='지출액-조회기간전' class='numeric' >23,147,900,973</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >23,147,900,973</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>72.85 <span class='style01'>%</span></td></tr><tr><th scope='col'>수송및교통</th><td data-title='예산액' class='numeric' >60,546,712,000</td><td data-title='지출액-조회기간전' class='numeric' >40,475,003,400</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >40,475,003,400</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>66.85 <span class='style01'>%</span></td></tr><tr><th scope='col'>국토및지역개발</th><td data-title='예산액' class='numeric' >73,055,069,000</td><td data-title='지출액-조회기간전' class='numeric' >62,876,467,280</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >62,876,467,280</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>86.07 <span class='style01'>%</span></td></tr><tr><th scope='col'>과학기술</th><td data-title='예산액' class='numeric' >335,534,000</td><td data-title='지출액-조회기간전' class='numeric' >320,908,770</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >320,908,770</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>95.64 <span class='style01'>%</span></td></tr><tr><th scope='col'>예비비</th><td data-title='예산액' class='numeric' >8,778,275,000</td><td data-title='지출액-조회기간전' class='numeric' >503,027,595</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >503,027,595</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>5.73 <span class='style01'>%</span></td></tr><tr><th scope='col'>기타</th><td data-title='예산액' class='numeric' >98,922,137,000</td><td data-title='지출액-조회기간전' class='numeric' >89,344,581,977</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >89,344,581,977</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>90.32 <span class='style01'>%</span></td></tr>		<tr class="sum">
+			<th scope="col">합계</th>
+			<td data-title='예산액(A)' class='numeric' >886,754,262,000</td>
+			<td data-title='지출액-조회기간전' class='numeric' >693,726,772,471</td>
+			<td data-title='지출액-조회기간내' class='numeric' >0</td>
+			<td data-title='지출액-누계(B)' class='numeric' >693,726,772,471</td>
+						<td data-title='비율(B/A)' class='numeric' id='total_per' >78.23<span class='style01'>%</span></td>
+					</tr>
+
+	</tbody>
+  </table>
+
+
+ 
+<div class="btn01" id="noprint">
+<div class="down_icon"><form method="POST" action = "./eBudgetDown201.html"><form method="POST" action = "./eBudgetDown201.html"><input type="hidden" name="data" value="a%3A15%3A%7Bi%3A0%3Ba%3A6%3A%7Bi%3A0%3Bs%3A18%3A%22%EC%9D%BC%EB%B0%98%EA%B3%B5%EA%B3%B5%ED%96%89%EC%A0%95%22%3Bi%3A1%3Bs%3A14%3A%2237%2C845%2C960%2C000%22%3Bi%3A2%3Bs%3A14%3A%2229%2C833%2C904%2C615%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A14%3A%2229%2C833%2C904%2C615%22%3Bi%3A5%3Bs%3A5%3A%2278.83%22%3B%7Di%3A1%3Ba%3A6%3A%7Bi%3A0%3Bs%3A21%3A%22%EA%B3%B5%EA%B3%B5%EC%A7%88%EC%84%9C%EB%B0%8F%EC%95%88%EC%A0%84%22%3Bi%3A1%3Bs%3A14%3A%2211%2C187%2C159%2C000%22%3Bi%3A2%3Bs%3A13%3A%225%2C697%2C891%2C115%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A13%3A%225%2C697%2C891%2C115%22%3Bi%3A5%3Bs%3A5%3A%2250.93%22%3B%7Di%3A2%3Ba%3A6%3A%7Bi%3A0%3Bs%3A6%3A%22%EA%B5%90%EC%9C%A1%22%3Bi%3A1%3Bs%3A13%3A%228%2C458%2C780%2C000%22%3Bi%3A2%3Bs%3A13%3A%228%2C229%2C889%2C220%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A13%3A%228%2C229%2C889%2C220%22%3Bi%3A5%3Bs%3A5%3A%2297.29%22%3B%7Di%3A3%3Ba%3A6%3A%7Bi%3A0%3Bs%3A15%3A%22%EB%AC%B8%ED%99%94%EB%B0%8F%EA%B4%80%EA%B4%91%22%3Bi%3A1%3Bs%3A14%3A%2283%2C065%2C877%2C000%22%3Bi%3A2%3Bs%3A14%3A%2261%2C187%2C907%2C800%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A14%3A%2261%2C187%2C907%2C800%22%3Bi%3A5%3Bs%3A5%3A%2273.66%22%3B%7Di%3A4%3Ba%3A6%3A%7Bi%3A0%3Bs%3A12%3A%22%ED%99%98%EA%B2%BD%EB%B3%B4%ED%98%B8%22%3Bi%3A1%3Bs%3A14%3A%2292%2C306%2C231%2C000%22%3Bi%3A2%3Bs%3A14%3A%2234%2C230%2C256%2C995%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A14%3A%2234%2C230%2C256%2C995%22%3Bi%3A5%3Bs%3A5%3A%2237.08%22%3B%7Di%3A5%3Ba%3A6%3A%7Bi%3A0%3Bs%3A12%3A%22%EC%82%AC%ED%9A%8C%EB%B3%B5%EC%A7%80%22%3Bi%3A1%3Bs%3A15%3A%22168%2C487%2C768%2C000%22%3Bi%3A2%3Bs%3A15%3A%22152%2C423%2C603%2C875%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A15%3A%22152%2C423%2C603%2C875%22%3Bi%3A5%3Bs%3A5%3A%2290.47%22%3B%7Di%3A6%3Ba%3A6%3A%7Bi%3A0%3Bs%3A6%3A%22%EB%B3%B4%EA%B1%B4%22%3Bi%3A1%3Bs%3A14%3A%2213%2C023%2C103%2C000%22%3Bi%3A2%3Bs%3A14%3A%2212%2C451%2C727%2C570%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A14%3A%2212%2C451%2C727%2C570%22%3Bi%3A5%3Bs%3A5%3A%2295.61%22%3B%7Di%3A7%3Ba%3A6%3A%7Bi%3A0%3Bs%3A18%3A%22%EB%86%8D%EB%A6%BC%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%22%3Bi%3A1%3Bs%3A15%3A%22198%2C967%2C429%2C000%22%3Bi%3A2%3Bs%3A15%3A%22173%2C003%2C701%2C286%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A15%3A%22173%2C003%2C701%2C286%22%3Bi%3A5%3Bs%3A5%3A%2286.95%22%3B%7Di%3A8%3Ba%3A6%3A%7Bi%3A0%3Bs%3A21%3A%22%EC%82%B0%EC%97%85%E3%86%8D%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%22%3Bi%3A1%3Bs%3A14%3A%2231%2C774%2C228%2C000%22%3Bi%3A2%3Bs%3A14%3A%2223%2C147%2C900%2C973%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A14%3A%2223%2C147%2C900%2C973%22%3Bi%3A5%3Bs%3A5%3A%2272.85%22%3B%7Di%3A9%3Ba%3A6%3A%7Bi%3A0%3Bs%3A15%3A%22%EC%88%98%EC%86%A1%EB%B0%8F%EA%B5%90%ED%86%B5%22%3Bi%3A1%3Bs%3A14%3A%2260%2C546%2C712%2C000%22%3Bi%3A2%3Bs%3A14%3A%2240%2C475%2C003%2C400%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A14%3A%2240%2C475%2C003%2C400%22%3Bi%3A5%3Bs%3A5%3A%2266.85%22%3B%7Di%3A10%3Ba%3A6%3A%7Bi%3A0%3Bs%3A21%3A%22%EA%B5%AD%ED%86%A0%EB%B0%8F%EC%A7%80%EC%97%AD%EA%B0%9C%EB%B0%9C%22%3Bi%3A1%3Bs%3A14%3A%2273%2C055%2C069%2C000%22%3Bi%3A2%3Bs%3A14%3A%2262%2C876%2C467%2C280%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A14%3A%2262%2C876%2C467%2C280%22%3Bi%3A5%3Bs%3A5%3A%2286.07%22%3B%7Di%3A11%3Ba%3A6%3A%7Bi%3A0%3Bs%3A12%3A%22%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%22%3Bi%3A1%3Bs%3A11%3A%22335%2C534%2C000%22%3Bi%3A2%3Bs%3A11%3A%22320%2C908%2C770%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A11%3A%22320%2C908%2C770%22%3Bi%3A5%3Bs%3A5%3A%2295.64%22%3B%7Di%3A12%3Ba%3A6%3A%7Bi%3A0%3Bs%3A9%3A%22%EC%98%88%EB%B9%84%EB%B9%84%22%3Bi%3A1%3Bs%3A13%3A%228%2C778%2C275%2C000%22%3Bi%3A2%3Bs%3A11%3A%22503%2C027%2C595%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A11%3A%22503%2C027%2C595%22%3Bi%3A5%3Bs%3A4%3A%225.73%22%3B%7Di%3A13%3Ba%3A6%3A%7Bi%3A0%3Bs%3A6%3A%22%EA%B8%B0%ED%83%80%22%3Bi%3A1%3Bs%3A14%3A%2298%2C922%2C137%2C000%22%3Bi%3A2%3Bs%3A14%3A%2289%2C344%2C581%2C977%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A14%3A%2289%2C344%2C581%2C977%22%3Bi%3A5%3Bs%3A5%3A%2290.32%22%3B%7Di%3A14%3Ba%3A6%3A%7Bi%3A0%3Bs%3A6%3A%22%ED%95%A9%EA%B3%84%22%3Bi%3A1%3Bs%3A15%3A%22886%2C754%2C262%2C000%22%3Bi%3A2%3Bs%3A15%3A%22693%2C726%2C772%2C471%22%3Bi%3A3%3Bs%3A1%3A%220%22%3Bi%3A4%3Bs%3A15%3A%22693%2C726%2C772%2C471%22%3Bi%3A5%3Bs%3A5%3A%2278.23%22%3B%7D%7D"><input type="hidden" name="biyYN" value="visible"><input type="submit" value="" title="엑셀파일 다운로드"></form></div>
+<span class="print_icon"><button onclick="content_print()" title="인쇄하기"></button></span>
+</div>
+
+
+</div>
+
+
+<div id="graphW">
+ <div class="graphwrap">
+<div id="bar_graph"></div>
+				<div id="donut_graph">
+				<span id="total"></span>
+			</div></div><!--graphwrap-->
+</div><!--graphW-->
+
+<div id='ex3'> ※ 본 자료는 2015.11.14 부터 연계되오니 실자료와 상이 할 수 있습니다.</div>
+
+<script src ="/adminis/ebudget/js/eBudgetList201.js" charset='utf-8'></script>
+ </div>
+ </div>
+
+
+
+ <footer>
+   
+   <div id="footer">
+   <div class="foot_bar"></div>
+      <ul>
+		  <li class="count">
+		  		  </li>
+         <li class="logo2"><img src="/gukmin/assets/images/fimslog.jpg" alt="축제통합관리시스템" title='축제통합관리시스템'></li>
+	     <li class="address">
+			 전라북도 전주시 덕진구 기린대로 446<br>Tel. 063) 1212-1004 Fax. 063) 1212-1005<br>Copyright ⓒ NAMWON CITY. All Rights Reserved.<br>          </li>
+
+        </ul>
+    </div>
+ </footer>
+
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/jquery.jqplot.js"></script>
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/plugins/jqplot.categoryAxisRenderer.js"></script>
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/plugins/jqplot.barRenderer.js"></script>
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/plugins/jqplot.pointLabels.js"></script>
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/plugins/jqplot.enhancedLegendRenderer.js"></script>
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/plugins/jqplot.logAxisRenderer.js"></script>
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/plugins/jqplot.canvasTextRenderer.js"></script>
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/plugins/jqplot.canvasAxisTickRenderer.js"></script>
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/plugins/jqplot.pieRenderer.js"></script>
+<script type="text/javascript" src="/adminis/ebudget/js/jqplot/plugins/jqplot.donutRenderer.js"></script>
+<script>
+bar_graph();
+donut_graph();
+</script>
+
+
+
+<script>
+$('.menu2').addClass('munu_2');
+</script>
+
+
+</body>
+</html>

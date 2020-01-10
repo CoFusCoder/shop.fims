@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+
+
+
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+
+		<h3>위원회신청서관리</h3>
+		<div align= "right">
+			<a th:href="@{/insertCommitteeAppForm}">
+				<button type="button" class="btn btn-default">위원회 신청하기</button>
+			</a>
+		</div>
+		<br/>
+		<form class="form-inline" role="form" align="right" th:action="@{#}" method="get">
+			<select class="form-control" name="sk">
+	                <option value="#">이름</option>
+	              </select>
+	             <div class="form-group">
+	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="#">
+	             </div>
+	             <button type="submit" class="btn btn-theme">검색</button>
+        </form>		
+		
+		<div class="row mt">
+          <div class="col-md-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>위원회 신청서 리스트</h4>
+              <hr>
+             
+              <table class="table table-striped table-advance table-hover">
+                
+                <thead>
+                  <tr>                  	
+                    <th display:none >위원회참가신청서관리</th>
+                    <th>축제명</th>
+                    <th>위원회명</th>
+                    <th>공고명</th>
+                    <th>이름</th>
+                    <th>신청일</th>
+                    <th>합격여부</th>
+                    <th>상세보기</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   <tr th:each="c:${committeeAppFormView}"> 
+               		<td th:text="${c.comAppCd}" display:none></td>
+               		<td th:text="${c.festNm}"></td>
+               		<td th:text="${c.manComNm1}"></td>
+               		<td th:text="${c.festAnnNm}"></td>
+               		<td th:text="${c.comAppNm}"></td>
+               		<td th:text="${c.comAppDt1}"></td>
+               		<td th:text="${c.comAppSel}"></td>
+			 		<td>
+			 		  <a th:href="@{/committeeAppFormDetail(comAppCd=${c.comAppCd})}">
+			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a> 
+			 		</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <div class="dataTables_paginate paging_bootstrap pagination">
+              	<ul>
+              		<li class="prev disabled">
+		              	<!-- 이전 -->
+						<a th:if="${currentPage > 1}" 
+						th:href="@{/committeeAppFormView(currentPage=${currentPage - 1})}">이전</a>
+					</li>	
+					<li class="active">	
+						<th:block th:each="num:${#numbers.sequence(startPageNum,lastPageNum)}">
+								<a th:if="${currentPage == num}" 
+								th:text="${num}"></a>	
+								<a style="color: black; background-color: white"th:unless="${currentPage == num}" 
+								th:text="${num}" 
+								th:href="@{/committeeAppFormView(currentPage=${num})}"></a>
+						</th:block>
+					</li>	
+					<li class="next">	
+						<!-- 다음 -->
+						<a th:if="${currentPage < lastPage}" 
+						th:href="@{/committeeAppFormView(currentPage=${currentPage + 1})}">다음</a>
+					</li>	
+				</ul>
+				<ul>
+					<th>
+					</th>
+				</ul>
+			</div>
+
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-md-12 -->
+        </div>	
+	
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

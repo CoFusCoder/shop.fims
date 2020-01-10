@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+
+
+              <h4><i class="fa fa-angle-right"></i></span> 공고 수정하기 </h4><br>
+			 <div class="form-panel">
+		              <div class="form">
+		                <form th:action="@{/updateAnnouncement}" method="post" class="cmxform form-horizontal style-form" id="commentForm" th:with="a = ${selectByAllAnnouncement}">
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든축제공고코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="fesAnnCd" type="text" name="fesAnnCd" th:value="${a.fesAnnCd}" readonly/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든 행정기관코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="areaCityAdminCd" type="text" name="areaCityAdminCd" th:value="${a.areaCityAdminCd}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">전국지역코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="areaCd" type="text" name="areaCd" th:value="${a.areaCd}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든 지역 시군코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="areaCityCd" type="text" name="areaCityCd" th:value="${a.areaCityCd}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">축제코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="festCd" type="text" name="festCd" th:value="${a.festCd}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">위원회코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="manComCd" type="text" name="manComCd" th:value="${a.manComCd}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">축제명</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="festNm" type="text" name="festNm" th:value="${a.festNm}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">위원회명</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="manComNm1" type="text" name="manComNm1" th:value="${a.manComNm1}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">공고명</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="festAnnNm" type="text" name="festAnnNm" th:value="${a.festAnnNm}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">용역시작일</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="festAnnDt1" type="text" name="festAnnDt1" th:value="${a.festAnnDt1}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">용역종료일</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="festAnnDt2" type="text" name="festAnnDt2" th:value="${a.festAnnDt2}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">공고마감일</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="festAnnDt3" type="text" name="festAnnDt3" th:value="${a.festAnnDt3}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">공고내용</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="festAnnCon" type="text" name="festAnnCon" th:value="${a.festAnnCon}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">신청서양식첨부</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="festAnnAtt" type="text" name="festAnnAtt" th:value="${a.festAnnAtt}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">작성일</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="festAnnDt4" type="text" name="festAnnDt4" th:value="${a.festAnnDt4}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">행정기관명</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="areaCityAdminNm" type="text" name="areaCityAdminNm" th:value="${a.areaCityAdminNm}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">담당자</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="comMemNm2" type="text" name="comMemNm2" th:value="${a.comMemNm2}" />
+		                    </div>
+		                  </div>
+
+		                  <div class="form-group">
+		                    <div class="col-lg-offset-2 col-lg-10">
+		                      <button class="btn btn-theme" type="submit" value="등록">수정하기</button>
+		                   </div>
+		                   </div>
+		                   <div class="form-group">
+		                   	<div class="col-lg-offset-2 col-lg-10">
+			                   <a th:href="@{/announcementView}">
+			                    	<button class="btn btn-theme04" type="button">취소</button>
+			                   </a>
+		                   </div>
+		                   </div>
+		                   
+		                  </div>
+		                </form>
+		              </div>
+		            </div>
+		            
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

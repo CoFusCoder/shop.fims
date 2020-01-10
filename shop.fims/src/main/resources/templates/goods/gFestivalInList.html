@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+		
+		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4>축제 관련 물품 입고리스트</h4>
+              <div align="right">
+              <a th:href="@{/gInsertFestivalIn}" >
+              <button type="button" class="btn btn-primary">물품 입고등록</button></a>  
+              </div>
+              <hr>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>대분류</th>
+                      <th>소분류</th>
+                      <th>담당부서</th>
+                      <th>담당자</th>
+                      <th>거래처</th>
+                      <th>상품명</th>
+                      <th>수량</th>
+                      <th>입고목적</th>
+                      <th>금액</th>
+                      <th>마감여부</th>
+                      <th>마감일자</th>
+                      <th>작성일</th>
+                      <th>상세확인</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="i:${GoodsIn}">
+                      <td th:text="${i.festgoodsLdivCd}"></td>
+                      <td th:text="${i.festgoodsSdivCd}"></td>
+                      <td>무슨무슨부</td>
+                      <td th:text="${i.manComCd}"></td>
+                      <td th:text="${i.catAccCd}"></td>
+                      <td th:text="${i.festgoodsInNm}"></td>
+                      <td th:text="${i.festgoodsInAmt}"></td>
+                      <td th:text="${i.festgoodsInDetail}"></td>
+                      <td th:text="${i.festgoodsExpense}"></td>
+                      <td th:text="${i.actionStatus}"></td>
+                      <td th:text="${i.actionDt}"></td>
+                      <td th:text="${i.insertDt}"></td>
+                      <td><a th:href="@{/gFestivalInDetail(festgoodsInCd=${i.festgoodsInCd})}" >
+	                  	<button class="btn btn-success btn-xs">상세</button></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+				
+		
+		
+		
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

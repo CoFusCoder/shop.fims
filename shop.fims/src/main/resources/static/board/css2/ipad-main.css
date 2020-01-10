@@ -1,0 +1,22 @@
+@media screen and (max-width:1024px) {
+	#head{width:1024px;}
+	.hd_rt{right:15px;}
+	.mb_menu_but{display:block;position:absolute;left:10%;top:50%;margin-top:-8px;}
+	.main_menu{width:1024px;}
+	#slide_bg{display:none;}
+	.mobile_slide{display:block;}
+	.main_cons{width:1024px;}
+	.mcon_tp > div{margin-left:10px;width:328px;}
+	.mcon_tp > div > img{width:100%;}
+	.mcon_btm > div{margin:10px;width:328px;}
+	.mcon_btm_d2 > img{width:100%;}
+	.mcon_btm > div.mcon_btm_d3{margin-right:10px;}
+	.main_berzone{width:1024px;}
+	.img_frame{width:760px;}
+	.main_berzone > h3{margin-left:15px;}
+	.banner_control{left:100px;}
+	.foot_tp > div{width:1024px;}
+	.foot_tp > div > dl{width:170px;}
+	.foot_btm > div{width:1024px;}
+
+}

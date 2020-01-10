@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	  <title>일정관리 타임테이블</title>
+	
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+		
+		월/주/일별로 달력으로일정확인 가능 
+		해당 일정을 클릭하면 일정세부내역확인가능(일정코드필요)
+		
+
+		
+		
+		
+		
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>
+

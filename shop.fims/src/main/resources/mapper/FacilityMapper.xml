@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="shop.fims.facility.FacilityMapper">
+      <resultMap type="shop.fims.vo.Facility" id="facilityResultMap">
+  		<result property="catNm" column="fesfac_cat_nm"/>
+  		<result property="festNm" column="fest_nm"/>
+  		<result property="staNm" column="fac_sta_nm"/>
+   		<result property="staSite" column="fac_sta_site"/>
+   		<result property="staCount" column="fac_sta_count"/>
+   		<result property="comNm2" column="com_mem_nm2"/>
+   		<result property="actionDt" column="action_dt"/>  
+   		<result property="actionSta" column="action_status"/>
+   		<result property="maicheDt" column="facmai_che_dt"/> 
+   		<result property="maiCad" column="fac_mai_cad"/>
+   		<result property="maiinsIn" column="facmai_ins_in"/> 
+   		<result property="mairecDt" column="facmai_rec_dt"/> 
+   		<result property="maisupDt" column="facmai_sup_dt"/> 
+   		<result property="mairesHuman" column="facmai_res_human"/> 
+   		<result property="maistaChe" column="facmai_sta_che"/> 
+   		<result property="stastaDt" column="facsta_sta_dt"/> 
+   		<result property="staendDt" column="facsta_end_dt"/> 
+   		<result property="stademDt" column="facsta_dem_dt"/> 
+   		<result property="staChe" column="fac_sta_che"/> 
+   		<result property="stainsMo" column="facsta_ins_mo"/> 
+   		<result property="stainsSc" column="facsta_ins_sc"/> 
+   		<result property="stainsNum" column="facsta_ins_num"/> 
+   		<result property="stainsCon" column="facsta_ins_con"/> 
+   		<result property="staWorksta" column="facsta_work_sta"/> 
+   		<result property="stainsCon1" column="facsta_ins_con1"/> 
+   		<result property="stainsCon2" column="facsta_ins_con2"/> 
+   		<result property="inslistCla" column="safins_list_cla"/>
+   		<result property="inslistCon" column="safins_list_con"/> 
+   		<result property="accNm1" column="cat_acc_nm1"/> 
+   		<result property="accCd" column="cat_acc_cd"/> 
+   		<result property="fesconmanCd" column="fescon_man_cd"/> 
+   		<result property="comCd" column="man_com_cd"/>
+   		<result property="staCd" column="fac_sta_cd"/>
+   		<result property="facCd" column="tem_fac_cd"/>	
+   		<result property="maiCd" column="fac_mai_cd"/>
+   		<result property="faccatNm" column="fesfac_cat_nm"/>		
+  	</resultMap>
+  <!-- 모든시설분류 -->
+  <select id="selectClassification" resultType="shop.fims.vo.Facility">
+	SELECT
+		fesfac_cat_nm AS catNm
+	FROM
+		Fes_Fac_Cat
+  </select>
+<!-- 보유시설리스트 -->
+  <select id="selectFacility" resultType="shop.fims.vo.Facility">
+	SELECT
+		fac_sta_cd AS staCd,
+		man_com_cd AS comCd,
+		fac_sta_nm AS staNm,
+		fesfac_cat_nm AS catNm,
+		fest_nm AS festNm,
+		fac_sta_site AS staSite,
+		fac_sta_count AS staCount,
+		com_mem_nm2 AS comNm2,
+		action_dt AS actionDt,
+		action_status AS actionSta
+	FROM
+		Facility_Status
+  </select>
+  <!--보유시설검색-->
+  <select id="searchClassification" resultMap="facilityResultMap">
+	SELECT
+		fs.fest_nm ,
+		fs.action_dt,
+		fs.action_status,
+		fs.fac_sta_nm,
+		fs.fac_sta_site,
+		fs.fac_sta_count,
+		ffc.fesfac_cat_nm,
+		mc.com_mem_nm2
+		
+	FROM
+		Facility_Status AS fs JOIN Fes_Fac_Cat AS ffc ON fs.fesfac_cat_cd = ffc.fesfac_cat_cd
+		JOIN Man_Com AS mc ON fs.man_com_cd = mc.man_com_cd
+	WHERE 1=1
+		<if test="fest_nm != null and fest_nm != '' ">
+		       AND fs.fest_nm = #{fest_nm}
+		</if>
+		<if test="fac_sta_nm != null and fac_sta_nm != '' ">
+		       AND fs.fac_sta_nm = #{fac_sta_nm}
+		</if>
+		<if test="fesfac_cat_nm != null and fesfac_cat_nm != '' ">
+		       AND ffc.fesfac_cat_nm = #{fesfac_cat_nm}
+		</if>
+		<if test="man_com_nm2 != null and man_com_nm2 != '' ">
+		       AND mc.man_com_nm2 = #{man_com_nm2}
+		</if>
+		<if test="action_status != null and action_status != '' ">
+		       AND fs.action_status = #{action_status}
+		</if>
+  </select>
+  
+   <select id="selectTemporary" resultMap="facilityResultMap">
+		SELECT
+			tem_fac_cd,
+			fescon_man_cd,
+			cat_acc_cd,
+			cat_acc_nm1,
+			fac_sta_nm,
+			fest_nm,
+			com_mem_nm2,
+			facsta_ins_con1,
+			facsta_ins_con2
+		FROM
+			Temporary_Facility
+  </select>
+  <!--임시시설설치및철거관리 조회-->
+	<select id="selectTemporaryview" resultMap="facilityResultMap">
+		SELECT
+			tem_fac_cd,
+			fac_sta_nm,
+			fest_nm,
+			com_mem_nm2,
+			facsta_sta_dt,
+			facsta_end_dt,
+			facsta_ins_sc,
+			facsta_ins_con,
+			facsta_ins_num,
+			facsta_work_sta,
+			facsta_dem_dt,
+			fac_sta_che,
+			facsta_ins_mo,
+			facsta_ins_con1,
+			facsta_ins_con2
+		FROM
+			Temporary_Facility
+		WHERE
+			tem_fac_cd=#{facCd}
+	</select>
+	<!-- 임시시설설치및철거관리 검색 -->
+	<select id="searchTemporary" resultMap="facilityResultMap">
+		SELECT
+			fs.fac_sta_nm,
+			f.fest_nm,
+			ca.cat_acc_nm1,
+			tf.facsta_ins_con1,
+			tf.facsta_ins_con2
+		FROM
+			Temporary_Facility AS tf JOIN Cat_Account AS ca ON tf.cat_acc_cd=ca.cat_acc_cd
+			JOIN Man_Com AS mc ON tf.man_com_cd=mc.man_com_cd
+			JOIN Facility_Status AS fs ON tf.fac_sta_cd = fs.fac_sta_cd
+			JOIN Festival AS f ON tf.fest_cd=f.fest_cd
+		WHERE 1=1
+			<if test="fest_nm != null and fest_nm != '' ">
+			       AND f.fest_nm = #{fest_nm}
+			</if>
+			<if test="fac_sta_nm != null and fac_sta_nm != '' ">
+			       AND fs.fac_sta_nm = #{fac_sta_nm}
+			</if>
+			<if test="com_mem_nm2 != null and com_mem_nm2 != '' ">
+			       AND cm.com_mem_nm2 = #{com_mem_nm2}
+			</if>
+			<if test="cat_acc_nm1 != null and cat_acc_nm1 != '' ">
+			       AND ca.cat_acc_nm1 = #{cat_acc_nm1}
+			</if>							
+		
+	</select>
+	<!-- 안전점검후지적관리조회 -->
+	<select id="selectMaintenance" resultType="shop.fims.vo.Facility">
+		SELECT
+			fac_mai_cd AS maiCd,
+			fac_sta_nm AS staNm,
+			fest_nm AS festNm,
+			facmai_che_dt AS maicheDt,
+			facmai_ins_in AS maiinsIn,
+			facmai_res_human AS mairesHuman,
+			fac_mai_cad AS maiCad,
+			facmai_rec_dt AS mairecDt,
+			facmai_sta_che AS maistaChe,
+			facmai_sup_dt AS maisupDt,
+			com_mem_nm2 AS comNm2
+		FROM
+			Facility_Mai
+	
+	</select>
+	<!-- 안전점검후지적관리검색 -->
+	<select id="searchMaintenance" resultMap="facilityResultMap">
+		SELECT
+			fm.fest_nm,
+			fm.facmai_che_dt,
+			fm.fac_mai_cad,
+			fm.facmai_ins_in,
+			fm.facmai_rec_dt,
+			fm.facmai_sup_dt,
+			fm.facmai_res_human,
+			fm.facmai_sta_che,
+			fs.fac_sta_nm,
+			mc.com_mem_nm2
+		FROM
+			Facility_Mai AS fm JOIN Facility_Status AS fs ON fm.fac_sta_cd=fs.fac_sta_cd
+			JOIN Man_Com AS mc ON fm.man_com_cd=mc.man_com_cd
+		WHERE 1=1
+			<if test="fest_nm != null and fest_nm != '' ">
+		       AND fm.fest_nm = #{fest_nm}
+			</if>
+			<if test="fac_sta_nm != null and fac_sta_nm != '' ">
+		       AND fs.fac_sta_nm = #{fac_sta_nm}
+			</if>
+			<if test="facmai_che_dt != null and facmai_che_dt != '' ">
+		       AND fm.facmai_che_dt = #{facmai_che_dt}
+			</if>
+			<if test="facmai_ins_in != null and facmai_ins_in != '' ">
+		       AND fm.facmai_ins_in = #{facmai_ins_in}
+			</if>
+			<if test="com_mem_nm2 != null and com_mem_nm2 != '' ">
+		       AND mc.com_mem_nm2 = #{com_mem_nm2}
+			</if>
+			<if test="facmai_sta_che != null and facmai_sta_che != '' ">
+		       AND fm.facmai_sta_che = #{facmai_sta_che}
+			</if>
+			 	
+	</select>
+	<!-- 안전점검표 조회 -->
+	<select id="selectChecklist" resultMap="facilityResultMap">
+		SELECT
+			sil.safins_list_cla,
+			sil.safins_list_con
+		FROM
+			Facility_Mai AS fm
+			JOIN
+			Saf_Ins_List AS sil
+			ON fm.safins_list_cd = sil.safins_list_cd
+		WHERE fm.fac_sta_nm=#{staNm}
+	</select>
+	
+	<select id="selectupdateFacility" resultMap="facilityResultMap">
+		SELECT
+			fac_sta_cd,
+			fac_sta_nm,
+			fesfac_cat_nm,
+			fest_nm,
+			fac_sta_site,
+			fac_sta_count,
+			com_mem_nm2,
+			action_dt,
+			action_status
+		FROM
+			Facility_Status
+		WHERE
+			fac_sta_cd=#{staCd}
+	
+	</select>
+	
+	<select id="selectupdateMaintenance" resultMap="facilityResultMap">
+		SELECT
+			fac_mai_cd,
+			fac_sta_nm,
+			fest_nm,
+			facmai_che_dt,
+			facmai_ins_in,
+			facmai_res_human,
+			fac_mai_cad,
+			facmai_rec_dt,
+			facmai_sta_che,
+			facmai_sup_dt,
+			com_mem_nm2
+		FROM
+			Facility_Mai
+		WHERE
+			fac_mai_cd=#{maiCd}
+	
+	</select>
+	<select id="selectupdateTemporary" resultMap="facilityResultMap">
+		SELECT
+			tem_fac_cd,
+			fac_sta_nm,
+			fest_nm,
+			facsta_sta_dt,
+			facsta_end_dt,
+			facsta_ins_mo,
+			facsta_ins_sc,
+			facsta_ins_num,
+			facsta_ins_con,
+			facsta_work_sta,
+			facsta_dem_dt,
+			fac_sta_che,
+			com_mem_nm2,
+			facsta_ins_con1,
+			facsta_ins_con2
+		FROM
+			Temporary_Facility
+		WHERE
+			tem_fac_cd=#{facCd}
+	</select>
+	
+  </mapper>

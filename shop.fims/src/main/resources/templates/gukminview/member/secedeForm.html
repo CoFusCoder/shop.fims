@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<form id="registerform" name="registerform" action="/gukminview/member/secedeForm" method="post">
+	<input type="hidden" name="secedereasonseqs" value="" id="secedereasonseqs"/>
+	<section>
+		<div class="mypDesc t01">
+			<p class="t01">#회원탈퇴</p>
+			<p class="t02">
+				정말로 JOYFESTA를 떠나시겠어요? <br> 도움이 필요하신 부분이 있다면 지금 바로 <a
+					href="#" class="link_line">#1:1문의</a>로 연락주세요.
+			</p>
+		</div>
+		<div class="norBox">
+			<p class="leavetit">회원정보 및 개인 이용기록</p>
+			<div class="leaveBox">
+				<p>
+					회원탈퇴 전 안내사항을 꼭 확인해주세요. <br> 탈퇴 후에는 더이상 회원서비스를 이용할 수 없으며, 이용정보를
+					복구할 수 없습니다.
+				</p>
+				<p class="mt20">
+					개인의 서비스 이용기록은 모두 삭제되며 삭제된 데이터는 복구 불가능합니다.<br> 삭제를 원하는 게시물은 탈퇴
+					전 모두 정리하시기 바랍니다. 탈퇴 후에는 본인의 게시물임을 확인할 수 없어 임의로 삭제해 드릴 수 없습니다.
+				</p>
+
+				<p class="mt20">
+					<span class="leave_tx">[삭제되는 이용정보]</span>
+				<ul>
+					<li>찜리스트, 리뷰, Q&A, 1:1문의내역</li>
+				</ul>
+				</p>
+				<p class="mt20">
+					<span class="leave_tx">[개인정보]</span>
+				<ul>
+					<li>개인회원 : 이름, 이메일(아이디), 비밀번호, 전화번호</li>
+					<li>기업회원 : 이름, 이메일(아이디), 비밀번호, 전화번호, 기업유형, 기업명, 담당자이름,
+						담당자연락처, 담당자이메일</li>
+				</ul>
+				※ 회원정보는 1년간 보관후 삭제됩니다.
+				</p>
+				
+			</div>
+			<input type="checkbox" id="chkall" /> <label for="chkall">안내사항을
+				모두 확인하였으며, 이에 동의합니다.</label>
+
+
+			<p class="mt30">
+				<span class="leavetit">탈퇴사유(필수)</span> <span class="rtxt">※
+					복수 선택 가능</span>
+			</p>
+			<div class="leaveList">
+				<ul>
+					
+						<li><input type="checkbox"
+							onclick="javascript:setReason(1);"
+							id="secedereason_1" /> <label
+							for="secedereason_1">다른 아이디 변경</label> </li>
+					
+						<li><input type="checkbox"
+							onclick="javascript:setReason(2);"
+							id="secedereason_2" /> <label
+							for="secedereason_2">원하는 컨텐츠 및 이용할 만한 서비스의 부족</label> </li>
+					
+						<li><input type="checkbox"
+							onclick="javascript:setReason(3);"
+							id="secedereason_3" /> <label
+							for="secedereason_3">타 사이트 이용</label> </li>
+					
+						<li><input type="checkbox"
+							onclick="javascript:setReason(4);"
+							id="secedereason_4" /> <label
+							for="secedereason_4">개인정보의 노출 우려</label> </li>
+					
+						<li><input type="checkbox"
+							onclick="javascript:setReason(5);"
+							id="secedereason_5" /> <label
+							for="secedereason_5">시스템 장애 및 불편(잦은 에러 등)</label> </li>
+					
+						<li><input type="checkbox"
+							onclick="javascript:setReason(6);"
+							id="secedereason_6" /> <label
+							for="secedereason_6">낮은 이용 빈도</label> </li>
+					
+						<li><input type="checkbox"
+							onclick="javascript:setReason(7);"
+							id="secedereason_7" /> <label
+							for="secedereason_7">장기간 부재</label> </li>
+					
+						<li><input type="checkbox"
+							onclick="javascript:setReason(8);"
+							id="secedereason_8" /> <label
+							for="secedereason_8">고객 응대 불만</label> </li>
+					
+						<li><input type="checkbox"
+							onclick="javascript:setReason(9);"
+							id="secedereason_9" /> <label
+							for="secedereason_9">기타</label> 
+								<input type="text" id="secedereasonetc" name="secedereasonetc"
+									class="inp_ect" placeholder="기타 선택시 입력해주세요." />
+							</li>
+					
+				</ul>
+			</div>
+			<div class="boardBtnBox ac">
+				<a href="#" class="btnType03">#도움요청하기</a> <a
+					href="javascript:void(0)" id="registerbutton" class="btnType04">#탈퇴하기</a>
+			</div>
+
+		</div>
+	</section>
+</form>
+
+
+
+<script>
+	var secedereasonseqs = [];
+	function setReason(secedereasonseq) {
+		if ($('#secedereason_' + secedereasonseq).prop("checked")) {
+			secedereasonseqs.push(secedereasonseq);
+		} else {
+			secedereasonseqs.splice($
+					.inArray(secedereasonseq, secedereasonseqs), 1);
+		}
+		$('#secedereasonseqs').val(secedereasonseqs);
+	}
+
+	$('#registerbutton').click(function() {
+		resetCommonDialog();
+
+		if (!$('#chkall').prop("checked")) {
+			alert('안내사항 확인 및 동의에 체크해 주세요.');
+		} else {
+			if ($('#secedereasonseqs').val() == '') {
+				alert('탈퇴사유를 선택해 주세요.');
+			} else {
+				if (confirm('탈퇴하시겠습니까?')) {
+					indicatorOn();
+					$.ajax({
+						url : 'JSONSecede.festa',
+						type : 'POST',
+						data : {
+							secedereasonseqs : $('#secedereasonseqs').val()
+						},
+						dataType : 'json',
+						success : function(data, textStatus, jqXHR) {
+							indicatorOff();
+							if (data.resultcode == 0) {
+								$('#dialogtitle').append('회원탈퇴');
+								$('#dialogcontent').append('회원탈퇴처리가 완료되었습니다.');
+								dialogtargeturl = 'Main.festa';
+								$('#commondialog').show();
+							} else if (data.resultcode == 2) {
+								$('#dialogtitle').append('회원탈퇴');
+								$('#dialogcontent').append(data.resultmessage);
+								$('#commondialog').show();
+							} else {
+								$('#dialogtitle').append('회원탈퇴');
+								$('#dialogcontent').append(data.resultmessage);
+								$('#commondialog').show();
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							indicatorOff();
+							$('#dialogtitle').append('회원탈퇴');
+							$('#dialogcontent').append(textStatus);
+							$('#commondialog').show();
+						}
+					});
+				}
+			}
+		}
+	});
+
+	$(document).ready(function() {
+
+	});
+
+	
+</script>
+
+</th:block>
+
+</html>

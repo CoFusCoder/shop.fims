@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.fims.festival.FestivalMapper">
+
+<resultMap id="festivalResultMap" type="shop.fims.vo.Festival">
+	<result column="fest_cd" property="festCd"/>
+	<result column="areacity_admin_cd" property="areacityAdminCd"/>
+	<result column="area_cd" property="areaCd"/>
+	<result column="area_city_cd" property="areaCityCd"/>
+	<result column="fest_nm" property="festNm"/>
+	<result column="fest_host_area" property="festHostArea"/>
+	<result column="fest_host_place" property="festHostPlace"/>
+	<result column="fest_start_dt" property="festStartDt"/>
+	<result column="fest_end_dt" property="festEndDt"/>
+	<result column="fest_content" property="festContent"/>
+	<result column="fest_super_agency" property="festSuperAgency"/>
+	<result column="fest_spo_agency" property="festSpoAgency"/>
+	<result column="fest_addr" property="festAddr"/>
+	<result column="fest_inquiry" property="festInquiry"/>
+</resultMap>
+
+<!--축제 등록 쿼리문 -->
+<insert	id="festivalInsert" parameterType="shop.fims.vo.Festival">
+	insert into
+		Festival(fest_cd, area_cd, area_city_cd, areacity_admin_cd, fest_nm
+				,fest_host_area,fest_host_place,fest_start_dt,fest_end_dt,fest_content
+				,fest_super_agency,fest_spo_agency,fest_addr,fest_inquiry)
+	VALUES
+		(#{festCd} ,#{areaCd}, #{areaCityCd}, #{areacityAdminCd}, #{festNm}
+		,#{festHostArea},#{festHostPlace},NOW(),NOW(),#{festContent}
+		,#{festSuperAgency},#{festSpoAgency},#{festAddr},#{festInquiry})
+</insert>
+
+<!--축제 조회 쿼리문 -->
+<select	id="festivalList" resultMap="festivalResultMap">
+	SELECT
+		*
+	FROM 
+		Festival
+</select>
+
+
+
+
+</mapper>
+
+  
+  
+  

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
+	<th:block layout:fragment="customBody">
+
+		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+            <th:block th:each= "h : ${Human}">
+              <h4><i class="fa fa-angle-right"></i></span> 인적사항상세보기 </h4><br>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+				  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>회원아이디</th>
+                      <th>이름</th>
+                      <th>권한</th>
+                      <th>연락처</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${h.loginCd}"></td>
+	               		<td th:text = "${h.memNm}"></td>
+	               		<td th:text = "${h.levNm}"></td>
+	               		<td th:text = "${h.memPhone}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>주소</th>
+                      <th>이메일</th>
+                      <th>생년월일</th>
+                      <th>가입일자</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${h.memAddr}"></td>
+	               		<td th:text = "${h.memEmail}"></td>
+	               		<td th:text = "${h.memBirth}"></td>
+	               		<td th:text = "${h.joinDt}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->                
+                </table>
+              </section>
+              </th:block>
+		        <div>
+					<a th:href="@{/humanList}">
+					<button type="button" class="btn btn-default" >뒤로가기</button>
+					</a>
+				</div>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+	</th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>

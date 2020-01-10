@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8">
+<!-- 날짜입력에 달력넣기스크립트 -->
+<!--
+<link rel="stylesheet" type="text/css" href="/adminis/ebudget/css/tcal.css">
+<script type="text/javascript" src="/adminis/ebudget/js/tcal.js"></script>
+-->
+
+
+<link rel="stylesheet" href="/adminis/ebudget/css/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/adminis/ebudget/css/jqplot/jquery.jqplot.css"/>
+<script src="/adminis/ebudget/js/jquery-1.7.2.min.js"></script>
+<script src="/adminis/ebudget/js/jquery-ui.js"></script>
+<script src="/adminis/ebudget/js/bcal.js"></script>
+
+<script src="/adminis/ebudget/js/selectivizr.js"></script>
+<script src="/adminis/ebudget/js/selectivizr-min.js"></script>
+<script src="/adminis/ebudget/js/respond.min.js"></script>
+<script src="/adminis/ebudget/js/html5shiv.js"></script>
+<script src="/adminis/ebudget/js/jquery.h5validate.js"></script>
+
+<!--<script src="/adminis/ebudget/js/jquery-1.11.3.min.js"></script>-->
+<script src='/adminis/ebudget/js/bootstrap-treefy.js'></script>
+
+<link rel='stylesheet' href='/adminis/ebudget/css/main.css' type='text/css'>
+<link rel='stylesheet' href='/adminis/ebudget/css/mediaquery.css' type='text/css' media = "screen" />
+
+<!--<meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1"> -->
+
+<title>
+축제통합관리시스템</title>
+</head>
+<body>
+<header>
+
+  <div id="headerW">
+  <label for="toggle" id="togglemenu" onclick>MENU</label>
+
+
+    <div id="topW" style="background-color:#2B2B2B;">
+    <div class="top">
+
+    <ul>
+
+    		<!--<li style="color:#efefef;" class="jest"><a href="http://www.jeongeup.go.kr/index.jeongeup?menuCd=DOM_000000104007003000" title='홈으로이동'>정읍시에 바란다</a></li>-->
+		<li style="color:#efefef;"><a href="/dashboard" title='관리자 홈페이지로 이동'>!관리자 홈페이지</a></li>
+	<li ><a href="/gukminview/index" title='축제 홈페이지로 이동'  target='_blank'>!축제 홈페이지</a></li>
+
+	</ul>
+  </div>
+ </div><!--topW-->
+
+
+
+
+
+   <!--<div id="bg"></div>-->
+
+<nav>
+   <div id="navW">
+		<div class="sub_logo">
+		  <a href="/revExpBudgetView">
+			<img src="/gukmin/assets/images/fimslog.jpg" alt='홈으로이동' title='홈으로이동'>
+			<span title='세입세출재정정보공개시스템'>!세입·세출재정정보공개시스템</span>
+		  </a>
+		</div>
+
+
+
+
+		<div class="sub_menu">
+
+           <!--<nav id="navigation-list">-->
+
+            <input type="checkbox" id="toggle"/>
+			<ul class="clearfix" id="nav">
+							    <li><a href="/fundManStatusView" class="menu0" title='자금운용현황'>!자금운용현황</a></li>
+				
+				<li><a href="/revBudgetView" class="menu1" title='세입현황'>!세입현황</a></li>
+				<li>
+				<a href='/revExpExecutionView' class='menu2' title='세출현황'>!세출현황</a></li>
+				<li><a href='#' class='menu3' target='_blank'  title='세입세출예산'>#세입·세출예산</a></li><li><a href='#' class='menu4' target='_blank'  title='세입세출결산'>#세입·세출결산</a></li>			  </ul>
+		 </div><!--.sub_menu-->
+
+		 </div><!--navW-->
+
+			</nav>
+
+
+	</div><!--headerW-->
+
+
+
+
+
+
+
+
+</header>
+
+
+
+<div id="contentW">
+<div class="content">
+
+
+
+<!--<body id="p0">-->
+
+<div id="sub_title">자금운용현황</div>
+<div id="ex">
+	<p>- 수입액, 지출액, 자금잔액 현황을 기간별로 검색하실 수 있습니다. </p>
+	<p>- 기본 일주일 자금운용현황을 실시간 확인가능하며, 검색시 조건에 맞는 집계값을 보여드립니다. </p>
+</div>
+
+<!-- 검색항목출력 폼 -->
+<div id="search_table">
+
+<!-- 	<form name="board_form" method="post" action="./eBudgetList102.html?mode=search&code=102">  -->
+	<form name="board_form" method="post" action="#"> 
+	 
+		<table>
+		<caption>#기간내 자금운용현황 검색</caption>
+			<tr>
+				<th scope="col">회계년도</th>
+				<td><label for='select'>년도선택</label><select name='year' title='년도선택' id='select'><option value='2019' selected>2019</option><option value='2018'>2018</option><option value='2017'>2017</option><option value='2016'>2016</option><option value='2015'>2015</option><option value='2014'>2014</option> </select></td>
+				<th scope="col">조회기간</th>
+				<td>
+					<input type="text" id="dp1" name="day1" value="2019-12-18" title='시작날짜선택' readonly>-
+					<label for="dp1"></label>
+					<input type="text" id="dp2" name="day2" value="2019-12-24" title='끝날짜선택' readonly>
+					<label for="dp2"></label>
+					시작일을 기준으로 최대 한달까지만 검색 가능
+				</td>
+			</tr>
+		</table>
+		<div class="searchbtn">
+		<input type="image" src="http://gyeyak.namwon.go.kr/ebudget/img/search_btn.gif" class="btn" alt='검색버튼' title='검색'>
+		</div>
+	</form>
+</div>
+<!--search_table-->
+
+
+
+<div id="list_wrap">
+<div id="sub_title2">기간내 자금운용현황</div>
+<span class="ex_2">(단위 : 원)</span>
+   <table id="list_table" class="collapsed page102">
+   <caption>#기간내 자금운용현황</caption>
+         <thead>
+		     <tr>
+				<th scope="col" rowspan="2" class="numeric">기간</th>
+				<th scope="col" rowspan="2" class="numeric">예산액</th>
+				<th scope="col" colspan="2" class="numeric">총수입액</th>
+				<th scope="col" colspan="2" class="numeric">총지출액</th>
+							 </tr>
+			 <tr>
+				<th scope="col" class="numeric">조회기간내</th>
+				<th scope="col" class="numeric">누계(A)</th>
+				<th scope="col" class="numeric">조회기간내</th>
+				<th scope="col" class="numeric">누계(B)</th>
+			 </tr>
+		</thead>
+		<tbody><tr><td data-title='기간' class='numeric' >2019-12-24 (화)</td><td data-title='예산액' class='alignR numeric'>886,864,262,000</td><td data-title='총수입액-조회기간내' class='alignR numeric'>0</td><td data-title='총수입액-누계(A)' class='alignR numeric'>3,861,225,580</td><td data-title='총지출액-조회기간내' class='alignR numeric'>0</td><td data-title='총지출액-누계(B)' class='alignR numeric'>697,783,849,921</td></tr><tr><td data-title='기간' class='numeric' >2019-12-23 (월)</td><td data-title='예산액' class='alignR numeric'>886,864,262,000</td><td data-title='총수입액-조회기간내' class='alignR numeric'>0</td><td data-title='총수입액-누계(A)' class='alignR numeric'>3,861,225,580</td><td data-title='총지출액-조회기간내' class='alignR numeric'>4,058,805,590</td><td data-title='총지출액-누계(B)' class='alignR numeric'>697,783,849,921</td></tr><tr><td data-title='기간' class='numeric' >2019-12-22 (일)</td><td data-title='예산액' class='alignR numeric'>886,864,262,000</td><td data-title='총수입액-조회기간내' class='alignR numeric'>0</td><td data-title='총수입액-누계(A)' class='alignR numeric'>3,861,225,580</td><td data-title='총지출액-조회기간내' class='alignR numeric'>0</td><td data-title='총지출액-누계(B)' class='alignR numeric'>693,725,044,331</td></tr><tr><td data-title='기간' class='numeric' >2019-12-21 (토)</td><td data-title='예산액' class='alignR numeric'>886,864,262,000</td><td data-title='총수입액-조회기간내' class='alignR numeric'>0</td><td data-title='총수입액-누계(A)' class='alignR numeric'>3,861,225,580</td><td data-title='총지출액-조회기간내' class='alignR numeric'>0</td><td data-title='총지출액-누계(B)' class='alignR numeric'>693,725,044,331</td></tr><tr><td data-title='기간' class='numeric' >2019-12-20 (금)</td><td data-title='예산액' class='alignR numeric'>886,864,262,000</td><td data-title='총수입액-조회기간내' class='alignR numeric'>0</td><td data-title='총수입액-누계(A)' class='alignR numeric'>3,861,225,580</td><td data-title='총지출액-조회기간내' class='alignR numeric'>10,222,209,868</td><td data-title='총지출액-누계(B)' class='alignR numeric'>693,725,044,331</td></tr><tr><td data-title='기간' class='numeric' >2019-12-19 (목)</td><td data-title='예산액' class='alignR numeric'>886,864,262,000</td><td data-title='총수입액-조회기간내' class='alignR numeric'>0</td><td data-title='총수입액-누계(A)' class='alignR numeric'>3,861,225,580</td><td data-title='총지출액-조회기간내' class='alignR numeric'>913,902,051</td><td data-title='총지출액-누계(B)' class='alignR numeric'>683,502,834,463</td></tr><tr><td data-title='기간' class='numeric' >2019-12-18 (수)</td><td data-title='예산액' class='alignR numeric'>886,864,262,000</td><td data-title='총수입액-조회기간내' class='alignR numeric'>0</td><td data-title='총수입액-누계(A)' class='alignR numeric'>3,861,225,580</td><td data-title='총지출액-조회기간내' class='alignR numeric'>2,529,682,721</td><td data-title='총지출액-누계(B)' class='alignR numeric'>682,588,932,412</td></tr></tbody>
+  </table>
+ 
+<div class="btn01" id="noprint">
+<div class="down_icon"><form method="POST" action = "./eBudgetDown102.html"><input type="hidden" name="test" value="a%3A7%3A%7Bi%3A0%3Ba%3A6%3A%7Bi%3A0%3Bs%3A10%3A%222019-12-24%22%3Bi%3A1%3Bs%3A15%3A%22886%2C864%2C262%2C000%22%3Bi%3A2%3Bs%3A1%3A%220%22%3Bi%3A3%3Bs%3A13%3A%223%2C861%2C225%2C580%22%3Bi%3A4%3Bs%3A1%3A%220%22%3Bi%3A5%3Bs%3A15%3A%22697%2C783%2C849%2C921%22%3B%7Di%3A1%3Ba%3A6%3A%7Bi%3A0%3Bs%3A10%3A%222019-12-23%22%3Bi%3A1%3Bs%3A15%3A%22886%2C864%2C262%2C000%22%3Bi%3A2%3Bs%3A1%3A%220%22%3Bi%3A3%3Bs%3A13%3A%223%2C861%2C225%2C580%22%3Bi%3A4%3Bs%3A13%3A%224%2C058%2C805%2C590%22%3Bi%3A5%3Bs%3A15%3A%22697%2C783%2C849%2C921%22%3B%7Di%3A2%3Ba%3A6%3A%7Bi%3A0%3Bs%3A10%3A%222019-12-22%22%3Bi%3A1%3Bs%3A15%3A%22886%2C864%2C262%2C000%22%3Bi%3A2%3Bs%3A1%3A%220%22%3Bi%3A3%3Bs%3A13%3A%223%2C861%2C225%2C580%22%3Bi%3A4%3Bs%3A1%3A%220%22%3Bi%3A5%3Bs%3A15%3A%22693%2C725%2C044%2C331%22%3B%7Di%3A3%3Ba%3A6%3A%7Bi%3A0%3Bs%3A10%3A%222019-12-21%22%3Bi%3A1%3Bs%3A15%3A%22886%2C864%2C262%2C000%22%3Bi%3A2%3Bs%3A1%3A%220%22%3Bi%3A3%3Bs%3A13%3A%223%2C861%2C225%2C580%22%3Bi%3A4%3Bs%3A1%3A%220%22%3Bi%3A5%3Bs%3A15%3A%22693%2C725%2C044%2C331%22%3B%7Di%3A4%3Ba%3A6%3A%7Bi%3A0%3Bs%3A10%3A%222019-12-20%22%3Bi%3A1%3Bs%3A15%3A%22886%2C864%2C262%2C000%22%3Bi%3A2%3Bs%3A1%3A%220%22%3Bi%3A3%3Bs%3A13%3A%223%2C861%2C225%2C580%22%3Bi%3A4%3Bs%3A14%3A%2210%2C222%2C209%2C868%22%3Bi%3A5%3Bs%3A15%3A%22693%2C725%2C044%2C331%22%3B%7Di%3A5%3Ba%3A6%3A%7Bi%3A0%3Bs%3A10%3A%222019-12-19%22%3Bi%3A1%3Bs%3A15%3A%22886%2C864%2C262%2C000%22%3Bi%3A2%3Bs%3A1%3A%220%22%3Bi%3A3%3Bs%3A13%3A%223%2C861%2C225%2C580%22%3Bi%3A4%3Bs%3A11%3A%22913%2C902%2C051%22%3Bi%3A5%3Bs%3A15%3A%22683%2C502%2C834%2C463%22%3B%7Di%3A6%3Ba%3A6%3A%7Bi%3A0%3Bs%3A10%3A%222019-12-18%22%3Bi%3A1%3Bs%3A15%3A%22886%2C864%2C262%2C000%22%3Bi%3A2%3Bs%3A1%3A%220%22%3Bi%3A3%3Bs%3A13%3A%223%2C861%2C225%2C580%22%3Bi%3A4%3Bs%3A13%3A%222%2C529%2C682%2C721%22%3Bi%3A5%3Bs%3A15%3A%22682%2C588%2C932%2C412%22%3B%7D%7D"><input type="submit" value="" title="엑셀파일 다운받기"></form></div>
+<span class="print_icon"><button onclick="content_print()" title="인쇄하기"></button></span>
+</div>
+
+
+
+</div>
+
+ </div>
+ </div>
+
+
+ <footer>
+   
+   <div id="footer">
+   <div class="foot_bar"></div>
+      <ul>
+		  <li class="count">
+		  		  </li>
+         <li class="logo2"><img src="/gukmin/assets/images/fimslog.jpg" alt="축제통합관리시스템" title='축제통합관리시스템'></li>
+	     <li class="address">
+			 전라북도 전주시 덕진구 기린대로 446<br>Tel. 063) 1212-1004 Fax. 063) 1212-1005<br>Copyright ⓒ NAMWON CITY. All Rights Reserved.<br>          </li>
+
+        </ul>
+    </div>
+ </footer>
+
+
+
+
+
+
+
+<script>
+
+$('.menu0').addClass('munu_0');
+</script>
+
+
+</body>
+</html>
+

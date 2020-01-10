@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<section>
+	<div class="commDesc">
+		<p class="t01">사이트맵</p>
+		<p class="t02">조이페스타의 전체페이지를 한눈에 볼 수 있습니다.</p>
+	</div>
+	<div class="norBox">
+
+		<ul class="site_list">
+			<li><a href="Main.festa">전체</a></li>
+			<li><a href="Festival.festa">축제 · 이벤트</a></li>
+			<li><a href="Market.festa">시장 · 스토어</a></li>
+			<li><a href="Promotion.festa">기획전</a></li>
+			<li><a href="Community.festa">커뮤니티</a>
+				<ul>
+					<li><a href="Event.festa">이벤트</a></li>
+					<li><a href="Faq.festa">FAQ</a></li>
+					<li><a href="Notice.festa">공지사항</a></li>
+				</ul></li>
+			<li><a href="MyPage.festa">마이페이지</a>
+				<ul style="float: left">
+					<li><a href="MyPage.festa">개인회원</a></li>
+					<li><a href="MyBookmark.festa">나의 찜목록</a></li>
+					<li><a href="MyInfoEditForm.festa">회원정보관리</a></li>
+				</ul>
+				<ul style="float: right">
+					<li><a href="HostPage.festa">호스트회원</a></li>
+					<li><a href="HostSpot.festa">나의 스팟목록</a></li>
+					<li><a href="HostInfoEditForm.festa">회원정보관리</a></li>
+				</ul></li>
+			<li><a href="Service.festa">서비스 소개</a></li>
+			<li><a href="InquiryForm.festa">광고 및 제휴 문의</a></li>
+			<li><a href="SiteTerms.festa">이용약관</a></li>
+			<li><a href="PrivacyPolicy.festa">개인정보처리방침</a></li>
+		</ul>
+
+	</div>
+</section>
+
+
+</th:block>
+
+</html>

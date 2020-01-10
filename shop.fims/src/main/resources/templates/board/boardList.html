@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminCss">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+}
+.row-section h2{float:left; width:100%; color:#fff; margin-bottom:30px; font-size: 14px;}
+.row-section h2 span{font-family: 'Libre Baskerville', serif; display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px;font-weight:700;}
+.row-section h2 a{color:#d2abce;}
+.row-section .row-block{background:#fff; padding:20px; margin-bottom:50px; margin-top: 230px;}
+.row-section .row-block ul{margin:0; padding:0;}
+.row-section .row-block ul li{list-style:none; margin-bottom:20px;}
+.row-section .row-block ul li:last-child{margin-bottom:0;}
+.row-section .row-block ul li:hover{cursor:grabbing;}
+.row-section .row-block .media{border:1px solid #d5dbdd; padding:5px 20px; border-radius: 5px; box-shadow:0px 2px 1px rgba(0,0,0,0.04); background:#fff;}
+.row-section .media .media-left img{width:75px;}
+.row-section .media .media-body p{padding: 0 15px; font-size:14px;}
+.row-section .media .media-body h4 {color: #6b456a; font-size: 18px; font-weight: 600; margin-bottom: 0; padding-left: 14px; margin-top:12px;}
+.btn-default{background:#6B456A; color:#fff; border-radius:30px; border:none; font-size:16px;}
+.rounded-circle{min-width: 150px;}
+
+.pagination{margin-top:20px;white-space: nowrap; text-align: center; height: 37px; line-height:37px;}
+.pagination a{display:inline-block; border:1px solid #f7f7f7; height:35px; width:35px;  vertical-align:middle; text-align:center; text-decoration:none; font-size:15px; color:#898989;}
+.pagination .on{color:#fff; font-weight:bold; background:#333;}
+.pagination .prev,.pagination .next{height:35px; width:35px; border:1px solid #ebebeb;overflow:hidden;position:relative; font-size:0;}
+.pagination .prev.end,.pagination .next.end{height:35px; width:35px; font-size:0;}
+.pagination .prev{background:#ebebeb url("") no-repeat center center; margin-right:11px;}
+.pagination .prev.end{background:#ebebeb url("") no-repeat center center; margin-right:4px; border-right:0;}
+.pagination .next{background:#ebebeb url("") no-repeat center center; margin-left:12px;}
+.pagination .next.end{background:#ebebeb url("") no-repeat center center; margin-left:4px; border-left:0;}
+
+hr{margin: 0;}
+p{margin: 0;}
+</style>
+
+</th:block>
+
+<th:block layout:fragment="gukminMainContents">
+
+<section class="row-section">
+    <div class="container">
+	    <div class="col-md-10 offset-md-1 row-block">
+	        
+			<link type="text/css" rel="stylesheet" th:href="@{/board/css/@sub-default.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/board/board/css/slick.css}">
+			<link rel="stylesheet" type="text/css" th:href="@{/board/css/board.css}">
+			<link type="text/css" rel="stylesheet" charset="utf-8" th:href="@{/_core/css/sys.css?nFlag=201912}" />
+
+
+<div class="sub-con">
+
+<div class="sub-Title area">  
+                    공지사항
+     </div>
+    	<div class="sub-txt-con area"><script language="javascript" th:src="@{/zzAppModule/module/script/ajax.js}"></script>
+    		<script type="text/javascript" th:src="@{/board/css/jquery-1.8.3.min.js}"></script>
+			<script type='text/javascript' th:src='@{/zzAppModule/editors/se2/js/HuskyEZCreator.js}' charset='utf-8'></script>
+			<script language='javascript' th:src='@{/zzAppModule/module/script/common.js}'></script>
+			<script language='javascript' th:src='@{/zzAppModule/module/script/board.js}'></script>
+			<script language='javascript' th:src='@{/zzAppModule/module/script/ajax.js}'></script>
+			<link rel='stylesheet' th:href='@{/zzAppModule/bskin__collect/css/default.css}'/>
+			<link rel="stylesheet" type="text/css" th:href="@{/css/board.css}">
+		<div class="listboard">
+
+	<form name="bSchForm" method="get" action="">
+		<input type="hidden" name="_zidx" value="1517992993^1^1517993002">
+		<input type="hidden" name="viewMode" value="">
+		<input type="hidden" name="bflag" value="">	
+	<div class="search">
+		<input class="nType" type="text"  name="sword" placeholder="search word">
+		<input type="submit" value=" 검색 " class="btngray" />
+		</div>
+	</form>
+	
+		<table class="listboardStyle">
+				<colgroup>
+						<col width="10%" class="colW">
+						<col width="*">
+						<col width="18%" class="Mno">
+						<col width="18%" class="Mno">
+				</colgroup>
+				<thead>
+						<tr>
+								<th><span>Code.</span></th>
+								<th><span>Title</span></th>
+								<th class="Mno"><span>Date</span></th>
+								<th class="Mno"><span>Writer</span></th>
+						</tr>
+				</thead>
+				 <tbody>
+
+				<tr th:each="b:${boardList}">
+						<td th:text="${b.boardCd}"><span></span></td>
+						<td th:text="${b.boardTitle}" class="title"></a>&nbsp;</td>
+						<td th:text="${b.boardDt}" class="Mno"><span></span></td>
+						<td th:text="${b.boardWriter}" class="Mno"><span></span></td>
+				</tr>
+
+         
+</tbody> 
+	</table>
+	
+	<br/>
+	<br/>
+					<div class="txtcenter buttonDiv">
+					<div class="login_bt_img_sty">
+						<a th:href="@{/insertBoard}">
+							<img src="http://www.baekjefest.com/aboutstyle/images/sub/sub05_02.gif" alt="등록하기" class="imgBorder" />
+						</a>
+					</div>
+				</div>
+<div class="sub-Title area"> 				
+	<div class="pagination mt0">
+				<a th:if="${currentPage > 1}" 
+					th:href="@{/boardList(currentPage=${currentPage - 1})}" class="prev">이전</a>
+						<th:block th:each="num:${#numbers.sequence(startPageNum,lastPageNum)}">
+							<span th:if="${currentPage == num}" 
+							th:text="${num}"></span>
+							<a th:unless="${currentPage == num}" 
+							th:text="${num}" 
+							th:href="@{/boardList(currentPage=${num})}"></a>
+						</th:block>
+			  	<a th:if="${currentPage < lastPage}" 
+					th:href="@{/boardList(currentPage=${currentPage + 1})}" class="next">다음</a>
+	</div>
+</div>
+	
+</div>
+         
+	
+
+
+
+  
+
+
+</div>
+</div>
+
+
+	  </div>
+</div>
+</section>
+
+</th:block>
+<th:block layout:fragment="gukminscript">
+<th:block th:include="fragments/gukmin/gukminscript"></th:block>
+</th:block>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+	 
+	 
+	 
+	 		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+              <h4>축제 관련 물품 출고리스트</h4>
+              <div align="right">
+              <a th:href="@{/gInsertFestivalOut}" >
+              <button type="button" class="btn btn-primary" align="right">물품 출고 등록</button></a>  
+              </div>
+              <hr>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+                      <th>축제명</th>
+                      <th>담당부서</th>
+                      <th>담당자</th>
+                      <th>출고상품명</th>
+                      <th>출고목적</th>
+                      <th>출고수량</th>
+                      <th>재고수량</th>
+                      <th>작성일</th>
+                      <th>수정</th>
+                      <th>삭제</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr  th:each="o:${GoodsOut}">
+                      <td th:text="${o.festNm}"></td>
+                      <td>무슨무슨부</td>
+                      <td>담당자누구</td>
+                      <td th:text="${o.festgoodsOutNm}"></td>
+                      <td th:text="${o.festgoodsOutDetail}"></td>
+                      <td th:text="${o.festgoodsOutAmt}"></td>
+                      <td th:text="${o.festgoodsStock}"></td>
+                      <td th:text="${o.insertDt}"></td>
+                      <td><a th:href="@{/gUpdateFestivalOut}" >
+	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>
+	                  <td><a th:href="@{/gDeleteFestivalOut}" >
+	                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>  
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

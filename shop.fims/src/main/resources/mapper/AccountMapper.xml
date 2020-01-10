@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shop.fims.account.AccountMapper">
+	<!-- 거래처 -->
+	<resultMap type="shop.fims.vo.Account" id="accountResultMap">
+		<result property="catAccCd" column="cat_acc_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="catAccNm1" column="cat_acc_nm1"/>
+		<result property="catAccOper" column="cat_acc_oper"/>
+		<result property="catAccNm2" column="cat_acc_nm2"/>
+		<result property="catAccAddr" column="cat_acc_addr"/>
+		<result property="catAccNo1" column="cat_acc_no1"/>
+		<result property="catAccNo2" column="cat_acc_no2"/>
+		<result property="catAccPhone1" column="cat_acc_phone1"/>
+		<result property="catAccPhone2" column="cat_acc_phone2"/>
+		<result property="catAccPhone3" column="cat_acc_phone3"/>
+		<result property="catAccEmail" column="cat_acc_email"/>
+		<result property="catAccDt1" column="cat_acc_dt1"/>
+		<result property="catAccApp" column="cat_acc_app"/>
+		<result property="manComNm1" column="man_com_nm1"/>
+		<result property="catAccDt2" column="cat_acc_dt2"/>
+		<result property="catAccCon" column="cat_acc_con"/>
+	</resultMap>
+	<!-- 거래처 업종 분류 -->
+	<resultMap type="shop.fims.vo.AccountCatBus" id="accountCatBusResultMap">
+		<result property="catBusAccCd" column="catbus_acc_cd"/>
+		<result property="catBusAccBus" column="catbus_acc_bus"/>
+	</resultMap>
+	<!-- 승인된 거래처 -->
+	<resultMap type="shop.fims.vo.AppAccount" id="approvalAccountCatBusResultMap">
+		<result property="catAppAccCd" column="catapp_acc_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="catBusAccCd" column="catbus_acc_cd"/>
+		<result property="catAccCd" column="cat_acc_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="catAccNm1" column="cat_acc_nm1"/>
+		<result property="catBusAccBus" column="catbus_acc_bus"/>
+		<result property="catAppAccApp" column="catapp_acc_app"/>
+		<result property="manComNm1" column="man_com_nm1"/>
+		<result property="catAppAccDt" column="catapp_acc_dt"/>
+		<result property="catAppAccCon" column="catapp_acc_con"/>
+		<result property="catAppAccPur" column="catapp_acc_pur"/>
+	</resultMap>
+	<!-- 거래처 회원 -->
+	<resultMap type="shop.fims.vo.AccountMember" id="accountMemberResultMap">
+		<result property="accMemCd" column="acc_mem_cd"/>
+		<result property="memCd" column="mem_cd"/>
+		<result property="memLevCd" column="mem_lev_cd"/>
+		<result property="catAccCd" column="cat_acc_cd"/>
+		<result property="catBusAccCd" column="catbus_acc_cd"/>
+		<result property="catAppAccCd" column="catapp_acc_cd"/>
+		<result property="catAccNm1" column="cat_acc_nm1"/>
+		<result property="catBusAccBus" column="catbus_acc_bus"/>
+		<result property="AccMemNm" column="acc_mem_nm"/>
+		<result property="AccMemAddr" column="acc_mem_addr"/>
+		<result property="AccMemPhone" column="acc_mem_phone"/>
+		<result property="AccMemEmail" column="acc_mem_email"/>
+		<result property="AccMemDt1" column="acc_mem_dt1"/>
+		<result property="AccMemDt2" column="acc_mem_dt2"/>
+	</resultMap>
+
+	<!-- 모든 거래처 관리 -->
+	 <select id="selectAllAccountView" resultMap="accountResultMap">
+	 	SELECT
+			*
+		FROM 
+			Cat_Account
+	 </select>
+
+	<!-- 거래처 상세조회 거래처 코드로 조회 -->
+	<select id="selectByAccount" resultMap="accountResultMap">
+		SELECT 
+			*
+		FROM 
+			Cat_Account
+		WHERE 
+			cat_acc_cd = #{catAccCd}
+	</select>
+	
+	<!-- 거래처 등록 -->
+	<insert id="insertAllAccount" parameterType="shop.fims.vo.Account">
+		INSERT INTO Cat_Account
+			(cat_acc_cd, areacity_admin_cd, area_city_cd, area_cd, man_com_cd, cat_acc_nm1, cat_acc_oper, cat_acc_nm2, cat_acc_addr, cat_acc_no1,
+			cat_acc_no2, cat_acc_phone1, cat_acc_phone2, cat_acc_phone3, cat_acc_email, cat_acc_dt1, cat_acc_app, man_com_nm1, cat_acc_dt2, cat_acc_con)
+		VALUES 
+			(#{catAccCd}, #{areacityAdminCd}, #{areaCityCd}, #{areaCd}, #{manComCd}, #{catAccNm1}, #{catAccOper}, #{catAccNm2}, #{catAccAddr}, #{catAccNo1},
+			#{catAccNo2}, #{catAccPhone1}, #{catAccPhone2}, #{catAccPhone3}, #{catAccEmail}, now(), #{catAccApp}, #{manComNm1}, now(), #{catAccCon})
+	</insert>
+	
+	<!-- 모든 거래처 삭제 -->
+	<delete id="deleteAllAccount" parameterType="shop.fims.vo.Account">
+		DELETE 
+		FROM 
+			Cat_Account
+		WHERE
+			cat_acc_cd = #{catAccCd}
+	</delete>
+	
+	<!--  거래처 수정화면. 거래처 코드로 조회 -->
+	<select id="selectByAllAccount" parameterType="String" resultMap="accountResultMap">
+		SELECT 
+			*
+		FROM 
+			Cat_Account
+		WHERE 
+			cat_acc_cd = #{catAccCd}
+	</select>
+	
+	<!-- 거래처 수정 -->
+	<update id="updateAllAccount" parameterType="shop.fims.vo.Account">
+	UPDATE Cat_Account
+	SET
+		cat_acc_cd = #{catAccCd}
+		,areacity_admin_cd = #{areacityAdminCd}
+		,area_city_cd = #{areaCityCd}
+		,area_cd = #{areaCd}
+		,man_com_cd = #{manComCd}
+		,cat_acc_nm1 = #{catAccNm1}
+		,cat_acc_oper = #{catAccOper}
+		,cat_acc_nm2 = #{catAccNm2}
+		,cat_acc_addr = #{catAccAddr}
+		,cat_acc_no1 = #{catAccNo1}
+		,cat_acc_no2 = #{catAccNo2}
+		,cat_acc_phone1 = #{catAccPhone1}
+		,cat_acc_phone2 = #{catAccPhone2}
+		,cat_acc_phone3 = #{catAccPhone3}
+		,cat_acc_email = #{catAccEmail}
+		,cat_acc_dt1 = #{catAccDt1}
+		,cat_acc_app = #{catAccApp}
+		,man_com_nm1 = #{manComNm1}
+		,cat_acc_dt2 = #{catAccDt2}
+		,cat_acc_con = #{catAccCon}
+	WHERE
+		cat_acc_cd = #{catAccCd}
+	</update>
+	
+	<!-- 거래처 검색 -->
+	<select id="searchAccount" parameterType="String" resultMap="accountResultMap">
+	  	SELECT 
+			*
+		FROM 
+			Cat_Account
+		<if test="sv != null and sv neq ''.toString()">
+			WHERE 
+				${sk} Like CONCAT('%',#{sv},'%')	
+		</if>
+	</select>
+	 
+	<!-- 거래처 업종 분류 -->
+	 <select id="selectAccountCatBusView" resultMap="accountCatBusResultMap">
+	 	SELECT
+			*
+		FROM 
+			Cat_Business_Account
+	 </select>
+	 
+	 <!-- 거래처 업종 분류 등록 -->
+	<insert id="insertAccountCatBus" parameterType="shop.fims.vo.AccountCatBus">
+		INSERT INTO Cat_Business_Account
+			(catbus_acc_cd, catbus_acc_bus)
+		VALUES 
+			(#{catBusAccCd}, #{catBusAccBus})
+	</insert>
+	
+	<!-- 거래처업종 분류 수정화면 거래처 업종 분류코드로 조회 -->	
+	<select id="selectByAccCatBus" parameterType="String" resultMap="accountCatBusResultMap">
+		SELECT 
+			*
+		FROM 
+			Cat_Business_Account
+		WHERE 
+			catbus_acc_cd = #{catBusAccCd}
+	</select>
+	
+	<!-- 거래처 업종 분류 수정 -->
+	<update id="updateAccountCatBus" parameterType="shop.fims.vo.AccountCatBus">
+	UPDATE Cat_Business_Account
+	SET
+		catbus_acc_cd = #{catBusAccCd}
+		,catbus_acc_bus = #{catBusAccBus}
+
+	WHERE
+		catbus_acc_cd = #{catBusAccCd}
+	</update>
+	
+	<!-- 거래처 업종 분류 삭제 -->
+	<delete id="deleteAccountCatBus" parameterType="shop.fims.vo.AccountCatBus">
+		DELETE
+		
+		FROM
+			Cat_Business_Account
+		WHERE	
+			catbus_acc_cd = #{catBusAccCd}		
+	</delete>
+	
+	<!-- 거래처 업종 분류 검색 -->
+	<select id="searchAccountCatBus" parameterType="String" resultMap="accountCatBusResultMap">
+	  	SELECT 
+			*
+		FROM 
+			Cat_Business_Account
+		<if test="sv != null and sv neq ''.toString()">
+			WHERE 
+				${sk} Like CONCAT('%',#{sv},'%')	
+		</if>
+	</select>
+	
+	<!-- 승인된 거래처 관리 -->
+	 <select id="selectApprovalAccountView" resultMap="approvalAccountCatBusResultMap">
+	 	SELECT
+			*
+		FROM 
+			Cat_Approval_Account
+	 </select>
+	 
+	<!-- 승인된 거래처 상세조회 승인된 거래처 코드로 조회 -->
+	<select id="selectByApprovalAccount" resultMap="approvalAccountCatBusResultMap">
+		SELECT
+			*
+		FROM
+			Cat_Approval_Account
+		WHERE
+			catapp_acc_cd = #{catAppAccCd}
+	</select>
+	
+	<!-- 승인된 거래처 등록 -->
+	<insert id="insertApprovalAccount" parameterType="shop.fims.vo.AppAccount">
+		INSERT INTO Cat_Approval_Account
+			(catapp_acc_cd, areacity_admin_cd, catbus_acc_cd, cat_acc_cd, area_city_cd, area_cd, man_com_cd,
+			cat_acc_nm1, catbus_acc_bus, catapp_acc_app, man_com_nm1, catapp_acc_dt, catapp_acc_con, catapp_acc_pur)
+		VALUE
+			(#{catAppAccCd}, #{areacityAdminCd}, #{catBusAccCd}, #{catAccCd}, #{areaCityCd}, #{areaCd}, #{manComCd},
+			#{catAccNm1}, #{catBusAccBus}, #{catAppAccApp}, #{manComNm1}, now() , #{catAppAccCon}, #{catAppAccPur})
+	</insert>
+	
+	<!-- 모든 거래처 삭제 -->
+	<delete id="deleteApprovalAccount" parameterType="shop.fims.vo.AppAccount">
+		DELETE
+		FROM
+			Cat_Approval_Account
+		WHERE
+			catapp_acc_cd = #{catAppAccCd}
+	</delete>
+	
+	<!-- 승인된 거래처 수정화면 승인된 거래처 코드로 조회 -->
+	<select id="selectByUpApprovalAccount" parameterType="String" resultMap="approvalAccountCatBusResultMap">
+		SELECT
+			*
+		FROM
+			Cat_Approval_Account
+		WHERE
+			catapp_acc_cd = #{catAppAccCd}
+	</select>
+	
+	<!-- 승인된 거래처 수정 -->
+	<update id="updateApprovalAccount" parameterType="shop.fims.vo.AppAccount">
+		UPDATE Cat_Approval_Account
+		SET
+			catapp_acc_cd = #{catAppAccCd}
+			,areacity_admin_cd = #{areacityAdminCd}
+			,catbus_acc_cd = #{catBusAccCd}
+			,cat_acc_cd = #{catAccCd}
+			,area_city_cd = #{areaCityCd}
+			,area_cd = #{areaCd}
+			,man_com_cd = #{manComCd}
+			,cat_acc_nm1 = #{catAccNm1}
+			,catbus_acc_bus = #{catBusAccBus}
+			,catapp_acc_app = #{catAppAccApp}
+			,man_com_nm1 = #{manComNm1}
+			,catapp_acc_dt = #{catAppAccDt}
+			,catapp_acc_con = #{catAppAccCon}
+			,catapp_acc_pur = #{catAppAccPur}
+		WHERE
+			catapp_acc_cd = #{catAppAccCd}	
+
+	</update>
+
+	<!-- 승인된 거래처 검색 -->
+	<select id="searchApprovalAccount" parameterType="String" resultMap="approvalAccountCatBusResultMap">
+	  	SELECT 
+			*
+		FROM 
+			Cat_Approval_Account
+		<if test="sv != null and sv neq ''.toString()">
+			WHERE 
+				${sk} Like CONCAT('%',#{sv},'%')	
+		</if>
+	</select>
+	
+	<!-- 거래처 회원 관리 -->
+	
+</mapper>

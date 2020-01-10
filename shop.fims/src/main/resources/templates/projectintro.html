@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminCss">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+}
+.row-section h2{float:left; width:100%; color:#fff; margin-bottom:30px; font-size: 14px;}
+.row-section h2 span{font-family: 'Libre Baskerville', serif; display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px;font-weight:700;}
+.row-section h2 a{color:#d2abce;}
+.row-section .row-block{background:#fff; padding:20px; margin-bottom:50px; margin-top: 230px;}
+.row-section .row-block ul{margin:0; padding:0;}
+.row-section .row-block ul li{list-style:none; margin-bottom:20px;}
+.row-section .row-block ul li:last-child{margin-bottom:0;}
+.row-section .row-block ul li:hover{cursor:grabbing;}
+.row-section .row-block .media{border:1px solid #d5dbdd; padding:5px 20px; border-radius: 5px; box-shadow:0px 2px 1px rgba(0,0,0,0.04); background:#fff;}
+.row-section .media .media-left img{width:75px;}
+.row-section .media .media-body p{padding: 0 15px; font-size:14px;}
+.row-section .media .media-body h4 {color: #6b456a; font-size: 18px; font-weight: 600; margin-bottom: 0; padding-left: 14px; margin-top:12px;}
+.btn-default{background:#6B456A; color:#fff; border-radius:30px; border:none; font-size:16px;}
+.rounded-circle{min-width: 150px;}
+hr{margin: 0;}
+p{margin: 0;}
+</style>
+
+</th:block>
+
+<th:block layout:fragment="gukminMainContents">
+
+<section class="row-section">
+    <div class="container">
+	    <div class="col-md-10 offset-md-1 row-block">
+	        <ul id="sortable">
+	        
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="/gukmin/assets/images/intrologo.jpg">
+	            </div>
+	            <div class="media-body">
+	                <h4>축제통합관리시스템 프로젝트 개요</h4>
+	               	<p>1.프로젝트명 : 전라북도 축제 내 모든 행사 통합 시스템</p>
+	                <p>			->축제를 만드는것 부터 시작하여 그 축제를 관리하고 정보를 제공하는 프로젝트</p>
+	                <p>2.목         적 : 전라북도 축제 내의 다양한 행사를 계획</p>
+	                <p>			->축제를 기획-진행-진행후 결과를 가지고 향후 개선이 되는 축제통합관리시스템</p>
+	            </div>
+	            <div class="media-right align-self-center">
+	            </div>
+	        </div></li>
+	        
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="/gukmin/assets/images/kds.jpg">
+	            </div>
+	            <div class="media-body">
+	                <h4>김동석</h4>
+	                <hr>
+	                <p>1.축제예산관리 : 설명란</p>
+	                <p>2.축제집행관리 : 설명란</p>
+	                <p>3.모든계약관리 : 설명란 </p>
+	                <p>4.모든통계관리 : 설명란 </p>
+	                <p>5.권한별 화면 layout 설정</p>
+	            </div>
+	            <div class="media-right align-self-center">
+	            </div>
+	        </div></li>
+	        
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/67.jpg">
+	            </div>
+	            <div class="media-body">
+	                <h4>윤수정</h4>
+	                <hr>
+	                <p>1.홍보관리 : 설명란</p>
+	                <p>2.홍보관리 : 설명란</p>
+	                <p>3.홍보관리 : 설명란 </p>
+	            </div>
+	            <div class="media-right align-self-center">
+	            </div>
+	        </div></li>
+	        
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/50.jpg">
+	            </div>
+	            <div class="media-body">
+	                <h4>조희영</h4>
+	                <hr>
+	                <p>1.홍보관리 : 설명란</p>
+	                <p>2.홍보관리 : 설명란</p>
+	                <p>3.홍보관리 : 설명란 </p>	                
+	            </div>
+	            <div class="media-right align-self-center">
+	            </div>
+	        </div></li>
+	        
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="https://randomuser.me/api/portraits/men/89.jpg">
+	            </div>
+	            <div class="media-body">
+	                <h4>김도민</h4>
+	                <hr>
+	                <p>1.홍보관리 : 설명란</p>
+	                <p>2.홍보관리 : 설명란</p>
+	                <p>3.홍보관리 : 설명란 </p>	                
+	            </div>
+	            <div class="media-right align-self-center">
+	            </div>
+	        </div></li>
+	        
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="https://randomuser.me/api/portraits/men/89.jpg">
+	            </div>
+	            <div class="media-body">
+	                <h4>한소연</h4>
+	                <hr>
+	                <p>1.홍보관리 : 설명란</p>
+	                <p>2.홍보관리 : 설명란</p>
+	                <p>3.홍보관리 : 설명란 </p>	                
+	            </div>
+	            <div class="media-right align-self-center">
+	            </div>
+	        </div></li>
+	        
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="https://randomuser.me/api/portraits/men/89.jpg">
+	            </div>
+	            <div class="media-body">
+	                <h4>조윤상</h4>
+	                <hr>
+	                <p>1.홍보관리 : 설명란</p>
+	                <p>2.홍보관리 : 설명란</p>
+	                <p>3.홍보관리 : 설명란 </p>	                
+	            </div>
+	            <div class="media-right align-self-center">
+	            </div>
+	        </div></li>
+	        
+	     </ul>
+	  </div>
+</div>
+</section>
+
+</th:block>
+<th:block layout:fragment="gukminscript">
+<th:block th:include="fragments/gukmin/gukminscript"></th:block>
+</th:block>
+
+</html>

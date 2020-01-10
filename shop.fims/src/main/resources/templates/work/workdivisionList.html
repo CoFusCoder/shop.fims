@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
+	<th:block layout:fragment="customBody">
+			<section id="main-content" style="margin: 100px; margin-top: 0px;">
+		      <section class="wrapper">
+		        <h3><i class="fa fa-angle-right"></i>축제업무조회</h3>
+		        <div class="row">
+		          <div class="col-md-12">
+		            <div class="content-panel">
+		              <h4><i class="fa fa-angle-right"></i>업무조회</h4>
+		              <div>
+		              	<form th:action="@{/workdivisionSearch}" method="post"> 
+	              		<div class="form-row">
+							    <div class="form-group col-md-3">
+							      <label for="festNm"></label>
+							      <input type="text" class="form-control" id="festNm" name="fest_nm"  placeholder="축제명을 입력해주세요">
+							    </div>
+							    <div class="form-group col-md-3">
+							      <label for="workcatNm"></label>
+							      <input type="text" class="form-control" id="workcatNm" name="feswork_cat_nm"  placeholder="업무분류명을 입력해주세요">
+							    </div>
+							  </div>
+							  <div>
+							 	<div class="form-group col-md-3">
+								     <label for="workdivNm"></label>
+								     <input type="text" class="form-control" id="workdivNm" name="feswork_div_nm" placeholder="업무명을 입력해주세요">
+								   </div>
+							    <div class="form-group col-md-3">
+							      <label for="comNm2"></label>
+							      <input type="text" class="form-control" id="comNm2" name="com_mem_nm2"  placeholder="담당자명을 입력해주세요">
+							    </div>
+							</div>
+							<button type="submit" value="search" class="btn btn-primary">검색</button>
+							<button type="button" class="btn btn-primary" onclick="location.href='/workdivisionList'">초기화</button>
+						</form>
+		              
+		              <table class="table">
+		                <thead>
+							<tr>
+								<th style=display:none;>축제업무분류코드</th>
+								<th>축제명</th>
+								<th>업무분류</th>
+								<th>업무명</th>
+								<th>담당자</th>
+								<th>수정</th>
+								<th>삭제</th>
+							</tr>
+		                </thead>
+		                <tbody>
+							<tr th:each="wd : ${WorkdivisionList}">
+								<td th:text = "${wd.workdivCd}" style=display:none;></td>
+								<td th:text = "${wd.festNm}"></td>
+								<td th:text = "${wd.workcatNm}"></td>
+								<td th:text = "${wd.workdivNm}"></td>
+								<td th:text = "${wd.comNm2}"></td>
+								<td>
+									<a th:href="@{/workdivisionUpdate (workdivCd=${wd.workdivCd})}">수정</a>
+								</td>
+								<td>
+									<a th:href="@{/workdivisionDelete}">삭제</a>
+								</td>
+							</tr>
+		                </tbody>
+		              </table>
+		            </div>
+		          </div>
+		          </div>
+		          <!-- /col-md-12 -->
+		          <!-- /col-md-12 -->
+		        </div>
+		      </section>
+		    </section>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>

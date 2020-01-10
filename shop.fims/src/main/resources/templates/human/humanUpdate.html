@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
+	<th:block layout:fragment="customBody"  th:with="h = ${Human}">
+		<h1>인적사항수정화면</h1>
+			 <div class="form-panel">
+		              <div class=" form">		
+		                <form th:action="@{/humanUpdate}" method="post"  class="cmxform form-horizontal style-form" id="commentForm">
+		                  <div class="form-group " style=display:none>
+		                    <label for="cname" class="control-label col-lg-2">회원코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="humanCd" type="text" name="humanCd" readonly="readonly" th:value="${h.humanCd}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group " style=display:none>
+		                    <label for="ccomment" class="control-label col-lg-2">담당자코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control " id="mamCd" type="text" name="mamCd"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group ">
+		                    <label for="cname" class="control-label col-lg-2">이름</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="humanNm" type="text" name="humanNm" th:value="${h.humanNm}" readonly="readonly"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group ">
+		                    <label for="cemail" class="control-label col-lg-2">연락처</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control " id="humanPhone" type="text" name="humanPhone" th:value="${h.humanPhone}" />
+		                    </div>
+		                  </div>
+		                  <div class="form-group ">
+		                    <label for="curl" class="control-label col-lg-2">축제명</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control " id="festNm" type="text" name="festNm" th:value="${h.festNm}" readonly="readonly"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group ">
+		                    <label for="curl" class="control-label col-lg-2">담당업무</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control " id="workdivNm" type="text" name="workdivNm" th:value="${h.workdivNm}" readonly="readonly"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group ">
+		                    <label for="curl" class="control-label col-lg-2">근무시간</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control " id="humanHour" type="text" name="humanHour" th:value="${h.humanHour}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group ">
+		                    <label for="ccomment" class="control-label col-lg-2">담당자명</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control " id="comNm2" type="text" name="comNm2" th:value="${h.comNm2}"/>
+		                    </div>
+		                  </div>
+		                  <div class="form-group">
+		                    <div class="col-lg-offset-2 col-lg-10">
+		                      <button class="btn btn-theme" type="submit" value="수정">수정</button>
+		                      <button class="btn btn-theme04" type="button">취소</button>
+		                    </div>
+		                  </div>
+		                </form>
+		              </div>
+		            </div>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>

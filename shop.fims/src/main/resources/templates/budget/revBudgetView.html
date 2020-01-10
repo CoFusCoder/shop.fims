@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8">
+<!-- 날짜입력에 달력넣기스크립트 -->
+<!--
+<link rel="stylesheet" type="text/css" href="/adminis/ebudget/css/tcal.css">
+<script type="text/javascript" src="/adminis/ebudget/js/tcal.js"></script>
+-->
+
+
+<link rel="stylesheet" href="/adminis/ebudget/css/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/adminis/ebudget/css/jqplot/jquery.jqplot.css"/>
+<script src="/adminis/ebudget/js/jquery-1.7.2.min.js"></script>
+<script src="/adminis/ebudget/js/jquery-ui.js"></script>
+<script src="/adminis/ebudget/js/bcal.js"></script>
+
+<script src="/adminis/ebudget/js/selectivizr.js"></script>
+<script src="/adminis/ebudget/js/selectivizr-min.js"></script>
+<script src="/adminis/ebudget/js/respond.min.js"></script>
+<script src="/adminis/ebudget/js/html5shiv.js"></script>
+<script src="/adminis/ebudget/js/jquery.h5validate.js"></script>
+
+<!--<script src="/adminis/ebudget/js/jquery-1.11.3.min.js"></script>-->
+<script src='/adminis/ebudget/js/bootstrap-treefy.js'></script>
+
+<link rel='stylesheet' href='/adminis/ebudget/css/main.css' type='text/css'>
+<link rel='stylesheet' href='/adminis/ebudget/css/mediaquery.css' type='text/css' media = "screen" />
+
+<!--<meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1"> -->
+
+<title>
+축제통합관리시스템</title>
+</head>
+<body>
+<header>
+
+  <div id="headerW">
+  <label for="toggle" id="togglemenu" onclick>MENU</label>
+
+
+    <div id="topW" style="background-color:#2B2B2B;">
+    <div class="top">
+
+    <ul>
+
+    		<!--<li style="color:#efefef;" class="jest"><a href="http://www.jeongeup.go.kr/index.jeongeup?menuCd=DOM_000000104007003000" title='홈으로이동'>정읍시에 바란다</a></li>-->
+		<li style="color:#efefef;"><a href="/dashboard" title='홈으로이동'>!관리자 홈페이지</a></li>
+	<li ><a href="/gukminview/index" title='축제 홈페이지로 이동'  target='_blank'>!축제 홈페이지</a></li>
+
+	</ul>
+  </div>
+ </div><!--topW-->
+
+
+
+
+
+   <!--<div id="bg"></div>-->
+
+<nav>
+   <div id="navW">
+		<div class="sub_logo">
+		  <a href="/revExpBudgetView">
+			<img src="/gukmin/assets/images/fimslog.jpg" alt='홈으로이동' title='홈으로이동'>
+			<span title='세입세출재정정보공개시스템'>!세입·세출재정정보공개시스템</span>
+		  </a>
+		</div>
+
+
+
+
+		<div class="sub_menu">
+
+           <!--<nav id="navigation-list">-->
+
+            <input type="checkbox" id="toggle"/>
+			<ul class="clearfix" id="nav">
+							    <li><a href="/fundManStatusView" class="menu0" title='자금운용현황'>!자금운용현황</a></li>
+				
+				<li><a href="/revBudgetView" class="menu1" title='세입현황'>!세입현황</a></li>
+				<li>
+				<a href='/revExpExecutionView' class='menu2' title='세출현황'>!세출현황</a></li>
+				<li><a href='#' class='menu3' target='_blank'  title='세입세출예산'>#세입·세출예산</a></li><li><a href='#' class='menu4' target='_blank'  title='세입세출결산'>#세입·세출결산</a></li>			  </ul>
+		 </div><!--.sub_menu-->
+
+		 </div><!--navW-->
+
+			</nav>
+
+
+	</div><!--headerW-->
+
+
+
+
+
+
+
+
+</header>
+
+
+
+<div id="contentW">
+<div class="content">
+
+
+
+
+
+<script>
+    $(function() {
+        $("#table").treeFy({
+            treeColumn: 0  //순서
+        });
+    });
+</script>
+
+<div id="sub_title">세입현황<a href="http://www.wetax.go.kr/" target="_blank"><img src="http://gyeyak.namwon.go.kr/ebudget/img/banner_wetax.gif" alt="위텍스배너" title='위텍스홈페이지로이동'></a></div>
+<div id="ex"><p>- 세입징수현황을 회계년도별, 특정기간별 조회가 가능하며 세입과목별로 정리되어 있습니다.</p></div>
+
+<!-- 검색항목출력 폼 -->
+<div id="search_table">
+	<form name="board_form" method="post" action="#"> 	
+		<table>
+		<caption>#세입현황 검색</caption>
+			<tr>
+				<th scope="col">회계년도</th><td><label for='select'>년도선택</label><select name='year' title='년도선택' id='select'><option value='2019'>2019</option><option value='2018'>2018</option><option value='2017'>2017</option><option value='2016'>2016</option><option value='2015'>2015</option><option value='2014'>2014</option> </select></td>
+				<th scope="col">조회기간</th>
+				<td>
+					<input type="text" id="dp1" name="day1" value="2019-12-23" title='시작날짜선택' readonly>-
+					<label for="dp1"></label>
+					<input type="text" id="dp2" name="day2" value="2019-12-24" title='끝날짜선택' readonly>
+					<label for="dp2"></label>
+				</td>
+			</tr>
+		
+		</table>
+		<div class="searchbtn">
+		<input type="image" src="http://gyeyak.namwon.go.kr/ebudget/img/search_btn.gif" class="btn" alt='검색버튼' title='검색'>
+		</div>
+	</form>
+</div>
+<!--search_table-->
+
+
+<div id="list_wrap">
+<div id="sub_title2">세입징수</div>
+<span class="ex_2">(단위 : 원)</span>
+   <table id="list_table" class="tree_table page101">
+   <caption>#세입현황</caption>
+         <thead>
+			<tr>
+				  <th scope='col' rowspan='2' class='numeric'>번호</th>
+				  <th scope='col' rowspan='2' class='numeric'>회계구분</th>
+				  <th scope='col' colspan='3'>조회기간내</th>
+				  <th scope='col' rowspan='2'>조회기간전<br>누계액</th>
+				  </tr>
+				  <tr>
+				  <th scope='col' class='numeric'>수입액</th>
+				  <th scope='col' class='numeric'>과오납반환액</th>
+				  <th scope='col' class='numeric'>과목경정액</th>
+				  </tr>		</thead>
+		<tbody>
+
+		<tr><td colspan='6' style='text-align:center;'>검색된 데이터가 없습니다.</td>
+		</tbody>
+  </table>
+
+  <div class="btn01" id="noprint">
+<div class="down_icon"></div>
+<span class="print_icon"><button onclick="content_print()" title="인쇄하기"></button></span>
+</div>
+
+
+</div>
+<div id='ex3'> ※ 본 자료는 2015.11.14 부터 연계되오니 실자료와 상이 할 수 있습니다.</div>
+
+ </div>
+ </div>
+
+
+ <footer>
+   
+   <div id="footer">
+   <div class="foot_bar"></div>
+      <ul>
+		  <li class="count">
+		  		  </li>
+         <li class="logo2"><img src="/gukmin/assets/images/fimslog.jpg" alt="축제통합관리시스템" title='축제통합관리시스템'></li>
+	     <li class="address">
+			 전라북도 전주시 덕진구 기린대로 446<br>Tel. 063) 1212-1004 Fax. 063) 1212-1005<br>Copyright ⓒ NAMWON CITY. All Rights Reserved.<br>          </li>
+
+        </ul>
+    </div>
+ </footer>
+
+
+
+
+<script>
+$('.menu1').addClass('munu_1');
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/ebudget/ebudgetmaindefault}">
+
+<th:block layout:fragment="ebudgetScript">
+	<meta name='robots' content='noindex,nofollow'>	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes, target-densitydpi=medium-dpi"/>
+</th:block>
+
+<th:block layout:fragment="ebudgetMainContents">
+	<th:block th:include="fragments/gukmin/ebudget/ebudgetmainview"></th:block>
+</th:block>
+
+</html>

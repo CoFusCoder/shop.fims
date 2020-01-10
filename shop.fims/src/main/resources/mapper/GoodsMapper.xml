@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="shop.fims.goods.GoodsMapper">
+ <resultMap type="shop.fims.vo.Goods" id="goodslist">
+ 
+ <result property="goodspreConCd" column="goodspre_con_cd"/>
+ <result property="areacityAdmCd" column="areacity_admin_cd"/>
+ <result property="areaCd" column="area_cd"/>
+ <result property="areaCityCd" column="area_city_cd"/>
+ <result property="festCd" column="fest_cd"/>
+ <result property="adminDepCd" column="admin_dep_cd"/>
+<!--  <result property="" column="admindep_emp_nm"/> -->
+<!--  <result property="" column="adm_age_nm"/> -->
+<!--  <result property="" column="area_city_nm"/> -->
+<!--  <result property="" column="areacity_admin_nm"/> -->
+<!--  <result property="" column="fest_nm"/> -->
+<!--  <result property="" column="admim_dep_nm"/> -->
+ <result property="goodsNm" column="goods_nm"/>
+ <result property="goodsAmt" column="goods_count"/>
+ <result property="specialNote" column="special_note"/>
+
+ 
+ 
+ 
+ 
+ 
+ </resultMap>
+  <select id="goodslist" resultMap="goodslist">
+	
+	SELECT
+	*
+	FROM
+	Goods_present_condition
+	
+  </select>
+  </mapper>

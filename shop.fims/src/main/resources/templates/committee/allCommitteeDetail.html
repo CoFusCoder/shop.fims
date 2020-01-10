@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+	
+	<th:block layout:fragment="adminisTitle">
+		<meta charset="UTF-8">
+	</th:block>
+	<th:block layout:fragment="adminisMainContents">	
+		
+		<h3>위원회관리</h3>
+		<div>
+		<a th:href="@{/allCommitteeView}">
+		<button type="button" class="btn btn-default" >뒤로가기</button>
+		</a>
+		</div>
+				
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+            <th:block th:each="c : ${selectByCommittee}">
+              <h4><i class="fa fa-angle-right"></i></span> 위원회 상세보기 </h4><br>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>위원회코드</th>
+                      <th>모든 행정기관코드</th>
+                      <th>회원코드</th>
+                      <th>모든 회원 레벨코드</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${c.manComCd}"></td>
+	               		<td th:text="${c.areacityAdminCd}"></td>
+	               		<td th:text="${c.memCd}"></td>
+	               		<td th:text="${c.memLevCd}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th>축제코드</th>
+                    	<th>모든 심사 결과</th>
+                    	<th>모든 지역 시군코드</th>
+                    	<th>전국지역코드</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${c.festCd}"></td>
+	               		<td th:text="${c.exaRepCd}"></td>
+	               		<td th:text="${c.areaCityCd}"></td>
+	               		<td th:text="${c.areaCd}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+	                    <th>축제명</th>
+	                    <th>위원회 분류</th>
+	                    <th>위원회명</th>
+	                    <th>위원회부서</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	               		<td th:text="${c.festNm}"></td>
+	               		<td th:text="${c.manComCat}"></td>
+	               		<td th:text="${c.manComNm1}"></td>
+	               		<td th:text="${c.manComDep}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+	                    <th>직급</th>
+	                    <th>이름</th>
+	                    <th>소속</th>
+	                    <th>작성일자</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	               		<td th:text="${c.manComRank}"></td>
+	               		<td th:text="${c.comMemNm2}"></td>
+	               		<td th:text="${c.manComJob}"></td>
+	               		<td th:text="${c.manComDt1}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th>승인자</th>
+						<th>승인일자</th>
+						<th>승인 상태</th>
+						<th></th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	               		<td th:text="${c.manComApp}"></td>
+	               		<td th:text="${c.manComDt2}"></td>
+	               		<td th:text="${c.manComCon}"></td>
+	               		<td></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th colspan="2">수정ㅤㅤㅤㅤㅤㅤㅤ</th>
+						<th colspan="2">삭제ㅤㅤㅤㅤㅤㅤㅤ</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	                    <td colspan="2">
+	                    	<a th:href="@{/updateAllCommittee(manComCd=${c.manComCd})}">
+	                    	<button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
+	                    </td>
+	                    <td colspan="2">
+	                    	<a th:href="@{/deleteAllCommittee(manComCd=${c.manComCd})}">
+	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
+	                    </td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  
+                </table>
+              </section>
+              </th:block>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

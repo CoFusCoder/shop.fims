@@ -1,0 +1,5502 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<script src="/gukmin/js/underscore-min.js"></script>
+<script src="/gukmin/include/js/jquery.rateyo.min.js"></script>
+<script>
+	// 별점 주기
+	$(function() {
+		$("#rateYo").rateYo({
+			rating : 4,
+			fullStar : true,
+			starWidth : "20px",
+			normalFill : "#cccccc",
+			ratedFill : "#faa41a"
+		});
+	});
+</script>
+<style>
+.wrap {
+	position: absolute;
+	left: 0;
+	bottom: 40px;
+	width: 288px;
+	height: 132px;
+	margin-left: -144px;
+	text-align: left;
+	overflow: hidden;
+	font-size: 12px;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	line-height: 1.5;
+}
+
+.wrap * {
+	padding: 0;
+	margin: 0;
+}
+
+.wrap .info {
+	width: 286px;
+	height: 120px;
+	border-radius: 5px;
+	border-bottom: 2px solid #ccc;
+	border-right: 1px solid #ccc;
+	overflow: hidden;
+	background: #fff;
+}
+
+.wrap .info:nth-child(1) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+	padding: 5px 0 0 10px;
+	height: 30px;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.info .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #888;
+	width: 17px;
+	height: 17px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+	cursor: pointer;
+}
+
+.info .body {
+	position: relative;
+	overflow: hidden;
+}
+
+.info .desc {
+	position: relative;
+	margin: 13px 0 0 90px;
+	height: 75px;
+}
+
+.desc .ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.desc .jibun {
+	font-size: 11px;
+	color: #888;
+	margin-top: -2px;
+}
+
+.info .img {
+	position: absolute;
+	top: 6px;
+	left: 5px;
+	width: 73px;
+	height: 71px;
+	border: 1px solid #ddd;
+	color: #888;
+	overflow: hidden;
+}
+
+.info:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: 0;
+	width: 22px;
+	height: 12px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+	color: #5085BB;
+}
+</style>
+<style>
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#googlemap {
+	height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+</style>
+<style>
+.image-upload>input {
+	display: none;
+}
+</style>
+<style>
+#sortable {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#sortable li {
+	margin: 3px 3px 3px 0;
+	padding: 0px;
+	float: left;
+	width: 48px;
+	height: 48px;
+	font-size: 1em;
+	text-align: left;
+}
+
+.input_hidden {
+	position: absolute;
+	left: -9999px;
+}
+
+.selected {
+	background-color: #1ABC9C;
+}
+
+#sortable label {
+	display: inline-block;
+	cursor: pointer;
+}
+
+#sortable label:hover {
+	background-color: #1ABC9C;
+}
+
+#sortable label img {
+	padding: 3px;
+}
+</style>
+<section>
+	<form id="searchform" name="searchform" action="/FestivalDetail.festa" method="post">
+		<input type="hidden" name="festivalseq" value="1450" id="festivalseq"/>
+		<div class="detailDesc">
+			<p class="t01">
+				통영 해맞이 행사 2020 
+			</p>
+			<p class="t02">
+				통영시청 
+			</p>
+			
+		</div>
+		<div class="detailInfo">
+			<div class="mainSlideBox">
+				<div class="sts_area">
+					
+						
+							<span class="sts_be">진행<br />예정
+							</span>
+						
+						
+						
+					
+				</div>
+				<div class="mainSlide">
+					
+						<div class="item">
+							
+							
+								<a href="javascript:void(0)"><img class="vertical"
+									src="/uploadedfiles/spot/2019/12/9bf37e14-1f60-4855-9b06-3dc9da2a0932_104123760.JPG" width="780px"
+									height="480px" /></a>
+							
+						</div>
+					
+						<div class="item">
+							
+							
+								<a href="javascript:void(0)"><img class="vertical"
+									src="/uploadedfiles/spot/2019/12/c6137fb2-44f6-4380-88b9-08729336d878_104127014.JPG" width="780px"
+									height="480px" /></a>
+							
+						</div>
+					
+						<div class="item">
+							
+							
+								<a href="javascript:void(0)"><img class="vertical"
+									src="/uploadedfiles/spot/2019/12/cff7a602-e0ec-4a36-9e01-3bd643f8a1f1_104131216.JPG" width="780px"
+									height="480px" /></a>
+							
+						</div>
+					
+						<div class="item">
+							
+							
+								<a href="javascript:void(0)"><img class="vertical"
+									src="/uploadedfiles/spot/2019/12/b3d43de3-73d5-4bfe-9e36-06031747d9fc_104134725.JPG" width="780px"
+									height="480px" /></a>
+							
+						</div>
+					
+				</div>
+				
+					<!--
+					<div class="msRela"> 
+				 -->
+					<a href="javascript:void(0)" class="msLeft"><img
+						src="../../include/img/ico/ico_prev02.png" /></a>
+					<a href="javascript:void(0)" class="msRight"><img
+						src="../../include/img/ico/ico_next02.png" /></a>
+					<!--
+					</div> 
+							 -->
+				
+			</div>
+			<div class="detailCont">
+				<table>
+					<tr class="first">
+						<th>행사기간</th>
+						<td>2020.01.01 ~ 2020.01.01</td>
+					</tr>
+					<tr>
+						<th>위치</th>
+						<td>경상남도 통영시 멘데해안길 205 (정량동)</td>
+					</tr>
+					<tr>
+						<th>행사장소</th>
+						<td>정량동 이순신 공원 </td>
+					</tr>
+					<tr>
+						<th>연락처</th>
+						<td><a href="tel:+82-55-650-4032">+82-55-650-4032</a></td>
+					</tr>
+					<tr>
+						<th>홈페이지</th>
+						<td><a href="https://bit.ly/35JRpYQ"
+							target="_blank">https://bit.ly/35JRpYQ</a></td>
+					</tr>
+					
+				</table>
+				<div class="detailTag">
+					
+						<a
+							href="Search.festa?searchkeyword=경남">#경남</a>
+					
+						<a
+							href="Search.festa?searchkeyword=통영">#통영</a>
+					
+						<a
+							href="Search.festa?searchkeyword=이순신공원">#이순신공원</a>
+					
+						<a
+							href="Search.festa?searchkeyword=체험참여">#체험참여</a>
+					
+						<a
+							href="Search.festa?searchkeyword=해맞이">#해맞이</a>
+					
+						<a
+							href="Search.festa?searchkeyword=일출">#일출</a>
+					
+						<a
+							href="Search.festa?searchkeyword=겨울">#겨울</a>
+					
+						<a
+							href="Search.festa?searchkeyword=경남축제">#경남축제</a>
+					
+						<a
+							href="Search.festa?searchkeyword=통영축제">#통영축제</a>
+					
+						<a
+							href="Search.festa?searchkeyword=체험참여축제">#체험참여축제</a>
+					
+						<a
+							href="Search.festa?searchkeyword=해맞이축제">#해맞이축제</a>
+					
+						<a
+							href="Search.festa?searchkeyword=일출축제">#일출축제</a>
+					
+						<a
+							href="Search.festa?searchkeyword=겨울축제">#겨울축제</a>
+					
+						<a
+							href="Search.festa?searchkeyword=1월축제">#1월축제</a>
+					
+						<a
+							href="Search.festa?searchkeyword=소원을말해봐">#소원을말해봐</a>
+					
+				</div>
+				<div class="snsBox">
+					<a href="javascript:void(0)"
+						onclick="javascript:$.setBookmark(this, '3', '1450');"
+						class="btnHart2 "></a>
+					<a href="javascript:void(0)" onclick="javascript:$.share('fb');"
+						class="btnSnsF"></a> <a href="javascript:void(0)"
+						onclick="javascript:$.share('ka');" class="btnSnsK"></a> <a
+						href="javascript:void(0)" onclick="javascript:$.share('nb');"
+						class="btnSnsB"></a> <a href="javascript:void(0)"
+						onclick="javascript:$.share('cb');" class="btnSnsL"></a>
+				</div>
+				<input id="textbox-url"
+					style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; margin: 0; padding: 0; border: 0;"
+					value="https://joyfesta.kr/FestivalDetail.festa?festivalseq=1450" />
+				<div class="hostBar mt50">
+					
+						<span>호스트의 다른 축제ㆍ이벤트 </span>
+					
+					<div class="hostBar_btn">
+						<a
+							href="javascript:$.serviceDialog('호스트 정보보기', '<br />등록된 호스트 정보가 없습니다.<br />', '');"
+							class="btn_storeView">호스트 정보보기</a>
+					</div>
+				</div>
+				
+					<div class="hostSlideBox">
+						<div class="hostSlide">
+							
+								
+									<div class="item">
+								
+								<a
+									href="FestivalDetail.festa?festivalseq=1102"
+									class="fl"><img
+									src="/uploadedfiles/spot/2019/11/1_170845892.JPG" width="200px"
+									height="116px" /></a>
+								
+				
+					
+						<a href="javascript:void(0)" class="fr"><img
+							src="/images/none_img.png" width="200px" height="116px" /></a>
+			</div>
+			
+			
+			
+		</div>
+		
+		</div>
+		
+		<div class="ctn_wrong">
+			<a href="InquiryForm.festa" title="1:1문의하기로 이동"> <img
+				src="../../include/img/etc/btn_wrong.png" alt="잘못된 정보 제보">
+			</a> <span> 이 페이지에 잘못된 정보 또는 새로운 정보가 있나요? <br /> 수정할 내용 또는 사진을
+				제보해주세요!
+			</span>
+		</div>
+		<p class="latestDate">
+			최근 정보 업데이트
+			2019.12.24 10:50
+		</p>
+		</div>
+		</div>
+
+		<div id="detailBox01">
+			<ul class="detailTabs">
+				<li><a href="javascript:void(0)" class="on"
+					data-id="detailBox01">상세정보</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox02">연관스팟</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox03">SNS</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox04">리뷰</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox05">Q&A</a></li>
+			</ul>
+			<div class="detaillArea">
+				<p class="dSubj">기본정보</p>
+				<div class="detNormal">
+					<table>
+						<tr class="first">
+							<th>주최</th>
+							<td>통영시청 </td>
+						</tr>
+						<tr>
+							<th>주관</th>
+							<td>통영시청 </td>
+						</tr>
+						
+						<tr>
+							<th>기간</th>
+							<td>2020.01.01 ~ 2020.01.01</td>
+						</tr>
+						
+							<tr>
+								<th>운영시간</th>
+								<td>
+										06:00
+									 ~ 
+										08:20
+									</td>
+							</tr>
+						
+						<tr>
+							<th>휴일정보</th>
+							<td> 
+									
+										
+											기타
+										
+										
+									
+								</td>
+						</tr>
+						
+							
+							<tr>
+								<th>입장료</th>
+								<td>
+									무료 </td>
+							</tr>
+							
+							<tr>
+								<th>음식물반입</th>
+								<td>가능 </td>
+							</tr>
+							<tr>
+								<th>주차장</th>
+								<td>있음
+									 </td>
+							</tr>
+							<tr>
+								<th>공중화장실</th>
+								<td>있음 
+									</td>
+							</tr>
+						
+						
+					</table>
+				</div>
+				<p class="dSubj">행사소개</p>
+				<div class="detIntroBox">
+					<p>통영시는 정량동 망일봉 이순신공원에서 2020년 1월 1일부터 <b>2020년 통영 해맞이행사</b>를 개최한다.&nbsp;</p><p>다사다난했던 2019년 한 해를 보내고 새해를 맞이하면서 시민의 안녕과 화합 그리고 따뜻한 시정, 행복한 시민,&nbsp;</p><p>다시뛰는 통영을 염원하는 시민의 뜻을 모으는 해맞이 행사입니다.&nbsp;</p><p><br></p><p>푸른바다를 바라보며,&nbsp;</p><p>떠오르는 일출에 새해소원을 빌어보세요 ~&nbsp;</p><p>행운가득한 한해를 통영에서 시작하세요 ~&nbsp;</p><p><br></p><p><b>[프로그램]</b></p><p>1. 새해노래</p><p>2. 일출타북</p><p>3. 신년메세지</p><p>4. 떡절단</p><p>5. 복조리판매&nbsp;</p><p><br></p><p><b>[축제 Tip]</b></p><p>1.무료 온음료와 떡제공시 일회용품은 사용하지 않으니, 꼭 개인 텀블러 지참해주세요.&nbsp;</p><p><br></p>
+				</div>
+
+				<p class="dSubj">사진/영상</p>
+				<div class="detMovieBox">
+					<div class="detMovieSlide">
+						
+							<div class="item">
+								
+								
+									<a href="javascript:void(0)"
+										onclick="javascript:imageDialog(0);"><img
+										class="vertical" src="/uploadedfiles/spot/2019/12/9bf37e14-1f60-4855-9b06-3dc9da2a0932_104123760.JPG" /></a>
+								
+							</div>
+						
+							<div class="item">
+								
+								
+									<a href="javascript:void(0)"
+										onclick="javascript:imageDialog(1);"><img
+										class="vertical" src="/uploadedfiles/spot/2019/12/c6137fb2-44f6-4380-88b9-08729336d878_104127014.JPG" /></a>
+								
+							</div>
+						
+							<div class="item">
+								
+								
+									<a href="javascript:void(0)"
+										onclick="javascript:imageDialog(2);"><img
+										class="vertical" src="/uploadedfiles/spot/2019/12/cff7a602-e0ec-4a36-9e01-3bd643f8a1f1_104131216.JPG" /></a>
+								
+							</div>
+						
+							<div class="item">
+								
+								
+									<a href="javascript:void(0)"
+										onclick="javascript:imageDialog(3);"><img
+										class="vertical" src="/uploadedfiles/spot/2019/12/b3d43de3-73d5-4bfe-9e36-06031747d9fc_104134725.JPG" /></a>
+								
+							</div>
+						
+					</div>
+					
+						<a href="javascript:void(0)" class="detLeft"><img
+							src="../../include/img/ico/ico_prev02.png" /></a>
+						<a href="javascript:void(0)" class="detRight"><img
+							src="../../include/img/ico/ico_next02.png" /></a>
+					
+				</div>
+
+				<p class="dSubj">찾아가는 길</p>
+				<div class="detMap">
+					<div class="mapArea">
+						<div id="googlemap"></div>
+					</div>
+					<div class="mapOpt">
+						<p class="t01">주변 전통시장 및 축제</p>
+						<p class="t01">
+							<select class="select" id="distance">
+								<option value="0.01">시간을 선택하세요</option>
+								<option value="1">15분 이내</option>
+								<option value="2">30분 이내</option>
+								<option value="4">1시간 이내</option>
+							</select>
+						</p>
+						<p class="t02">※ 평균적인 도보기준으로 스팟에서 해당 지점까지 길리는 시간입니다. 주변 상황 및
+							개인에 따라 걸리는 시간이 달라질 수 있습니다.</p>
+						<div class="t03">
+							<a
+								href="https://www.google.co.kr/maps/dir//경상남도 통영시 멘데해안길 205 (정량동)/@34.8443125,128.44293749999997,13z/"
+								target="_blank"> <img
+								src="../../include/img/etc/etc_findIcon.jpg" />
+							</a>
+						</div>
+					</div>
+				</div>
+				<link rel="stylesheet" type="text/css" href="/css/style.css" />
+				<script>
+					var imageSrcMarket = '/include/img/ico/ico_marker_market.png';
+					var imageSrcStore = '/include/img/ico/ico_marker_store.png';
+					var imageSrcFestival = '/include/img/ico/ico_marker_festival.png';
+					var map;
+
+					$('#distance').on('change', function() {
+						updateNearSpotListGoogleMap(map);
+					});
+
+					function updateNearSpotListGoogleMap(map) {
+						indicatorOn();
+						$
+								.ajax({
+									url : 'JSONNearSpotListMap.festa',
+									type : 'POST',
+									data : {
+										lat : 34.8443125,
+										lon : 128.44293749999997,
+										distance : $('#distance').val()
+									},
+									dataType : 'json',
+									success : function(data, textStatus, jqXHR) {
+										indicatorOff();
+
+										var zoom = 16;
+
+										if ($('#distance').val() == '1') {
+											zoom = 14;
+										} else if ($('#distance').val() == '2') {
+											zoom = 13;
+										} else if ($('#distance').val() == '4') {
+											zoom = 12;
+										}
+
+										map = new google.maps.Map(
+												document
+														.getElementById('googlemap'),
+												{
+													center : {
+														lat : Number('34.8443125'),
+														lng : Number('128.44293749999997')
+													},
+													zoom : zoom,
+													gestureHandling: 'cooperative'
+												});
+
+										if (data.resultcode == 0) {
+											if (data.positions.length > 0) {
+												var locations = [];
+												//
+												var latLngs = [];
+												var newLat;  //x
+					                            var newLng;  //Y
+												
+												for (var i = 0; i < data.positions.length; i++) {
+													var spottype = data.positions[i].spottype;
+													var imageSrc = '';
+													var linkurl = '';
+													var bgcolor = '';
+													if (spottype == 1) {
+														imageSrc = imageSrcMarket;
+														linkurl = 'MarketDetail.festa?marketseq=';
+														bgcolor = '#EF619D';
+													} else if (spottype == 2) {
+														imageSrc = imageSrcStore;
+														linkurl = 'StoreDetail.festa?storeseq=';
+														bgcolor = '#12B0BD';
+													} else if (spottype == 3) {
+														imageSrc = imageSrcFestival;
+														linkurl = 'FestivalDetail.festa?festivalseq=';
+														bgcolor = '#F26828';
+													}
+													//
+													newLat = Number(data.positions[i].lat);  //x
+					                            	newLng = Number(data.positions[i].lng);  //Y
+													var latLng = new google.maps.LatLng(Number(data.positions[i].lat), Number(data.positions[i].lng));
+													if(latLngs.length != 0) {
+									                    for (var j = 0; j < latLngs.length; j++) {
+									                        var existinglatLng = latLngs[j];
+									                        var pos = existinglatLng.getPosition();
+									                        if (latLng.equals(pos) || data.positions[i].distance < 0.001) {
+									                            var a = 360.0 / latLngs.length;
+									                            newLat = pos.lat() + -.00004 * Math.cos((+a*i) / 180 * Math.PI);  //x
+									                            newLng = pos.lng() + -.00004 * Math.sin((+a*i) / 180 * Math.PI);  //Y
+									                            latLng = new google.maps.LatLng(newLat,newLng);
+									                        }
+									                    }
+									                }
+													latLngs.push(new google.maps.Marker({position: latLng}));
+													
+													locations
+															.push({
+																lat : newLat, //Number(data.positions[i].lat),
+																lng : newLng, //Number(data.positions[i].lng),
+																title : data.positions[i].title,
+																description : data.positions[i].description,
+																mainimagefilepath : data.positions[i].mainimagefilepath,
+																roadaddress : data.positions[i].roadaddress,
+																contact : data.positions[i].contact,
+																spotseq : data.positions[i].spotseq,
+																imageSrc : imageSrc,
+																linkurl : linkurl,
+																bgcolor : bgcolor
+															});
+												}
+												var markers = locations
+														.map(function(location,
+																i) {
+
+															// InfoWindow content
+															var content = '<div id="iw-container">'
+																	+ '<a href="'
+																				+ location.linkurl + location.spotseq
+																				+ '" target="_blank"><div class="iw-title" style="background-color: ' + location.bgcolor + ';">'
+																	+ location.title
+																	+ '</div></a>'
+																	+ '<div class="iw-content">'
+																	+ '<div class="iw-subTitle">소개</div>'
+																	+ '<a href="'
+																	+ location.linkurl + location.spotseq
+																	+ '" target="_blank"><img src="' 
+																	+ location.mainimagefilepath 
+																	+ '" alt="'
+																	+ location.title
+																	+ '" height="115" width="83"></a>'
+																	+ '<p>'
+																	+ location.description
+																	+ '</p>'
+																	+ '<div class="iw-subTitle">주소</div>'
+																	+ '<p>'
+																	+ location.roadaddress
+																	+ '<br>'
+																	+ location.contact
+																	+ '<br><a href="'
+																					+ location.linkurl + location.spotseq
+																					+ '" target="_blank">'
+																	+ '상세페이지</a></p>'
+																	+ '</div>'
+																	+ '<!--<div class="iw-bottom-gradient"></div>-->'
+																	+ '</div>';
+
+															var contentString = '<div id="content">'
+																	+ '<div id="siteNotice"></div>'
+																	+ '<h3 id="firstHeading" class="firstHeading">'
+																	+ location.title
+																	+ '</h3><a href="'
+														+ location.linkurl + location.spotseq
+														+ '" target="_blank"><img src="' 
+														+ location.mainimagefilepath 
+														+ '" width="60px"></a>'
+																	+ '<div id="bodyContent">'
+																	+ '<p><b>'
+																	+ location.roadaddress
+																	+ '</b><br />'
+																	+ location.contact
+																	+ '</p>'
+																	+ '<p><a href="'
+														+ location.linkurl + location.spotseq
+														+ '" target="_blank">'
+																	+ '상세페이지</a></p>'
+																	+ '</div>'
+																	+ '</div>';
+															var infowindow = new google.maps.InfoWindow(
+																	{
+																		content : content
+																	});
+
+															google.maps.event
+																	.addListener(
+																			infowindow,
+																			'domready',
+																			function() {
+
+																				// Reference to the DIV that wraps the bottom of infowindow
+																				var iwOuter = $('.gm-style-iw');
+
+																				// Reference to the div that groups the close button elements.
+																				var iwCloseBtn = iwOuter
+																						.find('button');
+
+																				// Apply the desired effect to the close button
+																				iwCloseBtn
+																						.css({
+																							opacity : '1',
+																							right : '15px',
+																							top : '17px',
+																							border : '0px solid',
+																							'border-radius' : '20px'
+																						});
+
+																				// If the content of infowindow not exceed the set maximum height, then the gradient is removed.
+																				if ($(
+																						'.iw-content')
+																						.height() < 140) {
+																					$(
+																							'.iw-bottom-gradient')
+																							.css(
+																									{
+																										display : 'none'
+																									});
+																				}
+
+																				// The API automatically applies 0.7 opacity to the button after the mouseout event. This function reverses this event to the desired value.
+																				iwCloseBtn
+																						.mouseout(function() {
+																							$(
+																									this)
+																									.css(
+																											{
+																												opacity : '1'
+																											});
+																						});
+																			});
+
+															var marker = new google.maps.Marker(
+																	{
+																		position : location,
+																		icon : location.imageSrc
+																	});
+															marker
+																	.addListener(
+																			'click',
+																			function() {
+																				infowindow
+																						.open(
+																								map,
+																								marker);
+																			});
+
+															// Event that closes the Info Window with a click on the map
+															google.maps.event
+																	.addListener(
+																			map,
+																			'click',
+																			function() {
+																				infowindow
+																						.close();
+																			});
+
+															return marker;
+														});
+												var markerCluster = new MarkerClusterer(
+														map,
+														markers,
+														{
+															imagePath : '/images/m'
+														});
+											}
+										} else {
+											alert(data.resultmessage);
+										}
+									},
+									error : function(jqXHR, textStatus,
+											errorThrown) {
+										indicatorOff();
+										//alert(textStatus);
+									}
+								});
+					}
+
+					function initMap(lat, lng, zoom) {
+						if (lat == null || lng == null || zoom == null) {
+							lat = Number('34.8443125');
+							lng = Number('128.44293749999997');
+							zoom = 14;
+						}
+						map = new google.maps.Map(document
+								.getElementById('googlemap'), {
+							center : {
+								lat : lat,
+								lng : lng
+							},
+							zoom : zoom,
+							gestureHandling: 'cooperative'
+						});
+						updateNearSpotListGoogleMap(map);
+					}
+				</script>
+				<script src="/js/markerclusterer.js"></script>
+				<script
+					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWEafyDye2nVJLlUGItmGjKdEp2uqoBm8&callback=initMap"
+					async defer></script>
+			</div>
+		</div>
+		<div id="detailBox02">
+			<ul class="detailTabs">
+				<li><a href="javascript:void(0)" data-id="detailBox01">상세정보</a></li>
+				<li><a href="javascript:void(0)" class="on"
+					data-id="detailBox02">연관스팟</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox04">SNS</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox03">리뷰</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox05">Q&A</a></li>
+			</ul>
+			<div class="detaillArea">
+				
+				
+					<p class="dSubj">이 축제와 비슷한 축제ㆍ이벤트</p>
+					<div id="etcSlide02" class="detSlideBox">
+						<div class="detSlideList">
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1220">
+											<img src="/uploadedfiles/spot/2019/12/71ec56bc-92a5-4e2d-ba5d-763d1c1f1620_104639254.JPG"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1220">
+												울산 간절곶 해맞이 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps">울산광역시 울주군 서생면 간절곶1길 39-2</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=울산"
+													class="link_org">#울산</a>
+											
+												<a
+													href="Search.festa?searchkeyword=울주"
+													class="link_org">#울주</a>
+											
+												<a
+													href="Search.festa?searchkeyword=간절곶"
+													class="link_org">#간절곶</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이"
+													class="link_org">#해맞이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출"
+													class="link_org">#일출</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해"
+													class="link_org">#새해</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=울산축제"
+													class="link_org">#울산축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=울주축제"
+													class="link_org">#울주축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이축제"
+													class="link_org">#해맞이축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출축제"
+													class="link_org">#일출축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해축제"
+													class="link_org">#새해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=소원을말해봐"
+													class="link_org">#소원을말해봐</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1042">
+											<img src="/uploadedfiles/spot/2019/11/3_161939143.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+													
+													
+														<span class="sts_ing">진행중</span>
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1042">
+												허브아일랜드 불빛동화축제 2019
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.11.01~2020.04.30</span> <span class="gps">경기도 포천시 신북면 청신로947번길 35</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=포천"
+													class="link_org">#포천</a>
+											
+												<a
+													href="Search.festa?searchkeyword=허브아일랜드"
+													class="link_org">#허브아일랜드</a>
+											
+												<a
+													href="Search.festa?searchkeyword=불빛"
+													class="link_org">#불빛</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빛"
+													class="link_org">#빛</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험"
+													class="link_org">#체험</a>
+											
+												<a
+													href="Search.festa?searchkeyword=경기도축제"
+													class="link_org">#경기도축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=포천축제"
+													class="link_org">#포천축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빛축제"
+													class="link_org">#빛축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=가을축제"
+													class="link_org">#가을축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=봄축제"
+													class="link_org">#봄축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1204">
+											<img src="/uploadedfiles/spot/2019/12/이미지 15_164303944.png"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+													
+													
+														<span class="sts_ing">진행중</span>
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1204">
+												부산 서면 트리축제 2019
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.11.05~2020.01.05</span> <span class="gps">	부산광역시 부산진구 부전동 동천로 일대</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=부산"
+													class="link_org">#부산</a>
+											
+												<a
+													href="Search.festa?searchkeyword=서면"
+													class="link_org">#서면</a>
+											
+												<a
+													href="Search.festa?searchkeyword=트리"
+													class="link_org">#트리</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빛"
+													class="link_org">#빛</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험"
+													class="link_org">#체험</a>
+											
+												<a
+													href="Search.festa?searchkeyword=공연"
+													class="link_org">#공연</a>
+											
+												<a
+													href="Search.festa?searchkeyword=음악"
+													class="link_org">#음악</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=부산축제"
+													class="link_org">#부산축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=서면축제"
+													class="link_org">#서면축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스축제"
+													class="link_org">#크리스마스축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험축제"
+													class="link_org">#체험축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=11월축제"
+													class="link_org">#11월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1412">
+											<img src="/uploadedfiles/spot/2019/12/caa24cf0-6038-43da-b307-a6a12a87431a_112210474.png"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1412">
+												제24회 땅끝 해넘이 해맞이 축제 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps">전라남도 해남군 송지면 땅끝마을길 42</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=전남"
+													class="link_org">#전남</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해남"
+													class="link_org">#해남</a>
+											
+												<a
+													href="Search.festa?searchkeyword=땅끝마을"
+													class="link_org">#땅끝마을</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해넘이"
+													class="link_org">#해넘이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이"
+													class="link_org">#해맞이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출"
+													class="link_org">#일출</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해"
+													class="link_org">#새해</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전남축제"
+													class="link_org">#전남축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해남축제"
+													class="link_org">#해남축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이축제"
+													class="link_org">#해맞이축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출축제"
+													class="link_org">#일출축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해축제"
+													class="link_org">#새해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여축제"
+													class="link_org">#체험참여축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=소원을말해봐"
+													class="link_org">#소원을말해봐</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1407">
+											<img src="/uploadedfiles/spot/2019/12/b239484bbedb4fd025b9b71624d2af1d_185101319.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1407">
+												부산 코믹월드 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.01.04~2020.01.05</span> <span class="gps">부산광역시 해운대구 우동 APEC로 30</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=부산"
+													class="link_org">#부산</a>
+											
+												<a
+													href="Search.festa?searchkeyword=벡스코"
+													class="link_org">#벡스코</a>
+											
+												<a
+													href="Search.festa?searchkeyword=만화"
+													class="link_org">#만화</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=부산축제"
+													class="link_org">#부산축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=만화축제"
+													class="link_org">#만화축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=이색축제"
+													class="link_org">#이색축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=371">
+											<img src="/uploadedfiles/spot/2019/05/서울랜드 빛축제 루나파크 2019 5_120229736.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+													
+													
+														<span class="sts_ing">진행중</span>
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=371">
+												서울랜드 빛축제 루나파크 2019
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.04.06~2019.12.31</span> <span class="gps">경기도 과천시 광명로 181 (막계동)</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=서울랜드"
+													class="link_org">#서울랜드</a>
+											
+												<a
+													href="Search.festa?searchkeyword=경기도축제"
+													class="link_org">#경기도축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=과천축제"
+													class="link_org">#과천축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=예술축제"
+													class="link_org">#예술축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빛축제루나파크"
+													class="link_org">#빛축제루나파크</a>
+											
+												<a
+													href="Search.festa?searchkeyword=4월축제"
+													class="link_org">#4월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1237">
+											<img src="/uploadedfiles/spot/2019/12/b271311a-0f70-4483-8861-9c32ec5b6297_141038662.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1237">
+												속초 해맞이축제 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps">강원도 속초시 해오름로 186-2</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=강원도"
+													class="link_org">#강원도</a>
+											
+												<a
+													href="Search.festa?searchkeyword=속초"
+													class="link_org">#속초</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해넘이"
+													class="link_org">#해넘이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이"
+													class="link_org">#해맞이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출"
+													class="link_org">#일출</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해"
+													class="link_org">#새해</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=강원도축제"
+													class="link_org">#강원도축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=속초축제"
+													class="link_org">#속초축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해넘이축제"
+													class="link_org">#해넘이축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이축제"
+													class="link_org">#해맞이축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출축제"
+													class="link_org">#일출축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해축제"
+													class="link_org">#새해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=소원을말해봐"
+													class="link_org">#소원을말해봐</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여축제"
+													class="link_org">#체험참여축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1473">
+											<img src="/uploadedfiles/spot/2019/12/52313908_2043621552394776_6072496200722939904_o_144600221.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1473">
+												말레이시아 페낭 열기구 축제 (Penang Hot Balloon Fiesta 2020)
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.02.01~2020.02.02</span> <span class="gps">18, Solok Piggot, Taman Scotland, 10450 George Town, Pulau Pinang, 말레이시아</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=아시아"
+													class="link_org">#아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아"
+													class="link_org">#동남아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=말레이시아"
+													class="link_org">#말레이시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=페낭"
+													class="link_org">#페낭</a>
+											
+												<a
+													href="Search.festa?searchkeyword=열기구"
+													class="link_org">#열기구</a>
+											
+												<a
+													href="Search.festa?searchkeyword=이색"
+													class="link_org">#이색</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험"
+													class="link_org">#체험</a>
+											
+												<a
+													href="Search.festa?searchkeyword=아시아축제"
+													class="link_org">#아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아축제"
+													class="link_org">#동남아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=말레이시아축제"
+													class="link_org">#말레이시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=페낭축제"
+													class="link_org">#페낭축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=열기구축제"
+													class="link_org">#열기구축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=이색축제"
+													class="link_org">#이색축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험축제"
+													class="link_org">#체험축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=2월축제"
+													class="link_org">#2월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외축제"
+													class="link_org">#해외축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=날아올라"
+													class="link_org">#날아올라</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1230">
+											<img src="/uploadedfiles/spot/2019/12/8fe2d485-40bf-4d39-973b-81a2a4bb5ba2_174734833.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1230">
+												제33회 해운대 북극곰 축제 
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.01.04~2020.01.05</span> <span class="gps">	부산광역시 해운대구 달맞이길62번길 47</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=부산"
+													class="link_org">#부산</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해운대"
+													class="link_org">#해운대</a>
+											
+												<a
+													href="Search.festa?searchkeyword=수영대회"
+													class="link_org">#수영대회</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험"
+													class="link_org">#체험</a>
+											
+												<a
+													href="Search.festa?searchkeyword=스포츠"
+													class="link_org">#스포츠</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=부산축제"
+													class="link_org">#부산축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해운대축제"
+													class="link_org">#해운대축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험축제"
+													class="link_org">#체험축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1414">
+											<img src="/uploadedfiles/spot/2019/12/5dad805d-210b-47d7-ae61-3d2dab878c37_134320008.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1414">
+												영덕 해맞이 경북대종 타종식 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps">경상북도 영덕군 강구면 해상공원길 120-7</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=경북"
+													class="link_org">#경북</a>
+											
+												<a
+													href="Search.festa?searchkeyword=영덕"
+													class="link_org">#영덕</a>
+											
+												<a
+													href="Search.festa?searchkeyword=타종식"
+													class="link_org">#타종식</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해"
+													class="link_org">#새해</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=경북축제"
+													class="link_org">#경북축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=영덕축제"
+													class="link_org">#영덕축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=소원을말해봐"
+													class="link_org">#소원을말해봐</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여축제"
+													class="link_org">#체험참여축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1500">
+											<img src="/uploadedfiles/spot/2019/12/GettyImages-554457489-595a30315f9b58843ff4f1b3_134048537.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1500">
+												태국 방콕 쏭크란 축제 2020 ( Bangko Songkran Festival )
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.04.13~2020.04.16</span> <span class="gps">Siam Center, 979 Rama I Rd, Pathum Wan, Pathum Wan District, Bangkok 10330 태국</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=아시아"
+													class="link_org">#아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아"
+													class="link_org">#동남아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=태국"
+													class="link_org">#태국</a>
+											
+												<a
+													href="Search.festa?searchkeyword=방콕"
+													class="link_org">#방콕</a>
+											
+												<a
+													href="Search.festa?searchkeyword=치앙마이"
+													class="link_org">#치앙마이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=아유타야"
+													class="link_org">#아유타야</a>
+											
+												<a
+													href="Search.festa?searchkeyword=수코타이"
+													class="link_org">#수코타이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=송크란"
+													class="link_org">#송크란</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전통문화"
+													class="link_org">#전통문화</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여"
+													class="link_org">#체험참여</a>
+											
+												<a
+													href="Search.festa?searchkeyword=아시아축제"
+													class="link_org">#아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아축제"
+													class="link_org">#동남아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=태국축제"
+													class="link_org">#태국축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=방콕축제"
+													class="link_org">#방콕축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=치앙마이축제"
+													class="link_org">#치앙마이축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=아유타야축제"
+													class="link_org">#아유타야축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=수코타야축제"
+													class="link_org">#수코타야축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=물축제"
+													class="link_org">#물축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전통문화축제"
+													class="link_org">#전통문화축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여축제"
+													class="link_org">#체험참여축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=4월축제"
+													class="link_org">#4월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외축제"
+													class="link_org">#해외축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1477">
+											<img src="/uploadedfiles/spot/2019/12/69422908_2522279561165589_7243737450244210688_n_174223260.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1477">
+												싱가포르 음력설 (Chinese New Year Festival)
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.01.25~2020.01.26</span> <span class="gps">Smith St, 싱가포르 058938</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=아시아"
+													class="link_org">#아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아"
+													class="link_org">#동남아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=싱가포르"
+													class="link_org">#싱가포르</a>
+											
+												<a
+													href="Search.festa?searchkeyword=구정"
+													class="link_org">#구정</a>
+											
+												<a
+													href="Search.festa?searchkeyword=차이나타운"
+													class="link_org">#차이나타운</a>
+											
+												<a
+													href="Search.festa?searchkeyword=불꽃놀이"
+													class="link_org">#불꽃놀이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=민속전통"
+													class="link_org">#민속전통</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해"
+													class="link_org">#새해</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=아시아축제"
+													class="link_org">#아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아축제"
+													class="link_org">#동남아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=싱가포르축제"
+													class="link_org">#싱가포르축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=민속전통축제"
+													class="link_org">#민속전통축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해축제"
+													class="link_org">#새해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=2월축제"
+													class="link_org">#2월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외축제"
+													class="link_org">#해외축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1472">
+											<img src="/uploadedfiles/spot/2019/12/DSC03742_140340343.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1472">
+												푸트라쟈야 국제 열기구 축제 (Putrajaya Hot Air Balloon Fiesta)
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.03.19~2020.03.22</span> <span class="gps">Precinct 2 Putrajaya, Malaysia</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=아시아"
+													class="link_org">#아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아"
+													class="link_org">#동남아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=말레이시아"
+													class="link_org">#말레이시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=열기구"
+													class="link_org">#열기구</a>
+											
+												<a
+													href="Search.festa?searchkeyword=이색"
+													class="link_org">#이색</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험"
+													class="link_org">#체험</a>
+											
+												<a
+													href="Search.festa?searchkeyword=아시아축제"
+													class="link_org">#아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아축제"
+													class="link_org">#동남아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=말레이시아축제"
+													class="link_org">#말레이시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=열기구축제"
+													class="link_org">#열기구축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=이색축제"
+													class="link_org">#이색축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험축제"
+													class="link_org">#체험축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=봄축제"
+													class="link_org">#봄축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=3월축제"
+													class="link_org">#3월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외축제"
+													class="link_org">#해외축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=날라올라"
+													class="link_org">#날라올라</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1039">
+											<img src="/uploadedfiles/spot/2019/11/1_154114735.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+													
+													
+														<span class="sts_ing">진행중</span>
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1039">
+												부산크리스마스트리문화축제 2019
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.11.16~2020.01.05</span> <span class="gps">부산광역시 중구 광복로 58-2</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=부산"
+													class="link_org">#부산</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=트리"
+													class="link_org">#트리</a>
+											
+												<a
+													href="Search.festa?searchkeyword=문화"
+													class="link_org">#문화</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=부산축제"
+													class="link_org">#부산축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=문화축제"
+													class="link_org">#문화축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스축제"
+													class="link_org">#크리스마스축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=11월축제"
+													class="link_org">#11월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1501">
+											<img src="/uploadedfiles/spot/2019/12/1. 2020 전주제야축제(가로형)_141225805.png"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1501">
+												전주 제야축제2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps"> 전라북도 전주시 완산구 전동 142-1</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=전북"
+													class="link_org">#전북</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전주"
+													class="link_org">#전주</a>
+											
+												<a
+													href="Search.festa?searchkeyword=제야"
+													class="link_org">#제야</a>
+											
+												<a
+													href="Search.festa?searchkeyword=송구영신"
+													class="link_org">#송구영신</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해"
+													class="link_org">#새해</a>
+											
+												<a
+													href="Search.festa?searchkeyword=민속전통"
+													class="link_org">#민속전통</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여"
+													class="link_org">#체험참여</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전북축제"
+													class="link_org">#전북축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전주축제"
+													class="link_org">#전주축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해축제"
+													class="link_org">#새해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=민속전통축제"
+													class="link_org">#민속전통축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여축제"
+													class="link_org">#체험참여축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=소원을말해봐"
+													class="link_org">#소원을말해봐</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1413">
+											<img src="/uploadedfiles/spot/2019/12/246b4b98-fdf2-4fb6-8441-b47a92609c98_113931995.png"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1413">
+												서천 마량포 해넘이 해돋이 2020 
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps">충청남도 서천군 서면 마량리</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=충남"
+													class="link_org">#충남</a>
+											
+												<a
+													href="Search.festa?searchkeyword=서천"
+													class="link_org">#서천</a>
+											
+												<a
+													href="Search.festa?searchkeyword=마량포구"
+													class="link_org">#마량포구</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해넘이"
+													class="link_org">#해넘이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이"
+													class="link_org">#해맞이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출"
+													class="link_org">#일출</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해"
+													class="link_org">#새해</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=충남축제"
+													class="link_org">#충남축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=서천축제"
+													class="link_org">#서천축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이축제"
+													class="link_org">#해맞이축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출축제"
+													class="link_org">#일출축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해축제"
+													class="link_org">#새해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여축제"
+													class="link_org">#체험참여축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=소원을말해봐"
+													class="link_org">#소원을말해봐</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1492">
+											<img src="/uploadedfiles/spot/2019/12/imagine-childrens-festival_the-giant-storytelling-bed-at-imagine-childrens-festival-credit-viktor-frankowski-2016_a60a0c6c02354c89be8f95129bc510c8_215722161.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1492">
+												런던 어린이 축제 2020 (Imagine Children's Festival)
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.02.12~2020.02.23</span> <span class="gps"> Belvedere Road London SE1 8XX</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=영국"
+													class="link_org">#영국</a>
+											
+												<a
+													href="Search.festa?searchkeyword=런던"
+													class="link_org">#런던</a>
+											
+												<a
+													href="Search.festa?searchkeyword=이미진칠드런페스티벌"
+													class="link_org">#이미진칠드런페스티벌</a>
+											
+												<a
+													href="Search.festa?searchkeyword=어린이"
+													class="link_org">#어린이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=어린이축제"
+													class="link_org">#어린이축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외축제"
+													class="link_org">#해외축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=2월축제"
+													class="link_org">#2월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=2020"
+													class="link_org">#2020</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=955">
+											<img src="/uploadedfiles/spot/2019/11/58_160659600.JPG"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+													
+													
+														<span class="sts_ing">진행중</span>
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=955">
+												설천 참굴축제
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.29~2020.01.02</span> <span class="gps">경상남도 남해군 설천면 노량리 558</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=경상남도"
+													class="link_org">#경상남도</a>
+											
+												<a
+													href="Search.festa?searchkeyword=남해군"
+													class="link_org">#남해군</a>
+											
+												<a
+													href="Search.festa?searchkeyword=굴"
+													class="link_org">#굴</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=경상남도축제"
+													class="link_org">#경상남도축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=남해축제"
+													class="link_org">#남해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=굴축제"
+													class="link_org">#굴축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1123">
+											<img src="/uploadedfiles/spot/2019/11/5090cf4c-f1dd-44fc-97bc-384e3a466a97_155613424.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1123">
+												여수 항일암 일출제 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps">전라남도 여수시 돌산읍 향일암로 60</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=전남"
+													class="link_org">#전남</a>
+											
+												<a
+													href="Search.festa?searchkeyword=여수"
+													class="link_org">#여수</a>
+											
+												<a
+													href="Search.festa?searchkeyword=항일암"
+													class="link_org">#항일암</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이"
+													class="link_org">#해맞이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출"
+													class="link_org">#일출</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해"
+													class="link_org">#새해</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전남축제"
+													class="link_org">#전남축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=여수축제"
+													class="link_org">#여수축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이축제"
+													class="link_org">#해맞이축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출축제"
+													class="link_org">#일출축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해축제"
+													class="link_org">#새해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=소원을말해봐"
+													class="link_org">#소원을말해봐</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=46">
+											<img src="/uploadedfiles/spot/2019/07/d0b902a1-b28b-426c-a133-5ed6310880d4_110813714.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+													
+													
+														<span class="sts_ing">진행중</span>
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=46">
+												아침고요수목원 사계절 꽃축제
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.01.01~2019.12.31</span> <span class="gps">경기도 가평군 상면 수목원로 432</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=수국"
+													class="link_org">#수국</a>
+											
+												<a
+													href="Search.festa?searchkeyword=장미"
+													class="link_org">#장미</a>
+											
+												<a
+													href="Search.festa?searchkeyword=백합"
+													class="link_org">#백합</a>
+											
+												<a
+													href="Search.festa?searchkeyword=여름꽃"
+													class="link_org">#여름꽃</a>
+											
+												<a
+													href="Search.festa?searchkeyword=경기도가평"
+													class="link_org">#경기도가평</a>
+											
+												<a
+													href="Search.festa?searchkeyword=꽃축제"
+													class="link_org">#꽃축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=7월축제"
+													class="link_org">#7월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=8월축제"
+													class="link_org">#8월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1451">
+											<img src="/uploadedfiles/spot/2019/12/be691ec6-8a4c-4682-8926-1e7d8749f070_113127595.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1451">
+												아차산 해맞이 축제 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.01.01~2020.01.01</span> <span class="gps">서울특별시 광진구 워커힐로 127</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=서울"
+													class="link_org">#서울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=광진구"
+													class="link_org">#광진구</a>
+											
+												<a
+													href="Search.festa?searchkeyword=아차산"
+													class="link_org">#아차산</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이"
+													class="link_org">#해맞이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출"
+													class="link_org">#일출</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여"
+													class="link_org">#체험참여</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=서울축제"
+													class="link_org">#서울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=광진구축제"
+													class="link_org">#광진구축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이축제"
+													class="link_org">#해맞이축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=일출축제"
+													class="link_org">#일출축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여축제"
+													class="link_org">#체험참여축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=소원을말해봐"
+													class="link_org">#소원을말해봐</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1082">
+											<img src="/uploadedfiles/spot/2019/11/2_163636191.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+													
+													
+														<span class="sts_ing">진행중</span>
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1082">
+												해운대 빛축제 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.11.16~2020.01.27</span> <span class="gps">부산광역시 해운대구 해운대해수욕장</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=부산"
+													class="link_org">#부산</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해운대"
+													class="link_org">#해운대</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빛"
+													class="link_org">#빛</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험"
+													class="link_org">#체험</a>
+											
+												<a
+													href="Search.festa?searchkeyword=가을"
+													class="link_org">#가을</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=부산축제"
+													class="link_org">#부산축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해운대축제"
+													class="link_org">#해운대축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험축제"
+													class="link_org">#체험축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빛축제"
+													class="link_org">#빛축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=가을축제"
+													class="link_org">#가을축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=11월축제"
+													class="link_org">#11월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1254">
+											<img src="/uploadedfiles/spot/2019/12/4b3112f6-2ca1-4e9d-b250-b02ae7210f73_134107403.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+													
+													
+														<span class="sts_ing">진행중</span>
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1254">
+												울산대공원 장미원 빛축제 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.20~2020.01.27</span> <span class="gps">울산광역시 남구 옥동 대공원로 94</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=울산"
+													class="link_org">#울산</a>
+											
+												<a
+													href="Search.festa?searchkeyword=울산대공원"
+													class="link_org">#울산대공원</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빛"
+													class="link_org">#빛</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=울산축제"
+													class="link_org">#울산축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빛축제"
+													class="link_org">#빛축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1212">
+											<img src="/uploadedfiles/spot/2019/12/f2f6c079-4751-4815-ade5-628f970aa622_170741986.JPG"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+													
+													
+														<span class="sts_ing">진행중</span>
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1212">
+												강화도 빙어*송어 축제 (신선저수지) 2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.14~2020.03.02</span> <span class="gps">인천광역시 강화군 내가면 고비고개로741번길 37-30 </span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=인천"
+													class="link_org">#인천</a>
+											
+												<a
+													href="Search.festa?searchkeyword=강화도"
+													class="link_org">#강화도</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빙어"
+													class="link_org">#빙어</a>
+											
+												<a
+													href="Search.festa?searchkeyword=송어"
+													class="link_org">#송어</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울낚시"
+													class="link_org">#겨울낚시</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험"
+													class="link_org">#체험</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=인천축제"
+													class="link_org">#인천축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=강화축제"
+													class="link_org">#강화축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빙어축제"
+													class="link_org">#빙어축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=송어축제"
+													class="link_org">#송어축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험축제"
+													class="link_org">#체험축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=2월축제"
+													class="link_org">#2월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=3월축제"
+													class="link_org">#3월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=843">
+											<img src="/uploadedfiles/hostspot/2019/10/1_150843457.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=843">
+												제22회 호미곶한민족해맞이축전
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps">경상북도 포항시 남구 호미곶면 해맞이로150번길 20</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=호미곶"
+													class="link_org">#호미곶</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해돋이"
+													class="link_org">#해돋이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이"
+													class="link_org">#해맞이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=포항여행"
+													class="link_org">#포항여행</a>
+											
+												<a
+													href="Search.festa?searchkeyword=포항축제"
+													class="link_org">#포항축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해맞이여행"
+													class="link_org">#해맞이여행</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해돋이여행"
+													class="link_org">#해돋이여행</a>
+											
+												<a
+													href="Search.festa?searchkeyword=포항"
+													class="link_org">#포항</a>
+											
+												<a
+													href="Search.festa?searchkeyword=호미곶한민족해맞이축전"
+													class="link_org">#호미곶한민족해맞이축전</a>
+											
+												<a
+													href="Search.festa?searchkeyword=호미곶해맞이"
+													class="link_org">#호미곶해맞이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1127">
+											<img src="/uploadedfiles/spot/2019/11/타종식_161504719.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1127">
+												부산새해맞이 시민의 종 타종행사  2020
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps">부산광역시 중구 광복동2가 용두산길 37-55</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=부산"
+													class="link_org">#부산</a>
+											
+												<a
+													href="Search.festa?searchkeyword=용두산공원"
+													class="link_org">#용두산공원</a>
+											
+												<a
+													href="Search.festa?searchkeyword=타종행사"
+													class="link_org">#타종행사</a>
+											
+												<a
+													href="Search.festa?searchkeyword=송구영신"
+													class="link_org">#송구영신</a>
+											
+												<a
+													href="Search.festa?searchkeyword=연말연시"
+													class="link_org">#연말연시</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해"
+													class="link_org">#새해</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=민속전통"
+													class="link_org">#민속전통</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여"
+													class="link_org">#체험참여</a>
+											
+												<a
+													href="Search.festa?searchkeyword=부산축제"
+													class="link_org">#부산축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=민속전통축제"
+													class="link_org">#민속전통축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험참여축제"
+													class="link_org">#체험참여축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해축제"
+													class="link_org">#새해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=소원을말해봐"
+													class="link_org">#소원을말해봐</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1495">
+											<img src="/uploadedfiles/spot/2019/12/이미지 9_175537185.png"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1495">
+												말레이시아 티오만 서퍼축제 2020 (Tioman Surf Festival)
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.01.31~2020.02.02</span> <span class="gps">Pantai Kampung Juara Tioman Island Malaysia</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=아시아"
+													class="link_org">#아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아"
+													class="link_org">#동남아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=말레이시아"
+													class="link_org">#말레이시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=티오만섬"
+													class="link_org">#티오만섬</a>
+											
+												<a
+													href="Search.festa?searchkeyword=서핑"
+													class="link_org">#서핑</a>
+											
+												<a
+													href="Search.festa?searchkeyword=서퍼"
+													class="link_org">#서퍼</a>
+											
+												<a
+													href="Search.festa?searchkeyword=레져"
+													class="link_org">#레져</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+												<a
+													href="Search.festa?searchkeyword=아시아축제"
+													class="link_org">#아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아축제"
+													class="link_org">#동남아시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=말레이시아축제"
+													class="link_org">#말레이시아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=서핑축제"
+													class="link_org">#서핑축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울축제"
+													class="link_org">#겨울축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험축제"
+													class="link_org">#체험축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=2월축제"
+													class="link_org">#2월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외축제"
+													class="link_org">#해외축제</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1470">
+											<img src="/uploadedfiles/spot/2019/12/Innes-Common-Thurs-21.3-9-1024x619_164931056.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1470">
+												뉴질랜드 벌룬스 오버 와이카토 (Balloons over Waikato) 
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2020.03.17~2020.03.21</span> <span class="gps">Hamilton Lake, Hamilton 3204 뉴질랜드</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=오세아니아"
+													class="link_org">#오세아니아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=뉴질랜드"
+													class="link_org">#뉴질랜드</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해밀턴"
+													class="link_org">#해밀턴</a>
+											
+												<a
+													href="Search.festa?searchkeyword=열기구"
+													class="link_org">#열기구</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험"
+													class="link_org">#체험</a>
+											
+												<a
+													href="Search.festa?searchkeyword=이색"
+													class="link_org">#이색</a>
+											
+												<a
+													href="Search.festa?searchkeyword=레저"
+													class="link_org">#레저</a>
+											
+												<a
+													href="Search.festa?searchkeyword=오세아니아축제"
+													class="link_org">#오세아니아축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=뉴질랜드축제"
+													class="link_org">#뉴질랜드축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해밀턴축제"
+													class="link_org">#해밀턴축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=열기구축제"
+													class="link_org">#열기구축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=체험축제"
+													class="link_org">#체험축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=이색축제"
+													class="link_org">#이색축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=3월축제"
+													class="link_org">#3월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외축제"
+													class="link_org">#해외축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=날아올라"
+													class="link_org">#날아올라</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="FestivalDetail.festa?festivalseq=1092">
+											<img src="/uploadedfiles/spot/2019/11/86_154144651.jpg"
+											width="290px" height="166px">
+											<div class="sts_area">
+												
+													
+														<span class="sts_be">진행<br />예정
+														</span>
+													
+													
+													
+												
+											</div>
+										</a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="FestivalDetail.festa?festivalseq=1092">
+												제18회 남해 상주해돋이 &amp; 물메기 축제
+											</a>
+										</p>
+										<div class="t02">
+											<span class="date">2019.12.31~2020.01.01</span> <span class="gps">경상남도 남해군 상주면 남해대로</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=경상남도"
+													class="link_org">#경상남도</a>
+											
+												<a
+													href="Search.festa?searchkeyword=남해군"
+													class="link_org">#남해군</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해돋이"
+													class="link_org">#해돋이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=먹거리축제"
+													class="link_org">#먹거리축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=경남축제"
+													class="link_org">#경남축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=남해축제"
+													class="link_org">#남해축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=12월축제"
+													class="link_org">#12월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=1월축제"
+													class="link_org">#1월축제</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해넘이"
+													class="link_org">#해넘이</a>
+											
+												<a
+													href="Search.festa?searchkeyword=연말연시"
+													class="link_org">#연말연시</a>
+											
+												<a
+													href="Search.festa?searchkeyword=새해맞이"
+													class="link_org">#새해맞이</a>
+											
+										</p>
+										<a href="javascript:void(0)" class="btnHart">&nbsp;</a>
+									</div>
+								</div>
+							
+						</div>
+						<a href="javascript:void(0)" class="detLeft"><img
+							src="../../include/img/ico/ico_prev03.png" /></a> <a
+							href="javascript:void(0)" class="detRight"><img
+							src="../../include/img/ico/ico_next03.png" /></a>
+					</div>
+				
+
+				
+					<p class="dSubj">이 축제와 함께 본 전통시장 ㆍ스토어</p>
+					<div id="etcSlide03" class="detSlideBox">
+						<div class="detSlideList">
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=430"><img
+											src="/uploadedfiles/spot/2019/12/이미지 3_111140802.png" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=430">라오스 루앙프라방 야시장 (Laos Luang Prabang Night Market)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">16 Chaofa Ngum Rd , 루앙프라방 , 라오스</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=아시아"
+													class="link_org">#아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아"
+													class="link_org">#동남아시아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=라오스"
+													class="link_org">#라오스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=루앙프라방"
+													class="link_org">#루앙프라방</a>
+											
+												<a
+													href="Search.festa?searchkeyword=야시장"
+													class="link_org">#야시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=스트리트푸드"
+													class="link_org">#스트리트푸드</a>
+											
+												<a
+													href="Search.festa?searchkeyword=아시아시장"
+													class="link_org">#아시아시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=동남아시아시장"
+													class="link_org">#동남아시아시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=라오스시장"
+													class="link_org">#라오스시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=루앙프라방야시장"
+													class="link_org">#루앙프라방야시장</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=429"><img
+											src="/uploadedfiles/spot/2019/12/intro_img1_231048079.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=429">통영 북신전통시장</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">경상남도 통영시 북신시장1길 66, 1층 (북신동, 북신시장고객지원센터)</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=경상남도"
+													class="link_org">#경상남도</a>
+											
+												<a
+													href="Search.festa?searchkeyword=경남"
+													class="link_org">#경남</a>
+											
+												<a
+													href="Search.festa?searchkeyword=통영"
+													class="link_org">#통영</a>
+											
+												<a
+													href="Search.festa?searchkeyword=북신시장"
+													class="link_org">#북신시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=북신전통시장"
+													class="link_org">#북신전통시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=통영북신시장"
+													class="link_org">#통영북신시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=관문시장"
+													class="link_org">#관문시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=통영관문시장"
+													class="link_org">#통영관문시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=인생시장"
+													class="link_org">#인생시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=여황산"
+													class="link_org">#여황산</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=428"><img
+											src="/uploadedfiles/spot/2019/12/8_165932848.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=428">산호세 플리 마켓 (The San Jose Flea Market)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">1590 Berryessa Rd, San Jose, CA 95133</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=미국산호세"
+													class="link_org">#미국산호세</a>
+											
+												<a
+													href="Search.festa?searchkeyword=산호세"
+													class="link_org">#산호세</a>
+											
+												<a
+													href="Search.festa?searchkeyword=산호세시장"
+													class="link_org">#산호세시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=미국산호세시장"
+													class="link_org">#미국산호세시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=산호세플리마켓"
+													class="link_org">#산호세플리마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=산호세프리마켓"
+													class="link_org">#산호세프리마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=Sanjose"
+													class="link_org">#Sanjose</a>
+											
+												<a
+													href="Search.festa?searchkeyword=sanjosefleamarket"
+													class="link_org">#sanjosefleamarket</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=미국"
+													class="link_org">#미국</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=427"><img
+											src="/uploadedfiles/spot/2019/11/75485220_1170855539788180_3127922972556263424_o_002443028.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=427">헬싱키 세인트 토마스 크리스마스 마켓 (Tuomaan Markkinat)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Senate Square, Helsinki, 핀란드</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=핀란드"
+													class="link_org">#핀란드</a>
+											
+												<a
+													href="Search.festa?searchkeyword=헬싱키"
+													class="link_org">#헬싱키</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=북유럽"
+													class="link_org">#북유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=426"><img
+											src="/uploadedfiles/spot/2019/11/christkindlmarkt-marienplatz-mitlogo-hp_235716106.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=426">뮌헨 크리스마스 마켓 (Munich Marienplatz Christmas market)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Marienplatz, 뮌헨, 독일</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=독일"
+													class="link_org">#독일</a>
+											
+												<a
+													href="Search.festa?searchkeyword=뮌헨"
+													class="link_org">#뮌헨</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=마리엔광장"
+													class="link_org">#마리엔광장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=425"><img
+											src="/uploadedfiles/spot/2019/11/스크린샷 2019-11-18 23.25.42_232622267.png" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=425">코펜하겐 뉘하운 크리스마스 마켓 (Nyhavns Christmas Market)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Nyhavn, K&oslash;benhavn K, 덴마크 </span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=덴마크"
+													class="link_org">#덴마크</a>
+											
+												<a
+													href="Search.festa?searchkeyword=코펜하겐"
+													class="link_org">#코펜하겐</a>
+											
+												<a
+													href="Search.festa?searchkeyword=뉘하운"
+													class="link_org">#뉘하운</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=북유럽"
+													class="link_org">#북유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=겨울"
+													class="link_org">#겨울</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=417"><img
+											src="/uploadedfiles/spot/2019/11/sn-z-veze_201051912.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=417">프라하 올드타운 스퀘어 크리스마스 마켓 (Prague Christmas Markets)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Old Town Square (Staroměstsk&eacute; n&aacute;měst&iacute;), Staroměstsk&eacute; n&aacute;měst&iacute;, Praha 1 - Star&eacute; Město, 110 00</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=체코"
+													class="link_org">#체코</a>
+											
+												<a
+													href="Search.festa?searchkeyword=프라하"
+													class="link_org">#프라하</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전통시장"
+													class="link_org">#전통시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=성탄절"
+													class="link_org">#성탄절</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=시장"
+													class="link_org">#시장</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=420"><img
+											src="/uploadedfiles/spot/2019/11/00000030622-weihnachtsmarkt-vor-dem-oberen-belvedere-oesterreich-werbung-Popp Hackner.jpg.3053281_001039729.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=420">비엔나 벨베데레 궁전 크리스마스 빌리지 (Belvedere Palace)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Prinz Eugen-Strasse 27 - 1030 Vienna</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=오스트리아"
+													class="link_org">#오스트리아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=비엔나"
+													class="link_org">#비엔나</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빈"
+													class="link_org">#빈</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=250"><img
+											src="/uploadedfiles/spot/2019/05/통영중앙시장 1_151200036.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=250">통영중앙시장</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">경상남도 통영시 중앙시장1길 14-16 (중앙동)</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=통영중앙시장"
+													class="link_org">#통영중앙시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전통시장"
+													class="link_org">#전통시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=재래시장"
+													class="link_org">#재래시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=통영"
+													class="link_org">#통영</a>
+											
+												<a
+													href="Search.festa?searchkeyword=상설장"
+													class="link_org">#상설장</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=236"><img
+											src="/uploadedfiles/spot/2019/05/대구종합유통단지 3_101548728.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=236">대구종합유통단지관리공단</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">대구광역시  북구 유통단지로 25 (산격동)</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=대구종합유통단지"
+													class="link_org">#대구종합유통단지</a>
+											
+												<a
+													href="Search.festa?searchkeyword=테마상가"
+													class="link_org">#테마상가</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전자제품"
+													class="link_org">#전자제품</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=423"><img
+											src="/uploadedfiles/spot/2019/11/XM15_FOTOFALLY_8546_010201588.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=423">비엔나 쇤브룬 궁전 크리스마스 신년 마켓 (Sch&ouml;nbrunn Palace)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Sch&ouml;nbrunner Schlo&szlig;stra&szlig;e 47, 1130 Wien, 오스트리아</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=오스트리아"
+													class="link_org">#오스트리아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빈"
+													class="link_org">#빈</a>
+											
+												<a
+													href="Search.festa?searchkeyword=비엔나"
+													class="link_org">#비엔나</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스빌리지"
+													class="link_org">#크리스마스빌리지</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=424"><img
+											src="/uploadedfiles/spot/2019/11/spittelberg-markt--lind.jpg.3574231_010237257.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=424">비엔나 슈피텔베어크 크리스마스 마켓 (Spittelberg)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Spittelberggasse 20/1, 1070 Vienna</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=오스트리아"
+													class="link_org">#오스트리아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=비엔나"
+													class="link_org">#비엔나</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빈"
+													class="link_org">#빈</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스빌리지"
+													class="link_org">#크리스마스빌리지</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=418"><img
+											src="/uploadedfiles/spot/2019/11/47e368f9580bb765f53e49e3e3b37074_233537291.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=418">드레스덴 슈트리쩰 마크트 크리스마스 마켓 (Dresdner Striezelmarkt)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Dresdner Striezelmarkt,  01067 Dresden, Germany</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=독일"
+													class="link_org">#독일</a>
+											
+												<a
+													href="Search.festa?searchkeyword=드레스덴"
+													class="link_org">#드레스덴</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전통시장"
+													class="link_org">#전통시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=성탄절"
+													class="link_org">#성탄절</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=슈트리쩰마크트"
+													class="link_org">#슈트리쩰마크트</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=421"><img
+											src="/uploadedfiles/spot/2019/11/-maria-theresien-platz-in-wien-adventmarkt--oesterreich-werbung-Bartl.jpg.3574177_003316561.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=421">비엔나 마리아 테레지아 광장 크리스마스 빌리지 (Maria-Theresa-Square)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Maria Theresa Square (&ldquo;Maria-Theresien-Platz&rdquo;) - 1010 Vienna</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=오스트리아"
+													class="link_org">#오스트리아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빈"
+													class="link_org">#빈</a>
+											
+												<a
+													href="Search.festa?searchkeyword=비엔나"
+													class="link_org">#비엔나</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=성탄절"
+													class="link_org">#성탄절</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=마리아테레지아"
+													class="link_org">#마리아테레지아</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=422"><img
+											src="/uploadedfiles/spot/2019/11/weihnachtsdorf-altes-akh---magmag.png.2946422_004517123.png" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=422">비엔나 알테스 아카하 크리스마스 빌리지 (Altes AKH)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">University Campus - Courtyard 1 Alserstrasse / Spitalgasse 1090 Vienna</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=오스트리아"
+													class="link_org">#오스트리아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=비엔나"
+													class="link_org">#비엔나</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빈"
+													class="link_org">#빈</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=알테스아카하"
+													class="link_org">#알테스아카하</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=419"><img
+											src="/uploadedfiles/spot/2019/11/00000030016-christmas-market-in-vienna-in-front-of-the-city-hall-oesterreich-werbung-Viennaslide.jpg.3275816_235101626.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=419">비엔나 크리스마스 마켓 (Christkindlm&auml;rkte in Wien)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Rathausplatz, Siebenbrunnerstra&szlig;e 65, 1050 Wien</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=오스트리아"
+													class="link_org">#오스트리아</a>
+											
+												<a
+													href="Search.festa?searchkeyword=빈"
+													class="link_org">#빈</a>
+											
+												<a
+													href="Search.festa?searchkeyword=비엔나"
+													class="link_org">#비엔나</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=성탄절"
+													class="link_org">#성탄절</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=415"><img
+											src="/uploadedfiles/spot/2019/11/48378435_1211404399033928_6512394254487126016_o_191558388.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=415">토론토 크리스마스 마켓 (Toronto Christmas Market)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">373 Front St E, Toronto, ON M5A 1G4 캐나다</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=캐나타"
+													class="link_org">#캐나타</a>
+											
+												<a
+													href="Search.festa?searchkeyword=토론토"
+													class="link_org">#토론토</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=시장"
+													class="link_org">#시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전통시장"
+													class="link_org">#전통시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=북아메리카"
+													class="link_org">#북아메리카</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외시장"
+													class="link_org">#해외시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=성탄절"
+													class="link_org">#성탄절</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=416"><img
+											src="/uploadedfiles/spot/2019/11/48976817_1785862438207628_3548348404809596928_o_194703638.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=416">스트라스부르 크리스마스 마켓 (Strasbourg Capital of Christmas)</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">Strasbourg, capital of Christmas Office de Tourisme de Strasbourg et sa R&eacute;gion, Strasbourg, 67000</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=프랑스"
+													class="link_org">#프랑스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=스트라스부르"
+													class="link_org">#스트라스부르</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스"
+													class="link_org">#크리스마스</a>
+											
+												<a
+													href="Search.festa?searchkeyword=크리스마스마켓"
+													class="link_org">#크리스마스마켓</a>
+											
+												<a
+													href="Search.festa?searchkeyword=전통시장"
+													class="link_org">#전통시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=성탄절"
+													class="link_org">#성탄절</a>
+											
+												<a
+													href="Search.festa?searchkeyword=유럽"
+													class="link_org">#유럽</a>
+											
+												<a
+													href="Search.festa?searchkeyword=해외"
+													class="link_org">#해외</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=413"><img
+											src="/uploadedfiles/spot/2019/10/워터마크 20191030_135125746.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=413">고성오일시장</a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">제주특별자치도 서귀포시 성산읍 고성오조로 93</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=제주도서귀포시"
+													class="link_org">#제주도서귀포시</a>
+											
+												<a
+													href="Search.festa?searchkeyword=제주도전통시장"
+													class="link_org">#제주도전통시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=오일장"
+													class="link_org">#오일장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=고성오일시장"
+													class="link_org">#고성오일시장</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+								<div class="item">
+									<div class="pic">
+										<a
+											href="MarketDetail.festa?marketseq=414"><img
+											src="/uploadedfiles/spot/2019/10/워터마크 20191030_135207957.jpg" width="290px"
+											height="166px" /></a>
+									</div>
+									<div class="cont">
+										<p class="t01">
+											<a
+												href="MarketDetail.festa?marketseq=414">중문향토오일시장 </a>
+										</p>
+										<div class="t02">
+											
+											<span class="gps">제주특별자치도 서귀포시 천제연로188번길 12 (중문동)</span>
+										</div>
+										<p class="t03">
+											
+												<a
+													href="Search.festa?searchkeyword=제주도서귀포시"
+													class="link_org">#제주도서귀포시</a>
+											
+												<a
+													href="Search.festa?searchkeyword=제주도전통시장"
+													class="link_org">#제주도전통시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=오일장"
+													class="link_org">#오일장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=야시장"
+													class="link_org">#야시장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=중문향토오일장"
+													class="link_org">#중문향토오일장</a>
+											
+												<a
+													href="Search.festa?searchkeyword=중문블란지야시장"
+													class="link_org">#중문블란지야시장</a>
+											
+										</p>
+										<!--
+								<a href="javascript:void(0)" class="btnHart">&nbsp;</a> 
+								 -->
+									</div>
+								</div>
+							
+						</div>
+						<a href="javascript:void(0)" class="detLeft"><img
+							src="../../include/img/ico/ico_prev03.png" /></a> <a
+							href="javascript:void(0)" class="detRight"><img
+							src="../../include/img/ico/ico_next03.png" /></a>
+					</div>
+				
+			</div>
+		</div>
+		<div id="detailBox03">
+			<ul class="detailTabs">
+				<li><a href="javascript:void(0)" data-id="detailBox01">상세정보</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox02">연관스팟</a></li>
+				<li><a href="javascript:void(0)" class="on"
+					data-id="detailBox03">SNS</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox04">리뷰</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox05">Q&A</a></li>
+			</ul>
+			<div class="detaillArea">
+				<!-- 프리미엄큐레이션 영역 -->
+				
+				<p class="dSubj">
+					관련기사<span>※ 해당 스팟의 키워드로 자동 추출되는 내용으로, 검색 결과가 없거나 정확하지 않을 수
+						있습니다.</span>
+				</p>
+				<ul class="paperList">
+				</ul>
+				<div class="paging" id="paperPaging"></div>
+				<p class="dSubj">
+					블로그 후기<span>※ 해당 스팟의 키워드로 자동 추출되는 내용으로, 검색 결과가 없거나 정확하지 않을 수
+						있습니다. </span>
+				</p>
+				<ul class="blogList">
+				</ul>
+				<div class="paging" id="blogPaging"></div>
+			</div>
+		</div>
+		<div id="detailBox04">
+			<ul class="detailTabs">
+				<li><a href="javascript:void(0)" data-id="detailBox01">상세정보</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox02">연관스팟</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox03">SNS</a></li>
+				<li><a href="javascript:void(0)" class="on"
+					data-id="detailBox04">리뷰</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox05">Q&A</a></li>
+			</ul>
+			<div class="detaillArea">
+				<div class="snsReviewHeader">
+					<p class="tit">리뷰종합</p>
+					<div class="totalStar"></div>
+					<p class="result">
+						(종합평점<span id="averagerating">-</span> | <span id="reviewcount2">0</span>개의리뷰평점)
+					</p>
+				</div>
+				<input type="hidden" name="imagefilepath" value="" id="imagefilepath"/>
+				<div class="snsReviewForm">
+					<textarea id="reviewcontent" name="reviewcontent" class="textarea"
+						onclick="javascript:$.serviceDialog('리뷰등록', '<br />리뷰 등록은 로그인 후 이용해 주세요.<br />', '');"></textarea>
+					<div class="bottomCont">
+						<div class="rateYo_dep">
+							<span class="etxt">평점</span>
+							<div id="rateYo"></div>
+						</div>
+						<div class="image-upload">
+							<label for="reviewimage" class="btnFileUpload">사진첨부 </label><input
+								name="reviewimage" id="reviewimage" type="file" />
+						</div>
+						<div class="imgBox">
+							<ul id="sortable">
+							</ul>
+						</div>
+						<a href="javascript:void(0)" class="btnReviewSave"
+							id="reviewregisterbutton">리뷰등록</a>
+					</div>
+				</div>
+				<script>
+					$('#reviewregisterbutton')
+							.click(
+									function() {
+										resetCommonDialog();
+										indicatorOn();
+										$
+												.ajax({
+													url : 'JSONSpotReviewRegister.festa',
+													type : 'POST',
+													data : {
+														spottype : 3,
+														spotseq : '1450',
+														rating : $("#rateYo")
+																.rateYo(
+																		"rating"),
+														content : $(
+																'#reviewcontent')
+																.val(),
+														imagefilepath : $(
+																'#imagefilepath')
+																.val()
+													},
+													dataType : 'json',
+													success : function(data,
+															textStatus, jqXHR) {
+														indicatorOff();
+														if (data.resultcode == 0) {
+															$('#dialogtitle')
+																	.append(
+																			'리뷰등록');
+															$('#dialogcontent')
+																	.append(
+																			'리뷰등록이 완료되었습니다.');
+															$('#commondialog')
+																	.show();
+															$
+																	.getReviewList(
+																			1,
+																			'new',
+																			3,
+																			'1450',
+																			'N');
+															$('#reviewcontent')
+																	.val('');
+															$('#imagefilepath')
+																	.val('');
+															$("#sortable")
+																	.empty();
+														} else if (data.resultcode == 2) {
+															$('#dialogtitle')
+																	.append(
+																			'리뷰등록');
+															$('#dialogcontent')
+																	.append(
+																			data.resultmessage);
+															$('#commondialog')
+																	.show();
+														} else {
+															$('#dialogtitle')
+																	.append(
+																			'리뷰등록');
+															$('#dialogcontent')
+																	.append(
+																			data.resultmessage);
+															$('#commondialog')
+																	.show();
+														}
+													},
+													error : function(jqXHR,
+															textStatus,
+															errorThrown) {
+														indicatorOff();
+														$('#dialogtitle')
+																.append('리뷰등록');
+														$('#dialogcontent')
+																.append(
+																		textStatus);
+														$('#commondialog')
+																.show();
+													}
+												});
+									});
+
+					$(function() {
+						$('#sortable').sortable(
+								{
+									update : function(event, ui) {
+										var productOrder = $(this).sortable(
+												'toArray').toString();
+										$('#imagefilepath').val(productOrder);
+									}
+								});
+						$("#sortable").disableSelection();
+					});
+
+					var imageindex = 0;
+					$("#reviewimage")
+							.on(
+									'change',
+									function() {
+										resetCommonDialog();
+										indicatorOn();
+										if ($('#sortable').sortable('toArray').length >= 10) {
+											indicatorOff();
+											$('#dialogtitle').append('이미지업로드');
+											$('#dialogcontent')
+													.append(
+															'이미지 파일은 최대 10장까지 업로드할 수 있습니다.');
+											$('#commondialog').show();
+										} else {
+											// 업로드
+											$
+													.ajax({
+														url : 'JSONSpotReviewImageUpload.festa',
+														type : 'POST',
+														data : new FormData(
+																$('form')[1]),
+														mimeType : 'multipart/form-data',
+														dataType : 'json',
+														contentType : false,
+														cache : false,
+														processData : false,
+														success : function(
+																data,
+																textStatus,
+																jqXHR) {
+															if (data.resultcode == 0) {
+																indicatorOff();
+																$("#sortable")
+																		.append(
+																				'<li id="' + data.tempimagepath + '" name="image_' + imageindex + '">'
+																						+ '<img src="' + data.tempimagepath + '" /><a href="javascript:void(0)" onclick="javascript:$.deleteReviewImage(\'image_'
+																						+ imageindex
+																						+ '\');" class="del"><img src="/include/img/ico/ico_close01.png" style="vertical-align: top;" /></a></li>');
+																imageindex++;
+																$(
+																		'#imagefilepath')
+																		.val(
+																				$(
+																						'#sortable')
+																						.sortable(
+																								'toArray')
+																						.toString());
+															} else {
+																indicatorOff();
+																if (data.resultcode == 1) {
+																	$(
+																			'#dialogtitle')
+																			.append(
+																					'이미지업로드');
+																	$(
+																			'#dialogcontent')
+																			.append(
+																					'이미지를 첨부해 주세요.');
+																	$(
+																			'#commondialog')
+																			.show();
+																} else if (data.resultcode == 2) {
+																	$(
+																			'#dialogtitle')
+																			.append(
+																					'이미지업로드');
+																	$(
+																			'#dialogcontent')
+																			.append(
+																					'이미지 파일만 첨부 가능합니다.');
+																	$(
+																			'#commondialog')
+																			.show();
+																} else if (data.resultcode == 3) {
+																	$(
+																			'#dialogtitle')
+																			.append(
+																					'이미지업로드');
+																	$(
+																			'#dialogcontent')
+																			.append(
+																					'최대 5MB까지 첨부할 수 있습니다.');
+																	$(
+																			'#commondialog')
+																			.show();
+																} else if (data.resultcode == 4) {
+																	$(
+																			'#dialogtitle')
+																			.append(
+																					'이미지업로드');
+																	$(
+																			'#dialogcontent')
+																			.append(
+																					'리뷰 등록은 로그인 후 이용해 주세요.');
+																	$(
+																			'#commondialog')
+																			.show();
+																}
+															}
+														},
+														error : function(jqXHR,
+																textStatus,
+																errorThrown) {
+															indicatorOff();
+															$('#dialogtitle')
+																	.append(
+																			'이미지업로드');
+															$('#dialogcontent')
+																	.append(
+																			textStatus);
+															$('#commondialog')
+																	.show();
+														}
+													});
+										}
+									});
+				</script>
+				<div class="reviewListHeader">
+					<p class="cnt">
+						리뷰 전체보기<span id="reviewcount">(0)</span>
+					</p>
+					<ul>
+						<li><a
+							href="javascript:$.getReviewList(1, 'new', 3, '1450', 'N');"
+							onclick="$('#hrefnew').addClass('on');$('#hrefrate').removeClass('on');"
+							id="hrefnew" class="on">최신순</a></li>
+						<li><a
+							href="javascript:$.getReviewList(1, 'rate', 3, '1450', 'N');"
+							onclick="$('#hrefrate').addClass('on');$('#hrefnew').removeClass('on');"
+							id="hrefrate">평점순</a></li>
+					</ul>
+				</div>
+				<ul class="reviewListCont">
+				</ul>
+				<div class="paging" id="reviewPaging"></div>
+			</div>
+		</div>
+		<div id="detailBox05">
+			<ul class="detailTabs">
+				<li><a href="javascript:void(0)" data-id="detailBox01">상세정보</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox02">연관스팟</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox03">SNS</a></li>
+				<li><a href="javascript:void(0)" data-id="detailBox04">리뷰</a></li>
+				<li><a href="javascript:void(0)" class="on"
+					data-id="detailBox05">Q&A</a></li>
+			</ul>
+			<div class="detaillArea">
+				<table id="festivalTable" class="listTable01">
+				</table>
+				<div class="paging" id="qnaPaging"></div>
+				
+				<a href="javascript:void(0)"
+					onclick="javascript:$.serviceDialog('문의하기', '<br />문의 등록은 로그인 후 이용해 주세요.<br />', '');"
+					class="btnQna">문의하기</a>
+				<!--
+				<a href="InquiryForm.festa" class="btnQna">문의하기</a> 
+					 -->
+				
+			</div>
+		</div>
+	</form>
+
+
+
+</section>
+
+<form id="registerform" name="registerform" action="/FestivalDetail.festa" method="post">
+	<style>
+#sortableedit {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#sortableedit li {
+	margin: 3px 3px 3px 0;
+	padding: 0px;
+	float: left;
+	width: 48px;
+	height: 48px;
+	font-size: 1em;
+	text-align: left;
+}
+
+#sortableedit label {
+	display: inline-block;
+	cursor: pointer;
+}
+
+#sortableedit label:hover {
+	background-color: #1ABC9C;
+}
+
+#sortableedit label img {
+	padding: 3px;
+}
+</style>
+	<input type="hidden" name="reviewseq" value="" id="reviewseq"/>
+	<input type="hidden" name="currentPage" value="" id="currentPage"/>
+	<input type="hidden" name="sort" value="" id="sort"/>
+	<input type="hidden" name="revieweditimagefilepath" value="" id="revieweditimagefilepath"/>
+	<div class="dialog" id="revieweditform"
+		style="display: none; z-index: 1000;">
+		<div class="popBox_review">
+			<div class="popHeader_review">
+				<h1>리뷰 수정하기</h1>
+				<a href="javascript:void(0)"
+					onclick="javascript:$('#revieweditform').hide();"><img
+					src="../../include/img/ico/ico_close02.png" /></a>
+			</div>
+			<div class="popCont_review">
+				<div class="snsReviewForm">
+					<textarea class="textarea" id="revieweditcontent"></textarea>
+					<div class="bottomCont">
+						<div class="rateYo_dep">
+							<span class="etxt">평점</span>
+							<div id="rateYoreviewedit" style="float: left; margin-top: 15px;"></div>
+						</div>
+						<span class="etxt2" id="revieweditrating"></span>
+						<div class="image-upload">
+							<label for="reviewimageedit" class="btnFileUpload">사진첨부 </label><input
+								name="reviewimage" id="reviewimageedit" type="file" />
+						</div>
+						<div class="imgBox">
+							<ul id="sortableedit">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="popCont_review_btn">
+					<a href="javascript:void(0)" class="btnReviewSave"
+						id="revieweditbutton">리뷰수정</a> <a href="javascript:void(0)"
+						onclick="javascript:$('#revieweditform').hide();"
+						class="btnReviewCancel">취소</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('#revieweditbutton')
+				.click(
+						function() {
+							resetCommonDialog();
+							indicatorOn();
+							$
+									.ajax({
+										url : 'JSONSpotReviewEdit.festa',
+										type : 'POST',
+										data : {
+											reviewseq : $("#reviewseq").val(),
+											rating : $("#rateYoreviewedit")
+													.rateYo("rating"),
+											content : $('#revieweditcontent')
+													.val(),
+											imagefilepath : $(
+													'#revieweditimagefilepath')
+													.val()
+										},
+										dataType : 'json',
+										success : function(data, textStatus,
+												jqXHR) {
+											indicatorOff();
+											if (data.resultcode == 0) {
+												$('#revieweditform').hide();
+												$('#dialogtitle')
+														.append('리뷰수정');
+												$('#dialogcontent').append(
+														'리뷰수정이 완료되었습니다.');
+												$('#commondialog').show();
+												$
+														.getReviewList(
+																1,
+																'new',
+																3,
+																'1450',
+																'N');
+												$("#sortableedit").empty();
+											} else if (data.resultcode == 2) {
+												$('#dialogtitle')
+														.append('리뷰수정');
+												$('#dialogcontent').append(
+														data.resultmessage);
+												$('#commondialog').show();
+											} else {
+												$('#dialogtitle')
+														.append('리뷰수정');
+												$('#dialogcontent').append(
+														data.resultmessage);
+												$('#commondialog').show();
+											}
+										},
+										error : function(jqXHR, textStatus,
+												errorThrown) {
+											indicatorOff();
+											$('#dialogtitle').append('리뷰수정');
+											$('#dialogcontent').append(
+													textStatus);
+											$('#commondialog').show();
+										}
+									});
+						});
+
+		$(function() {
+			$('#sortableedit').sortable({
+				update : function(event, ui) {
+					var productOrder = $(this).sortable('toArray').toString();
+					$('#revieweditimagefilepath').val(productOrder);
+				}
+			});
+			$("#sortableedit").disableSelection();
+		});
+
+		var editimageindex = 0;
+		$("#reviewimageedit")
+				.on(
+						'change',
+						function() {
+							resetCommonDialog();
+							indicatorOn();
+							if ($('#sortableedit').sortable('toArray').length >= 10) {
+								indicatorOff();
+								$('#dialogtitle').append('이미지업로드');
+								$('#dialogcontent').append(
+										'이미지 파일은 최대 10장까지 업로드할 수 있습니다.');
+								$('#commondialog').show();
+							} else {
+								// 업로드
+								$
+										.ajax({
+											url : 'JSONSpotReviewImageUpload.festa',
+											type : 'POST',
+											data : new FormData($('form')[2]),
+											mimeType : 'multipart/form-data',
+											dataType : 'json',
+											contentType : false,
+											cache : false,
+											processData : false,
+											success : function(data,
+													textStatus, jqXHR) {
+												if (data.resultcode == 0) {
+													indicatorOff();
+													$("#sortableedit")
+															.append(
+																	'<li id="' + data.tempimagepath + '" name="image_' + editimageindex + '">'
+																			+ '<img src="' + data.tempimagepath + '" /><a href="javascript:void(0)" onclick="javascript:$.deleteReviewImage(\'image_'
+																			+ editimageindex
+																			+ '\');" class="del"><img src="/include/img/ico/ico_close01.png" style="vertical-align: top;" /></a></li>');
+													editimageindex++;
+													$(
+															'#revieweditimagefilepath')
+															.val(
+																	$(
+																			'#sortableedit')
+																			.sortable(
+																					'toArray')
+																			.toString());
+												} else {
+													indicatorOff();
+													if (data.resultcode == 1) {
+														$('#dialogtitle')
+																.append(
+																		'이미지업로드');
+														$('#dialogcontent')
+																.append(
+																		'이미지를 첨부해 주세요.');
+														$('#commondialog')
+																.show();
+													} else if (data.resultcode == 2) {
+														$('#dialogtitle')
+																.append(
+																		'이미지업로드');
+														$('#dialogcontent')
+																.append(
+																		'이미지 파일만 첨부 가능합니다.');
+														$('#commondialog')
+																.show();
+													} else if (data.resultcode == 3) {
+														$('#dialogtitle')
+																.append(
+																		'이미지업로드');
+														$('#dialogcontent')
+																.append(
+																		'최대 5MB까지 첨부할 수 있습니다.');
+														$('#commondialog')
+																.show();
+													} else if (data.resultcode == 4) {
+														$('#dialogtitle')
+																.append(
+																		'이미지업로드');
+														$('#dialogcontent')
+																.append(
+																		'리뷰 등록은 로그인 후 이용해 주세요.');
+														$('#commondialog')
+																.show();
+													}
+												}
+											},
+											error : function(jqXHR, textStatus,
+													errorThrown) {
+												indicatorOff();
+												$('#dialogtitle').append(
+														'이미지업로드');
+												$('#dialogcontent').append(
+														textStatus);
+												$('#commondialog').show();
+											}
+										});
+							}
+						});
+	</script>
+	<div class="dialog" id="qnaregisterform"
+		style="display: none; z-index: 1000;">
+		<div class="popBox_qna">
+			<div class="popHeader_qna">
+				<h1>호스트에게 문의하기</h1>
+				<a href="javascript:void(0)"
+					onclick="javascript:$('#qnaregisterform').hide();"><img
+					src="../../include/img/ico/ico_close02.png" /></a>
+			</div>
+			<div class="popCont_qna">
+				<input type="text" class="inp" id="qnatitle" placeholder="제목" />
+				<textarea id="qnacontent" class="textarea"></textarea>
+				<input type="text" id="qnaemail"
+					value="" class="inp"
+					placeholder="이메일주소" />
+				<div class="check_line">
+					<input type="checkbox" id="qnaemailreply"><label
+						for="qnaemailreply">이메일로 답변을 받고 싶어요.</label>
+				</div>
+				<p class="tx1">
+					※ 문의내용 및 답변은 <span>“마이페이지> 나의문의내역”</span> 에서 확인하실 수 있습니다.
+				</p>
+			</div>
+			<div class="btnBox">
+				<a href="javascript:void(0)" id="qnaregisterbutton"
+					class="btnType01">문의등록</a> <a href="javascript:void(0)"
+					onclick="javascript:$('#qnaregisterform').hide();"
+					class="btnType02">취소</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('#qnaregisterbutton')
+				.click(
+						function() {
+							resetCommonDialog();
+							indicatorOn();
+							var qnaemailreply = 'N';
+							if ($("input:checkbox[id='qnaemailreply']").is(
+									":checked") == true) {
+								qnaemailreply = 'Y';
+							}
+							$
+									.ajax({
+										url : 'JSONSpotQnaRegister.festa',
+										type : 'POST',
+										data : {
+											spottype : 3,
+											spotseq : '1450',
+											email : $('#qnaemail').val(),
+											title : $('#qnatitle').val(),
+											content : $('#qnacontent').val(),
+											emailreply : qnaemailreply
+										},
+										dataType : 'json',
+										success : function(data, textStatus,
+												jqXHR) {
+											indicatorOff();
+											if (data.resultcode == 0) {
+												$('#qnatitle').val('');
+												$('#qnaemail').val('');
+												$('#qnacontent').val('');
+												$('#qnaemailreply').prop(
+														'checked', false);
+
+												$('#qnaregisterform').hide();
+												$('#dialogtitle').append(
+														'호스트에게 문의하기');
+												$('#dialogcontent')
+														.append(
+																'호스트에게 문의하기 등록이 완료되었습니다.');
+												$('#commondialog').show();
+												$
+														.getSpotQnaList(
+																1,
+																3,
+																'1450',
+																'N');
+												$("#sortableedit").empty();
+											} else if (data.resultcode == 2) {
+												$('#dialogtitle').append(
+														'호스트에게 문의하기');
+												$('#dialogcontent').append(
+														data.resultmessage);
+												$('#commondialog').show();
+											} else {
+												$('#dialogtitle').append(
+														'호스트에게 문의하기');
+												$('#dialogcontent').append(
+														data.resultmessage);
+												$('#commondialog').show();
+											}
+										},
+										error : function(jqXHR, textStatus,
+												errorThrown) {
+											indicatorOff();
+											$('#dialogtitle').append(
+													'호스트에게 문의하기');
+											$('#dialogcontent').append(
+													textStatus);
+											$('#commondialog').show();
+										}
+									});
+						});
+	</script>
+</form>
+
+
+
+
+<div class="dialog" id="imagelist" style="display: none; z-index: 1000;">
+	<div class="popBox_imgView">
+		<div class="popHeader">
+			<h1>이미지 상세보기</h1>
+			<a href="javascript:void(0)" onclick="javascript:closeImageView();"><img
+				src="../../include/img/ico/ico_close02.png" /></a>
+		</div>
+		<div class="popCont">
+			<div class="imgSlideBox01">
+				<div class="slideRela">
+					
+						<div class="item" onclick="javascript:closeImageView();">
+							
+							
+								<a href="javascript:void(0)"><img
+									class=""
+									src="/uploadedfiles/spot/2019/12/9bf37e14-1f60-4855-9b06-3dc9da2a0932_104123760.JPG" /></a>
+							
+						</div>
+					
+						<div class="item" onclick="javascript:closeImageView();">
+							
+							
+								<a href="javascript:void(0)"><img
+									class=""
+									src="/uploadedfiles/spot/2019/12/c6137fb2-44f6-4380-88b9-08729336d878_104127014.JPG" /></a>
+							
+						</div>
+					
+						<div class="item" onclick="javascript:closeImageView();">
+							
+							
+								<a href="javascript:void(0)"><img
+									class=""
+									src="/uploadedfiles/spot/2019/12/cff7a602-e0ec-4a36-9e01-3bd643f8a1f1_104131216.JPG" /></a>
+							
+						</div>
+					
+						<div class="item" onclick="javascript:closeImageView();">
+							
+							
+								<a href="javascript:void(0)"><img
+									class="vertical"
+									src="/uploadedfiles/spot/2019/12/b3d43de3-73d5-4bfe-9e36-06031747d9fc_104134725.JPG" /></a>
+							
+						</div>
+					
+				</div>
+				<a href="javascript:void(0)" class="imgLeft"><img
+					src="../../include/img/ico/ico_left02.png" /></a> <a
+					href="javascript:void(0)" class="imgRight"><img
+					src="../../include/img/ico/ico_right02.png" /></a>
+				<div class="pages">
+					1/<span>4</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function closeImageView() {
+		$('#imagelist').hide();
+		if ($("#videotag").get(0) != null) {
+			$("#videotag").get(0).pause();
+		}
+		if (document.getElementById('videoframe') != null) {
+			var iframe = document.getElementById('videoframe');
+			var iframeSrc = iframe.src;
+			iframe.src = iframeSrc;
+		}
+	}
+
+	function checkImage(obj) {
+		if (obj.height > obj.width) {
+			$(obj).addClass("vertical");
+		} else {
+			$(obj).removeClass("vertical");
+		}
+	  }
+
+	function imageDialog(index) {
+		$('#imagelist').show();
+		$('.imgSlideBox01 .slideRela').slick('setPosition');
+		$('.imgSlideBox01 .slideRela').slick('slickGoTo', index);
+	}
+
+	$(function(){
+        $(".imgSlideBox01 .slideRela").slick({
+            slidesToShow: 1,
+            dots: false,
+			adaptiveHeight: true
+        });
+        $('body').on('afterChange', '.imgSlideBox01 .slideRela', function(slick, slide){
+            var num = $(this).slick('slickCurrentSlide')+1;
+            $(".imgSlideBox01 .pages").text(num +"/"+slide.slideCount);
+        });
+        $("body").on("click",".imgLeft",function(e){
+            $('.imgSlideBox01 .slideRela').slick("slickPrev");
+        });
+        $("body").on("click",".imgRight",function(e){
+            $('.imgSlideBox01 .slideRela').slick("slickNext");
+        });
+	});
+</script>
+
+<script>
+	$(document).ready(
+			function() {
+				$.getReviewList(1, 'new', 3,
+						'1450',
+						'N');
+				$.getSpotBlogList(1,
+						'통영 해맞이 행사 2020 ');
+				$.getSpotNewsList(1,
+						'통영 해맞이 행사 2020 ');
+				$.getSpotQnaList(1, 3, '1450',
+						'N');
+				$.spotViewHistory(3, '1450');
+			});
+
+	
+</script>
+
+
+</th:block>
+
+</html>

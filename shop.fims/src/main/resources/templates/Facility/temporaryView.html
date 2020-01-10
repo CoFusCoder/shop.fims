@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
+	<th:block layout:fragment="customBody">
+		<div>
+		<a th:href="@{/temporaryList}">
+		<button type="button" class="btn btn-default" >뒤로가기</button>
+		</a>
+		</div>
+		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+            <th:block th:each= "f : ${facility}">
+              <h4><i class="fa fa-angle-right"></i></span> 임시시설설치및철거상세보기 </h4><br>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+				  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>시설명</th>
+                      <th>축제명</th>
+                      <th>담당자</th>
+                      <th>임시시설및철거코드</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${f.staNm}"></td>
+	               		<td th:text = "${f.festNm}"></td>
+	               		<td th:text = "${f.comNm2}"></td>
+	               		<td th:text = "${f.facCd}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>설치시작일</th>
+                      <th>설치종료일</th>
+                      <th>설치장소</th>
+                      <th>설치내용</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${f.stastaDt}"></td>
+	               		<td th:text = "${f.staendDt}"></td>
+	               		<td th:text = "${f.stainsSc}"></td>
+	               		<td th:text = "${f.stainsCon}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th>설치개수</th>
+                    	<th>설치모델명</th>
+                    	<th>근무인원</th>
+                    	<th>철거확인일자</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${f.stainsNum}"></td>
+	               		<td th:text = "${f.stainsMo}"></td>
+	               		<td th:text = "${f.staWorksta}"></td>
+	               		<td th:text = "${f.stademDt}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+	                    <th>철거확인자</th>
+	                    <th>설치상태1</th>
+	                    <th>설치상태2</th>
+	                    <th></th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	               		<td th:text = "${f.staChe}"></td>
+	               		<td th:text = "${f.stainsCon1}"></td>
+	               		<td th:text = "${f.stainsCon2}"></td>
+	               		<td></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th colspan="2">ㅤㅤㅤㅤㅤㅤㅤ</th>
+						<th colspan="2">ㅤㅤㅤㅤㅤㅤㅤ</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	                    <td colspan="2">
+	                    	<a th:href="@{/temporaryUpdate(facCd=${f.facCd})}">
+	                    	<button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
+	                    </td>
+	                    <td colspan="2">
+	                    	<a th:href="@{/temporaryDelete}">
+	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
+	                    </td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  
+                </table>
+              </section>
+              </th:block>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+	</th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shop.fims.committee.CommitteeMapper">
+	<resultMap type="shop.fims.vo.Committee" id="committeeResultMap">
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="memCd" column="mem_cd"/>
+		<result property="memLevCd" column="mem_lev_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="exaRepCd" column="exa_rep_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="festNm" column="fest_nm"/>
+		<result property="manComCat" column="man_com_cat"/>
+		<result property="manComNm1" column="man_com_nm1"/>
+		<result property="manComDep" column="man_com_dep"/>
+		<result property="manComRank" column="man_com_rank"/>
+		<result property="comMemNm2" column="com_mem_nm2"/>
+		<result property="manComJob" column="man_com_job"/>
+		<result property="manComDt1" column="man_com_dt1"/>
+		<result property="manComApp" column="man_com_app"/>
+		<result property="manComDt2" column="man_com_dt2"/>
+		<result property="manComCon" column="man_com_con"/>
+	</resultMap>
+	
+	<!-- 모든 위원회 관리 -->
+	<select id="selectAllCommitteeView" resultMap="committeeResultMap">
+	 	SELECT
+			*
+		FROM 
+			Man_Com
+	</select>
+	
+	<!-- 위원회 상세조회 위원회 코드로 조회 -->
+	<select id="selectByCommittee" resultMap="committeeResultMap">
+		SELECT 
+			*
+		FROM 
+			Man_Com
+		WHERE 
+			man_com_cd = #{manComCd}
+	</select>
+	  
+	<!-- 위원회 등록 -->
+	<insert id="insertAllCommittee" parameterType="shop.fims.vo.Committee">
+		<selectKey resultType="string" keyProperty="manComCd" order="BEFORE">
+	        SELECT CONCAT('man','_','com','_',(SELECT LPAD(COUNT(*)+1,3,'0') FROM Man_Com))   
+	    </selectKey>
+		INSERT INTO Man_Com
+			(man_com_cd, areacity_admin_cd, mem_cd, mem_lev_cd, fest_cd, exa_rep_cd, area_city_cd, area_cd, fest_nm, man_com_cat,
+			man_com_nm1, man_com_dep, man_com_rank, com_mem_nm2, man_com_job, man_com_dt1, man_com_app, man_com_dt2, man_com_con)
+		VALUES 
+			(#{manComCd}, #{areacityAdminCd}, #{memCd}, #{memLevCd}, #{festCd}, #{exaRepCd}, #{areaCityCd}, #{areaCd}, #{festNm}, #{manComCat},
+			 #{manComNm1}, #{manComDep}, #{manComRank}, #{comMemNm2}, #{manComJob}, now(), #{manComApp}, now(), #{manComCon})
+	</insert>
+	
+	<!-- 위원회 삭제 -->
+	<delete id="deleteAllCommittee" parameterType="shop.fims.vo.Committee">
+		DELETE 
+		FROM 
+			Man_Com
+		WHERE
+			man_com_cd = #{manComCd}
+	</delete>
+	
+	<!-- 위원회 수정화면. 위원회 코드로 조회 -->
+	<select id="selectByAllCommittee" parameterType="String" resultMap="committeeResultMap">
+		SELECT 
+			*
+		FROM 
+			Man_Com
+		WHERE 
+			man_com_cd = #{manComCd}
+	</select>
+	
+	<!-- 위원회 수정 -->
+	<update id="updateAllCommittee" parameterType="shop.fims.vo.Committee">
+		UPDATE Man_Com
+		SET
+			man_com_cd = #{manComCd}, areacity_admin_cd = #{areacityAdminCd}, mem_cd = #{memCd}, mem_lev_cd = #{memLevCd}, fest_cd = #{festCd},
+			exa_rep_cd = #{exaRepCd}, area_city_cd = #{areaCityCd}, area_cd = #{areaCd}, fest_nm = #{festNm}, man_com_cat = #{manComCat}, 
+			man_com_nm1 = #{manComNm1}, man_com_dep = #{manComDep}, man_com_rank = #{manComRank}, com_mem_nm2 = #{comMemNm2}, man_com_job = #{manComJob}, 
+			man_com_dt1 = #{manComDt1}, man_com_app = #{manComApp}, man_com_dt2 = #{manComDt2}, man_com_con = #{manComCon}
+		WHERE
+			man_com_cd = #{manComCd}
+	</update>
+	
+	<!-- 위원회 검색 -->
+	<select id="searchCommittee" parameterType="String" resultMap="committeeResultMap">
+	  	SELECT 
+			*
+		FROM 
+			Man_Com
+		<if test="sv != null and sv neq ''.toString()">
+			WHERE 
+				${sk} Like CONCAT('%',#{sv},'%')	
+		</if>
+	</select>
+
+</mapper>

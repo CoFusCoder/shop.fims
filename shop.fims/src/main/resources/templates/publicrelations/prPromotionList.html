@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<title>홍보사업리스트</title>
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+
+	- 페이징 해야함
+	- 검색기능 해야함
+		<h3>홍보사업리스트</h3>
+		
+		<div class="row mt">
+          <div class="col-md-12">
+           
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> 사업리스트</h4>   
+              <div align="right">
+              <a th:href="@{/prInsertPromotion}" >
+              <button type="button" class="btn btn-primary">신규사업등록</button></a>  
+              </div>
+              
+        <!-- 세부프로그램검색 start -->
+        <form class="form-inline" role="form" align="center" th:action="@{/searchSpro}" method="post">
+       	 <div class="form-group">
+           <label class="sr-only" for="programName"></label>
+           <input type="text" class="form-control" id="programName" name="festProNm" placeholder="홍보방식">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="sProgramName"></label>
+            <input type="text" class="form-control" id="sProgramName" name="festproSproNm" placeholder="거래처명">
+          </div>             
+          <div class="form-group">
+            <label class="sr-only" for="sProgramName"></label>
+            <input type="text" class="form-control" id="sProgramName" name="festproSproNm" placeholder="매체명">
+          </div>                        
+          <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
+                  	마감여부<span class="caret"></span>
+                    </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">마감전</a></li>
+                    <li><a href="#">마감완료</a></li>
+                  </ul>
+          </div><br>
+          <div class="form-group">
+                  <div class="col-md-10">
+                    <div class="input-group input-large" data-date="01/01/2014" data-date-format="mm/dd/yyyy">
+                      <input type="text" class="form-control dpd1" name="from"  placeholder="기간선택">
+                      <span class="input-group-addon">~</span>
+                      <input type="text" class="form-control dpd2" name="to"  placeholder="기간선택">
+                    </div>
+                  </div>
+                </div>
+          
+          <button type="submit" class="btn btn-theme">검색</button>
+          <a th:href="@{/prPromotionList}"> 
+          <button type="button" class="btn btn-theme04">결과초기화</button></a>
+         
+        </form><br>
+ 		<!-- 세부프로그램검색 end-->  
+ 		 
+              <hr>
+             
+              <table class="table table-striped table-advance table-hover">
+                
+                <thead>
+                  <tr>
+                    <th>홍보분류</th>
+                    <th>홍보매체명</th>
+                    <th>프로모션내용</th>
+                    <th>프로모션시작일</th>
+                    <th>장소/배포처</th>
+                    <th>마감여부</th>
+                    <th>금액</th>
+                    <th>상세확인</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="p:${AllPromotion}">  
+			 		<td th:text="${p.festprDivNm}"></td>
+			 		<td th:text="${p.festprProNm}"></td>
+			 		<td th:text="${p.festprProDetail}"></td>
+			 		<td th:text="${p.fprproStartDt}"></td>
+			 		<td th:text="${p.festprProPlace}"></td>
+			 		<td th:text="${p.actionStatus}"></td>
+			 		<td th:text="${p.festprProExpense}"></td>
+			 		<td>
+			 		  <a th:href="@{/prPromotionDetail(festprProCd=${p.festprProCd})}">
+			 		  <button type="button" class="btn btn-success btn-sm">상세</button></a>
+			 		 
+			 		</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-md-12 -->
+        </div>	
+	
+	
+	
+	
+	
+	
+	
+
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

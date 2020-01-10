@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<section>
+	<div class="mypDesc">
+		<p class="t01">나의 찜목록</p>
+		<p class="t02">내가 찜한 스팟의 목록을 보여줍니다!</p>
+	</div>
+	<div class="norBox">
+		<ul class="commTabs t01">
+			<li><a href="/gukminview/member/myBookmarkView">나만의 찜목록</a></li>
+			<li><a href="/gukminview/member/myBookmarkSpotView" class="on">찜스팟 전체보기</a></li>
+			<li><a href="#">#찜기업</a></li>
+			<li><a href="#">#최근 본 스팟</a></li>
+		</ul>
+		<!--
+		<div class="boSearchBox">
+			<div class="bsform">
+				<input type="text" id="searchbookmarkspotkeyword"
+					placeholder="목록 내 스팟검색" /> <a href="javascript:void(0)"
+					id="bookmarkspotsearchbutton">검색</a>
+			</div>
+		</div> 
+		 -->
+		<ul class="categoryTabs type02">
+			<li><a href="javascript:void(0)" class="on" id="spotall">전체</a></li>
+			<li><a href="javascript:void(0)" id="spotfestival">축제·이벤트</a></li>
+			<li><a href="javascript:void(0)" id="spotmarket">시장</a></li>
+			<li><a href="javascript:void(0)" id="spotstore">스토어</a></li>
+		</ul>
+		<ul class="onlyList t01" id="spotlist">
+			<li>
+			<a href="#" class="pic"><img src="https://joyfesta.kr/uploadedfiles/spot/2019/08/[%ED%81%AC%EA%B8%B0%EB%B3%80%ED%99%98]7aff14b4-a388-4629-800a-70aea333e6da_152350650.jpg"><span></span></a>
+			<a title="찜목록 선택" href="javascript:myBookmarkListPop('54');" class="btnHart_list">&nbsp;</a>
+			<ul class="sts_area"></ul>
+			<div class="cont"><p class="t01">#별빛따라 두메향기</p><div class="t02"><span class="date">2019.01.01~2019.12.31</span><span class="gps">경기도 양평군 양서면 목왕로592번길 62-5</span></div>
+			<p class="t03">#별빛축제 #산나물테마공원 #두메향기 #경기도양평 #경기도축제 #1월축제 #2월축제 #3월축제 #4월축제 #5월축제 #6월축제 #7월축제 #8월축제 #9월축제 #10월축제 #11월축제 #12월축제 </p>
+			<a href="javascript:void(0)" onclick="javascript:$.setBookmark(this, '3', '542');" class="btnHart on">&nbsp;</a>
+			</div>
+			</li>
+					
+			<li>
+			<a href="#" class="pic"><img src="https://joyfesta.kr/uploadedfiles/spot/2019/11/8_165818115.png"><span></span></a>
+			<a title="찜목록 선택" href="javascript:myBookmarkListPop('53');" class="btnHart_list">&nbsp;</a>
+			<ul class="sts_area"></ul>
+			<div class="cont"><p class="t01">#보성차밭빛축제 2020</p><div class="t02"><span class="date">2019.11.29~2020.01.05</span><span class="gps">전라남도 보성군 보성읍 녹차로 775</span></div>
+			<p class="t03">#보성 #빛 #체험 #겨울 #전남축제 #보성축제 #체험축제 #빛축제 #겨울축제 #11월축제 #12월축제 #1월축제 </p>
+			<a href="javascript:void(0)" onclick="javascript:$.setBookmark(this, '3', '1173');" class="btnHart on">&nbsp;</a>
+			</div>
+			</li>		
+		
+		</ul>
+		<a href="javascript:void(0)" onclick="getMyBookmarkSpotList();"
+			class="btnMore">더보기 +</a>
+	</div>
+</section>
+<form id="bookmarklistform" name="bookmarklistform" action="/MyBookmarkSpot.festa" method="post">
+	<input type="hidden" name="bookmarkseq" value="" id="bookmarkseq"/>
+	<input type="hidden" name="bookmarklistseqs" value="" id="bookmarklistseqs"/>
+
+
+
+
+	<div class="dialog" id="bookmarklistdialog"
+		style="display: none; z-index: 1000;">
+		<div class="popBox">
+			<div class="popHeader">
+				<h1>찜목록 선택</h1>
+				<a href="javascript:void(0)"
+					onclick="javascript:$('#bookmarklistdialog').hide();"><img
+					src="https://joyfesta.kr/include/img/ico/ico_close02.png" /></a>
+			</div>
+			<div class="popCont">
+				<div class="popjjim_list_select">
+					<ul class="list_edit">
+					</ul>
+				</div>
+				<div class="btnBox">
+					<a href="javascript:void(0)" id="registerbutton" class="btnType01">완료</a> <a
+						href="javascript:void(0)"
+						onclick="javascript:$('#bookmarklistdialog').hide();" class="btnType02">닫기</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</form>
+
+
+
+<script src="/gukmin/js/underscore-min.js"></script>
+<script>
+	var spottype = '';
+	var currentPage = 1;
+
+	$('#spotall').click(function() {
+		spottype = '';
+		$('#spotlist').empty();
+		currentPage = 1;
+		getMyBookmarkSpotList();
+	});
+	$('#spotfestival').click(function() {
+		spottype = '3';
+		$('#spotlist').empty();
+		currentPage = 1;
+		getMyBookmarkSpotList();
+	});
+	$('#spotmarket').click(function() {
+		spottype = '1';
+		$('#spotlist').empty();
+		currentPage = 1;
+		getMyBookmarkSpotList();
+	});
+	$('#spotstore').click(function() {
+		spottype = '2';
+		$('#spotlist').empty();
+		currentPage = 1;
+		getMyBookmarkSpotList();
+	});
+
+	$('#bookmarkspotsearchbutton').click(function() {
+		getMyBookmarkSpotList();
+	});
+
+	var pageSize = 6;
+/* 	function getMyBookmarkSpotList() {
+		resetCommonDialog();
+		indicatorOn();
+		$
+				.ajax({
+					url : 'JSONMyBookmarkSpotList.festa',
+					type : 'POST',
+					data : {
+						keyword : $('#searchbookmarkspotkeyword').val(),
+						spottype : spottype,
+						currentPage : currentPage, 
+						pageSize : pageSize
+					},
+					dataType : 'json',
+					success : function(data, textStatus, jqXHR) {
+						indicatorOff();
+						var spotList = data.spotList;
+						if (spotList.length == 0) {
+							if (currentPage > 1) {
+								alert('마지막 페이지입니다.');
+							} else {
+								$('#spotlist')
+										.append(
+												'<li><span class="sts_ing">등록된 찜스팟이 없습니다.</span></li>');
+							}
+							$('.btnMore').hide();
+						} else { // 데이터가있으면 목록을 each로 반복
+							_
+									.each(
+											spotList,
+											function(spot, index) {
+												var hashtags = '';
+												for (var j = 0; j < spot.hashtaglist.length; j++) {
+													hashtags += '#'
+															+ spot.hashtaglist[j].hashtag
+															+ ' ';
+												}
+												var datetime = '';
+												if (spot.spottype == 3) {
+													datetime = spot.startdate
+															+ '~'
+															+ spot.enddate;
+												} else {
+													if (spot.opentime != '00:00'
+															&& spot.closetime != '00:00') {
+														datetime = spot.opentime
+																+ '~'
+																+ spot.closetime;
+													} else {
+														datetime = '&nbsp;';
+													}
+												}
+												var spottype = spot.spottype;
+												var linkurl = '';
+												if (spottype == 1) {
+													linkurl = 'MarketDetail.festa?marketseq=';
+												} else if (spottype == 2) {
+													linkurl = 'StoreDetail.festa?storeseq=';
+												} else if (spottype == 3) {
+													linkurl = 'FestivalDetail.festa?festivalseq=';
+												}
+												var newmark = '';
+
+												var status = '';
+												if (spot.status != null
+														&& spot.status != '') {
+													status = '<li><span class="sts_ing">'
+															+ spot.status
+															+ '</span></li>';
+												}
+												var btnHartClass = '';
+												if (spot.bookmarkflag == 'Y') {
+													btnHartClass = 'on';
+												}
+												$('#spotlist')
+														.append(
+																'<li><a href="'
+																		+ linkurl  + spot.spotseq
+																		+ '" class="pic"><img src="' + spot.mainimagefilepath + '" />'
+																		+ '<span><a title="찜목록 선택" href="javascript:myBookmarkListPop(\''
+																		+ spot.bookmarkseq
+																		+ '\');" class="btnHart_list">&nbsp;</a></span>'
+																		+ '<ul class="sts_area">'
+																		//+ newmark
+																		//+ status
+																		+ '</ul></a>'
+																		+ '<div class="cont">'
+																		+ '<p class="t01">'
+																		+ spot.title
+																		+ '</p>'
+																		+ '<div class="t02"><span class="date">'
+																		+ datetime
+																		+ '</span><span class="gps">'
+																		+ spot.roadaddress
+																		+ '</span></div>'
+																		+ '<p class="t03">'
+																		+ hashtags
+																		+ '</p>'
+																		+ '<a href="javascript:void(0)" onclick="javascript:$.setBookmark(this, \''
+																		+ spot.spottype
+																		+ '\', \''
+																		+ spot.spotseq
+																		+ '\');" class="btnHart '
+																		+ btnHartClass
+																		+ '">&nbsp;</a>'
+																		+ '</div>'
+																		+ '</li>');
+											});
+							if (data.totalCount <= (currentPage * pageSize)) {
+								$('.btnMore').hide();
+							}
+							currentPage++;
+							$('.btnMore').show();
+						}
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						indicatorOff();
+						alert(textStatus);
+					}
+				});
+	} */
+
+	var bookmarklistseqs = [];
+	function myBookmarkListPop(bookmarkseq) {
+		resetCommonDialog();
+		indicatorOn();
+		$('#bookmarkseq').val(bookmarkseq);
+		$
+				.ajax({
+					url : 'JSONMyBookmarkListAll.festa',
+					type : 'POST',
+					data : {
+						bookmarkseq : bookmarkseq
+					},
+					dataType : 'json',
+					success : function(data, textStatus, jqXHR) {
+						indicatorOff();
+						if (data.resultcode == 0) {
+							var itemList = data.itemList;
+							$('.list_edit').empty();
+							bookmarklistseqs = [];
+							$('#bookmarklistseqs').val('');
+							if (itemList.length > 0) {
+								_
+										.each(
+												itemList,
+												function(item, index) {
+													var checked = '';
+													if (item.bookmarkflag == 'Y') {
+														bookmarklistseqs
+																.push(item.bookmarklistseq);
+														checked = 'checked';
+													}
+													$('.list_edit')
+															.append('<li>'
+																	+ '<div class="num">'
+																	+ '<input type="checkbox" onclick="javascript:setMyBookmarkSpot('
+																	+ item.bookmarklistseq
+																	+ ');" id="bookmarklist_'
+																	+ item.bookmarklistseq
+																	+ '" '
+																	+ checked
+																	+ ' /></div>'
+																	+ '<div class="cont">'
+																	+ item.title
+																	+ '</div>'
+																	+ '</li>');
+												});
+								$('#bookmarklistseqs').val(bookmarklistseqs);
+							} else {
+								$('.list_edit').append('등록된 찜목록이 없습니다.');
+							}
+							$('#bookmarklistdialog').show();
+						}
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						indicatorOff();
+						$('#dialogtitle').append('찜목록 선택');
+						$('#dialogcontent').append(textStatus);
+						$('#commondialog').show();
+					}
+				});
+
+	}
+
+	function setMyBookmarkSpot(bookmarklistseq) {
+		if ($('#bookmarklist_' + bookmarklistseq).prop("checked")) {
+			bookmarklistseqs.push(bookmarklistseq);
+		} else {
+			bookmarklistseqs.splice($
+					.inArray(bookmarklistseq, bookmarklistseqs), 1);
+		}
+		$('#bookmarklistseqs').val(bookmarklistseqs);
+	}
+
+	$('#registerbutton').click(function() {
+		resetCommonDialog();
+		indicatorOn();
+		$.ajax({
+			url : 'JSONMyBookmarkListAddSpot.festa',
+			type : 'POST',
+			data : {
+				bookmarkseq : $('#bookmarkseq').val(),
+				bookmarklistseqs : $('#bookmarklistseqs').val()
+			},
+			dataType : 'json',
+			success : function(data, textStatus, jqXHR) {
+				indicatorOff();
+				if (data.resultcode == 0) {
+					$('#bookmarklistdialog').hide();
+					$('#dialogtitle').append('찜목록 선택');
+					$('#dialogcontent').append('찜목록 추가/해제 되었습니다.');
+					$('#commondialog').show();
+				} else {
+					$('#dialogtitle').append('찜목록 선택');
+					$('#dialogcontent').append(data.resultmessage);
+					$('#commondialog').show();
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				indicatorOff();
+				$('#dialogtitle').append('찜목록 선택');
+				$('#dialogcontent').append(textStatus);
+				$('#commondialog').show();
+			}
+		});
+	});
+
+	$(document).ready(function() {
+		getMyBookmarkSpotList();
+	});
+
+	
+</script>
+
+</th:block>
+
+</html>

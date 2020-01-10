@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="shop.fims.human.WorkMapper">
+     <resultMap type="shop.fims.vo.Work" id="workResultMap">
+  		<result property="festNm" column="fest_nm"/>
+  		<result property="workcatNm" column="feswork_cat_nm"/>
+  		<result property="workdivNm" column="feswork_div_nm"/>
+   		<result property="comNm2" column="com_mem_nm2"/>
+   		<result property="workdivCd" column="feswork_div_cd"/>
+   		<result property="workcatCd" column="feswork_cat_cd"/>		  		
+  	</resultMap> 
+  <select id="selectWorkCategory" resultMap="workResultMap">
+  
+		SELECT
+			fest_nm,
+			feswork_cat_nm,
+			feswork_cat_cd
+		FROM
+			Festival_Work_Category
+  
+  </select>
+  <select id="selectupdateWorkCategory" resultMap="workResultMap">
+		SELECT
+			fest_nm,
+			feswork_cat_nm
+		FROM
+			Festival_Work_Category
+		WHERE
+			feswork_cat_cd = #{workcatCd}
+  
+  </select>
+  <select id="selectWorkDivision" resultMap="workResultMap">
+  
+		SELECT
+			feswork_div_cd,
+			fest_nm,
+			feswork_cat_nm,
+			feswork_div_nm,
+			com_mem_nm2
+		FROM
+			Festival_Work_Division
+  
+  </select>
+  <select id="selectupdateWorkDivision" resultMap="workResultMap">
+  
+ 		SELECT
+			feswork_div_cd,
+			fest_nm,
+			feswork_cat_nm,
+			feswork_div_nm,
+			com_mem_nm2
+		FROM
+			Festival_Work_Division
+		WHERE
+			feswork_div_cd=#{workdivCd}
+  </select>
+  </mapper>
