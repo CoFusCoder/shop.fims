@@ -23,46 +23,106 @@
    		<result property="joinDt" column="mem_join_dt"/>
    		<result property="loginCd" column="login_cd"/>
    		<result property="levNm" column="mem_lev_nm"/>	
+   		<result property="workdivCd" column="feswork_div_cd"/>
+   		<result property="festCd" column="fest_cd"/>
+   		<result property="cityadminCd" column="areacity_admin_cd"/>
+   		<result property="areacityCd" column="area_city_cd"/>
+   		<result property="areaCd" column="area_cd"/>   		
   	</resultMap>
+  	
   	<!--인적리스트조회-->
   <select id="selectHuman" resultMap="humanResultMap">
 		SELECT
 			fh.fest_cd,
-			fh.feswork_div_nm,
+			fwd.feswork_div_nm,
 			fh.fes_human_nm,
-			fh.fest_nm,
+			f.fest_nm,
 			fh.fes_human_phone, 
 			fh.fes_human_hour, 
 			mc.com_mem_nm2, 
 			fh.fes_human_cd, 
 			mc.man_com_cd,
 			fh.fac_sta_cd,
-			fh.fac_sta_nm
+			fh.fac_sta_nm,
+			fwd.feswork_div_cd
 		FROM
-			Festival_Human AS fh
-			JOIN 
-			Man_Com AS mc
+			Festival_Human AS fh JOIN Man_Com AS mc
 			ON fh.man_com_cd = mc.man_com_cd
-				
+			JOIN Festival AS f ON fh.fest_cd = f.fest_cd
+			JOIN Festival_Work_Division AS fwd ON fh.feswork_div_cd = fwd.feswork_div_cd				
   </select>
   <!--인적수정화면-->
   	<select id="selectbyHuman" resultMap="humanResultMap">
 		SELECT
-			fh.fest_nm,
-			fh.feswork_div_nm,
+			f.fest_nm,
+			fwd.feswork_div_nm,
 			fh.fes_human_nm,
 			fh.fes_human_phone,
 			fh.fes_human_hour,
 			mc.man_com_cd,
 			mc.com_mem_nm2,
-			fh.fes_human_cd
+			fh.fes_human_cd,
+			fwd.feswork_div_cd,
+			fs.fac_sta_cd,
+			fs.fac_sta_nm
 		FROM
 			Festival_Human AS fh
 			JOIN Man_Com AS mc ON fh.man_com_cd = mc.man_com_cd
+			JOIN Festival AS f ON fh.fest_cd = f.fest_cd
+			JOIN Festival_Work_Division AS fwd ON fh.feswork_div_cd = fwd.feswork_div_cd
+			JOIN Facility_Status AS fs ON fh.fac_sta_cd = fs.fac_sta_cd
 		WHERE
 			fh.fes_human_cd=#{humanCd}
 	 </select>
- <!--인적사항상세조회-->
+	 <!-- 인적수정처리_조회1 -->
+	 <select id="selectupdateHuman1" resultType="String">
+		SELECT
+			mc.man_com_cd as mamCd
+		FROM
+			Man_Com AS mc
+		WHERE
+			mc.man_com_cd = #{ManCd1}
+			AND mc.com_mem_nm2 = #{ComNm21}
+	 </select>
+	 <!-- 인적수정처리_조회2 -->
+	 <select id="selectupdateHuman2" resultType="String">
+		SELECT
+			fwd.feswork_div_cd as workdivCd
+		FROM
+			Festival_Work_Division AS fwd JOIN Festival AS f
+			ON fwd.fest_cd = f.fest_cd
+		WHERE 
+			fwd.feswork_div_nm = #{WorkdivNm1}
+			AND f.fest_nm = #{FestNm1}		
+	 </select>
+	 <!-- 인적수정처리_조회3 -->
+	 <select id="selectupdateHuman3" resultType="String">
+		SELECT
+			fs.fac_sta_cd
+		FROM
+			Facility_Status AS fs JOIN Festival AS f
+			ON fs.fest_cd = f.fest_cd
+		WHERE
+			fs.fac_sta_nm = #{staNm1}
+			AND f.fest_nm = #{FestNm1}
+	 </select>
+	 <!-- 인적수정처리 -->
+	 <update id="updateHuman" parameterType="shop.fims.vo.Human">
+		UPDATE Festival_Human
+			SET
+				fes_human_phone = #{humanPhone},
+				fes_human_nm = #{humanNm},
+				fest_nm = #{festNm},
+				fes_human_hour = #{humanHour},
+				man_com_cd = #{mamCd},
+				com_mem_nm2 = #{comNm2},
+				feswork_div_cd = #{workdivCd},
+				feswork_div_nm = #{workdivNm},
+				fac_sta_nm = #{staNm},
+				fac_sta_cd = #{staCd}
+			WHERE fes_human_cd = #{humanCd}
+	 </update>
+ 	<!--인적사항상세조회-->
  	<select id="selecthumanView" resultMap="humanResultMap">
 		 SELECT
 			m.mem_nm,
@@ -86,32 +146,64 @@
  	</select>
  	<!--인적검색-->
 	<select id="searchHuman" resultMap="humanResultMap">
-		SELECT 
-			fest_nm,
-			feswork_div_nm,
-			fes_human_nm,
-			fes_human_phone,
-			fes_human_hour,
-			com_mem_nm2
-		FROM Festival_Human
-		 where 1=1
+		SELECT
+			fh.fes_human_cd,
+			f.fest_nm,
+			fwd.feswork_div_nm,
+			fh.fes_human_nm,
+			fh.fes_human_phone,
+			fh.fes_human_hour,
+			mc.com_mem_nm2,
+			fs.fac_sta_nm
+		FROM 
+			Festival_Human AS fh JOIN Festival AS f ON fh.fest_cd=f.fest_cd
+			JOIN Festival_Work_Division AS fwd ON fh.feswork_div_cd = fwd.feswork_div_cd
+			JOIN Man_Com AS mc ON fh.man_com_cd = mc.man_com_cd
+			JOIN Facility_Status AS fs ON fh.fac_sta_cd=fs.fac_sta_cd
+		WHERE 1=1
 		    <if test="fest_nm != null and fest_nm != '' ">
-		       AND fest_nm = #{fest_nm}
+		       AND f.fest_nm Like CONCAT('%',#{fest_nm},'%')
 		    </if>
 		    <if test="feswork_div_nm != null and feswork_div_nm != '' ">
-		        AND feswork_div_nm like #{feswork_div_nm}
+		        AND fwd.feswork_div_nm Like CONCAT('%',#{feswork_div_nm},'%')
 		    </if>
 		    <if test="fes_human_phone != null and fes_human_phone != '' ">
-		        AND fes_human_phone like #{fes_human_phone}
+		        AND fh.fes_human_phone Like CONCAT('%',#{fes_human_phone},'%')
 		    </if>
 		    <if test="fes_human_hour != null and fes_human_hour != '' ">
-		        AND fes_human_hour like #{fes_human_hour}
+		        AND fh.fes_human_hour Like CONCAT('%',#{fes_human_hour},'%')
 		    </if>
 		    <if test="com_mem_nm2 != null and com_mem_nm2 != ''">
-		        AND com_mem_nm2 like #{com_mem_nm2}
+		        AND mc.com_mem_nm2 Like CONCAT('%',#{com_mem_nm2},'%')
 		    </if>
 		    <if test="fes_human_nm != null and fes_human_nm != ''">
-		        AND fes_human_nm like #{fes_human_nm}
+		        AND fh.fes_human_nm Like CONCAT('%',#{fes_human_nm},'%')
 		    </if>
+	</select>
+	<!-- 인적사항등록할회원검색 -->
+	<select id="selectinsertHuman2" resultMap="humanResultMap">
+		SELECT
+			m.mem_nm,
+			m.mem_phone
+		FROM
+			Member AS m JOIN Login AS l ON m.mem_cd=l.mem_cd
+		WHERE
+			l.login_cd=#{loginCd}
+			AND m.mem_nm=#{memNm}
+	</select>
+	<!-- 인적등록화면_공통코드조회 -->
+	<select id="selectinsertHuman" resultMap="humanResultMap">
+		SELECT
+			f.fest_cd,
+			f.fest_nm,
+			a.area_cd,
+			ac.area_city_cd,
+			aca.areacity_admin_cd
+		FROM
+			Festival AS f JOIN Area AS a ON f.area_cd=a.area_cd
+			JOIN Area_City AS ac ON f.area_city_cd=ac.area_city_cd
+			join Area_City_Admin AS aca ON f.areacity_admin_cd=aca.areacity_admin_cd
+		WHERE
+			f.fest_cd=#{festCd}	
 	</select>
   </mapper>

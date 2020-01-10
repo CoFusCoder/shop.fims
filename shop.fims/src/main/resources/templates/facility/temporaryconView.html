@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
+	<th:block layout:fragment="customBody">
+		<div>
+		<a th:href="@{/temporaryList}">
+		<button type="button" class="btn btn-default" >뒤로가기</button>
+		</a>
+		</div>
+		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+            <th:block th:each= "f : ${facility}">
+              <h4><i class="fa fa-angle-right"></i> 계약상세보기 </h4><br>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+				  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>계약명</th>
+                      <th>계약내용</th>
+                      <th>계약공고명</th>
+                      <th>계약금액(원)</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${f.contractNm}"></td>
+	               		<td th:text = "${f.conDetails}"></td>
+	               		<td th:text = "${f.conannNm}"></td>
+	               		<td th:text = "${f.conAmo}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>계약서작성일</th>
+                      <th>계약시작일자</th>
+                      <th>계약만료일자</th>
+                      <th>계약정상완료일자</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${f.concomDt}"></td>
+	               		<td th:text = "${f.constaDt}"></td>
+	               		<td th:text = "${f.conexpDt}"></td>
+	               		<td th:text = "${f.connorCom}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th>계약서작성한담당자</th>
+                    	<th>계약상태1</th>
+                    	<th>계약상태2</th>
+
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${f.conprePer}"></td>
+	               		<td th:text = "${f.conSta1}"></td>
+	               		<td th:text = "${f.conSta2}"></td>
+
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  
+                </table>
+              </section>
+              </th:block>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+	</th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>

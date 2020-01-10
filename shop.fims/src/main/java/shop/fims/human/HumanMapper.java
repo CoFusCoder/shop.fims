@@ -21,4 +21,23 @@ public interface HumanMapper {
 	//인적 검색
 	public List<Human> searchHuman(String fest_nm, String feswork_div_nm, String com_mem_nm2,
 				String fes_human_nm, String fes_human_phone, String fes_human_hour);
+	//인적수정처리-조회1
+	String selectupdateHuman1(String ManCd1, String ComNm21);
+	
+	//인적수정처리-조회2
+	String selectupdateHuman2(String FestNm1, String WorkdivNm1);
+	
+	//인정수정처리-조회3
+	String selectupdateHuman3(String FestNm1, String staNm1);
+	
+	//인적수정처리
+	int updateHuman(Human human);
+	
+	//인적등록화면_공통코드조회
+	Human selectinsertHuman(String festCd);
+	
+	//인적등록화면_회원검색 
+	
+	Human selectinsertHuman2(String memNm, String loginCd);
+	 
 }
