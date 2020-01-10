@@ -41,48 +41,47 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                     <tr>
                       <td>[[${session.F_AREA_NM}]]</td>
                       <td>[[${session.F_CITY_NM}]]</td>
-                      <td>[[${session.F_AREA_NM}]]</td>
+                      <td>[[${session.F_ADMIN_NM}]]</td>
                       <td th:text="${p.manComCd}" ></td>
                       <td th:text="${p.insertDt}" ></td>
                     </tr>
                   </tbody>
                    <thead>
                     <tr>
+                      <th colspan="2">담당업체</th>
                       <th>계약일</th>
                       <th>홍보시작일</th>
                       <th>홍보종료일</th>
-                      <th>담당업체1</th>
-                      <th>담당업체2</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
+                      <td th:text="${p.catAccNm1}" colspan="2"></td>
                       <td th:text="${p.fprproOrderDt}" ></td>
                       <td th:text="${p.fprproStartDt}" ></td>
                       <td th:text="${p.fprproEndDt}" ></td>
-                      <td th:text="${p.catAccCd}" ></td>
-                      <td th:text="${p.accMemCd}" ></td>
                     </tr>
                   </tbody>
                    <thead>
                     <tr>
-                      <th>홍보방식</th>
                       <th>홍보상세코드</th>
-                      <th colspan="2">매체명</th>
-                      <th>수량</th>
+                      <th>홍보방식</th>
+                      <th colspan="3">매체명</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td th:text="${p.festprDivNm}" ></td>
                       <td th:text="${p.festprProCd}" ></td>
-                      <td th:text="${p.festprProNm}" colspan="2"></td>
-                      <td th:text="${p.festprProAmt}" ></td>
+                      <td th:text="${p.festprDivNm}" ></td>
+                      <td th:text="${p.festprProNm}" colspan="3"></td>
                     </tr>
                   </tbody>
                    <thead>
                     <tr>
-                      <th colspan="2">계약금액</th>
+                      <th>수량</th>
+                      <th>계약금액(천원)</th>
                       <th>마감여부</th>
                       <th>마감하기</th>
                       <th>마감일</th>
@@ -90,7 +89,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </thead>
                   <tbody>
                     <tr>
-                      <td th:text="${p.festprProExpense}" colspan="2"></td>
+                      <td th:text="${p.festprProAmt}" ></td>
+                      <td th:text="${p.festprProExpense}"></td>
                       <td th:text="${p.actionStatus}" ></td>
                       <td><a>마감하기</a></td>
                       <td th:text="${p.actionDt}" ></td>
@@ -126,15 +126,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                       <td th:text="${p.festprProEtc}" colspan="5"></td>
                     </tr>
                   </tbody>
-                   <thead>
-                    <tr>
-                      <th colspan="5">첨부파일</th>
+                   <thead th:each="f:${file}">
+                    <tr th:if="${f!=null}">
+                      <th colspan="1">첨부파일</th>
+                      <th th:text="${f.fileNm}" colspan="2">첨부파일</th>
+                      <th colspan="2"><button>다운로드</button></th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td th:text="${p.festprProAttach}" colspan="5"></td>
-                    </tr>
                     <tr align="center">
                       <td colspan="5">
                       <span th:if="${p.festprDivCd==event}" >
@@ -146,19 +144,21 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </tbody>
                 </table>
               </section>
+              
+        <div align="right">
+		<a th:href="@{/prUpdatePromotion(festprProCd=${p.festprProCd})}">
+		<button type="button" class="btn btn-primary">수정하기</button></a>
+		<a th:href="@{/prDeletePromotion}">
+		<button type="button" class="btn btn-danger">삭제하기</button></a>
+		</div>
+              
               </th:block>
             </div>
             <!-- /content-panel -->
           </div>
           <!-- /col-lg-4 -->
-        </div>
-        <div align="right">
-		<a th:href="@{/prUpdatePromotion}">
-		<button type="button" class="btn btn-primary">수정하기</button></a>
-		<a th:href="@{/prDeletePromotion}">
-		<button type="button" class="btn btn-danger">삭제하기</button></a>
+        
 		</div>
-		
 		
 		
 		

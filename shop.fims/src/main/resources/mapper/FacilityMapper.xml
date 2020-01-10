@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+  <!-- 시설  -->
   <mapper namespace="shop.fims.facility.FacilityMapper">
       <resultMap type="shop.fims.vo.Facility" id="facilityResultMap">
   		<result property="catNm" column="fesfac_cat_nm"/>
@@ -40,7 +40,45 @@
    		<result property="staCd" column="fac_sta_cd"/>
    		<result property="facCd" column="tem_fac_cd"/>	
    		<result property="maiCd" column="fac_mai_cd"/>
-   		<result property="faccatNm" column="fesfac_cat_nm"/>		
+   		<result property="faccatNm" column="fesfac_cat_nm"/>
+   		<result property="faccatCd" column="fesfac_cat_cd"/>
+   		<result property="festCd" column="fest_cd"/>
+   		<result property="cityadminCd" column="areacity_admin_cd"/>
+   		<result property="areacityCd" column="area_city_cd"/>
+   		<result property="areaCd" column="area_cd"/>
+   		<result property="facstaCd" column="fac_sta_cd"/>
+   		<result property="temfacCd" column="tem_fac_cd"/>
+   		<result property="facmaiCd" column="fac_mai_cd"/>
+   		<result property="inslistCd" column="safins_list_cd"/>
+  	</resultMap>
+  	<!-- 거래처 -->
+  	<resultMap type="shop.fims.vo.Facility" id="temporaryaccountResultMap">
+  		<result property="cataccNm1" column="cat_acc_nm1"/>
+  		<result property="cataccOper" column="cat_acc_oper"/>
+  		<result property="cataccNm2" column="cat_acc_nm2"/>
+  		<result property="cataccAddr" column="cat_acc_addr"/>
+  		<result property="cataccNo1" column="cat_acc_no1"/>
+  		<result property="cataccNo2" column="cat_acc_no2"/>
+  		<result property="cataccPhone2" column="cat_acc_phone2"/>
+  		<result property="cataccPhone3" column="cat_acc_phone3"/>
+  		<result property="cataccEmail" column="cat_acc_email"/>
+  		<result property="cataccDt1" column="cat_acc_dt1"/>
+  		<result property="cataccDt2" column="cat_acc_dt2"/>
+  	</resultMap>
+  	
+  	<!-- 계약 -->
+  	<resultMap type="shop.fims.vo.Facility" id="temporaryconResultMap">
+  		<result property="contractNm" column="contract_nm"/>
+  		<result property="conDetails" column="con_details"/>
+  		<result property="conannNm" column="con_ann_nm"/>
+  		<result property="conAmo" column="con_amo"/>
+  		<result property="concomDt" column="con_com_dt"/>
+  		<result property="constaDt" column="con_sta_dt"/>
+  		<result property="conexpDt" column="con_exp_dt"/>
+  		<result property="connorCom" column="con_nor_com"/>
+  		<result property="conprePer" column="con_pre_per"/>
+  		<result property="conSta1" column="con_sta1"/>
+  		<result property="conSta2" column="con_sta2"/>
   	</resultMap>
   <!-- 모든시설분류 -->
   <select id="selectClassification" resultType="shop.fims.vo.Facility">
@@ -49,26 +87,33 @@
 	FROM
 		Fes_Fac_Cat
   </select>
+  
+
+  
 <!-- 보유시설리스트 -->
-  <select id="selectFacility" resultType="shop.fims.vo.Facility">
+  <select id="selectFacility" resultMap="facilityResultMap">
 	SELECT
-		fac_sta_cd AS staCd,
-		man_com_cd AS comCd,
-		fac_sta_nm AS staNm,
-		fesfac_cat_nm AS catNm,
-		fest_nm AS festNm,
-		fac_sta_site AS staSite,
-		fac_sta_count AS staCount,
-		com_mem_nm2 AS comNm2,
-		action_dt AS actionDt,
-		action_status AS actionSta
+		fs.fac_sta_cd,
+		mc.man_com_cd,
+		fs.fac_sta_nm,
+		ffc.fesfac_cat_nm,
+		f.fest_nm,
+		fs.fac_sta_site,
+		fs.fac_sta_count,
+		mc.com_mem_nm2,
+		fs.action_dt,
+		fs.action_status,
+		ffc.fesfac_cat_cd
 	FROM
-		Facility_Status
+		Facility_Status AS fs JOIN Festival AS f ON fs.fest_cd=f.fest_cd
+		JOIN Fes_Fac_Cat AS ffc ON fs.fesfac_cat_cd=ffc.fesfac_cat_cd
+		JOIN Man_Com AS mc ON fs.man_com_cd = mc.man_com_cd
   </select>
   <!--보유시설검색-->
   <select id="searchClassification" resultMap="facilityResultMap">
 	SELECT
-		fs.fest_nm ,
+		fs.fac_sta_cd,
+		f.fest_nm,
 		fs.action_dt,
 		fs.action_status,
 		fs.fac_sta_nm,
@@ -80,39 +125,152 @@
 	FROM
 		Facility_Status AS fs JOIN Fes_Fac_Cat AS ffc ON fs.fesfac_cat_cd = ffc.fesfac_cat_cd
 		JOIN Man_Com AS mc ON fs.man_com_cd = mc.man_com_cd
+		JOIN Festival AS f ON fs.fest_cd=f.fest_cd
 	WHERE 1=1
 		<if test="fest_nm != null and fest_nm != '' ">
-		       AND fs.fest_nm = #{fest_nm}
+		       AND f.fest_nm Like CONCAT('%',#{fest_nm},'%')
 		</if>
 		<if test="fac_sta_nm != null and fac_sta_nm != '' ">
-		       AND fs.fac_sta_nm = #{fac_sta_nm}
+		       AND fs.fac_sta_nm Like CONCAT('%',#{fac_sta_nm},'%')
 		</if>
 		<if test="fesfac_cat_nm != null and fesfac_cat_nm != '' ">
-		       AND ffc.fesfac_cat_nm = #{fesfac_cat_nm}
+		       AND ffc.fesfac_cat_nm Like CONCAT('%',#{fesfac_cat_nm},'%')
 		</if>
 		<if test="man_com_nm2 != null and man_com_nm2 != '' ">
-		       AND mc.man_com_nm2 = #{man_com_nm2}
+		       AND mc.man_com_nm2 Like CONCAT('%',#{man_com_nm2},'%')
 		</if>
 		<if test="action_status != null and action_status != '' ">
-		       AND fs.action_status = #{action_status}
+		       AND fs.action_status Like CONCAT('%',#{action_status},'%')
 		</if>
   </select>
-  
+  	<!-- 보유시설수정화면 -->
+	<select id="selectupdateFacility" resultMap="facilityResultMap">
+		SELECT
+			fac_sta_cd,
+			fac_sta_nm,
+			fesfac_cat_nm,
+			fest_nm,
+			fac_sta_site,
+			fac_sta_count,
+			com_mem_nm2,
+			action_dt,
+			action_status,
+			man_com_cd,
+			fesfac_cat_cd 
+		FROM
+			Facility_Status
+		WHERE
+			fac_sta_cd=#{staCd}
+	
+	</select>
+	<!-- 보유시설수정처리_위원회코드조회 -->
+	<select id="selectupdateFacility1" resultType="String">
+		SELECT
+			mc.man_com_cd as mamCd
+		FROM
+			Man_Com AS mc
+		WHERE
+			mc.man_com_cd = #{comCd1}
+			AND mc.com_mem_nm2 = #{comNm21}		
+	</select>
+	<!-- 보유시설수정처리_시설분류코드조회 -->
+	<select id="selectupdateFacility2" resultType="String">
+		SELECT
+			ffc.fesfac_cat_cd
+		FROM
+			Fes_Fac_Cat AS ffc
+		WHERE
+			ffc.fesfac_cat_nm = #{FaccatNm1}
+	</select>
+	<!-- 보유시설수정처리 -->
+	<update id="updateFacility" parameterType="shop.fims.vo.Facility">
+		UPDATE Facility_Status
+			SET
+				fac_sta_nm = #{staNm},
+				fest_nm = #{festNm},
+				fesfac_cat_nm = #{faccatNm},
+				fac_sta_site = #{staSite},
+				fac_sta_count = #{staCount},
+				man_com_cd = #{comCd},
+				com_mem_nm2 = #{comNm2},
+				action_dt = #{actionDt},
+				action_status = #{actionSta},
+				fesfac_cat_cd = #{faccatCd}
+			WHERE
+				fac_sta_cd = #{staCd}	
+	</update>
+	<!-- 보유시설등록화면 -->
+	<select id="selectInsertFacility" resultMap="facilityResultMap">
+		SELECT
+			f.fest_cd,
+			f.fest_nm,
+			a.area_cd,
+			ac.area_city_cd,
+			aca.areacity_admin_cd
+		FROM
+			Festival AS f JOIN Area AS a ON f.area_cd=a.area_cd
+			JOIN Area_City AS ac ON f.area_city_cd=ac.area_city_cd
+			JOIN Area_City_Admin AS aca ON f.areacity_admin_cd = aca.areacity_admin_cd
+		WHERE 
+			f.fest_cd=#{festCd}
+	</select>
+	<!-- 보유시설등록처리_위원회코드조회 -->
+	<select id="selectInsertFacility1" resultType="String">
+		SELECT
+			mc.man_com_cd
+		FROM
+			Man_Com AS mc
+		WHERE
+			mc.man_com_cd=#{ComCd1}
+			AND mc.com_mem_nm2=#{ComNm21} 
+	</select>
+	<!-- 보유시설등록처리_시설분류코드조회 -->
+	<select id="selectInsertFacility2" resultType="String">
+		SELECT
+			ffc.fesfac_cat_cd
+		FROM
+			Fes_Fac_Cat AS ffc
+		WHERE
+			ffc.fesfac_cat_nm = #{CatNm1}		
+	</select>
+	<!-- 보유시설등록처리 -->
+	<insert id="insertFacility" parameterType="shop.fims.vo.Facility">
+		<selectKey resultType="string" keyProperty="facstaCd" order="BEFORE">
+		SELECT CONCAT('facsta','_',(SELECT LPAD(COUNT(*)+1,3,'0') FROM Facility_Status))
+		</selectKey>
+		INSERT INTO Facility_Status
+		(fac_sta_cd, areacity_admin_cd, area_city_cd, area_cd,
+		fest_cd, fesfac_cat_cd, man_com_cd, fest_nm, fesfac_cat_nm, fac_sta_nm,
+		fac_sta_site, fac_sta_count, com_mem_nm2, action_dt, action_status)
+		VALUES
+		(#{facstaCd},#{cityadminCd},#{areacityCd},#{areaCd},#{festCd},
+		#{faccatCd},#{comCd},#{festNm},#{catNm},#{staNm},#{staSite}, #{staCount},
+		#{comNm2},#{actionDt},#{actionSta})
+	</insert>	
+	
+	
+	
+  <!-- 임시시설설치및철거관리 조회 -->
    <select id="selectTemporary" resultMap="facilityResultMap">
 		SELECT
-			tem_fac_cd,
-			fescon_man_cd,
-			cat_acc_cd,
-			cat_acc_nm1,
-			fac_sta_nm,
-			fest_nm,
-			com_mem_nm2,
-			facsta_ins_con1,
-			facsta_ins_con2
+			tf.tem_fac_cd,
+			tf.fescon_man_cd,
+			tf.cat_acc_cd,
+			ca.cat_acc_nm1,
+			fs.fac_sta_nm,
+			f.fest_nm,
+			mc.com_mem_nm2,
+			tf.facsta_ins_con1,
+			tf.facsta_ins_con2,
+			mc.man_com_cd
 		FROM
-			Temporary_Facility
+			Temporary_Facility AS tf JOIN Festival AS f ON tf.fest_cd=f.fest_cd
+			JOIN Facility_Status AS fs ON tf.fac_sta_cd=fs.fac_sta_cd
+			JOIN Man_Com AS mc ON tf.man_com_cd=mc.man_com_cd
+			JOIN Fes_Con_Man AS fcm ON tf.fescon_man_cd=fcm.fescon_man_cd
+			JOIN Cat_Account AS ca ON tf.cat_acc_cd=ca.cat_acc_cd
   </select>
-  <!--임시시설설치및철거관리 조회-->
+  <!--임시시설설치및철거관리 상세조회-->
 	<select id="selectTemporaryview" resultMap="facilityResultMap">
 		SELECT
 			tem_fac_cd,
@@ -138,6 +296,7 @@
 	<!-- 임시시설설치및철거관리 검색 -->
 	<select id="searchTemporary" resultMap="facilityResultMap">
 		SELECT
+			tf.tem_fac_cd,
 			fs.fac_sta_nm,
 			f.fest_nm,
 			ca.cat_acc_nm1,
@@ -150,124 +309,58 @@
 			JOIN Festival AS f ON tf.fest_cd=f.fest_cd
 		WHERE 1=1
 			<if test="fest_nm != null and fest_nm != '' ">
-			       AND f.fest_nm = #{fest_nm}
+			       AND f.fest_nm Like CONCAT('%',#{fest_nm},'%')
 			</if>
 			<if test="fac_sta_nm != null and fac_sta_nm != '' ">
-			       AND fs.fac_sta_nm = #{fac_sta_nm}
+			       AND fs.fac_sta_nm Like CONCAT('%',#{fac_sta_nm},'%')
 			</if>
 			<if test="com_mem_nm2 != null and com_mem_nm2 != '' ">
-			       AND cm.com_mem_nm2 = #{com_mem_nm2}
+			       AND cm.com_mem_nm2 Like CONCAT('%',#{com_mem_nm2},'%')
 			</if>
 			<if test="cat_acc_nm1 != null and cat_acc_nm1 != '' ">
-			       AND ca.cat_acc_nm1 = #{cat_acc_nm1}
+			       AND ca.cat_acc_nm1 Like CONCAT('%',#{cat_acc_nm1},'%')
 			</if>							
 		
 	</select>
-	<!-- 안전점검후지적관리조회 -->
-	<select id="selectMaintenance" resultType="shop.fims.vo.Facility">
+	<!-- 임시시설설치및철거 거래서 상세조회 -->
+	<select id="selectTemporaryaccountView" resultMap="temporaryaccountResultMap">
 		SELECT
-			fac_mai_cd AS maiCd,
-			fac_sta_nm AS staNm,
-			fest_nm AS festNm,
-			facmai_che_dt AS maicheDt,
-			facmai_ins_in AS maiinsIn,
-			facmai_res_human AS mairesHuman,
-			fac_mai_cad AS maiCad,
-			facmai_rec_dt AS mairecDt,
-			facmai_sta_che AS maistaChe,
-			facmai_sup_dt AS maisupDt,
-			com_mem_nm2 AS comNm2
+			cat_acc_nm1,
+			cat_acc_oper,
+			cat_acc_nm2,
+			cat_acc_addr,
+			cat_acc_no1,
+			cat_acc_no2,
+			cat_acc_phone2,
+			cat_acc_phone3,
+			cat_acc_email,
+			cat_acc_dt1,
+			cat_acc_dt2
 		FROM
-			Facility_Mai
-	
-	</select>
-	<!-- 안전점검후지적관리검색 -->
-	<select id="searchMaintenance" resultMap="facilityResultMap">
-		SELECT
-			fm.fest_nm,
-			fm.facmai_che_dt,
-			fm.fac_mai_cad,
-			fm.facmai_ins_in,
-			fm.facmai_rec_dt,
-			fm.facmai_sup_dt,
-			fm.facmai_res_human,
-			fm.facmai_sta_che,
-			fs.fac_sta_nm,
-			mc.com_mem_nm2
-		FROM
-			Facility_Mai AS fm JOIN Facility_Status AS fs ON fm.fac_sta_cd=fs.fac_sta_cd
-			JOIN Man_Com AS mc ON fm.man_com_cd=mc.man_com_cd
-		WHERE 1=1
-			<if test="fest_nm != null and fest_nm != '' ">
-		       AND fm.fest_nm = #{fest_nm}
-			</if>
-			<if test="fac_sta_nm != null and fac_sta_nm != '' ">
-		       AND fs.fac_sta_nm = #{fac_sta_nm}
-			</if>
-			<if test="facmai_che_dt != null and facmai_che_dt != '' ">
-		       AND fm.facmai_che_dt = #{facmai_che_dt}
-			</if>
-			<if test="facmai_ins_in != null and facmai_ins_in != '' ">
-		       AND fm.facmai_ins_in = #{facmai_ins_in}
-			</if>
-			<if test="com_mem_nm2 != null and com_mem_nm2 != '' ">
-		       AND mc.com_mem_nm2 = #{com_mem_nm2}
-			</if>
-			<if test="facmai_sta_che != null and facmai_sta_che != '' ">
-		       AND fm.facmai_sta_che = #{facmai_sta_che}
-			</if>
-			 	
-	</select>
-	<!-- 안전점검표 조회 -->
-	<select id="selectChecklist" resultMap="facilityResultMap">
-		SELECT
-			sil.safins_list_cla,
-			sil.safins_list_con
-		FROM
-			Facility_Mai AS fm
-			JOIN
-			Saf_Ins_List AS sil
-			ON fm.safins_list_cd = sil.safins_list_cd
-		WHERE fm.fac_sta_nm=#{staNm}
-	</select>
-	
-	<select id="selectupdateFacility" resultMap="facilityResultMap">
-		SELECT
-			fac_sta_cd,
-			fac_sta_nm,
-			fesfac_cat_nm,
-			fest_nm,
-			fac_sta_site,
-			fac_sta_count,
-			com_mem_nm2,
-			action_dt,
-			action_status
-		FROM
-			Facility_Status
+			Cat_Account
 		WHERE
-			fac_sta_cd=#{staCd}
-	
+			cat_acc_cd=#{accCd}
 	</select>
-	
-	<select id="selectupdateMaintenance" resultMap="facilityResultMap">
+	<!-- 임시시설설치및철거계약상세보기 -->
+	<select id="selecttemporaryconView" resultMap="temporaryconResultMap">
 		SELECT
-			fac_mai_cd,
-			fac_sta_nm,
-			fest_nm,
-			facmai_che_dt,
-			facmai_ins_in,
-			facmai_res_human,
-			fac_mai_cad,
-			facmai_rec_dt,
-			facmai_sta_che,
-			facmai_sup_dt,
-			com_mem_nm2
+			contract_nm,
+			con_details,
+			con_ann_nm,
+			con_amo,
+			con_com_dt,
+			con_sta_dt,
+			con_exp_dt,
+			con_nor_com,
+			con_pre_per,
+			con_sta1,
+			con_sta2	
 		FROM
-			Facility_Mai
-		WHERE
-			fac_mai_cd=#{maiCd}
-	
+			Fes_Con_Man
+		WHERE 
+			fescon_man_cd=#{fesconmanCd}
 	</select>
+	<!-- 임시시설설치후철거관리 수정조회  -->
 	<select id="selectupdateTemporary" resultMap="facilityResultMap">
 		SELECT
 			tem_fac_cd,
@@ -284,11 +377,288 @@
 			fac_sta_che,
 			com_mem_nm2,
 			facsta_ins_con1,
-			facsta_ins_con2
+			facsta_ins_con2,
+			man_com_cd
 		FROM
 			Temporary_Facility
 		WHERE
 			tem_fac_cd=#{facCd}
 	</select>
+	<!-- 임시시설설치후철거관리 수정처리_조회 -->
+	<select id="selectupdateTemporary1" resultType="String">
+		SELECT
+			mc.man_com_cd 
+		FROM
+			Man_Com AS mc
+		WHERE
+			mc.man_com_cd = #{Comcd1}
+			AND mc.com_mem_nm2 = #{ComNm21}		
+	</select>
+	<!-- 임시시설설치후철거관리 수정처리 -->
+	<update id="updateTemporary" parameterType="shop.fims.vo.Facility">
+		UPDATE Temporary_Facility
+			SET
+				fac_sta_nm = #{staNm},
+				fest_nm = #{festNm},
+				facsta_sta_dt = #{stastaDt},
+				facsta_end_dt = #{staendDt},
+				facsta_ins_mo = #{stainsMo},
+				facsta_ins_sc = #{stainsSc},
+				facsta_ins_num = #{stainsNum},
+				facsta_ins_con = #{stainsCon},
+				facsta_work_sta = #{staWorksta},
+				facsta_dem_dt = #{stademDt},
+				fac_sta_che = #{staChe},
+				com_mem_nm2 = #{comNm2},
+				facsta_ins_con1 = #{stainsCon1},
+				facsta_ins_con2 = #{stainsCon2},
+				man_com_cd = #{comCd}
+			WHERE
+				tem_fac_cd = #{facCd}	
+	</update>
+	<!-- 임시시설설치후철거관리등록화면_공통코드조회 -->
+	<select id="selectinsertTemporary" resultMap="facilityResultMap">
+		SELECT
+			f.fest_cd,
+			f.fest_nm,
+			a.area_cd,
+			ac.area_city_cd,
+			aca.areacity_admin_cd
+		FROM
+			Festival AS f JOIN Area AS a ON f.area_cd=a.area_cd
+			JOIN Area_City AS ac ON f.area_city_cd=ac.area_city_cd
+			JOIN Area_City_Admin AS aca ON f.areacity_admin_cd = aca.areacity_admin_cd
+		WHERE 
+			f.fest_cd=#{festCd}	
+	</select>
+	<!-- 임시시설설치후철거관리등록처리조회_위원회코드조회 -->
+	<select id="selectinsertTemporary1" resultType="String">
+		SELECT
+			mc.man_com_cd
+		FROM
+			Man_Com AS mc
+		WHERE
+			mc.man_com_cd=#{ComCd1}
+			AND mc.com_mem_nm2=#{ComNm21} 	
+	</select>
+	<!-- 임시시설설치후철거관리등록처리조회_거래처코드조회 -->
+	<select id="selectinsertTemporary2" resultType="String">
+		SELECT
+			ca.cat_acc_cd
+		FROM
+			Cat_Account AS ca
+		WHERE
+			ca.cat_acc_nm1=#{AccNm1}
+	</select>
+	<!-- 임시시설설치후철거관리등록처리조회_계약코드조회 -->
+	<select id="selectinsertTemporary3" resultType="String">
+		SELECT
+			fcm.fescon_man_cd
+		FROM
+			Fes_Con_Man AS fcm JOIN Festival AS f ON fcm.fest_cd = f.fest_cd
+			JOIN Cat_Account AS ca ON fcm.cat_acc_cd=ca.cat_acc_cd
+		WHERE
+			fcm.cat_acc_nm1= #{AccNm1}
+			AND f.fest_nm= #{FestNm}
+	</select>
+	<!-- 임시시설설치후철거관리등록처리조회_보유시설코드조회 -->		
+	<select id="selectinsertTemporary4" resultType="String">
+		SELECT
+			fs.fac_sta_cd
+		FROM
+			Facility_Status AS fs JOIN Festival AS f
+			ON fs.fest_cd=f.fest_cd
+		WHERE
+			fs.fac_sta_nm = #{StaNm1}
+			AND f.fest_nm = #{FestNm}	
+	</select>
+	<!-- 임시시설설치및철거관리_등록처리 -->
+	<insert id="insertTemporary" parameterType="shop.fims.vo.Facility">
+		<selectKey resultType="string" keyProperty="temfacCd" order="BEFORE">
+			SELECT CONCAT('fm','_',(SELECT LPAD(COUNT(*)+1,3,'0') FROM Temporary_Facility))
+		</selectKey>
+		INSERT INTO Temporary_Facility
+		(tem_fac_cd, areacity_admin_cd, area_cd, area_city_cd, fest_cd, fescon_man_cd,
+		man_com_cd, fac_sta_cd, cat_acc_cd, fest_nm, fac_sta_nm, cat_acc_nm1,facsta_sta_dt, 
+		facsta_end_dt, facsta_dem_dt, fac_sta_che, facsta_ins_mo, facsta_ins_sc,
+		facsta_ins_num, facsta_ins_con, facsta_work_sta, com_mem_nm2, facsta_ins_con1, facsta_ins_con2)
+		VALUES
+		(#{temfacCd},#{cityadminCd},#{areaCd},#{areacityCd},#{festCd},#{fesconmanCd},
+		#{comCd}, #{staCd},#{accCd},#{festNm},#{staNm},#{accNm1},#{stastaDt},
+		#{staendDt},#{stademDt},#{staChe},#{stainsMo},#{stainsSc},#{stainsNum},
+		#{stainsCon},#{staWorksta},#{comNm2},#{stainsCon1},#{stainsCon2})
+	</insert>
+
+
+	<!-- 안전점검후지적관리조회 -->
+	<select id="selectMaintenance" resultMap="facilityResultMap">
+		SELECT
+			fac_mai_cd,
+			fac_sta_nm, 
+			fest_nm, 
+			facmai_che_dt, 
+			facmai_ins_in, 
+			facmai_res_human, 
+			fac_mai_cad, 
+			facmai_rec_dt, 
+			facmai_sta_che, 
+			facmai_sup_dt, 
+			com_mem_nm2 
+		FROM
+			Facility_Mai
+	
+	</select>
+	<!-- 안전점검후지적관리검색 -->
+	<select id="searchMaintenance" resultMap="facilityResultMap">
+		SELECT
+			fm.fac_mai_cd,
+			f.fest_nm,
+			fm.facmai_che_dt,
+			fm.fac_mai_cad,
+			fm.facmai_ins_in,
+			fm.facmai_rec_dt,
+			fm.facmai_sup_dt,
+			fm.facmai_res_human,
+			fm.facmai_sta_che,
+			fs.fac_sta_nm,
+			mc.com_mem_nm2
+		FROM
+			Facility_Mai AS fm JOIN Facility_Status AS fs ON fm.fac_sta_cd=fs.fac_sta_cd
+			JOIN Man_Com AS mc ON fm.man_com_cd=mc.man_com_cd
+			JOIN Festival AS f ON fm.fest_cd=f.fest_cd
+		WHERE 1=1
+			<if test="fest_nm != null and fest_nm != '' ">
+		       AND f.fest_nm Like CONCAT('%',#{fest_nm},'%')
+			</if>
+			<if test="fac_sta_nm != null and fac_sta_nm != '' ">
+		       AND fs.fac_sta_nm Like CONCAT('%',#{fac_sta_nm},'%')
+			</if>
+			<if test="facmai_che_dt != null and facmai_che_dt != '' ">
+		       AND fm.facmai_che_dt Like CONCAT('%',#{facmai_che_dt},'%')
+			</if>
+			<if test="facmai_ins_in != null and facmai_ins_in != '' ">
+		       AND fm.facmai_ins_in Like CONCAT('%',#{facmai_ins_in},'%')
+			</if>
+			<if test="com_mem_nm2 != null and com_mem_nm2 != '' ">
+		       AND mc.com_mem_nm2 Like CONCAT('%',#{com_mem_nm2},'%')
+			</if>
+			<if test="facmai_sta_che != null and facmai_sta_che != '' ">
+		       AND fm.facmai_sta_che Like CONCAT('%',#{facmai_sta_che},'%')
+			</if>
+			 	
+	</select>
+	<!-- 안전점검표 조회 -->
+	<select id="selectChecklist" resultMap="facilityResultMap">
+		SELECT
+			sil.safins_list_cla,
+			sil.safins_list_con
+		FROM
+			Facility_Mai AS fm
+			JOIN
+			Saf_Ins_List AS sil
+			ON fm.safins_list_cd = sil.safins_list_cd
+		WHERE fm.fac_sta_nm=#{staNm}
+	</select>
+
+	<!-- 안전점검후지적관리 수정화면 -->
+	<select id="selectupdateMaintenance" resultMap="facilityResultMap">
+		SELECT
+			fac_mai_cd,
+			fac_sta_nm,
+			fest_nm,
+			facmai_che_dt,
+			facmai_ins_in,
+			facmai_res_human,
+			fac_mai_cad,
+			facmai_rec_dt,
+			facmai_sta_che,
+			facmai_sup_dt,
+			com_mem_nm2,
+			man_com_cd
+		FROM
+			Facility_Mai
+		WHERE
+			fac_mai_cd=#{maiCd}
+	
+	</select>
+	<!-- 안전점검후지적관리 수정처리_조회1 -->
+	<select id="selectupdateMaintenance1" resultType="String">
+		SELECT
+			mc.man_com_cd as mamCd
+		FROM
+			Man_Com AS mc
+		WHERE
+			mc.man_com_cd = #{comCd1}
+			AND mc.com_mem_nm2 = #{comNm21}		
+	</select>
+	<!-- 안전점검후지적관리등록화면_공통코드조회 -->
+	<select id="insertMaintenance" resultMap="facilityResultMap">
+		SELECT
+			f.fest_cd,
+			f.fest_nm,
+			a.area_cd,
+			ac.area_city_cd,
+			aca.areacity_admin_cd
+		FROM
+			Festival AS f JOIN Area AS a ON f.area_cd=a.area_cd
+			JOIN Area_City AS ac ON f.area_city_cd=ac.area_city_cd
+			JOIN Area_City_Admin AS aca ON f.areacity_admin_cd = aca.areacity_admin_cd
+		WHERE 
+			f.fest_cd=#{festCd}		
+	</select>
+	<!-- 안전점검후지적관리등록처리_위원회코드조회 -->
+	<select id="insertselectMaintenance" resultType="String">
+		SELECT
+			mc.man_com_cd
+		FROM
+			Man_Com AS mc
+		WHERE
+			mc.man_com_cd=#{comCd1}
+			AND mc.com_mem_nm2=#{comNm21} 	
+	</select> 
+	<!-- 안전점검후지적관리등록처리_시설코드조회 -->
+	<select id="insertselectMaintenance2" resultType="String">
+		SELECT
+			fs.fac_sta_cd
+		FROM
+			Facility_Status AS fs JOIN Festival AS f 
+			ON fs.fest_cd = f.fest_cd
+		WHERE
+			fs.fac_sta_nm = #{staNm1}
+			AND f.fest_nm = #{festNm1}
+	</select>
+	<!-- 안전점검후지적관리 등록처리 -->
+	<insert id="insertMaintenance1" parameterType="shop.fims.vo.Facility">
+		<selectKey resultType="string" keyProperty="maiCd" order="BEFORE">
+			SELECT CONCAT('maintenance','_',(SELECT LPAD(COUNT(*)+1,3,'0') FROM Facility_Mai))
+		</selectKey>
+		INSERT INTO Facility_Mai
+		(fac_mai_cd, areacity_admin_cd, area_cd, area_city_cd, fest_cd, safins_list_cd, man_com_cd,
+		fac_sta_cd, fest_nm, fac_sta_nm, facmai_che_dt, fac_mai_cad, facmai_ins_in, facmai_rec_dt,
+		facmai_sup_dt, facmai_res_human, com_mem_nm2, facmai_sta_che)
+		VALUES
+		(#{maiCd},#{cityadminCd},#{areaCd},#{areacityCd},#{festCd},#{inslistCd},
+		#{comCd}, #{staCd},#{festNm},#{staNm},#{maicheDt},#{maiCad},#{maiinsIn},
+		#{mairecDt},#{maisupDt},#{mairesHuman},#{comNm2},#{maistaChe})			
+	</insert>
+	<!-- 안전점검후지적관리 수정처리 -->
+	<update id="updateMaintenance" parameterType="shop.fims.vo.Facility">
+		UPDATE Facility_Mai
+			SET
+				fac_sta_nm = #{staNm},
+				fest_nm = #{festNm},
+				facmai_che_dt = #{maicheDt},
+				facmai_ins_in = #{maiinsIn},
+				facmai_res_human = #{mairesHuman},
+				fac_mai_cad = #{maiCad},
+				facmai_rec_dt = #{mairecDt},
+				facmai_sta_che = #{maistaChe},
+				facmai_sup_dt = #{maisupDt},
+				man_com_cd = #{comCd},
+				com_mem_nm2 = #{comNm2}
+			WHERE
+				fac_mai_cd = #{maiCd}	
+	</update>
+
 	
   </mapper>

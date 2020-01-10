@@ -1,12 +1,16 @@
 package shop.fims.facility;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import shop.fims.vo.Facility;
 
 
 @Controller
@@ -46,6 +50,7 @@ public class FacilityController {
 	}
 	//모든시설분류수정처리
 
+
 	//모든시설분류삭제
 	@GetMapping("/classificationDelete")
 	public String delectClassification() {
@@ -60,11 +65,37 @@ public class FacilityController {
 		
 		return "/facility/facilityList";
 	}
-	//보유시설등록
+	//보유시설등록화면
 	@GetMapping("/facilityInsert")
-	public String insertFacility() {
+	public String insertFacility(HttpSession session, Model model) {
+		
+		String festCd = (String) session.getAttribute("F_CD");
+		System.out.println("festCd----------->"  + festCd);
+		
+		model.addAttribute("facility", facilityservice.selectInsertFacility(festCd));
 		
 		return "/facility/facilityInsert";
+	}
+	//보유시설등록처리
+	@PostMapping("/facilityInsert")
+	public String insertFacility(Facility facility) {
+		/*
+		 * System.out.println("facility 값 확인" + facility.getStaNm());
+		 * System.out.println("facility 값 확인" + facility.getCatNm());
+		 * System.out.println("facility 값 확인" + facility.getCityadminCd());
+		 * System.out.println("facility 값 확인" + facility.getAreacityCd());
+		 * System.out.println("facility 값 확인" + facility.getAreaCd());
+		 * System.out.println("facility 값 확인" + facility.getFestCd());
+		 * System.out.println("facility 값 확인" + facility.getFestNm());
+		 * System.out.println("facility 값 확인" + facility.getStaSite());
+		 * System.out.println("facility 값 확인" + facility.getStaCount());
+		 * System.out.println("facility 값 확인" + facility.getComCd());
+		 * System.out.println("facility 값 확인" + facility.getComNm2());
+		 * System.out.println("facility 값 확인" + facility.getActionDt());
+		 * System.out.println("facility 값 확인" + facility.getActionSta());
+		 */
+		facilityservice.insertFacility(facility);
+		return "redirect:/facilityList";
 	}
 	//보유시설수정화면
 	@GetMapping("/facilityUpdate")
@@ -76,7 +107,14 @@ public class FacilityController {
 		return "/facility/facilityUpdate";
 	}
 	//보유시설수정처리
-
+	@PostMapping("/facilityUpdate")
+	public String updateFacility(Facility facility) {
+		
+		System.out.println("facility" + facility);
+		facilityservice.updateFacility(facility);
+		
+		return "redirect:/facilityList";
+	}
 	//보유시설삭제
 	@GetMapping("/facilityDelete")
 	public String delectFacility() {
@@ -108,11 +146,38 @@ public class FacilityController {
 		
 		return "/facility/temporaryView";
 	}
-	//임시시설설치및철거등록
+	//임시시설설치및철거거래처상세보기
+	@GetMapping("/temporaryaccountView")
+	public String selectTemporaryaccountView(@RequestParam(value="accCd") String accCd, Model model) {
+		
+		model.addAttribute("facility", facilityservice.selectTemporaryaccountView(accCd));
+		return "/facility/temporaryaccountView";
+	}
+	//임시시설설치및철거계약상세보기
+	@GetMapping("/temporaryconView")
+	public String selecttemporaryconView(@RequestParam(value="fesconmanCd") String fesconmanCd, Model model) {
+		
+		model.addAttribute("facility", facilityservice.selecttemporaryconView(fesconmanCd));
+		
+		return "/facility/temporaryconView";
+	}
+	//임시시설설치및철거등록화면
 	@GetMapping("/temporaryInsert")
-	public String insertTemporary() {
+	public String insertTemporary(HttpSession session, Model model) {
+		String festCd = (String) session.getAttribute("F_CD");
+		System.out.println("festCd----------->"  + festCd);
+		
+		model.addAttribute("facility", facilityservice.selectInsertFacility(festCd));
 		
 		return "/facility/temporaryInsert";
+	}
+	//임시시설설치및철거등록처리
+	@PostMapping("/temporaryInsert")
+	public String insertTemporary(Facility facility) {
+		
+		facilityservice.insertTemporary(facility);
+		
+		return "redirect:/temporaryList";
 	}
 	//임시시설설치및철거수정화면
 	@GetMapping("/temporaryUpdate")
@@ -120,6 +185,15 @@ public class FacilityController {
 		System.out.println("facCd---------->" + facCd);
 		model.addAttribute("facility", facilityservice.selectupdateTemporary(facCd));
 		return "/facility/temporaryUpdate";
+	}
+	//임시시설설치및철거수정처리
+	@PostMapping("/temporaryUpdate")
+	public String updateTemporary(Facility facility) {
+		
+		System.out.println("facility---------->" + facility);
+		facilityservice.updateTemporary(facility);
+		
+		return "redirect:/temporaryList";
 	}
 	//임시시설설치및철거삭제
 	@GetMapping("/temporaryDelete")
@@ -147,18 +221,42 @@ public class FacilityController {
 	}
 	//시설안전점검후지적관리등록
 	@GetMapping("/maintenanceInsert")
-	public String insertMaintenance() {
-
+	public String insertMaintenance(HttpSession session, Model model) {
+		String festCd = (String) session.getAttribute("F_CD");
+		System.out.println("festCd----------->"  + festCd);
+		
+		model.addAttribute("facility", facilityservice.insertMaintenance(festCd));
+		
 		return "/facility/maintenanceInsert";
+	}
+	//시설안전점검후지적관리등록처리
+	@PostMapping("/maintenanceInsert")
+		public String insertMaintenance(Facility facility) {
+		
+		System.out.println("facility---------->" + facility);
+		
+		facilityservice.insertMaintenance1(facility);
+		
+		return "redirect:/maintenanceList";
 	}
 	//시설안전점검후지적관리수정 
 	@GetMapping("/maintenanceUpdate")
-	public String updateMaintenance(@RequestParam(value="maiCd") String maiCd, Model model) {
+	public String selectupdateMaintenance(@RequestParam(value="maiCd") String maiCd, Model model) {
 		
 		System.out.println("staNm---------->" + maiCd);
 		model.addAttribute("facility", facilityservice.selectupdateMaintenance(maiCd));
 		
 		return "/facility/maintenanceUpdate";
+	}
+	//시설안전점검후지적관리수정처리
+	@PostMapping("/maintenanceUpdate")
+	public String updateMaintenance(Facility facility) {
+		
+		System.out.println("facility---------->" + facility);
+		
+		facilityservice.selectupdateMaintenance(facility);
+		
+		return "redirect:/maintenanceList";
 	}
 	//시설안전점검후지적관리삭제 
 	@GetMapping("/maintenanceDelete")

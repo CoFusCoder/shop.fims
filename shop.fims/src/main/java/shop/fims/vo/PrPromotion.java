@@ -1,17 +1,21 @@
 package shop.fims.vo;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class PrPromotion {
 	private String festprProCd;
 	private String festprDivNm;
+	private String catAccNm1;	
 	private String areacityAdminCd;
 	private String areaCd;
 	private String areaCityCd;
 	private String festCd;
 	private String festprDivCd;
 	private String manComCd;
-	private String accMemCd;
 	private String fesrevBudCd;
-	private String catAccCd;
+	private String catappAccCd;
 	private String festTitle;
 	private String festprProNm;
 	private String festprProDetail;
@@ -20,13 +24,14 @@ public class PrPromotion {
 	private String fprproEndDt;
 	private String festprProPlace;
 	private int festprProAmt;
-	private String festprProAttach;
-	private String groupCd;
+	private String groupCd;	
+	private String groupNm;		
 	private String actionDt;
 	private String actionStatus;
 	private int festprProExpense;
 	private String festprProEtc;
 	private String insertDt;
+	private List<MultipartFile> files;
 	public String getFestprProCd() {
 		return festprProCd;
 	}
@@ -38,6 +43,12 @@ public class PrPromotion {
 	}
 	public void setFestprDivNm(String festprDivNm) {
 		this.festprDivNm = festprDivNm;
+	}
+	public String getCatAccNm1() {
+		return catAccNm1;
+	}
+	public void setCatAccNm1(String catAccNm1) {
+		this.catAccNm1 = catAccNm1;
 	}
 	public String getAreacityAdminCd() {
 		return areacityAdminCd;
@@ -75,23 +86,17 @@ public class PrPromotion {
 	public void setManComCd(String manComCd) {
 		this.manComCd = manComCd;
 	}
-	public String getAccMemCd() {
-		return accMemCd;
-	}
-	public void setAccMemCd(String accMemCd) {
-		this.accMemCd = accMemCd;
-	}
 	public String getFesrevBudCd() {
 		return fesrevBudCd;
 	}
 	public void setFesrevBudCd(String fesrevBudCd) {
 		this.fesrevBudCd = fesrevBudCd;
 	}
-	public String getCatAccCd() {
-		return catAccCd;
+	public String getCatappAccCd() {
+		return catappAccCd;
 	}
-	public void setCatAccCd(String catAccCd) {
-		this.catAccCd = catAccCd;
+	public void setCatappAccCd(String catappAccCd) {
+		this.catappAccCd = catappAccCd;
 	}
 	public String getFestTitle() {
 		return festTitle;
@@ -141,17 +146,17 @@ public class PrPromotion {
 	public void setFestprProAmt(int festprProAmt) {
 		this.festprProAmt = festprProAmt;
 	}
-	public String getFestprProAttach() {
-		return festprProAttach;
-	}
-	public void setFestprProAttach(String festprProAttach) {
-		this.festprProAttach = festprProAttach;
-	}
 	public String getGroupCd() {
 		return groupCd;
 	}
 	public void setGroupCd(String groupCd) {
 		this.groupCd = groupCd;
+	}
+	public String getGroupNm() {
+		return groupNm;
+	}
+	public void setGroupNm(String groupNm) {
+		this.groupNm = groupNm;
 	}
 	public String getActionDt() {
 		return actionDt;
@@ -183,22 +188,25 @@ public class PrPromotion {
 	public void setInsertDt(String insertDt) {
 		this.insertDt = insertDt;
 	}
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
+	}
 	@Override
 	public String toString() {
-		return "PrPromotion [festprProCd=" + festprProCd + ", festprDivNm=" + festprDivNm + ", areacityAdminCd="
-				+ areacityAdminCd + ", areaCd=" + areaCd + ", areaCityCd=" + areaCityCd + ", festCd=" + festCd
-				+ ", festprDivCd=" + festprDivCd + ", manComCd=" + manComCd + ", accMemCd=" + accMemCd
-				+ ", fesrevBudCd=" + fesrevBudCd + ", catAccCd=" + catAccCd + ", festTitle=" + festTitle
-				+ ", festprProNm=" + festprProNm + ", festprProDetail=" + festprProDetail + ", fprproOrderDt="
-				+ fprproOrderDt + ", fprproStartDt=" + fprproStartDt + ", fprproEndDt=" + fprproEndDt
-				+ ", festprProPlace=" + festprProPlace + ", festprProAmt=" + festprProAmt + ", festprProAttach="
-				+ festprProAttach + ", groupCd=" + groupCd + ", actionDt=" + actionDt + ", actionStatus=" + actionStatus
-				+ ", festprProExpense=" + festprProExpense + ", festprProEtc=" + festprProEtc + ", insertDt=" + insertDt
-				+ "]";
+		return "PrPromotion [festprProCd=" + festprProCd + ", festprDivNm=" + festprDivNm + ", catAccNm1=" + catAccNm1
+				+ ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd + ", areaCityCd=" + areaCityCd
+				+ ", festCd=" + festCd + ", festprDivCd=" + festprDivCd + ", manComCd=" + manComCd + ", fesrevBudCd="
+				+ fesrevBudCd + ", catappAccCd=" + catappAccCd + ", festTitle=" + festTitle + ", festprProNm="
+				+ festprProNm + ", festprProDetail=" + festprProDetail + ", fprproOrderDt=" + fprproOrderDt
+				+ ", fprproStartDt=" + fprproStartDt + ", fprproEndDt=" + fprproEndDt + ", festprProPlace="
+				+ festprProPlace + ", festprProAmt=" + festprProAmt + ", groupCd=" + groupCd + ", groupNm=" + groupNm
+				+ ", actionDt=" + actionDt + ", actionStatus=" + actionStatus + ", festprProExpense=" + festprProExpense
+				+ ", festprProEtc=" + festprProEtc + ", insertDt=" + insertDt + ", files=" + files + "]";
 	}
 
-	
-	
 	
 	
 }

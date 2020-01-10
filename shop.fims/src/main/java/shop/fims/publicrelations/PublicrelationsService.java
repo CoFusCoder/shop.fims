@@ -1,10 +1,20 @@
 package shop.fims.publicrelations;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import shop.fims.vo.AttachFiles;
 import shop.fims.vo.EventWinner;
 import shop.fims.vo.PrDiv;
 import shop.fims.vo.PrPromotion;
@@ -12,16 +22,87 @@ import shop.fims.vo.PrPromotion;
 @Service
 public class PublicrelationsService {
 	@Autowired PublicrelationsMapper publicrelationsMapper;
+
+	@Value("${static.file.upload.path}")
+	private String location;
 	
-	//홍보코드로 이벤트 당첨자 조회
-	public List<EventWinner> selectEventWinnerByPmcd(String festprProCd){
-		return publicrelationsMapper.selectEventWinnerByPmcd(festprProCd);
+//**********홍보 분류 ***********			
+	// 홍보분류조회
+	public List<PrDiv> selectAllPrDiv(){
+		return publicrelationsMapper.selectAllPrDiv();		
+	}	
+	
+	// 홍보 분류 등록
+	public int insertPrDiv(PrDiv prdiv){
+		return publicrelationsMapper.insertPrDiv(prdiv);		
+	}	
+	
+	// 홍보 분류 수정
+	public int updateDiv(PrDiv prdiv) {
+		return publicrelationsMapper.updateDiv(prdiv);		
 	}
 	
+	// 홍보 분류 삭제
+	public int deleteDiv(String festprDivCd) {
+		return publicrelationsMapper.deleteDiv(festprDivCd);		
+	}	
+	
+	
+	
+	
+//**********홍보 프로모션 ***********	
+	
+	// 홍보 사업 신규 등록
+	public int insertPromotionPro(PrPromotion promotion, String groupNm2) {
+		System.out.println("groupNm2"+groupNm2);
+		if(promotion.getGroupNm().equals("")) {
+			promotion.setGroupNm(groupNm2);	
+		}
+		
+		System.out.println(promotion);
+		String groupCd = publicrelationsMapper.selectGroupCd(promotion.getGroupNm());
+		if(groupCd==null) {
+			groupCd=publicrelationsMapper.newGroupCd();
+			promotion.setGroupCd(groupCd);
+		}else {
+			promotion.setGroupCd(groupCd);
+		}
+		return publicrelationsMapper.insertPromotionPro(promotion);
+	}
+	
+
+	
+	// 홍보관련 계정과목명 조회
+	public List<Map<String, Object>> selectBudget(String festCd) {
+		return publicrelationsMapper.selectBudget(festCd);		
+	}
+	
+	// 홍보 그룹코드명 조회
+	public List<Map<String, Object>> selectGroup(String festCd) {
+		return publicrelationsMapper.selectGroup(festCd);		
+	}
+	
+	// 홍보 그룹코드명 수정
+	public int updateGroupNm(PrPromotion promotion) {
+		return publicrelationsMapper.updateGroupNm(promotion);		
+	}
+	
+	
+	
+	// 홍보관련 계정과목명 조회
+	public List<Map<String, Object>> selectParners() {
+		return publicrelationsMapper.selectParners();		
+	}
+
+	// 홍보리스트 조건검색
+	public List<PrPromotion> searchPrDetail(String festprDivNm, String catAccNm1, String festprProNm, String date1, String date2
+											, String actionStatus, String festCd){
+		return publicrelationsMapper.searchPrDetail(festprDivNm, catAccNm1, festprProNm, date1, date2, actionStatus, festCd);
+	}	
+
 	//홍보코드로 상세내역조회
 	public List<PrPromotion> selectByPmcd(String festprProCd){
-		return publicrelationsMapper.selectByPmcd(festprProCd);
-		
+		return publicrelationsMapper.selectByPmcd(festprProCd);		
 	}
 
 	// 홍보상세내역조회
@@ -29,9 +110,51 @@ public class PublicrelationsService {
 		return publicrelationsMapper.selectAllPromotion(festCd);
 	}
 	
-	// 홍보분류조회
-	public List<PrDiv> seletAllPrDiv(){
-		return publicrelationsMapper.seletAllPrDiv();
+	// 홍보사업 파일첨부
+	public int sendfile (MultipartFile fileUpload) {
+		AttachFiles attachFiles = new AttachFiles();
+				
+			String filename = StringUtils.cleanPath(fileUpload.getOriginalFilename());				
 		
+			try (InputStream inputStream = fileUpload.getInputStream()) {
+				
+				Files.copy(inputStream, Paths.get(location).resolve(filename),
+						StandardCopyOption.REPLACE_EXISTING);				
+				attachFiles.setFileSize(fileUpload.getSize());
+				attachFiles.setFileNm(fileUpload.getOriginalFilename());
+				attachFiles.setFestprProCd(publicrelationsMapper.selectLastCd());
+				attachFiles.setFileWriter("윤");
+								
+				System.out.println(attachFiles.getFileNm()+ " << 실제 업로드된 파일명");
+				System.out.println(fileUpload.getContentType() + " << 실제 업로드된 파일명");	
+				System.out.println(attachFiles.getFileSize() + " << 실제 업로드된 사이즈");				
+				System.out.println("/" + location + "/ " +filename+ " <<<<<<<<<<<< 저장 경로");//고정으로 할꺼면 파일명,사이즈만 필요
+				
+			} catch (IOException e) {
+				e.printStackTrace();				
+				try {
+					Files.delete(Paths.get(location).resolve(filename));
+				}catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		
+		return publicrelationsMapper.sendfile(attachFiles);		
 	}
+	
+	public List<AttachFiles> selectFile (String festprProCd){
+		return publicrelationsMapper.selectFile(festprProCd);		
+	}
+	
+//**********홍보 이벤트당첨자 ***********		
+
+	
+	//홍보코드로 이벤트 당첨자 조회
+	public List<EventWinner> selectEventWinnerByPmcd(String festprProCd){
+		return publicrelationsMapper.selectEventWinnerByPmcd(festprProCd);
+	}
+	
+
+
+
 }
