@@ -10,14 +10,27 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 </th:block>
 <th:block layout:fragment="adminisMainContents">
 
-	- 페이징 해야함
-	- 작성일기준, 프로모션시작일기준 내림,오름차순정리 기능
-<h1 align="center"><span >《[[${session.F_NM}]]》 홍보 사업 리스트</span></h1>
+<!-- 상단 홍보관련메뉴 -->		
+			<div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                  <a th:href="@{/prDivList}">
+                  <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;">홍보분류관리</font></button></a>
+                </div>
+                <div class="btn-group">
+                  <a th:href="@{/prPromotionList}">
+                  <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;">홍보사업관리</font></button></a>
+                </div>
+                <div class="btn-group">
+                  <a th:href="@{/prComList}">
+                  <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;">홍보거래처조회</font></button></a>
+                </div>
+              </div>
 		
 		<div class="row mt">
           <div class="col-md-12">
            
             <div class="content-panel"> 
+			<h1 align="center"><span >《[[${session.F_NM}]]》 홍보 사업 리스트</span></h1>
               <div align="right">
               <a th:href="@{/prInsertPromotion}" >
               <button type="button" class="btn btn-info">신규사업등록</button></a>  

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import shop.fims.vo.AttachFiles;
 import shop.fims.vo.EventWinner;
 import shop.fims.vo.PrDiv;
 import shop.fims.vo.PrPromotion;
@@ -51,6 +52,8 @@ public interface PublicrelationsMapper {
 	// 홍보 그룹코드 조회
 	public List<Map<String, Object>> selectGroup(String festCd);	
 	
+	public int updateGroupNm (PrPromotion promotion);
+	
 	// 그룹명으로 그룹코드 조회
 	public String selectGroupCd(String groupNm);
 	
@@ -58,7 +61,12 @@ public interface PublicrelationsMapper {
 	public String newGroupCd();
 	
 	// 첨부파일 올리기
-	//public int insertFiles(AttatchFiles files);
+	public int sendfile(AttachFiles attachFiles);
+	
+	//마지막 프로모션코드값 조회하기
+	public String selectLastCd();
+	
+	public List<AttachFiles> selectFile (String festprProCd);
 	
 //**********홍보 이벤트당첨자 ***********		
 	// 홍보코드로 이벤트 당첨자 조회

@@ -1,14 +1,9 @@
 package shop.fims.vo;
 
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-
-public class AttatchFiles {
+public class AttachFiles {
 	private String fileCd;
+	private String festprProCd;	
 	private String fileNm;
-	private int fileNo;
-	private String filePath;
 	private long fileSize;
 	private String fileWriter;
 	private String fileInsertDt;
@@ -18,23 +13,17 @@ public class AttatchFiles {
 	public void setFileCd(String fileCd) {
 		this.fileCd = fileCd;
 	}
+	public String getFestprProCd() {
+		return festprProCd;
+	}
+	public void setFestprProCd(String festprProCd) {
+		this.festprProCd = festprProCd;
+	}
 	public String getFileNm() {
 		return fileNm;
 	}
 	public void setFileNm(String fileNm) {
 		this.fileNm = fileNm;
-	}
-	public int getFileNo() {
-		return fileNo;
-	}
-	public void setFileNo(int fileNo) {
-		this.fileNo = fileNo;
-	}
-	public String getFilePath() {
-		return filePath;
-	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
 	}
 	public long getFileSize() {
 		return fileSize;
@@ -56,10 +45,8 @@ public class AttatchFiles {
 	}
 	@Override
 	public String toString() {
-		return "AttatchFiles [fileCd=" + fileCd + ", fileNm=" + fileNm + ", fileNo=" + fileNo + ", filePath=" + filePath
-				+ ", fileSize=" + fileSize + ", fileWriter=" + fileWriter + ", fileInsertDt=" + fileInsertDt + "]";
+		return "AttachFiles [fileCd=" + fileCd + ", festprProCd=" + festprProCd + ", fileNm=" + fileNm + ", fileSize="
+				+ fileSize + ", fileWriter=" + fileWriter + ", fileInsertDt=" + fileInsertDt + "]";
 	}
 
-
-	
 }

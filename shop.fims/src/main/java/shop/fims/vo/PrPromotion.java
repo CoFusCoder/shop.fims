@@ -24,7 +24,6 @@ public class PrPromotion {
 	private String fprproEndDt;
 	private String festprProPlace;
 	private int festprProAmt;
-	private String festprProAttach;
 	private String groupCd;	
 	private String groupNm;		
 	private String actionDt;
@@ -147,12 +146,6 @@ public class PrPromotion {
 	public void setFestprProAmt(int festprProAmt) {
 		this.festprProAmt = festprProAmt;
 	}
-	public String getFestprProAttach() {
-		return festprProAttach;
-	}
-	public void setFestprProAttach(String festprProAttach) {
-		this.festprProAttach = festprProAttach;
-	}
 	public String getGroupCd() {
 		return groupCd;
 	}
@@ -209,13 +202,11 @@ public class PrPromotion {
 				+ fesrevBudCd + ", catappAccCd=" + catappAccCd + ", festTitle=" + festTitle + ", festprProNm="
 				+ festprProNm + ", festprProDetail=" + festprProDetail + ", fprproOrderDt=" + fprproOrderDt
 				+ ", fprproStartDt=" + fprproStartDt + ", fprproEndDt=" + fprproEndDt + ", festprProPlace="
-				+ festprProPlace + ", festprProAmt=" + festprProAmt + ", festprProAttach=" + festprProAttach
-				+ ", groupCd=" + groupCd + ", groupNm=" + groupNm + ", actionDt=" + actionDt + ", actionStatus="
-				+ actionStatus + ", festprProExpense=" + festprProExpense + ", festprProEtc=" + festprProEtc
-				+ ", insertDt=" + insertDt + ", files=" + files + "]";
+				+ festprProPlace + ", festprProAmt=" + festprProAmt + ", groupCd=" + groupCd + ", groupNm=" + groupNm
+				+ ", actionDt=" + actionDt + ", actionStatus=" + actionStatus + ", festprProExpense=" + festprProExpense
+				+ ", festprProEtc=" + festprProEtc + ", insertDt=" + insertDt + ", files=" + files + "]";
 	}
 
-	
 	
 	
 }

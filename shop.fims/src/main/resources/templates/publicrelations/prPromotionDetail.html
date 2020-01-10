@@ -126,15 +126,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                       <td th:text="${p.festprProEtc}" colspan="5"></td>
                     </tr>
                   </tbody>
-                   <thead>
-                    <tr>
-                      <th colspan="5">첨부파일</th>
+                   <thead th:each="f:${file}">
+                    <tr th:if="${f!=null}">
+                      <th colspan="1">첨부파일</th>
+                      <th th:text="${f.fileNm}" colspan="2">첨부파일</th>
+                      <th colspan="2"><button>다운로드</button></th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td th:text="${p.festprProAttach}" colspan="5"></td>
-                    </tr>
                     <tr align="center">
                       <td colspan="5">
                       <span th:if="${p.festprDivCd==event}" >
@@ -146,19 +144,21 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </tbody>
                 </table>
               </section>
+              
+        <div align="right">
+		<a th:href="@{/prUpdatePromotion(festprProCd=${p.festprProCd})}">
+		<button type="button" class="btn btn-primary">수정하기</button></a>
+		<a th:href="@{/prDeletePromotion}">
+		<button type="button" class="btn btn-danger">삭제하기</button></a>
+		</div>
+              
               </th:block>
             </div>
             <!-- /content-panel -->
           </div>
           <!-- /col-lg-4 -->
-        </div>
-        <div align="right">
-		<a th:href="@{/prUpdatePromotion}">
-		<button type="button" class="btn btn-primary">수정하기</button></a>
-		<a th:href="@{/prDeletePromotion}">
-		<button type="button" class="btn btn-danger">삭제하기</button></a>
+        
 		</div>
-		
 		
 		
 		

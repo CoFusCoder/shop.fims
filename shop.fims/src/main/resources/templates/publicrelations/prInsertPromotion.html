@@ -6,18 +6,219 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <title> 홍보사업 신규등록</title>
 </th:block>
 <th:block layout:fragment="adminisScript">
-	<script th:src="@{/adminis/lib/jquery/jquery.min.js}"></script>			
-	<script th:src="@{/adminis/lib/jquery/jquery.form.js}"></script>	
+	<script th:src="@{/adminis/lib/jquery/jquery.min.js}"></script>				
+	
+<script type="text/javascript">
+$(document).ready(function(){
+
+/* 홍보그룹코드 관련 제이쿼리	 */
+	$('#groupNm').change(function(){ 
+		var groupname = $('#groupNm').val();
+		var write = $('#groupNm2').val();
+		$("#groupNm option:selected").each(function () { 
+			if(groupname== "select"){ 			
+				$("#groupNm2").attr("ReadOnly",true);
+				$("#groupNm2").val("");
+			}else if(groupname==""){ 
+				$("#groupNm2").attr("ReadOnly",false); 
+				$("#groupNm2").val("");
+				$("#groupNm2").focus();
+				
+			}else {
+				$("#groupNm2").attr("ReadOnly",true); 
+				$("#groupNm2").val(groupname);
+			} 
+		}); 
+	});	
+/* 숫자입력 유효성검사 */
+	var festprProAmtCheck = RegExp(/[^0-9]$/);
+	$('#festprProAmt').keyup(function(){
+		if(festprProAmtCheck.test($('#festprProAmt').val())){
+			alert('수량은 숫자만 입력할 수 있습니다.');
+		}
+	});
+	var festprProExpenseCheck = RegExp(/[^0-9]$/);
+	$('#festprProExpense').keyup(function(){
+		if(festprProExpenseCheck.test($('#festprProExpense').val())){
+			alert('계약금액은 숫자만 입력할 수 있습니다.');
+		}
+	});
+
+	
+
+/* 홍보등록 유효성검사 */
+	$('#submitBtn').click(function(){
+		var fprproOrderDt = $('#fprproOrderDt').val();
+		var fprproStartDt = $('#fprproStartDt').val();
+		var fprproEndDt = $('#fprproEndDt').val();
+		var festprDivCd = $('#festprDivCd').val();
+		var festprProNm = $('#festprProNm').val();
+		var fesrevBudCd = $('#fesrevBudCd').val();
+		var festprProAmt = $('#festprProAmt').val();
+		var groupNm = $('#groupNm').val();
+		var groupNm2 = $('#groupNm2').val();
+		var festprProExpense = $('#festprProExpense').val();
+		
+		 var startArray = fprproStartDt.split('-');
+         var endArray = fprproEndDt.split('-');   
+         var start_date = new Date(startArray[0], startArray[1], startArray[2]);
+         var end_date = new Date(endArray[0], endArray[1], endArray[2]);
+	    
+		
+		if(fprproOrderDt==""){
+			alert('계약/주문일을 입력해주세요.');
+			$('#fprproOrderDt').focus();
+			return false;
+		}
+		if(fprproStartDt==""){
+			alert('홍보시작일을 입력해주세요.');
+			$('#fprproStartDt').focus();
+			return false;
+		}
+		if(fprproEndDt==""){
+			alert('홍보종료일을 입력해주세요.');
+			$('#fprproEndDt').focus();
+			return false;	
+		}
+        if(start_date.getTime() > end_date.getTime()) {
+            alert("홍보종료일이 홍보시작일 보다 빠릅니다. "+"\n"+"홍보기간을 다시 확인해주세요.");
+            $('#fprproStartDt').focus();
+            return false;
+        }
+		if(festprDivCd==""){
+			alert('홍보 분류를 선택해주세요');
+			$('#festprDivCd').focus();
+			return false;
+		}
+		if(festprProNm==""){
+			alert('홍보매체명을 입력해주세요.');
+			$('#festprProNm').focus();
+			return false;
+		}
+		if(festprProAmt==""){
+			alert('수량을 입력해주세요.');
+			$('#festprProAmt').focus();
+			return false;
+		}
+			
+		if(fesrevBudCd==""){
+			alert('세출계정과목을 선택해주세요.');
+			$('#fesrevBudCd').focus();
+			return false;
+		}
+		if(groupNm=="select"){
+			if(groupNm2==""){
+				alert('홍보예산그룹을 선택해주세요.');
+				$('#groupNm').focus();
+				return false;
+			}
+		}
+		if(groupNm==""&&(groupNm2=="" ||groupNm2==null)){
+				alert('홍보예산그룹을 재선택하거나 입력해주세요.');
+				$('#groupNm2').focus();	
+				return false;
+		}
+		if(festprProExpense==""){
+			alert('계약금액을 입력해주세요.');
+			$('#festprProExpense').focus();
+			return false;
+		}
+		
+		$('#promotionForm').submit();
+	})
+
+
+
+
+/* document.ready 종료 */
+})
+
+
+
+
+</script>	
 </th:block>
 <th:block layout:fragment="adminisMainContents">
-		새로운홍보사업등록페이지 : 등록하기 하면 해당코드의 상세페이지가 연결되어야함. 
+
+<!-- 상단 홍보관련메뉴 -->		
+			<div class="btn-group btn-group-justified">
+                <div class="btn-group">
+                  <a th:href="@{/prDivList}">
+                  <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;">홍보분류관리</font></button></a>
+                </div>
+                <div class="btn-group">
+                  <a th:href="@{/prPromotionList}">
+                  <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;">홍보사업관리</font></button></a>
+                </div>
+                <div class="btn-group">
+                  <a th:href="@{/prComList}">
+                  <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;">홍보거래처조회</font></button></a>
+                </div>
+              </div>		
 		
-<h1 align="center"><span >《[[${session.F_NM}]]》 홍보 사업 신규 등록</span></h1>		
+	
 <div class="col-lg-12">
             <div class="form-panel">
+            <h1 align="center"><span >《[[${session.F_NM}]]》 홍보 사업 신규 등록</span></h1>	
               <div class="form">
-                <form th:action="@{/prInsertPromotionPro}" class="cmxform form-horizontal style-form"  method="post" enctype="multipart/form-data">
-                  <br><strong><font style="color: red">  *</font> 표시는 필수입력사항 입니다.</strong><br><hr>
+                <form th:action="@{/prInsertPromotionPro}" class="cmxform form-horizontal style-form" id="promotionForm" method="post" enctype="multipart/form-data">
+                  <br>
+                  <div class="col-lg-9">
+                  <strong><font style="color: red">  *</font> 표시는 필수입력사항 입니다.</strong></div>
+                  	 <div class="col-lg-3">
+                    	<a th:href="@{/prDivList}">
+                    	<button type="button" class="btn btn-theme04 btn"><font style="vertical-align: inherit;">홍보분류관리</font></button></a>
+                    
+                  		<!-- 홍보예산그룹관리모당 -->
+                  		<!-- Button trigger modal -->
+						<button type="button" class="btn btn-theme04 btn" data-toggle="modal" data-target="#prGroup">
+						  홍보예산 그룹관리</button>
+						
+						<!-- Modal -->
+						<div class="modal fade" id="prGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="myModalLabel">홍보예산 그룹관리</h4>
+						      </div>
+						      <div class="modal-body">
+						        
+
+									<h4><Strong>그룹명 수정하기</Strong></h4><br>
+									<Strong><font style="color: red">*</font>그룹명을 수정하면 해당 그룹의 그룹명 모두가 변경되니 유의하시기 바랍니다.</Strong><br>.<br>
+					                <table class="table table-bordered table-striped table-condensed">
+					                  <thead>
+					                    <tr align="center">					                      
+					                      <th>그룹명</th>
+					                      <th>수정</th>
+					                    </tr>
+					                  </thead>
+					                  <tbody>
+					                    <tr th:each="g, i:${group}">				                    
+					                    <form th:action="@{/prGroupCdupdate}" method="post" th:id="${'prGroupNmupdate' + i.index}">
+					                      <td>
+					                      <input type="hidden" name="groupCdModal" th:value="${g.group_cd}" readonly>					                      
+					                      <input type="text" name="groupNmModal" th:value="${g.group_nm}">
+					                      </td>
+					                      <td>					                      
+					                      <button type="button" th:id="${'prGroupNmupdateBtn' + i.index}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></td>				                    
+					                    </tr>
+					                    </form>
+					                  </tbody>
+					                </table>				        
+									<font style="color: red">*</font>새로운 그룹명은 홍보사업신규등록시 등록폼에 입력하시면 자동 생성됩니다.<br>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>					       
+						      </div>
+						    </div>
+						  </div>
+						</div>  
+						<!-- Modal end  --> 
+                  </div>
+                  
+                  <br><hr>
                  
                  	<div class="form-group ">
                     	<label for="festCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">축제명</font></label>
@@ -46,7 +247,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                     	</div>
                     	<label for="manComCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">작성자</font></label>
                   	  	<div class="col-lg-2">
-                      		<h4><strong><th:text>계정주인이름</th:text></strong></h4>
+                      		<h4><strong><th:text>계정주이름(임시)</th:text></strong></h4>
                       		<!-- 계정주인이름 세션에서 연동되면 수정할 것 지금은 미리 넣어둔값 -->
                       		<input class=" form-control" id="manComCd" name="manComCd" type="hidden" th:value="man_com_019" readonly>
                     	</div>
@@ -65,8 +266,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			            
 			            
 			            </div>   
-			            <div class="col-lg-8">
-			      		      <font><strong>선택란에 없는 승인 전 거래처는 비고란에 적고, 승인 후 수정하시기 바랍니다.</strong></font> 
+			            <div class="col-lg-8" align="center">
+			      		      <font><strong>《미승인 거래처》를 선택하신 경우, 우선 비고란에 거래처 정보를 적고 승인 후 수정하시기 바랍니다.</strong></font> 
 			             </div>               
                   </div>
                   
@@ -92,7 +293,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   <div class="form-group ">
                     <label for="festprDivCd" class="control-label col-lg-1"><font style="vertical-align: inherit;">
                      <font style="color: red"><strong>*</strong></font>홍보분류</font></label>
-                    <div class="col-lg-2">		
+                    <div class="col-lg-3">		
 			            <label class="sr-only" for="festprDivCd"></label>
 			            <select class="form-control" id="festprDivCd" name="festprDivCd" >
 			            	<option value="" >:: 홍보분류선택 ::</option>
@@ -100,10 +301,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			            		<option th:value="${d.festprDivCd}" th:text="${d.festprDivNm}"></option>	
 			            	</th:block>
 			            </select> 
-                    </div>
-                    <div class="col-lg-1">
-                    	<a th:href="@{/prDivList}">
-                    	<button type="button" class="btn btn-theme04 btn-xs"><font style="vertical-align: inherit;">홍보<br>분류관리</font></button></a>
                     </div>
                     <label for="festprProNm" class="control-label col-lg-1"><font style="vertical-align: inherit;">
                      <font style="color: red"><strong>*</strong></font>홍보매체명</font></label>
@@ -143,53 +340,11 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			            	<option value="">직접입력하기</option>		            	    	
 			            </select> 
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                     	<input class="form-control " id="groupNm2" name="groupNm2" type="text" ReadOnly="true">                     
                     </div>
                     <div class="col-lg-2">                   	                   	
-						 <!-- Button trigger modal -->
-						<button type="button" class="btn btn-theme04 btn-xs" data-toggle="modal" data-target="#prGroup">
-						  홍보예산<br>그룹관리 </button>
-						
-						<!-- Modal -->
-						<div class="modal fade" id="prGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="myModalLabel">홍보예산 그룹관리</h4>
-						      </div>
-						      <div class="modal-body">
-						        
-
-									<h4><Strong>그룹명 수정하기</Strong></h4><br>
-					                <table class="table table-bordered table-striped table-condensed">
-					                  <thead>
-					                    <tr align="center">
-					                      <th>그룹코드</th>
-					                      <th>그룹명</th>
-					                      <th>수정</th>
-					                    </tr>
-					                  </thead>
-					                  <tbody th:each="g:${group}">
-					                    <tr>
-					                      <td th:text="${g.group_cd}"></td>
-					                      <td>
-					                      <input type="text" th:value="${g.group_nm}">
-					                      </td>
-					                      <td><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></td>
-					                    </tr>
-					                  </tbody>
-					                </table>				        
-									<font style="color: red">*</font>그룹명을 수정하면 해당 그룹의 그룹명 모두가 변경되니 유의하시기 바랍니다.
-						      </div>
-						      <div class="modal-footer">
-						        <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>					       
-						      </div>
-						    </div>
-						  </div>
-						</div>  
-						<!-- Modal end  -->                	                  	
+               	                  	
                     	
                     </div>
                     
@@ -222,25 +377,25 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                     <div class="col-lg-10">
        	             <textarea rows="1" cols="100" class="form-control " id="festprProEtc" name="festprProEtc"></textarea>                     
                     </div>
-                  </div>
-                  
-                  <div class="form-group ">
+                  </div>              
+                                
+                  <div class="form-group ">                 
                     <label for="festprProAttach" class="control-label col-lg-2"><font style="vertical-align: inherit;">파일첨부</font></label>
                     <div class="col-lg-10">
-                    	<input type="file" id="files[0]" name="files[0]" value="">               
+                    <div>
+						<input type="file" name="fileUpload">																		              
                     </div>
-                  </div>
-                  
+                  </div>  
+                  </div>               
                   <div class="form-group">
                     <div class="col-lg-12" align="center">
                       <a th:href="@{/prPromotionList}">
                       <button class="btn btn-theme04  btn-lg" type="button"><font style="vertical-align: inherit;">취소하기</font></button></a>
                       <a>
-                      <button class="btn btn-theme  btn-lg" type="submit"><font style="vertical-align: inherit;">등록하기</font></button></a>
+                      <button class="btn btn-theme  btn-lg" id="submitBtn" type="button"><font style="vertical-align: inherit;">등록하기</font></button></a>
                     </div>
                   </div>
-                </form>
-              </div>
+              </form>
             </div>
             <!-- /form-panel -->
           </div>		
@@ -248,34 +403,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 </th:block>
 <th:block layout:fragment="adminisscript">
-<script type="text/javascript">
-$(document).ready(function(){
-	
-/* 홍보그룹코드 관련 제이쿼리	 */
-	$('#groupNm').change(function(){ 
-		var groupname = $('#groupNm').val();
-		var write = $('#groupNm2').val();
-		$("#groupNm option:selected").each(function () { 
-			if(groupname== "select"){ 			
-				$("#groupNm2").attr("ReadOnly",true);
-				$("#groupNm2").val("");
-			}else if(groupname==""){ 
-				$("#groupNm2").attr("ReadOnly",false); 
-				$("#groupNm2").val("");
-				$("#groupNm2").focus();
-				
-			}else {
-				$("#groupNm2").attr("ReadOnly",true); 
-				$("#groupNm2").val(groupname);
-			} 
-		}); 
-	});	
- 	
-
-
-})
-
-</script>
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
 </th:block>
 
