@@ -1,23 +1,33 @@
 package shop.fims.board;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BoardController {
 	
-	/*
-	 * @file   BoardController.java
-	 * @name   BoardController
-	 * @brief  게시판 관련
-	 * @author fims 김도민
-	 */
+	@Autowired BoardService boardService;
 	
-	//공지사항 관리
 	@GetMapping("/boardList")
-	public String BoardList() {
+	public String boardList(Model model
+							,@RequestParam(value="currentPage"
+							, required = false
+							, defaultValue = "1") int currentPage) {
+		Map<String, Object> map = boardService.getBoardList(currentPage);
+		
+		model.addAttribute("boardList", map.get("list"));
+		model.addAttribute("currentPage", map.get("currentPage"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("startPageNum", map.get("startPageNum"));
+		model.addAttribute("lastPageNum", map.get("lastPageNum"));
 		return "board/boardList";
 	}
+	
 	
 	//공지사항 등록
 	@GetMapping("/insertBoard")

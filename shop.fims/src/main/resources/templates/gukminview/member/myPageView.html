@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<section>
+	<div class="mypDesc">
+		<p class="t01">마이페이지</p>
+		<p class="t02">
+		[[${session.SNAME}]]
+			님, 안녕하세요!
+		</p>
+	</div>
+	<div class="norBox">
+		<div class="mypBox">
+			<div class="fl">
+				<p class="tit">
+					<a href="/gukminview/member/myInfoEditForm">회원정보 관리</a>
+				</p>
+				<p class="ico">
+					<a href="/gukminview/member/myInfoEditForm"><img
+						src="https://joyfesta.kr/include/img/ico/ico_mypList01.png" /></a>
+				</p>
+				
+				
+					<dl class="inp_after">
+						<dt>
+							[최근업데이트:
+							2019.12.28 17:51
+							]
+						</dt>
+						<dd>변경된 정보가 있으시다면 최신 정보로 업데이트 해주세요.</dd>
+					</dl>
+				
+
+
+
+
+			</div>
+			<div class="fr">
+				<p class="tit">
+					<a href="/gukminview/member/myBookmarkView">나의 찜목록</a>
+				</p>
+				<p class="ico">
+					<a href="/gukminview/member/myBookmarkView"> <img
+						src="https://joyfesta.kr/include/img/ico/ico_mypList02.png" /></a>
+				</p>
+				<p class="stit">나의 찜현황</p>
+				<ul class="mlist">
+					<li>
+						<p class="item">
+							<a href="/gukminview/member/myBookmarkView">찜목록</a>
+						</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+					<li>
+						<p class="item">
+							<a href="/gukminview/member/myBookmarkSpotView">찜스팟</a>
+						</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+					<li>
+						<p class="item">
+							<a href="#">#찜기업</a>
+						</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="mypBox">
+			<div class="fl">
+				<p class="tit">
+					<a href="/gukminview/member/myInquiryView">나의 문의 내역</a>
+				</p>
+				<p class="ico">
+					<a href="/gukminview/member/myInquiryView"> <img
+						src="https://joyfesta.kr/include/img/ico/ico_mypList03.png" /></a>
+				</p>
+				<p class="stit">
+					문의 총
+					0
+					건
+				</p>
+				<ul class="mlist t01">
+					<li>
+						<p class="item">답변대기</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+					<li>
+						<p class="item">답변완료</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="fr">
+				<p class="tit">
+					<a href="MyReview.festa">나의 리뷰 내역</a>
+				</p>
+				<p class="ico">
+					<a href="MyReview.festa"><img
+						src="https://joyfesta.kr/include/img/ico/ico_mypList04.png" /></a>
+				</p>
+				<p class="stit">
+					리뷰 총
+					0
+					건
+				</p>
+				<ul class="mlist t01">
+					<li>
+						<p class="item">답변대기</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+					<li>
+						<p class="item">답변완료</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+
+</th:block>
+
+</html>

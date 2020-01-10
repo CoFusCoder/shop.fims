@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+
+		</br>
+		</br>
+		<div>
+		<a th:href="@{/announcementView}">
+		<button type="button" class="btn btn-default" >뒤로가기</button>
+		</a>
+		</div>
+		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+			<th:block th:each="a:${selectByAnnouncement}">
+              <h4><i class="fa fa-angle-right"></i></span> 공고상세보기</h4><br>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>모든축제공고코드</th>
+                      <th>모든 행정기관코드</th>
+                      <th>전국지역코드</th>
+                      <th>모든 지역 시군코드</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${a.fesAnnCd}"></td>
+	               		<td th:text="${a.areaCityAdminCd}"></td>
+	               		<td th:text="${a.areaCd}"></td>
+	               		<td th:text="${a.areaCityCd}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>축제코드</th>
+                      <th>위원회코드</th>
+                      <th>축제명</th>
+                      <th>위원회명</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${a.festCd}"></td>
+						<td th:text="${a.manComCd}"></td>
+						<td th:text="${a.festNm}"></td>
+						<td th:text="${a.manComNm1}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>공고명</th>
+                      <th>용역시작일</th>
+                      <th>용역종료일</th>
+                      <th>공고마감일</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${a.festAnnNm}"></td>
+						<td th:text="${a.festAnnDt1}"></td>
+						<td th:text="${a.festAnnDt2}"></td>
+						<td th:text="${a.festAnnDt3}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>공고내용</th>
+                      <th>신청서양식첨부</th>
+                      <th>작성일</th>
+                      <th>행정기관명</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${a.festAnnCon}"></td>
+						<td th:text="${a.festAnnAtt}"></td>
+						<td th:text="${a.festAnnDt4}"></td>
+						<td th:text="${a.areaCityAdminNm}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>담당자</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${a.comMemNm2}"></td>
+						<td></td>
+						<td></td>
+						<td></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th colspan="2">수정</th>
+						<th colspan="2">삭제</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+	                    <td colspan="2">
+		                    <a th:href="@{/updateAnnouncement(fesAnnCd=${a.fesAnnCd})}">
+		                    <button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
+	                    </td>
+	                    <td colspan="2">
+	                    	<a th:href="@{/announcementView}">
+	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
+	                    </td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  
+                </table>
+              </section>
+              </th:block>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>
+

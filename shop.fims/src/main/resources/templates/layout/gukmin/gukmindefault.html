@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="ko">
+
+<head th:replace="fragments/gukmin/gukminhead :: gukminHeadFragment"></head>
+<th:block th:include="fragments/gukmin/gukminscriptbody1"></th:block>
+<body>
+<!-- indicatorOn();/indicatorOff(); -->
+<div class="indicator">
+	<div class="loader">
+		<img src="https://joyfesta.kr/images/Spinner.svg">
+	</div>
+</div>
+
+<div id="wrap">
+	<header class="header black-bg" th:replace="fragments/gukmin/gukminheader :: gukminHeaderFragment"> </header>
+	<th:block th:include="fragments/gukmin/gukminscriptbody2"></th:block>
+		<th:block layout:fragment="gukminMainContents"></th:block>
+			
+	 <footer id="footer" class="footer" th:replace="fragments/gukmin/gukminfooter :: gukminFooterFragment"></footer>
+	 <th:block th:include="fragments/gukmin/gukminscriptfooter3"></th:block>
+	 <th:block th:include="fragments/gukmin/gukminfooter2"></th:block>
+</div>
+		
+<th:block layout:fragment="gukminscript"></th:block>
+
+</body>
+
+</html>

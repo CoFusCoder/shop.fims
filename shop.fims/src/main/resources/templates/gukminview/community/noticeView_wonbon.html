@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<script src="/gukmin/js/underscore-min.js"></script>
+<section>
+	<div class="commDesc">
+		<p class="t01">공지사항</p>
+		<p class="t02">ALLFestMoa의 최근 소식으로 만나보세요!</p>
+	</div>
+	<div class="norBox">
+		<ul class="commTabs">
+			<li><a href="/gukminview/community/eventView">!이벤트</a></li>
+			<li><a href="javascript:void(0)" class="on">!공지사항</a></li>
+			<li><a href="/gukminview/community/faqView">!FAQ</a></li>
+		</ul>
+		<form id="searchform" name="searchform" action="/gukminview/community/noticeView" method="post">
+			<div class="boSearchBox">
+				<div class="bsform">
+					<input type="text" id="keyword" name="keyword"
+						value="" /> <a
+						href="javascript:void();" id="searchbutton">검색</a>
+				</div>
+			</div>
+		</form>
+
+
+
+
+		<div class="boHeader">
+			<p class="fl">전체 150</p>
+		</div>
+
+		<table class="listTable01 mt0" id="listtable">
+			<colgroup>
+				<col width="80" class="mhidden" />
+				<col width="" />
+				<col width="100" class="mhidden" />
+				<col width="100" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="mhidden">번호</th>
+					<th>제목</th>
+					<th class="mhidden">작성자</th>
+					<th>작성일</th>
+				</tr>
+			</thead>
+<!-- <a href="NoticeDetail.festa?noticeseq=12">인스타그램 팔로잉 이벤트 당첨자 발표</a></td><td class="mhidden">ALLFestMoa 관리자</td><td>19.09.30</td></tr> -->		
+			<tbody>
+				<tr> 
+				<td class="mhidden">5</td><td><a href="/gukminview/community/noticeDetailView">!서울디저트페어 티켓증정 이벤트 당첨자 발표</a></td><td class="mhidden">ALLFestMoa 관리자</td><td>19.10.07</td></tr>
+				<tr> <td class="mhidden">4</td><td><a href="#">#인스타그램 팔로잉 이벤트 당첨자 발표</a></td><td class="mhidden">ALLFestMoa 관리자</td><td>19.09.30</td></tr>
+				<tr> <td class="mhidden">3</td><td><a href="#">#ALLFestMoa 정식 오픈 이벤트 당첨자 발표</a></td><td class="mhidden">ALLFestMoa 관리자</td><td>19.09.04</td></tr>
+				<tr> <td class="mhidden">2</td><td><a href="#">#ALLFestMoa 정식 오픈 안내</a></td><td class="mhidden">ALLFestMoa 관리자</td><td>19.07.01</td></tr>
+				<tr> <td class="mhidden">1</td><td><a href="#">#ALLFestMoa 베타서비스 오픈</a></td><td class="mhidden">ALLFestMoa 관리자</td><td>19.05.02</td></tr>			
+			</tbody>
+		</table>
+		<div class="paging">
+			<a href="javascript:void(0);" class="first"></a>
+			<a href="javascript:void(0);" class="prev">1</a>
+			<a href="javascript:void(0);" class="on">1</a>
+			<a href="javascript:void(0);" class="next"></a>
+			<a href="javascript:void(0);" class="last"></a>		
+		</div>
+	</div>
+</section>
+
+<script>
+	$('#searchbutton').click(function() {
+		$('#searchform').submit();
+	});
+
+	var keyword = '';
+	var currentPage = '1';
+	var pageSize = 10;
+	$
+			.ajax({
+				url : 'JSONNoticeList.festa',
+				type : 'POST',
+				data : {
+					currentPage : currentPage,
+					keyword : keyword
+				},
+				dataType : 'json',
+				success : function(data, textStatus, jqXHR) {
+					if (data.resultcode == 0) {
+						var itemList = data.itemList;
+						paging = data.paging;
+						$('#listtable > tbody').empty();
+						if (itemList.length == 0) {
+							$('#listtable')
+									.append(
+											'<tr><td class="mhidden">25</td><td>공지사항이 없습니다.</td><td class="mhidden"></td><td></td></tr>');
+						} else {
+							_
+									.each(
+											itemList,
+											function(item, index) {
+												var listno = paging.totalCount
+														- index
+														- (currentPage - 1)
+														* pageSize;
+												$('#listtable')
+														.append(
+																'<tr>'
+																		+ ' <td class="mhidden">'
+																		+ listno
+																		+ '</td>'
+																		+ '<td><a href="NoticeDetail.festa?noticeseq='
+																		+ item.noticeseq
+																		+ '">'
+																		+ item.title
+																		+ '</a></td>'
+																		+ '<td class="mhidden">'
+																		+ item.adminname
+																		+ '</td>'
+																		+ '<td>'
+																		+ item.registerdate
+																		+ '</td>'
+																		+ '</tr>');
+											});
+							currentPage++;
+							//이부분이 페이징처리
+							$('.paging').empty();
+							if (paging.page != 1) {
+								$('.paging')
+										.append(
+												'<a href="javascript:$.getNoticeList(1);" class="first"></a>'); //첫페이지로가는버튼 활성화
+							} else {
+								$('.paging')
+										.append(
+												'<a href="javascript:void(0);" class="first"></a>'); //첫페이지로가는버튼 비활성화
+							}
+							if (paging.block != 1) { //첫번째 블럭이 아니면
+								$('.paging')
+										.append(
+												'<a href="javascript:$.getNoticeList('
+														+ (Number(paging.startPage) - Number(1))
+														+ ');" class="prev"></a>'); //뒤로가기버튼 활성화
+							} else {
+								$('.paging')
+										.append(
+												'<a href="javascript:void(0);" class="prev">1</a>'); //뒤로가기버튼 비활성화
+							}
+							for (var i = paging.startPage; i <= paging.endPage; i++) { //시작페이지부터 종료페이지까지 반복문
+								if (paging.page == i) { //현재페이지가 반복중인 페이지와 같다면
+									$('.paging').append(
+											'<a href="javascript:void(0);" class="on">'
+													+ i + '</a>'); //버튼 비활성화
+								} else {
+									$('.paging').append(
+											'<a href="javascript:$.getNoticeList('
+													+ i + ');">' + i + '</a>'); //버튼 활성화
+								}
+							}
+							if (paging.block < paging.totalBlock) { //전체페이지블럭수가 현재블럭수보다 작을때
+								$('.paging')
+										.append(
+												'<a href="javascript:$.getNoticeList('
+														+ (Number(paging.endPage) + Number(1))
+														+ ');" class="next"></a>'); //다음페이지버튼 활성화
+							} else {
+								$('.paging')
+										.append(
+												'<a href="javascript:void(0);" class="next"></a>'); //다음페이지버튼 비활성화
+							}
+							if (paging.page < paging.totalPage) { //현재페이지가 전체페이지보다 작을때
+								$('.paging').append(
+										'<a href="javascript:$.getNoticeList('
+												+ paging.totalPage
+												+ ');" class="last"></a>'); //마지막페이지로 가기 버튼 활성화
+							} else {
+								$('.paging')
+										.append(
+												'<a href="javascript:void(0);" class="last"></a>'); //마지막페이지로 가기 버튼 비활성화
+							}
+						}
+					} else {
+						alert(data.resultmessage);
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert(textStatus);
+				}
+			});
+
+	$.getNoticeList = function(currentPage) {
+		$
+				.ajax({
+					url : 'JSONNoticeList.festa',
+					type : 'POST',
+					data : {
+						currentPage : currentPage,
+						keyword : keyword
+					},
+					dataType : 'json',
+					success : function(data, textStatus, jqXHR) {
+						if (data.resultcode == 0) {
+							var itemList = data.itemList;
+							paging = data.paging;
+							$('#listtable > tbody').empty();
+							if (itemList.length > 0) {
+								_
+										.each(
+												itemList,
+												function(item, index) {
+													var listno = paging.totalCount
+															- index
+															- (currentPage - 1)
+															* pageSize;
+													$('#listtable')
+															.append(
+																	'<tr>'
+																			+ ' <td class="mhidden">'
+																			+ listno
+																			+ '</td>'
+																			+ '<td><a href="NoticeDetail.festa?noticeseq='
+																			+ item.noticeseq
+																			+ '">'
+																			+ item.title
+																			+ '</a></td>'
+																			+ '<td class="mhidden">'
+																			+ item.adminname
+																			+ '</td>'
+																			+ '<td>'
+																			+ item.registerdate
+																			+ '</td>'
+																			+ '</tr>');
+												});
+								currentPage++;
+								//이부분이 페이징처리
+								$('.paging').empty();
+								if (paging.page != 1) {
+									$('.paging')
+											.append(
+													'<a href="javascript:$.getNoticeList(1);" class="first"></a>'); //첫페이지로가는버튼 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="first"></a>'); //첫페이지로가는버튼 비활성화
+								}
+								if (paging.block != 1) { //첫번째 블럭이 아니면
+									$('.paging')
+											.append(
+													'<a href="javascript:$.getNoticeList('
+															+ (Number(paging.startPage) - Number(1))
+															+ ');" class="prev"></a>'); //뒤로가기버튼 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="prev">1</a>'); //뒤로가기버튼 비활성화
+								}
+								for (var i = paging.startPage; i <= paging.endPage; i++) { //시작페이지부터 종료페이지까지 반복문
+									if (paging.page == i) { //현재페이지가 반복중인 페이지와 같다면
+										$('.paging').append(
+												'<a href="javascript:void(0);" class="on">'
+														+ i + '</a>'); //버튼 비활성화
+									} else {
+										$('.paging').append(
+												'<a href="javascript:$.getNoticeList('
+														+ i + ');">' + i
+														+ '</a>'); //버튼 활성화
+									}
+								}
+								if (paging.block < paging.totalBlock) { //전체페이지블럭수가 현재블럭수보다 작을때
+									$('.paging')
+											.append(
+													'<a href="javascript:$.getNoticeList('
+															+ (Number(paging.endPage) + Number(1))
+															+ ');" class="next"></a>'); //다음페이지버튼 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="next"></a>'); //다음페이지버튼 비활성화
+								}
+								if (paging.page < paging.totalPage) { //현재페이지가 전체페이지보다 작을때
+									$('.paging').append(
+											'<a href="javascript:$.getNoticeList('
+													+ paging.totalPage
+													+ ');" class="last"></a>'); //마지막페이지로 가기 버튼 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="last"></a>'); //마지막페이지로 가기 버튼 비활성화
+								}
+							}
+						} else {
+							alert(data.resultmessage);
+						}
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						alert(textStatus);
+					}
+				});
+	}
+
+	
+</script>
+
+
+
+
+
+</th:block>
+
+</html>

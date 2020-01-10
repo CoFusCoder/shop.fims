@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.fims.announcement.FesAnnMapper">
+
+	<!-- 축제 공고 -->
+	<resultMap type="shop.fims.vo.Announcement" id="announcementResultMap">
+		<result property="fesAnnCd" column="fes_ann_cd"/>
+		<result property="areaCityAdminCd" column="areacity_admin_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="festNm" column="fest_nm"/>
+		<result property="manComNm1" column="man_com_nm1"/>
+		<result property="festAnnNm" column="fest_ann_nm"/>
+		<result property="festAnnDt1" column="fest_ann_dt1"/>
+		<result property="festAnnDt2" column="fest_ann_dt2"/>
+		<result property="festAnnDt3" column="fest_ann_dt3"/>
+		<result property="festAnnCon" column="fest_ann_con"/>
+		<result property="festAnnAtt" column="fest_ann_att"/>
+		<result property="festAnnDt4" column="fest_ann_dt4"/>
+		<result property="areaCityAdminNm" column="areacity_admin_nm"/>
+		<result property="comMemNm2" column="com_mem_nm2"/>
+	</resultMap>
+
+	<!-- 공고 관리 -->
+	<select id="selectAnnouncementView" resultMap="announcementResultMap">
+		SELECT
+			fa.fes_ann_cd
+			,aca.areacity_admin_nm
+			,f.fest_nm
+			,mc.man_com_nm1
+			,fa.fest_ann_nm
+			,fa.fest_ann_dt4
+			,fa.fest_ann_dt3
+			,mc.com_mem_nm2
+		FROM
+			Festival_Ann AS fa
+		LEFT JOIN
+			Area_City_Admin AS aca
+		ON
+			fa.areacity_admin_cd = aca.areacity_admin_cd
+		LEFT JOIN
+			Festival AS f
+		ON
+			fa.fest_cd = f.fest_cd
+		LEFT JOIN
+			Man_Com AS mc
+		ON
+			fa.man_com_cd = mc.man_com_cd
+	</select>
+	
+	<!-- 공고 상세조회 모든축제공고코드로 조회 -->
+	<select id="selectByAnnouncement" resultMap="announcementResultMap">
+		SELECT 
+			*
+		FROM 
+			Festival_Ann 
+		WHERE 
+			fes_ann_cd = #{fesAnnCd}
+	</select>
+	
+	<!-- 공고등록 -->
+	<insert id="insertAnnouncement" parameterType="shop.fims.vo.Announcement">
+		<selectKey resultType="string" keyProperty="fesAnnCd" order="BEFORE">
+	        SELECT CONCAT('fes','_','ann','_',(SELECT LPAD(COUNT(*)+1,3,'0') FROM Festival_Ann))   
+	    </selectKey>
+		INSERT INTO Festival_Ann
+			(fes_ann_cd, areacity_admin_cd, area_cd, area_city_cd, fest_cd, man_com_cd, fest_nm, man_com_nm1, fest_ann_nm, fest_ann_dt1,
+			fest_ann_dt2, fest_ann_dt3, fest_ann_con, fest_ann_att, fest_ann_dt4, areacity_admin_nm, com_mem_nm2)
+		VALUES 
+			(#{fesAnnCd}, #{areaCityAdminCd}, #{areaCd}, #{areaCityCd}, #{festCd}, #{manComCd}, #{festNm}, #{manComNm1}, #{festAnnNm}, now(),
+			 now(), now(), #{festAnnCon}, #{festAnnAtt}, now(), #{areaCityAdminNm}, #{comMemNm2})
+	</insert>
+	
+	<!-- 공고 수정화면 모든축제공고코드로 조회 -->
+	<select id="selectByAllAnnouncement" parameterType="String" resultMap="announcementResultMap">
+		SELECT 
+			*
+		FROM 
+			Festival_Ann 
+		WHERE 
+			fes_ann_cd = #{fesAnnCd}
+	</select>
+	
+	<!-- 공고 수정 -->
+	<update id="updateAnnouncement" parameterType="shop.fims.vo.Announcement">
+		UPDATE Festival_Ann
+		SET
+			fes_ann_cd = #{fesAnnCd}, areacity_admin_cd = #{areaCityAdminCd}, area_cd = #{areaCd}, area_city_cd = #{areaCityCd}, fest_cd = #{festCd}, man_com_cd = #{manComCd}, fest_nm = #{festNm}, man_com_nm1 =  #{manComNm1}, fest_ann_nm = #{festAnnNm}, fest_ann_dt1 = #{festAnnDt1},
+			fest_ann_dt2 = #{festAnnDt2}, fest_ann_dt3 = #{festAnnDt3}, fest_ann_con = #{festAnnCon}, fest_ann_att = #{festAnnAtt}, fest_ann_dt4 = #{festAnnDt4}, areacity_admin_nm = #{areaCityAdminNm}, com_mem_nm2 = #{comMemNm2}
+		WHERE
+			fes_ann_cd = #{fesAnnCd}
+	</update>
+	
+	<!-- 공고 삭제 -->
+	<delete id="deleteAnnouncement" parameterType="shop.fims.vo.Announcement">
+		DELETE
+		FROM
+			Festival_Ann
+		WHERE
+			fes_ann_cd = #{fesAnnCd}
+	</delete>
+
+</mapper>  
+  
+  
+  
