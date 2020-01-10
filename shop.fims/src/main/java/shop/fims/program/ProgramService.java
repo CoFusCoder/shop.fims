@@ -16,6 +16,14 @@ import shop.fims.vo.Program;
 public class ProgramService {
 	@Autowired ProgramMapper programMapper;
 	
+	//일자분류 신규등록
+	public int insertDivDay(ProDivDay prodivday) {
+		return programMapper.insertDivDay(prodivday);
+	}
+	
+	
+	
+	
 	// 참가자 조건검색
 	public List<ProParticipants> searchParticipant(String festProNm, String festproSproNm
 			,String festproParNm, String festproParGender, String festproParPhone, String festCd){

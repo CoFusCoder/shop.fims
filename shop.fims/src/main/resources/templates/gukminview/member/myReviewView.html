@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<section>
+	<div class="mypDesc">
+		<p class="t01">#나의 리뷰내역</p>
+		<p class="t02">#나의 리뷰내역을 모아보세요!</p>
+	</div>
+	<div class="norBox">
+		<form id="searchform" name="searchform" action="/gukminview/member/myReviewView" method="post">
+			<div class="boSearchBox t01">
+				<div class="bsform">
+					<ul class="dateCategory">
+						<li><a href="javascript:void(0)"
+							onclick="setDateRange('2019.12.30', '2019.12.30');">오늘</a></li>
+						<li><a href="javascript:void(0)"
+							onclick="setDateRange('2019.09.30', '2019.12.30');">3개월</a></li>
+						<li><a href="javascript:void(0)"
+							onclick="setDateRange('2019.06.30', '2019.12.30');">6개월</a></li>
+						<li><a href="javascript:void(0)"
+							onclick="setDateRange('2018.12.29', '2019.12.30');">1년</a></li>
+					</ul>
+					<div class="m_form">
+						<ul>
+							<li><input type="text" id="sdate" name="startdate"
+								class="datepicker" /> <span class="etxt">~</span> <input
+								type="text" id="edate" name="enddate" class="datepicker" />
+								<p class="m_form_btn_check">
+									<a href="javascript:searchReview();" id="searchbutton">#검색</a>
+								</p></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+		<table id="reviewTable" class="listTable01">
+			<!--
+			<colgroup>
+				<col width="60" class="mhidden" />
+				<col width="80" />
+				<col width="90" />
+				<col width="" />
+				<col width="60" />
+				<col width="80" class="mhidden" />
+			</colgroup>
+			<tbody>
+				<tr class="mhidden">
+					<th>번호</th>
+					<th>카테고리</th>
+					<th>상태</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
+				</tr>
+				<tr>
+					<td class="mhidden">25</td>
+					<td>[전통시장]</td>
+					<td><span class="wait rd">답변대기</span></td>
+					<td><a href="javascript:void(0)">기업 회원이 되려면 어떻게 해야 하나요?</a></td>
+					<td>임은영</td>
+					<td class="mhidden">2019.02.08</td>
+				</tr>
+				<tr>
+					<td class="mhidden">25</td>
+					<td>[스토어]</td>
+					<td><span class="confirm rd">답변완료</span></td>
+					<td><a href="javascript:void(0)">기업 회원이 되려면 어떻게 해야 하나요?</a></td>
+					<td>임은영</td>
+					<td class="mhidden">2019.02.08</td>
+				</tr>
+			</tbody> 
+		 -->
+		</table>
+		<div class="paging"></div>
+	</div>
+</section>
+<script src="/gukmin/js/underscore-min.js"></script>
+<script>
+	var pageSize = 10;
+
+	/* $.getMyReviewList = function(currentPage, startdate, enddate) {
+		resetCommonDialog();
+		indicatorOn();
+		$
+				.ajax({
+					url : 'JSONMyReviewList.festa',
+					type : 'POST',
+					data : {
+						currentPage : currentPage,
+						startdate : startdate,
+						enddate : enddate
+					},
+					dataType : 'json',
+					success : function(data, textStatus, jqXHR) {
+						indicatorOff();
+						if (data.resultcode == 0) {
+							var itemList = data.itemList;
+							paging = data.paging;
+							$('.listTable01').empty();
+							$('.paging').empty();
+							if (itemList.length == 0) {
+								$('.listTable01').append('등록된 리뷰가 없습니다.');
+							} else { // 데이터가있으면 목록을 each로 반복
+								$('.listTable01')
+										.append(
+												'<colgroup><col width="60" class="mhidden" /><col width="65" /><col width="90" /><col width="" /><col width="50" /><col width="100" class="mhidden" /></colgroup>'
+														+ '<tr class="mhidden"><th>번호</th><th>카테고리</th><th>상태</th><th>내용</th><th>작성자</th><th>작성일</th></tr>');
+								_
+										.each(
+												itemList,
+												function(item, index) {
+													var listno = paging.totalCount
+															- index
+															- (currentPage - 1)
+															* pageSize;
+													var replystatus = '<span class="wait rd">답변대기</span>';
+													var reply = '';
+													if (item.replyflag == 'Y') {
+														replystatus = '<span class="confirm rd">답변완료</span>';
+													}
+													$('.listTable01')
+															.append(
+																	'<tr>'
+																			+ '<td class="mhidden">'
+																			+ listno
+																			+ '</td>'
+																			+ '<td>['
+																			+ item.category
+																			+ ']</td>'
+																			+ '<td>'
+																			+ replystatus
+																			+ '</td>'
+																			+ '<td><a href="MyReviewDetail.festa?reviewseq='
+																			+ item.reviewseq
+																			+ '">'
+																			+ item.content
+																			+ '</a></td>'
+																			+ '<td>'
+																			+ item.membername
+																			+ '</td>'
+																			+ '<td class="mhidden">'
+																			+ item.registerdate
+																			+ '</td>'
+																			+ '</tr>');
+												});
+								// 이부분이 페이징처리
+								if (paging.page != 1) {
+									$('.paging')
+											.append(
+													'<a href="javascript:$.getMyReviewList(1, "'
+															+ startdate
+															+ '", "'
+															+ enddate
+															+ '");" class="first"></a>'); // 첫페이지로가는버튼
+									// 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="first"></a>'); // 첫페이지로가는버튼
+									// 비활성화
+								}
+								if (paging.block != 1) { // 첫번째 블럭이 아니면
+									$('.paging')
+											.append(
+													'<a href="javascript:$.getMyReviewList('
+															+ (Number(paging.startPage) - Number(1))
+															+ ', "'
+															+ startdate
+															+ '", "'
+															+ enddate
+															+ '");" class="prev"></a>'); // 뒤로가기버튼
+									// 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="prev">1</a>'); // 뒤로가기버튼
+									// 비활성화
+								}
+								for (var i = paging.startPage; i <= paging.endPage; i++) { // 시작페이지부터
+									// 종료페이지까지
+									// 반복문
+									if (paging.page == i) { // 현재페이지가 반복중인 페이지와
+										// 같다면
+										$('.paging').append(
+												'<a href="javascript:void(0);" class="on">'
+														+ i + '</a>'); // 버튼
+										// 비활성화
+									} else {
+										$('.paging').append(
+												'<a href="javascript:$.getMyReviewList('
+														+ i + ', "' + startdate
+														+ '", "' + enddate
+														+ '");">' + i + '</a>'); // 버튼
+										// 활성화
+									}
+								}
+								if (paging.block < paging.totalBlock) { // 전체페이지블럭수가
+									// 현재블럭수보다
+									// 작을때
+									$('.paging')
+											.append(
+													'<a href="javascript:$.getMyReviewList('
+															+ (Number(paging.endPage) + Number(1))
+															+ ', "'
+															+ startdate
+															+ '", "'
+															+ endate
+															+ '");" class="next"></a>'); // 다음페이지버튼
+									// 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="next"></a>'); // 다음페이지버튼
+									// 비활성화
+								}
+								if (paging.page < paging.totalPage) { // 현재페이지가
+									// 전체페이지보다
+									// 작을때
+									$('.paging').append(
+											'<a href="javascript:$.getMyReviewList('
+													+ paging.totalPage + ', "'
+													+ startdate + '", "'
+													+ enddate
+													+ '");" class="last"></a>'); // 마지막페이지로
+									// 가기
+									// 버튼
+									// 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="last"></a>'); // 마지막페이지로
+									// 가기
+									// 버튼
+									// 비활성화
+								}
+							}
+						} else {
+							$('#dialogtitle').append('에러');
+							$('#dialogcontent').append(data.resultmessage);
+							$('#commondialog').show();
+						}
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						indicatorOff();
+						$('#dialogtitle').append('에러');
+						$('#dialogcontent').append(textStatus);
+						$('#commondialog').show();
+					}
+				}); */
+	}
+</script>
+<script>
+	function setDateRange(startdate, enddate) {
+		$('#sdate').datepicker('setDate', startdate);
+		$('#edate').datepicker('setDate', enddate);
+	}
+
+	function searchReview() {
+		$.getMyReviewList(1, $('#sdate').val(), $('#edate').val());
+	}
+
+	$(document).ready(function() {
+		$.getMyReviewList(1, '', '');
+
+	});
+
+	
+</script>
+
+
+</th:block>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+
+<header th:fragment="ebudgetHeaderFragment">
+
+
+  <div id="headerW">
+  <label for="toggle" id="togglemenu" onclick>MENU</label>
+
+
+    <div id="topW" style="background-color:#2B2B2B;">
+    <div class="top">
+
+    <ul>
+
+    		<!--<li style="color:#efefef;" class="jest"><a href="http://www.jeongeup.go.kr/index.jeongeup?menuCd=DOM_000000104007003000" title='홈으로이동'>정읍시에 바란다</a></li>-->
+		<li style="color:#efefef;"><a href="/dashboard" title='관리자 홈페이지로 이동'>!관리자 홈페이지</a></li>
+	<li ><a href="/gukminview/index" title='축제 홈페이지로 이동'  target='_blank'>!축제 홈페이지</a></li>
+
+	</ul>
+  </div>
+ </div><!--topW-->
+
+
+
+
+
+   <!--<div id="bg"></div>-->
+
+<nav>
+   <div id="navW">
+		<div class="sub_logo">
+		  <a href="/revExpBudgetView">
+			<img src="/gukmin/assets/images/fimslog.jpg" alt='홈으로이동' title='홈으로이동'>
+			<span title='세입세출재정정보공개시스템'>!세입·세출재정정보공개시스템</span>
+		  </a>
+		</div>
+
+
+
+
+		<div class="sub_menu">
+
+           <!--<nav id="navigation-list">-->
+
+            <input type="checkbox" id="toggle"/>
+			<ul class="clearfix" id="nav">
+							    <li><a href="/fundManStatusView" class="menu0" title='자금운용현황'>!자금운용현황</a></li>
+				
+				<li><a href="/revBudgetView" class="menu1" title='세입현황'>!세입현황</a></li>
+				<li>
+				<a href='/revExpExecutionView' class='menu2' title='세출현황'>!세출현황</a></li>
+				<li><a href='#' class='menu3' target='_blank'  title='세입세출예산'>#세입·세출예산</a></li><li><a href='#' class='menu4' target='_blank'  title='세입세출결산'>#세입·세출결산</a></li>			  </ul>
+		 </div><!--.sub_menu-->
+
+		 </div><!--navW-->
+
+			</nav>
+
+
+	</div><!--headerW-->
+
+
+
+
+
+
+
+
+</header>
+
+</html>

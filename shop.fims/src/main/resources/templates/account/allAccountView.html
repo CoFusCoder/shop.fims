@@ -10,16 +10,17 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		<h3>모든거래처관리</h3>
 		<div align= "right">
 			<a th:href="@{/insertAllAccount}">
-				<button type="button" class="btn btn-default">모든 거래처 등록하기</button>
+				<button type="button" class="btn btn-default">거래처 등록하기</button>
 			</a>
 		</div>
 		<br/>
-		<form class="form-inline" role="form" align="right" th:action="@{#}" method="get">
+		<form class="form-inline" role="form" align="right" th:action="@{/searchAccount}" method="post">
 			<select class="form-control" name="sk">
-	                <option value="#">이름</option>
+				   	<option value="cat_acc_nm1">거래처명</option>
+	                <option value="cat_acc_nm2">거래처대표자명</option>
 	              </select>
 	             <div class="form-group">
-	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="#">
+	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="sv">
 	             </div>
 	             <button type="submit" class="btn btn-theme">검색</button>
         </form>
@@ -43,7 +44,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="a:${selectAllAccountView}">  
+                  <tr th:each="a:${allAccountView}">  
                		<td th:text="${a.catAccNm1}"></td>
                		<td th:text="${a.catAccOper}"></td>
                		<td th:text="${a.catAccNm2}"></td>

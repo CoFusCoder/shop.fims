@@ -1,0 +1,429 @@
+@charset "utf-8";
+
+
+
+
+/* Clearfix float 초기화*/
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+
+
+
+@media screen and (max-width:421px){
+
+#contentW .content{padding:10px;}
+.logo a{}
+.logo A SPAN{font-size:73%; font-weight:bold; }
+#sub_title img{left:0; padding:0; top:0; width:97%;}
+
+
+.menu {border:0px solid red; float:left; width:100%;}
+#p0 div.menu a.menu0, #p1 div.menu a.menu1, #p2 div.menu a.menu2, #p3 div.menu a.menu3, #p4 div.menu a.menu4{
+color:#000; position:relative; width:120px; background:transparent; display:inline; top:0px; font-weight:bold; }
+nav > ul > li {padding:6px 0px 0px 0px; border:0px solid silver; float:none;}
+nav > ul > li > a{padding:0;}
+
+
+nav {border-bottom: 0;}
+nav > ul {display: none;height: auto; padding-left:10px;}
+nav a#pull {display:inline-block;width: 100%;position: relative; background-color:#000; color:#fff; padding:2px 0px 4px 0px;}
+nav a#pull:after {content:""; display: inline-block;position: absolute;right: 15px;top: 10px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*2017*/
+
+div.sub_logo span{font-size:12pt;}
+
+#dbiz_view table tbody tr th{width:100%; float:left; padding:5px 0px 5px 0px; border:0; border-bottom:1px solid #ccc; }
+#dbiz_view table tbody tr td{padding:0; text-align:center; height:auto; min-height:23px; line-height:23px;}
+
+
+
+#dbiz_view table.dbiz_tb4 > tbody >tr > td{border:0; height:auto; padding:0; border-bottom:1px solid silver;}
+#dbiz_view table.dbiz_tb4 th{vertical-align:top; border:0; font-weight:bold;}
+
+
+
+
+
+
+
+}
+
+
+
+
+
+/*테스크탑 최소넓이 320이하 고정*/
+@media only screen and (max-width:320px){
+#content{width:320px;}
+.logo A SPAN{font-weight:bold;}
+.logo {width:320px;}
+}
+
+
+
+/*-------------------------------------------상단메뉴 틀어짐막기휘한 최소넓이-------------------------------------------*/
+@media screen and (max-width:880px){
+
+
+#top_Wrap{width:100%;  display:inline-block; }
+#top_Wrap > #bg{width:100%; position:absolute;  height:61px; z-index:-1; background:#fff; border-top:1px solid silver;}
+.menu {float:left;}
+nav > ul > li > a{color:#636363; font-size:11pt; display: block;letter-spacing:-2px; padding:6px 0px 6px 0px;  }
+#p0 div.menu a.menu0, #p1 div.menu a.menu1, #p2 div.menu a.menu2, #p3 div.menu a.menu3, #p4 div.menu a.menu4{
+color:#000; position:relative; width:auto; background:transparent; top:0px; font-weight:bold; }
+
+/*ie7, ie8*/
+.menu > nav > ul{display:inline-block;}
+.menu > ul > li{float:left;  padding-left:20px;}
+.menu > ul > li > a{color:#636363; font-size:11pt; display: block;letter-spacing:-2px; padding:6px 0px 6px 0px;}
+.menu > ul > li > a:hover, nav > ul > li >a.on {  font-weight: bold; color:#363636; border: none; text-decoration:none;  }
+
+
+
+
+/*반응형메뉴*/
+#nav{display:none; background:#fff; border-bottom:2px solid #ccc; border-right:1px solid #ccc;}
+#toggle:checked + #nav{display:block;} 
+#nav li{display:block;width:100%;text-align:left;border-top:1px solid #ccc;}
+
+label#togglemenu {display:block;font-weight:bold; float:left; position:relative; height:30px; padding:10px 10px 0px 10px; background:#fff; 
+border-right:1px solid #aaa;}
+
+#p0 div.sub_menu a.menu0, #p1 div.sub_menu a.menu1, #p2 div.sub_menu a.menu2, #p3 div.sub_menu a.menu3, #p4 div.sub_menu a.menu4
+{border-bottom:0;}
+div.sub_menu ul a:hover{border-bottom:0px solid #333; color:#000; }
+div.sub_menu ul li a{top:0; padding:10px 0px 10px 0px;}
+div.sub_menu{position:absolute; width:50%;}
+div.sub_menu ul li{margin:0; padding:10px 0px 10px 0px;}
+
+
+div.sub_logo{height:auto;}
+div.sub_logo span{ margin-top:10px; top:0; padding-bottom:15px; width:100%; float:left;}
+div.sub_menu{height:auto;}
+#navW{height:auto;}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------최대 테스크탑 최소 넓이------------------------------------------- */
+@media screen and (max-width :600px) {
+
+#top_Wrap{border-bottom:0px solid silver;}
+#sub_title{font-size:16pt; height:40px; display:inline-block;}
+
+td.view_link {text-align:right;}
+#sub_title img{left:0; padding:0; top:10px;}
+.tree_table td.subject{width:100%;}
+.tree_table td{padding:5px 0px 5px 0px;}
+
+#ex{margin-top:16px;}
+span.ex_2{display:inline-block; width:100%; text-align:right; left:0; top:0; float:none;}
+#ex{padding:10px 0px 10px 0px;}
+#list_table td.view_link{text-align:right;}
+#list_table203 td.view_link{text-align:right;}
+#list_table203 td.saup{text-align:right;}
+#list_table203 td.str{text-align:right;}
+#page_wrap a{padding:0;}
+
+
+/*
+#search_table table th { width:100%; border:0;}
+#search_table table td { border:0; width:97%;}
+#search_table table td select{width:100%;}
+#search_table table td input{width:100%;}
+#search_table table td input[type='date']{width:42%;}
+
+*/
+#footer{height:auto;}
+
+/*달력*/
+.ui-datepicker table th{display:none;}
+.ui-widget{font-size:0.8em; background:#eee;}
+
+
+/*버튼*/
+.btn01{float:none; padding-bottom:10px;}
+
+
+
+
+
+/*검색테이블*/
+
+#search_table table, 
+#search_table thead, 
+#search_table tbody, 
+#search_table th, 
+#search_table td, 
+#search_table tr { 
+		/*display: block; */
+	}
+
+
+
+#search_table table th{width:100%; border:0; background:#eee; float:left; padding:5px 0px 5px 0px;}
+#search_table table td{border:0; padding:5px 0px 5px 0px; width:100%; text-align:center;}
+
+
+	#search_table thead tr { 
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	
+}
+
+#search_table tr { float:left; width:100%; }
+
+#search_table td { 
+/* Behave  like a "row" */
+border: none;
+position: relative;
+padding-left: 30%; 
+white-space: normal;
+text-align:left;
+float:left;
+}
+
+
+select{width:96% !important; border:1px solid #ccc; height:24px;}
+input[type="text"]{width:96% !important;  border:1px solid #ccc; height:24px;}
+
+
+
+
+
+
+
+
+
+/*테이블*/
+
+/* Force table to not be like tables anymore */
+	#list_wrap table, 
+	#list_wrap thead, 
+	#list_wrap tbody, 
+	#list_wrap th, 
+	#list_wrap td, 
+	#list_wrap tr { 
+		/*display: block; */
+		border-top:0px solid silver;
+	}
+
+/* Hide table headers (but not display: none;, for accessibility) */
+	#list_wrap thead tr { 
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+#list_wrap tr { border: 1px solid #ccc; }
+
+#list_wrap td { 
+/* Behave  like a "row" */
+border: none;
+border-bottom: 1px solid #eee; 
+position: relative;
+/*padding-left:40%;*/
+white-space: normal;
+text-align:right !important;
+float:left;
+width:100%;
+padding:5px 0px 5px 0px;
+
+
+	}
+ 
+table tbody tr td::before { 
+/* Now like a table header */
+position: absolute;
+/* Top/left values mimic padding */
+top: 6px;
+left: 6px;
+width: 20%; 
+padding-right: 10px; 
+white-space: nowrap;
+text-align:left;
+font-weight: bold;
+
+}
+
+table tbody tr td::before{
+content:attr(data-title);
+}
+#list_table{}
+
+
+
+
+
+#sub_menu ul{margin:0; height:0; border:0;}
+#sub_menu ul li{float:none; width:100%; margin-top:-1px; height:32px; }
+#p2 #sub_menu a.tab1, #sub_menu a.tab2, #sub_menu a.tab3{margin:0; width:100%; height:21px;}
+#sub_menu ul li a{padding:8px 0px 6px 0px; font-size:10pt; width:100%; margin:0 !important}
+
+
+
+
+#contentW .content{padding:20px; margin-top:50px;}
+
+
+
+
+
+
+
+
+
+
+/*상세보기 테이블*/
+
+
+	#dbiz_view table, 
+	#dbiz_view thead, 
+	#dbiz_viewtbody, 
+	#dbiz_view th, 
+	#dbiz_view td, 
+	#dbiz_view tr { 
+		/*display: block; */
+		border-top:0px solid silver;
+	}
+
+
+	#dbiz_view thead tr { 
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+#dbiz_view tr { border: 1px solid #ccc; }
+.tb2_w2 tr{border:0 !important;}
+#dbiz_view td { 
+
+border: none;
+border-bottom: 1px solid #eee; 
+position: relative;
+/*padding-left:40%;*/
+white-space: normal;
+text-align:right;
+float:left;
+width:100%;
+padding:5px 0px 5px 0px;
+
+
+	}
+
+
+
+#dbiz_view table.dbiz_tb2 tr th{display:none;}
+#dbiz_view table.dbiz_tb2 tr td{border:0;  border-bottom:1px solid #ccc; padding-right:0;}
+
+
+
+
+#dbiz_view table.dbiz_tb4 > tbody >tr{border:0;}
+#dbiz_view table.dbiz_tb4 > tbody >tr > td{border:0; height:auto; padding:0; }
+#dbiz_view table.dbiz_tb4 th{vertical-align:top; }
+
+
+#dbiz_view table.dbiz_tb2 tr td.dbiz_td1{display:none;}
+
+
+#dbiz_view table.dbiz_tb1 tbody tr th{display:none;}
+#dbiz_view table.dbiz_tb1 tbody tr{border:0;}
+#dbiz_view table.dbiz_tb1 tbody tr td{text-align:left; padding-left:50%; width:48%;}
+
+
+.tb2_w{width:98% !important;}
+
+
+
+#dbiz_view table.dbiz_tb2 tr td.dbiz_td2{background:#eee;}
+
+
+#page_wrap{margin-bottom:20px;}
+.munu_0{width:100%;}
+.munu_1{}
+.munu_2{}
+
+
+
+
+
+
+#sub_menu ul li.list_link{border-left:1px solid silver;}
+#ex3{margin-bottom:20px; padding:0;}
+
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width :1024px) {
+div.sub_menu ul li a{padding-left:0; padding-right:0;}
+}
+
+
+
+
+
+
+/*세로 모드. 뷰포트의 높이가 너비에 비해 상대적으로 크면 실행*/
+@media screen and (orientation:portrait) {
+
+/*(device-max-width:650px)  (orientation:landscape)*/
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shop.fims.applicationform.AppFormMapper">
+	<resultMap type="shop.fims.vo.CommitteeApp" id="comAppResultMap">
+		<result property="comAppCd" column="com_app_cd"/>
+		<result property="areacityAdminCd" column="areacity_admin_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
+		<result property="areaCd" column="area_cd"/>
+		<result property="festCd" column="fest_cd"/>
+		<result property="fesAnnCd" column="fes_ann_cd"/>
+		<result property="manComCd" column="man_com_cd"/>
+		<result property="comAppNm" column="com_app_nm"/>
+		<result property="comAppPhone" column="com_app_phone"/>
+		<result property="comAppAdd" column="com_app_add"/>
+		<result property="comAppJob" column="com_app_job"/>
+		<result property="comAppEmail" column="com_app_email"/>
+		<result property="comAppEdu" column="com_app_edu"/>
+		<result property="comAppCar" column="com_app_car"/>
+		<result property="comAppResult" column="com_app_result"/>
+		<result property="comAppDt1" column="com_app_dt1"/>
+		<result property="comAppSel" column="com_app_sel"/>
+		<result property="comAppDt2" column="com_app_dt2"/>
+		<result property="festNm" column="fest_nm"/>
+		<result property="manComNm1" column="man_com_nm1"/>
+		<result property="festAnnNm" column="fest_ann_nm"/>
+	</resultMap>
+	
+	<!-- 위원회 신청서 수 -->
+	<select id="getComAppAllCount" resultType="int">
+		SELECT 
+			COUNT(*)
+		FROM Com_App
+	</select>
+	
+	<!-- 위원회 신청서 관리 -->
+	<select id="getComAppList"
+	resultType="shop.fims.vo.CommitteeApp"
+	parameterType="java.util.Map">
+		SELECT
+			com_app_cd AS comAppCd,
+			fest_nm AS festNm,
+			man_com_nm1 AS manComNm1,
+			fest_ann_nm AS festAnnNm,
+			com_app_nm AS comAppNm,
+			com_app_dt1 AS comAppDt1,
+			com_app_sel AS comAppSel
+		FROM Com_App
+		ORDER BY com_app_cd DESC
+		LIMIT #{startRow},#{rowPerPage}
+	</select>
+	
+	<!-- 위원회 신청서 상세보기 위원회참가신청서관리코드로 조회 -->
+	<select id="selectByComApp" parameterType="String" resultMap="comAppResultMap">
+		SELECT 
+			*
+		FROM 
+			Com_App
+		WHERE 
+			com_app_cd = #{comAppCd}
+	</select>
+
+</mapper>

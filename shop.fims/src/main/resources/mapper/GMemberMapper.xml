@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shop.fims.gukmin.mapper.GMemberMapper">
+	<resultMap type="shop.fims.vo.Member" id="MemberResultMap">
+		<result property="MemCd" column="mem_cd"/>
+		<result property="MemLevCd" column="mem_lev_cd"/>
+		<result property="MemNm" column="mem_nm"/>
+		<result property="MemAddr" column="mem_addr"/>
+		<result property="MemPhone" column="mem_phone"/>
+		<result property="MemEmail" column="mem_email"/>
+		<result property="MemBirth" column="mem_birth"/>
+		<result property="MemJoinDt" column="mem_join_dt"/>
+		<result property="LoginCd" column="login_cd"/>
+		<result property="MemCd" column="mem_cd"/>
+		<result property="MemLevCd" column="mem_lev_cd"/>
+		<result property="LoginPw" column="login_pw"/>
+		<result property="MemNm" column="mem_nm"/>
+		<result property="MemLevNm" column="mem_lev_nm"/>
+	</resultMap>
+
+	 <!--회원 로그인 : 아이디 = 비번 일치-->
+	 <select id="getMemberLogin" resultMap="MemberResultMap">
+		SELECT 
+			Login.login_cd,
+			Login.login_pw,
+			Login.mem_nm, 
+			Login.mem_lev_nm,
+			Member.mem_addr, 
+			Member.mem_phone, 
+			Member.mem_email, 
+			Member.mem_birth,
+			Member.mem_join_dt
+		FROM 
+			Login INNER JOIN Member 
+		ON 
+			Login.mem_cd = Member.mem_cd
+		WHERE
+				login_cd = #{LoginCd}
+			and login_pw = #{LoginPw}
+	 </select>
+	 
+	 <!--회원 로그인 : 아이디 일치-->
+	 <select id="getMemberById" resultMap="MemberResultMap">
+		SELECT 
+			Login.login_cd,
+			Login.login_pw,
+			Login.mem_nm, 
+			Login.mem_lev_nm,
+			Member.mem_addr, 
+			Member.mem_phone, 
+			Member.mem_email, 
+			Member.mem_birth,
+			Member.mem_join_dt
+		FROM 
+			Login INNER JOIN Member 
+		ON 
+			Login.mem_cd = Member.mem_cd
+		WHERE
+				login_cd = #{LoginCd}
+	 </select>	 
+
+
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shop.fims.gukmin.mapper.GCommunityMapper">
+<!-- 	<resultMap type="shop.fims.vo.Board" id="boardResultMap">
+		<result property="boardCd" column="board_cd"/>		
+		<result property="boardTitle" column="board_title"/>		
+		<result property="boardContent" column="board_content"/>		
+		<result property="boardWriter" column="board_writer"/>
+		<result property="boardDt" column="board_dt"/>	
+	</resultMap> -->
+
+	<!--  -->
+	<select id="getBoardAllCount" resultType="int">
+		SELECT 
+			COUNT(*)
+		FROM Board
+	</select>
+	
+	<!--  -->
+	<select id="getBoardList"
+		resultType="shop.fims.vo.Board"
+		parameterType="java.util.Map">
+		SELECT 
+			 board_cd 		AS boardCd
+			,board_pw			AS boardPw
+			,board_title 	AS boardTitle
+			,board_content 	AS boardContent
+			,board_writer 	AS boardWriter
+			,board_dt 	AS boardDt
+		FROM Board
+		ORDER BY board_cd DESC
+		LIMIT #{startRow},#{rowPerPage}
+	</select>
+</mapper>

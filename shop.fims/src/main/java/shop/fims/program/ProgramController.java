@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.fims.vo.ProDivDay;
+
 @Controller
 public class ProgramController {
 		@Autowired ProgramService programservice;
@@ -143,9 +145,12 @@ public class ProgramController {
 		
 		
 		//프로그램 일정분류 신규등록
-		@GetMapping("/proInsertDivDay")
-		public String insertDivDay() {
-			return "program/proInsertDivDay";		
+		@PostMapping("/proInsertDivDay")
+		public String insertDivDay(ProDivDay prodivday, 
+				HttpSession session, Model modelDay, Model modelPlace, Model modelTheme) {
+			System.out.println("prodivday :"+prodivday);
+			programservice.insertDivDay(prodivday);
+			return "redirect:/proDivList";		
 		}
 		//프로그램 장소분류 신규등록
 		@GetMapping("/proInsertDivPlace")

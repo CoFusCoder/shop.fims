@@ -9,8 +9,8 @@
   <title>축제통합관리 로그인</title>
 
   <!-- Favicons -->
-  <link href="adminis/img/favicon.png" rel="icon">
-  <link href="adminis/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/adminis/img/favicon.png" rel="icon">
+  <link href="/adminis/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Bootstrap core CSS -->
   <link href="/adminis/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,24 +34,23 @@
       *********************************************************************************************************************************************************** -->
   <div id="login-page">
     <div class="container">
-      <form class="form-login" action="/dashboard">
+      <form class="form-login" action="/admin/main" method="post">
         <h2 class="form-login-heading">로그인</h2>
         <div class="login-wrap">
-          <input type="text" class="form-control" placeholder="User ID" autofocus>
+          <input type="text" name="LoginCd" class="form-control" placeholder="User ID" autofocus>
           <br>
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="LoginPw" class="form-control" placeholder="Password">
           <label class="checkbox">
             <input type="checkbox" value="remember-me">#아이디저장
             <span class="pull-right">
-            <a data-toggle="modal" href="/adminis/login.html#myModal">#패스워드찾기</a>
+            <a data-toggle="modal" href="#">#패스워드찾기</a>
             </span>
             </label>
-          <a href="/admin/main"><button class="btn btn-theme btn-block"  type="button"><i class="fa fa-lock"></i>공무원 로그인</button></a>
+          <button class="btn btn-theme btn-block"  type="button" value="0"><i class="fa fa-lock"></i>공무원</button>
+          <button class="btn btn-theme btn-block"  type="button" value="1"><i class="fa fa-lock"></i>거래처</button>
+          <button class="btn btn-theme btn-block"  type="button" value="3"><i class="fa fa-lock"></i>개발사</button>
           <hr>
-          <a href="/dashboard"><button class="btn btn-theme btn-block"  type="button"><i class="fa fa-lock"></i>거래처 로그인</button></a>
-          <hr>
-          <a href="/gukminview/index"><button class="btn btn-theme btn-block"  type="button"><i class="fa fa-lock"></i>국민 로그인</button></a>
-          <!-- <button class="btn btn-theme btn-block" href="/adminisview/dashboard" type="submit"><i class="fa fa-lock"></i>로그인</button> -->
+          <button class="btn btn-theme btn-block"  type="submit" id="loginbutton"><i class="fa fa-lock"></i>로그인</button>
           <hr>
 <!--           <div class="login-social-link centered">
             <p>권한별로 로그인하시면 됩니다.</p>
@@ -59,12 +58,12 @@
             <a href="/adminisview/dashboard"><button class="btn btn-twitter" type="button"><i class="fa fa-twitter"></i>!거래처 로그인</button></a>
             <a href="/gukminview/index"><button class="btn btn-twitter" type="button"><i class="fa fa-twitter"></i>!국민 로그인</button></a>
           </div> -->
-          <div class="registration">
+<!--           <div class="registration">
             	회원가입을 하시겠습니까?<br/>
             <a class="" href="#">
               #회원가입
               </a>
-          </div>
+          </div> -->
         </div>
         <!-- Modal -->
         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
@@ -95,6 +94,40 @@
   <!--BACKSTRETCH-->
   <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
   <script type="text/javascript" src="/adminis/lib/jquery.backstretch.min.js"></script>
+  <!-- 거래처, 국민, 개발사 로그인 초기값 -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$('[type="button"]').click(function() {
+		var a = $(this).val()
+		if(a=="1"){
+			$('[name="LoginCd"]').val("id013")
+			$('[name="LoginPw"]').val("pw013")
+		}else if(a=="3"){
+			$('[name="LoginCd"]').val("id002")
+			$('[name="LoginPw"]').val("pw002")
+		}else if(a=="0"){
+			$('[name="LoginCd"]').val("id003")
+			$('[name="LoginPw"]').val("pw003")
+		}
+	});
+	
+		$('#loginbutton').click(function() {
+		var loginid = $('input[name="LoginCd"]');
+		var LoginPw = $('input[name="LoginPw"]');
+		if(loginid.val() == ""){
+			alert('아이디를 입력해주세요')
+			loginid.focus();
+			return false;
+		}else if(LoginPw.val() == ""){
+			alert('패스워드를 입력해주세요')
+			LoginPw.focus();
+			return false;
+		}
+	
+
+	})
+})
+</script>
 </body>
 
 </html>

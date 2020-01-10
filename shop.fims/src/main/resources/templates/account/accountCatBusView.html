@@ -15,12 +15,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			</a>
 		</div>
 		<br/>
-		<form class="form-inline" role="form" align="right" th:action="@{#}" method="get">
+		<form class="form-inline" role="form" align="right" th:action="@{searchAccountCatBus}" method="post">
 			<select class="form-control" name="sk">
-	                <option value="#">이름</option>
+	                <option value="catbus_acc_bus">거래처업종분류</option>
 	              </select>
 	             <div class="form-group">
-	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="#">
+	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="sv">
 	             </div>
 	             <button type="submit" class="btn btn-theme">검색</button>
         </form>
@@ -50,7 +50,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			 		  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a> 
 			 		</td>
 			 		<td>
-			 		  <a th:href="@{/accountCatBusView(catBusAccCd=${a.catBusAccCd})}">
+			 		  <a th:href="@{/deleteAccountCatBus(catBusAccCd=${a.catBusAccCd})}">
 			 		  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
 			 		</td>
                   </tr>

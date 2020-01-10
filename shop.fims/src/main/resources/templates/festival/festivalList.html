@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<title>
+	축제목록
+</title>
+
+<style>
+.scrolltable {
+    width: 100%; height:750px;
+    display: block;
+    overflow: auto;
+}
+thead {
+	position: relative;
+	top: 0;
+	background: #ffffff;
+}
+table td,th {
+    width:100%; /* width값을 주어야 ...(말줄임)가 적용된다. */
+    overflow: hidden;
+    text-overflow:ellipsis; /*overflow: hidden; 속성과 같이 써줘야 말줄임 기능이 적용된다.*/
+    white-space:nowrap; /*<td>보다 내용이 길경우 줄바꿈 되는것을 막아준다.*/
+}
+.text-ellipsis {
+
+	display: table;
+	table-layout: fixed;
+	width: 170px;
+	white-space: inherit;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+</style>
+
+
+<div class="col-md-12">
+		<div class="content-panel">
+			<h4><i class="fa fa-angle-right"></i> 전라북도 축제 조회 </h4>
+			<table class="table table-striped table-advance table-hover scrolltable">
+				<hr>
+				<thead>
+					<tr>
+						<th>축제코드 </th>
+						<th>행정기관 </th>
+						<th>지역명 </th>
+						<th>시군 </th>
+						<th>축제명 </th>
+						<th>개최지역</th>
+						<th>개최장소</th>
+						<th>시작일자</th>
+						<th>종료일자</th>
+						<th>축제내용</th>
+						<th>주관기관</th>
+						<th>후원기관</th>
+						<th>개최지주소</th>
+						<th>전화문의</th>
+					</tr>
+				</thead>
+				<tbody>
+						<tr th:each="fl:${festivalList}">
+							<td th:text="${fl.festCd}" ></td>
+							<td th:text="${fl.areaCd}"></td>
+							<td th:text="${fl.areaCityCd}"></td>
+							<td th:text="${fl.areacityAdminCd}"></td>
+							<td>
+								<div class="text-ellipsis" th:text="${fl.festNm}" th:title="${fl.festNm}"></div>
+							</td>
+							<td th:text="${fl.festHostArea}"></td>
+							<td th:text="${fl.festHostPlace}"></td>
+							<td th:text="${fl.festStartDt}"></td>
+							<td th:text="${fl.festEndDt}"></td>
+							<td>
+								<div class="text-ellipsis" th:text="${fl.festContent}" th:title="${fl.festContent}"></div>
+							</td>
+							<td th:text="${fl.festSuperAgency}"></td>
+							<td>
+								<div class="text-ellipsis" th:text="${fl.festSpoAgency}" th:title="${fl.festSpoAgency}"></div>
+							</td>
+							<td th:text="${fl.festAddr}"></td>
+							<td th:text="${fl.festInquiry}"></td>
+							<td >
+								<button class="btn btn-success btn-xs">
+									<i class="fa fa-plus">등록</i>
+								</button>
+								<button class="btn btn-primary btn-xs">
+									<i class="fa fa-pencil">수정</i>
+								</button>
+								<button class="btn btn-danger btn-xs">
+									<i class="fa fa-trash-o ">삭제</i>
+								</button>
+							</td>
+						</tr>
+				</tbody>
+		</table>
+	</div>
+</div>
+
+
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

@@ -24,8 +24,39 @@ public class MainController {
 	@GetMapping("/")
 	public String gukminmainview() {
 		System.out.println("---국민 메인화면 : gukminmainview 메서드 MainController.java-------");
-		return "gukminview/index";
+		return "/gukminview/index";
 	}
+	
+	
+	/**
+	 * @param 없음
+	 * @file MainController.java
+	 * @name gukminMainView
+	 * @brief 국민메인화면
+	 * @author ksmart33 김동석
+	 * @return gukminview/gukminMainView
+	 */
+	@GetMapping("gukminview/gukminMainView")
+	public String gukminMainView() {
+		System.out.println("---국민메인화면 : gukminMainView MainController.java-------");
+		return "/gukminview/gukminMainView";
+	}
+	
+	/**
+	 * @param 없음
+	 * @file MainController.java
+	 * @name siteMapView
+	 * @brief 국민 사이트앱
+	 * @author ksmart33 김동석
+	 * @return gukminview/sitemap/projectIntro
+	 */
+	@GetMapping("/gukminview/sitemap/siteMapView")
+	public String siteMapView() {
+		System.out.println("---국민 사이트앱 : siteMapView MainController.java-------");
+		return "/gukminview/sitemap/siteMapView";
+	}
+	
+		
 	
 	/**
 	 * @param 없음
@@ -68,7 +99,7 @@ public class MainController {
 	 * @name dashboard
 	 * @brief 관리자 메인화면
 	 * @author ksmart33 김동석
-	 * @return dashboard
+	 * @return /admin/main
 	 */
 	@GetMapping("/admin/main")
 	public String dashboard() {

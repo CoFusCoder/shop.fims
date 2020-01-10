@@ -4,7 +4,7 @@ public class AreaCity {
 	
 	private String areaCityCd;
 	private String areaCd;
-	private String areaNm;
+	private String areaCityNm;
 	
 	public String getAreaCityCd() {
 		return areaCityCd;
@@ -18,15 +18,14 @@ public class AreaCity {
 	public void setAreaCd(String areaCd) {
 		this.areaCd = areaCd;
 	}
-	public String getAreaNm() {
-		return areaNm;
+	public String getAreaCityNm() {
+		return areaCityNm;
 	}
-	public void setAreaNm(String areaNm) {
-		this.areaNm = areaNm;
+	public void setAreaCityNm(String areaCityNm) {
+		this.areaCityNm = areaCityNm;
 	}
 	@Override
 	public String toString() {
-		return "AreaCity [areaCityCd=" + areaCityCd + ", areaCd=" + areaCd + ", areaNm=" + areaNm + "]";
+		return "AreaCity [areaCityCd=" + areaCityCd + ", areaCd=" + areaCd + ", areaCityNm=" + areaCityNm + "]";
 	}
-
 }
