@@ -154,7 +154,10 @@ public class PublicrelationsService {
 		return publicrelationsMapper.selectEventWinnerByPmcd(festprProCd);
 	}
 	
-
+//**********홍보 이벤트당첨자 ***********
+	public List<Map<String, Object>> selectPrCom(){
+		return publicrelationsMapper.selectPrCom();		
+	}
 
 
 }

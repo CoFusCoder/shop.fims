@@ -345,8 +345,25 @@ from
   	</select>
   
   
-  
-  
+<!-- 홍보관련 거래처 조회 -->
+<select id="selectPrCom" resultType="map">
+SELECT
+c.*
+FROM
+	(
+	SELECT
+	 a.cat_acc_cd
+	FROM
+		Cat_Approval_Account AS a
+		,Cat_Business_Account AS b
+	WHERE
+		a.catbus_acc_cd=b.catbus_acc_cd
+		AND b.catbus_acc_bus='홍보대행업체'
+	) AS ab
+INNER JOIN
+Cat_Account AS c
+WHERE ab.cat_acc_cd=c.cat_acc_cd
+</select>  
   
   
   

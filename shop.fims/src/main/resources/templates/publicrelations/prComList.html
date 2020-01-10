@@ -39,7 +39,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   <tr>
                     <th>번호</th>
                     <th>거래처명</th>
-                    <th>홍보사업명</th>
+                    <th>사업자등록번호</th>
                     <th>대표자명</th>
                     <th>주소</th>
                     <th>연락처1</th>
@@ -48,17 +48,17 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="p:${AllPromotion}">  
-			 		<td th:text="${pStat.count}"></td>
-			 		<td th:text="${p.festprDivNm}"></td>
-			 		<td th:text="${p.catAccNm1}"></td>
-			 		<td th:text="${p.festprProNm}"></td>
-			 		<td th:text="${p.festprProDetail}"></td>
-			 		<td th:text="${p.fprproStartDt}"></td>
-			 		<td th:text="${p.actionStatus}"></td>
-			 		<td th:text="${p.festprProExpense}"></td>
+                  <tr th:each="c:${prCom}">  
+			 		<td th:text="${cStat.count}"></td>
+			 		<td th:text="${c.cat_acc_nm1}"></td>
+			 		<td th:text="${c.cat_acc_no1}"></td>
+			 		<td th:text="${c.cat_acc_nm2}"></td>
+			 		<td th:text="${c.cat_acc_addr}"></td>
+			 		<td th:text="${c.cat_acc_phone2}"></td>
+			 		<td th:text="${c.cat_acc_phone3}"></td>
+
 			 		<td>
-			 		  <a th:href="@{/prPromotionDetail(festprProCd=${p.festprProCd})}">
+			 		  <a>
 			 		  <button type="button" class="btn btn-success btn-sm">상세</button></a>
 			 		 
 			 		</td>
@@ -74,12 +74,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
           
           
         </div>	
-<div>
-<form th:action="@{/getfile}" enctype="multipart/form-data" method="post">
-<input type="file" name="test">
-<button type="submit">보내기</button>
-</form>
-</div>
 
 
 </th:block>

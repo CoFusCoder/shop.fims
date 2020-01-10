@@ -213,7 +213,8 @@ public class PublicrelationsController {
 	
 	//홍보 거래처리스트
 	@GetMapping("/prComList")
-	public String prCompanyList() {
+	public String prCompanyList(Model model) {
+		model.addAttribute("prCom", publicrelationsService.selectPrCom());
 		return "publicrelations/prComList";
 	}
 	

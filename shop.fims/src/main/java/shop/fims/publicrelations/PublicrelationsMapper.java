@@ -74,9 +74,9 @@ public interface PublicrelationsMapper {
 	
 	
 	
+//**********기타 ***********			
 	
-	
-	
+	public List<Map<String, Object>> selectPrCom();
 	
 	
 
