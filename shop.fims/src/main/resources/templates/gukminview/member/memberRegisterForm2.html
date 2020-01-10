@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<meta property="og:url" content="https://joyfesta.kr" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="축제&middot;전통시장 플랫폼 조이페스타(JOYFESTA)" />
+<meta property="og:description"
+	content="대한민국을 넘어 전 세계의 축제와 전통시장을 만날 수 있는 곳! JOYFESTA(조이페스타)에서 축제와 전통시장, 스토어를 만나보세요!" />
+<meta property="og:image" content="https://joyfesta.kr/include/img/bg/bg_about_logo.png" />
+
+<meta name="naver-site-verification"
+	content="3bc2e3d5ffc22fcb93cd294f715f9489796ce136" />
+<meta name="google-signin-client_id"
+	content="63894480628-2ocis5usun9m4dje3mt4p8kk8fac3ind.apps.googleusercontent.com">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" type="text/css"
+	href="/gukmin/include/css/common_190812.css" />
+<link rel="stylesheet" type="text/css"
+	href="/gukmin/include/css/default_190911.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async
+	src="https://www.googletagmanager.com/gtag/js?id=UA-143264662-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+	gtag('config', 'UA-143264662-1');
+</script>
+
+<script src="/gukmin/include/js/jquery-3.2.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/gukmin/include/js/jquery-ui-1.10.3.custom.js"></script>
+
+<script src="/gukmin/include/js/slick.min.js"></script>
+<script src="/gukmin/include/js/user_20190703.js"></script>
+
+<script type="text/javascript" src="/gukmin/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<script src="/gukmin/js/jf_190617.js"></script>
+
+<style>
+
+/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/*=indicator-------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------*/
+.indicator {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100000;
+	overflow: hidden;
+	outline: 0;
+	pointer-events: all;
+	background: rgba(0, 0, 0, 0.35);
+	/*
+	background:rgba(0,0,0,0.78);
+	*/
+}
+
+.indicator.on {
+	display: block;
+}
+
+.indicator .loader {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -30px;
+	margin-left: -30px;
+	font-size: 0;
+}
+
+.indicator .loader img {
+	
+}
+</style>
+<title>이용약관 | 축제&middot;전통시장 플랫폼 조이페스타(JOYFESTA)</title>
+<!--
+<meta name="title" content="이용약관 | 축제&middot;전통시장 플랫폼 조이페스타(JOYFESTA)"> 
+ -->
+<meta name="keywords" content="이용약관, 축제, 이벤트, 전통시장, 스토어, 조이페스타, JOYFESTA, 핫스팟, 베스트스팟, 큐레이션">
+<meta name="description"
+	content="대한민국을 넘어 전 세계의 축제와 전통시장을 만날 수 있는 곳! JOYFESTA(조이페스타)에서 축제와 전통시장, 스토어를 만나보세요!">
+</head>
+<!-- 네이버 어넬러틱스 -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+	if (!wcs_add)
+		var wcs_add = {};
+	wcs_add["wa"] = "ebb4e3d7cbd12";
+	wcs_do();
+</script>
+<script>
+	//indicator on/off
+	function indicatorOn() {
+		$('.indicator').addClass('on');
+		//$('.loading_warp').show();
+
+	}
+
+	function indicatorOff() {
+		$('.indicator').removeClass('on');
+		//$('.loading_warp').hide();
+	}
+	//indicatorOn();
+
+	var dialogtargeturl = '';
+
+	function resetCommonDialog() {
+		$('#dialogtitle').empty();
+		$('#dialogcontent').empty();
+		dialogtargeturl = '';
+	}
+
+	function closeCommonDialog() {
+		if (dialogtargeturl != '') {
+			location.href = dialogtargeturl;
+		} else {
+			$('#commondialog').hide();
+		}
+
+	}
+
+	$.pageViewHistory();
+</script>
+<body>
+<!-- indicatorOn();/indicatorOff(); -->
+<div class="indicator">
+	<div class="loader">
+		<img src="https://joyfesta.kr/images/Spinner.svg">
+	</div>
+</div>
+
+<div id="wrap">
+	<header>
+	<div class="rela">
+		<h1>
+			<a href="/"><img
+				src="https://joyfesta.kr/include/img/etc/etc_logo.png" /></a>
+		</h1>
+		<div class="totalBox">
+			<nav>
+				<ul>
+					<li id="mainli"><a href="/" id="mainhref">전체</a></li>
+					<li id="festivalli"><a href="Festival.festa" id="festivalhref">축제·이벤트</a></li>
+					<li id="marketli"><a href="Market.festa" id="markethref">시장·스토어</a></li>
+					<li id="promotionli"><a href="Promotion.festa"
+						id="promotionhref">기획전</a></li>
+					<li id="communityli"><a href="Community.festa"
+						id="communityhref">커뮤니티</a>
+						<ul>
+							<li><a href="Event.festa">이벤트</a></li>
+							<li><a href="Notice.festa">공지사항</a></li>
+							<li><a href="Faq.festa">FAQ</a></li>
+						</ul></li>
+				</ul>
+			</nav>
+			<div class="etcRight">
+				<ul>
+					
+						<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">스팟등록하기</a></li>
+					
+					
+				</ul>
+				
+				
+					<!--
+					<a href="javascript:void(0)" class="pMy"><img
+						src="../../include/img/etc/etc_mimg.png" /><span class="t01">게스트
+							님</span></a> 
+				 -->
+					<a href="/gukminview/login/loginForm" class="pLogout"><span>로그인</span></a>
+				
+			</div>
+		</div>
+		<form id="searchform" name="searchform" action="/Search.festa" method="post">
+			<input type="hidden" name="searchkeyword" value="" id="searchkeyword"/>
+			<input type="hidden" name="searchtype" value="festival" id="searchtype"/>
+			<input type="hidden" name="festivaltypeseqs" value="" id="festivaltypeseqs"/>
+			<input type="hidden" name="festivalsituationseqs" value="" id="festivalsituationseqs"/>
+			<input type="hidden" name="festivalseasonseqs" value="" id="festivalseasonseqs"/>
+			<input type="hidden" name="festivaltermseqs" value="" id="festivaltermseqs"/>
+			<input type="hidden" name="markettypeseqs" value="" id="markettypeseqs"/>
+			<input type="hidden" name="storetypeseqs" value="" id="storetypeseqs"/>
+			<input type="hidden" name="marketsituationseqs" value="" id="marketsituationseqs"/>
+			<input type="hidden" name="marketseasonseqs" value="" id="marketseasonseqs"/>
+			<input type="hidden" name="markettermseqs" value="" id="markettermseqs"/>
+			<div class="searchBox">
+				<input type="text" autocomplete="off" id="tagSearch"
+					name="tagSearch"
+					onclick="javascript:$('.btnSearch').trigger('click');"
+					onkeydown="javascript:if(event.keyCode==13){$('.btnSearch').trigger('click');}"
+					placeholder="무엇을 찾고 싶으세요?" /> <a href="javascript:void(0)"
+					class="btnSearch"><img
+					src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" /></a>
+				<a href="javascript:void(0)" class="btnSmartSearch"><img
+					src="https://joyfesta.kr/include/img/ico/ico_search01.png" /></a>
+			</div>
+			<a href="javascript:void(0)" class="totalMenu"><span>전체메뉴</span></a>
+
+			<!--일반검색 -->
+			<div class="norSearchBox">
+				<p class="tit">인기해시태그</p>
+				<div class="tagBox">
+					<ul class="tagList">
+						
+							<li> 
+									<a href="javascript:void(0)"
+										onclick="searchHashtag('Search.festa?searchkeyword=해외');"
+										class="tag01">#해외</a>
+								</li>
+						
+							<li>
+									<a href="javascript:void(0)"
+										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=843');"
+										class="tag02">#호미곶해맞이</a>
+								 </li>
+						
+							<li> 
+									<a href="javascript:void(0)"
+										onclick="searchHashtag('Search.festa?searchkeyword=크리스마스');"
+										class="tag03">#크리스마스</a>
+								</li>
+						
+							<li>
+									<a href="javascript:void(0)"
+										onclick="searchHashtag('부산새해맞이 시민의 종 타종행사 2020');"
+										class="tag04">#연말연시</a>
+								 </li>
+						
+							<li>
+									<a href="javascript:void(0)"
+										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1174');"
+										class="tag05">#서울랜드겨울빛축제</a>
+								 </li>
+						
+							<li>
+									<a href="javascript:void(0)"
+										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1082');"
+										class="tag01">#해운대빛축제</a>
+								 </li>
+						
+							<li>
+									<a href="javascript:void(0)"
+										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1127');"
+										class="tag02">#연말연시</a>
+								 </li>
+						
+							<li>
+									<a href="javascript:void(0)"
+										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1451');"
+										class="tag03">#소원을말해봐</a>
+								 </li>
+						
+					</ul>
+				</div>
+				<div class="keywordBar">
+					<span>최근검색어</span> <a href="javascript:void(0)"
+						onclick="deleteSearchKeyword();">최근 검색어 삭제</a>
+				</div>
+				<div class="keywordBox">
+					<ul class="keywordList">
+					</ul>
+				</div>
+			</div>
+			<!--일반검색 -->
+
+			<!--스마트검색 -->
+			<div class="smartSearchBox">
+				<div class="desc">
+					<p class="t01">조이페스타 스마트검색</p>
+					<p class="t02">필요한 조건을 선택하여 검색해보세요! 원하는 검색결과를 더 쉽고 빠르게 얻으실 수
+						있습니다.</p>
+				</div>
+				<ul class="searchTabs">
+					<li><a href="javascript:void(0)" class="on" id="searchTabs01"
+						data-id="optionTable01" onclick="setSearchType('festival');">축제·이벤트</a></li>
+					<li><a href="javascript:void(0)" id="searchTabs02"
+						data-id="optionTable02" onclick="setSearchType('market');">시장·스토어</a></li>
+				</ul>
+				<div class="smartSearch_List">
+					<table id="optionTable01" class="optionTable">
+						<tr>
+							<th>방문예정일</th>
+							<td>
+								<div class="form">
+									<input type="text" id="startdate" name="startdate"
+										autocomplete="off" class="inp datepicker"
+										placeholder="선택해주세요." value="" />
+									<span class="etxt">~</span> <input type="text" id="enddate"
+										name="enddate" value=""
+										autocomplete="off" class="inp datepicker"
+										placeholder="선택해주세요." />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>지역</th>
+							<td>
+								<div class="form">
+									<p class="item">국내</p>
+									<select class="select" id="sidofestival" name="sidofestival">
+										<option value="">지역(시도)</option>
+										<option value="서울"
+											>서울특별시</option>
+										<option value="부산"
+											>부산광역시</option>
+										<option value="대구"
+											>대구광역시</option>
+										<option value="인천"
+											>인천광역시</option>
+										<option value="광주"
+											>광주광역시</option>
+										<option value="대전"
+											>대전광역시</option>
+										<option value="울산"
+											>울산광역시</option>
+										<option value="세종"
+											>세종특별자치시</option>
+										<option value="경기"
+											>경기도</option>
+										<option value="강원"
+											>강원도</option>
+										<option value="충북"
+											>충청북도</option>
+										<option value="충남"
+											>충청남도</option>
+										<option value="전북"
+											>전라북도</option>
+										<option value="전남"
+											>전라남도</option>
+										<option value="경북"
+											>경상북도</option>
+										<option value="경남"
+											>경상남도</option>
+										<option value="제주"
+											>제주특별자치도</option>
+									</select> <select class="select" id="sigungufestival"
+										name="sigungufestival">
+										<option value="">지역(시군구)</option>
+									</select>
+								</div>
+								<div class="form">
+									<p class="item">해외</p>
+									<select id="regionfestival" name="regionfestival"
+										class="select">
+										<option value="">대륙</option>
+										<option value="101"
+											>아시아ㆍ중동</option>
+										<option value="102"
+											>아메리카</option>
+										<option value="103"
+											>유럽</option>
+										<option value="104"
+											>아프리카ㆍ오세아니아</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>축제유형</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allfestivaltypes"
+										onclick="setFestivalTypes('');">전체</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('23');">먹거리</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('24');">지역ㆍ특산물</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('25');">민속ㆍ전통문화</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('26');">미술ㆍ예술</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('27');">음악ㆍ공연</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('28');">생태계ㆍ자연</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('29');">레저ㆍ스포츠</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('30');">과학ㆍ기술</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('31');">교육ㆍ체험</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('32');">종교ㆍ역사</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('33');">기타</a>
+									
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>상황</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allfestivalsituations"
+										onclick="setFestivalSituations('');">전체</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('1');">나홀로</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('2');">친구</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('3');">연인</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('4');">가족</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('5');">비즈니스</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('6');">모임</a>
+									
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>계절</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allfestivalseasons"
+										onclick="setFestivalSeasons('');">전체</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSeasons('1');">봄</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSeasons('2');">여름</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSeasons('3');">가을</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSeasons('4');">겨울</a>
+									
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>기간</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allfestivalterms"
+										onclick="setFestivalTerms('');">전체</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('1');">당일치기</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('2');">2일이상</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('3');">주말</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('4');">평일</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('5');">연휴</a>
+									
+								</div>
+							</td>
+						</tr>
+					</table>
+					<table id="optionTable02" class="optionTable">
+						<tr>
+							<th>지역</th>
+							<td>
+								<div class="form">
+									<p class="item">국내</p>
+									<select class="select" id="sidomarket" name="sidomarket">
+										<option value="">지역(시도)</option>
+										<option value="서울"
+											>서울특별시</option>
+										<option value="부산"
+											>부산광역시</option>
+										<option value="대구"
+											>대구광역시</option>
+										<option value="인천"
+											>인천광역시</option>
+										<option value="광주"
+											>광주광역시</option>
+										<option value="대전"
+											>대전광역시</option>
+										<option value="울산"
+											>울산광역시</option>
+										<option value="세종"
+											>세종특별자치시</option>
+										<option value="경기"
+											>경기도</option>
+										<option value="강원"
+											>강원도</option>
+										<option value="충북"
+											>충청북도</option>
+										<option value="충남"
+											>충청남도</option>
+										<option value="전북"
+											>전라북도</option>
+										<option value="전남"
+											>전라남도</option>
+										<option value="경북"
+											>경상북도</option>
+										<option value="경남"
+											>경상남도</option>
+										<option value="제주"
+											>제주특별자치도</option>
+									</select> <select class="select" id="sigungumarket" name="sigungumarket">
+										<option value="">지역(시군구)</option>
+									</select>
+								</div>
+								<div class="form">
+									<p class="item">해외</p>
+									<select id="regionmarket" name="regionmarket" class="select">
+										<option value="">대륙</option>
+										<option value="101"
+											>아시아ㆍ중동</option>
+										<option value="102"
+											>아메리카</option>
+										<option value="103"
+											>유럽</option>
+										<option value="104"
+											>아프리카ㆍ오세아니아</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>시장*</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allmarkettypes"
+										onclick="setMarketTypes('');">전체</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('1');">농수축산</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('2');">패션의류</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('3');">한약재</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('4');">잡화</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('5');">철물</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('6');">전자</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('7');">기타</a>
+									
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>스토어*</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allstoretypes"
+										onclick="setStoreTypes('');">전체</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('8');">음식/식품</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('9');">수산/횟집</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('10');">축산물</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('11');">농산물/반찬</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('12');">제과/제빵/떡</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('13');">마트/과일</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('14');">방앗간</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('15');">건강원</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('16');">화장품</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('17');">의류</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('18');">분식</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('19');">이불/가방/신발</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('20');">건어물/젓갈</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('21');">꽃집/귀금속</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('22');">기타</a>
+									
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>상황</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allmarketsituations"
+										onclick="setMarketSituations('');">전체</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('1');">나홀로</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('2');">친구</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('3');">연인</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('4');">가족</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('5');">비즈니스</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('6');">모임</a>
+									
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>계절</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allmarketseasons"
+										onclick="setMarketSeasons('');">전체</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSeasons('1');">봄</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSeasons('2');">여름</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSeasons('3');">가을</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSeasons('4');">겨울</a>
+									
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>기간</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allmarketterms"
+										onclick="setMarketTerms('');">전체</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('1');">당일치기</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('2');">2일이상</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('3');">주말</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('4');">평일</a>
+									
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('5');">연휴</a>
+									
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="m_scroll">
+					<img src="https://joyfesta.kr/include/img/bg/bg_scroll.png" alt="아래로">
+				</div>
+				<div class="btnBox">
+					<a href="javascript:void(0)" class="btnType01" id="searchbutton">검색</a>
+					<a href="javascript:void(0)" class="btnType02"
+						onclick="javascript:$('.btnSmartSearch').removeClass('on');$('.smartSearchBox').hide();">취소</a>
+				</div>
+			</div>
+		</form>
+
+
+
+		<!--스마트검색 -->
+	</div>
+</header>
+	<script>
+	function searchHashtag(url) {
+		window.location.href = url;
+	}
+
+	function setSearchType(searchtype) {
+		$('#searchtype').val(searchtype);
+	}
+
+	$('#startdate').on('changeDate', function() {
+		var startdate = $('#startdate').val();
+		var enddate = $('#enddate').val();
+		if (startdate != '' && enddate != '') {
+			checkDate(startdate, enddate, 'startdate');
+		}
+	});
+
+	$('#enddate').on('changeDate', function() {
+		var startdate = $('#startdate').val();
+		var enddate = $('#enddate').val();
+		if (startdate != '' && enddate != '') {
+			checkDate(startdate, enddate, 'enddate');
+		}
+	});
+
+	function checkDate(startDate, endDate, target) {
+		var startDateArr = startDate.split('.');
+		var endDateArr = endDate.split('.');
+		var startDateCompare = new Date(startDateArr[0], startDateArr[1],
+				startDateArr[2]);
+		var endDateCompare = new Date(endDateArr[0], endDateArr[1],
+				endDateArr[2]);
+		if (startDateCompare.getTime() > endDateCompare.getTime()) {
+			alert("방문예정일 날짜를 확인해 주세요.");
+			$('#' + target).val('');
+		}
+	}
+
+	$('#sidofestival').on('change', function() {
+		$('#sigungufestival').val('');
+		$.setSigungu($('#sidofestival').val(), 'sigungufestival');
+		$('#regionfestival').val('');
+	});
+
+	$('#regionfestival').on('change', function() {
+		$('#sidofestival').val('');
+		$.setSigungu($('#sidofestival').val(), 'sigungufestival');
+	});
+
+	$('#sidomarket').on('change', function() {
+		$('#sigungumarket').val('');
+		$.setSigungu($('#sidomarket').val(), 'sigungumarket');
+		$('#regionmarket').val('');
+	});
+
+	$('#regionmarket').on('change', function() {
+		$('#sidomarket').val('');
+		$.setSigungu($('#sidomarket').val(), 'sigungumarket');
+	});
+
+	function setFestivalTypes(typeseq) {
+		var festivaltypeseqs = [];
+		if (typeseq == '') {
+			$('#festivaltypeseqs').val('');
+			$('#allfestivaltypes').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allfestivaltypes').removeClass("on");
+			if ($('#festivaltypeseqs').val() != '') {
+				festivaltypeseqs = $('#festivaltypeseqs').val().split(',');
+			}
+			//alert(festivaltypeseqs);
+			if (checkValue(typeseq, festivaltypeseqs) == 'Exist') {
+				festivaltypeseqs
+						.splice($.inArray(typeseq, festivaltypeseqs), 1);
+				$('#festivaltypeseqs').val(festivaltypeseqs);
+			} else {
+				festivaltypeseqs.push(typeseq);
+				$('#festivaltypeseqs').val(festivaltypeseqs);
+			}
+		}
+	}
+
+	function setFestivalSituations(situationseq) {
+		var festivalsituationseqs = [];
+		if (situationseq == '') {
+			$('#festivalsituationseqs').val('');
+			$('#allfestivalsituations').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allfestivalsituations').removeClass("on");
+			if ($('#festivalsituationseqs').val() != '') {
+				festivalsituationseqs = $('#festivalsituationseqs').val()
+						.split(',');
+			}
+			if (checkValue(situationseq, festivalsituationseqs) == 'Exist') {
+				festivalsituationseqs.splice($.inArray(situationseq,
+						festivalsituationseqs), 1);
+				$('#festivalsituationseqs').val(festivalsituationseqs);
+			} else {
+				festivalsituationseqs.push(situationseq);
+				$('#festivalsituationseqs').val(festivalsituationseqs);
+			}
+		}
+		//alert($('#festivalsituationseqs').val());
+	}
+
+	function setFestivalSeasons(seasonseq) {
+		var festivalseasonseqs = [];
+		if (seasonseq == '') {
+			$('#festivalseasonseqs').val('');
+			$('#allfestivalseasons').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allfestivalseasons').removeClass("on");
+			if ($('#festivalseasonseqs').val() != '') {
+				festivalseasonseqs = $('#festivalseasonseqs').val().split(',');
+			}
+			if (checkValue(seasonseq, festivalseasonseqs) == 'Exist') {
+				festivalseasonseqs.splice($.inArray(seasonseq,
+						festivalseasonseqs), 1);
+				$('#festivalseasonseqs').val(festivalseasonseqs);
+			} else {
+				festivalseasonseqs.push(seasonseq);
+				$('#festivalseasonseqs').val(festivalseasonseqs);
+			}
+		}
+		//alert($('#festivalseasonseqs').val());
+	}
+
+	function setFestivalTerms(termseq) {
+		var festivaltermseqs = [];
+		if (termseq == '') {
+			$('#festivaltermseqs').val('');
+			$('#allfestivalterms').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allfestivalterms').removeClass("on");
+			if ($('#festivaltermseqs').val() != '') {
+				festivaltermseqs = $('#festivaltermseqs').val().split(',');
+			}
+			if (checkValue(termseq, festivaltermseqs) == 'Exist') {
+				festivaltermseqs
+						.splice($.inArray(termseq, festivaltermseqs), 1);
+				$('#festivaltermseqs').val(festivaltermseqs);
+			} else {
+				festivaltermseqs.push(termseq);
+				$('#festivaltermseqs').val(festivaltermseqs);
+			}
+		}
+		//alert($('#festivaltermseqs').val());
+	}
+
+	function setMarketTypes(typeseq) {
+		var markettypeseqs = [];
+		if (typeseq == '') {
+			$('#markettypeseqs').val('');
+			$('#allmarkettypes').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmarkettypes').removeClass("on");
+			if ($('#markettypeseqs').val() != '') {
+				markettypeseqs = $('#markettypeseqs').val().split(',');
+			}
+			if (checkValue(typeseq, markettypeseqs) == 'Exist') {
+				markettypeseqs.splice($.inArray(typeseq, markettypeseqs), 1);
+				$('#markettypeseqs').val(markettypeseqs);
+			} else {
+				markettypeseqs.push(typeseq);
+				$('#markettypeseqs').val(markettypeseqs);
+			}
+		}
+	}
+
+	function setStoreTypes(typeseq) {
+		var storetypeseqs = [];
+		if (typeseq == '') {
+			$('#storetypeseqs').val('');
+			$('#allstoretypes').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allstoretypes').removeClass("on");
+			if ($('#storetypeseqs').val() != '') {
+				storetypeseqs = $('#storetypeseqs').val().split(',');
+			}
+			if (checkValue(typeseq, storetypeseqs) == 'Exist') {
+				storetypeseqs.splice($.inArray(typeseq, storetypeseqs), 1);
+				$('#storetypeseqs').val(storetypeseqs);
+			} else {
+				storetypeseqs.push(typeseq);
+				$('#storetypeseqs').val(storetypeseqs);
+			}
+		}
+	}
+
+	function setMarketSituations(situationseq) {
+		var marketsituationseqs = [];
+		if (situationseq == '') {
+			$('#marketsituationseqs').val('');
+			$('#allmarketsituations').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmarketsituations').removeClass("on");
+			if ($('#marketsituationseqs').val() != '') {
+				marketsituationseqs = $('#marketsituationseqs').val()
+						.split(',');
+			}
+			if (checkValue(situationseq, marketsituationseqs) == 'Exist') {
+				marketsituationseqs.splice($.inArray(situationseq,
+						marketsituationseqs), 1);
+				$('#marketsituationseqs').val(marketsituationseqs);
+			} else {
+				marketsituationseqs.push(situationseq);
+				$('#marketsituationseqs').val(marketsituationseqs);
+			}
+		}
+		//alert($('#marketsituationseqs').val());
+	}
+
+	function setMarketSeasons(seasonseq) {
+		var marketseasonseqs = [];
+		if (seasonseq == '') {
+			$('#marketseasonseqs').val('');
+			$('#allmarketseasons').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmarketseasons').removeClass("on");
+			if ($('#marketseasonseqs').val() != '') {
+				marketseasonseqs = $('#marketseasonseqs').val().split(',');
+			}
+			if (checkValue(seasonseq, marketseasonseqs) == 'Exist') {
+				marketseasonseqs.splice($.inArray(seasonseq, marketseasonseqs),
+						1);
+				$('#marketseasonseqs').val(marketseasonseqs);
+			} else {
+				marketseasonseqs.push(seasonseq);
+				$('#marketseasonseqs').val(marketseasonseqs);
+			}
+		}
+		//alert($('#marketseasonseqs').val());
+	}
+
+	function setMarketTerms(termseq) {
+		var markettermseqs = [];
+		if (termseq == '') {
+			$('#markettermseqs').val('');
+			$('#allmarketterms').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmarketterms').removeClass("on");
+			if ($('#markettermseqs').val() != '') {
+				markettermseqs = $('#markettermseqs').val().split(',');
+			}
+			if (checkValue(termseq, markettermseqs) == 'Exist') {
+				markettermseqs.splice($.inArray(termseq, markettermseqs), 1);
+				$('#markettermseqs').val(markettermseqs);
+			} else {
+				markettermseqs.push(termseq);
+				$('#markettermseqs').val(markettermseqs);
+			}
+		}
+		//alert($('#markettermseqs').val());
+	}
+
+	function checkValue(value, arr) {
+		var status = 'Not exist';
+
+		for (var i = 0; i < arr.length; i++) {
+			var name = arr[i];
+			if (name == value) {
+				status = 'Exist';
+				break;
+			}
+		}
+
+		return status;
+	}
+
+	$('#searchbutton').click(function() {
+		$("#searchkeyword").val('');
+		$('#searchform').submit();
+	});
+
+	$('.btnSmartSearch').click(function() {
+		$(".searchTabs a").removeClass("on");
+		if ($('#searchtype').val() == 'festival') {
+			$('#searchTabs01').addClass("on");
+			$('#optionTable02').hide();
+			$('#optionTable01').show();
+		} else {
+			$('#searchTabs02').addClass("on");
+			$('#optionTable01').hide();
+			$('#optionTable02').show();
+		}
+	});
+
+	if ($('#sidofestival').val() != '') {
+		$.setSigungu($('#sidofestival').val(), 'sigungufestival');
+		$('#sigungufestival').val('');
+	}
+
+	if ($('#sidomarket').val() != '') {
+		$.setSigungu($('#sidomarket').val(), 'sigungumarket');
+		$('#sigungumarket').val('');
+	}
+</script>
+<script src="/js/jquery.cookie.js"></script>
+<script>
+	var cookieList = function(cookieName) {
+		var cookie = $.cookie(cookieName);
+		var items = cookie ? cookie.split(/,/) : new Array();
+		return {
+			"add" : function(val) {
+				items.unshift(val);
+				//alert(items.join(','));
+				$.cookie(cookieName, items.join(','));
+			},
+			"remove" : function(val) {
+				items.splice($.inArray(val, items), 1);
+				$.cookie(cookieName, items.join(','));
+			},
+			"clear" : function() {
+				items = [];
+				$.cookie(cookieName, []);
+			},
+			"items" : function() {
+				return items;
+			},
+			"checkValue" : function(val) {
+				var status = 'Not exist';
+				for (var i = 0; i < items.length; i++) {
+					var name = items[i];
+					if (name == val) {
+						status = 'Exist';
+						break;
+					}
+				}
+				return status;
+			}
+		}
+	}
+
+	var keywordList = new cookieList("keywordList");
+
+	$('.btnSearch').click(
+			function() {
+				$('.keywordList').empty();
+				$.each(keywordList.items(), function(key, value) {
+					if (key < 15) {
+						$('.keywordList').append(
+								'<li><a href="Search.festa?searchkeyword='
+										+ value + '">' + value + '</a></li>');
+					} else {
+						keywordList.remove(value);
+					}
+				});
+			});
+
+	$('#keywordsearchbutton').click(function() {
+		if ($("#tagSearch").val() != '') {
+			$("#searchkeyword").val($("#tagSearch").val());
+			$('#searchform').submit();
+		}
+	});
+
+	$("#tagSearch").keydown(function(key) {
+		if (key.keyCode == 13) {
+			var val = $("#tagSearch").val();
+			if (keywordList.checkValue(val) == 'Exist') {
+				keywordList.remove(val);
+			}
+			keywordList.add(val);
+			$("#searchkeyword").val(val);
+			$('#searchform').submit();
+		}
+	});
+
+	function deleteSearchKeyword() {
+		keywordList.clear();
+		$('.keywordList').empty();
+	}
+</script>
+
+<script>
+	var auth2;
+	function logout(logintype) {
+		if (logintype == '1') {
+			location.href = 'Logout.festa';
+		} else if (logintype == '2') {
+			auth2 = gapi.auth2.getAuthInstance();
+
+			auth2.signOut().then(function() {
+				location.href = 'Logout.festa';
+			});
+		} else if (logintype == '3') {
+			location.href = 'Logout.festa';
+		} else if (logintype == '4') {
+			//Kakao.init('d83b1d0da9f7f2cf91d72a800b5107a1');
+			Kakao.Auth.logout();
+			location.href = 'Logout.festa';
+		} else {
+			location.href = 'Logout.festa';
+		}
+	}
+
+	function init() {
+		gapi.load('auth2', function() {
+			auth2 = gapi.auth2.init();
+		});
+	}
+</script>
+<script>
+	$(document).ready(function() {
+		var pathname = $(location).attr('pathname');
+		if (pathname.indexOf('Main.festa') != -1) {
+			$('#mainli').addClass('on');
+			$('#mainhref').addClass('bold');
+		} else if (pathname.indexOf('Festival.festa') != -1) {
+			$('#festivalli').addClass('on');
+			$('#festivalhref').addClass('bold');
+		} else if (pathname.indexOf('Market.festa') != -1) {
+			$('#marketli').addClass('on');
+			$('#markethref').addClass('bold');
+		} else if (pathname.indexOf('Promotion.festa') != -1) {
+			$('#promotionli').addClass('on');
+			$('#promotionhref').addClass('bold');
+		} else if (pathname.indexOf('Community.festa') != -1) {
+			$('#communityli').addClass('on');
+			$('#communityhref').addClass('bold');
+		}
+	});
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async
+	defer></script>
+		
+<!-- <th:block th:include="fragments/gukmin/gukmincarousel"></th:block> -->
+
+<form id="registerform" name="registerform" action="/MemberRegisterForm.festa" method="post">
+	<input type="hidden" name="membertype" value="1" id="membertype"/>
+	<input type="hidden" name="hosttype" value="1" id="hosttype"/>
+	<section>
+		<div class="mypDesc">
+			<p class="t01">회원정보</p>
+			<p class="t02">아래의 회원유형을 선택하신 후 회원가입을 진행해 주시기 바랍니다.</p>
+		</div>
+		<div class="norBox">
+			<div class="myinfoBox">
+				<div class="fl">
+					<p class="item">회원유형</p>
+					<ul>
+						<li class="indi"><a href="javascript:void(0)"
+							onclick="javascript:$('#membertype').val('1');" class="on">개인</a></li>
+						<li class="host"><a href="javascript:void(0)"
+							onclick="javascript:$('#membertype').val('2');">호스트</a></li>
+					</ul>
+				</div>
+				<div class="fr">
+					<div id="indi">
+						<p class="item">회원정보</p>
+						<table class="writeTable t01">
+							<colgroup>
+								<col width="120" />
+								<col width="" />
+							</colgroup>
+							<tr>
+								<th>이름</th>
+								<td>
+									<div class="form">
+										<input type="text" id="membername" name="membername"
+											class="inp" placeholder="이름" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>아이디(이메일)</th>
+								<td>
+									<div class="form">
+										<input type="email" class="inp echeck" id="memberemail"
+											name="memberemail" placeholder="아이디(이메일)" /> <a
+											href="javascript:void(0)" onclick="javascript:checkID(1);"
+											class="btnEtc02">중복확인</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td>
+									<div class="form">
+										<input type="password" id="memberpassword"
+											name="memberpassword" class="inp"
+											placeholder="8~16자, 영문/숫자/특수문자 중 2가지 이상 조합으로 만들어주세요." />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>비밀번호 확인</th>
+								<td>
+									<div class="form">
+										<input type="password" id="memberrepassword"
+											name="memberrepassword" class="inp"
+											placeholder="비밀번호를 한번 더 입력해 주세요." />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>전화번호</th>
+								<td>
+									<div class="form">
+										<select class="select w60" id="membercontact01"
+											name="membercontact01">
+											<option value="">선택</option>
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="019">019</option>
+										</select> <span class="etxt">-</span> <input type="text"
+											id="membercontact02" name="membercontact02" class="inp w60" />
+										<span class="etxt">-</span> <input type="text"
+											id="membercontact03" name="membercontact03" class="inp w60" />
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div id="host">
+						<p class="item">로그인정보</p>
+						<table class="writeTable t01">
+							<colgroup>
+								<col width="120" />
+								<col width="" />
+							</colgroup>
+							<tr>
+								<th>아이디(이메일)</th>
+								<td>
+									<div class="form">
+										<input type="email" class="inp echeck" id="hostemail"
+											name="hostemail" placeholder="아이디(이메일)" /> <a
+											href="javascript:void(0)" onclick="javascript:checkID(2);"
+											class="btnEtc02">중복확인</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td>
+									<div class="form">
+										<input type="password" id="hostpassword" name="hostpassword"
+											class="inp"
+											placeholder="8~16자, 영문/숫자/특수문자 중 2가지 이상 조합으로 만들어주세요." />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>비밀번호 확인</th>
+								<td>
+									<div class="form">
+										<input type="password" id="hostrepassword"
+											name="hostrepassword" class="inp"
+											placeholder="비밀번호를 한번 더 입력해 주세요." />
+									</div>
+								</td>
+							</tr>
+						</table>
+						<p class="item">호스트정보</p>
+						<ul class="commTabs t02">
+							<li><a href="javascript:void(0)"
+								onclick="javascript:$('#hosttype').val('1');" class="on">축제·이벤트</a></li>
+							<li><a href="javascript:void(0)"
+								onclick="javascript:$('#hosttype').val('2');">스토어</a></li>
+						</ul>
+						<table class="writeTable t01">
+							<colgroup>
+								<col width="120" />
+								<col width="" />
+							</colgroup>
+							<tr>
+								<th>호스트유형</th>
+								<td>
+									<div class="form">
+										<select class="select" id="hostform" name="hostform">
+											<option value="">선택하세요</option>
+											<option value="1">중앙정부기관</option>
+											<option value="2">공기업</option>
+											<option value="3">대기업</option>
+											<option value="4">신문/방송/언론</option>
+											<option value="5">외국계기업</option>
+											<option value="6">지방자치단체</option>
+											<option value="7">학교/재단/협회</option>
+											<option value="8">중소/벤처기업</option>
+											<option value="9">학회/비영리단체</option>
+											<option value="10">해외</option>
+											<option value="11">개인</option>
+											<option value="99">기타</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>호스트명</th>
+								<td>
+									<div class="form">
+										<input type="text" id="hostname" name="hostname" class="inp"
+											placeholder="호스트명(주최사 또는 스토어명)" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>담당자이름</th>
+								<td>
+									<div class="form">
+										<input type="text" id="managername" name="managername"
+											class="inp" placeholder="담당자 이름" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>담당자 연락처</th>
+								<td>
+									<div class="form">
+										<select class="select w60" id="managercontact01"
+											name="managercontact01">
+											<option value="">선택</option>
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="019">019</option>
+										</select> <span class="etxt">-</span> <input type="text"
+											id="managercontact02" name="managercontact02" class="inp w60" />
+										<span class="etxt">-</span> <input type="text"
+											id="managercontact03" name="managercontact03" class="inp w60" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>담당자 이메일</th>
+								<td>
+									<div class="form">
+										<input type="email" id="manageremail" name="manageremail"
+											class="inp" placeholder="담당자 이메일" />
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+			</div>
+
+			<dl class="myAgreeList">
+				<dt>
+					<p class="tit">이용약관 내용 동의</p>
+					<label for="chkall">전체동의</label> <input type="checkbox" id="chkall" />
+				</dt>
+				<dd>
+					<ul>
+						<li><label for="chk_agree01">만14세 이상입니다<span>(필수)</span></label>
+							<input type="checkbox" id="chk_agree01" /></li>
+						<li class="long"><label for="chk_agree02">전자적 전송매체를
+								이용한 광고성 정보의 수신에 동의합니다. (선택)</label> <input type="checkbox"
+							id="chk_agree02" /></li>
+						<li><label for="chk_agree03">서비스 이용약관 동의<span>(필수)</span></label>
+							<a href="/gukminview/siteterms/siteTermView" target="_blank" class="btnAgreeView">내용보기</a>
+							<input type="checkbox" id="chk_agree03" /></li>
+						<li><label for="chk_agree04">장기 미접속 시 계정 활성 상태 유지
+								(선택)</label> <input type="checkbox" id="chk_agree04" /></li>
+						<li><label for="chk_agree05">개인정보 수집·이용에 대한 동의<span>(필수)</span></label>
+							<a href="/gukminview/siteterms/privacyPolicy" target="_blank"
+							class="btnAgreeView">내용보기</a> <input type="checkbox"
+							id="chk_agree05" /></li>
+					</ul>
+				</dd>
+			</dl>
+
+			<div class="boardBtnBox">
+				<a href="javascript:void(0)" id="registerbutton" class="btnType03">동의하고
+					가입완료</a>
+			</div>
+
+		</div>
+	</section>
+</form>
+
+
+
+
+<div class="dialog" style="display: none; z-index: 1000;"
+	id="registercompletedialog">
+	<div class="popBox">
+		<div class="popHeader">
+			<h1>회원가입</h1>
+			<a href="javascript:void(0)" onclick="location.href='MyPage.festa'"><img
+				src="https://joyfesta.kr/include/img/ico/ico_close02.png" /></a>
+		</div>
+		<div class="popCont">
+			<p class="signTxt01">입력하신 이메일주소로 회원가입 인증메일을 발송했습니다.</p>
+			<p class="signTxt02">
+				인증메일 확인 후 회원가입을 완료해 주세요.<br />
+			</p>
+			<div class="btnBox">
+				<a href="javascript:void(0)"
+					onclick="location.href='LoginForm.festa'" class="btnType02">확인</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+			
+	 <footer>
+	<div class="rela">
+		<div class="fbox01">
+			<ul class="fnbList">
+				<li><a href="/gukminview/fimsproject/projectIntro">서비스소개</a></li>
+				<li><a href="InquiryForm.festa">광고 및 제휴 문의</a></li>
+				<li><a href="/gukminview/siteterms/siteTermView">이용약관</a></li>
+				<li><a href="/gukminview/siteterms/privacyPolicy">개인정보처리방침</a></li>
+				<li><a href="/gukminview/sitemap/siteMapView">사이트맵</a></li>
+			</ul>
+			<select id="familysite"><option value="">패밀리사이트</option>
+				<option value="http://www.thinkcontest.com">씽굿공모전</option></select>
+		</div>
+		<div class="fbox02">
+			<ul>
+				<li>(주)씽굿커뮤니케이션<br />사업자등록번호 : 862-88-01351<br />대표 : 신선경<br /> 주소
+					: (04048) 서울특별시 마포구 어울마당로35, 5층<br /> 개인정보관리 책임자 : 장진영
+				</li>
+				<li>대표전화 : 02-325-6584 <br /> 업무시간 : 평일 09:00 - 18:00 (점심시간 :
+					12:00 - 13:00)<br /> 이메일 : info@joyfesta.kr <a
+					href="InquiryForm.festa" class="btn_link">[1:1 문의하기]</a>
+				</li>
+			</ul>
+			<div class="copyright">Copyright ⓒ 2019 JOYFESTA. All Rights
+				Reserved.</div>
+			<div class="snsBox">
+				<!--
+				<a href="javascript:void(0)"><img
+					src="../../include/img/ico/ico_snsList01_disable.png" /></a>
+					 -->
+				<a
+					href="https://www.facebook.com/joyfesta.official"
+					target="_blank"><img
+					src="https://joyfesta.kr/include/img/ico/ico_snsList01.png" /></a> <a
+					href="http://www.instagram.com/joyfesta" target="_blank"><img
+					src="https://joyfesta.kr/include/img/ico/ico_snsList02.png" /></a>
+			</div>
+		</div>
+	</div>
+</footer>
+	 <script>
+	$('#familysite').change(function() {
+		if ($(this).val() != '') {
+			window.open($(this).val());
+		}
+	});
+
+	
+</script>
+	 	<div class="dialog" style="z-index: 100000; display: none;"
+		id="commondialog">
+		<div class="popBox argeeType">
+			<div class="popHeader">
+				<h1 id="dialogtitle">title</h1>
+				<a href="javascript:void(0)"
+					onclick="javascript:closeCommonDialog();"><img
+					src="../../include/img/ico/ico_close02.png" /></a>
+			</div>
+			<div class="popCont">
+				<div class="agreeCont">
+					<p id="dialogcontent"
+						style="text-align: center; vertical-align: middle;"></p>
+				</div>
+				<div class="btnBox">
+					<a href="javascript:void(0)"
+						onclick="javascript:closeCommonDialog();" class="btnType01">닫기</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="dialog" style="z-index: 100000; display: none;"
+		id="bookmarkdialog">
+		<div class="popBox">
+			<div class="popHeader">
+				<h1>찜하기</h1>
+				<a href="javascript:void(0)"
+					onclick="javascript:$('#bookmarkdialog').hide();"><img
+					src="../../include/img/ico/ico_close02.png" /></a>
+			</div>
+			<div class="popCont">
+				<p class="signTxt01" id="bookmarkdialogcontent"></p>
+				<div class="btnBox">
+					<a href="javascript:void(0)"
+						onclick="location.href='LoginForm.festa'" class="btnType01">지금
+						로그인하기</a> <a href="javascript:void(0)"
+						onclick="javascript:$('#bookmarkdialog').hide();"
+						class="btnType02">다음에 하기</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="dialog" style="display: none;" id="serviceusagedialog">
+		<div class="popBox argeeType">
+			<div class="popHeader">
+				<h1>서비스 이용약관 동의</h1>
+				<a href="javascript:void(0)"
+					onclick="javascript:$('#serviceusagedialog').hide();"><img
+					src="../../include/img/ico/ico_close02.png" /></a>
+			</div>
+			<div class="popCont">
+				<div class="agreeCont">
+					<dl>
+						<dt>[제1장 총칙]</dt>
+						<dd>제1조(목적)</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="dialog" style="display: none;" id="useinfodialog">
+		<div class="popBox argeeType">
+			<div class="popHeader">
+				<h1>개인정보 수집·이용에 대한 동의</h1>
+				<a href="javascript:void(0)"
+					onclick="javascript:$('#useinfodialog').hide();"><img
+					src="../../include/img/ico/ico_close02.png" /></a>
+			</div>
+			<div class="popCont">
+				<div class="agreeCont">개인정보 수집·이용에 대한 동의 내용</div>
+			</div>
+		</div>
+	</div>
+</div>
+		
+

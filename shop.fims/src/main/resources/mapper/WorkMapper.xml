@@ -12,6 +12,7 @@
    		<result property="workdivCd" column="feswork_div_cd"/>
    		<result property="workcatCd" column="feswork_cat_cd"/>		  		
   	</resultMap> 
+  	<!-- 업무분류조회 -->
   <select id="selectWorkCategory" resultMap="workResultMap">
   
 		SELECT
@@ -22,6 +23,7 @@
 			Festival_Work_Category
   
   </select>
+  	<!-- 업무분류수정화면 -->
   <select id="selectupdateWorkCategory" resultMap="workResultMap">
 		SELECT
 			fest_nm,
@@ -32,6 +34,7 @@
 			feswork_cat_cd = #{workcatCd}
   
   </select>
+  	<!-- 업무조회 -->
   <select id="selectWorkDivision" resultMap="workResultMap">
   
 		SELECT
@@ -44,6 +47,33 @@
 			Festival_Work_Division
   
   </select>
+  <!-- 업무 검색 -->
+  <select id="searchWorkdivision" resultMap="workResultMap">
+	SELECT
+		fwd.feswork_div_cd,
+		fwd.feswork_div_nm,
+		fwc.feswork_cat_nm,
+		f.fest_nm,
+		mc.com_mem_nm2
+	FROM
+		Festival_Work_Division AS fwd JOIN Festival_Work_Category AS fwc ON fwd.feswork_cat_cd=fwc.feswork_cat_cd
+		JOIN Man_Com AS mc ON fwd.man_com_cd=mc.man_com_cd
+		JOIN Festival f ON fwd.fest_cd=f.fest_cd
+	WHERE 1=1  
+  		<if test="fest_nm != null and fest_nm != '' ">
+		       AND f.fest_nm Like CONCAT('%',#{fest_nm},'%')
+		</if>
+  		<if test="feswork_cat_nm != null and feswork_cat_nm != '' ">
+		       AND fwc.feswork_cat_nm Like CONCAT('%',#{feswork_cat_nm},'%')
+		</if>
+  		<if test="feswork_div_nm != null and feswork_div_nm != '' ">
+		       AND fwd.feswork_div_nm Like CONCAT('%',#{feswork_div_nm},'%')
+		</if>
+  		<if test="com_mem_nm2 != null and com_mem_nm2 != '' ">
+		       AND mc.com_mem_nm2 Like CONCAT('%',#{com_mem_nm2},'%')
+		</if>
+  </select>
+  <!-- 업무수정화면 -->
   <select id="selectupdateWorkDivision" resultMap="workResultMap">
   
  		SELECT

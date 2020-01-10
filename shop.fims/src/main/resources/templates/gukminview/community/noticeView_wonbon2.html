@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<script src="/gukmin/js/underscore-min.js"></script>
+<section>
+	<div class="commDesc">
+		<p class="t01">공지사항</p>
+		<p class="t02">조이페스타의 최근 소식으로 만나보세요!</p>
+	</div>
+	<div class="norBox">
+		<ul class="commTabs">
+			<li><a href="/gukminview/community/eventView">이벤트</a></li>
+			<li><a href="/gukminview/community/noticeView" class="on">공지사항</a></li>
+			<li><a href="/gukminview/community/faqView">FAQ</a></li>
+		</ul>
+		<form id="searchform" name="searchform" action="/gukminview/community/noticeView" method="post">
+			<div class="boSearchBox">
+				<div class="bsform">
+					<input type="text" id="keyword" name="keyword"
+						value="" /> <a
+						href="javascript:void();" id="searchbutton">검색</a>
+				</div>
+			</div>
+		</form>
+
+
+
+
+		<div class="boHeader">
+			<p class="fl">전체 150</p>
+		</div>
+
+		<table class="listTable01 mt0" id="listtable">
+			<colgroup>
+				<col width="80" class="mhidden" />
+				<col width="" />
+				<col width="100" class="mhidden" />
+				<col width="100" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="mhidden">번호</th>
+					<th>제목</th>
+					<th class="mhidden">작성자</th>
+					<th>작성일</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr> 
+				<td class="mhidden">5</td>
+				<td><a href="#">서울디저트페어 티켓증정 이벤트 당첨자 발표</a></td>
+				<td class="mhidden">조이페스타 관리자</td>
+				<td>19.10.07</td>
+			</tr>
+			<tr>
+				<td class="mhidden">4</td>
+				<td><a href="#">인스타그램 팔로잉 이벤트 당첨자 발표</a></td>
+				<td class="mhidden">조이페스타 관리자</td>
+				<td>19.09.30</td>
+			</tr>
+			<tr>
+				<td class="mhidden">3</td>
+				<td><a href="#">조이페스타 정식 오픈 이벤트 당첨자 발표</a></td>
+				<td class="mhidden">조이페스타 관리자</td>
+				<td>19.09.04</td>
+			</tr>
+			<tr>
+				<td class="mhidden">2</td>
+				<td><a href="#">조이페스타 정식 오픈 안내</a></td>
+				<td class="mhidden">조이페스타 관리자</td>
+				<td>19.07.01</td>
+			</tr>
+			<tr>
+				<td class="mhidden">1</td>
+				<td><a href="#">조이페스타 베타서비스 오픈</a></td>
+				<td class="mhidden">조이페스타 관리자</td>
+				<td>19.05.02</td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="paging">
+			<a href="javascript:void(0);" class="first"></a>
+			<a href="javascript:void(0);" class="prev">1</a>
+			<a href="javascript:void(0);" class="on">1</a>
+			<a href="javascript:void(0);" class="next"></a>
+			<a href="javascript:void(0);" class="last"></a>
+		</div>
+	</div>
+</section>
+
+</th:block>
+
+</html>

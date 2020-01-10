@@ -28,6 +28,11 @@ public class WorkService {
 		
 		return workmapper.selectWorkDivision();
 	}
+	//축제업무검색
+	public List<Work> searchWorkdivision(String fest_nm, String feswork_cat_nm, String feswork_div_nm, String com_mem_nm2){
+		
+		return workmapper.searchWorkdivision(fest_nm, feswork_cat_nm, feswork_div_nm, com_mem_nm2);
+	}
 	//축제업무수정화면
 	public Work selectupdateWorkDivision(String workdivCd) {
 		

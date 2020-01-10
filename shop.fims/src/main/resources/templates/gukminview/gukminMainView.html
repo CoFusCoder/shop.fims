@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+<script src="/gukmin/js/jquery.popupWindow.js"></script>
+<script src="/gukmin/js/underscore-min.js"></script>
+<section>
+<th:block th:include="fragments/gukmin/gukmincarousel"></th:block>
+<th:block th:include="fragments/gukmin/gukminmainview"></th:block>
+</section>
+
+<style>
+input[name="popup"] {
+	display: inline-block;
+	position: relative;
+	width: 15px;
+	height: 15px;
+	border: 2px solid #bcbcbc;
+	cursor: pointer;
+	position: relative;
+}
+
+label {
+	font-family: 'Noto Sans KR', '맑은고딕', 'San serif';
+	font-size: 13px;
+	font-weight: 300;
+	position: absolute;
+	left: 6px;
+	bottom: 5px;
+}
+
+button.close {
+	font-family: 'Noto Sans KR', '맑은고딕', 'San serif';
+	font-size: 13px;
+	font-weight: 300;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	width: 50px;
+	height: 26px;
+	background: #444;
+	color: #fff;
+	border: none;
+}
+
+.popHeader h1 {
+	margin-top: 0px;
+}
+</style>
+
+<script>
+	function setPopupCookie(name, value, expiredays) {
+		var todayDate = new Date();
+		todayDate.setDate(todayDate.getDate() + expiredays);
+		document.cookie = name + "=" + escape(value) + "; path=/; expires="
+				+ todayDate.toGMTString() + ";"
+	}
+
+	function closePopup(popupseq) {
+		if ($("input:checkbox[name='popup']").is(":checked"))
+			setPopupCookie('popup_' + popupseq, '1', 1);
+		$('#popupdialog').hide();
+	}
+
+	function goURL(url) {
+		opener.location.href = url;
+		self.close();
+	}
+</script>
+
+<Script>
+	$(document).ready(function() {
+		getRecommendSpotList();
+
+	
+	});
+</Script>
+
+</th:block>
+
+</html>

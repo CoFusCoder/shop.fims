@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.fims.member.MemberMapper">
+<resultMap id="memberResultMap" type="shop.fims.vo.Member">
+	<result column="mem_cd" property="memCd"/>
+	<result column="mem_lev_cd" property="memLevCd"/>
+	<result column="mem_nm" property="memNm"/>
+	<result column="mem_addr" property="memAddr"/>
+	<result column="mem_phone" property="memPhone"/>
+	<result column="mem_email" property="memEmail"/>
+	<result column="mem_birth" property="memBirth"/>
+	<result column="mem_join_dt" property="memJoinDt"/>
+</resultMap>
+
+<resultMap id="memberLevResultMap" type="shop.fims.vo.MemberLev">
+	<result column="mem_lev_cd" property="memLevCd"/>
+	<result column="mem_lev_nm" property="memLevNm"/>
+</resultMap>
+
+<!--모든 회원 조회 쿼리문 -->
+<select id="memberList" resultMap="memberResultMap">
+	SELECT
+		*
+	FROM
+		Member
+</select>
+
+<!--회원 권한 조회 쿼리문 -->
+<select id="memberLevList" resultMap="memberLevResultMap">
+	SELECT
+		*
+	FROM
+		Member_Lev
+</select>
+
+
+
+</mapper>  
+  
+  
+  

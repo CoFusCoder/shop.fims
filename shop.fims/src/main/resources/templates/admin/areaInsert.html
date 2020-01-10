@@ -7,31 +7,32 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <br>
 <div class="form-panel">
 	<h4 class="mb"><i class="fa fa-angle-right"></i> 전국 지역 등록</h4>
-	<form class="form-horizontal style-form" th:action="@{/admin/areaInsert}" method="post">
+	
+	<form id="areaInsertForm" class="form-horizontal style-form">
 		<div class="form-group">
-		  <label class="col-sm-2 col-sm-2 control-label">전국지역코드</label>
-		  <div class="col-sm-6">
-		    <input type="text" class="form-control" name="areaCd" placeholder="*전국지역코드를 입력해주세요">
-		  </div>
+			<label class="col-sm-2 col-sm-2 control-label">전국지역코드</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" name="areaCd" placeholder="*전국지역코드를 입력해주세요">
+			</div>
 		</div>
-	<div class="form-group">
-		<label class="col-sm-2 col-sm-2 control-label">지역명</label>
-		<div class="col-sm-6">
-		    <input type="text" class="form-control" name="areaNm" placeholder="*지역명을 입력해주세요">
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">지역명</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" name="areaNm" placeholder="*지역명을 입력해주세요">
+			</div>
 		</div>
-	</div>
-	<button type="submit" class="btn btn btn-success">등록하기</button>
-	<button type="submit" class="btn btn btn-danger">취소</button>
+		<input type="button" name="areaInsertBtn" class="btn btn btn-success" value="등록하기">
+		<input type="button" name="areaCancleBtn" class="btn btn btn-danger" value="취소">
 	</form>
 </div>
 <br>
 <div class="form-panel">
 	<h4 class="mb"><i class="fa fa-angle-right"></i> 전국 지역 시군 등록</h4>
-	<form class="form-horizontal style-form" th:action="@{/admin/areaCityInsert}" method="post">
+	<form id="areaCityInsertForm" class="form-horizontal style-form">
 		<div class="form-group">
 		  <label class="col-sm-2 col-sm-2 control-label">전국지역시군코드</label>
 		  <div class="col-sm-6">
-		    <input type="text" class="form-control" name="areaCityCd" placeholder="*전국지역시군코드는 자동으로 생성됩니다." readonly="readonly">
+		    <input type="text" class="form-control readonly" name="areaCityCd" style="background-color: #e2e2e2;" placeholder="*전국지역시군코드는 자동으로 생성됩니다." readonly="readonly">
 		  </div>
 		</div>
 		<div class="form-group">
@@ -48,14 +49,68 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			    <input type="text" class="form-control" name="areaCityNm" placeholder="*시군명을 입력해주세요">
 			</div>
 		</div>
-	<button type="submit" class="btn btn btn-success">등록하기</button>
-	<button type="submit" class="btn btn btn-danger">취소</button>
+	<input type="button" name="areaCityInsertBtn" class="btn btn btn-success" value="등록하기">
+	<input type="button" name="areaCityCancleBtn" class="btn btn btn-danger" value="취소">
 	</form>
 </div>
 
 </th:block>
 <th:block layout:fragment="adminisscript">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
+
+<script type="text/javascript" th:inline="javascript">
+
+// 전국 지역 등록시 공란 체크 스크립트
+$(document).ready(function(){
+	$('input[name=areaInsertBtn]').on('click', function(){
+		var parent = $(this).parent('form');
+		var areaCd = parent.find('input[name=areaCd]').val();
+		var areaNm = parent.find('input[name=areaNm]').val();
+		
+		if(areaCd == "" || areaNm == ""){
+			alert('비어있는 값이 있습니다. 올바르게 입력해주세요');
+		}else{
+			if(confirm('등록하시겠습니까?')){
+				$('#areaInsertForm').attr('action', '/admin/areaInsert');
+				$('#areaInsertForm').attr('method', 'post');
+				$('#areaInsertForm').submit();
+			}
+		}
+	});
+	$('input[name=areaCancleBtn]').on('click', function(){
+		var parent = $(this).parent('form');
+		parent.find('input[name=areaCd]').val('');
+		parent.find('input[name=areaNm]').val('');
+	});
+});
+
+//전국 지역 및 시군 등록시 공란 체크 스크립트
+$(document).ready(function(){
+	$('input[name=areaCityInsertBtn]').on('click', function(){
+		var parent = $(this).parent('form');
+		var areaCityCd = parent.find('input[name=areaCityCd]').val();
+		var areaCd = parent.find('select[name=areaCd]').val();
+		var areaCityNm = parent.find('input[name=areaCityNm]').val();
+		
+		if(areaCd == "" || areaCityNm == ""){
+			alert('비어있는 값이 있습니다. 올바르게 입력해주세요');
+		}else{
+			if(confirm('등록하시겠습니까?')){
+				$('#areaCityInsertForm').attr('action', '/admin/areaCityInsert');
+				$('#areaCityInsertForm').attr('method', 'post');
+				$('#areaCityInsertForm').submit();
+			}
+		}
+	});
+	$('input[name=areaCityCancleBtn]').on('click', function(){
+		var parent = $(this).parent('form');
+		parent.find('input[name=areaCityCd]').val('');
+		parent.find('select[name=areaCd]').val('');
+		parent.find('input[name=areaCityNm]').val('');
+	});
+});
+
+</script>
 </th:block>
 
 </html>

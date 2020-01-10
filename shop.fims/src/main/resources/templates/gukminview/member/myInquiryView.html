@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<section>
+	<div class="mypDesc">
+		<p class="t01">#나의 문의내역</p>
+		<p class="t02">#나의 문의내역을 모아보세요!</p>
+	</div>
+	<div class="norBox">
+		<form id="searchform" name="searchform" action="/gukminview/member/myInquiryView" method="post">
+			<ul class="commTabs t03">
+				<li><a href="javascript:void(0)" id="spotinquiry" class="on">#스팟문의</a></li>
+				<li><a href="javascript:void(0)" id="generalinquiry">#1:1문의</a></li>
+			</ul>
+			<div class="boSearchBox t01">
+				<div class="bsform">
+					<ul class="dateCategory">
+						<li><a href="javascript:void(0)"
+							onclick="setDateRange('2019.12.30', '2019.12.30');">오늘</a></li>
+						<li><a href="javascript:void(0)"
+							onclick="setDateRange('2019.09.30', '2019.12.30');">3개월</a></li>
+						<li><a href="javascript:void(0)"
+							onclick="setDateRange('2019.06.30', '2019.12.30');">6개월</a></li>
+						<li><a href="javascript:void(0)"
+							onclick="setDateRange('2018.12.29', '2019.12.30');">1년</a></li>
+					</ul>
+					<div class="m_form">
+						<ul>
+							<li><input type="text" id="sdate" name="startdate"
+								class="datepicker" /> <span class="etxt">~</span> <input
+								type="text" id="edate" name="enddate" class="datepicker" />
+								<p class="m_form_btn_check">
+									<a href="javascript:searchInquiry();" id="searchbutton">#검색</a>
+								</p></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+		<table id="qnaTable" class="listTable01">
+		</table>
+		<div class="paging"></div>
+	</div>
+</section>
+<script src="/gukmin/js/underscore-min.js"></script>
+<script>
+	var inquirytype = 1;
+
+	$('#spotinquiry').click(function() {
+		inquirytype = 1;
+		$('.listTable01').empty();
+		searchInquiry();
+	});
+
+	$('#generalinquiry').click(function() {
+		inquirytype = 2;
+		$('.listTable01').empty();
+		searchInquiry();
+	});
+
+	var pageSize = 10;
+
+	/* $.getMyInquiryList = function(currentPage, inquirytype, startdate, enddate) {
+		resetCommonDialog();
+		indicatorOn();
+		$
+				.ajax({
+					url : 'JSONMyInquiryList.festa',
+					type : 'POST',
+					data : {
+						currentPage : currentPage,
+						inquirytype : inquirytype,
+						startdate : startdate,
+						enddate : enddate
+					},
+					dataType : 'json',
+					success : function(data, textStatus, jqXHR) {
+						indicatorOff();
+						if (data.resultcode == 0) {
+							var itemList = data.itemList;
+							paging = data.paging;
+							$('.listTable01').empty();
+							$('.paging').empty();
+							if (itemList.length == 0) {
+								$('.listTable01').append('등록된 문의내역이 없습니다.');
+							} else { // 데이터가있으면 목록을 each로 반복
+								$('.listTable01')
+										.append(
+												'<colgroup><col width="60" class="mhidden" /><col width="90" /><col width="90" /><col width="" /><col width="60" /><col width="100" class="mhidden" /></colgroup>'
+														+ '<tr class="mhidden"><th>번호</th><th>유형</th><th>상태</th><th>제목</th><th>작성자</th><th>작성일</th></tr>');
+								_
+										.each(
+												itemList,
+												function(item, index) {
+													var listno = paging.totalCount
+															- index
+															- (currentPage - 1)
+															* pageSize;
+													var replystatus = '<span class="wait rd">답변대기</span>';
+													var replycontent = '';
+													if (item.replyflag == 'Y') {
+														replystatus = '<span class="confirm rd">답변완료</span>';
+
+														for (var j = 0; j < item.replylist.length; j++) {
+															replycontent = replycontent
+																	+ '<dd><p class="tit">[답변내용]</p>'
+																	+ '<p class="desc">'
+																	+ item.replylist[j].replycontent
+																	+ '<br /></p>'
+																	+ item.replylist[j].replydate
+																	+ '</dd>';
+														}
+													}
+													var spotinfo = '';
+													if (inquirytype == '1') {
+														var spottype = item.spottype;
+														var linkurl = '';
+														if (spottype == 1) {
+															linkurl = 'MarketDetail.festa?marketseq=';
+														} else if (spottype == 2) {
+															linkurl = 'StoreDetail.festa?storeseq=';
+														} else if (spottype == 3) {
+															linkurl = 'FestivalDetail.festa?festivalseq=';
+														} else if (spottype == 4) {
+															linkurl = 'HostDetail.festa?hostpageseq=';
+														}
+														spotinfo = '<div class="info">'
+																+ '<ul>'
+																+ '<li>문의스팟</li>'
+																+ '<li>'
+																+ item.spottitle
+																+ '</li>'
+																+ '</ul>'
+																+ '<span class="btn"><a href="'
+															+ linkurl + item.spotseq
+															+ '">바로가기</a></span>'
+																+ '</div>';
+													}
+													$('.listTable01')
+															.append(
+																	'<tr class="item_q"><td class="mhidden">'
+																			+ listno
+																			+ '</td>'
+																			+ '<td>['
+																			+ item.inquirytypename
+																			+ ']</td>'
+																			+ '<td>'
+																			+ replystatus
+																			+ '</td>'
+																			+ '<td><a href="javascript:void(0)">'
+																			+ item.title
+																			+ '</a></td>'
+																			+ '<td>'
+																			+ item.membername
+																			+ '</td>'
+																			+ '<td class="mhidden">'
+																			+ item.registerdate
+																			+ '</td></tr>'
+																			+ '<tr class="item_a">'
+																			+ '<td colspan="6">'
+																			+ spotinfo
+																			+ '<dl class="cont">'
+																			+ '<dt>'
+																			+ item.content
+																			+ '</dt>'
+																			+ replycontent
+																			+ '</dl></td></tr>');
+												});
+								// 이부분이 페이징처리
+								if (paging.page != 1) {
+									$('.paging')
+											.append(
+													'<a href="javascript:$.getMyInquiryList(1, '
+															+ inquirytype
+															+ ', "'
+															+ startdate
+															+ '", "'
+															+ enddate
+															+ '");" class="first"></a>'); // 첫페이지로가는버튼
+									// 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="first"></a>'); // 첫페이지로가는버튼
+									// 비활성화
+								}
+								if (paging.block != 1) { // 첫번째 블럭이 아니면
+									$('.paging')
+											.append(
+													'<a href="javascript:$.getMyInquiryList('
+															+ (Number(paging.startPage) - Number(1))
+															+ ', '
+															+ inquirytype
+															+ ', "'
+															+ startdate
+															+ '", "'
+															+ enddate
+															+ '");" class="prev"></a>'); // 뒤로가기버튼
+									// 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="prev">1</a>'); // 뒤로가기버튼
+									// 비활성화
+								}
+								for (var i = paging.startPage; i <= paging.endPage; i++) { // 시작페이지부터
+									// 종료페이지까지
+									// 반복문
+									if (paging.page == i) { // 현재페이지가 반복중인 페이지와
+										// 같다면
+										$('.paging').append(
+												'<a href="javascript:void(0);" class="on">'
+														+ i + '</a>'); // 버튼
+										// 비활성화
+									} else {
+										$('.paging').append(
+												'<a href="javascript:$.getMyInquiryList('
+														+ i + ', '
+														+ inquirytype + ', "'
+														+ startdate + '", "'
+														+ enddate + '");">' + i
+														+ '</a>'); // 버튼
+										// 활성화
+									}
+								}
+								if (paging.block < paging.totalBlock) { // 전체페이지블럭수가
+									// 현재블럭수보다
+									// 작을때
+									$('.paging')
+											.append(
+													'<a href="javascript:$.getMyInquiryList('
+															+ (Number(paging.endPage) + Number(1))
+															+ ', '
+															+ inquirytype
+															+ ', "'
+															+ startdate
+															+ '", "'
+															+ endate
+															+ '");" class="next"></a>'); // 다음페이지버튼
+									// 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="next"></a>'); // 다음페이지버튼
+									// 비활성화
+								}
+								if (paging.page < paging.totalPage) { // 현재페이지가
+									// 전체페이지보다
+									// 작을때
+									$('.paging').append(
+											'<a href="javascript:$.getMyInquiryList('
+													+ paging.totalPage + ', '
+													+ inquirytype + ', "'
+													+ startdate + '", "'
+													+ enddate
+													+ '");" class="last"></a>'); // 마지막페이지로
+									// 가기
+									// 버튼
+									// 활성화
+								} else {
+									$('.paging')
+											.append(
+													'<a href="javascript:void(0);" class="last"></a>'); // 마지막페이지로
+									// 가기
+									// 버튼
+									// 비활성화
+								}
+							}
+						} else {
+							$('#dialogtitle').append('에러');
+							$('#dialogcontent').append(data.resultmessage);
+							$('#commondialog').show();
+						}
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						indicatorOff();
+						$('#dialogtitle').append('에러');
+						$('#dialogcontent').append(textStatus);
+						$('#commondialog').show();
+					}
+				});
+	} */
+</script>
+<script>
+	function setDateRange(startdate, enddate) {
+		$('#sdate').datepicker('setDate', startdate);
+		$('#edate').datepicker('setDate', enddate);
+	}
+
+	function searchInquiry() {
+		$
+				.getMyInquiryList(1, inquirytype, $('#sdate').val(),
+						$('#edate').val());
+	}
+
+	$(document).ready(function() {
+		$.getMyInquiryList(1, 1, '', '');
+
+	});
+
+	
+</script>
+
+
+</th:block>
+
+</html>

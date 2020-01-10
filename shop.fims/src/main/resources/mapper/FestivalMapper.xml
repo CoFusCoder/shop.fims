@@ -23,16 +23,24 @@
 </resultMap>
 
 <!--축제 등록 쿼리문 -->
-<insert	id="areaInsert" parameterType="shop.fims.vo.Area">
+<insert	id="festivalInsert" parameterType="shop.fims.vo.Festival">
 	insert into
-		Festival(fest_cd, areacity_admin_cd,area_cd,area_city_cd,fest_nm
+		Festival(fest_cd, area_cd, area_city_cd, areacity_admin_cd, fest_nm
 				,fest_host_area,fest_host_place,fest_start_dt,fest_end_dt,fest_content
 				,fest_super_agency,fest_spo_agency,fest_addr,fest_inquiry)
 	VALUES
-		(#{festCd} ,#{areacityAdminCd},#{areaCd},#{areaCityCd},#{festNm}
-		,#{festHostArea},#{festHostPlace},#{festStartDt},#{festEndDt},#{festContent}
+		(#{festCd} ,#{areaCd}, #{areaCityCd}, #{areacityAdminCd}, #{festNm}
+		,#{festHostArea},#{festHostPlace},NOW(),NOW(),#{festContent}
 		,#{festSuperAgency},#{festSpoAgency},#{festAddr},#{festInquiry})
 </insert>
+
+<!--축제 조회 쿼리문 -->
+<select	id="festivalList" resultMap="festivalResultMap">
+	SELECT
+		*
+	FROM 
+		Festival
+</select>
 
 
 

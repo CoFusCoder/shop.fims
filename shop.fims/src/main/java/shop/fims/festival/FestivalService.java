@@ -25,5 +25,14 @@ public class FestivalService {
 		
 		return festivalInsert;
 	}
+	
+	// 축제 조회
+	public List<Festival> festivalList(){
+		
+		List<Festival> festivalList = festivalMapper.festivalList();
+		System.out.println(festivalList + " : 축제 조회 ");
+		
+		return festivalList;
+	}
 
 }

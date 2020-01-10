@@ -14,13 +14,6 @@ import shop.fims.vo.Committee;
 @Controller
 public class CommitteeController {
 	
-	/*
-	 * @file   CommitteeController.java
-	 * @name   CommitteeController
-	 * @brief  위원회 관련 
-	 * @author fims 김도민
-	 */
-	
 	@Autowired CommitteeService committeeService;
 	
 	//위원회 관리
@@ -30,16 +23,9 @@ public class CommitteeController {
 		return "committee/allCommitteeView";
 	}
 	
-	/***
-	 * @file CommitteeController.java
-	 * @name CommitteeController
-	 * @brief 위원회 상세조회, man_com_cd(위원회 코드로 조회)
-	 * @author 김도민
-	 */
-	
 	//위원회 상세조회 위원회 코드로 조회
 	@GetMapping("/allCommitteeDetail") 
-		public String selectByCommittee(@RequestParam(value="manComCd", required = false)String manComCd, Model model) { 
+	public String selectByCommittee(@RequestParam(value="manComCd", required = false)String manComCd, Model model) { 
 		model.addAttribute("selectByCommittee", committeeService.selectByCommittee(manComCd));
 		return "committee/allCommitteeDetail";
 	}
@@ -64,13 +50,6 @@ public class CommitteeController {
 		return "redirect:/allCommitteeView";
 	}
 	
-	/***
-	 * @file CommitteeController.java
-	 * @name CommitteeController
-	 * @brief 위원회 수정화면, man_com_cd(위원회 코드로 조회)
-	 * @author 김도민
-	 */
-	
 	//위원회 수정화면. 위원회 코드로 조회
 	@GetMapping("/updateAllCommittee")
 	public String updateAllCommittee(@RequestParam(value="manComCd", required = false)String manComCd, Model model) { 
@@ -85,19 +64,12 @@ public class CommitteeController {
 		return "redirect:/allCommitteeView";
 	}
 	
-	/***
-	 * @file CommitteeController.java
-	 * @name CommitteeController
-	 * @brief 위원회 검색, com_mem_nm2(이름), man_com_rank(직급)으로 조회
-	 * @author 김도민
-	 */
-	
 	//위원회 검색
 	@PostMapping("/searchCommittee")
 	public String searchCommittee(	@RequestParam(value="sk")String sk,  
 									@RequestParam(value="sv")String sv,
 									Model model) {
-		model.addAttribute("searchCommittee", committeeService.searchCommittee(sk, sv));
+		model.addAttribute("allCommitteeView", committeeService.searchCommittee(sk, sv));
 		return "committee/allCommitteeView";
 	}
 	

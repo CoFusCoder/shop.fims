@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -51,7 +52,15 @@ public class WorkController {
 	}
 	//축제업무검색
 	 @PostMapping("/workdivisionSearch")
-	 public String searchWorkdivision() {
+	 public String searchWorkdivision(@RequestParam(value="fest_nm") String fest_nm, @RequestParam(value="feswork_cat_nm") String feswork_cat_nm,
+			 						@RequestParam(value="feswork_div_nm") String feswork_div_nm, @RequestParam(value="com_mem_nm2") String com_mem_nm2,
+			 						Model model) {
+		 
+		 model.addAttribute("WorkdivisionList", workservice.searchWorkdivision(fest_nm, feswork_cat_nm, feswork_div_nm, com_mem_nm2));
+		 System.out.println("fest_nm---------->"+fest_nm );
+		 System.out.println("feswork_cat_nm---------->"+ feswork_cat_nm);
+		 System.out.println("feswork_div_nm---------->"+ feswork_div_nm);
+		 System.out.println("com_mem_nm2---------->"+ com_mem_nm2);
 		 
 		 return "/work/workdivisionList";
 	 }

@@ -32,6 +32,24 @@ public class AdminService {
 		return areaList;
 	}
 	
+	//전국 지역 수정
+	public int areaUpdate(Area area) {
+		
+		int areaUpdate = adminMapper.areaUpdate(area);
+		System.out.println(areaUpdate + " : 전국 지역 수정");
+		
+		return areaUpdate;
+	}
+	
+	//전국 지역 삭제
+	public int areaDelete(String area) {
+		
+		int areaDelete = adminMapper.areaDelete(area);
+		System.out.println(adminMapper + " : 전국 지역 삭제");
+		
+		return areaDelete;
+	}
+	
 	// 전국 지역 시군 등록
 	public int areaCityInsert(AreaCity areaCity) {
 		
@@ -50,6 +68,24 @@ public class AdminService {
 		return areaCityList;
 	}
 	
+	//전국 지역 시군 수정
+	public int areaCityUpdate(AreaCity areaCity) {
+		
+		int areaCityUpdate = adminMapper.areaCityUpdate(areaCity);
+		System.out.println(areaCityUpdate + " : 전국 지역 시군 수정");
+		
+		return areaCityUpdate;
+	}
+	
+	//전국 지역 시군 삭제
+	public int areaCityDelete(String areaCity) {
+		
+		int areaCityDelete = adminMapper.areaCityDelete(areaCity);
+		System.out.println(areaCityDelete + " : 전국 지역 시군 삭제");
+	
+		return areaCityDelete;
+	}
+	
 	// 전국 행정기관 등록
 	public int areaCityAdminInsert(AreaCityAdmin areaCityAdmin) {
 		
@@ -66,6 +102,25 @@ public class AdminService {
 		System.out.println(areaCityAdminList + " : 전국 행정기관 조회 ");
 		
 		return areaCityAdminList;
+	}
+	
+	// 전국 행정기관 수정
+	public int areaCityAdmUpdate(AreaCityAdmin areaCityAdmin) {
+		
+		int areaCityAdmUpdate = adminMapper.areaCityAdmUpdate(areaCityAdmin);
+		System.out.println(areaCityAdmUpdate + " : 전국 행정기관 수정");
+		
+		return areaCityAdmUpdate;
+	}
+	
+	// 전국 행정기관 삭제
+	public int areaCityAdmDelete(String areacityAdminCd) {
+		
+		int areaCityAdmDelete = adminMapper.areaCityAdmDelete(areacityAdminCd);
+		System.out.println(areaCityAdmDelete + " : 전국 행정기관 삭제");
+		
+		return areaCityAdmDelete;
+		
 	}
 
 }

@@ -7,9 +7,9 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="/allprofile"><img src="/adminis/img/asugi.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered">!총괄관리자</h5>
+          <h5 class="centered">[[${session.SNAME}]] 님 [[${session.SLEVEL}]] 권한</h5>
           <li class="mt">
-            <a href="/dashboard">
+            <a href="/admin/main">
               <i class="fa fa-dashboard"></i>
 			<span>#1.Dashboard</span>
               </a>
@@ -22,7 +22,6 @@
             <ul class="sub">
               <li><a th:href="@{/operation/officialLevelInsert}">!공무원 계정 생성</a></li>
               <li><a th:href="@{/operation/officialLevelList}">!공무원 계정 조회</a></li>
-              <li><a th:href="@{/operation/noticeInsert}">!공지사항</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -40,20 +39,19 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#회원관리_연</span>
+              <span>!회원관리_연</span>
               </a>
             <ul class="sub">
               <li><a th:href="@{/member/MemberLevInsert}">#회원 권한 등록</a></li>
-              <li><a th:href="@{/member/MemberLevList}">#권한별 회원 조회</a></li>
+              <li><a th:href="@{/member/MemberList}">!모든 회원 조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#공무원관리_연</span>
+              <span>!공무원관리_연</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/official/WorkStatus}">#업무현황</a></li>
               <li><a th:href="@{/official/DepartEmployInsert}">#부서 및 직원등록</a></li>
               <li><a th:href="@{/official/DepartList}">#행정기관별 부서 조회</a></li>
               <li><a th:href="@{/official/DepartEmployList}">#부서별 직원 조회</a></li>
@@ -83,13 +81,11 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#축제관리_연</span>
+              <span>!축제관리_연</span>
               </a>
             <ul class="sub">
               <li><a th:href="@{/festival/festivalInsert}">#축제 등록</a></li>
               <li><a th:href="@{/festival/festivalList}">#축제 조회</a></li>
-              <li><a th:href="@{/festival/festLevelMemInsert}">#축제별 담당자 등록</a></li>
-              <li><a th:href="@{/festival/festLevelMemList}">#축제별 담당자 조회</a></li>
               <li><a th:href="@{/festival/festTicRevInsert}">#축제별 입장료 및 수량 등록</a></li>
               <li><a th:href="@{/festival/festTicRevList}">#축제별 입장료 및 수량 통계</a></li>
             </ul>
@@ -101,11 +97,11 @@
               </a>
             <ul class="sub">
 
-              <li><a th:href="@{/workcategoryList}">#축제업무분류리스트</a></li>
+              <li><a th:href="@{/workcategoryList}">#축제업무분류조회</a></li>
               <li><a th:href="@{/workcategoryInsert}">#축제업무분류등록</a></li>
-              <li><a th:href="@{/workdivisionList}">#축제업무리스트</a></li>
+              <li><a th:href="@{/workdivisionList}">#축제업무조회</a></li>
               <li><a th:href="@{/workdivisionInsert}">#축제업무등록</a></li>
-              <li><a th:href="@{/humanList}">#축제인적리스트</a></li>
+              <li><a th:href="@{/humanList}">#축제인적조회</a></li>
               <li><a th:href="@{/humanInsert}">#축제인적등록</a></li>
             </ul>
           </li>
@@ -129,39 +125,34 @@
 
               <li><a th:href="@{/classificationList}">#모든시설분류조회</a></li>
               <li><a th:href="@{/classificationInsert}">#모든시설분류등록</a></li>            
-              <li><a th:href="@{/facilityList}">#보유시설리스트</a></li>
+              <li><a th:href="@{/facilityList}">#보유시설조회</a></li>
               <li><a th:href="@{/facilityInsert}">#보유시설등록</a></li>
-              <li><a th:href="@{/temporaryList}">#임시시설설치및철거리스트</a></li>
+              <li><a th:href="@{/temporaryList}">#임시시설설치및철거조회</a></li>
               <li><a th:href="@{/temporaryInsert}">#임시시설설치및철거등록</a></li>
-              <li><a th:href="@{/maintenanceList}">#시설안전점검유지보수리스트</a></li>
-              <li><a th:href="@{/maintenanceInsert}">#시설안전점검유지보수등록</a></li>
+              <li><a th:href="@{/maintenanceList}">#시설안전점검후지적관리조회</a></li>
+              <li><a th:href="@{/maintenanceInsert}">#시설안전점검후지적관리등록</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>!12.축제예산관리_석</span>
+              <span>#12.축제예산관리_석</span>
               </a>
             <ul class="sub">
-           	  <li><a href="/revExpBudgetView">!세입세출재정정보공개시스템</a></li>
-           	  <li><a href="/fundManStatusView">!자금운용현황</a></li>
-           	  <li><a href="/revBudgetView">!세입현황</a></li>
-              <li><a href="#">#세입세출예산등록</a></li>
-              <li><a href="/revExpExecutionView">!세출-예산집행현황</a></li>
-              <li><a href="/expEntBudgetView">!세출-사업및예산정보</a></li>
-              <li><a href="/expExecutionView">!세출-지출정보</a></li>
-              <li><a href="/revExpBudgetList">!세입세출예산리스트</a></li>
-              <li><a href="/revExpExecutionList">!세입세출집행리스트</a></li>
+           	  <li><a href="#">###</a></li>
+           	  <li><a href="#">###</a></li>
+           	  <li><a href="#">###</a></li>
+
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>!13.축제계약관리_석</span>
+              <span>#13.축제계약관리_석</span>
               </a>
             <ul class="sub">
-              <li><a href="/contractList">!계약리스트</a></li>
-              <li><a href="#">#계약등록</a></li>
+              <li><a href="#">###</a></li>
+              <li><a href="#">###</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -248,7 +239,7 @@
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#마이페이지_연</span>
+              <span>#마이페이지_석</span>
               </a>
             <ul class="sub">
               <li><a th:href="@{#}">#회원정보 수정</a></li>

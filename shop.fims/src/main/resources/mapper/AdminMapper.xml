@@ -38,8 +38,33 @@
 		Area
 </select>
 
+<!-- 전국 지역 수정 쿼리문 -->
+<update id="areaUpdate" parameterType="shop.fims.vo.Area">
+	UPDATE
+		Area
+	SET
+		area_nm = #{areaNm}
+	WHERE 
+		area_cd = #{areaCd}
+</update>
+
+<!-- 전국 지역 삭제 쿼리문 -->
+<delete id="areaDelete" parameterType="String">
+	DELETE 
+	FROM
+		Area
+	WHERE
+		area_cd=#{areaCd}
+</delete>
+
 <!--전국 지역 시군 등록 쿼리문 -->
 <insert	id="areaCityInsert" parameterType="shop.fims.vo.AreaCity">
+	<selectKey keyProperty="areaCityCd" resultType="String" order="BEFORE">
+		SELECT
+			CAST(MAX(SUBSTRING(area_city_cd,1)+1) AS CHAR)
+		FROM
+			Area_City
+	</selectKey>
 	INSERT INTO 
 		Area_City(area_city_cd, area_cd, area_city_nm)
 	VALUES
@@ -53,6 +78,27 @@
 	FROM
 		Area_City
 </select>
+
+<!-- 전국 지역 시군 수정 쿼리문 -->
+<update id="areaCityUpdate" parameterType="shop.fims.vo.AreaCity">
+	UPDATE
+		Area_City
+	SET
+		area_cd = #{areaCd},
+		area_city_nm = #{areaCityNm}
+	WHERE 
+		area_city_cd = #{areaCityCd}
+</update>
+
+<!-- 전국 지역 시군삭제 쿼리문 -->
+<delete id="areaCityDelete" parameterType="String">
+	DELETE
+	FROM
+		Area_City
+	WHERE
+		area_city_cd = #{areaCityCd}
+</delete>
+
 
 <!--전국 행정기관 등록 쿼리문 -->
 <insert	id="areaCityAdminInsert" parameterType="shop.fims.vo.AreaCityAdmin">
@@ -70,9 +116,26 @@
 		Area_City_Admin
 </select>
 
+<!-- 전국 행정기관 수정 쿼리문 -->
+<update id="areaCityAdmUpdate" parameterType="shop.fims.vo.AreaCityAdmin">	
+	UPDATE
+		Area_City_Admin
+	SET
+		area_city_cd=#{areaCityCd},
+		area_cd=#{areaCd},
+		areacity_admin_nm=#{areacityAdminNm}
+	WHERE
+		areacity_admin_cd=#{areacityAdminCd}
+</update>
 
-
-
+<!-- 전국 행정기관 삭제 쿼리문 -->
+<delete id="areaCityAdmDelete" parameterType="String">
+	DELETE
+	FROM
+		Area_City_Admin
+	WHERE
+		areacity_admin_cd = #{areacityAdminCd}
+</delete>
 
 
 

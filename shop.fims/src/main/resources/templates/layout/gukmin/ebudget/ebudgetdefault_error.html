@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="ko">
+
+<head th:replace="fragments/ebudget/ebudgethead :: ebudgetHeadFragment"></head>
+
+<body>
+
+	<header th:replace="fragments/ebudget/ebudgetheader :: ebudgetHeaderFragment"></header>
+	
+		<div id="contentW">
+			<div class="content">
+				<th:block layout:fragment="ebudgetMainContents"></th:block>
+			</div>	
+		</div>	
+	 <footer th:replace="fragments/ebudget/ebudgetfooter :: ebudgetFooterFragment"></footer>
+		<th:block layout:fragment="ebudgetscriptlast"></th:block>
+</body>
+
+</html>
