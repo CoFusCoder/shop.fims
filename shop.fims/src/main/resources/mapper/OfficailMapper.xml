@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.fims.official.OfficailMapper">
+<resultMap id="DepartResultMap" type="shop.fims.vo.AdminDepart">
+	<result column="admin_dep_cd" property="adminDepCd"/>
+	<result column="areacity_admin_cd" property="areacityAdminCd"/>
+	<result column="admin_dep_belong" property="adminDepBelong"/>
+	<result column="admin_dep_nm" property="adminDepNm"/>
+</resultMap>
+
+<!--부서 등록 쿼리문 -->
+<insert	id="DepartEmployInsert" parameterType="shop.fims.vo.AdminDepart">
+	INSERT INTO
+		Admin_Depart(admin_dep_cd, areacity_admin_cd, admin_dep_belong, admin_dep_nm)
+	VALUE
+		(#{adminDepCd}, #{areacityAdminCd}, #{adminDepBelong}, #{adminDepNm})	
+</insert>
+
+<!--부서 조회 쿼리문 -->
+<select	id="DepartList" resultMap="DepartResultMap">
+	SELECT
+		a.admin_dep_cd,
+		b.areacity_admin_nm,
+		a.admin_dep_belong,
+		a.admin_dep_nm
+	FROM
+		Admin_Depart AS a
+	LEFT OUTER JOIN
+		Area_City_Admin AS b
+	ON
+		b.areacity_admin_cd= a.areacity_admin_cd;		
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>  
+  
+  
+  

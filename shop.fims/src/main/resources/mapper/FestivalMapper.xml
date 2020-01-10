@@ -30,7 +30,7 @@
 				,fest_super_agency,fest_spo_agency,fest_addr,fest_inquiry)
 	VALUES
 		(#{festCd} ,#{areaCd}, #{areaCityCd}, #{areacityAdminCd}, #{festNm}
-		,#{festHostArea},#{festHostPlace},NOW(),NOW(),#{festContent}
+		,#{festHostArea},#{festHostPlace}, #{festStartDt},#{festEndDt}, #{festContent}
 		,#{festSuperAgency},#{festSpoAgency},#{festAddr},#{festInquiry})
 </insert>
 
