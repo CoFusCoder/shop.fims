@@ -2,7 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
-<th:block layout:fragment="adminisTitle"></th:block>
+<head th:fragment="adminisHeadFragment">
+	<th:block layout:fragment="adminisTitle"></th:block>
+	<th:block layout:fragment="adminisCss">
+		<!--external css-->
+		<link href="/adminis/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="/adminis/lib/bootstrap-fileupload/bootstrap-fileupload.css" />
+		<link rel="stylesheet" type="text/css" href="/adminis/lib/bootstrap-datepicker/css/datepicker.css" />
+		<link rel="stylesheet" type="text/css" href="/adminis/lib/bootstrap-daterangepicker/daterangepicker.css" />
+		<link rel="stylesheet" type="text/css" href="/adminis/lib/bootstrap-timepicker/compiled/timepicker.css" />
+		<link rel="stylesheet" type="text/css" href="/adminis/lib/bootstrap-datetimepicker/css/datetimepicker.css" />
+	</th:block>
+</head>
 <th:block layout:fragment="adminisMainContents">
 <br>
 <div class="form-panel">
@@ -11,85 +22,91 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제코드</label>
 			<div class="col-sm-6">
-			  <input type="text" class="form-control" name="areaCd" placeholder="*축제코드는 자동으로 생성됩니다.">
+			  <input type="text" class="form-control" name="festCd" placeholder="*축제코드는 자동으로 생성됩니다.">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">전국지역</label>
 			<div class="col-sm-6">
 			<select class="form-control" name="areaCd">
-				<option></option>
+				<option th:each="l: ${areaList}" th:value="${l.areaCd}" th:text="${l.areaNm}"></option>
 			</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">지역시군</label>
 			<div class="col-sm-6">
-			<select class="form-control" name="areaCd">
-				<option></option>
+			<select class="form-control" name=areaCityCd>
+				<option th:each="acl: ${areaCityList}" th:value="${acl.areaCityCd}" th:text="${acl.areaCityNm}"></option>
 			</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">행정기관</label>
 			<div class="col-sm-6">
-			<select class="form-control" name="areaCd">
-				<option></option>
+			<select class="form-control" name="areacityAdminCd">
+				<option th:each="acal: ${areaCityAdminList}" th:value="${acal.areacityAdminCd}" th:text="${acal.areacityAdminNm}"></option>
 			</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제명</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*축제명을 입력해주세요">
+			    <input type="text" class="form-control" name="festNm" placeholder="*축제명을 입력해주세요">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제개최지역</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*축제개최지역을 입력해주세요">
+			    <input type="text" class="form-control" name="festHostArea" placeholder="*축제개최지역을 입력해주세요">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제개최장소</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*축제개최장소를 입력해주세요">
+			    <input type="text" class="form-control" name="festHostPlace" placeholder="*축제개최장소를 입력해주세요">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제시작일자</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*축제시작일자를 입력해주세요">
+			    <input type="text" class="form-control" name="festStartDt" placeholder="*시작일자는 2020-01-10 형식으로 입력해주세요">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 col-sm-2 control-label">축제종료일자</label>
+			<div class="col-sm-6">
+			    <input type="text" class="form-control" name="festEndDt" placeholder="*종료일자는 2020-01-10 형식으로 입력해주세요">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제내용</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*축제시작일자를 입력해주세요">
+			    <input type="text" class="form-control" name="festContent" placeholder="*축제내용을 입력해주세요">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제주관기관</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*축제주관기관을 입력해주세요">
+			    <input type="text" class="form-control" name="festSuperAgency" placeholder="*주관기관을 입력해주세요">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제후원기관</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*축제후원기관을 입력해주세요">
+			    <input type="text" class="form-control" name="festSpoAgency" placeholder="*후원기관을 입력해주세요">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제개최주소</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*축제개최주소를 입력해주세요">
+			    <input type="text" class="form-control" name="festAddr" placeholder="*축제개최주소를 입력해주세요">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">축제전화문의</label>
 			<div class="col-sm-6">
-			    <input type="text" class="form-control" name="areaNm" placeholder="*축제문의에 대한 전화번로를 입력해주세요">
+			    <input type="text" class="form-control" name="festInquiry" placeholder="*축제문의에 대한 전화번호를 입력해주세요">
 			</div>
 		</div>
 	<button type="submit" class="btn btn btn-success">등록하기</button>
@@ -98,7 +115,68 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 </div>
 </th:block>
 <th:block layout:fragment="adminisscript">
-<th:block th:include="fragments/adminis/adminisscript"></th:block>
+	<th:block th:include="fragments/adminis/adminisscript">
+		<script th:src="@{lib/jquery-ui-1.9.2.custom.min.js}" th:inline="javascript"></script>
+		<script type="text/javascript" th:src="@{adminis/lib/bootstrap-fileupload/bootstrap-fileupload.js}" th:inline="javascript"></script>
+		<script type="text/javascript" th:src="@{adminis/lib/bootstrap-datepicker/js/bootstrap-datepicker.js}" th:inline="javascript"></script>
+		<script type="text/javascript" th:src="@{adminis/lib/bootstrap-daterangepicker/date.js}" th:inline="javascript"></script>
+		<script type="text/javascript" th:src="@{adminis/lib/bootstrap-daterangepicker/daterangepicker.js}" th:inline="javascript"></script>
+		<script type="text/javascript" th:src="@{adminis/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js}" th:inline="javascript"></script>
+		<script type="text/javascript" th:src="@{adminis/lib/bootstrap-daterangepicker/moment.min.js}" th:inline="javascript"></script>
+		<script type="text/javascript" th:src="@{adminis/lib/bootstrap-timepicker/js/bootstrap-timepicker.js}" th:inline="javascript"></script>
+		<script src="@{adminis/lib/advanced-form-components.js}" th:inline="javascript"></script>
+		<script type="text/javascript" th:inline="javascript">
+		//축제 등록시 공란 체크 스크립트
+		$(document).ready(function(){
+			$('.btn-success').on('click', function(){
+				var parent = $(this).parent('form');
+				var festCd = parent.find('input[name=festCd]').val();
+				var areaCd = parent.find('select[name=areaCd]').val();
+				var areaCityCd = parent.find('select[name=areaCityCd]').val();
+				var areacityAdminCd = parent.find('select[name=areacityAdminCd]').val();
+				var festNm = parent.find('input[name=festNm]').val();
+				var festHostArea = parent.find('input[name=festHostArea]').val();
+				var festHostPlace = parent.find('input[name=festHostPlace]').val();
+				var festStartDt = parent.find('input[name=festStartDt]').val();
+				var festEndDt = parent.find('input[name=festEndDt]').val();
+				var festContent = parent.find('input[name=festContent]').val();
+				var festSuperAgency = parent.find('input[name=festSuperAgency]').val();
+				var festAddr = parent.find('input[name=festAddr]').val();
+				var festInquiry = parent.find('input[name=festInquiry]').val();
+				
+				if(festCd == "" || areaCd == "" || areaCityCd == "" || areacityAdminCd == "" || festNm == "" || festHostArea == "" ||
+					festHostPlace == "" || festStartDt == "" || festEndDt == "" || festContent == "" || festSuperAgency == "" 
+					|| festAddr == "" || festInquiry == ""){
+					
+					alert('비어있는 값이 있습니다. 올바르게 입력해주세요');
+				}else{
+					if(confirm('등록하시겠습니까?')){
+						$('.style-form').attr('action', '/festival/festivalInsert');
+						$('.style-form').attr('method', 'post');
+						$('.style-form').submit();
+					}
+				}
+			});
+			$('.btn-danger').on('click', function(){
+				var parent = $(this).parent('form');
+		
+				parent.find('input[name=festCd]').val('');
+				parent.find('select[name=areaCd]').val('');
+				parent.find('select[name=areaCityCd]').val('');
+				parent.find('select[name=areacityAdminCd]').val('');
+				parent.find('input[name=festNm]').val('');
+				parent.find('input[name=festHostArea]').val('');
+				parent.find('input[name=festHostPlace]').val('');
+				parent.find('input[name=festStartDt]').val('');
+				parent.find('input[name=festEndDt]').val('');
+				parent.find('input[name=festContent]').val('');
+				parent.find('input[name=festSuperAgency]').val('');
+				parent.find('input[name=festAddr]').val('');
+				parent.find('input[name=festInquiry]').val('');
+			});
+		});
+		</script>
+	</th:block>
 </th:block>
 
 </html>

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import shop.fims.vo.Area;
 import shop.fims.vo.AreaCity;
 import shop.fims.vo.AreaCityAdmin;
-import shop.fims.vo.Member;
+import shop.fims.vo.Member3;
 import shop.fims.vo.MemberLev;
 
 @Service
@@ -18,9 +18,9 @@ public class MemberService {
 	
 	
 	//모든 회원 조회
-	public List<Member> memberList() {
+	public List<Member3> memberList() {
 		
-		List<Member> memberList = memberMapper.memberList();
+		List<Member3> memberList = memberMapper.memberList();
 		System.out.println(memberList + " : 모든 회원 조회 ");
 		
 		return memberList;
