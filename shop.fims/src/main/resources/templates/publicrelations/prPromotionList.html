@@ -10,26 +10,27 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 </th:block>
 <th:block layout:fragment="adminisMainContents">
 
-<!-- 상단 홍보관련메뉴 -->		
-			<div class="btn-group btn-group-justified">
-                <div class="btn-group">
-                  <a th:href="@{/prDivList}">
-                  <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;">홍보분류관리</font></button></a>
-                </div>
-                <div class="btn-group">
-                  <a th:href="@{/prPromotionList}">
-                  <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;">홍보사업관리</font></button></a>
-                </div>
-                <div class="btn-group">
-                  <a th:href="@{/prComList}">
-                  <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;">홍보거래처조회</font></button></a>
-                </div>
-              </div>
 		
-		<div class="row mt">
-          <div class="col-md-12">
+
+          <div class="col-lg-12">
            
-            <div class="content-panel"> 
+
+            
+<!-- 상단 홍보관련메뉴 -->	
+            <div class="form-panel">
+	            <div id="controls-tabs">
+		            <div class="wrap_controls">
+		            	<ul class="ullist controls " style="margin: 0px; padding: 0px; list-style-type: none;">
+				            <li class=""><a th:href="@{/prDivList}" id="prDivBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보분류관리</span></a></li>
+				            <li class="active"><a th:href="@{/prPromotionList}"  id="prPromotionBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보사업관리</span></a></li>
+				            <li class=""><a th:href="@{/prComList}" id="prComBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보거래처관리</span></a></li>
+		           		</ul>
+		            </div>
+            	</div>            
+            
 			<h1 align="center"><span >《[[${session.F_NM}]]》 홍보 사업 리스트</span></h1>
               <div align="right">
               <a th:href="@{/prInsertPromotion}" >
@@ -127,7 +128,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
           		<li class="next"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다음 → </font></font></a></li>
           	</ul>
           </div>      
-        </div>	
+   
 	
 	
 	
