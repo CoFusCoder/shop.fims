@@ -40,6 +40,8 @@ public class Estimate {
 	private String memEmail;//이메일
 	private String memBirth;//생년월일
 	private String joinDt;//가입일자
+	private String LoginCd;//로그인 코드
+	
 	public String getExaRepCd() {
 		return exaRepCd;
 	}
@@ -172,6 +174,12 @@ public class Estimate {
 	public void setEvaindexScoCd(String evaindexScoCd) {
 		this.evaindexScoCd = evaindexScoCd;
 	}
+	public String getEvaindexItemCd() {
+		return evaindexItemCd;
+	}
+	public void setEvaindexItemCd(String evaindexItemCd) {
+		this.evaindexItemCd = evaindexItemCd;
+	}
 	public String getAreaNm() {
 		return areaNm;
 	}
@@ -196,23 +204,17 @@ public class Estimate {
 	public void setFestNm(String festNm) {
 		this.festNm = festNm;
 	}
-	public String getMemNm() {
-		return memNm;
-	}
-	public void setMemNm(String memNm) {
-		this.memNm = memNm;
-	}
-	public String getEvaindexItemCd() {
-		return evaindexItemCd;
-	}
-	public void setEvaindexItemCd(String evaindexItemCd) {
-		this.evaindexItemCd = evaindexItemCd;
-	}
 	public String getMemLevCd() {
 		return memLevCd;
 	}
 	public void setMemLevCd(String memLevCd) {
 		this.memLevCd = memLevCd;
+	}
+	public String getMemNm() {
+		return memNm;
+	}
+	public void setMemNm(String memNm) {
+		this.memNm = memNm;
 	}
 	public String getMemAddr() {
 		return memAddr;
@@ -244,6 +246,12 @@ public class Estimate {
 	public void setJoinDt(String joinDt) {
 		this.joinDt = joinDt;
 	}
+	public String getLoginCd() {
+		return LoginCd;
+	}
+	public void setLoginCd(String loginCd) {
+		LoginCd = loginCd;
+	}
 	@Override
 	public String toString() {
 		return "Estimate [exaRepCd=" + exaRepCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd
@@ -252,15 +260,14 @@ public class Estimate {
 				+ ", exaDt=" + exaDt + ", exaTotalScore=" + exaTotalScore + ", estClaCd=" + estClaCd + ", evaNm="
 				+ evaNm + ", lCriteria=" + lCriteria + ", mCriteria=" + mCriteria + ", sCriteria=" + sCriteria
 				+ ", scoringCriteria=" + scoringCriteria + ", scoring=" + scoring + ", multipleChoice=" + multipleChoice
-				+ ", exeManager=" + exeManager + ", evaindexScoCd=" + evaindexScoCd + ", areaNm=" + areaNm
-				+ ", areaCityNm=" + areaCityNm + ", areacityAdminNm=" + areacityAdminNm + ", festNm=" + festNm
-				+ ", memNm=" + memNm + ", evaindexItemCd=" + evaindexItemCd + ", memLevCd=" + memLevCd + ", memAddr="
+				+ ", exeManager=" + exeManager + ", evaindexScoCd=" + evaindexScoCd + ", evaindexItemCd="
+				+ evaindexItemCd + ", areaNm=" + areaNm + ", areaCityNm=" + areaCityNm + ", areacityAdminNm="
+				+ areacityAdminNm + ", festNm=" + festNm + ", memLevCd=" + memLevCd + ", memNm=" + memNm + ", memAddr="
 				+ memAddr + ", memPhone=" + memPhone + ", memEmail=" + memEmail + ", memBirth=" + memBirth + ", joinDt="
-				+ joinDt + "]";
+				+ joinDt + ", LoginCd=" + LoginCd + "]";
 	}
 	
-	
-	
+
 	
 	
 

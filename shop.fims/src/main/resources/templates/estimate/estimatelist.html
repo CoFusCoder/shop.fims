@@ -36,11 +36,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th th:text="${e.evaNm}"></th>
 								<th th:text="${e.exaDt}"></th>
 								<th th:text="${e.exaCondition}" class="exaCondition"></th>								
+								<th:block th:if="${session.SID eq 'id003'}">
 								<th>
 								<a th:href="@{/apply(exaRepCd=${e.exaRepCd})}" >  
   			 		 			 <button class="btn btn-success btn-xs"><i class="fa fa-check">제출</i></button> 
   			 		 			 </a>
 								</th>
+  			 		 			 </th:block>	
 							</th:block>																				
 							</tr>
 						</table>

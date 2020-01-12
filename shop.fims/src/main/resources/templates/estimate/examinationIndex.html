@@ -73,7 +73,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 				console.log(indexeva.length)
 				console.log(evaList.length)
 							
-				content += '<form action="/estimatelist" method="post">'
+// 				content += '<form action="/estimatelist" method="post">'
 				content += '<table class="table table-bordered table-striped table-condensed">'
 				for(var i = 0; i < indexeva.length; i++){
 				content += '<tr>'
@@ -82,7 +82,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 				for(var z = 0; z <evaList.length; z++){
 				if(evaList[z].evaindexItemCd == indexeva[i].evaindexItemCd){					
 						content += '<tr>'
-						content += '<td>'+ evaList[z].scoringCriteria +'<input type="radio" name="radio'+(i+1)+'" value="'+evaList[z].scoring +'"  ></td>'
+						content += '<td>'+ evaList[z].scoringCriteria +'<input type="radio" class="evlist" name="radio'+(i+1)+'" value="'+evaList[z].scoring +'"  ></td>'
 						content += '</tr>'
 						}							
 					}
@@ -95,7 +95,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 				content +='</td>'
 				content +='</tr>'				
 				content +='</table>'
-				content +='</form>'						
+// 				content +='</form>'						
 				$('.evaList').html(content)
 				$('.JudgingButton').click(function(){
 					$('#subid').css('')					
@@ -110,17 +110,25 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			
 		});
 		
+		//담당자 유효성 검사
 		$(document).on('click','.evbSubmit',function(){
 			var name = $("input[name='exeManager']").val()			
 			if(name == ''){
-				alert('이름을 써주세요');
+				alert('담당자 이름을 써주세요');
 				$("input[name='exeManager']").focus()
 				return false;
 			}
 		});
-		$(document).on('click','.evbSubmit',function(){
-			
-		});
+		
+		//심사문항 체크 유효성
+// 		$(document).on('click','.evbSubmit',function(){
+// 			var name2 = $('.evlist').val()
+// 			if(name2 == ''){
+// 				alert('체크해주세요');
+// 				$('.evlist').focus()
+// 				return false;
+// 			}
+// 		});
 	});
 	</script>
 </th:block>
