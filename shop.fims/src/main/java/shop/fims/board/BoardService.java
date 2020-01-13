@@ -1,6 +1,7 @@
 package shop.fims.board;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +58,10 @@ public class BoardService {
 		resultMap.put("lastPageNum", lastPageNum);
 		
 		return resultMap;
+	}
+	
+	//공지사항 상세보기 게시판코드 사용
+	public List<Board> selectByBoard(String boardCd){
+		return boardMapper.selectByBoard(boardCd);
 	}
 }

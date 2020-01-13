@@ -15,4 +15,7 @@ public interface BoardMapper {
 
 	//공지사항 관리
 	public List<Board> getBoardList(Map<String, Integer> map);
+	
+	//공지사항 상세보기 게시판코드 사용
+	public List<Board> selectByBoard(String boardCd);
 }

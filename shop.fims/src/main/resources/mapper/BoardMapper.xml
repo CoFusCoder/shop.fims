@@ -4,28 +4,29 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="shop.fims.board.BoardMapper">
-<!-- 	<resultMap type="shop.fims.vo.Board" id="boardResultMap">
+	<resultMap type="shop.fims.vo.Board" id="boardResultMap">
 		<result property="boardCd" column="board_cd"/>		
 		<result property="boardTitle" column="board_title"/>		
 		<result property="boardContent" column="board_content"/>		
 		<result property="boardWriter" column="board_writer"/>
 		<result property="boardDt" column="board_dt"/>	
-	</resultMap> -->
+	</resultMap>
 
-	<!--  -->
+	<!-- 공지글 총 수 -->
 	<select id="getBoardAllCount" resultType="int">
 		SELECT 
 			COUNT(*)
 		FROM Board
 	</select>
 	
-	<!--  -->
+	<!-- 공지사항 관리 -->
 	<select id="getBoardList"
 		resultType="shop.fims.vo.Board"
 		parameterType="java.util.Map">
 		SELECT 
 			 board_cd 		AS boardCd
-			,board_pw			AS boardPw
+			,SUBSTR(board_cd, 7) AS boardCd
+			,board_pw		AS boardPw
 			,board_title 	AS boardTitle
 			,board_content 	AS boardContent
 			,board_writer 	AS boardWriter
@@ -33,5 +34,16 @@
 		FROM Board
 		ORDER BY board_cd DESC
 		LIMIT #{startRow},#{rowPerPage}
+	</select>
+	<!-- SUBSTR(board_cd, 7) -->
+	<!-- 공지사항 상세보기 게시판코드 사용 -->
+	<select id="selectByBoard" 
+		resultMap="boardResultMap">
+		SELECT 
+			*
+		FROM 
+			Board
+		WHERE 
+			board_cd = #{boardCd}
 	</select>
 </mapper>
