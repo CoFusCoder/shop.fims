@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<script src="/gukmin/js/underscore-min.js"></script>
+<section>
+<div class="commDesc">
+	<p class="t01">공지사항 수정하기</p>
+</div>
+
+
+<div class="norBox">
+<p class="wSubj">
+	공지사항 수정
+</p>
+<table class="writeTable t01">
+				<colgroup>
+					<col width="120" />
+					<col width="" />
+				</colgroup>
+				<tr>
+					<th>제목</th>
+					<td>
+						<div class="form">
+							<input type="text" id="capacity" name="capacity" class="inp w100" />
+							<span class="etxt"></span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td>
+						<div class="form">
+							<input type="text" id="capacity" name="capacity" class="inp w100" />
+							<span class="etxt"></span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>글 비밀번호</th>
+					<td>
+						<div class="form">
+							<input type="text" id="capacity" name="capacity" class="inp w100" />
+							<span class="etxt"></span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td>
+						<div class="form t01">
+							<textarea class="textarea" id="entrancefee" name="entrancefee" style="height: 400px"
+								placeholder="공지사항과 관련된 정보를 수정해주세요."></textarea>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<div class="boardBtnBox ac">
+				<a href="/gukminview/community/boardList" id="registerbutton" class="btnType03">등록
+					</a> <a href="javascript:void(0)" onclick="window.history.back();"
+					class="btnType04">목록</a>
+			</div>
+</div>
+</section>
+
+</th:block>
+
+</html>

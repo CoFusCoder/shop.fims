@@ -105,7 +105,7 @@ public class PublicrelationsService {
 		return publicrelationsMapper.selectByPmcd(festprProCd);		
 	}
 
-	// 홍보상세내역조회
+	// 홍보 리스트 조회
 	public List<PrPromotion> selectAllPromotion(String festCd){
 		return publicrelationsMapper.selectAllPromotion(festCd);
 	}
@@ -146,6 +146,16 @@ public class PublicrelationsService {
 		return publicrelationsMapper.selectFile(festprProCd);		
 	}
 	
+	
+	//홍보사업 및 첨부파일 삭제
+	public int deletePromotion(String festprProCd) {
+		publicrelationsMapper.deleteFile(festprProCd);
+		publicrelationsMapper.deletePromotion(festprProCd);
+		return 0;		
+	}
+	
+	
+	
 //**********홍보 이벤트당첨자 ***********		
 
 	
@@ -154,7 +164,19 @@ public class PublicrelationsService {
 		return publicrelationsMapper.selectEventWinnerByPmcd(festprProCd);
 	}
 	
-
-
+//**********홍보 거래처 ***********
+	// 홍보관련 승인 거래처 조회
+	public List<Map<String, Object>> selectPrCom(String festCd){
+		return publicrelationsMapper.selectPrCom(festCd);		
+	}
+	// 거래처명으로 홍보사업리스트 조회
+	public List<PrPromotion> searchPrByCom (String festCd, String catAccNm1){
+		return publicrelationsMapper.searchPrByCom(festCd, catAccNm1);
+		
+	}
+	//축제별 미승인 홍보 거래처 조회
+	public List<PrPromotion> searchPrComNotapproved (String festCd){
+		return publicrelationsMapper.searchPrComNotapproved(festCd);	
+	}
 
 }

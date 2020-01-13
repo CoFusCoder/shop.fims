@@ -43,7 +43,7 @@ public interface PublicrelationsMapper {
 	// 홍보리스트 조건검색
 	public List<PrPromotion> searchPrDetail(String festprDivNm, String catAccNm1, String festprProNm, String date1, String date2, String actionStatus, String festCd);
 	
-	// 홍보상세조회
+	// 홍보 리스트 조회
 	public List<PrPromotion> selectAllPromotion(String festCd);
 	
 	// 홍보코드로 상세조회
@@ -66,7 +66,17 @@ public interface PublicrelationsMapper {
 	//마지막 프로모션코드값 조회하기
 	public String selectLastCd();
 	
+	//첨부파일 정보 조회
 	public List<AttachFiles> selectFile (String festprProCd);
+	
+	
+	// 홍보사업 삭제
+	public int deletePromotion(String festprProCd);
+	
+	// 홍보코드로 첨부파일 삭제
+	public int deleteFile(String festprProCd);
+	
+	
 	
 //**********홍보 이벤트당첨자 ***********		
 	// 홍보코드로 이벤트 당첨자 조회
@@ -74,12 +84,15 @@ public interface PublicrelationsMapper {
 	
 	
 	
+//**********기타 ***********			
+	// 축제별 승인 홍보 거래처 조회
+	public List<Map<String, Object>> selectPrCom(String festCd);
 	
+	// 축제별 거래처명으로 사업 조회
+	public List<PrPromotion> searchPrByCom (String festCd, String catAccNm1);
 	
-	
-	
-	
-
+	// 축제별 미승인 홍보 거래처 조회
+	public List<PrPromotion> searchPrComNotapproved (String festCd);
 	
 	
 }

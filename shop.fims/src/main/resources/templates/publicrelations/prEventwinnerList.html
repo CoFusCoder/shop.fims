@@ -2,17 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
-<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisTitle">
+	<title>이벤트 당첨자 관리</title>
+</th:block>
 <th:block layout:fragment="adminisMainContents">
+<th:block layout:fragment="adminisScript">
+	<script th:src="@{/adminis/lib/jquery/jquery.min.js}"></script>				
+	
+<script type="text/javascript">
+$(document).ready(function(){
 
+
+	
 		
-		<div class="col-md-12 mt">
-            <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i>이벤트당첨자 리스트</h4>
+		$('#pageBack').click(function(){
+			window.history.back();
+		})
+		
+		/* document.ready 종료 */
+	})
+</script>			
+<div class="col-lg-12">
+
+            <div class="form-panel">
+
+<!-- 상단 홍보관련메뉴 -->	            
+	            <div id="controls-tabs">
+		            <div class="wrap_controls">
+		            	<ul class="ullist controls " style="margin: 0px; padding: 0px; list-style-type: none;">
+				            <li class=""><a th:href="@{/prDivList}" id="prDivBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보분류관리</span></a></li>
+				            <li class="active"><a th:href="@{/prPromotionList}"  id="prPromotionBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보사업관리</span></a></li>
+				            <li class=""><a th:href="@{/prComList}" id="prComBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보거래처관리</span></a></li>
+		           		</ul>
+		            </div>
+            	</div>
+            	
+            <h1 align="center"><span >이벤트 당첨자 리스트</span></h1>
               <div class="btn_both" th:with="cd=${code}">
-	              <div class="fl">
-	              	<a th:href="@{/prPromotionDetail(festprProCd=${cd})}">
-	              	<button type="button" class="btn btn-default" align="left" >이벤트상세페이지로 돌아가기</button></a>
+	              <div class="fl">	     
+	              	<button type="button" class="btn btn-default" align="left" id="pageBack">이벤트상세페이지로 돌아가기</button>
 	              </div>
 	              <div class="fr">
 	             	<a th:href="@{/prInsertEventwinner(festprProCd=${cd})}" >
@@ -21,8 +52,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
  
               </div>
               <hr>
+              
               <table class="table table-hover">
-                
                 <thead>
                   <tr>
                     <th>번호</th>
@@ -38,7 +69,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="ev:${EveByPmcd}">
+                  <tr th:each="ev:${EveByPmcd}" id="eve">
                     <td th:text="${evStat.count}"></td>
                     <td th:text="${ev.festprEveCd}"></td>
                     <td th:text="${ev.festprEveNo}"></td>
@@ -52,6 +83,9 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                     <td><a th:href="@{/prDeleteEventwinner}" >
                     <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button></a></td>
                   </tr>
+	                <tr id="noeve" align="center" th:if="${EveByPmcd eq null or (EveByPmcd ne null and EveByPmcd.size() eq 0)}" >
+	                <td colspan="10">"등록된 이벤트 당첨자가 없습니다. 당첨자를 등록해주세요."</td>
+	                </tr>
                 </tbody>
               </table>
             </div>

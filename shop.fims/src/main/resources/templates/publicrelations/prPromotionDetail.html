@@ -4,18 +4,51 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle"></th:block>
 <th:block layout:fragment="adminisMainContents">
-	-수정, 삭제기능 추가해야함.<br>
+<th:block layout:fragment="adminisScript">
+	<script th:src="@{/adminis/lib/jquery/jquery.min.js}"></script>				
 	
-		<a th:href="@{/prPromotionList}">
-		<button type="button" class="btn btn-default" >리스트로 돌아가기</button>
-		</a>
-		
-		
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#prDetailDeleteBtn').click(function(){
+		var deleteadd = $('#deleteAdd').val();
+		if (confirm('삭제하면 되돌릴 수 없습니다. 정말 삭제하시겠습니까?') == true){
+		    $('#prDel').submit();
+		}else{   
+		    return;
+
+	}
+	
+	})
+		$('#pageBack').click(function(){
+			window.history.back();
+		})	
+	
+/* document.ready 종료 */
+})
+
+</script>
+
 		<div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
-            <th:block th:each="p:${selectByPmcd}" th:with="event='PRw0008'">
-              <h4>"<span th:text=${p.festprProNm}><i class="fa fa-angle-right"></i></span>" 프로모션 상세내역</h4><br>
+<!-- 상단 홍보관련메뉴 -->	            
+	            <div id="controls-tabs">
+		            <div class="wrap_controls">
+		            	<ul class="ullist controls " style="margin: 0px; padding: 0px; list-style-type: none;">
+				            <li class=""><a th:href="@{/prDivList}" id="prDivBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보분류관리</span></a></li>
+				            <li class="active"><a th:href="@{/prPromotionList}"  id="prPromotionBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보사업관리</span></a></li>
+				            <li class=""><a th:href="@{/prComList}" id="prComBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보거래처관리</span></a></li>
+		           		</ul>
+		            </div>
+            	</div>
+            	
+            	            
+            <th:block th:each="p:${selectByPmcd}" th:with="event='PRw0008'">              
+				<h1 align="center">《<span th:text="${p.festprProNm}" ></span>》사업 상세내역</h1>
+				<button type="button" class="btn btn-default" align="left" id="pageBack">뒤로가기</button>             
               <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
                   <thead>
@@ -138,7 +171,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                       <span th:if="${p.festprDivCd==event}" >
                       <a th:href="@{/prEventwinnerList(festprProCd=${p.festprProCd})}">
 			 		  <button type="button" class="btn btn-info ">이벤트 당첨자관리</button></a></span>
-                      <!-- <span th:unless="${p.festprDivCd==event}" ></span> -->
 			 		  </td>
                     </tr>
                   </tbody>
@@ -146,12 +178,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
               </section>
               
         <div align="right">
+		<form action="/prDeletePromotion" method="get" id="prDel">
 		<a th:href="@{/prUpdatePromotion(festprProCd=${p.festprProCd})}">
 		<button type="button" class="btn btn-primary">수정하기</button></a>
-		<a th:href="@{/prDeletePromotion}">
-		<button type="button" class="btn btn-danger">삭제하기</button></a>
+		<input type="hidden" name="festprProCd" th:value="${p.festprProCd}" >
+		<button type="button" class="btn btn-danger" id="prDetailDeleteBtn" >삭제하기</button>
+		</form>
 		</div>
-              
               </th:block>
             </div>
             <!-- /content-panel -->
