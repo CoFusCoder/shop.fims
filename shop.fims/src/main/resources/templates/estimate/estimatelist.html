@@ -17,7 +17,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 					</h2>
 					
 						<table class="table" >
-							<tr>
+							<tr >
 								<th>모든 행정기관관리</th>
 								<th>전국 지역관리</th>
 								<th>모든 지역 시군관리</th>
@@ -25,7 +25,9 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th>심사 제목</th>
 								<th>심사일자</th>
 								<th>심사현황</th>
+								<th:block th:if="${session.SID eq 'id003'}">
 								<th>심사하기</th>
+								</th:block>	
 							</tr>
 							<tr th:each="e : ${estimatelist}" >
 							<th:block th:if="${e.exaCondition} == N" >						
@@ -66,7 +68,9 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th>심사일자</th>
 								<th>심사현황</th>
 								<th>담당자</th>
+								<th:block th:if="${session.SLEVEL eq '거래처'}">
 								<th>상세보기</th>
+								</th:block>
 							</tr>
 						<tr th:each="e : ${estimatelist}" >
 							<th:block th:if="${e.exaCondition} == Y" >						
@@ -78,45 +82,19 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th th:text="${e.exaDt}"></th>
 								<th th:text="${e.exaCondition}" ></th>								
 								<th th:text="${e.exeManager}"></th>
+								<th:block SLEVEL></th:block>
+								<th:block th:if="${session.SLEVEL eq '거래처'}">
 								<th>			
  			 					<a th:href="@{/estimatelistdetail(exa_rep_cd=${e.exaRepCd})}">
  			 					  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> 
  			 					</a>	
 								</th>
-								<th:block></th:block>
+								</th:block>
 							</tr>
 					</table>
 					
 					
-<!-- 					<div class="dataTables_paginate paging_bootstrap pagination"> -->
-<!--               	<ul> -->
-<!--               		<li class="prev disabled"> -->
-<!-- 		              	이전 -->
-<!-- 						<a th:if="${currentPage > 1}"  -->
-<!-- 						th:href="@{/committeeAppFormView(currentPage=${currentPage - 1})}">이전</a> -->
-<!-- 					</li>	 -->
-<!-- 					<li class="active">	 -->
-<!-- 						<th:block th:each="num:${#numbers.sequence(startPageNum,lastPageNum)}"> -->
-<!-- 								<a th:if="${currentPage == num}"  -->
-<!-- 								th:text="${num}"></a>	 -->
-<!-- 								<a style="color: black; background-color: white"th:unless="${currentPage == num}"  -->
-<!-- 								th:text="${num}"  -->
-<!-- 								th:href="@{/committeeAppFormView(currentPage=${num})}"></a> -->
-<!-- 						</th:block> -->
-<!-- 					</li>	 -->
-<!-- 					<li class="next">	 -->
-<!-- 						다음 -->
-<!-- 						<a th:if="${currentPage < lastPage}"  -->
-<!-- 						th:href="@{/committeeAppFormView(currentPage=${currentPage + 1})}">다음</a> -->
-<!-- 					</li>	 -->
-<!-- 				</ul> -->
-<!-- 				<ul> -->
-<!-- 					<th> -->
-<!-- 					</th> -->
-<!-- 				</ul> -->
-<!-- 			</div>	
 
-					 -->
 				</div>
 			</div>
 		</div>
@@ -125,25 +103,5 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisscript">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
 
-<script type="text/javascript">
-// 	$(document).ready(function(){
-// 		$(document).on('click','#bbts',function(){
-// 			var cotent = '';
-// 			var evn = $('.evanm').val
-// 			console.log(evn)
-// 			if(evn == '축제 평가위원회 심사'){
-// 				cotent += '	<a th:href="@{/apply(exaRepCd=${e.exaRepCd})}" >'
-// 				cotent += '	</a>'
-				
-// 			}else if(evn =='부스 심사'){
-// 				cotent += '	<a th:href="@{/booth(exaRepCd=${e.exaRepCd})}" >'
-// 				cotent += '	</a>'			
-// 			}
-// 		})
-		
-		
-// 	});
-	
-</script>
 
 </html>

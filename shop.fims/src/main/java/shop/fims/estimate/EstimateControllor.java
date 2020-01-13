@@ -106,15 +106,6 @@ public class EstimateControllor {
 		return "estimate/estimatelistdetail";
 	}
 	
-	@GetMapping("/finalestimatelist")
-	public String finalestimatelist() {
-		return "estimate/finalestimatelist";
-	}
 
-	
-	@GetMapping("/reviewindicater")
-	public String reviewindicater() {
-		return "estimate/reviewindicater";
-	}
 	
 }
