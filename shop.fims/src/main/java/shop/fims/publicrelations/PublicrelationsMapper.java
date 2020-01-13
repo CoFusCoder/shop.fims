@@ -69,6 +69,15 @@ public interface PublicrelationsMapper {
 	//첨부파일 정보 조회
 	public List<AttachFiles> selectFile (String festprProCd);
 	
+	
+	// 홍보사업 삭제
+	public int deletePromotion(String festprProCd);
+	
+	// 홍보코드로 첨부파일 삭제
+	public int deleteFile(String festprProCd);
+	
+	
+	
 //**********홍보 이벤트당첨자 ***********		
 	// 홍보코드로 이벤트 당첨자 조회
 	public List<EventWinner> selectEventWinnerByPmcd(String festprProCd);	

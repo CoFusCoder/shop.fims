@@ -146,6 +146,16 @@ public class PublicrelationsService {
 		return publicrelationsMapper.selectFile(festprProCd);		
 	}
 	
+	
+	//홍보사업 및 첨부파일 삭제
+	public int deletePromotion(String festprProCd) {
+		publicrelationsMapper.deleteFile(festprProCd);
+		publicrelationsMapper.deletePromotion(festprProCd);
+		return 0;		
+	}
+	
+	
+	
 //**********홍보 이벤트당첨자 ***********		
 
 	
