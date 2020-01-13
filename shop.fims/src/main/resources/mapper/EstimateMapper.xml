@@ -56,9 +56,9 @@
 		eii.m_criteria,
 		eii.s_criteria
 		FROM
-		Eva_index AS ei
+		Eva_Index AS ei
 		INNER JOIN
-		Eva_index_item as eii
+		Eva_Index_Item as eii
 		ON 
 		ei.eva_index_cd = eii.eva_index_cd
 	
@@ -71,9 +71,9 @@
 	SELECT
 	*
 	FROM
-	Eva_index AS ei	
+	Eva_Index AS ei	
 	INNER JOIN
-	Eva_index_scoring AS eis
+	Eva_Index_Scoring AS eis
 	ON
 	ei.eva_index_cd = eis.eva_index_cd
 	WHERE
@@ -107,7 +107,7 @@
 		ON
 		er.fest_cd = f.fest_cd
 		INNER JOIN
-		Eva_index AS ei
+		Eva_Index AS ei
 		on
 		er.eva_index_cd = ei.eva_index_cd
 		INNER join
@@ -224,7 +224,7 @@ SELECT
 		ON
 		er.fest_cd = f.fest_cd
 		INNER JOIN
-		Eva_index AS ei
+		Eva_Index AS ei
 		on
 		er.eva_index_cd = ei.eva_index_cd
 	 WHERE
@@ -247,7 +247,7 @@ SELECT
 		eis.scoring_criteria,
 		eis.scoring
 		FROM
-		Eva_index_scoring AS eis
+		Eva_Index_Scoring AS eis
 		WHERE
 		eis.evaindex_sco_cd = #{evaindex_sco_cd}
 	 
