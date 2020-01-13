@@ -173,7 +173,7 @@ SELECT
 		ON
 		er.fest_cd = f.fest_cd
 		INNER JOIN
-		Eva_index AS ei
+		Eva_Index AS ei
 		on
 		er.eva_index_cd = ei.eva_index_cd
 	 WHERE
