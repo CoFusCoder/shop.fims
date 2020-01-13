@@ -101,7 +101,7 @@ public class PublicrelationsService {
 	}	
 
 	//홍보코드로 상세내역조회
-	public List<PrPromotion> selectByPmcd(String festprProCd){
+	public List<Map<String, Object>> selectByPmcd(String festprProCd){
 		return publicrelationsMapper.selectByPmcd(festprProCd);		
 	}
 

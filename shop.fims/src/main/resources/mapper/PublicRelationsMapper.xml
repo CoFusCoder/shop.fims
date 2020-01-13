@@ -173,18 +173,27 @@
 	  	
 	  	  	
 	  	<!-- 프로모션코드로 프로모션상세조회 -->
-	  	<select id="selectByPmcd" resultMap="prPromotionResultmap">
-		SELECT
+	  	<select id="selectByPmcd" resultType="map">
+		SELECT distinct
 			a.cat_acc_nm1
+			,d.man_com_dep
+			,d.com_mem_nm2
+			,f.accsub_medium_nm
+			,f.accsub_nm
 			,c.festpr_div_nm
 			,b.*
 		FROM
 			Cat_Approval_Account AS a
 			, Fest_PR_Promotion AS b
 			, Fest_PR_Div AS c
+			, Man_Com AS d
+			, Cat_Account AS e
+			, Fes_revExp_Bud AS f
 		WHERE a.catapp_acc_cd=b.catapp_acc_cd
 			AND b.festpr_div_cd=c.festpr_div_cd
-			AND b.festpr_pro_cd=(#{festprProCd})
+			AND b.festpr_pro_cd=#{festprProCd}
+			AND b.man_com_cd=d.man_com_cd
+			AND b.fesrev_bud_cd=f.fesrev_bud_cd
 	  	</select>
 	  	
 	  	
@@ -326,7 +335,7 @@ values (#{festprProCd},#{areacityAdminCd},#{areaCd},#{areaCityCd}
 		,#{festCd},#{festprDivCd}, #{manComCd}, #{fesrevBudCd}
 		,#{catappAccCd}, #{festTitle},#{festprProNm}, #{festprProDetail}
 		,#{fprproOrderDt},#{fprproStartDt},#{fprproEndDt},#{festprProPlace}
-		,#{festprProAmt},#{groupCd},#{groupNm},'0000-00-00'
+		,#{festprProAmt},#{groupCd},#{groupNm},#{actionDt}
 		,'N',#{festprProExpense},#{festprProEtc},now())
 </insert>	
 	

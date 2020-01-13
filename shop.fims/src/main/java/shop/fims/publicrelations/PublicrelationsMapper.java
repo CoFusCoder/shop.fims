@@ -47,7 +47,7 @@ public interface PublicrelationsMapper {
 	public List<PrPromotion> selectAllPromotion(String festCd);
 	
 	// 홍보코드로 상세조회
-	public List<PrPromotion> selectByPmcd(String festprProCd);	
+	public List<Map<String, Object>> selectByPmcd(String festprProCd);	
 	
 	// 홍보 그룹코드 조회
 	public List<Map<String, Object>> selectGroup(String festCd);	
