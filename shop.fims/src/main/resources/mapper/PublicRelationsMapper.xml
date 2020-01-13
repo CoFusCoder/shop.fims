@@ -220,7 +220,7 @@ WHERE festpr_div_cd=#{festprDivCd}
 </delete>
 
 <!-- 홍보 분류 등록 -->
-<insert id="insertDiv" parameterType="shop.fims.vo.PrDiv">
+<insert id="insertPrDiv" parameterType="shop.fims.vo.PrDiv">
 	<selectKey keyProperty="festprDivCd" resultType="String" order="BEFORE">
 	SELECT
 		CONCAT('PRw' ,(lpad(max(SUBSTRING(festpr_div_cd,4))+1,4,'0'))) as festpr_div_cd
@@ -229,7 +229,7 @@ WHERE festpr_div_cd=#{festprDivCd}
 	</selectKey>	
 INSERT 
 INTO
-	Fest_PR_Promotion( 
+	Fest_PR_Div( 
 	festpr_div_cd
 	,festpr_div_nm)
 values (#{festprDivCd},#{festprDivNm})	
@@ -345,12 +345,74 @@ from
   	</select>
   
   
-  
-  
-  
-  
-  
-  
+<!-- 축제별 승인 홍보 거래처 조회 -->
+<select id="selectPrCom" resultType="map">
+SELECT
+	a2.cnt
+	,a1.*
+FROM
+	(SELECT
+	ab.catapp_acc_cd
+	,c.*
+	FROM
+		(
+		SELECT
+		 a.cat_acc_cd
+		 ,a.catapp_acc_cd
+		FROM
+			Cat_Approval_Account AS a
+			,Cat_Business_Account AS b
+		WHERE
+			a.catbus_acc_cd=b.catbus_acc_cd
+			AND b.catbus_acc_bus='홍보대행업체'
+		) AS ab
+	inner JOIN 
+	Cat_Account AS c
+	WHERE ab.cat_acc_cd=c.cat_acc_cd) AS a1
+JOIN
+	(SELECT
+	p.catapp_acc_cd
+	,count(p.catapp_acc_cd) AS cnt
+	FROM
+	Fest_PR_Promotion AS p
+	WHERE fest_cd=(#{festCd})
+	GROUP BY p.catapp_acc_cd) AS a2
+WHERE a1.catapp_acc_cd=a2.catapp_acc_cd
+</select>  
+
+
+<!-- 거래처명으로 진행중인 홍보사업리스트 조회 -->
+<select id="searchPrByCom" resultMap="prPromotionResultmap">
+SELECT
+	f.*
+	,a.cat_acc_nm1
+from	
+			(SELECT 		
+				c.festpr_div_nm
+				,b.*
+			From
+				Fest_PR_Promotion AS b
+				inner join
+	   		Fest_PR_Div AS c
+	   	ON b.festpr_div_cd=c.festpr_div_cd
+		WHERE fest_cd=(#{festCd})) AS f
+	LEFT OUTER join
+	   Cat_Approval_Account AS a
+	 on a.catapp_acc_cd=f.catapp_acc_cd
+	 WHERE a.cat_acc_nm1=(#{catAccNm1})
+	ORDER BY f.festpr_pro_cd DESC
+</select>  
+
+<!-- 축제별 미승인 홍보 거래처 조회 -->
+<select id="searchPrComNotapproved" resultMap="prPromotionResultmap">
+SELECT
+	p.*
+FROM
+	Fest_PR_Promotion AS p
+WHERE
+	fest_cd=(#{festCd})
+	and p.catapp_acc_cd='catapp_acc_020'
+</select>  
   
   
   

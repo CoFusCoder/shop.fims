@@ -102,9 +102,9 @@ public class MainController {
 	 * @return /admin/main
 	 */
 	@GetMapping("/admin/main")
-	public String dashboard() {
-		System.out.println("---관리자 메인화면 : dashboard 메서드 MainController.java-------");
-		return "/admin/main";
+	public String index() {
+		System.out.println("---관리자 메인화면 : MainController.java-------");
+		return "index";
 	}
 
 	

@@ -211,13 +211,22 @@ public class PublicrelationsController {
 		return "publicrelations/prTimetable";
 	}
 	
-	//홍보 거래처리스트
+	//홍보 거래처리스트 전체조회
 	@GetMapping("/prComList")
-	public String prCompanyList() {
+	public String prCompanyList(HttpSession session, Model model1, Model model2) {
+		String festCd = (String)session.getAttribute("F_CD");
+		model1.addAttribute("prCom", publicrelationsService.selectPrCom(festCd));
+		model2.addAttribute("notappCom", publicrelationsService.searchPrComNotapproved(festCd));		
 		return "publicrelations/prComList";
 	}
 	
-	
+	@GetMapping("/searchPrByCom")
+	public String searchPrByCom(@RequestParam(value="catAccNm1")String catAccNm1, HttpSession session, Model model1, Model model2) {
+		String festCd = (String)session.getAttribute("F_CD");
+		model1.addAttribute("AllPromotion", publicrelationsService.searchPrByCom(festCd, catAccNm1));
+		model2.addAttribute("prDiv",publicrelationsService.selectAllPrDiv());
+		return "publicrelations/prPromotionList";	
+	}
 	
 	
 	
