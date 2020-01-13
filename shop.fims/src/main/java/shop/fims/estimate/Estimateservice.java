@@ -12,39 +12,39 @@ import shop.fims.vo.Estimate;
 @Service
 public class Estimateservice {
 	
-	@Autowired EstimateMapper estimatemapper;
+	@Autowired EstimateMapper estimateMapper;
 	
 	//심사대기 리스트
 	public List<Estimate> estimatelist(){
-		return estimatemapper.estimatelist();
+		return estimateMapper.estimateList();
 	}
 	
 	//리스트 -> 신청서
 	public List<Estimate> nextapply(String exa_rep_cd){
-		return estimatemapper.nextapply(exa_rep_cd);
+		return estimateMapper.nextApply(exa_rep_cd);
 	}
 	//신청서 -> 심사표
 	public List<Estimate> examinationIndex(String exaRepCd){
-		return estimatemapper.examinationIndex(exaRepCd);
+		return estimateMapper.examinationIndex(exaRepCd);
 	}
 	//심사 문항
 	public List<Estimate> indexeva(String eva){
-		return estimatemapper.indexeva(eva);
+		return estimateMapper.indexEva(eva);
 	}
 	//심사배점
 	public List<Estimate> evaList(String eva){
-		return estimatemapper.evaList(eva);
+		return estimateMapper.evaList(eva);
 	}	
 	//문제를 담는 곳
-	public Map<String,List<Estimate>> evaindexscocd(String eva){	
-		return estimatemapper.evaindexscocd(eva);
+	public Map<String,List<Estimate>> evaIndexScocd(String eva){	
+		return estimateMapper.evaIndexScocd(eva);
 	}
 	//심사완료후 승인 여부	
 	public List<Estimate> updateestimatelist(String exaRepCd) {
-		return estimatemapper.updateestimatelist(exaRepCd);
+		return estimateMapper.updateEstimateList(exaRepCd);
 	}
 	//담당자 등록
 		public void updataexeManager(String exaRepCd,String exeManager){
-			estimatemapper.updataexeManager(exaRepCd,exeManager);
+			estimateMapper.updataexeManager(exaRepCd,exeManager);
 		}
 }
