@@ -8,262 +8,176 @@
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="/allprofile"><img src="/adminis/img/asugi.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">[[${session.SNAME}]] 님 [[${session.SLEVEL}]] 권한</h5>
-          <li class="mt">
-            <a href="/admin/main">
-              <i class="fa fa-dashboard"></i>
-			<span>#1.Dashboard</span>
-              </a>
-          </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>!2.운영관리_연</span>
+              <span>운영관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/operation/officialLevelInsert}">!공무원 계정 생성</a></li>
-              <li><a th:href="@{/operation/officialLevelList}">!공무원 계정 조회</a></li>
+              <li><a th:href="@{/operation/officialLevelInsert}">공무원 계정 생성</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>!3.행정기관관리_연</span>
+              <span>행정기관관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/admin/areaInsert}">!전국 지역 및 시군 등록</a></li>
-              <li><a th:href="@{/admin/areaCityList}">!전국 지역 및 시군 조회</a></li>
-              <li><a th:href="@{/admin/areaCityAdminInsert}">!행정기관 등록</a></li>
-              <li><a th:href="@{/admin/areaCityAdminList}">!행정기관 조회</a></li>
+              <li><a th:href="@{/admin/areaInsert}">전국 지역 및 시군 등록</a></li>
+              <li><a th:href="@{/admin/areaCityList}">전국 지역 및 시군 조회</a></li>
+              <li><a th:href="@{/admin/areaCityAdminInsert}">행정기관 등록</a></li>
+              <li><a th:href="@{/admin/areaCityAdminList}">행정기관 조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>!회원관리_연</span>
+              <span>회원관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/member/MemberLevInsert}">#회원 권한 등록</a></li>
-              <li><a th:href="@{/member/MemberList}">!모든 회원 조회</a></li>
+              <li><a th:href="@{/member/MemberLevInsert}">회원 권한 등록</a></li>
+              <li><a th:href="@{/member/MemberList}">모든 회원 조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>!공무원관리_연</span>
+              <span>공무원관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/official/DepartEmployInsert}">#부서 및 직원등록</a></li>
-              <li><a th:href="@{/official/DepartList}">#행정기관별 부서 조회</a></li>
-              <li><a th:href="@{/official/DepartEmployList}">#부서별 직원 조회</a></li>
+              <li><a th:href="@{/official/DepartEmployInsert}">부서 및 직원등록</a></li>
+              <li><a th:href="@{/official/DepartList}">행정기관별 부서 조회</a></li>
+              <li><a th:href="@{/official/DepartEmployList}">부서별 직원 조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#6.거래처 관리_민</span>
+              <span>거래처 관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/allAccountView}">!모든거래처관리</a></li>
-              <li><a th:href="@{/accountCatBusView}">!거래처업종분류조회</a></li>
-              <li><a th:href="@{/approvalAccountView}">!승인된거래처관리</a></li>
-              <li><a th:href="@{/accountMemberView}">!거래처회원관리</a></li>
+              <li><a th:href="@{/allAccountView}">모든거래처관리</a></li>
+              <li><a th:href="@{/accountCatBusView}">거래처업종분류조회</a></li>
+              <li><a th:href="@{/approvalAccountView}">승인된거래처관리</a></li>
+              <li><a th:href="@{/accountMemberView}">거래처회원관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#7.위원회관리_민</span>
+              <span>위원회관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/allCommitteeView}">!위원회관리</a></li>
+              <li><a th:href="@{/allCommitteeView}">위원회관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>!축제관리_연</span>
+              <span>축제관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/festival/festivalInsert}">#축제 등록</a></li>
-              <li><a th:href="@{/festival/festivalList}">#축제 조회</a></li>
-              <li><a th:href="@{/festival/festTicRevInsert}">#축제별 입장료 및 수량 등록</a></li>
-              <li><a th:href="@{/festival/festTicRevList}">#축제별 입장료 및 수량 통계</a></li>
+              <li><a th:href="@{/festival/festivalInsert}">축제 등록</a></li>
+              <li><a th:href="@{/festival/festivalList}">축제 조회</a></li>
             </ul>
           </li>
            <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#9.축제인적관리_영</span>
+              <span>축제인적관리</span>
               </a>
             <ul class="sub">
-
-              <li><a th:href="@{/workcategoryList}">#축제업무분류조회</a></li>
-              <li><a th:href="@{/workcategoryInsert}">#축제업무분류등록</a></li>
-              <li><a th:href="@{/workdivisionList}">#축제업무조회</a></li>
-              <li><a th:href="@{/workdivisionInsert}">#축제업무등록</a></li>
-              <li><a th:href="@{/humanList}">#축제인적조회</a></li>
-              <li><a th:href="@{/humanInsert}">#축제인적등록</a></li>
+              <li><a th:href="@{/workcategoryList}">축제업무분류조회</a></li>
+              <li><a th:href="@{/workcategoryInsert}">축제업무분류등록</a></li>
+              <li><a th:href="@{/workdivisionList}">축제업무조회</a></li>
+              <li><a th:href="@{/workdivisionInsert}">축제업무등록</a></li>
+              <li><a th:href="@{/humanList}">축제인적조회</a></li>
+              <li><a th:href="@{/humanInsert}">축제인적등록</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>10.축제홍보관리_정</span>
+              <span>축제홍보관리</span>
               </a>
             <ul class="sub">
               <li><a th:href="@{/prDivList}">홍보분류관리</a></li>
-              <li><a th:href="@{/prPromotionList}">!홍보사업관리</a></li>
+              <li><a th:href="@{/prPromotionList}">홍보사업관리</a></li>
               <li><a th:href="@{/prComList}">홍보거래처 조회</a></li>
             </ul>
           </li>
            <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-plus-square"></i>
-              <span>#11.축제시설관리_영</span>
+              <span>축제시설관리</span>
               </a>
             <ul class="sub">
-
-              <li><a th:href="@{/classificationList}">#모든시설분류조회</a></li>
-              <li><a th:href="@{/classificationInsert}">#모든시설분류등록</a></li>            
-              <li><a th:href="@{/facilityList}">#보유시설조회</a></li>
-              <li><a th:href="@{/facilityInsert}">#보유시설등록</a></li>
-              <li><a th:href="@{/temporaryList}">#임시시설설치및철거조회</a></li>
-              <li><a th:href="@{/temporaryInsert}">#임시시설설치및철거등록</a></li>
-              <li><a th:href="@{/maintenanceList}">#시설안전점검후지적관리조회</a></li>
-              <li><a th:href="@{/maintenanceInsert}">#시설안전점검후지적관리등록</a></li>
+              <li><a th:href="@{/classificationList}">모든시설분류조회</a></li>
+              <li><a th:href="@{/classificationInsert}">모든시설분류등록</a></li>            
+              <li><a th:href="@{/facilityList}">보유시설조회</a></li>
+              <li><a th:href="@{/facilityInsert}">보유시설등록</a></li>
+              <li><a th:href="@{/temporaryList}">임시시설설치및철거조회</a></li>
+              <li><a th:href="@{/temporaryInsert}">임시시설설치및철거등록</a></li>
+              <li><a th:href="@{/maintenanceList}">시설안전점검후지적관리조회</a></li>
+              <li><a th:href="@{/maintenanceInsert}">시설안전점검후지적관리등록</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#12.축제예산관리_석</span>
+              <span>축제모든물품관리</span>
               </a>
             <ul class="sub">
-           	  <li><a href="#">###</a></li>
-           	  <li><a href="#">###</a></li>
-           	  <li><a href="#">###</a></li>
-
+             <li><a th:href="@{/conditionList}">물품관리조회</a></li>         
+             <li><a th:href="@{/gFestivalInList}">축제관련물품입고관리</a></li>
+             <li><a th:href="@{/gFestivalOutList}">축제관련물품출고관리</a></li>
+             <li><a th:href="@{/gDivList}">물품분류관리</a></li>
+             <li><a th:href="@{/gComList}">물품거래처관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#13.축제계약관리_석</span>
+              <span>축제내프로그램관리</span>
               </a>
             <ul class="sub">
-              <li><a href="#">###</a></li>
-              <li><a href="#">###</a></li>
+              <li><a th:href="@{/proTimetable}">프로그램타임테이블</a></li>
+              <li><a th:href="@{/proProList}">프로그램 관리</a></li>
+              <li><a th:href="@{/proDivList}">프로그램분류관리</a></li>
+              <li><a th:href="@{/proSProList}">세부프로그램 조회</a></li>
+              <li><a th:href="@{/proComList}">프로그램 참가업체 조회</a></li>
+              <li><a th:href="@{/proParList}">프로그램 참가자 조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>14.축제모든물품관리_상,정</span>
+              <span>게시판관리</span>
               </a>
-
-          
-
             <ul class="sub">
-             <li><a th:href="@{/conditionList}">!물품관리조회</a></li>
-             <li><a th:href="@{/delbreList}">!계약물품납품 내역관리조회</a></li>
-             <li><a th:href="@{/revenueList}">#모든 축제별 보유물품 대여관리-세입 조회</a></li>           
-             <li><a th:href="@{/gFestivalInList}">!축제관련물품입고관리</a></li>
-             <li><a th:href="@{/gFestivalOutList}">!축제관련물품출고관리</a></li>
-             <li><a th:href="@{/gDivList}">!물품분류관리</a></li>
-             <li><a th:href="@{/gComList}">#물품거래처관리</a></li>
-
-
-             
+              <li><a th:href="@{/announcementView}">축제공고관리</a></li>
+              <li><a th:href="@{/boardList}">공지사항관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>15.축제내프로그램관리_정</span>
+              <span>일정관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/proTimetable}">#프로그램타임테이블</a></li>
-              <li><a th:href="@{/proProList}">!프로그램 관리</a></li>
-              <li><a th:href="@{/proDivList}">!프로그램분류관리</a></li>
-              <li><a th:href="@{/proSProList}">#세부프로그램 조회</a></li>
-              <li><a th:href="@{/proComList}">#프로그램 참가업체 조회</a></li>
-              <li><a th:href="@{/proParList}">#프로그램 참가자 조회</a></li>
+              <li><a th:href="@{/scheTimetable}">일정확인</a></li>
+              <li><a th:href="@{/scheList}">일정세부조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
             <a href="javascript:;">
               <i class=" fa fa-plus-square"></i>
-              <span>#16.게시판관리_민</span>
-              </a>
-            <ul class="sub">
-              <li><a th:href="@{/announcementView}">!축제공고관리</a></li>
-              <li><a th:href="@{/boardList}">!공지사항관리</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class=" fa fa-plus-square"></i>
-              <span>17.일정관리_정</span>
-              </a>
-            <ul class="sub">
-              <li><a th:href="@{/scheTimetable}">#일정확인</a></li>
-              <li><a th:href="@{/scheList}">!일정세부조회</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class=" fa fa-plus-square"></i>
-              <span>#18.심사관리_상,민</span>
+              <span>심사관리</span>
               </a>            
             <ul class="sub">
-              <li><a th:href="@{/estimatelist}">!전체심사조회</a></li>              
-              <li><a th:href="@{/serviceAppFormView}">#용역신청서관리</a></li>
-              <li><a th:href="@{/boothAppFormView}">#부스신청서관리</a></li>
-              <li><a th:href="@{/volunteerAppFormView}">#자원봉사신청서관리</a></li>
-              <li><a th:href="@{/committeeAppFormView}">#위원회신청서관리</a></li>
+              <li><a th:href="@{/estimatelist}">전체심사조회</a></li>              
+              <li><a th:href="@{/committeeAppFormView}">위원회신청서관리</a></li>
             </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class=" fa fa-plus-square"></i>
-              <span>!19.통계관리_석</span>
-              </a>
-            <ul class="sub">
-              <li><a href="/accountAnalysisView">!거래처분석</a></li>
-              <li><a href="/festivalAnalysisView">!축제분석</a></li>
-              <li><a href="/budgetAnalysisView">!축제예산분석</a></li>
-              <li><a href="/executionAnalysisView">!축제집행액분석</a></li>
-              <li><a href="/evaluationAnalysisView">!축제평가분석</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class=" fa fa-plus-square"></i>
-              <span>#마이페이지_석</span>
-              </a>
-            <ul class="sub">
-              <li><a th:href="@{#}">#회원정보 수정</a></li>
-              <li><a th:href="@{#}">#비밀번호 변경</a></li>
-              <li><a th:href="@{#}">#탈퇴하기</a></li>
-            </ul>
-          </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class=" fa fa-plus-square"></i>
-              <span>#21.기본설정_보류</span>
-              </a>
-            <ul class="sub">
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-              <li><a href="#">#</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-map-marker"></i>
-              <span>#22.Google Maps </span>
-              </a>
           </li>
         </ul>
         <!-- sidebar menu end-->
