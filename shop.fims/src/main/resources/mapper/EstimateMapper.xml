@@ -41,6 +41,7 @@
 <result property="joinDt" column="mem_join_dt"/> 
 <result property="memNm" column="mem_nm"/>
 <result property="LoginCd" column="LoginCd"/>
+<result property="festAnnNm" column="fest_ann_nm"/>
  </resultMap>
  
 
@@ -234,7 +235,8 @@ SELECT
 		UPDATE Exa_Report
 		SET
 		exe_manager= #{exeManager},
-		exa_condition = 'Y'
+		exa_condition = 'Y',
+		exa_dt=NOW()
 		WHERE 
 		exa_rep_cd = #{exaRepCd}
 		 

@@ -33,13 +33,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th th:text="${e.areaCityNm}"></th>
 								<th th:text="${e.areacityAdminNm}"></th>
 								<th th:text="${e.festNm}"></th>
-								<th th:text="${e.evaNm}"></th>
+								<th th:text="${e.evaNm}" class="evanm"></th>
 								<th th:text="${e.exaDt}"></th>
 								<th th:text="${e.exaCondition}" class="exaCondition"></th>								
 								<th:block th:if="${session.SID eq 'id003'}">
 								<th>
 								<a th:href="@{/apply(exaRepCd=${e.exaRepCd})}" >  
-  			 		 			 <button class="btn btn-success btn-xs"><i class="fa fa-check">제출</i></button> 
+  			 		 			 <button id="bbts" class="btn btn-success btn-xs" ><i class="fa fa-check">심사</i></button> 
   			 		 			 </a>
 								</th>
   			 		 			 </th:block>	
@@ -79,14 +79,44 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th th:text="${e.exaCondition}" ></th>								
 								<th th:text="${e.exeManager}"></th>
 								<th>			
-
-								<a onclick="window.open('/estimatelistdetail','상세페이지','width=700, height=500,left=500,top=200  ');"> 
+ 			 					<a th:href="@{/estimatelistdetail(exa_rep_cd=${e.exaRepCd})}">
  			 					  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> 
  			 					</a>	
 								</th>
 								<th:block></th:block>
 							</tr>
-					</table>						
+					</table>
+					
+					
+<!-- 					<div class="dataTables_paginate paging_bootstrap pagination"> -->
+<!--               	<ul> -->
+<!--               		<li class="prev disabled"> -->
+<!-- 		              	이전 -->
+<!-- 						<a th:if="${currentPage > 1}"  -->
+<!-- 						th:href="@{/committeeAppFormView(currentPage=${currentPage - 1})}">이전</a> -->
+<!-- 					</li>	 -->
+<!-- 					<li class="active">	 -->
+<!-- 						<th:block th:each="num:${#numbers.sequence(startPageNum,lastPageNum)}"> -->
+<!-- 								<a th:if="${currentPage == num}"  -->
+<!-- 								th:text="${num}"></a>	 -->
+<!-- 								<a style="color: black; background-color: white"th:unless="${currentPage == num}"  -->
+<!-- 								th:text="${num}"  -->
+<!-- 								th:href="@{/committeeAppFormView(currentPage=${num})}"></a> -->
+<!-- 						</th:block> -->
+<!-- 					</li>	 -->
+<!-- 					<li class="next">	 -->
+<!-- 						다음 -->
+<!-- 						<a th:if="${currentPage < lastPage}"  -->
+<!-- 						th:href="@{/committeeAppFormView(currentPage=${currentPage + 1})}">다음</a> -->
+<!-- 					</li>	 -->
+<!-- 				</ul> -->
+<!-- 				<ul> -->
+<!-- 					<th> -->
+<!-- 					</th> -->
+<!-- 				</ul> -->
+<!-- 			</div>	
+
+					 -->
 				</div>
 			</div>
 		</div>
@@ -96,7 +126,24 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
 
 <script type="text/javascript">
-
+// 	$(document).ready(function(){
+// 		$(document).on('click','#bbts',function(){
+// 			var cotent = '';
+// 			var evn = $('.evanm').val
+// 			console.log(evn)
+// 			if(evn == '축제 평가위원회 심사'){
+// 				cotent += '	<a th:href="@{/apply(exaRepCd=${e.exaRepCd})}" >'
+// 				cotent += '	</a>'
+				
+// 			}else if(evn =='부스 심사'){
+// 				cotent += '	<a th:href="@{/booth(exaRepCd=${e.exaRepCd})}" >'
+// 				cotent += '	</a>'			
+// 			}
+// 		})
+		
+		
+// 	});
+	
 </script>
 
 </html>

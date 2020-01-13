@@ -41,7 +41,7 @@ public class Estimate {
 	private String memBirth;//생년월일
 	private String joinDt;//가입일자
 	private String LoginCd;//로그인 코드
-	
+	private String festAnnNm;//로그인 코드
 	public String getExaRepCd() {
 		return exaRepCd;
 	}
@@ -252,6 +252,12 @@ public class Estimate {
 	public void setLoginCd(String loginCd) {
 		LoginCd = loginCd;
 	}
+	public String getFestAnnNm() {
+		return festAnnNm;
+	}
+	public void setFestAnnNm(String festAnnNm) {
+		this.festAnnNm = festAnnNm;
+	}
 	@Override
 	public String toString() {
 		return "Estimate [exaRepCd=" + exaRepCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd
@@ -264,10 +270,9 @@ public class Estimate {
 				+ evaindexItemCd + ", areaNm=" + areaNm + ", areaCityNm=" + areaCityNm + ", areacityAdminNm="
 				+ areacityAdminNm + ", festNm=" + festNm + ", memLevCd=" + memLevCd + ", memNm=" + memNm + ", memAddr="
 				+ memAddr + ", memPhone=" + memPhone + ", memEmail=" + memEmail + ", memBirth=" + memBirth + ", joinDt="
-				+ joinDt + ", LoginCd=" + LoginCd + "]";
+				+ joinDt + ", LoginCd=" + LoginCd + ", festAnnNm=" + festAnnNm + "]";
 	}
 	
-
 	
 	
 

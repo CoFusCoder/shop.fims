@@ -50,12 +50,29 @@ public class EstimateControllor {
 		return "redirect:/estimatelist";
 	}
 	//신청서 내역 이동 
+	/**
+	 * 
+	 * 
+	 * @param exa_rep_cd
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/apply")
-	public String nextapply(@RequestParam(value = "exaRepCd", required = false) String exa_rep_cd, Model model) {
+	public String nextapply(@RequestParam(value = "exaRepCd" ) String exa_rep_cd, Model model) {
 		System.out.println(exa_rep_cd + " <-exa_rep_cd");
-		model.addAttribute("nextapply", estimateservice.nextapply(exa_rep_cd));
+		List<Estimate> next =estimateservice.nextapply(exa_rep_cd);
+		System.out.println("next ->"+next);
+		if(next.get(0).getEvaNm().equals("축제 추진위원회 심사")) {
+			model.addAttribute("nextapply", estimateservice.nextapply(exa_rep_cd));
+			System.out.println("next.get(0).getEvaNm() ->"+next.get(0).getEvaNm());
+			return  "estimate/apply";
+		}else if(next.get(0).getEvaNm().equals("부스 심사")){			
+			model.addAttribute("nextapply", estimateservice.nextapply(exa_rep_cd));
+			return "estimate/booth";
+		}
+		return "nextapply";
 		
-		return  "estimate/apply";
+
 	}
 	
 	//심사지표 이동
