@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<meta charset="UTF-8">
+	<th:block layout:fragment="customBody" th:with="f = ${facility}">
+		<h1>모든축제별임시시설설치및철거관리수정</h1>
+
+			<div class="form-panel">
+              <div class=" form">		
+                <form class="cmxform form-horizontal style-form" id="commentForm" method="post" th:action="@{/temporaryUpdate}">
+                   <div class="form-group " style="display:none;">
+                    <label for="cname" class="control-label col-lg-2">설치및철거관리코드</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="facCd" type="text" name="facCd"  th:value="${f.facCd}" readonly="readonly"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">시설명</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="staNm" type="text" name="staNm" th:value="${f.staNm}" readonly="readonly"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">축제명</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="festNm" type="text" name="festNm" th:value="${f.festNm}" readonly="readonly"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">설치시작일</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="stastaDt" type="text" name="stastaDt" th:value="${f.stastaDt}"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">설치종료일</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="staendDt" type="text" name="staendDt" th:value="${f.staendDt}"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">계약설치모델명</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="stainsMo" type="text" name="stainsMo" th:value="${f.stainsMo}"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">설치장소</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="stainsSc" type="text" name="stainsSc" th:value="${f.stainsSc}"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">설치개수</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="stainsNum" type="text" name="stainsNum" th:value="${f.stainsNum}"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">설치내용</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="stainsCon" type="text" name="stainsCon" th:value="${f.stainsCon}"/>
+                    </div>
+                  </div>
+                   <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">근무인원</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="staWorksta" type="text" name="staWorksta" th:value="${f.staWorksta}"/>
+                    </div>
+                  </div>
+                   <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">철거확인일자</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="stademDt" type="text" name="stademDt" th:value="${f.stademDt}"/>
+                    </div>
+                  </div>
+                   <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">철거확인자</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="staChe" type="text" name="staChe" th:value="${f.staChe}"/>
+                    </div>
+                  </div>
+                   <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">담당위원회코드</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="comCd" type="text" name="comCd" th:value="${f.comCd}"/>
+                    </div>
+                  </div>                  
+                   <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">담당위원회</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="comNm2" type="text" name="comNm2" th:value="${f.comNm2}"/>
+                    </div>
+                  </div>
+                   <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">설치상태1</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="stainsCon1" type="text" name="stainsCon1" th:value="${f.stainsCon1}"/>
+                    </div>
+                  </div>
+                   <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">설치상태2</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="stainsCon2" type="text" name="stainsCon2" th:value="${f.stainsCon2}"/>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit" value="수정">수정</button>
+                      <button class="btn btn-theme04" type="button">취소</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>

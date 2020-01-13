@@ -7,8 +7,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
 	<meta charset="UTF-8">
 	<th:block layout:fragment="customBody">
-		<section id="main-content" style="margin: 100px; margin-top: 0px;">
-	      <section class="wrapper">
 	        <h3><i class="fa fa-angle-right"></i>보유시설조회</h3>
 	        <div class="row">
 	          <div class="col-md-12">
@@ -55,6 +53,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						<tr>
 							<th style="display:none;">보유시설코드</th>
 							<th style="display:none;">위원회코드</th>
+							<th style="display:none;">시설분류코드</th>
 							<th>시설명</th>
 							<th>시설분류명</th>
 							<th>축제명</th>
@@ -71,6 +70,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						<tr th:each= "fl : ${facilityList}">
 							<td th:text= "${fl.staCd}" style="display:none;"></td>
 							<td th:text= "${fl.comCd}" style="display:none;"></td>
+							<td th:text= "${fl.faccatCd}" style="display:none;"></td>
 							<td th:text= "${fl.staNm}"></td>
 							<td th:text= "${fl.catNm}"></td>
 							<td th:text= "${fl.festNm}"></td>
@@ -94,8 +94,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 	          <!-- /col-md-12 -->
 	          <!-- /col-md-12 -->
 	        </div>
-	      </section>
-	    </section>
 </th:block>
 <th:block layout:fragment="adminisscript">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
