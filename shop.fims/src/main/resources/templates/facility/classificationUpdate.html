@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
+	<th:block layout:fragment="customBody">
+		<h1>모든시설분류수정</h1>
+		<div class="form-panel">
+              <div class=" form">		
+                <form class="cmxform form-horizontal style-form" id="commentForm" method="post" action="@{/classificationInsert}">
+                  <div class="form-group ">
+                    <label for="cname" class="control-label col-lg-2">시설분류</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="catNm" type="text" name="catNm" />
+                    </div>
+                  </div>
+                   <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit" value="등록">등록</button>
+                      <button class="btn btn-theme04" type="button">취소</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>
