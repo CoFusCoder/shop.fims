@@ -15,12 +15,12 @@ public class Estimateservice {
 	@Autowired EstimateMapper estimateMapper;
 	
 	//심사대기 리스트
-	public List<Estimate> estimatelist(){
+	public List<Estimate> estimateList(){
 		return estimateMapper.estimateList();
 	}
 	
 	//리스트 -> 신청서
-	public List<Estimate> nextapply(String exa_rep_cd){
+	public List<Estimate> nextApply(String exa_rep_cd){
 		return estimateMapper.nextApply(exa_rep_cd);
 	}
 	//신청서 -> 심사표
@@ -28,7 +28,7 @@ public class Estimateservice {
 		return estimateMapper.examinationIndex(exaRepCd);
 	}
 	//심사 문항
-	public List<Estimate> indexeva(String eva){
+	public List<Estimate> indexEva(String eva){
 		return estimateMapper.indexEva(eva);
 	}
 	//심사배점
@@ -40,7 +40,7 @@ public class Estimateservice {
 		return estimateMapper.evaIndexScocd(eva);
 	}
 	//심사완료후 승인 여부	
-	public List<Estimate> updateestimatelist(String exaRepCd) {
+	public List<Estimate> updateEstimateList(String exaRepCd) {
 		return estimateMapper.updateEstimateList(exaRepCd);
 	}
 	//담당자 등록

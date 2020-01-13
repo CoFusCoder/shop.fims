@@ -42,12 +42,13 @@
 <result property="memNm" column="mem_nm"/>
 <result property="LoginCd" column="LoginCd"/>
 <result property="festAnnNm" column="fest_ann_nm"/>
+<result property="exaJoindt" column="exa_joindt"/>
  </resultMap>
  
 
  
 	<!-- 문제 따로 만든 부분 -->
- <select id="indexeva" resultMap="examinationIndexMap">
+ <select id="indexEva" resultMap="examinationIndexMap">
 		SELECT
 		ei.eva_index_cd,
 		eii.evaindex_item_cd,
@@ -81,7 +82,7 @@
 	 </select>
 	 
 	 <!-- 심사리스트 -->
-	 <select id="estimatelist" resultMap="examinationIndexMap">
+	 <select id="estimateList" resultMap="examinationIndexMap">
 	SELECT
 	*
 		FROM
@@ -120,7 +121,7 @@
 	 
 	 </select>
 	 <!-- 심사완료시 현황바뀜 -->
-	 <select id="updateestimatelist" resultMap="examinationIndexMap">
+	 <select id="updateEstimateList" resultMap="examinationIndexMap">
 	UPDATE
 	Exa_Report
 	SET
@@ -129,7 +130,7 @@
 	exa_rep_cd = #{exa_rep_cd}
 	 </select>
 	 <!-- 리스트->신청서페이지 -->
-	<select id="nextapply" resultMap="examinationIndexMap">
+	<select id="nextApply" resultMap="examinationIndexMap">
 SELECT
 		er.exa_rep_cd,
 		a.area_nm,

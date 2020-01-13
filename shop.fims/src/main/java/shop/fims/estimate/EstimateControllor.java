@@ -36,7 +36,7 @@ public class EstimateControllor {
 	 */
 	@GetMapping("/estimatelist")
 	public String estimateList(Model model) {		
-		model.addAttribute("estimatelist",estimateService.estimatelist() );
+		model.addAttribute("estimatelist",estimateService.estimateList() );
 		return "estimate/estimatelist";		
 	}
 	//담당자 화인
@@ -60,14 +60,14 @@ public class EstimateControllor {
 	@GetMapping("/apply")
 	public String nextApply(@RequestParam(value = "exaRepCd" ) String exa_rep_cd, Model model) {
 		System.out.println(exa_rep_cd + " <-exa_rep_cd");
-		List<Estimate> next =estimateService.nextapply(exa_rep_cd);
+		List<Estimate> next =estimateService.nextApply(exa_rep_cd);
 		System.out.println("next ->"+next);
 		if(next.get(0).getEvaNm().equals("축제 추진위원회 심사")) {
-			model.addAttribute("nextapply", estimateService.nextapply(exa_rep_cd));
+			model.addAttribute("nextapply", estimateService.nextApply(exa_rep_cd));
 			System.out.println("next.get(0).getEvaNm() ->"+next.get(0).getEvaNm());
 			return  "estimate/apply";
 		}else if(next.get(0).getEvaNm().equals("부스 심사")){			
-			model.addAttribute("nextapply", estimateService.nextapply(exa_rep_cd));
+			model.addAttribute("nextapply", estimateService.nextApply(exa_rep_cd));
 			return "estimate/booth";
 		}
 		return "nextapply";
@@ -89,7 +89,7 @@ public class EstimateControllor {
 		
 //		System.out.println("exaRepCd->"+exaRepCd);
 		Map<String,List<Estimate>> evaMap = new HashMap<String,List<Estimate>>();
-		List<Estimate> indexeva = estimateService.indexeva(eva);	
+		List<Estimate> indexeva = estimateService.indexEva(eva);	
 		evaMap.put("indexeva", indexeva);	
 		System.out.println(evaMap);		
 		List<Estimate> evaList = estimateService.evaList(eva);		
