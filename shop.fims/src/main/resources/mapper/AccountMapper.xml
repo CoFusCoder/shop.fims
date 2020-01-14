@@ -296,5 +296,72 @@
 	</select>
 	
 	<!-- 거래처 회원 관리 -->
+	<select id="selectAccountMemberView" resultMap="accountMemberResultMap">
+		SELECT
+			*
+		FROM 
+			Account_Member
+	</select>
 	
+	<!-- 거래처 회원 상세보기 거래처 회원 코드로 조회 -->
+	<select id="selectByAccountMember" resultMap="accountMemberResultMap">
+		SELECT
+			*
+		FROM
+			Account_Member
+		WHERE
+			acc_mem_cd = #{accMemCd}
+	</select>
+	
+	<!-- 거래처 회원 등록 -->
+	<insert id="insertAccountMember" parameterType="shop.fims.vo.AccountMember">
+		INSERT INTO Account_Member
+			(acc_mem_cd, mem_cd, mem_lev_cd, cat_acc_cd, catbus_acc_cd, catapp_acc_cd, cat_acc_nm1,
+			catbus_acc_bus, acc_mem_nm, acc_mem_addr, acc_mem_phone, acc_mem_email, acc_mem_dt1, acc_mem_dt2)
+		VALUE
+			(#{accMemCd}, #{memCd}, #{memLevCd}, #{catAccCd}, #{catBusAccCd}, #{catAppAccCd}, #{catAccNm1},
+			#{catBusAccBus}, #{AccMemNm}, #{AccMemAddr}, #{AccMemPhone}, #{AccMemEmail} , now(), now())
+	</insert>
+	
+	<!-- 거래처 회원 수정화면 거래처 회원 코드로 조회 -->
+	<select id="selectUpAccountMember" parameterType="String" resultMap="accountMemberResultMap">
+		SELECT
+			*
+		FROM
+			Account_Member
+		WHERE
+			acc_mem_cd = #{accMemCd}
+	</select>
+	
+	<!-- 거래처 회원 수정 -->
+	<update id="updateAccountMember" parameterType="shop.fims.vo.AccountMember">
+		UPDATE Account_Member
+		SET
+			acc_mem_cd = #{accMemCd}
+			,mem_cd = #{memCd}
+			,mem_lev_cd = #{memLevCd}
+			,cat_acc_cd = #{catAccCd}
+			,catbus_acc_cd = #{catBusAccCd}
+			,catapp_acc_cd = #{catAppAccCd}
+			,cat_acc_nm1 = #{catAccNm1}
+			,catbus_acc_bus = #{catBusAccBus}
+			,acc_mem_nm = #{AccMemNm}
+			,acc_mem_addr = #{AccMemAddr}
+			,acc_mem_phone = #{AccMemPhone}
+			,acc_mem_email = #{AccMemEmail}
+			,acc_mem_dt1 = #{AccMemDt1}
+			,acc_mem_dt2 = #{AccMemDt2}
+		WHERE
+			acc_mem_cd = #{accMemCd}
+
+	</update>
+		
+	<!-- 거래처 회원 삭제 -->
+	<delete id="deleteAccountMember" parameterType="shop.fims.vo.AccountMember">
+		DELETE
+		FROM
+			Account_Member
+		WHERE
+			acc_mem_cd = #{accMemCd}
+	</delete>
 </mapper>

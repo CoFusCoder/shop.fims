@@ -17,5 +17,5 @@ public interface BoardMapper {
 	public List<Board> getBoardList(Map<String, Integer> map);
 	
 	//공지사항 상세보기 게시판코드 사용
-	public List<Board> selectByBoard(String boardCd);
+	public List<Board> selectByBoard(int boardNum);
 }

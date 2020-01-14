@@ -31,8 +31,8 @@ public class BoardController {
 	
 	//공지사항 상세보기 게시판코드 사용
 	@GetMapping("/gukminview/community/boardDetail")
-	public String boardDetail(@RequestParam(value="boardCd")String boardCd, Model model) {
-		model.addAttribute("selectByBoard", boardService.selectByBoard(boardCd));
+	public String boardDetail(@RequestParam(value="boardNum")int boardNum, Model model) {
+		model.addAttribute("selectByBoard", boardService.selectByBoard(boardNum));
 		return "gukminview/community/boardDetail";
 	}
 	

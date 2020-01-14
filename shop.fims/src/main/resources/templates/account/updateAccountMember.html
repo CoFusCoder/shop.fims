@@ -11,17 +11,89 @@ layout:decorate="~{layout/adminis/adminisdefault}">
               <h4><i class="fa fa-angle-right"></i></span> 거래처회원 수정하기 </h4><br>
 			 <div class="form-panel">
 		              <div class="form">
-		                <form th:action="@{/accountMemberView}" method="get" class="cmxform form-horizontal style-form" id="commentForm">
+		                <form th:action="@{/updateAccountMember}" method="post" class="cmxform form-horizontal style-form" id="commentForm" th:with="a = ${selectUpAccountMember}">
 		                  <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">하나의 거래처별 소속 회원코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="accMemCd" type="text" name="accMemCd" th:value="${a.accMemCd}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">회원코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="memCd" type="text" name="memCd" th:value="${a.memCd}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">모든 회원 레벨코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="memLevCd" type="text" name="memLevCd" th:value="${a.memLevCd}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="catAccCd" type="text" name="catAccCd" th:value="${a.catAccCd}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">거래처 업종 분류코드</label>
 		                    <div class="col-lg-10">
-		                      <input class=" form-control" id="catbus_acc_cd" type="text" name="catBusAccCd" />
+		                      <input class="form-control" id="catBusAccCd" type="text" name="catBusAccCd" th:value="${a.catBusAccCd}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처별 승인 업종 코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="catAppAccCd" type="text" name="catAppAccCd" th:value="${a.catAppAccCd}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처명</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="catAccNm1" type="text" name="catAccNm1" th:value="${a.catAccNm1}"/>
 		                    </div>
 		                  </div>
 		                   <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">거래처업종분류</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control" id="catbus_acc_bus" type="text" name="catBusAccBus"/>
+		                      <input class="form-control" id="catBusAccBus" type="text" name="catBusAccBus" th:value="${a.catBusAccBus}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">거래처 소속 회원이름</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="AccMemNm" type="text" name="AccMemNm" th:value="${a.AccMemNm}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">주소</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="AccMemAddr" type="text" name="AccMemAddr" th:value="${a.AccMemAddr}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">전화번호</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="AccMemPhone" type="text" name="AccMemPhone" th:value="${a.AccMemPhone}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">이메일</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="AccMemEmail" type="text" name="AccMemEmail" th:value="${a.AccMemEmail}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">생년월일</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="AccMemDt1" type="text" name="AccMemDt1" th:value="${a.AccMemDt1}"/>
+		                    </div>
+		                  </div>
+		                   <div class="form-group">
+		                    <label for="curl" class="control-label col-lg-2">가입일자</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control" id="AccMemDt2" type="text" name="AccMemDt2" th:value="${a.AccMemDt2}"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group">

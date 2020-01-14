@@ -17,25 +17,79 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		<div class="row mt">
           <div class="col-lg-12">
             <div class="content-panel">
-<!--             <th:block th:each="#"> -->
+             <th:block th:each="a: ${selectByAccountMember}">
               <h4><i class="fa fa-angle-right"></i></span> 거래처회원상세보기</h4><br>
               <section id="unseen">
                 <table class="table table-bordered table-striped table-condensed">
                   <!-- 한세트 시작 -->
                   <thead>
                     <tr>
+                      <th>하나의 거래처별 소속 회원코드</th>
+                      <th>회원코드</th>
+                      <th>모든 회원 레벨코드</th>
                       <th>거래처코드</th>
-                      <th>모든 행정기관코드</th>
-                      <th>모든 지역 시군코드</th>
-                      <th>전국지역코드</th>
                     </tr>
                   </thead>	
                   <tbody>
                     <tr>
-						<td th:text="1"></td>
-	               		<td th:text="1"></td>
-	               		<td th:text="1"></td>
-	               		<td th:text="1"></td>
+						<td th:text="${a.accMemCd}"></td>
+	               		<td th:text="${a.memCd}"></td>
+	               		<td th:text="${a.memLevCd}"></td>
+	               		<td th:text="${a.catAccCd}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>거래처 업종 분류코드</th>
+                      <th>거래처별 승인 업종 코드</th>
+                      <th>거래처명</th>
+                      <th>거래처업종분류</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${a.catBusAccCd}"></td>
+	               		<td th:text="${a.catAppAccCd}"></td>
+	               		<td th:text="${a.catAccNm1}"></td>
+	               		<td th:text="${a.catBusAccBus}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>거래처 소속 회원이름</th>
+                      <th>주소</th>
+                      <th>전화번호</th>
+                      <th>이메일</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${a.AccMemNm}"></td>
+	               		<td th:text="${a.AccMemAddr}"></td>
+	               		<td th:text="${a.AccMemPhone}"></td>
+	               		<td th:text="${a.AccMemEmail}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>생년월일</th>
+                      <th>가입일자</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text="${a.AccMemDt1}"></td>
+	               		<td th:text="${a.AccMemDt2}"></td>
+	               		<td></td>
+	               		<td></td>
                     </tr>
                   </tbody>
                   <!-- 한세트 끝 -->
@@ -49,11 +103,11 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   <tbody>
                     <tr>
 	                    <td colspan="2">
-		                    <a th:href="@{/updateAccountMember}">
+		                    <a th:href="@{/updateAccountMember(accMemCd=${a.accMemCd})}">
 		                    <button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
 	                    </td>
 	                    <td colspan="2">
-	                    	<a th:href="@{/accountMemberView}">
+	                    	<a th:href="@{/accountMemberView(accMemCd=${a.accMemCd})}">
 	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
 	                    </td>
                     </tr>

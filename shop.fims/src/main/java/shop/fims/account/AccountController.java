@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.fims.vo.Account;
 import shop.fims.vo.AccountCatBus;
+import shop.fims.vo.AccountMember;
 import shop.fims.vo.AppAccount;
 
 @Controller
@@ -184,20 +185,49 @@ public class AccountController {
 	
 	//거래처 회원 관리
 	@GetMapping("/accountMemberView")
-	public String selectAccountMember() {
+	public String selectAccountMemberView(Model model) {
+		model.addAttribute("selectAccountMemberView", accountService.selectAccountMemberView());
 		return "account/accountMemberView";
 	}
 	
-	//거래처 회원 등록
+	//승인된 거래처 등록화면
 	@GetMapping("/insertAccountMember")
 	public String insertAccountMember() {
-		return "/account/insertAccountMember";
-	}
-
-	//거래처 회원 수정
-	@GetMapping("/updateAccountMember")
-	public String updateAccountMember() {
-		return "/account/updateAccountMember";
+		return "account/insertAccountMember";
 	}
 	
+	//승인된 거래처 등록
+	@PostMapping("/insertAccountMember")
+	public String insertAccountMember(AccountMember accountMember) {
+		accountService.insertAccountMember(accountMember);
+		return "redirect:/accountMemberView";
+	}
+
+	//거래처 회원 상세보기 거래처 회원 코드로 조회
+	@GetMapping("/accountMemberDetail")
+	public String selectByAccountMember(@RequestParam(value="accMemCd")String accMemCd, Model model) {
+		model.addAttribute("selectByAccountMember", accountService.selectByAccountMember(accMemCd));
+		return "account/accountMemberDetail";
+	}
+	
+	//거래처 회원 수정화면. 거래처 회원 코드로 조회
+	@GetMapping("/updateAccountMember")
+	public String selectUpAccountMember(@RequestParam(value="accMemCd")String accMemCd, Model model) {
+		model.addAttribute("selectUpAccountMember", accountService.selectUpAccountMember(accMemCd));
+		return "account/updateAccountMember";
+	}
+	
+	//거래처 회원 수정
+	@PostMapping("/updateAccountMember")
+	public String updateAccountMember(AccountMember accountMember) {
+		accountService.updateAccountMember(accountMember);
+		return "redirect:/accountMemberView";
+	}
+	
+	//거래처 회원 삭제
+	@GetMapping("/deleteAccountMember")
+	public String deleteAccountMember(AccountMember accountMember) {
+		accountService.deleteAccountMember(accountMember);
+		return "redirect:/accountMemberView";
+	}
 }

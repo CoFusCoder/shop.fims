@@ -51,8 +51,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			</thead>
 			<tbody>
 			<tr th:each="b:${boardList}"> 
-				<td class="mhidden" th:text="${b.boardCd}"></td>
-				<td><a calss=boardDeatilName style="text-align: center" th:text="${b.boardTitle}" th:href="@{/gukminview/community/boardDetail(boardCd=${b.boardCd})}" ></a></td>
+				<td class="mhidden" th:text="${b.boardNum}"></td>
+				<td><a calss=boardDeatilName style="text-align: center" th:text="${b.boardTitle}" th:href="@{/gukminview/community/boardDetail(boardNum=${b.boardNum})}" ></a></td>
 				<td class="mhidden" th:text="${b.boardDt}"></td>
 				<td th:text="${b.boardWriter}"></td>
 			</tr>
