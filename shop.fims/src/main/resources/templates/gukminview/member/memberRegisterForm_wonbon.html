@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<form id="registerform" name="registerform" action="/MemberRegisterForm.festa" method="post">
+	<input type="hidden" name="membertype" value="1" id="membertype"/>
+	<input type="hidden" name="hosttype" value="1" id="hosttype"/>
+	<section>
+		<div class="mypDesc">
+			<p class="t01">회원정보</p>
+			<p class="t02">아래의 회원유형을 선택하신 후 회원가입을 진행해 주시기 바랍니다.</p>
+		</div>
+		<div class="norBox">
+			<div class="myinfoBox">
+				<div class="fl">
+					<p class="item">회원유형</p>
+					<ul>
+						<li class="indi"><a href="javascript:void(0)"
+							onclick="javascript:$('#membertype').val('1');" class="on">개인</a></li>
+						<li class="host"><a href="javascript:void(0)"
+							onclick="javascript:$('#membertype').val('2');">기업</a></li>
+					</ul>
+				</div>
+				<div class="fr">
+					<div id="indi">
+						<p class="item">회원정보</p>
+						<table class="writeTable t01">
+							<colgroup>
+								<col width="120" />
+								<col width="" />
+							</colgroup>
+							<tr>
+								<th>이름</th>
+								<td>
+									<div class="form">
+										<input type="text" id="membername" name="membername"
+											class="inp" placeholder="이름" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>아이디(이메일)</th>
+								<td>
+									<div class="form">
+										<input type="email" class="inp echeck" id="memberemail"
+											name="memberemail" placeholder="아이디(이메일)" /> <a
+											href="javascript:void(0)" onclick="javascript:checkID(1);"
+											class="btnEtc02">중복확인</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td>
+									<div class="form">
+										<input type="password" id="memberpassword"
+											name="memberpassword" class="inp"
+											placeholder="8~16자, 영문/숫자/특수문자 중 2가지 이상 조합으로 만들어주세요." />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>비밀번호 확인</th>
+								<td>
+									<div class="form">
+										<input type="password" id="memberrepassword"
+											name="memberrepassword" class="inp"
+											placeholder="비밀번호를 한번 더 입력해 주세요." />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>전화번호</th>
+								<td>
+									<div class="form">
+										<select class="select w60" id="membercontact01"
+											name="membercontact01">
+											<option value="">선택</option>
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="019">019</option>
+										</select> <span class="etxt">-</span> <input type="text"
+											id="membercontact02" name="membercontact02" class="inp w60" />
+										<span class="etxt">-</span> <input type="text"
+											id="membercontact03" name="membercontact03" class="inp w60" />
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div id="host">
+						<p class="item">로그인정보</p>
+						<table class="writeTable t01">
+							<colgroup>
+								<col width="120" />
+								<col width="" />
+							</colgroup>
+							<tr>
+								<th>아이디(이메일)</th>
+								<td>
+									<div class="form">
+										<input type="email" class="inp echeck" id="hostemail"
+											name="hostemail" placeholder="아이디(이메일)" /> <a
+											href="javascript:void(0)" onclick="javascript:checkID(2);"
+											class="btnEtc02">중복확인</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td>
+									<div class="form">
+										<input type="password" id="hostpassword" name="hostpassword"
+											class="inp"
+											placeholder="8~16자, 영문/숫자/특수문자 중 2가지 이상 조합으로 만들어주세요." />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>비밀번호 확인</th>
+								<td>
+									<div class="form">
+										<input type="password" id="hostrepassword"
+											name="hostrepassword" class="inp"
+											placeholder="비밀번호를 한번 더 입력해 주세요." />
+									</div>
+								</td>
+							</tr>
+						</table>
+						<p class="item">기업정보</p>
+						<ul class="commTabs t02">
+							<li><a href="javascript:void(0)"
+								onclick="javascript:$('#hosttype').val('1');" class="on">축제·이벤트</a></li>
+							<li><a href="javascript:void(0)"
+								onclick="javascript:$('#hosttype').val('2');">스토어</a></li>
+						</ul>
+						<table class="writeTable t01">
+							<colgroup>
+								<col width="120" />
+								<col width="" />
+							</colgroup>
+							<tr>
+								<th>기업유형</th>
+								<td>
+									<div class="form">
+										<select class="select" id="hostform" name="hostform">
+											<option value="">선택하세요</option>
+											<option value="1">중앙정부기관</option>
+											<option value="2">공기업</option>
+											<option value="3">대기업</option>
+											<option value="4">신문/방송/언론</option>
+											<option value="5">외국계기업</option>
+											<option value="6">지방자치단체</option>
+											<option value="7">학교/재단/협회</option>
+											<option value="8">중소/벤처기업</option>
+											<option value="9">학회/비영리단체</option>
+											<option value="10">해외</option>
+											<option value="11">개인</option>
+											<option value="99">기타</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>기업명</th>
+								<td>
+									<div class="form">
+										<input type="text" id="hostname" name="hostname" class="inp"
+											placeholder="기업명(주최사 또는 스토어명)" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>담당자이름</th>
+								<td>
+									<div class="form">
+										<input type="text" id="managername" name="managername"
+											class="inp" placeholder="담당자 이름" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>담당자 연락처</th>
+								<td>
+									<div class="form">
+										<select class="select w60" id="managercontact01"
+											name="managercontact01">
+											<option value="">선택</option>
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="019">019</option>
+										</select> <span class="etxt">-</span> <input type="text"
+											id="managercontact02" name="managercontact02" class="inp w60" />
+										<span class="etxt">-</span> <input type="text"
+											id="managercontact03" name="managercontact03" class="inp w60" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>담당자 이메일</th>
+								<td>
+									<div class="form">
+										<input type="email" id="manageremail" name="manageremail"
+											class="inp" placeholder="담당자 이메일" />
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+			</div>
+
+			<dl class="myAgreeList">
+				<dt>
+					<p class="tit">이용약관 내용 동의</p>
+					<label for="chkall">전체동의</label> <input type="checkbox" id="chkall" />
+				</dt>
+				<dd>
+					<ul>
+						<li><label for="chk_agree01">만14세 이상입니다<span>(필수)</span></label>
+							<input type="checkbox" id="chk_agree01" /></li>
+						<li class="long"><label for="chk_agree02">전자적 전송매체를
+								이용한 광고성 정보의 수신에 동의합니다. (선택)</label> <input type="checkbox"
+							id="chk_agree02" /></li>
+						<li><label for="chk_agree03">서비스 이용약관 동의<span>(필수)</span></label>
+							<a href="/gukminview/siteterms/siteTermView" target="_blank" class="btnAgreeView">!내용보기</a>
+							<input type="checkbox" id="chk_agree03" /></li>
+						<li><label for="chk_agree04">장기 미접속 시 계정 활성 상태 유지
+								(선택)</label> <input type="checkbox" id="chk_agree04" /></li>
+						<li><label for="chk_agree05">개인정보 수집·이용에 대한 동의<span>(필수)</span></label>
+							<a href="/gukminview/siteterms/privacyPolicy" target="_blank"
+							class="btnAgreeView">!내용보기</a> <input type="checkbox"
+							id="chk_agree05" /></li>
+					</ul>
+				</dd>
+			</dl>
+
+			<div class="boardBtnBox">
+				<a href="javascript:void(0)" id="registerbutton" class="btnType03">#동의하고
+					가입완료</a>
+			</div>
+
+		</div>
+	</section>
+</form>
+
+
+
+
+<div class="dialog" style="display: none; z-index: 1000;"
+	id="registercompletedialog">
+	<div class="popBox">
+		<div class="popHeader">
+			<h1>회원가입</h1>
+			<a href="javascript:void(0)" onclick="location.href='MyPage.festa'"><img
+				src="https://joyfesta.kr/include/img/ico/ico_close02.png" /></a>
+		</div>
+		<div class="popCont">
+			<p class="signTxt01">입력하신 이메일주소로 회원가입 인증메일을 발송했습니다.</p>
+			<p class="signTxt02">
+				인증메일 확인 후 회원가입을 완료해 주세요.<br />
+			</p>
+			<div class="btnBox">
+				<a href="javascript:void(0)"
+					onclick="location.href='LoginForm.festa'" class="btnType02">확인</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function checkID(membertype) {
+		var email = '';
+		if (membertype == 1) {
+			email = $('#memberemail').val();
+		} else {
+			email = $('#hostemail').val();
+		}
+
+		resetCommonDialog();
+		indicatorOn();
+
+		$.ajax({
+			url : 'JSONMemberMailCheck.festa',
+			type : 'POST',
+			data : {
+				email : email
+			},
+			dataType : 'json',
+			success : function(data, textStatus, jqXHR) {
+				indicatorOff();
+				if (data.resultcode == 0) {
+					$('#dialogtitle').append('아이디중복확인');
+					$('#dialogcontent').append('사용가능한 메일입니다.');
+					//$('#dialogcontent').append('사용할 수 있는 아이디(이메일)입니다.');
+					$('#commondialog').show();
+				} else {
+					$('#dialogtitle').append('아이디중복확인');
+					$('#dialogcontent').append(data.resultmessage);
+					$('#commondialog').show();
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				indicatorOff();
+				$('#dialogtitle').append('아이디중복확인');
+				$('#dialogcontent').append(textStatus);
+				$('#commondialog').show();
+			}
+		});
+	}
+
+	$('#registerbutton').click(
+			function() {
+				resetCommonDialog();
+
+				if ($('#chk_agree01').is(':checked') == false
+						|| $('#chk_agree03').is(':checked') == false
+						|| $('#chk_agree05').is(':checked') == false) {
+
+					$('#dialogtitle').append('회원가입');
+					$('#dialogcontent').append('필수사항 항목에 동의해 주세요.');
+					$('#commondialog').show();
+				} else {
+					indicatorOn();
+
+					var email = '';
+					var password = '';
+					var repassword = '';
+					var contact = '';
+					if ($('#membertype').val() == '1') {
+						email = $('#memberemail').val();
+						password = $('#memberpassword').val();
+						repassword = $('#memberrepassword').val();
+						contact = $('#membercontact01').val() + '-'
+								+ $('#membercontact02').val() + '-'
+								+ $('#membercontact03').val();
+					} else if ($('#membertype').val() == '2') {
+						email = $('#hostemail').val();
+						password = $('#hostpassword').val();
+						repassword = $('#hostrepassword').val();
+					} else {
+					}
+
+					var adinforeceiveflag = 'N';
+					if ($('#chk_agree02').is(':checked')) {
+						adinforeceiveflag = 'Y';
+					}
+					var accountactiveflag = 'N';
+					if ($('#chk_agree04').is(':checked')) {
+						accountactiveflag = 'Y';
+					}
+
+					$.ajax({
+						url : 'JSONMemberRegister.festa',
+						type : 'POST',
+						data : {
+							membertype : $('#membertype').val(),
+							email : email,
+							password : password,
+							repassword : repassword,
+							adinforeceiveflag : adinforeceiveflag,
+							accountactiveflag : accountactiveflag,
+							membername : $('#membername').val(),
+							contact : contact,
+							hosttype : $('#hosttype').val(),
+							hostform : $('#hostform').val(),
+							hostname : $('#hostname').val(),
+							managername : $('#managername').val(),
+							manageremail : $('#manageremail').val(),
+							managercontact : $('#managercontact01').val() + '-'
+									+ $('#managercontact02').val() + '-'
+									+ $('#managercontact03').val()
+						},
+						dataType : 'json',
+						success : function(data, textStatus, jqXHR) {
+							indicatorOff();
+							if (data.resultcode == 0) {
+
+								$('#registercompletedialog').show();
+							} else {
+								$('#dialogtitle').append('회원가입');
+								$('#dialogcontent').append(data.resultmessage);
+								$('#commondialog').show();
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							indicatorOff();
+							$('#dialogtitle').append('회원가입');
+							$('#dialogcontent').append(textStatus);
+							$('#commondialog').show();
+						}
+					});
+				}
+			});
+
+	
+</script>
+</th:block>
+
+</html>

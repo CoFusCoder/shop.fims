@@ -141,6 +141,20 @@ public class GMemberController {
 	/**
 	 * @param 없음
 	 * @file MemberController.java
+	 * @name hostPageView
+	 * @brief 거래처 마이페이지 화면
+	 * @author ksmart33 김동석
+	 * @return gukminview/member/hostPageView
+	 */
+	@GetMapping("gukminview/member/hostPageView")
+	public String hostPageView() {
+		System.out.println("---거래처 마이페이지 화면 : myPageView MemberController.java-------");
+		return "/gukminview/member/hostPageView";
+	}
+	
+	/**
+	 * @param 없음
+	 * @file MemberController.java
 	 * @name myInfoEditForm
 	 * @brief 국민 회원정보관리 화면
 	 * @author ksmart33 김동석
@@ -150,6 +164,20 @@ public class GMemberController {
 	public String myInfoEditForm() {
 		System.out.println("---국민 회원정보관리 화면 : myInfoEditForm MemberController.java-------");
 		return "/gukminview/member/myInfoEditForm";
+	}
+	
+	/**
+	 * @param 없음
+	 * @file MemberController.java
+	 * @name myInfoEditForm
+	 * @brief 거래처 회원정보관리 화면
+	 * @author ksmart33 김동석
+	 * @return gukminview/member/hostInfoEditForm
+	 */
+	@GetMapping("gukminview/member/hostInfoEditForm")
+	public String hostInfoEditForm() {
+		System.out.println("---거래처 회원정보관리 화면 : hostInfoEditForm MemberController.java-------");
+		return "/gukminview/member/hostInfoEditForm";
 	}
 	
 	/**

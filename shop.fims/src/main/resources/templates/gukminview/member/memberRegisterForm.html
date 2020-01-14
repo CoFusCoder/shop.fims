@@ -33,20 +33,38 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<col width="" />
 							</colgroup>
 							<tr>
+								<th>회원코드</th>
+								<td>
+									<div class="form">
+										<input type="text" id="MemCd" name="MemCd"
+											class="inp" placeholder="회원코드" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>회원레벨코드</th>
+								<td>
+									<div class="form">
+										<input type="text" id="MemLevCd" name="MemLevCd"
+											class="inp" placeholder="회원레벨코드" />
+									</div>
+								</td>
+							</tr>
+							<tr>
 								<th>이름</th>
 								<td>
 									<div class="form">
-										<input type="text" id="membername" name="membername"
+										<input type="text" id="membername" name="MemNm"
 											class="inp" placeholder="이름" />
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<th>아이디(이메일)</th>
+								<th>아이디</th>
 								<td>
 									<div class="form">
 										<input type="email" class="inp echeck" id="memberemail"
-											name="memberemail" placeholder="아이디(이메일)" /> <a
+											name="LoginCd" placeholder="아이디" /> <a
 											href="javascript:void(0)" onclick="javascript:checkID(1);"
 											class="btnEtc02">중복확인</a>
 									</div>
@@ -57,7 +75,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<td>
 									<div class="form">
 										<input type="password" id="memberpassword"
-											name="memberpassword" class="inp"
+											name="LoginPw" class="inp"
 											placeholder="8~16자, 영문/숫자/특수문자 중 2가지 이상 조합으로 만들어주세요." />
 									</div>
 								</td>
@@ -67,7 +85,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<td>
 									<div class="form">
 										<input type="password" id="memberrepassword"
-											name="memberrepassword" class="inp"
+											name="LoginPw" class="inp"
 											placeholder="비밀번호를 한번 더 입력해 주세요." />
 									</div>
 								</td>
@@ -84,13 +102,54 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 											<option value="016">016</option>
 											<option value="017">017</option>
 											<option value="019">019</option>
-										</select> <span class="etxt">-</span> <input type="text"
-											id="membercontact02" name="membercontact02" class="inp w60" />
+										</select> <span class="etxt">-</span> 
+										<input type="text"
+											id="membercontact02" name="MemPhone" class="inp w60" />
 										<span class="etxt">-</span> <input type="text"
 											id="membercontact03" name="membercontact03" class="inp w60" />
 									</div>
 								</td>
 							</tr>
+							<tr>
+								<th>주소</th>
+								<td>
+								<div class="form">
+									<input type="text" id="roadaddress" name="MemAddr"	class="inp echeck" />
+										<a href="javascript:void(0)" id="addresssearchbutton"
+										onclick="address_execDaumPostcode()" class="btnEtc02">주소찾기</a>
+								</div>
+								
+								</td>
+							</tr>
+							<tr>
+								<th>이메일</th>
+								<td>
+									<div class="form">
+										<input type="text" id="MemAddr" name="MemAddr"
+											class="inp" placeholder="이메일" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>생년월일</th>
+								<td>
+									<div class="form">
+										<select class="select w60" id="membercontact01"
+											name="membercontact01">
+											<option value="">선택</option>
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="019">019</option>
+										</select> <span class="etxt">-</span> 
+										<input type="text"
+											id="membercontact02" name="MemPhone" class="inp w60" />
+										<span class="etxt">-</span> <input type="text"
+											id="membercontact03" name="membercontact03" class="inp w60" />
+									</div>
+								</td>
+							</tr>							
 						</table>
 					</div>
 					<div id="host">
@@ -101,7 +160,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<col width="" />
 							</colgroup>
 							<tr>
-								<th>아이디(이메일)</th>
+								<th>아이디</th>
 								<td>
 									<div class="form">
 										<input type="email" class="inp echeck" id="hostemail"
@@ -231,13 +290,13 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								이용한 광고성 정보의 수신에 동의합니다. (선택)</label> <input type="checkbox"
 							id="chk_agree02" /></li>
 						<li><label for="chk_agree03">서비스 이용약관 동의<span>(필수)</span></label>
-							<a href="/gukminview/siteterms/siteTermView" target="_blank" class="btnAgreeView">!내용보기</a>
+							<a href="/gukminview/siteterms/siteTermView" target="_blank" class="btnAgreeView">내용보기</a>
 							<input type="checkbox" id="chk_agree03" /></li>
 						<li><label for="chk_agree04">장기 미접속 시 계정 활성 상태 유지
 								(선택)</label> <input type="checkbox" id="chk_agree04" /></li>
 						<li><label for="chk_agree05">개인정보 수집·이용에 대한 동의<span>(필수)</span></label>
 							<a href="/gukminview/siteterms/privacyPolicy" target="_blank"
-							class="btnAgreeView">!내용보기</a> <input type="checkbox"
+							class="btnAgreeView">내용보기</a> <input type="checkbox"
 							id="chk_agree05" /></li>
 					</ul>
 				</dd>
@@ -403,6 +462,54 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 
 	
 </script>
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function address_execDaumPostcode() {
+	new daum.Postcode(
+			{
+				oncomplete : function(data) {
+					var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+					var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+					// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+					// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+					if (data.bname !== ''
+							&& /[동|로|가]$/g
+									.test(data.bname)) {
+						extraRoadAddr += data.bname;
+					}
+					// 건물명이 있고, 공동주택일 경우 추가한다.
+					if (data.buildingName !== ''
+							&& data.apartment === 'Y') {
+						extraRoadAddr += (extraRoadAddr !== '' ? ', '
+								+ data.buildingName
+								: data.buildingName);
+					}
+					// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+					if (extraRoadAddr !== '') {
+						extraRoadAddr = ' ('
+								+ extraRoadAddr
+								+ ')';
+					}
+					// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+					if (fullRoadAddr !== '') {
+						fullRoadAddr += extraRoadAddr;
+					}
+
+					// 우편번호와 주소 정보를 해당 필드에 넣는다.
+					//document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
+					document
+							.getElementById('roadaddress').value = fullRoadAddr;
+
+					//autoLocation(fullRoadAddr);
+				}
+			}).open();
+}
+</script>
+
+
+
 </th:block>
 
 </html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shop.fims.admin.mapper.CodeManageMapper">
+
+	<!-- 자동생성 쿼리문장 -->
+	<!-- 조건1 해당 테이블명 : code_table = 'Man_Com' -->
+	<!-- 조건2 해당 테이블명의 PK컬럼명 : Man_Com table의 컬럼명 (pk_name) = man_com_cd -->
+	<select id="codeGeneration" parameterType="String" resultType="String">
+		SELECT CONCAT(
+		
+			(SELECT CONCAT(
+				(SELECT @a:= pk_code
+					FROM Code_Manage
+					WHERE code_table = #{tb_Name}),
+		
+			(SELECT LPAD(MAX((RIGHT(${pk_name},3))) + 1 , 3, 0) AS nextmaxcol FROM ${tb_Name})
+		 
+		 						)
+		 
+		FROM ${tb_Name} 
+		
+		WHERE ${pk_name} LIKE (
+			
+			SELECT CONCAT(@a, 
+			(SELECT LPAD(MAX((RIGHT(${pk_name},3))) , 3, 0) AS nextmaxcol FROM ${tb_Name})
+							)
+									)
+			)
+		)
+	</select>
+	<!--↑↑ 테이블 변수명 : #{tb_Name}, ${tb_Name} // 컬럼변수명 : ${pk_name}  ↑↑ -->
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
