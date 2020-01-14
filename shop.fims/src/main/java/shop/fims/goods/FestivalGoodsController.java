@@ -36,7 +36,7 @@ public class FestivalGoodsController {
 	  @GetMapping("/gDeleteDivL") 
 	  public String deleteDivL(Model model){ 
 		  model.addAttribute("AllLDiv", festivalGoodsService.selectAllLDiv());
-		  return "goods/gDivList"; }
+		  return "redirect:/gDivList"; }
 	  //축제물품 소분류 등록
 	  @GetMapping("/gInsertDivS") 
 	  public String insertDivS(){ 
@@ -51,7 +51,7 @@ public class FestivalGoodsController {
 	  @GetMapping("/gDeleteDivS") 
 	  public String deleteDivS(Model model){ 
 		  model.addAttribute("AllSDiv", festivalGoodsService.selectAllSDiv());
-		  return "goods/gDivList"; 
+		  return "redirect:/gDivList"; 
 		  }
 	  
 	  //축제물품입고내역수정	

@@ -21,7 +21,7 @@ public class PublicrelationsController {
 
 //=============== 홍보분류 ==========================
 	
-	//홍보분류 수정
+	//홍보분류 등록
 	@PostMapping(value="/prInsertDiv", produces = "text/html")
 	public @ResponseBody String insertDiv(PrDiv prdiv, Model model, ServletResponse response){
 		publicrelationsService.insertPrDiv(prdiv);
@@ -40,8 +40,13 @@ public class PublicrelationsController {
 	//홍보분류 삭제
 	@GetMapping(value="/prDeleteDiv", produces = "text/html")
 	public @ResponseBody String deleteDiv(@RequestParam(value="festprDivCd")String festprDivCd, ServletResponse response){
-		publicrelationsService.deleteDiv(festprDivCd);
-		String script = "<script>alert('홍보분류가 삭제되었습니다.'); location.href='/prDivList';</script>";
+		String script=null;
+		if(publicrelationsService.selectDivByCd(festprDivCd)!=null) {
+			script = "<script>alert('해당 분류를 사용중인 홍보사업이 있습니다.\\n해당분류의 사업을 모두 삭제 후 분류를 삭제해주세요.'); location.href='/prDivList';</script>";
+		}else{
+			publicrelationsService.deleteDiv(festprDivCd);
+			script = "<script>alert('홍보분류가 삭제되었습니다.'); location.href='/prDivList';</script>";			
+		}
 		return script;		
 	}
 
@@ -63,26 +68,25 @@ public class PublicrelationsController {
 								,@RequestParam(value="date1")String date1
 								,@RequestParam(value="date2")String date2
 								,@RequestParam(value="actionStatus")String actionStatus
-								,HttpSession session, Model model1, Model model2) {									
+								,HttpSession session, Model model) {									
 		//System.out.println("홍보분류명:"+festprDivNm+"거래처명:"+catAccNm1+"홍보매체명:"+festprProNm+"날짜1:"+date1+"날짜2:"+date2+"마감여부:"+actionStatus);
 		String festCd = (String)session.getAttribute("F_CD");
-		model1.addAttribute("AllPromotion", publicrelationsService.searchPrDetail(festprDivNm, catAccNm1, festprProNm, date1, date2, actionStatus, festCd));
-		model2.addAttribute("prDiv",publicrelationsService.selectAllPrDiv());
+		model.addAttribute("AllPromotion", publicrelationsService.searchPrDetail(festprDivNm, catAccNm1, festprProNm, date1, date2, actionStatus, festCd));
+		model.addAttribute("prDiv",publicrelationsService.selectAllPrDiv());
 		return "publicrelations/prPromotionList";
 	}
 	
 	//홍보사업수정 화면 출력
 	@GetMapping("/prUpdatePromotion")
-	public String updatePromotion(@RequestParam(value="festprProCd")String festprProCd, Model modelDetail
-			,Model modelbudget, Model modelDiv, Model modelPartners, Model modelGroup, HttpSession session) {
+	public String updatePromotion(@RequestParam(value="festprProCd")String festprProCd, Model model, HttpSession session) {
 		//System.out.println("festprProCd"+festprProCd);	
 		//System.out.println(model);
-		modelDetail.addAttribute("prDetail", publicrelationsService.selectByPmcd(festprProCd));
+		model.addAttribute("prDetail", publicrelationsService.selectByPmcd(festprProCd));
 		String festCd = (String)session.getAttribute("F_CD");
-		modelDiv.addAttribute("div", publicrelationsService.selectAllPrDiv());
-		modelbudget.addAttribute("budget", publicrelationsService.selectBudget(festCd));
-		modelPartners.addAttribute("partners", publicrelationsService.selectParners());
-		modelGroup.addAttribute("group", publicrelationsService.selectGroup(festCd));
+		model.addAttribute("div", publicrelationsService.selectAllPrDiv());
+		model.addAttribute("budget", publicrelationsService.selectBudget(festCd));
+		model.addAttribute("partners", publicrelationsService.selectParners());
+		model.addAttribute("group", publicrelationsService.selectGroup(festCd));
 		return "publicrelations/prUpdatePromotion";
 	}
 	
@@ -117,20 +121,20 @@ public class PublicrelationsController {
 	
 	 //홍보 프로모션코드로 세부사항조회
 	 @GetMapping("/prPromotionDetail") 
-	 public String selectByPmcd(@RequestParam(value="festprProCd")String festprProCd, Model model1, Model model2) { 
+	 public String selectByPmcd(@RequestParam(value="festprProCd")String festprProCd, Model model) { 
 		System.out.println("festprProCd"+festprProCd);
-		model1.addAttribute("selectByPmcd", publicrelationsService.selectByPmcd(festprProCd));
-		model2.addAttribute("file", publicrelationsService.selectFile(festprProCd));
+		model.addAttribute("selectByPmcd", publicrelationsService.selectByPmcd(festprProCd));
+		model.addAttribute("file", publicrelationsService.selectFile(festprProCd));
 	 	return "publicrelations/prPromotionDetail";
 	 }
 	
 	
 	//홍보사업리스트 조회
 	@GetMapping("/prPromotionList")
-	public String detailList(Model model1, Model model2, HttpSession session) {
+	public String detailList(Model model, HttpSession session) {
 		String festCd = (String)session.getAttribute("F_CD");
-		model1.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(festCd));
-		model2.addAttribute("prDiv",publicrelationsService.selectAllPrDiv());
+		model.addAttribute("AllPromotion", publicrelationsService.selectAllPromotion(festCd));
+		model.addAttribute("prDiv",publicrelationsService.selectAllPrDiv());
 		return "publicrelations/prPromotionList";
 	}	
 	
@@ -148,6 +152,19 @@ public class PublicrelationsController {
 		String script = "<script>alert('홍보사업이 삭제 되었습니다.'); location.href='/prPromotionList';</script>";
 		return script;		
 	}
+	
+	@PostMapping(value= "/prGroupCdupdate", produces = "text/html")
+	public @ResponseBody String updatePrGroupNm (@RequestParam(value="groupCdModal")String groupCdModal
+							,@RequestParam(value="groupNmModal")String groupNmModal, ServletResponse response) {		
+		//System.out.println("groupCdModal: "+groupCdModal);
+		//System.out.println("groupNmModal: "+groupNmModal);
+		String groupCd = groupCdModal;
+		String groupNm =groupNmModal;
+		publicrelationsService.updatePrGroupNm(groupCd, groupNm);
+		String script = "<script>alert('그룹명이 수정되었습니다. 페이지가 리로드 됩니다.'); location.href='/prInsertPromotion';</script>";
+		return script;		
+	}
+	
 	
 	
 //=============== 이벤트 당첨자 ==========================		

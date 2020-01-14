@@ -120,7 +120,16 @@
 		Fest_PR_Div
 		ORDER BY festpr_div_cd
   	</select>	
-	
+
+<!-- 홍보분류코드가 홍보테이블에서 사용되고 있는지 조회 -->
+	<select id="selectDivByCd" resultType="String">
+	SELECT
+		p.festpr_div_cd
+	From
+		Fest_PR_Promotion AS p
+	WHERE
+		p.festpr_div_cd=(#{festprDivCd})
+	</select>
 <!-- ================== 홍보 분류 end ========================= -->
 
 
@@ -354,6 +363,18 @@ WHERE
 	and budget_cla='세출'
 	ORDER BY fesrev_bud_cd
 </select>
+
+<!-- 홍보 그룹코드명 수정 -->
+<update id="updatePrGroupNm" parameterType="String">
+UPDATE
+	Fest_PR_Promotion
+SET
+	group_nm=(#{groupNm})
+WHERE group_cd=(#{groupCd})
+
+</update>
+
+
 
 
 <!-- ================== 홍보 프로모션 end ========================= -->

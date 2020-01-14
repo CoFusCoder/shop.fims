@@ -127,7 +127,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			            <select class="form-control" id="catappAccCd" name="catappAccCd" >
 			            	<option value="" >:: 거래처선택 ::</option>
 			            	<th:block th:each="p:${partners}">
-			            		<option th:value="${p.catapp_acc_cd}" th:text="${p.cat_acc_nm1}"></option>	
+			            		<option th:value="${p.catapp_acc_cd}" th:text="${p.cat_acc_nm1}" th:selected="${true}"></option>	
 			            	</th:block>
 			            </select>   
 			            

@@ -25,7 +25,7 @@
 	<resultMap type="shop.fims.vo.ProDivTheme" id="proDivThemeResultmap">
 		<result property="festprodivThemeCd" column="festprodiv_theme_cd"/>
 		<result property="areacityAdminCd" column="areacity_admin_cd"/>
-		<result property="area_CityCd" column="area_city_cd"/>
+		<result property="areaCityCd" column="area_city_cd"/>
 		<result property="areaCd" column="area_cd"/>
 		<result property="festCd" column="fest_cd"/>
 		<result property="festTitle" column="fest_title"/>
@@ -123,6 +123,40 @@ INTO
 	festprodiv_day_cd
 	,festprodiv_day_nm)
 values (#{festprodivDayCd},#{festprodivDayNm})
+</insert>
+
+<!-- 프로그램 장소분류 등록 -->
+<insert id="insertDivPlace" parameterType="shop.fims.vo.ProDivPlace">
+	<selectKey keyProperty="festprodivPlaCd" resultType="String" order="BEFORE">
+		SELECT
+		CONCAT('fpdP_' ,(lpad(max(SUBSTRING(festprodiv_pla_cd,6))+1,3,'0'))) as festprodivPlaCd
+	FROM
+		Fest_Pro_Div_Place
+	</selectKey>	
+INSERT 
+INTO
+	Fest_Pro_Div_Place
+	(festprodiv_pla_cd,areacity_admin_cd,area_city_cd
+	,area_cd,fest_cd,fest_title,festprodiv_pla_nm)
+values (#{festprodivPlaCd},#{areacityAdminCd},#{areaCityCd}
+		,#{areaCd},#{festCd},#{festTitle},#{festprodivPlaNm})
+</insert>
+
+<!-- 프로그램 성격분류 등록 -->
+<insert id="insertDivTheme" parameterType="shop.fims.vo.ProDivTheme">
+	<selectKey keyProperty="festprodivThemeCd" resultType="String" order="BEFORE">
+	SELECT
+		CONCAT('fpdT_' ,(lpad(max(SUBSTRING(festprodiv_theme_cd,6))+1,3,'0'))) as festprodivThemeCd
+	FROM
+		Fest_Pro_Div_Theme
+	</selectKey>	
+INSERT 
+INTO
+	Fest_Pro_Div_Theme
+	(festprodiv_theme_cd,areacity_admin_cd,area_city_cd
+	,area_cd,fest_cd,fest_title,festprodiv_theme_nm)
+values (#{festprodivThemeCd},#{areacityAdminCd},#{areaCityCd}
+		,#{areaCd},#{festCd},#{festTitle},#{festprodivThemeNm})
 </insert>
 
 <!-- 프로그램 참가자 조건검색   -->

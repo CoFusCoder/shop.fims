@@ -1,5 +1,6 @@
 package shop.fims.program;
 
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.fims.vo.ProDivDay;
+import shop.fims.vo.ProDivPlace;
+import shop.fims.vo.ProDivTheme;
 
 @Controller
 public class ProgramController {
@@ -100,67 +104,69 @@ public class ProgramController {
 		
 		//프로그램 일정분류 삭제
 		@GetMapping("/proDeleteDivDay")
-		public String deleteDivDay(HttpSession session, Model modelDay, Model modelPlace, Model modelTheme) {
-			String festCd = (String)session.getAttribute("F_CD");
-			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
-			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(festCd));
-			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(festCd));
-			return "program/proDivList";		
+		public String deleteDivDay() {
+			return "redirect:/proDivList";		
 		}
 		//프로그램 장소분류 삭제
 		@GetMapping("/proDeleteDivPlace")
-		public String deleteDivPlace(HttpSession session, Model modelDay, Model modelPlace, Model modelTheme) {
-			String festCd = (String)session.getAttribute("F_CD");
-			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
-			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(festCd));
-			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(festCd));
-			return "program/proDivList";		
+		public String deleteDivPlace() {			
+			return "redirect:/proDivList";		
 		}
 		//프로그램 성격분류 삭제
 		@GetMapping("/proDeleteDivTheme")
-		public String deleteDivTheme(HttpSession session, Model modelDay, Model modelPlace, Model modelTheme) {
-			String festCd = (String)session.getAttribute("F_CD");
-			modelDay.addAttribute("ProDivDay", programservice.selectAllDivDay());
-			modelPlace.addAttribute("ProDivPlace", programservice.selectAllDivPlace(festCd));
-			modelTheme.addAttribute("ProDivTheme", programservice.selectAllDivTheme(festCd));
-			return "program/proDivList";		
+		public String deleteDivTheme() {
+			return "redirect:/proDivList";				
 		}
 		
-
 		//프로그램 일정분류 수정
 		@GetMapping("/proUpdateDivDay")
 		public String updateDivDay() {
-			return "program/proUpdateDivDay";		
+			return "redirect:/proDivList";			
 		}
 		//프로그램 장소분류 수정
 		@GetMapping("/proUpdateDivPlace")
 		public String updateDivPlace() {
-			return "program/proUpdateDivPlace";		
+			return "redirect:/proDivList";		
 		}
 		//프로그램 성격분류 수정
 		@GetMapping("/proUpdateDivTheme")
 		public String updateDivTheme() {
-			return "program/proUpdateDivTheme";		
+			return "redirect:/proDivList";			
 		}
 		
 		
-		//프로그램 일정분류 신규등록
-		@PostMapping("/proInsertDivDay")
-		public String insertDivDay(ProDivDay prodivday, 
-				HttpSession session, Model modelDay, Model modelPlace, Model modelTheme) {
+		//프로그램 일자분류 신규등록
+		@PostMapping(value="/proInsertDivDay" , produces = "text/html")
+		public @ResponseBody String insertDivDay(ProDivDay prodivday, ServletResponse response) {
 			System.out.println("prodivday :"+prodivday);
 			programservice.insertDivDay(prodivday);
-			return "redirect:/proDivList";		
+			String script = "<script>alert('프로그램 일자분류가 신규 등록되었습니다.'); location.href='/proDivList';</script>";
+			return script;		
 		}
 		//프로그램 장소분류 신규등록
-		@GetMapping("/proInsertDivPlace")
-		public String insertDivPlace() {
-			return "program/proInsertDivPlace";		
+		@PostMapping(value="/proInsertDivPlace", produces = "text/html")
+		public @ResponseBody String insertDivPlace(ProDivPlace proDivPlace, HttpSession session) {
+			System.out.println(proDivPlace);
+			proDivPlace.setAreaCd((String)session.getAttribute("F_AREA_CD"));
+			proDivPlace.setAreaCityCd((String)session.getAttribute("F_CITY_CD"));
+			proDivPlace.setAreacityAdminCd((String)session.getAttribute("F_ADMIN_CD"));
+			proDivPlace.setFestCd((String)session.getAttribute("F_CD"));
+			proDivPlace.setFestTitle((String)session.getAttribute("F_NM"));
+			programservice.insertDivPlace(proDivPlace);
+			String script = "<script>alert('프로그램 장소분류가 신규 등록되었습니다.'); location.href='/proDivList';</script>";
+			return script;		
 		}
 		//프로그램 성격분류 신규등록
-		@GetMapping("/proInsertDivTheme")
-		public String insertDivTheme() {
-			return "program/proInsertDivTheme";		
+		@PostMapping(value="/proInsertDivTheme", produces = "text/html")
+		public @ResponseBody String insertDivTheme(ProDivTheme proDivTheme, HttpSession session) {
+			proDivTheme.setAreaCd((String)session.getAttribute("F_AREA_CD"));
+			proDivTheme.setAreaCityCd((String)session.getAttribute("F_CITY_CD"));
+			proDivTheme.setAreacityAdminCd((String)session.getAttribute("F_ADMIN_CD"));
+			proDivTheme.setFestCd((String)session.getAttribute("F_CD"));
+			proDivTheme.setFestTitle((String)session.getAttribute("F_NM"));
+			programservice.insertDivTheme(proDivTheme);
+			String script = "<script>alert('프로그램 성격분류가 신규 등록되었습니다.'); location.href='/proDivList';</script>";
+			return script;		
 		}
 		
 		

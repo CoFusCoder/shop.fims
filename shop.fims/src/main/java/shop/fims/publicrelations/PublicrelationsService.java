@@ -48,10 +48,17 @@ public class PublicrelationsService {
 	}	
 	
 	
+	public String selectDivByCd(String festprDivCd) {
+		return publicrelationsMapper.selectDivByCd(festprDivCd);	
+	}
 	
 	
 //**********홍보 프로모션 ***********	
 	
+	//홍보 그룹코드명 변경
+	public int updatePrGroupNm (String groupCd, String groupNm) {
+		return publicrelationsMapper.updatePrGroupNm(groupCd, groupNm);		
+	}
 	// 홍보 사업 신규 등록
 	public int insertPromotionPro(PrPromotion promotion, String groupNm2) {
 		System.out.println("groupNm2"+groupNm2);

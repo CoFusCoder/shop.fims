@@ -26,7 +26,8 @@ public interface PublicrelationsMapper {
 	// 홍보분류 삭제
 	public int deleteDiv(String festprDivCd);	
 	
-	
+	// 홍보분류코드가 홍보테이블에서 사용되고 있는지 조회 
+	public String selectDivByCd(String festprDivCd);
 	
 	
 	
@@ -75,6 +76,8 @@ public interface PublicrelationsMapper {
 	
 	// 홍보코드로 첨부파일 삭제
 	public int deleteFile(String festprProCd);
+	
+	public int updatePrGroupNm (String groupCd, String groupNm);
 	
 	
 	

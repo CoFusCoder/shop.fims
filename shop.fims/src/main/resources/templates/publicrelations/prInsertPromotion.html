@@ -7,10 +7,16 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 </th:block>
 <th:block layout:fragment="adminisScript">
 	<script th:src="@{/adminis/lib/jquery/jquery.min.js}"></script>				
-	
+
 <script type="text/javascript">
 $(document).ready(function(){
-
+	$('.groupBtn').click(function(){
+		var form = $(this).parents('form');
+		var groupCdModal = form.find('input[name="groupCdModal"]').val();
+		var groupNmModal = form.find('input[name="groupNmModal"]').val();		
+		form.submit();		
+	})
+	
 /* 홍보그룹코드 관련 제이쿼리	 */
 	$('#groupNm').change(function(){ 
 		var groupname = $('#groupNm').val();
@@ -139,7 +145,48 @@ $(document).ready(function(){
 </script>	
 </th:block>
 <th:block layout:fragment="adminisMainContents">
+<!-- Modal -->
+						<div class="modal fade" id="prGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="myModalLabel">홍보예산 그룹관리</h4>
+						      </div>
+						      <div class="modal-body">
+						        
 
+									<h4><Strong>그룹명 수정하기</Strong></h4><br>
+									<Strong><font style="color: red">*</font>그룹명을 수정하면 해당 그룹의 그룹명 모두가 변경되니 유의하시기 바랍니다.</Strong><br>.<br>
+					                <table class="table table-bordered table-striped table-condensed">
+					                  <thead>
+					                    <tr align="center">					                      
+					                      <th>그룹명 수정</th>					                     
+					                    </tr>
+					                  </thead>
+					                  <tbody>
+					                    <tr th:each="g, i:${group}">				                    
+					                      <td>
+					                    <form th:action="@{/prGroupCdupdate}" method="post" id="groupModl">
+					                   
+						                      <input type="hidden" name="groupCdModal" th:value="${g.group_cd}" readonly>					                      
+						                      <input type="text" name="groupNmModal" th:value="${g.group_nm}">
+					                      
+					                      	<button type="button" class="btn btn-primary btn-xs groupBtn"><i class="fa fa-pencil"></i></button>				                    
+					                    </form>
+					                      </td>		                      
+					                    </tr>
+					                  </tbody>
+					                </table>				        
+									<font style="color: red">*</font>새로운 그룹명은 홍보사업신규등록시 등록폼에 입력하시면 자동 생성됩니다.<br>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>					       
+						      </div>
+						    </div>
+						  </div>
+						</div>  
+						<!-- Modal end  --> 
 		
 		
 	
@@ -177,48 +224,7 @@ $(document).ready(function(){
 						<button type="button" class="btn btn-theme04 btn" data-toggle="modal" data-target="#prGroup">
 						  홍보예산 그룹관리</button>
 						
-						<!-- Modal -->
-						<div class="modal fade" id="prGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="myModalLabel">홍보예산 그룹관리</h4>
-						      </div>
-						      <div class="modal-body">
-						        
-
-									<h4><Strong>그룹명 수정하기</Strong></h4><br>
-									<Strong><font style="color: red">*</font>그룹명을 수정하면 해당 그룹의 그룹명 모두가 변경되니 유의하시기 바랍니다.</Strong><br>.<br>
-					                <table class="table table-bordered table-striped table-condensed">
-					                  <thead>
-					                    <tr align="center">					                      
-					                      <th>그룹명</th>
-					                      <th>수정</th>
-					                    </tr>
-					                  </thead>
-					                  <tbody>
-					                    <tr th:each="g, i:${group}">				                    
-					                    <form th:action="@{/prGroupCdupdate}" method="post" th:id="${'prGroupNmupdate' + i.index}">
-					                      <td>
-					                      <input type="hidden" name="groupCdModal" th:value="${g.group_cd}" readonly>					                      
-					                      <input type="text" name="groupNmModal" th:value="${g.group_nm}">
-					                      </td>
-					                      <td>					                      
-					                      <button type="button" th:id="${'prGroupNmupdateBtn' + i.index}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></td>				                    
-					                    </tr>
-					                    </form>
-					                  </tbody>
-					                </table>				        
-									<font style="color: red">*</font>새로운 그룹명은 홍보사업신규등록시 등록폼에 입력하시면 자동 생성됩니다.<br>
-						      </div>
-						      <div class="modal-footer">
-						        <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>					       
-						      </div>
-						    </div>
-						  </div>
-						</div>  
-						<!-- Modal end  --> 
+						
                   </div>
                   
                   <br><hr>
