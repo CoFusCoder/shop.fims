@@ -375,6 +375,112 @@ WHERE group_cd=(#{groupCd})
 </update>
 
 
+<select id="selectForGroupBud" resultType="map">
+SELECT
+	p.areacity_admin_cd
+	,b.accsub_man_cd
+	,p.man_com_cd
+	,p.fest_cd
+	,p.area_city_cd
+	,p.area_cd
+	,p.group_cd
+	,p.group_nm
+	,b.adm_age_nm
+	,b.fes_nm
+	,b.com_nm
+	,b.accsub_large_nm
+	,b.accsub_medium_nm
+	,b.budget_cla
+	,b.accsub_nm
+	,b.budget_details
+	,b.fes_year
+	,p.festpr_pro_expense
+	FROM
+	Fest_PR_Promotion AS p
+	,Fes_revExp_Bud AS b
+WHERE 
+	p.fesrev_bud_cd=b.fesrev_bud_cd
+	and p.festpr_pro_cd=(#{festprProCd})
+
+</select>
+
+<insert id="insertGroupBud" parameterType="map">
+	<selectKey keyProperty="fesrevExeCd" resultType="String" order="BEFORE">
+	SELECT
+		CONCAT('fesrev_exe' ,(lpad(max(SUBSTRING(fesrev_exe_cd,11))+1,3,'0'))) as fesrev_exe_cd
+	FROM
+		Fes_revExp_Exe
+	</selectKey>
+	INSERT
+	INTO
+	Fes_revExp_Exe(
+		fesrev_exe_cd
+		,areacity_admin_cd
+		,accsub_man_cd
+		,man_com_cd
+		,fest_cd
+		,area_city_cd
+		,area_cd
+		,group_cd
+		,dettax_paycontab_nm
+		,adm_age_nm
+		,fes_nm
+		,com_nm
+		,lar_cat_nm
+		,accsub_medium_nm
+		,bud_cla
+		,accsub_nm
+		,exp_details
+		,fes_year
+		,Expenditure
+	)
+	VALUES(#{fesrevExeCd}
+		,#{areacity_admin_cd}
+		,#{accsub_man_cd}
+		,#{man_com_cd}
+		,#{fest_cd}
+		,#{area_city_cd}
+		,#{area_cd}
+		,#{group_cd}
+		,#{group_nm}
+		,#{adm_age_nm}
+		,#{fes_nm}
+		,#{com_nm}
+		,#{accsub_large_nm}
+		,#{accsub_medium_nm}
+		,#{budget_cla}
+		,#{accsub_nm}
+		,#{budget_details}
+		,#{fes_year}
+		,#{festpr_pro_expense}
+)
+</insert>
+
+<!-- 마감여부 및 마감날짜 업데이트 -->
+<update id="updateAction" parameterType="String">
+UPDATE 
+	Fest_PR_Promotion AS p
+SET
+	p.action_dt=NOW()
+	,p.action_status='Y'
+WHERE
+	p.festpr_pro_cd=(#{festprProCd})
+</update>
+
+<select id="checkActionCd" resultType="String">
+SELECT
+	e.group_cd
+FROM
+	Fes_revExp_Exe AS e
+WHERE
+e.group_cd=(SELECT
+	p.group_cd
+FROM
+	Fest_PR_Promotion AS p
+WHERE 
+	p.festpr_pro_cd=(#{festprProCd}))
+</select>
+
 
 
 <!-- ================== 홍보 프로모션 end ========================= -->

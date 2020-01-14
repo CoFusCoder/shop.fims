@@ -152,7 +152,7 @@ public class PublicrelationsController {
 		String script = "<script>alert('홍보사업이 삭제 되었습니다.'); location.href='/prPromotionList';</script>";
 		return script;		
 	}
-	
+	//홍보 그룹코드명 수정
 	@PostMapping(value= "/prGroupCdupdate", produces = "text/html")
 	public @ResponseBody String updatePrGroupNm (@RequestParam(value="groupCdModal")String groupCdModal
 							,@RequestParam(value="groupNmModal")String groupNmModal, ServletResponse response) {		
@@ -164,8 +164,13 @@ public class PublicrelationsController {
 		String script = "<script>alert('그룹명이 수정되었습니다. 페이지가 리로드 됩니다.'); location.href='/prInsertPromotion';</script>";
 		return script;		
 	}
-	
-	
+	// 홍보 마감 등록
+	@GetMapping("/actionStart")
+	public String actionStart(@RequestParam(value="festprProCd")String festprProCd){
+		//System.out.println("festprProCd : "+festprProCd);			
+		System.out.println(publicrelationsService.selectForGroupBud(festprProCd));	
+		return "redirect:/prPromotionList";		
+	}
 	
 //=============== 이벤트 당첨자 ==========================		
 	

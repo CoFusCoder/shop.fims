@@ -79,6 +79,18 @@ public interface PublicrelationsMapper {
 	
 	public int updatePrGroupNm (String groupCd, String groupNm);
 	
+	// 최초 그룹예산 합산용 데이터 조회 
+	public Map<String, String> selectForGroupBud (String festprProCd);
+	// 최초 그룹예산 등록
+	public int insertGroupBud (Map<String, String> groupdata);
+	// 마감여부, 마감날짜 업데이트
+	public int updateAction(String festprProCd);
+	
+	// 예산집행테이블에 해당 그룹코드로 된 레코드가 있는지 조회
+	public String checkActionCd(String festprProCd);
+	// 예산집행테이블에 해당 그룹코드로 된 레코드가 있으면 합산한 값을 계산
+	public int calGroupBudExp (String festprProCd);
+	
 	
 	
 //**********홍보 이벤트당첨자 ***********		

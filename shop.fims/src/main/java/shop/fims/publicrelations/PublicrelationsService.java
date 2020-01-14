@@ -161,7 +161,25 @@ public class PublicrelationsService {
 		return 0;		
 	}
 	
-	
+	// 최초 그룹예산 합산용 데이터 조회 후 등록
+	public int selectForGroupBud (String festprProCd){
+		String Actioncheck = publicrelationsMapper.checkActionCd(festprProCd);
+		if(Actioncheck==null) {
+		Map<String, String> groupdata = publicrelationsMapper.selectForGroupBud(festprProCd);	
+		publicrelationsMapper.insertGroupBud(groupdata);
+		}else {
+			int sum = publicrelationsMapper.calGroupBudExp(festprProCd);
+			
+		}
+		
+		
+		
+		
+		
+		
+		return publicrelationsMapper.updateAction(festprProCd);
+	}
+
 	
 //**********홍보 이벤트당첨자 ***********		
 

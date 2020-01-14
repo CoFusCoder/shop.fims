@@ -15,8 +15,16 @@ $(document).ready(function(){
 	$('#pageBack').click(function(){
 			window.history.back();
 		})	
-	
 		
+		
+		
+/* 마감상태변경 */	
+		$('#actionGO').click(function(){
+			$('#actionCheck').val('Y');
+		})	
+		$('#actionCancel').click(function(){
+			$('#actionCheck').val('N');
+		})	
 		
 /* 	삭제버튼	 */
 			$('#prDetailDeleteBtn').click(function(){
@@ -27,6 +35,19 @@ $(document).ready(function(){
 		    return;
 	}	
 	})
+	
+	
+		var actionstatus = $('#actionStatus').text();
+		if(actionstatus=='N'){
+			$('#actionGO').css('display','block');
+			return false;
+		}else{
+			$('#actionCancel').css('display','block');
+			return false;
+		}
+		
+
+	
 /* document.ready 종료 */
 })
 
@@ -151,15 +172,21 @@ $(document).ready(function(){
                     </div> 
                    <label for="actionStatus" class="control-label col-lg-1"><font style="vertical-align: inherit;">마감여부</font></label>
                     <div class="col-lg-2">
-                      <h4><strong th:text="${p.action_status}"></strong></h4>             
+                      <h4><strong th:text="${p.action_status}" id="actionStatus"></strong></h4>             
                     </div>  
                    <label for="actionBtn" class="control-label col-lg-1"><font style="vertical-align: inherit;">마감하기</font></label>
                     <div class="col-lg-2">
-                      <button type="button" class="btn btn-theme04">마감하기</button>          
+
+                      <a th:href="@{/actionStart(festprProCd=${p.festpr_pro_cd})}">
+                      <button type="button" class="btn btn-primary" id="actionGO" style="display: none;">마감하기</button></a>                
+                      <a>
+                      <button type="button" class="btn btn-theme04" id="actionCancel" style="display: none;">마감취소</button></a>                     
+                      <input type="hidden" id="actionCheck" value="N"> 
+                           
                     </div>  
                    <label for="action_dt" class="control-label col-lg-1"><font style="vertical-align: inherit;">마감일</font></label>
-                    <div class="col-lg-2">
-                      <h4><strong></strong></h4>             
+                    <div class="col-lg-2" th:if="${p.festpr_div_cd == null}" id="actionDate">
+                      <h4><strong th:text="${p.action_dt}"></strong></h4>             
                     </div>   
                    
                    </div>
