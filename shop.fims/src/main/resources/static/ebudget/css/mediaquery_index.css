@@ -1,0 +1,177 @@
+@charset "utf-8";
+
+
+
+@media screen and (max-width:460px){
+
+  #title_wrap{font-size:1.64em; width:100%; margin:0 auto; padding-top:20px;}
+  #title_wrap span.logo{width:100%;}
+  #menu{width:100%; margin:0 auto; min-width:320px;}
+
+
+
+  #content{width:100%; height:100%; background:none;}
+
+
+  /*이미지쪽*/
+  #content ul li a {font-size:12pt; width:100%; display:block;}
+  #menu li img{/*width:50%;*/}
+  #content ul li{padding:0px; float:left; width:50% !important;}
+  #menu ul{border:0px solid red; display:table; table-layout:fixed; width:100%; height:100%;}
+  #content div.menu_wrap ul li a img{border:0px;
+  display:inline-block; width:auto !important; width:auto\9 !important; max-width:100%; height:auto !important; }
+
+  .line{display:none;}
+
+#topW{min-width:380px;}
+#topW div.top ul li{padding:0;}
+}
+
+
+
+
+
+@media screen and (max-width :600px) {
+
+
+header{min-width:auto;}
+#footer li.logo2{position:relative; left:20px;}
+.title_st{width:100%; display:inline-block; white-space:pre-wrap;}
+
+
+/*2017
+.dock{min-width:auto;}
+.dock-item2 img{display:none;}
+
+.dock-container ul li{border:1px solid #ccc; width:auto; height:130px;}
+
+.dock-container{width:96%; display: table;border-collapse: collapse;border: none; 
+table-layout:fixed;
+}
+.dock-container ul {display: table-row; border:1px solid red;}
+.dock-container li {display: table-cell;text-align:center;padding: 5px 0; }
+.dock-container ul li{float:none;}
+.dock-container ul li:hover{margin-top:0px; }
+
+border-top:1px solid #69c;
+border-bottom:1px solid #69c;}
+
+
+.nav-list+.nav-list{border-left:0px solid #ccc;}
+.nav-list:hover,
+.nav-list:focus {
+
+*/
+
+.dock{min-width:auto; height:auto;}
+.dock-item2 img{display:none;}
+#grid {
+/*
+  height: calc(100vh - 25px); 
+  
+  display: -ms-grid;
+  -ms-grid-columns: 150px 25px 1fr;
+  -ms-grid-rows: 160px 25px 1fr 25px 200px; 
+	*/
+}
+.dock-container li{
+border:1px solid #ccc;
+/*
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  -ms-grid-row-span: 3;
+  */
+  width:49%; 
+  margin-top:-1px;
+  margin-left:-1px;
+}
+
+.dock-container p{position:relative; text-align:right; right:5%;}
+.dock-container ul{width:90%; padding-bottom:30px;}
+.dock-container ul li:hover{margin-top:0px;   margin-top:-1px;}
+
+.dock-container{margin-top:0px;}
+
+.dock-container ul li>a{padding:40px 0px 40px 0px;}
+
+#titleW .title{font-size:2em;}
+
+
+.dock-container ul li.M01{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m01_s.png) no-repeat; background-position:10px 5px;  }
+.dock-container ul li.M02{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m02_s.png) no-repeat; background-position:10px 5px;}
+.dock-container ul li.M03{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m03_s.png) no-repeat; background-position:10px 5px;}
+.dock-container ul li.M04{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m04_s.png) no-repeat; background-position:10px 5px;}
+.dock-container ul li.M05{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m05_s.png) no-repeat; background-position:10px 5px;}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width :480px) {
+ .dock-container p{font-size:1.2em;}
+#titleW .title{font-size:1.5em; }
+}
+
+
+
+
+
+@media screen and (max-width:380px){
+  #title_wrap{font-size:1em; }
+  #content ul li a {}
+ .dock-container p{font-size:1.2em; text-align:center; position:relative; top:30px; right:0;}
+  
+
+.dock-container ul li.M01{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m01_s.png) no-repeat; background-position:50% 20%; background-size:50px;}
+.dock-container ul li.M02{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m02_s.png) no-repeat; background-position:50% 20%; background-size:50px;}
+.dock-container ul li.M03{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m03_s.png) no-repeat; background-position:50% 20%; background-size:50px;}
+.dock-container ul li.M04{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m04_s.png) no-repeat; background-position:50% 20%; background-size:50px;}
+.dock-container ul li.M05{background: url(http://gyeyak.namwon.go.kr/ebudget/img/m05_s.png) no-repeat; background-position:50% 20%; background-size:50px;}
+
+
+
+
+}
+
+@media screen and (max-width:340px){
+  #title_wrap{font-size:1.1em; }
+  #content ul li a { width:150px;}
+ 
+}
+
+
+
+/*logo*/
+@media all and (max-width:800px){
+  #title_wrap span.logo{}
+  
+}
+
+/*테스크탑 최소넓이 320이하 고정*/
+@media only screen and (max-width:320px){
+#content{width:320px;}
+.logo A SPAN{font-weight:bold;}
+.logo {width:320px;}
+
+}
+
+@media only screen{
+  .menu_wrap > ul > li > img{display:none;}
+  
+}
+
+
+
+/*가로모드*/
+@media all and (orientation:landscape) and (max-width :500px){ 
+#title_wrap{font-size:24pt;}
+
+}

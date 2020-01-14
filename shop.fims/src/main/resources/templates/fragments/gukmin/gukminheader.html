@@ -12,11 +12,11 @@
 				<ul>
 					<li id="mainli"><a href="/gukminview/gukminMainView" id="mainhref">전체</a></li>
 					<li id="festivalli"><a href="/gukminview/festival/festivalAndEventView" id="festivalhref">축제·이벤트</a></li>
-					<li id="marketli"><a href="#" id="markethref">#계약공시</a></li>
-					<li id="promotionli"><a href="/gukminview/ebudgetview/budget/budgetMainView"
-						id="promotionhref">!경영공시</a></li>
+					<li id="marketli"><a href="/gukminview/acontract/orderingPlanView" id="markethref">계약공시</a></li>
+					<li id="promotionli"><a href="/gukminview/ebudget/revBudgetView"
+						id="promotionhref">경영공시</a></li>
 					<li id="communityli"><a href="/gukminview/community/communityView"
-						id="communityhref">!커뮤니티</a>
+						id="communityhref">커뮤니티</a>
 						<ul>
 							<li><a href="/gukminview/community/eventView">이벤트</a></li>
 							<li><a href="/gukminview/community/communityView">공지사항</a></li>
@@ -27,7 +27,7 @@
 			<div class="etcRight">
 				<ul>
 					<li class="ico_spot"><a href="/admin/main" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사'}">!관리자홈페이지</a></li>
-					<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">!스팟등록하기</a></li>
+					<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">스팟등록하기</a></li>
 				</ul>
 					<a th:href="@{/gukminview/login/loginForm}" th:if="${session.SID eq null}" class="pLogout"><span>로그인</span></a>
 			</div>
@@ -43,7 +43,7 @@
 			</div>
 			</th:block>
 		</div>
-		<form id="searchform" name="searchform" action="/Search.festa" method="post">
+		<form id="searchform" name="searchform" action="#" method="post">
 			<input type="hidden" name="searchkeyword" value="" id="searchkeyword"/>
 			<input type="hidden" name="searchtype" value="festival" id="searchtype"/>
 			<input type="hidden" name="festivaltypeseqs" value="" id="festivaltypeseqs"/>
@@ -58,71 +58,26 @@
 			<div class="searchBox">
 				<input type="text" autocomplete="off" id="tagSearch"
 					name="tagSearch"
-					onclick="javascript:$('.btnSearch').trigger('click');"
-					onkeydown="javascript:if(event.keyCode==13){$('.btnSearch').trigger('click');}"
-					placeholder="#무엇을 찾고 싶으세요?" /> <a href="javascript:void(0)"
+					placeholder="무엇을 찾고 싶으세요?" /> <a href="javascript:void(0)"
 					class="btnSearch"><img
 					src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" /></a>
 				<a href="javascript:void(0)" class="btnSmartSearch"><img
 					src="https://joyfesta.kr/include/img/ico/ico_search01.png" /></a>
 			</div>
-			<a href="javascript:void(0)" class="totalMenu"><span>!전체메뉴</span></a>
+<!-- 			<div class="searchBox">
+				<input type="text" autocomplete="off" id="tagSearch"
+					name="tagSearch"
+					onclick="javascript:$('.btnSearch').trigger('click');"
+					onkeydown="javascript:if(event.keyCode==13){$('.btnSearch').trigger('click');}"
+					placeholder="무엇을 찾고 싶으세요?" /> <a href="javascript:void(0)"
+					class="btnSearch"><img
+					src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" /></a>
+				<a href="javascript:void(0)" class="btnSmartSearch"><img
+					src="https://joyfesta.kr/include/img/ico/ico_search01.png" /></a>
+			</div> -->
+			<a href="javascript:void(0)" class="totalMenu"><span>전체메뉴</span></a>
 			<!--일반검색 -->
-			<div class="norSearchBox">
-				<p class="tit">인기해시태그</p>
-				<div class="tagBox">
-					<ul class="tagList">
-							<li> 
-									<a href="javascript:void(0)"
-										onclick="searchHashtag('Search.festa?searchkeyword=해외');"
-										class="tag01">#해외</a>
-								</li>
-							<li>
-									<a href="javascript:void(0)"
-										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=843');"
-										class="tag02">#호미곶해맞이</a>
-								 </li>
-							<li> 
-									<a href="javascript:void(0)"
-										onclick="searchHashtag('Search.festa?searchkeyword=크리스마스');"
-										class="tag03">#크리스마스</a>
-								</li>
-							<li>
-									<a href="javascript:void(0)"
-										onclick="searchHashtag('부산새해맞이 시민의 종 타종행사 2020');"
-										class="tag04">#연말연시</a>
-								 </li>
-							<li>
-									<a href="javascript:void(0)"
-										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1174');"
-										class="tag05">#서울랜드겨울빛축제</a>
-								 </li>
-							<li>
-									<a href="javascript:void(0)"
-										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1082');"
-										class="tag01">#해운대빛축제</a>
-								 </li>
-							<li>
-									<a href="javascript:void(0)"
-										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1127');"
-										class="tag02">#연말연시</a>
-								 </li>
-							<li>
-									<a href="javascript:void(0)"
-										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1451');"
-										class="tag03">#소원을말해봐</a>
-								 </li>
-					</ul>
-				</div>
-				<div class="keywordBar">
-					<span>최근검색어</span> <a href="javascript:void(0)"
-						onclick="deleteSearchKeyword();">최근 검색어 삭제</a>
-				</div>
-				<div class="keywordBox">
-					<ul class="keywordList">
-					</ul>
-				</div>
-			</div>
+			
 			<!--일반검색 -->
 			<!--스마트검색 -->
 			<div class="smartSearchBox">
@@ -555,10 +510,15 @@
 					<img src="https://joyfesta.kr/include/img/bg/bg_scroll.png" alt="아래로">
 				</div>
 				<div class="btnBox">
+					<a href="javascript:void(0)" class="btnType01" >#검색</a>
+					<a href="javascript:void(0)" class="btnType02"
+						>#취소</a>
+				</div>
+<!-- 				<div class="btnBox">
 					<a href="javascript:void(0)" class="btnType01" id="searchbutton">#검색</a>
 					<a href="javascript:void(0)" class="btnType02"
 						onclick="javascript:$('.btnSmartSearch').removeClass('on');$('.smartSearchBox').hide();">#취소</a>
-				</div>
+				</div> -->
 			</div>
 		</form>
 		<!--스마트검색 -->

@@ -1,0 +1,2 @@
+http://www.gangnam.go.kr/assets/vendor/bootstrap/fonts/glyphicons-halflings-regular.ttf
+http://www.gangnam.go.kr/assets/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff

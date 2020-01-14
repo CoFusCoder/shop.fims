@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="/gukmin/include/css/common_190812.css" />
+<link rel="stylesheet" type="text/css" href="/gukmin/include/css/default_190911.css" />
+<script src="/gukmin/include/js/jquery-3.2.1.min.js"></script>
+
+<Script>
+	$(document).ready(function() {
+		statlist();//기간 별 리스트 호출
+
+	});
+	
+	function statlist(){
+		//메인 화면 축제 검색 리스트
+		//오늘 날짜 구하기
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; 
+		var yyyy = today.getFullYear();
+		if(dd<10)dd='0'+dd;
+		if(mm<10)mm='0'+mm;
+		
+		data={};
+		data.arrange = "O"
+		data.eventStartDate = ''+yyyy+mm+dd
+		data.eventEndDate = ''+yyyy+(mm+1)+dd //한달동안
+		
+		$.ajax({
+            url : "/api/searchFestival",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+
+            console.log(data);
+            $('#homelist').empty();
+            
+            $(data.response.body.items.item).each((index,item)=>{
+            	
+            	$('#homelist').append(
+            			"<div class='list'><div class='pic_area'><a href=''#' class='pic'><img src='"+item.firstimage+"'/><div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
+						+"<div class='cont'><p class='t01'><a href='#'>"
+						+item.title.substring(item.title.indexOf('\(')+1,item.title.indexOf('\)'))//( )사이의 문자열만 추출
+						+"</a></p><div class='t02'>"
+						+"<span class='date'>"
+						+item.eventstartdate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3')//날짜 yyyymmdd to yyyy.mm.dd 변환
+						+" ~ "
+						+item.eventenddate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3')
+						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"//영문 주소 를 한글로 바꾸려면..... 귀찮네... 		
+            	)	                   
+            });
+            
+            
+            
+        });
+	}
+	
+	
+</Script>
+
+
+<title>이용약관 | 축제&middot;전통시장 플랫폼 조이페스타(JOYFESTA)</title>
+</head>
+<body>
+	<header>
+	<div class="rela">
+		<h1>
+			<a href="/"><img
+				src="https://joyfesta.kr/include/img/etc/etc_logo.png" /></a>
+		</h1>
+		<div class="totalBox">
+			<nav>
+				<ul>
+					<li id="mainli"><a href="/" id="mainhref">!전체</a></li>
+					<li id="festivalli"><a href="/gukminview/festival/festivalAndEventView" id="festivalhref">!축제·이벤트</a></li>
+					<li id="marketli"><a href="/acontractview/private/orderingPlanView" id="markethref">!계약공시</a></li>
+					<li id="promotionli"><a href="/ebudgetview/budget/budgetMainView"
+						id="promotionhref">!경영공시</a></li>
+					<li id="communityli"><a href="/gukminview/community/communityView"
+						id="communityhref">!커뮤니티</a>
+				</ul>
+			</nav>
+			<div class="etcRight">
+				<ul>
+						<li class="ico_spot"><a href="/adminview/adminMainView">!관리자홈페이지</a></li>
+						<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">!스팟등록하기</a></li>
+				</ul>
+					<a href="/gukminview/login/loginForm" class="pLogout"><span>!로그인</span></a>
+			<form id="searchform" name="searchform" action="#" method="post">
+				<div class="searchBox">
+					<input type="text" autocomplete="off" id="tagSearch"
+						name="tagSearch"
+						placeholder="#무엇을 찾고 싶으세요?" /> <a href="javascript:void(0)"
+						class="btnSearch"><img
+						src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" /></a>
+					<a href="javascript:void(0)" class="btnSmartSearch"><img
+						src="https://joyfesta.kr/include/img/ico/ico_search01.png" /></a>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	</header>
+	
+	<div class="themeListBox">
+		<ul class="themeList">
+		</ul>
+	</div>
+	<div class="obgBox" style="padding-top: 150px">
+		<h2 class="mtit">
+			#오늘의 <strong>핫 스팟!</strong>
+		</h2>
+		<div class="hotSlideBox">
+			<div class="hotSlide" >
+				<div class="item" id="homelist">
+
+		</div>
+	</div>
+	<div class="hotRela">
+		<a href="javascript:void(0)" class="detLeft"><img
+			src="https://joyfesta.kr/include/img/ico/ico_prev03.png" /></a> <a
+			href="javascript:void(0)" class="detRight"><img
+			src="https://joyfesta.kr/include/img/ico/ico_next03.png" /></a>
+	</div>
+	</div>
+	</div>
+</body>
+</html>
