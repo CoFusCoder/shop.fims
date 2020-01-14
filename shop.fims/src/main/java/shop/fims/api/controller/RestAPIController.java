@@ -16,7 +16,6 @@ public class RestAPIController {
 
 	@Autowired APIService apiService;
 	
-	
 	@RequestMapping(value ="/api/{type}")
 	public String apiCall(@PathVariable("type") String type,@RequestBody(required = false) ApiVo apiVo) throws IOException {
 		System.out.println("apiCall 메서드 RestAPIController.java");
