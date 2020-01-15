@@ -87,7 +87,6 @@ public class EstimateControllor {
 	@PostMapping("/examinationIndex")
 	public @ResponseBody Map<String,List<Estimate>> evaIndexScocd(@RequestParam(value = "eva")String eva) {
 		
-//		System.out.println("exaRepCd->"+exaRepCd);
 		Map<String,List<Estimate>> evaMap = new HashMap<String,List<Estimate>>();
 		List<Estimate> indexeva = estimateService.indexEva(eva);	
 		evaMap.put("indexeva", indexeva);	
@@ -97,15 +96,16 @@ public class EstimateControllor {
 		System.out.println(evaMap +"<--------evaMap");
 		return evaMap;
 	}
-	
-	
-	
+
 	//심사결과 상세보기
 	@GetMapping("/estimatelistdetail")
 	public String estimateListDetail() {
 		return "estimate/estimatelistdetail";
 	}
-	
-
+	//설문지 페이지
+	@GetMapping("/survey")
+	public String survey() {
+		return "estimate/survey";
+	}
 	
 }

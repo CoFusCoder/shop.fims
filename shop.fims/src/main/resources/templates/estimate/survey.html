@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="projectIntroCSS">
+    <link href="http://www.vigeotech.com/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/gukmin/agency.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+ <style>
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+}
+.row-section h2{float:left; width:100%; color:#fff; margin-bottom:30px; font-size: 14px;}
+.row-section h2 span{font-family: 'Libre Baskerville', serif; display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px;font-weight:700;}
+.row-section h2 a{color:#d2abce;}
+.row-section .row-block{background:#fff; padding:20px; margin-bottom:50px; margin-top: 230px;}
+.row-section .row-block ul{margin:0; padding:0;}
+.row-section .row-block ul li{list-style:none; margin-bottom:20px;}
+.row-section .row-block ul li:last-child{margin-bottom:0;}
+.row-section .row-block ul li:hover{cursor:grabbing;}
+.row-section .row-block .media{border:1px solid #d5dbdd; padding:5px 20px; border-radius: 5px; box-shadow:0px 2px 1px rgba(0,0,0,0.04); background:#fff;}
+.row-section .media .media-left img{width:75px;}
+.row-section .media .media-body p{padding: 0 15px; font-size:14px;}
+.row-section .media .media-body h4 {color: #6b456a; font-size: 18px; font-weight: 600; margin-bottom: 0; padding-left: 14px; margin-top:12px;}
+.btn-default{background:#6B456A; color:#fff; border-radius:30px; border:none; font-size:16px;}
+.rounded-circle{min-width: 150px;}
+hr{margin: 0;}
+p{margin: 0;}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button1 {padding: 10px 24px; background-color: #555555;}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
+
+
+</style>
+</th:block>
+
+<th:block layout:fragment="gukminMainContents">
+
+    <!-- Services Section -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">축제통합관리시스템 프로젝트 소개</h2>
+                    <h3 class="section-subheading text-muted">축제통합관리시스템은 공무원, 거래처, 국민을 위한 최적의 축제관리 서비스를 제공합니다.</h3>
+                </div>
+            </div>           
+        </div>  
+    <div class="row-section">
+		<div class="container">
+			<div class="col-md-10 offset-md-1 row-block">
+				<ul id="sortable">
+					
+					<li><div class="media">
+					<div class="media-left align-self-center">
+						<img class="rounded-circle" src="/gukmin/assets/images/intrologo.jpg">
+					</div>
+							<div class="media-body">
+								<h4>축제 설문조사</h4>
+								<p>안녕하세요?당 축제에 대해 여러분의 의견을 수렴하여 보다 나은 축제를 </p>
+								<p>만들기 위해 설문조사를 하고 있습니다. </p>
+								<p>여러분의 답변 및 정보는 통계분석 목적으로만 쓰입니다.</p>								
+							</div>
+					<div class="media-right align-self-center">
+		            </div>
+		       		</div></li>
+		       		
+		       		
+					<li><div class="media">
+		            <div class="media-left align-self-center">
+		                
+		            </div>
+		            <div class="media-body">
+		                <div>
+		                	<form>
+								<table style="width:100%" >
+									<tr>
+										<th>만족도</th>
+										<th>전혀 그렇지 않다.</th>
+										<th>그렇지 않다.</th>
+										<th>약간 그렇지 않다.</th>
+										<th>보통이다</th>
+										<th>약간 그렇다</th>
+										<th>그렇다</th>
+										<th>매우 그렇다.</th>
+									</tr>
+									<tr>
+										<td>1문항</td>
+										<td>
+											<input name = "radio1" type="radio" value="">	
+										</td>
+										<td>
+											<input name = "radio1" type="radio">	
+										</td>
+										<td>
+											<input name = "radio1" type="radio">	
+										</td>
+										<td>
+											<input name = "radio1" type="radio">	
+										</td>
+										<td>
+											<input name = "radio1" type="radio">	
+										</td>
+										<td>
+											<input name = "radio1" type="radio">	
+										</td>
+										<td>
+											<input name = "radio1" type="radio">	
+										</td>
+									</tr>										
+									<tr>
+										<td>1문항</td>
+										<td>
+											<input name = "radio2" type="radio" value="">	
+										</td>
+										<td>
+											<input name = "radio2" type="radio">	
+										</td>
+										<td>
+											<input name = "radio2" type="radio">	
+										</td>
+										<td>
+											<input name = "radio2" type="radio">	
+										</td>
+										<td>
+											<input name = "radio2" type="radio">	
+										</td>
+										<td>
+											<input name = "radio2" type="radio">	
+										</td>
+										<td>
+											<input name = "radio2" type="radio">	
+										</td>
+									</tr>										
+									<tr>
+										<td>1문항</td>
+										<td>
+											<input name = "radio3" type="radio" value="">	
+										</td>
+										<td>
+											<input name = "radio3" type="radio">	
+										</td>
+										<td>
+											<input name = "radio3" type="radio">	
+										</td>
+										<td>
+											<input name = "radio3" type="radio">	
+										</td>
+										<td>
+											<input name = "radio3" type="radio">	
+										</td>
+										<td>
+											<input name = "radio3" type="radio">	
+										</td>
+										<td>
+											<input name = "radio3" type="radio">	
+										</td>
+									</tr>										
+									<tr>
+										<td>1문항</td>
+										<td>
+											<input name = "radio4" type="radio" value="">	
+										</td>
+										<td>
+											<input name = "radio4" type="radio">	
+										</td>
+										<td>
+											<input name = "radio4" type="radio">	
+										</td>
+										<td>
+											<input name = "radio4" type="radio">	
+										</td>
+										<td>
+											<input name = "radio4" type="radio">	
+										</td>
+										<td>
+											<input name = "radio4" type="radio">	
+										</td>
+										<td>
+											<input name = "radio4" type="radio">	
+										</td>
+									</tr>										
+								</table>
+								<div align="right">	
+									<a th:href="@{/}">
+										<button type="button" class="button button1">제출하기</button>
+									</a> 
+								</div>	
+							</form>
+						</div>
+		            </div>
+		            <div class="media-right align-self-center">
+		            </div>
+		    	    </div></li>
+
+					</ul>		
+				</div>				
+			</div>
+		</div>
+
+    
+    
+    
+    
+
+</th:block>
+
+</html>
