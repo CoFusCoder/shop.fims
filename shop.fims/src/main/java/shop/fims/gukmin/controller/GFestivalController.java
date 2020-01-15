@@ -10,6 +10,7 @@ import javax.xml.ws.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import shop.fims.gukmin.service.GFestivalService;
 
@@ -65,12 +66,26 @@ public class GFestivalController {
 	/**
 	 * @param 없음
 	 * @file FestivalController.java
-	 * @name festivalSearch
+	 * @name festivalSearchview
 	 * @brief 국민화면 -축제 검색 Open API
 	 * @author ksmart33 김동석
 	 * @return gukminview/festival/festivalSearch
 	 */
 	@GetMapping("gukminview/festival/festivalSearch")
+	public String festivalSearchview() {
+		System.out.println("---국민화면 -축제 검색 Open API 화면 : festivalSearch FestivalController.java-------");
+		return "/gukminview/festival/festivalSearch";
+	}
+	
+	/**
+	 * @param 없음
+	 * @file FestivalController.java
+	 * @name festivalSearch
+	 * @brief 국민화면 -축제 검색 Open API
+	 * @author ksmart33 김동석
+	 * @return gukminview/festival/festivalSearch
+	 */
+	@PostMapping("gukminview/festival/festivalSearch")
 	public String festivalSearch() {
 		System.out.println("---국민화면 -축제 검색 Open API : festivalSearch FestivalController.java-------");
 		return "/gukminview/festival/festivalSearch";

@@ -46,8 +46,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	<input type="hidden" name="leafletfilepath" value="" id="leafletfilepath"/>
 	<section>
 		<div class="commDesc">
-			<p class="t01">스팟 등록하기</p>
-			<p class="t02">당신의 스팟을 ALLFestMoa에 등록해주세요.</p>
+			<p class="t01">축제 등록하기</p>
+			<p class="t02">당신의 축제을 ALLFestMoa에 등록해주세요.</p>
 		</div>
 		<div class="norBox">
 
@@ -741,7 +741,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 																	$(
 																			'#dialogcontent')
 																			.append(
-																					'스팟등록은 로그인 후 이용해 주세요.');
+																					'축제등록은 로그인 후 이용해 주세요.');
 																	$(
 																			'#commondialog')
 																			.show();
@@ -1620,18 +1620,18 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 									success : function(data, textStatus, jqXHR) {
 										indicatorOff();
 										if (data.resultcode == 0) {
-											$('#dialogtitle').append('스팟등록');
+											$('#dialogtitle').append('축제등록');
 											$('#dialogcontent').append(
-													'스팟등록신청이 완료되었습니다.');
+													'축제등록신청이 완료되었습니다.');
 											dialogtargeturl = 'HostSpot.festa';
 											$('#commondialog').show();
 										} else if (data.resultcode == 2) {
-											$('#dialogtitle').append('스팟등록');
+											$('#dialogtitle').append('축제등록');
 											$('#dialogcontent').append(
 													data.resultmessage);
 											$('#commondialog').show();
 										} else {
-											$('#dialogtitle').append('스팟등록');
+											$('#dialogtitle').append('축제등록');
 											$('#dialogcontent').append(
 													data.resultmessage);
 											$('#commondialog').show();
@@ -1640,7 +1640,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 									error : function(jqXHR, textStatus,
 											errorThrown) {
 										indicatorOff();
-										$('#dialogtitle').append('스팟등록');
+										$('#dialogtitle').append('축제등록');
 										$('#dialogcontent').append(textStatus);
 										$('#commondialog').show();
 									}

@@ -32,20 +32,20 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<col width="120" />
 								<col width="" />
 							</colgroup>
-							<tr>
+							<tr style="display: none;">
 								<th>회원코드</th>
 								<td>
 									<div class="form">
-										<input type="text" id="MemCd" name="MemCd"
+										<input type="hidden" id="MemCd" name="MemCd"
 											class="inp" placeholder="회원코드" />
 									</div>
 								</td>
 							</tr>
-							<tr>
+							<tr style="display: none;">
 								<th>회원레벨코드</th>
 								<td>
 									<div class="form">
-										<input type="text" id="MemLevCd" name="MemLevCd"
+										<input type="hidden" id="MemLevCd" name="MemLevCd"
 											class="inp" placeholder="회원레벨코드" />
 									</div>
 								</td>
@@ -192,12 +192,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 							</tr>
 						</table>
 						<p class="item">기업정보</p>
-						<ul class="commTabs t02">
-							<li><a href="javascript:void(0)"
-								onclick="javascript:$('#hosttype').val('1');" class="on">축제·이벤트</a></li>
-							<li><a href="javascript:void(0)"
-								onclick="javascript:$('#hosttype').val('2');">스토어</a></li>
-						</ul>
+
 						<table class="writeTable t01">
 							<colgroup>
 								<col width="120" />
@@ -303,7 +298,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			</dl>
 
 			<div class="boardBtnBox">
-				<a href="javascript:void(0)" id="registerbutton" class="btnType03">#동의하고
+				<a href="javascript:void(0)" id="registerbutton" class="btnType03">동의하고
 					가입완료</a>
 			</div>
 
