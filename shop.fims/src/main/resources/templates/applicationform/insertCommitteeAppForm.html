@@ -72,7 +72,7 @@ p{margin: 0;}
                 }
             //-->
             </script>
-			<form method="get" name="writeF" th:action="@{/boardList}" onSubmit="return formChk();" enctype="multipart/form-data">
+			<form method="get" name="writeF" th:action="@{/gukminview/community/boardList}" onSubmit="return formChk();" enctype="multipart/form-data">
         	<input name="_zidx" id="_zidx" type="hidden" value="1518052040^1^1518052057">
         	<input name="user_id" id="user_id" type="hidden" value="">
         	<input name="bmode" id="bmode" type="hidden" value="write">
@@ -87,20 +87,24 @@ p{margin: 0;}
                 <li>
                     
         			<span><select name="flag" class="iptborder" id="flag" in_type="03" in_mode="n" in_ttl="신청부분"><option value="">선택</option><option value="춘향길놀이">춘향길놀이</option></select></span>
-                    <span><input type="text" name='pcode' id='pcode' placeholder="접수번호 : 123456789785" value="접수번호 : P-1577163112" autocomplete="off" readonly></span>
+                    <span><input type="text" name='pcode' id='pcode' placeholder="접수번호 : 123456789785" value="접수번호 : com_app_001" autocomplete="off" readonly></span>
                 </li>
                 <li>
                     
-        			<span><input type="text" name='team' id='team' ></span>
-                    <span><input type="text" name='name' id='tenamel'></span>
+        			<span><input type="text" name='team' id='team' placeholder="이름" ></span>
+                    <span><input type="text" name='name' id='tenamel' placeholder="연락처"></span>
                 </li>
                 <li>
                     
-        			<span><input type="text" name='hp' id='hp' ></span>
-                    <span><input type="text" name='email' id='email'></span>
+        			<span><input type="text" name='hp' id='hp' placeholder="주소"></span>
+                    <span><input type="text" name='email' id='email' placeholder="이메일주소"></span>
                 </li>
-                <li><input type="text" name='addr' id='addr' ></li>
-                <li><input type="password" name='pwd' id='pwd'></li>
+                <li>
+                	<span><input type="text" name='email' id='email' placeholder="최종학력"></span>
+                    <span><input type="text" name='email' id='email' placeholder="경력"></span>
+                </li>
+                <li><input type="text" name='addr' id='addr' placeholder="위원회활동실적"></li>
+                <li><input type="password" name='pwd' id='pwd' placeholder="경력"></li>
 								<li>※ 신청접수 파일 업로드해주세요.</li>
                 <li><input name="upfile1" type="file" /></li>
                 <li>
