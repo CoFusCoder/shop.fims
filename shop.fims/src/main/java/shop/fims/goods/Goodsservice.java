@@ -10,10 +10,12 @@ import shop.fims.vo.Goods;
 @Service
 public class Goodsservice {
 	
-	@Autowired private GoodsMapper goodsmapper;
+	@Autowired  GoodsMapper goodsmapper;
 	
 	public List<Goods> goodslist(){
-		return goodsmapper.goodslist();
-		
+		return goodsmapper.goodslist();		
+	}
+	public List<Goods> updatecondition(String goodspreConCd){
+		return goodsmapper.updatecondition(goodspreConCd);
 	}
 }

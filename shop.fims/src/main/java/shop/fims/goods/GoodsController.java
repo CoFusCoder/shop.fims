@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GoodsController {
@@ -31,7 +32,9 @@ public class GoodsController {
 		
 		//물품 수정
 		@GetMapping("/updateCondition")
-		public String selectondition() {
+		public String updatecondition(@RequestParam(value = "goodspreConCd" ,required = false)String goodspreConCd ,Model model) {
+			model.addAttribute("updatecondition", goodsservice.updatecondition(goodspreConCd));
+			System.out.println("model->"+model);
 			return "/goods/updateCondition";
 		}
 		//물품 수정처리

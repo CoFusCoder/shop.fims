@@ -46,7 +46,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 				<td th:text="${g.goodsNm}"></td>
 				<td th:text="${g.goodsAmt}"></td>
 				<td th:text="${g.specialNote}"></td>
-				<td><a th:href="@{updateCondition}" >
+				<td><a th:href="@{updateCondition(goodspreConCd=${g.goodspreConCd})}" >
 	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>				
 				<th><a th:href="@{/conditionList}">삭제하기</a></th>
 			</tr>

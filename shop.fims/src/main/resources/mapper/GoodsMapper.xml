@@ -21,7 +21,9 @@
  <result property="goodsAmt" column="goods_count"/>
  <result property="specialNote" column="special_note"/>
 
- 
+ <result property="areaNm" column="area_nm"/>
+ <result property="areaCityNm" column="area_city_nm"/>
+
  
  
  
@@ -47,4 +49,38 @@
 	gpc.areacity_admin_cd = aca.areacity_admin_cd
 	
   </select>
+  <select id="updatecondition" resultMap="goodslist">
+  	
+	SELECT
+	*
+	FROM
+	Goods_present_condition AS gpc
+	INNER join
+	Area AS a
+	on
+	gpc.area_cd = a.area_cd
+	INNER join
+	Area_City AS ac
+	on
+	gpc.area_city_cd = ac.area_city_cd
+	INNER join
+	Area_City_Admin AS aca
+	on
+	gpc.areacity_admin_cd = aca.areacity_admin_cd
+	where
+	gpc.goodspre_con_cd = #{goodspre_con_cd}
+  
+  
+  </select>
+  <update id="" parameterType="shop.fims.vo.Goods">
+  UPDATE Goods_present_condition
+	SET
+		goodspre_con_cd=#{goodspreConCd},areacity_admin_cd=#{areacityAdmCd},area_cd+#{areaCd},area_city_cd=#{areaCityCd},fest_cd=#{festCd},admin_dep_cd=#{adminDepCd},
+		admindep_emp_nm =#{admindepEmpNm},adm_age_nm=#{admAgeNm},area_city_nm=#{areaCityNm},areacity_admin_nm=#{areacityAdminNm},fest_nm=#{festNm},admim_dep_nm=#{admimDepNm},
+		goods_nm=#{goodsNm},goods_count=#{goodsAmt},special_note=#{specialNote}
+		
+	WHERE 
+	goodspre_con_cd= #{goodspreConCd}
+  
+  </update>
   </mapper>

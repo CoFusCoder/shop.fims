@@ -32,6 +32,7 @@
  <result property="areaCityNm" column="area_city_nm"/>
  <result property="areacityAdminNm" column="areacity_admin_nm"/>
  <result property="festNm" column="fest_nm"/>
+ 
  <result property="memLevCd" column="mem_lev_cd"/>
 <result property="memNm" column="mem_nm"/>
 <result property="memAddr" column="mem_addr"/>
@@ -40,6 +41,7 @@
 <result property="memBirth" column="mem_birth"/>
 <result property="joinDt" column="mem_join_dt"/> 
 <result property="memNm" column="mem_nm"/>
+
 <result property="LoginCd" column="LoginCd"/>
 <result property="festAnnNm" column="fest_ann_nm"/>
 <result property="exaJoindt" column="exa_joindt"/>

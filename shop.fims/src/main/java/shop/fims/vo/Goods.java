@@ -12,11 +12,13 @@ public class Goods {
 	private int goodsAmt;//수량
 	private String specialNote;//특이사항
 	private String admindepEmpNm;//특이사항
-	private String admAgeNm;//특이사항
-	private String areaCityNm;//특이사항
-	private String areacityAdminNm;//특이사항
-	private String festNm;//특이사항
-	private String admimDepNm;
+	private String admAgeNm;//행정기관명
+	private String areaCityNm;//시군명
+	private String areacityAdminNm;//행정기관명
+	private String festNm;//축제이름
+	private String admimDepNm;//
+	private String areaNm;//지역명
+	
 	public String getGoodspreConCd() {
 		return goodspreConCd;
 	}
@@ -106,15 +108,22 @@ public class Goods {
 	}
 	public void setAdmimDepNm(String admimDepNm) {
 		this.admimDepNm = admimDepNm;
-	}//특이사항
+	}
+	public String getAreaNm() {
+		return areaNm;
+	}
+	public void setAreaNm(String areaNm) {
+		this.areaNm = areaNm;
+	}
 	@Override
 	public String toString() {
 		return "Goods [goodspreConCd=" + goodspreConCd + ", areaCd=" + areaCd + ", areacityAdmCd=" + areacityAdmCd
 				+ ", areaCityCd=" + areaCityCd + ", festCd=" + festCd + ", adminDepCd=" + adminDepCd + ", goodsNm="
 				+ goodsNm + ", goodsAmt=" + goodsAmt + ", specialNote=" + specialNote + ", admindepEmpNm="
 				+ admindepEmpNm + ", admAgeNm=" + admAgeNm + ", areaCityNm=" + areaCityNm + ", areacityAdminNm="
-				+ areacityAdminNm + ", festNm=" + festNm + ", admimDepNm=" + admimDepNm + "]";
+				+ areacityAdminNm + ", festNm=" + festNm + ", admimDepNm=" + admimDepNm + ", areaNm=" + areaNm + "]";
 	}
+
 	
 	
 
