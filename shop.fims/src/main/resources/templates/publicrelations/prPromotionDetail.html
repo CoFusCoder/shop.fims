@@ -21,6 +21,7 @@ $(document).ready(function(){
 /* 마감상태변경 */	
 		$('#actionGO').click(function(){
 			$('#actionCheck').val('Y');
+			
 		})	
 		$('#actionCancel').click(function(){
 			$('#actionCheck').val('N');
@@ -179,8 +180,8 @@ $(document).ready(function(){
 
                       <a th:href="@{/actionStart(festprProCd=${p.festpr_pro_cd})}">
                       <button type="button" class="btn btn-primary" id="actionGO" style="display: none;">마감하기</button></a>                
-                      <a>
-                      <button type="button" class="btn btn-theme04" id="actionCancel" style="display: none;">마감취소</button></a>                     
+                      
+                      <font style="color: red"><h4><strong ><span id="actionCancel"  style="display: none;">마감완료 </span></strong></h4></font>                     
                       <input type="hidden" id="actionCheck" value="N"> 
                            
                     </div>  
