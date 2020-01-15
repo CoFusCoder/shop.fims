@@ -35,6 +35,9 @@ public interface PublicrelationsMapper {
 	// 홍보사업 신규등록
 	public int insertPromotionPro(PrPromotion promotion);
 	
+	// 홍보사업 신규등록
+	public int updatePromotionPro(PrPromotion promotion);
+	
 	// 홍보관련 승인된 거래처 조회
 	public List<Map<String, Object>> selectParners();
 	
@@ -90,7 +93,10 @@ public interface PublicrelationsMapper {
 	public String checkActionCd(String festprProCd);
 	// 예산집행테이블에 해당 그룹코드로 된 레코드가 있으면 합산한 값을 계산
 	public int calGroupBudExp (String festprProCd);
-	
+	// 프로모션코드로 그룹코드 조회
+	public String selectGroupCdByProCd (String festprProCd);
+	// 예산집행테이블에 그룹코드 합산된 값을 업데이트
+	public int updateGroupCal (String groupCd ,int sum);
 	
 	
 //**********홍보 이벤트당첨자 ***********		

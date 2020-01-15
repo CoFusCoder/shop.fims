@@ -87,10 +87,25 @@ public class PublicrelationsController {
 		model.addAttribute("budget", publicrelationsService.selectBudget(festCd));
 		model.addAttribute("partners", publicrelationsService.selectParners());
 		model.addAttribute("group", publicrelationsService.selectGroup(festCd));
+		model.addAttribute("file", publicrelationsService.selectFile(festprProCd));
 		return "publicrelations/prUpdatePromotion";
 	}
 	
-	
+	  //홍보사업 수정 처리
+	  @PostMapping("/prUpdatePromotionPro") 
+	  public String updatePromotionPro(@RequestParam(value="groupNm2")String groupNm2
+									  ,@RequestParam("fileUpload") MultipartFile fileUpload
+									  ,PrPromotion promotion) {
+		  System.out.println(promotion);	 
+		  System.out.println("groupNm2"+groupNm2);
+		  System.out.println("fileUpload"+fileUpload);
+		  publicrelationsService.updatePromotionPro(promotion, groupNm2);
+		  if(fileUpload.getSize()!=0) {
+		  publicrelationsService.sendfile(fileUpload);}
+		  
+		  return "redirect:/prPromotionList";   
+	  }
+	  
 	//홍보사업 신규등록 화면출력
 	 @GetMapping("/prInsertPromotion")
 	 public String insertPromotion(Model modelbudget, Model modelDiv, Model modelPartners, Model modelGroup, HttpSession session) {
@@ -166,10 +181,12 @@ public class PublicrelationsController {
 	}
 	// 홍보 마감 등록
 	@GetMapping("/actionStart")
-	public String actionStart(@RequestParam(value="festprProCd")String festprProCd){
+	public String actionStart(@RequestParam(value="festprProCd")String festprProCd, Model model){
 		//System.out.println("festprProCd : "+festprProCd);			
 		System.out.println(publicrelationsService.selectForGroupBud(festprProCd));	
-		return "redirect:/prPromotionList";		
+		model.addAttribute("selectByPmcd", publicrelationsService.selectByPmcd(festprProCd));
+		model.addAttribute("file", publicrelationsService.selectFile(festprProCd));
+		return "publicrelations/prPromotionDetail";		
 	}
 	
 //=============== 이벤트 당첨자 ==========================		

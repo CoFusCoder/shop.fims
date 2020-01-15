@@ -77,6 +77,23 @@ public class PublicrelationsService {
 		return publicrelationsMapper.insertPromotionPro(promotion);
 	}
 	
+	// 홍보 사업 수정
+	public int updatePromotionPro(PrPromotion promotion, String groupNm2) {
+		System.out.println("groupNm2"+groupNm2);
+		if(promotion.getGroupNm().equals("")) {
+			promotion.setGroupNm(groupNm2);	
+		}
+		
+		System.out.println(promotion);
+		String groupCd = publicrelationsMapper.selectGroupCd(promotion.getGroupNm());
+		if(groupCd==null) {
+			groupCd=publicrelationsMapper.newGroupCd();
+			promotion.setGroupCd(groupCd);
+		}else {
+			promotion.setGroupCd(groupCd);
+		}
+		return publicrelationsMapper.updatePromotionPro(promotion);
+	}	
 
 	
 	// 홍보관련 계정과목명 조회
@@ -130,7 +147,7 @@ public class PublicrelationsService {
 				attachFiles.setFileSize(fileUpload.getSize());
 				attachFiles.setFileNm(fileUpload.getOriginalFilename());
 				attachFiles.setFestprProCd(publicrelationsMapper.selectLastCd());
-				attachFiles.setFileWriter("윤");
+				attachFiles.setFileWriter("임시계정명");
 								
 				System.out.println(attachFiles.getFileNm()+ " << 실제 업로드된 파일명");
 				System.out.println(fileUpload.getContentType() + " << 실제 업로드된 파일명");	
@@ -168,14 +185,10 @@ public class PublicrelationsService {
 		Map<String, String> groupdata = publicrelationsMapper.selectForGroupBud(festprProCd);	
 		publicrelationsMapper.insertGroupBud(groupdata);
 		}else {
+			String groupCd = publicrelationsMapper.selectGroupCdByProCd(festprProCd);
 			int sum = publicrelationsMapper.calGroupBudExp(festprProCd);
-			
+			publicrelationsMapper.updateGroupCal(groupCd, sum);
 		}
-		
-		
-		
-		
-		
 		
 		return publicrelationsMapper.updateAction(festprProCd);
 	}

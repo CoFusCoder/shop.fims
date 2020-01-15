@@ -123,7 +123,7 @@
 
 <!-- 홍보분류코드가 홍보테이블에서 사용되고 있는지 조회 -->
 	<select id="selectDivByCd" resultType="String">
-	SELECT
+	SELECT distinct
 		p.festpr_div_cd
 	From
 		Fest_PR_Promotion AS p
@@ -330,7 +330,7 @@ FROM
 	FROM
 		Fest_PR_Promotion
 	</selectKey>
-INSERT 
+
 INTO
 	Fest_PR_Promotion(
 	festpr_pro_cd, areacity_admin_cd, area_cd,area_city_cd
@@ -347,6 +347,29 @@ values (#{festprProCd},#{areacityAdminCd},#{areaCd},#{areaCityCd}
 		,#{festprProAmt},#{groupCd},#{groupNm},#{actionDt}
 		,'N',#{festprProExpense},#{festprProEtc},now())
 </insert>	
+
+<!-- 홍보 프로모션 수정 -->
+<update id="updatePromotionPro" parameterType="shop.fims.vo.PrPromotion">
+UPDATE
+	Fest_PR_Promotion
+SET
+	festpr_div_cd=(#{festprDivCd})
+	,fesrev_bud_cd=(#{fesrevBudCd})
+	,catapp_acc_cd=(#{catappAccCd})
+	,festpr_pro_nm=(#{festprProNm})
+	,festpr_pro_detail=(#{festprProDetail})
+	,fprpro_order_dt=(#{fprproOrderDt})
+	,fprpro_start_dt=(#{fprproStartDt})
+	,fprpro_end_dt=(#{fprproEndDt})
+	,festpr_pro_place=(#{festprProPlace})
+	,festpr_pro_amt=(#{festprProAmt})
+	,group_cd=(#{groupCd})
+	,group_nm=(#{groupNm})
+	,festpr_pro_expense=(#{festprProExpense})
+	,festpr_pro_etc=(#{festprProEtc})
+WHERE
+	festpr_pro_cd=(#{festprProCd})
+</update>	
 	
 
 
@@ -404,6 +427,7 @@ WHERE
 
 </select>
 
+<!-- 예산테이블에 그룹코드 최초등록 -->
 <insert id="insertGroupBud" parameterType="map">
 	<selectKey keyProperty="fesrevExeCd" resultType="String" order="BEFORE">
 	SELECT
@@ -467,6 +491,7 @@ WHERE
 	p.festpr_pro_cd=(#{festprProCd})
 </update>
 
+<!-- 예산집행테이블에 해당 그룹코드로 된 레코드가 있는지 조회-->
 <select id="checkActionCd" resultType="String">
 SELECT
 	e.group_cd
@@ -481,7 +506,39 @@ WHERE
 	p.festpr_pro_cd=(#{festprProCd}))
 </select>
 
-
+<!-- 예산집행테이블에 해당 그룹코드로 된 레코드가 있으면 합산한 값을 계산 -->
+<select id="calGroupBudExp" resultType="int">
+select
+(a.festpr_pro_expense + e.Expenditure) AS sum
+FROM
+Fes_revExp_Exe AS e
+INNER join(SELECT
+	p.group_cd
+	,p.festpr_pro_expense
+FROM
+	Fest_PR_Promotion AS p
+WHERE 
+	p.festpr_pro_cd=(#{festprProCd}))AS a
+on a.group_cd=e.group_cd
+</select>
+<!-- 프로모션코드로 그룹코드조회 -->
+<select id="selectGroupCdByProCd" resultType="String">
+SELECT
+	p.group_cd
+FROM
+Fest_PR_Promotion AS p
+WHERE
+	p.festpr_pro_cd=#{festprProCd}
+</select>
+<!-- 그룹코드 합산값 예산집행테이블에 업데이트 -->
+<update id="updateGroupCal" parameterType="List">
+UPDATE
+Fes_revExp_Exe AS e
+SET
+e.Expenditure=(#{sum})
+WHERE
+e.group_cd=(#{groupCd})
+</update>
 
 <!-- ================== 홍보 프로모션 end ========================= -->
 

@@ -182,7 +182,6 @@ $(document).ready(function(){
                       <button type="button" class="btn btn-primary" id="actionGO" style="display: none;">마감하기</button></a>                
                       
                       <font style="color: red"><h4><strong ><span id="actionCancel"  style="display: none;">마감완료 </span></strong></h4></font>                     
-                      <input type="hidden" id="actionCheck" value="N"> 
                            
                     </div>  
                    <label for="action_dt" class="control-label col-lg-1"><font style="vertical-align: inherit;">마감일</font></label>
@@ -211,12 +210,12 @@ $(document).ready(function(){
                   </div>              
                                 
                   <div class="form-group" th:each="f:${file}">                 
-                    <label for="festprProAttach" class="control-label col-lg-2"><font style="vertical-align: inherit;">파일첨부</font></label>
+                    <label for="festprProAttach" class="control-label col-lg-2"><font style="vertical-align: inherit;">첨부파일</font></label>
                     <div class="col-lg-5" >
                     	<h4><strong th:text="${f.fileNm}"></strong></h4> 
                     </div>
                     <div class="col-lg-5">
-                    	<button class="btn btn-default"><font style="vertical-align: inherit;">다운로드</font></button>																							              
+                    	<button class="btn btn-default"><font style="vertical-align: inherit;">다운로드 기능 아직 안됨</font></button>																							              
                     </div>
                   </div>         
 
