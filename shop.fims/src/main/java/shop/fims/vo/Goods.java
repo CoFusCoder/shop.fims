@@ -11,13 +11,17 @@ public class Goods {
 	private String goodsNm;//부서명
 	private int goodsAmt;//수량
 	private String specialNote;//특이사항
-	
-	
-	public String getGoodspre_con_cd() {
+	private String admindepEmpNm;//특이사항
+	private String admAgeNm;//특이사항
+	private String areaCityNm;//특이사항
+	private String areacityAdminNm;//특이사항
+	private String festNm;//특이사항
+	private String admimDepNm;
+	public String getGoodspreConCd() {
 		return goodspreConCd;
 	}
-	public void setGoodspre_con_cd(String goodspre_con_cd) {
-		this.goodspreConCd = goodspre_con_cd;
+	public void setGoodspreConCd(String goodspreConCd) {
+		this.goodspreConCd = goodspreConCd;
 	}
 	public String getAreaCd() {
 		return areaCd;
@@ -67,13 +71,51 @@ public class Goods {
 	public void setSpecialNote(String specialNote) {
 		this.specialNote = specialNote;
 	}
+	public String getAdmindepEmpNm() {
+		return admindepEmpNm;
+	}
+	public void setAdmindepEmpNm(String admindepEmpNm) {
+		this.admindepEmpNm = admindepEmpNm;
+	}
+	public String getAdmAgeNm() {
+		return admAgeNm;
+	}
+	public void setAdmAgeNm(String admAgeNm) {
+		this.admAgeNm = admAgeNm;
+	}
+	public String getAreaCityNm() {
+		return areaCityNm;
+	}
+	public void setAreaCityNm(String areaCityNm) {
+		this.areaCityNm = areaCityNm;
+	}
+	public String getAreacityAdminNm() {
+		return areacityAdminNm;
+	}
+	public void setAreacityAdminNm(String areacityAdminNm) {
+		this.areacityAdminNm = areacityAdminNm;
+	}
+	public String getFestNm() {
+		return festNm;
+	}
+	public void setFestNm(String festNm) {
+		this.festNm = festNm;
+	}
+	public String getAdmimDepNm() {
+		return admimDepNm;
+	}
+	public void setAdmimDepNm(String admimDepNm) {
+		this.admimDepNm = admimDepNm;
+	}//특이사항
 	@Override
 	public String toString() {
-		return "Goods [goodspre_con_cd=" + goodspreConCd + ", areaCd=" + areaCd + ", areacityAdmCd=" + areacityAdmCd
+		return "Goods [goodspreConCd=" + goodspreConCd + ", areaCd=" + areaCd + ", areacityAdmCd=" + areacityAdmCd
 				+ ", areaCityCd=" + areaCityCd + ", festCd=" + festCd + ", adminDepCd=" + adminDepCd + ", goodsNm="
-				+ goodsNm + ", goodsAmt=" + goodsAmt + ", specialNote=" + specialNote + "]";
+				+ goodsNm + ", goodsAmt=" + goodsAmt + ", specialNote=" + specialNote + ", admindepEmpNm="
+				+ admindepEmpNm + ", admAgeNm=" + admAgeNm + ", areaCityNm=" + areaCityNm + ", areacityAdminNm="
+				+ areacityAdminNm + ", festNm=" + festNm + ", admimDepNm=" + admimDepNm + "]";
 	}
 	
 	
- 
+
 }
