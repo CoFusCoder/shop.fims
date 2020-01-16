@@ -25,10 +25,14 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						<tr th:each="cf : ${classificationList}">
 							<td th:text= "${cf.catNm}"></td>
 							<td>
-								<a th:href="@{/classificationUpdate}">수정연결</a>
+								<a th:href="@{/classificationUpdate}">
+								<button type="button" class="btn btn-success">수정</button>
+								</a>
 							</td>
 							<td>
-								<a th:href="@{/classificationDelete}">삭제연결</a>
+								<a th:href="@{/classificationDelete}">
+								<button type="button" class="btn btn-danger">삭제</button>
+								</a>
 							</td>					
 						</tr>
 	                </tbody>

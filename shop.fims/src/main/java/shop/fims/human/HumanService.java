@@ -25,15 +25,12 @@ public class HumanService {
 	}
 	//인적수정처리
 	public int updateHuman(Human human) {
+		
 		String ManCd1 = human.getMamCd();
 		String ComNm21 = human.getComNm2();
 		String FestNm1 = human.getFestNm();
 		String WorkdivNm1 = human.getWorkdivNm();
 		String staNm1 = human.getStaNm();
-		System.out.println("ManCd 확인 :" + ManCd1);
-		System.out.println("ComNm2 확인 :" + ComNm21);
-		System.out.println("FestNm 확인 :" + FestNm1);
-		System.out.println("WorkdivNm 확인 :" + WorkdivNm1);
 		
 		String ManCd = humanmapper.selectupdateHuman1(ManCd1, ComNm21);
 		String workdivCd = humanmapper.selectupdateHuman2(FestNm1, WorkdivNm1);
@@ -43,12 +40,6 @@ public class HumanService {
 		human.setWorkdivCd(workdivCd);
 		human.setStaCd(staCd);
 		
-		
-		System.out.println("workdivCd 확인 :" + workdivCd);
-		System.out.println("ManCd1 확인 :" + ManCd);		
-		System.out.println("staCd 확인 :" +staCd);
-		System.out.println("Human에 뭐가 담겼는지 보자 :" + human);
-
 		
 		return humanmapper.updateHuman(human);
 	}
@@ -71,9 +62,34 @@ public class HumanService {
 	
 	} 
 	  //인적관리 등록할 회원검색 
-	public Human selectinsertHuman2(String memNm, String loginCd) {
+	public Human selectinsertHuman2(String memNm1, String loginCd1) {
 	  
-	  return humanmapper.selectinsertHuman2(memNm, loginCd); 
+	  return humanmapper.selectinsertHuman2(memNm1, loginCd1); 
 	 }
-	 
+	//인적등록처리
+	public int insertHuman(Human human) {
+		
+		String FestNm1 = human.getFestNm();
+		String StaNm1 = human.getStaNm();
+		String WorkdivNm1 = human.getWorkdivNm();
+		String MamCd1 = human.getMamCd();
+		String ComNm2 = human.getComNm2();
+		String HumanNm1 = human.getHumanNm();
+		String HumanPhone1 = human.getHumanPhone();
+		
+		
+		String staCd = humanmapper.selectinsertHuman4(FestNm1, StaNm1);
+		String workdivCd = humanmapper.selectinsertHuman3(FestNm1, WorkdivNm1);
+		String mamCd = humanmapper.selectinsertHuman5(MamCd1, ComNm2);
+		String memCd = humanmapper.selectinsertHuman6(HumanNm1, HumanPhone1);
+		
+		
+		human.setStaCd(staCd);
+		human.setWorkdivCd(workdivCd);
+		human.setMamCd(mamCd);
+		human.setMemCd(memCd);
+		
+		return humanmapper.insertHuman(human);
+	}
+
 }

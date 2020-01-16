@@ -34,8 +34,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							      <input type="text" class="form-control" id="comNm2" name="com_mem_nm2"  placeholder="담당자명을 입력해주세요">
 							    </div>
 							</div>
-							<button type="submit" value="search" class="btn btn-primary">검색</button>
-							<button type="button" class="btn btn-primary" onclick="location.href='/workdivisionList'">초기화</button>
+							<div>
+								<div class="form-group col-md-3">
+									<button type="submit" value="search" class="btn btn-primary" style="margin-right:40px;">검색</button>
+									<button type="button" class="btn btn-primary" onclick="location.href='/workdivisionList'" style="margin-right:30px;">초기화</button>
+								</div>
+							</div>
 						</form>
 		              
 		              <table class="table">
@@ -58,10 +62,14 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<td th:text = "${wd.workdivNm}"></td>
 								<td th:text = "${wd.comNm2}"></td>
 								<td>
-									<a th:href="@{/workdivisionUpdate (workdivCd=${wd.workdivCd})}">수정</a>
+									<a th:href="@{/workdivisionUpdate (workdivCd=${wd.workdivCd})}">
+									<button type="button" class="btn btn-success">수정</button>
+									</a>
 								</td>
 								<td>
-									<a th:href="@{/workdivisionDelete}">삭제</a>
+									<a th:href="@{/workdivisionDelete}">
+									<button type="button" class="btn btn-danger">삭제</button>
+									</a>
 								</td>
 							</tr>
 		                </tbody>

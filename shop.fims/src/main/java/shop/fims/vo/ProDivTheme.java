@@ -3,7 +3,7 @@ package shop.fims.vo;
 public class ProDivTheme {
 	private String festprodivThemeCd;
 	private String areacityAdminCd;
-	private String area_CityCd;
+	private String areaCityCd;
 	private String areaCd;
 	private String festCd;
 	private String festTitle;
@@ -20,11 +20,11 @@ public class ProDivTheme {
 	public void setAreacityAdminCd(String areacityAdminCd) {
 		this.areacityAdminCd = areacityAdminCd;
 	}
-	public String getArea_CityCd() {
-		return area_CityCd;
+	public String getAreaCityCd() {
+		return areaCityCd;
 	}
-	public void setArea_CityCd(String area_CityCd) {
-		this.area_CityCd = area_CityCd;
+	public void setAreaCityCd(String areaCityCd) {
+		this.areaCityCd = areaCityCd;
 	}
 	public String getAreaCd() {
 		return areaCd;
@@ -53,7 +53,7 @@ public class ProDivTheme {
 	@Override
 	public String toString() {
 		return "ProDivTheme [festprodivThemeCd=" + festprodivThemeCd + ", areacityAdminCd=" + areacityAdminCd
-				+ ", area_CityCd=" + area_CityCd + ", areaCd=" + areaCd + ", festCd=" + festCd + ", festTitle="
+				+ ", areaCityCd=" + areaCityCd + ", areaCd=" + areaCd + ", festCd=" + festCd + ", festTitle="
 				+ festTitle + ", festprodivThemeNm=" + festprodivThemeNm + "]";
 	}
 

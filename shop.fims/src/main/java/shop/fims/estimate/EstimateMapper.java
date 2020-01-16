@@ -27,5 +27,7 @@ public interface EstimateMapper {
 	public List<Estimate> updateEstimateList(String exaRepCd);
 	//담당자 등록 (update)
 	public void updataexeManager(String exaRepCd,String exeManager);
+	//점수등록
+	public int insertscoring();
 	
 }

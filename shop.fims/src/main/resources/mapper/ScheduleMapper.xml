@@ -25,6 +25,7 @@
  	<result property="insertDt" column="insert_dt"/>
  </resultMap>
 
+<!-- 스케줄 검색 -->
 <select id="searchSchedule" resultMap="scheduleResultmap">
 SELECT
  	*
@@ -62,17 +63,13 @@ WHERE fest_cd=#{festCd}
 </select>
 
 
-<!-- 전체 스케줄 조회 -->
+<!--스케줄 조회 -->
  <select id="selectAllSchedule" resultMap="scheduleResultmap">
  	SELECT
 		*
 	FROM 
 		Fest_Schedule
  </select>
-  
-  
-  
-  
-  
+
   
   </mapper>

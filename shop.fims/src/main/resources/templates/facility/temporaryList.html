@@ -14,7 +14,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 	              <h4><i class="fa fa-angle-right"></i>임시시설설치및철거관리조회</h4>
 	              <div>
 	              	<form th:action="@{/temporarySearch}" method="post"> 
-	              		<div class="form-row">
+	              			<div class="form-row">
 							    <div class="form-group col-md-3">
 							      <label for="festNm"></label>
 							      <input type="text" class="form-control" id="festNm" name="fest_nm"  placeholder="축제명을 입력해주세요">
@@ -34,8 +34,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							      <input type="text" class="form-control" id="accNm1" name="cat_acc_nm1"  placeholder="설치거래처명을 입력해주세요">
 							    </div>
 							</div>
-							<button type="submit" value="search" class="btn btn-primary">검색</button>
-							<button type="button" class="btn btn-primary" onclick="location.href='/temporaryList'">초기화</button>
+							<div>
+								<div class="form-group col-md-3">
+									<button type="submit" value="search" class="btn btn-primary" style="margin-right:40px;">검색</button>
+									<button type="button" class="btn btn-primary" onclick="location.href='/temporaryList'" style="margin-right:45px;">초기화</button>	
+								</div>
+							</div>
 						</form>
 
 								 
@@ -72,13 +76,19 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							<td th:text= "${tl.stainsCon1}"></td>
 							<td th:text= "${tl.stainsCon2}"></td>
 							<td>
-								<a th:href="@{/temporaryView(facCd=${tl.facCd})}">설치내용상세보기</a>
+								<a th:href="@{/temporaryView(facCd=${tl.facCd})}">
+								<button type="button" class="btn btn-warning">설치내용상세보기</button>
+								</a>
 							</td>
 							<td>
-								<a th:href="@{/temporaryaccountView(accCd=${tl.accCd})}">거래처상세보기</a>
+								<a th:href="@{/temporaryaccountView(accCd=${tl.accCd})}">
+								<button type="button" class="btn btn-info">거래처상세보기</button>
+								</a>
 							</td>	
 							<td>
-								<a th:href="@{/temporaryconView(fesconmanCd=${tl.fesconmanCd})}">계약상세보기</a>
+								<a th:href="@{/temporaryconView(fesconmanCd=${tl.fesconmanCd})}">
+								<button type="button" class="btn btn-default">계약상세보기</button>
+								</a>
 							</td> <!--계약리스트-->									
 						</tr>
 	                </tbody>
