@@ -47,7 +47,7 @@ public class BoardController {
 	}
 	
 	//공지사항 등록
-	@PostMapping("/gukminview/community/insertBoard")
+	@PostMapping("/insertBoard")
 	public String insertBoard(Board board) {
 		boardService.insertBoard(board);
 		return "redirect:/gukminview/community/boardList";

@@ -19,53 +19,56 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	공지사항 등록
 </p>
 
-<table class="writeTable t01">
-				<colgroup>
-					<col width="120" />
-					<col width="" />
-				</colgroup>
-				<tr>
-					<th>제목</th>
-					<td>
-						<div class="form">
-							<input type="text" id="capacity" name="boardTitle" class="inp w100" />
-							<span class="etxt"></span>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th>작성자</th>
-					<td>
-						<div class="form">
-							<input type="text" id="capacity" name="boardWriter" class="inp w100" />
-							<span class="etxt"></span>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th>글 비밀번호</th>
-					<td>
-						<div class="form">
-							<input type="text" id="capacity" name="boardPw" class="inp w100" />
-							<span class="etxt"></span>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th>내용</th>
-					<td>
-						<div class="form t01">
-							<textarea class="textarea" id="entrancefee" name="board_content" style="height: 400px"
-								placeholder="공지사항과 관련된 정보를 작성해주세요."></textarea>
-						</div>
-					</td>
-				</tr>
-			</table>
-			<div class="boardBtnBox ac">
-				<a th:href="@{/gukminview/community/boardList}" id="registerbutton" class="btnType03">등록
-					</a> <a href="javascript:void(0)" onclick="window.history.back();"
-					class="btnType04">목록</a>
-			</div>
+<form th:action="@{/insertBoard}" method="post">
+	<table class="writeTable t01">
+					<colgroup>
+						<col width="120" />
+						<col width="" />
+					</colgroup>
+					<tr>
+						<th>제목</th>
+						<td>
+							<div class="form">
+								<input type="text" id="capacity" name="boardTitle" class="inp w100" style="width:1000px"/>
+								<span class="etxt"></span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>작성자</th>
+						<td>
+							<div class="form">
+								<input type="text" id="capacity" name="boardWriter" class="inp w100" />
+								<span class="etxt"></span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>글 비밀번호</th>
+						<td>
+							<div class="form">
+								<input type="text" id="capacity" name="boardPw" class="inp w100" />
+								<span class="etxt"></span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td>
+							<div class="form t01">
+								<textarea class="textarea" id="entrancefee" name="boardContent" style="height: 400px"
+									placeholder="공지사항과 관련된 정보를 작성해주세요."></textarea>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<div class="boardBtnBox ac">
+					<button class="btnType03" type="submit" value="등록">등록</button>
+					<a href="javascript:void(0)" onclick="window.history.back();"
+						class="btnType04">목록</a>
+				</div>
+</form>			
+
 </div>
 </section>
 
