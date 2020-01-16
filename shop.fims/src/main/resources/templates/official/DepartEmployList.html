@@ -4,13 +4,24 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle"></th:block>
 <th:block layout:fragment="adminisMainContents">
+<style>
+.text-ellipsis {
 
+	display: table;
+	table-layout: fixed;
+	width: 170px;
+	white-space: inherit;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+</style>
 <br>
 <br>
 <div class="col-md-12">
 	<div class="content-panel">
 	  <table class="table table-striped table-advance table-hover">
-	    <h4><i class="fa fa-angle-right"></i> 행정기관별 부서 조회 </h4>
+	    <h4><i class="fa fa-angle-right"></i> 행정기관별 부서별 직원 조회 </h4>
 	    <hr>
 	    <thead>
 	      <tr>
@@ -27,17 +38,18 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <td>admin_group_350101</td>
-	        <td>전라북도</td>
-	        <td>전주시</td>
-	        <td>전라북도청</td>
-	        <td>기획조정실</td>
-	        <td>정보화총괄과</td>
-	        <td>신현영</td>
-	        <td>기획팀장</td>
-	        <td>063-280-2085</td>
-	        <td>기획담당업무 총괄</td>
+	      <tr th:each="del:${DepartEmployList}">
+	        <td th:text="${del.admindepEmpCd}"></td>
+	        <td th:text="${del.areaCd}"></td>
+	        <td th:text="${del.areaCityCd}"></td>
+	        <td th:text="${del.areacityAdminCd}"></td>
+	        <td th:text="${del.adminDepCd}"></td>
+	        <td th:text="${del.admindepEmpNm}"></td>
+	        <td th:text="${del.admindepEmpPosition}"></td>
+	        <td th:text="${del.admindepEmpPhone}"></td>
+	        <td>
+	        	<div class="text-ellipsis" th:text="${del.admindepEmpTesk}" th:title="${del.admindepEmpTesk}"></div>
+	        </td>
 	        <td>
 	          <button class="btn btn-success btn-xs">
 	          	<i class="fa fa-plus">

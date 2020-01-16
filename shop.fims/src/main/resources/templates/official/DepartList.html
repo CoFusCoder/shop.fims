@@ -14,21 +14,17 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 	    <thead>
 	      <tr>
 	        <th><i class="fa fa-bullhorn"></i> 행정기관 부서코드 </th>
-	        <th><i class="fa fa-question-circle"></i>전국지역명</th>
-	        <th><i class="fa fa-bullhorn"></i> 시군명 </th>
 	        <th><i class="fa fa-question-circle"></i>행정기관명</th>
 	        <th><i class="fa fa-bullhorn"></i>실국명</th>
 	        <th><i class="fa fa-question-circle"></i>부서명</th>
 	      </tr>
 	    </thead>
-	    <tbody>
+	    <tbody th:each="dl:${DepartList}">
 	      <tr>
-	        <td>admin_group_350101</td>
-	        <td>전라북도</td>
-	        <td>전주시</td>
-	        <td>전라북도청</td>
-	        <td>기획조정실</td>
-	        <td>정보화총괄과</td>
+	        <td th:text="${dl.adminDepCd}"></td>
+	        <td th:text="${dl.areacityAdminCd}"></td>
+	        <td th:text="${dl.adminDepBelong}"></td>
+	        <td th:text="${dl.adminDepNm}"></td>
 	        <td>
 	          <button class="btn btn-success btn-xs">
 	          	<i class="fa fa-plus">
