@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import shop.fims.vo.Committee;
+import shop.fims.vo.CommitteeApp;
 
 @Controller
 public class AppFormController {
@@ -25,12 +29,6 @@ public class AppFormController {
 		return "/applicationform/insertServiceAppForm";
 	}
 	
-	//용역신청서 수정
-	@GetMapping("/updateServiceAppForm")
-	public String UpdateServiceAppForm() {
-		return "/applicationform/updateServiceAppForm";
-	}
-	
 	//부스신청서 관리
 	@GetMapping("/boothAppFormView")
 	public String BoothAppFormView() {
@@ -43,12 +41,6 @@ public class AppFormController {
 		return "/applicationform/insertBoothAppForm";
 	}
 	
-	//부스신청서 수정
-	@GetMapping("/updateBoothAppForm")
-	public String UpdateBoothAppForm() {
-		return "/applicationform/updateBoothAppForm";
-	}
-	
 	//자원봉사신청서 관리
 	@GetMapping("/volunteerAppFormView")
 	public String VolunteerAppFormView() {
@@ -59,12 +51,6 @@ public class AppFormController {
 	@GetMapping("/insertVolunteerAppForm")
 	public String InsertVolunteerAppForm() {
 		return "/applicationform/insertVolunteerAppForm";
-	}
-	
-	//자원봉사신청서 수정
-	@GetMapping("/updateVolunteerAppForm")
-	public String UpdateVolunteerAppForm() {
-		return "/applicationform/updateVolunteerAppForm";
 	}
 	
 	//위원회 신청서 관리
@@ -90,15 +76,18 @@ public class AppFormController {
 		return "applicationform/committeeAppFormDetail";
 	}
 	
-	//위원회신청서 등록
+	//위원회신청서 등록화면
 	@GetMapping("/insertCommitteeAppForm")
 	public String InsertCommitteeAppForm() {
 		return "/applicationform/insertCommitteeAppForm";
 	}
-	//위원회신청서 수정
-	@GetMapping("/updateCommitteeAppForm")
-	public String UpdateCommitteeAppForm() {
-		return "/applicationform/updateCommitteeAppForm";
+	
+	//위원회 신청서 등록
+	@PostMapping("/insertCommitteeApp")
+	public String insertCommitteeApp(CommitteeApp committeeApp) {
+		appFormService.insertCommitteeApp(committeeApp);
+		return "redirect:/committeeAppFormView";
 	}
+
 			
 }

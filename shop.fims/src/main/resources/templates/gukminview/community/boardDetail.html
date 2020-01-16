@@ -25,16 +25,13 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 					<span class="th" th:text="${b.boardWriter}"></span>
 					<span class="td"th:text="${b.boardDt}"></span>
 				</div>
-				<div class="etc t01">
-					<span class="th">url~~~~~~~~~~~~~~~~</span>
-				</div>
 			</div>
 			<div class="viewCont" style="white-space:pre;overflow: auto;">
 				<p th:text="${b.boardContent}"></p>
 				<p></p>
 			</div>
 <!-- 			<div align="right" style="font-size:150%;">
-				<a th:href="@{/insertCommitteeAppForm}">지원하기</a>
+				<a th:href="@{/insertCommitteeAppForm}" ></a>
 			</div> -->
 
 			<div class="boardBtnBox">

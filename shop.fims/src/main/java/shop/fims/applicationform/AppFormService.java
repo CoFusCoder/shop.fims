@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import shop.fims.vo.CommitteeApp;
 
 @Service
@@ -61,5 +62,10 @@ public class AppFormService {
 	//위원회 신청서 상세보기 위원회참가신청서관리코드로 조회
 	public CommitteeApp selectByComApp(String comAppCd) {
 		return appFormMapper.selectByComApp(comAppCd);
+	}
+	
+	//위원회 등록
+	public int insertCommitteeApp(CommitteeApp committeeApp) {
+		return appFormMapper.insertCommitteeApp(committeeApp);
 	}
 }

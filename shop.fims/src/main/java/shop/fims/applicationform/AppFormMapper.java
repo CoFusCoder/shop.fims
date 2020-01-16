@@ -18,4 +18,7 @@ public interface AppFormMapper {
 	
 	//위원회 신청서 상세보기 위원회참가신청서관리코드로 조회
 	public CommitteeApp selectByComApp(String comAppCd);
+	
+	//위원회 신청서 등록
+	public int insertCommitteeApp(CommitteeApp committeeApp);
 }

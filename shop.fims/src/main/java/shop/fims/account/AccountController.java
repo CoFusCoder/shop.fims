@@ -190,13 +190,13 @@ public class AccountController {
 		return "account/accountMemberView";
 	}
 	
-	//승인된 거래처 등록화면
+	//거래처 회원 등록화면
 	@GetMapping("/insertAccountMember")
 	public String insertAccountMember() {
 		return "account/insertAccountMember";
 	}
 	
-	//승인된 거래처 등록
+	//거래처 회원 등록
 	@PostMapping("/insertAccountMember")
 	public String insertAccountMember(AccountMember accountMember) {
 		accountService.insertAccountMember(accountMember);
