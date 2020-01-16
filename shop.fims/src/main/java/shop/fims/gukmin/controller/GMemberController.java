@@ -39,7 +39,7 @@ public class GMemberController {
 	
 	
 	//국민화면 로그인하기
-	@PostMapping("/gukminview/member/myPageView")
+	@PostMapping("/gukminview/gukminMainView")
 	public String login(Member member, HttpSession session, Model model) {
 		//입력된 아이디 비밀번호
 		System.out.println(member.toString() + "<--입력된 정보");
@@ -64,7 +64,7 @@ public class GMemberController {
 		
 		
 		//로그인 성공 화면 mypage
-		return "redirect:/gukminview/member/myPageView";
+		return "redirect:/gukminview/gukminMainView";
 	}
 	
 	//관리자 화면 로그인하기
@@ -135,6 +135,7 @@ public class GMemberController {
 	@GetMapping("gukminview/member/myPageView")
 	public String myPageView() {
 		System.out.println("---국민 마이페이지 화면 : myPageView MemberController.java-------");
+		
 		return "/gukminview/member/myPageView";
 	}
 	
@@ -147,8 +148,17 @@ public class GMemberController {
 	 * @return gukminview/member/hostPageView
 	 */
 	@GetMapping("gukminview/member/hostPageView")
-	public String hostPageView() {
+	public String hostPageView(HttpSession session) {
 		System.out.println("---거래처 마이페이지 화면 : myPageView MemberController.java-------");
+		
+		String loginlevel = (String) session.getAttribute("SLEVEL");
+		
+		if(loginlevel.equals("국민")) {
+			System.out.println( loginlevel + "<--loginlevel hostPageView 메서드 GMemberController.java ");
+			
+			return  "/gukminview/member/myPageView";
+		}
+		
 		return "/gukminview/member/hostPageView";
 	}
 	

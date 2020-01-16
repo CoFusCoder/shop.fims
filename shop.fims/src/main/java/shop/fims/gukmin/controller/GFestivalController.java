@@ -9,6 +9,7 @@ import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -49,20 +50,7 @@ public class GFestivalController {
 		return "/gukminview/festival/hostSpotRegisterForm";
 	}
 	
-	/**
-	 * @param 없음
-	 * @file FestivalController.java
-	 * @name festivalAndEventView
-	 * @brief 국민 상단바 축제이벤트화면
-	 * @author ksmart33 김동석
-	 * @return gukminview/festival/festivalAndEventView
-	 */
-	@GetMapping("gukminview/festival/festivalAndEventView")
-	public String festivalAndEventView() {
-		System.out.println("---국민 상단바 축제이벤트화면 : festivalAndEventView FestivalController.java-------");
-		return "/gukminview/festival/festivalAndEventView";
-	}
-	
+
 	/**
 	 * @param 없음
 	 * @file FestivalController.java
@@ -86,8 +74,30 @@ public class GFestivalController {
 	 * @return gukminview/festival/festivalSearch
 	 */
 	@PostMapping("gukminview/festival/festivalSearch")
-	public String festivalSearch() {
+	public String festivalSearch(Model model,String tagSearch) {
+		System.out.println(tagSearch+"<==tagSearch");
+		model.addAttribute("TAG", tagSearch);
+		
 		System.out.println("---국민화면 -축제 검색 Open API : festivalSearch FestivalController.java-------");
 		return "/gukminview/festival/festivalSearch";
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * @param 없음
+	 * @file FestivalController.java
+	 * @name festivalAndEventView
+	 * @brief 국민 상단바 축제이벤트화면
+	 * @author ksmart33 김동석
+	 * @return gukminview/festival/festivalAndEventView
+	 */
+	@GetMapping("gukminview/festival/festivalAndEventView")
+	public String festivalAndEventView() {
+		System.out.println("---국민 상단바 축제이벤트화면 : festivalAndEventView FestivalController.java-------");
+		return "/gukminview/festival/festivalAndEventView";
 	}
 }

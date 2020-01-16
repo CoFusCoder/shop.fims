@@ -5,7 +5,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 
 <th:block layout:fragment="gukminMainContents">
 
-<form id="loginform" name="loginform" action="/gukminview/member/myPageView" method="post">
+<form id="loginform" name="loginform" action="/gukminview/gukminMainView" method="post">
 	<table class="wwFormTable">
 		<input type="hidden" name="redirectUrl" id="redirectUrl"
 			value="">
@@ -60,7 +60,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			style="display: none; z-index: 1000;">
 			<div class="popBox">
 				<div class="popHeader">
-					<h1>#비밀번호 찾기</h1>
+					<h1>비밀번호 찾기</h1>
 					<a href="javascript:void(0)"
 						onclick="javascript:$('#passwordfinddialog').hide();"><img
 						src="https://joyfesta.kr/include/img/ico/ico_close02.png" /></a>
@@ -542,8 +542,8 @@ $(document).ready(function() {
 			$('[name="LoginCd"]').val("id024")
 			$('[name="LoginPw"]').val("pw024")
 		}else if(a=="3"){
-			$('[name="LoginCd"]').val("id002")
-			$('[name="LoginPw"]').val("pw002")
+			$('[name="LoginCd"]').val("id001")
+			$('[name="LoginPw"]').val("pw001")
 		}else if(a=="0"){
 			$('[name="LoginCd"]').val("id003")
 			$('[name="LoginPw"]').val("pw003")
