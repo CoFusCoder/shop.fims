@@ -193,6 +193,9 @@ public class PublicrelationsService {
 		return publicrelationsMapper.updateAction(festprProCd);
 	}
 
+	public String checkActionStatus(String festprProCd) {
+		return publicrelationsMapper.checkActionStatus(festprProCd);
+	}
 	
 //**********홍보 이벤트당첨자 ***********		
 

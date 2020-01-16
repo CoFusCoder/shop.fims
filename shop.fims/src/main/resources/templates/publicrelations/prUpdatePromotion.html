@@ -5,13 +5,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle">
 	<title>홍보사업 수정</title>
 </th:block>
-<th:block layout:fragment="adminisMainContents">
-
-<script th:src="@{/adminis/lib/jquery/jquery.min.js}"></script>				
-
+<th:block layout:fragment="adminisScript">
+<script th:src="@{/adminis/lib/jquery/jquery.min.js}"></script>		
+		
 <script type="text/javascript">
 $(document).ready(function(){
-
+	
 /* 홍보그룹코드 관련 제이쿼리	 */
 	$('#groupNm').change(function(){ 
 		var groupname = $('#groupNm').val();
@@ -44,11 +43,17 @@ $(document).ready(function(){
 			alert('계약금액은 숫자만 입력할 수 있습니다.');
 		}
 	});
-
+/* 마감한 경우 금액수정불가 */
+	var actionStatus = $('#actionStatus').val();
+		if(actionStatus=="Y"){
+			$('#festprProExpense').attr("ReadOnly",true);
+		}else{
+			$('#festprProExpense').attr("ReadOnly",false);
+		}
 	
 
-/* 홍보수정 유효성검사 */
-	$('#submitUpdateBtn').click(function(){
+/* 홍보등록 유효성검사 */
+	$('#prUpdateBtn').click(function(){
 		var fprproOrderDt = $('#fprproOrderDt').val();
 		var fprproStartDt = $('#fprproStartDt').val();
 		var fprproEndDt = $('#fprproEndDt').val();
@@ -130,14 +135,17 @@ $(document).ready(function(){
 
 
 
+
 /* document.ready 종료 */
 })
 
 
 
 
-</script>	
+
+</script>
 </th:block>
+
 <th:block layout:fragment="adminisMainContents">
 
 <div class="col-lg-12">
@@ -290,7 +298,7 @@ $(document).ready(function(){
 			            </select> 
                     </div>
                     <div class="col-lg-4">
-                    	<input class="form-control " id="groupNm2" name="groupNm2" type="text" ReadOnly="true">                     
+                    	<input class="form-control " id="groupNm2" name="groupNm2" type="text" ReadOnly="true">                         	                  	               
                     </div>
                     <div class="col-lg-2">                   	                   	
                	                  	
@@ -303,7 +311,8 @@ $(document).ready(function(){
                    <label for="festprProExpense" class="control-label col-lg-2"><font style="vertical-align: inherit;">
                      <font style="color: red"><strong>*</strong></font>계약금액</font></label>
                     <div class="col-lg-10">
-                      <input type="text" class="form-control" id="festprProExpense" name="festprProExpense" th:value="${p.festpr_pro_expense}">             
+                      <input type="text" class="form-control" id="festprProExpense" name="festprProExpense" th:value="${p.festpr_pro_expense}">   
+                      <input class="form-control " id="actionStatus" name="actionStatus" type="hidden" th:value="${p.action_status}">               
                     </div>     
                    </div>
                                                      
@@ -331,7 +340,7 @@ $(document).ready(function(){
                   <div class="form-group " th:each="f:${file}">                 
                     <label for="festprProAttach" class="control-label col-lg-2"><font style="vertical-align: inherit;">파일추가첨부</font></label>
                     <div class="col-lg-5">
-						<input type="file" name="fileUpload">																		              
+						파일추가 첨부 및 수정 삭제 기능 안됨.																	              
                     </div>
                     <div class="col-lg-5">
                     <strong th:text="${f.fileNm}"></strong> 																						              
@@ -340,9 +349,8 @@ $(document).ready(function(){
                   <div class="form-group">
                     <div class="col-lg-12" align="center">
                       <a th:href="@{/prPromotionDetail(festprProCd=${p.festpr_pro_cd})}">
-                      <button class="btn btn-theme04  btn-lg" type="button"><font style="vertical-align: inherit;">취소하기</font></button></a>
-                      <a>
-                      <button class="btn btn-theme  btn-lg " id="submitUpdateBtn"><font style="vertical-align: inherit;" >수정완료</font></button>
+                      <button class="btn btn-theme04  btn-lg" type="button"><font style="vertical-align: inherit;">취소하기</font></button></a>                      
+                      <button class="btn btn-theme  btn-lg " type="button" id="prUpdateBtn"><font style="vertical-align: inherit;" >수정완료</font></button>
                     </div>
                   </div>
               </form>

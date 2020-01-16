@@ -190,7 +190,30 @@
 			,f.accsub_medium_nm
 			,f.accsub_nm
 			,c.festpr_div_nm
-			,b.*
+			,b.festpr_pro_cd
+			,b.areacity_admin_cd
+			,b.area_cd
+			,b.area_city_cd
+			,b.fest_cd
+			,b.festpr_div_cd
+			,b.man_com_cd
+			,b.fesrev_bud_cd
+			,b.catapp_acc_cd
+			,b.fest_title
+			,b.festpr_pro_nm
+			,b.festpr_pro_detail
+			,b.fprpro_order_dt
+			,b.fprpro_start_dt
+			,b.fprpro_end_dt
+			,b.festpr_pro_place
+			,b.festpr_pro_amt
+			,b.group_cd
+			,b.group_nm
+			,IFNULL(b.action_dt,'마감전') AS action_dt
+			,b.action_status
+			,b.festpr_pro_expense
+			,b.festpr_pro_etc
+			,b.insert_dt		
 		FROM
 			Cat_Approval_Account AS a
 			, Fest_PR_Promotion AS b
@@ -200,7 +223,7 @@
 			, Fes_revExp_Bud AS f
 		WHERE a.catapp_acc_cd=b.catapp_acc_cd
 			AND b.festpr_div_cd=c.festpr_div_cd
-			AND b.festpr_pro_cd=#{festprProCd}
+			AND b.festpr_pro_cd=(#{festprProCd})
 			AND b.man_com_cd=d.man_com_cd
 			AND b.fesrev_bud_cd=f.fesrev_bud_cd
 	  	</select>
@@ -330,7 +353,7 @@ FROM
 	FROM
 		Fest_PR_Promotion
 	</selectKey>
-
+insert
 INTO
 	Fest_PR_Promotion(
 	festpr_pro_cd, areacity_admin_cd, area_cd,area_city_cd
@@ -397,7 +420,7 @@ WHERE group_cd=(#{groupCd})
 
 </update>
 
-
+<!-- 예산테이블에 들어갈 내용 확인 -->
 <select id="selectForGroupBud" resultType="map">
 SELECT
 	p.areacity_admin_cd
@@ -540,6 +563,15 @@ WHERE
 e.group_cd=(#{groupCd})
 </update>
 
+<!-- 홍보코드로 마감상태조회 -->
+<select id="checkActionStatus" resultType="String">
+SELECT
+	p.action_status
+FROM
+	Fest_PR_Promotion AS p
+WHERE
+	p.festpr_pro_cd=(#{festprProCd})
+</select>
 <!-- ================== 홍보 프로모션 end ========================= -->
 
 

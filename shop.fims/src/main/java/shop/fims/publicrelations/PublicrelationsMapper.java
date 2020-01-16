@@ -76,6 +76,8 @@ public interface PublicrelationsMapper {
 	
 	// 홍보사업 삭제
 	public int deletePromotion(String festprProCd);
+	// 마감상태확인
+	public String checkActionStatus (String festprProCd);		
 	
 	// 홍보코드로 첨부파일 삭제
 	public int deleteFile(String festprProCd);
@@ -97,6 +99,8 @@ public interface PublicrelationsMapper {
 	public String selectGroupCdByProCd (String festprProCd);
 	// 예산집행테이블에 그룹코드 합산된 값을 업데이트
 	public int updateGroupCal (String groupCd ,int sum);
+	
+	
 	
 	
 //**********홍보 이벤트당첨자 ***********		
