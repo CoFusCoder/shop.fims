@@ -1,17 +1,17 @@
 package shop.fims.applicationform;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AppFormController {
 	
-	/*
-	 * @file   AppFormController.java
-	 * @name   AppFormController
-	 * @brief  신청서 관련 조회
-	 * @author ksmart33 김도민
-	 */
+	@Autowired AppFormService appFormService;
 	
 	//용역신청서 관리
 	@GetMapping("/serviceAppFormView")
@@ -67,16 +67,27 @@ public class AppFormController {
 		return "/applicationform/updateVolunteerAppForm";
 	}
 	
-	//위원회신청서 관리
+	//위원회 신청서 관리
 	@GetMapping("/committeeAppFormView")
-	public String CommitteeAppFormView() {
-		return "/applicationform/committeeAppFormView";
+	public String committeeAppFormView(Model model
+							,@RequestParam(value="currentPage"
+							, required = false
+							, defaultValue = "1") int currentPage) {
+		Map<String, Object> map = appFormService.getComAppList(currentPage);
+		
+		model.addAttribute("committeeAppFormView", map.get("list"));
+		model.addAttribute("currentPage", map.get("currentPage"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("startPageNum", map.get("startPageNum"));
+		model.addAttribute("lastPageNum", map.get("lastPageNum"));
+		return "applicationform/committeeAppFormView";
 	}
 	
 	//위원회신청서 상세보기 위원회참가신청서관리로 조회
 	@GetMapping("/committeeAppFormDetail")
-	public String committeeAppFormDetail() {
-		return "/applicationform/committeeAppFormDetail";
+	public String committeeAppFormDetail(@RequestParam(value="comAppCd")String comAppCd, Model model) {
+		model.addAttribute("selectByComApp", appFormService.selectByComApp(comAppCd));
+		return "applicationform/committeeAppFormDetail";
 	}
 	
 	//위원회신청서 등록

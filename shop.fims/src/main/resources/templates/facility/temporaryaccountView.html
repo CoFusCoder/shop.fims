@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
+	<th:block layout:fragment="customBody">
+		<div>
+		<a th:href="@{/temporaryList}">
+		<button type="button" class="btn btn-default" >뒤로가기</button>
+		</a>
+		</div>
+		
+		<div class="row mt">
+          <div class="col-lg-12">
+            <div class="content-panel">
+            <th:block th:each= "f : ${facility}">
+              <h4><i class="fa fa-angle-right"></i> 거래처상세보기 </h4><br>
+              <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+				  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>거래처명</th>
+                      <th>사업자분류</th>
+                      <th>거래처대표자명</th>
+                      <th>대표자연락처</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${f.cataccNm1}"></td>
+						<td th:text = "${f.cataccOper}"></td>
+						<td th:text = "${f.cataccNm2}"></td>
+						<td th:text = "${f.cataccPhone2}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+                      <th>거래처사업자등록번호</th>
+                      <th>거래처법인등록번호</th>
+                      <th>거래처사업장주소</th>
+                      <th>거래처대표번호</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${f.cataccNo1}"></td>
+						<td th:text = "${f.cataccNo2}"></td>
+						<td th:text = "${f.cataccAddr}"></td>
+						<td th:text = "${f.cataccPhone3}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  <!-- 한세트 시작 -->
+                  <thead>
+                    <tr>
+						<th>거래처이메일</th>
+                    	<th>등록일자</th>
+                    	<th>승인일자</th>
+                    </tr>
+                  </thead>	
+                  <tbody>
+                    <tr>
+						<td th:text = "${f.cataccEmail}"></td>
+						<td th:text = "${f.cataccDt1}"></td>
+						<td th:text = "${f.cataccDt2}"></td>
+                    </tr>
+                  </tbody>
+                  <!-- 한세트 끝 -->
+                  
+                </table>
+              </section>
+              </th:block>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-lg-4 -->
+        </div>
+
+	</th:block>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>

@@ -14,49 +14,19 @@ import shop.fims.vo.AppAccount;
 @Controller
 public class AccountController {
 	
-	/*
-	 * @file   AccountController.java
-	 * @name   AccountController
-	 * @brief  거래처 관련 조회
-	 * @author fims 김도민
-	 */
-	
 	@Autowired AccountService accountService;
 	
-	//거래처 회원 관리
-	@GetMapping("/accountMemberView")
-	public String selectAccountMember() {
-		return "account/accountMemberView";
-	}
-	
-	//거래처 회원 등록
-	@GetMapping("/insertAccountMember")
-	public String insertAccountMember() {
-		return "/account/insertAccountMember";
-	}
-	
-	//승인된 거래처 상세화면
-	@GetMapping("/accountMemberDetail") 
-		public String selectByAccountMember() { 
-		return "account/accountMemberDetail";
-	}
-	
-	//거래처 회원 수정
-	@GetMapping("/updateAccountMember")
-	public String updateAccountMember() {
-		return "/account/updateAccountMember";
-	}
 	
 	//모든 거래처 관리
 	@GetMapping("/allAccountView")
 	public String selectAllAccountView(Model model) {
-		model.addAttribute("selectAllAccountView", accountService.selectAllAccountView());
+		model.addAttribute("allAccountView", accountService.selectAllAccountView());
 		return "account/allAccountView";
 	}
 	
-	//모든 거래처 상세조회 거래처코드로 조회
+	//거래처 상세조회 거래처코드로 조회
 	@GetMapping("/allAccountDetail") 
-		public String selectByAccount(@RequestParam(value="catAccCd", required = false)String catAccCd, Model model) { 
+		public String selectByAccount(@RequestParam(value="catAccCd")String catAccCd, Model model) { 
 		model.addAttribute("selectByAccount", accountService.selectByAccount(catAccCd));
 		return "account/allAccountDetail";
 	}
@@ -81,9 +51,9 @@ public class AccountController {
 		return "redirect:/allAccountView";
 	}
 	
-	//모든 거래처 수정화면. 거래처코드로 조회
+	//거래처 수정화면. 거래처코드로 조회
 	@GetMapping("/updateAllAccount")
-	public String updateAllAccount(@RequestParam(value="catAccCd", required = false)String catAccCd, Model model) { 
+	public String updateAllAccount(@RequestParam(value="catAccCd", required=false)String catAccCd, Model model) { 
 		model.addAttribute("selectByAllAccount", accountService.selectByAllAccount(catAccCd));
 		return "account/updateAllAccount";
 	}
@@ -93,31 +63,16 @@ public class AccountController {
 	public String updateAllAccount(Account account) {
 		accountService.updateAllAccount(account);
 		return "redirect:/allAccountView";
-	}	
-	
-	//승인된 거래처 관리
-	@GetMapping("/approvalAccountView")
-	public String selectApprovalAccountView(Model model) {
-		model.addAttribute("selectApprovalAccountView", accountService.selectApprovalAccountView());
-		return "account/approvalAccountView";
 	}
 	
-	//승인된 거래처 등록화면
-	@GetMapping("/insertApprovalAccount")
-	public String insertApprovalAccount() {
-		return "account/insertApprovalAccount";
-	}
-	
-	//승인된 거래처 상세화면
-	@GetMapping("/approvalAccountDetail") 
-		public String selectByApprovalAccount() { 
-		return "account/approvalAccountDetail";
-	}
-	
-	//승인된 거래처 수정
-	@GetMapping("/updateApprovalAccount")
-	public String updateApprovalAccount() {
-		return "/account/updateApprovalAccount";
+	//거래처 검색
+	@PostMapping("/searchAccount")
+	public String searchAccount(	@RequestParam(value="sk")String sk,
+									@RequestParam(value="sv")String sv,
+									Model model) {
+		model.addAttribute("allAccountView", accountService.searchAccount(sk, sv));
+		return "account/allAccountView";
+		
 	}
 	
 	//거래처 업종 분류
@@ -140,11 +95,109 @@ public class AccountController {
 		return "redirect:/accountCatBusView";
 	}
 	
-	//거래처업종 분류 수정화면 거래처 업종 분류코드로 조회
+	//거래처 업종 분류 수정화면 거래처 업종 분류코드로 조회
 	@GetMapping("/updateAccountCatBus") 
 	public String updateAccountCatBus(@RequestParam(value="catBusAccCd", required = false)String catBusAccCd, Model model) { 
 		model.addAttribute("selectByAccCatBus", accountService.selectByAccCatBus(catBusAccCd));
 		return "account/updateAccountCatBus";
 	}
-		
+	
+	//거래처 업종 분류 수정
+	@PostMapping("/updateAccountCatBus")
+	public String updateAccountCatBus(AccountCatBus accountCatBus) {
+		accountService.updateAccountCatBus(accountCatBus);
+		return "redirect:/accountCatBusView";
+	}
+	
+	//거래처 업종 분류 삭제
+	@GetMapping("/deleteAccountCatBus")
+	public String deleteAccountCatBus(AccountCatBus accountCatBus) {
+		accountService.deleteAccountCatBus(accountCatBus);
+		return "redirect:/accountCatBusView";
+	}
+	
+	//거래처 업종 분류 검색
+	@PostMapping("/searchAccountCatBus")
+	public String searchAccountCatBus(	@RequestParam(value="sk")String sk,
+										@RequestParam(value="sv")String sv,
+										Model model) {
+		model.addAttribute("selectAccountCatBusView", accountService.searchAccountCatBus(sk, sv));
+		return "account/accountCatBusView";
+	}
+	
+	//승인된 거래처 관리
+	@GetMapping("/approvalAccountView")
+	public String selectApprovalAccountView(Model model) {
+		model.addAttribute("selectApprovalAccountView", accountService.selectApprovalAccountView());
+		return "account/approvalAccountView";
+	}
+	
+	//승인된 거래처 상세화면
+	@GetMapping("/approvalAccountDetail") 
+		public String selectByApprovalAccount(@RequestParam(value="catAppAccCd", required =false )String catAppAccCd, Model model) {
+		model.addAttribute("selectByApprovalAccount", accountService.selectByApprovalAccount(catAppAccCd));
+		return "account/approvalAccountDetail";
+	}
+	
+	//승인된 거래처 등록화면
+	@GetMapping("/insertApprovalAccount")
+	public String insertApprovalAccount() {
+		return "account/insertApprovalAccount";
+	}
+	
+	//승인된 거래처 등록
+	@PostMapping("/insertApprovalAccount")
+	public String insertApprovalAccount(AppAccount appAccount) {
+		accountService.insertApprovalAccount(appAccount);
+		return "redirect:/approvalAccountView";
+	}
+	
+	//승인된 거래처 삭제
+	@GetMapping("/deleteApprovalAccount")
+	public String deleteApprovalAccount(AppAccount appAccount) {
+		accountService.deleteApprovalAccount(appAccount);
+		return "redirect:/approvalAccountView";
+	}
+	
+	//승인된 거래처 수정화면 승인된 거래처 코드로 조회
+	@GetMapping("/updateApprovalAccount")
+	public String updateApprovalAccount(@RequestParam(value="catAppAccCd", required=false)String catAppAccCd, Model model) {
+		model.addAttribute("selectByUpApprovalAccount", accountService.selectByUpApprovalAccount(catAppAccCd));
+		return "account/updateApprovalAccount";
+	}
+	
+	//승인된 거래처 수정
+	@PostMapping("/updateApprovalAccount")
+	public String updateApprovalAccount(AppAccount appAccount) {
+		accountService.updateApprovalAccount(appAccount);
+		return "redirect:/approvalAccountView";
+	}
+	
+	//승인된 거래처 검색
+	@PostMapping("/searchApprovalAccount")
+	public String searchApprovalAccount(	@RequestParam(value="sk")String sk,
+											@RequestParam(value="sv")String sv,
+											Model model) {
+		model.addAttribute("selectApprovalAccountView", accountService.searchApprovalAccount(sk,sv));
+		return "account/approvalAccountView";
+	}
+	
+	//거래처 회원 관리
+	@GetMapping("/accountMemberView")
+	public String selectAccountMember() {
+		return "account/accountMemberView";
+	}
+	
+	//거래처 회원 등록
+	@GetMapping("/insertAccountMember")
+	public String insertAccountMember() {
+		return "/account/insertAccountMember";
+	}
+
+	//거래처 회원 수정
+	@GetMapping("/updateAccountMember")
+	public String updateAccountMember() {
+		return "/account/updateAccountMember";
+	}
+	
 }

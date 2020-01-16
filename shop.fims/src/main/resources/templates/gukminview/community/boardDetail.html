@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<section>
+	<div class="commDesc">
+		<p class="t01">공지사항</p>
+		<p class="t02">ALLFestMoa의 최근 소식으르 만나보세요!</p>
+	</div>
+	<div class="norBox">
+		<ul class="commTabs">
+			<li><a href="/gukminview/community/eventView">이벤트</a></li>
+			<li><a href="javascript:void(0)" class="on">공지사항</a></li>
+			<li><a href="/gukminview/community/faqView">FAQ</a></li>
+		</ul>
+
+		<div class="viewBox" th:each="b:${selectByBoard}">
+			<div class="viewHeader">
+				<p class="subj" th:text="${b.boardTitle}">
+				</p>
+				<div class="etc t01">
+					<span class="th" th:text="${b.boardWriter}"></span>
+					<span class="td"th:text="${b.boardDt}"></span>
+				</div>
+			</div>
+			<div class="viewCont">
+				<p th:text="${b.boardContent}"></p>
+				<p></p>
+			</div>
+
+			<div class="boardBtnBox">
+				<a th:href="@{/gukminview/community/boardList}" class="btnType04">리스트</a>
+				<a th:href="@{/gukminview/community/updateBoard}" class="btnType04">수정</a>
+				<a thLhref="@{/gukminview/community/boardList}" class="btnType04">삭제</a>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+</th:block>
+
+</html>

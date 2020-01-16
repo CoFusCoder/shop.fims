@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ScheduleController {
 	@Autowired ScheduleService scheduleService;
 	
+	
+	
 	@PostMapping("/scheSearch")
 	public String searchSchedule(@RequestParam(value="accMemCd")String accMemCd,
 								 @RequestParam(value="festScheNm")String festScheNm,
@@ -25,12 +27,6 @@ public class ScheduleController {
 		return "schedule/scheList";
 	}
 								 
-			
-			
-			
-	
-	
-	
 	//코멘트 삭제
 	@GetMapping("/scheDeleteComment")
 	public String deleteComment(Model model) {
@@ -64,8 +60,10 @@ public class ScheduleController {
 	
 	//일정세부확인
 	@GetMapping("/scheDetailList")
-	public String scheDetailList2(Model model) {
-		model.addAttribute("AllSchedule", scheduleService.selectAllSchedule());
+	public String scheDetail(@RequestParam(value="festSchCd")String festSchCd,
+								HttpSession session, Model model) {
+		String festCd = (String)session.getAttribute("F_CD");
+		model.addAttribute("ScheDetail", scheduleService.scheDetail(festCd, festSchCd));
 		return "schedule/scheDetailList";
 	}
 	
@@ -78,7 +76,7 @@ public class ScheduleController {
 	
 	//일정리스트
 	@GetMapping("/scheList")
-	public String scheDetailList(Model model) {
+	public String scheList(Model model) {
 		model.addAttribute("AllSchedule", scheduleService.selectAllSchedule());
 		return "schedule/scheList";
 	}

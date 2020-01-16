@@ -14,12 +14,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			</a>
 		</div>
 		<br/>
-		<form class="form-inline" role="form" align="right" th:action="@{#}" method="get">
+		<form class="form-inline" role="form" align="right" th:action="@{/searchApprovalAccount}" method="post">
 			<select class="form-control" name="sk">
-	                <option value="#">이름</option>
+	                <option value="cat_acc_nm1">거래처명</option>
+	                <option value="catapp_acc_pur">거래처 업무</option>
 	              </select>
 	             <div class="form-group">
-	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="#">
+	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="sv">
 	             </div>
 	             <button type="submit" class="btn btn-theme">검색</button>
         </form>		
@@ -50,7 +51,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                		<td th:text="${a.manComNm1}"></td>
                		<td th:text="${a.catAppAccCon}"></td>
 			 		<td>
-			 		  <a th:href="@{/approvalAccountDetail}">
+			 		  <a th:href="@{/approvalAccountDetail(catAppAccCd=${a.catAppAccCd})}">
 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a> 
 			 		</td>
                   </tr>

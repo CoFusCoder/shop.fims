@@ -20,7 +20,12 @@ public class Human {
 	private String joinDt;
 	private String loginCd;
 	private String levNm;
+	private String workdivCd;
 	
+	private String cityadminCd;	//공통코드
+	private String areacityCd;
+	private String areaCd;
+	private String festCd;
 	public String getFestNm() {
 		return festNm;
 	}
@@ -129,13 +134,47 @@ public class Human {
 	public void setLevNm(String levNm) {
 		this.levNm = levNm;
 	}
+	public String getWorkdivCd() {
+		return workdivCd;
+	}
+	public void setWorkdivCd(String workdivCd) {
+		this.workdivCd = workdivCd;
+	}
+	
+	
+	//공통코드
+	public String getCityadminCd() {
+		return cityadminCd;
+	}
+	public void setCityadminCd(String cityadminCd) {
+		this.cityadminCd = cityadminCd;
+	}
+	public String getAreacityCd() {
+		return areacityCd;
+	}
+	public void setAreacityCd(String areacityCd) {
+		this.areacityCd = areacityCd;
+	}
+	public String getAreaCd() {
+		return areaCd;
+	}
+	public void setAreaCd(String areaCd) {
+		this.areaCd = areaCd;
+	}
+	public String getFestCd() {
+		return festCd;
+	}
+	public void setFestCd(String festCd) {
+		this.festCd = festCd;
+	}
 	@Override
 	public String toString() {
 		return "Human [festNm=" + festNm + ", workdivNm=" + workdivNm + ", humanNm=" + humanNm + ", humanPhone="
 				+ humanPhone + ", humanHour=" + humanHour + ", comNm2=" + comNm2 + ", mamCd=" + mamCd + ", humanCd="
 				+ humanCd + ", staNm=" + staNm + ", staCd=" + staCd + ", memNm=" + memNm + ", memAddr=" + memAddr
 				+ ", memPhone=" + memPhone + ", memEmail=" + memEmail + ", memBirth=" + memBirth + ", joinDt=" + joinDt
-				+ ", loginCd=" + loginCd + ", levNm=" + levNm + "]";
+				+ ", loginCd=" + loginCd + ", levNm=" + levNm + ", workdivCd=" + workdivCd + ", cityadminCd="
+				+ cityadminCd + ", areacityCd=" + areacityCd + ", areaCd=" + areaCd + ", festCd=" + festCd + "]";
 	}
 
 	

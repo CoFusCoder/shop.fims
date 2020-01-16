@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<script src="/gukmin/js/underscore-min.js"></script>
+
+<section>
+	<div class="commDesc">
+		<p class="t01">FAQ</p>
+		<p class="t02">ALLFestMoa 이용시 궁금한 점을 해결해보세요!</p>
+	</div>
+	<div class="norBox">
+		<ul class="commTabs">
+			<li><a href="/gukminview/community/eventView">!이벤트</a></li>
+			<li><a href="/gukminview/community/boardList">!공지사항</a></li>
+			<li><a href="javascript:void(0)" class="on">!FAQ</a></li>
+		</ul>
+		<form id="searchform" name="searchform" action="/gukminview/community/faqView" method="post">
+			<input type="hidden" name="category" value="" id="category"/>
+			<div class="boSearchBox">
+				<div class="bsform">
+					<input type="text" id="keyword" name="keyword"
+						value="" /> <a
+						href="javascript:void();" id="searchbutton">검색</a>
+				</div>
+			</div>
+			<ul class="categoryTabs type03">
+				<li><a href="/gukminview/community/faqView"
+					class="on">!전체</a></li>
+				<li><a href="#"
+					class="">#서비스이용</a></li>
+				<li><a href="#"
+					class="">#회원가입/탈퇴</a></li>
+				<li><a href="#"
+					class="">#로그인/계정정보</a></li>
+				<li><a href="#"
+					class="">#광고</a></li>
+				<li><a href="#"
+					class="">#제휴/제안</a></li>
+				<li><a href="#"
+					class="">#기타</a></li>
+			</ul>
+<!-- 			<ul class="categoryTabs type03">
+				<li><a href="Faq.festa"
+					class="on">전체</a></li>
+				<li><a href="Faq.festa?category=1"
+					class="">#서비스이용</a></li>
+				<li><a href="Faq.festa?category=2"
+					class="">#회원가입/탈퇴</a></li>
+				<li><a href="Faq.festa?category=3"
+					class="">#로그인/계정정보</a></li>
+				<li><a href="Faq.festa?category=4"
+					class="">#광고</a></li>
+				<li><a href="Faq.festa?category=5"
+					class="">#제휴/제안</a></li>
+				<li><a href="Faq.festa?category=99"
+					class="">#기타</a></li>
+			</ul> -->
+		</form>
+
+		<dl class="faqList">
+			<dt><a href="javascript:void(0)">회원가입 시, 인증 메일이 오지 않아요!</a></dt>
+			<dd>회원가입 시 기입하신 메일을 통해 인증을 해야 회원가입이 완료됩니다.<br>이 때, ALLFestMoa 측에서 발송하는 인증 메일이 받은 편지함에 정상적으로 도착하지 않을 수 있는데<br>주로 스팸메일/정크메일에 있는 경우가 간혹 있습니다.<br><br>사용하시는 메일함의 스팸/정크메일함을 확인해보시고<br>(메일제목에는 "ALLFestMoa" 라는 단어가 포함돼 있습니다.)<br>해당 메일주소를 정크 메일로 해지하시면<br>ALLFestMoa에서 발송하는 정상적으로 메일을 받아보실 수 있습니다.</dd>
+			<dt><a href="javascript:void(0)">스팟은 어떻게 등록하나요?</a></dt>
+			<dd>** 스팟은 기업로 가입하신 기업 회원만 가능합니다.<br>(개인 회원은 스팟을 등록하실 수 없습니다.)<br><br>1. 가입하신 아이디로 "로그인"을 해주세요.<br>2. 홈페이지 우측 상단에 있는 "스팟등록하기"를 눌러주세요.<br>3. 기업페이지에서 "나의 스팟관리"를 눌러주세요.<br>4. 우측 상단 "스팟 등록하기"를 눌러주세요.<br>5. 등록하실 스팟에 관한 필수 정보를 등록해주세요.<br>6. 스팟의 주소를 "주소찾기"를 눌러 입력해주세요.<br>* 도로주소 입력이 되지 않을 경우 지번 주소로 넣어주세요.<br>7. 위치정보는 구글지도에서 검색 후 플러스 코드를 복사하여 붙여넣기 해주세요.<br>8. 스팟에 관한 기본정보 입력해주세요.<br>9. "이미지, 동영상, 해시태그" 입력란 입니다. 설명을 꼼꼼히 읽어보신 후 입력해주세요.<br>* TIP :  이미지  590*420 pixel 가  최적사이즈 입니다. <br>* 해시태그는 띄어쓰기를 포함하지 않습니다.<br>* 콤마(,)로 구분하며 콤마 뒤에 뛰어쓰기를 하면 등록이 되지 않습니다.<br>10. "이용정보" 입력해주세요.<br>11. "등록승인요청" 버튼을 눌러주세요.<br>12. 나의 스팟등록이 완료되었는지 확인하시고 싶으면 "기업페이지" 이동하세요.<br>13. "나의 스팟관리"를 눌러주세요.<br>14. "나의 스팟관리"에서 게시물의 등록 상황을 확인하세요.<br>15. 승인 확인 메일을 받으시면 스팟 등록이 완료됩니다.</dd>
+			<dt><a href="javascript:void(0)">회원 정보는 어떻게 변경하나요?</a></dt>
+			<dd>ALLFestMoa 페이지 상단에 있는 [마이페이지] 메뉴를 클릭하시면 회원 정보를 수정하실 수 있습니다.</dd>
+			<dt><a href="javascript:void(0)">비밀번호를 잊어버렸는데 어떻게 찾나요?</a></dt>
+			<dd>로그인 페이지에서 [비밀번호 찾기] 메뉴를 누르시면 비밀번호를 재설정할 수 있는 링크를 보내드립니다.</dd>
+			<dt><a href="javascript:void(0)">비회원도 ALLFestMoa를 이용할 수 있나요?</a></dt>
+			<dd>누구나 ALLFestMoa에 등록된 스팟의 정보를 확인하실 수 있습니다. <br><br>단, 후기 작성과 찜 리스트 이용 등은 온라인 회원 가입을 통해서만 가능합니다. ALLFestMoa 회원으로 가입하시면 새롭게 업데이트되는 축제·이벤트와 시장·스토어 정보를 받아보실 수 있으며 다양한 혜택을 누리실 수 있습니다.</dd>
+			<dt><a href="javascript:void(0)">방문한 스팟의 후기를 남길 수 있나요?</a></dt>
+			<dd>후기는 온라인 회원만 작성하실 수 있으며 직접 방문하신 스팟에 한해서 남겨주실 수 있습니다.<br>직접 방문하신 스팟의 상세페이지 하단 [리뷰 작성]을 클릭하시면 후기를 작성하실 수 있으며 영상과 사진 또한 첨부하실 수 있어 생생한 후기 작성이 가능합니다.</dd>
+			<dt><a href="javascript:void(0)">ALLFestMoa 온라인 회원가입은 어떻게 하나요?</a></dt>
+			<dd>ALLFestMoa 웹페이지 혹은 스마트폰 등을 통해 간편하게 가입할 수 있으며 총 5가지 방법으로 가입이 가능합니다. <br><br>[가입 방법]<br>- 네이버 계정이 있는 경우, [네이버로 연결하기]를 클릭하시면 간편하게 회원가입할 수 있습니다. <br>- 구글 계정이 있는 경우, [구글로 연결하기]를 클릭하시면 간편하게 회원가입할 수 있습니다. <br>- 페이스북 계정이 있는 경우, [페이스북으로 연결하기]를 클릭하시면 간편하게 회원가입할 수 있습니다. <br>- 카카오톡 계정이 있는 경우, [카카오톡으로 연결하기]를 클릭하시면 간편하게 회원가입할 수 있습니다. <br>- 혹은, 아이디(이메일 주소)와 비밀번호만 입력하셔도 간편한 회원 가입이 가능합니다. </dd>
+			<dt><a href="javascript:void(0)">전통시장과 재래시장의 차이는 무엇인가요?</a></dt>
+			<dd>통상적으로 전통시장은 「재래시장 및 상점가 육성을 위한 특별법」 이 「전통시장 및 상점가 육성을 위한 특별법」 으로 법명이 변경되면서 종전의 재래시장이 변경된 것입니다.<br><br>'재래시장'과 '전통 시장/전통 재래시장'을 모두 쓸 수는 있습니다. <br><br>표준 국어 대사전에는 '예전부터 있어 오던 시장을 백화점 따위의 물건 판매 장소에 상대하여 이르는 말'로 '재래시장'을 등재하고 있습니다. <br><br>한편, "우리말샘"에는 경제 전문어로서 '전통 시장'을 등재하고 있습니다. <br><br>***<br><br>재래-시장(在來市場) [재ː---] <br>「명사」<br>예전부터 있어 오던 시장을 백화점 따위의 물건 판매 장소에 상대하여 이르는 말. <br>¶ 어릴 때 주위에서 흔히 보던 물건들 중에는 이제는 재래시장에나 가야 볼 수 있는 것들도 많다.<br><br>***<br><br>전통^시장(傳統市場 )<br>분야『경제』<br>「001」오랜 기간에 걸쳐 일정한 지역에서 자연 발생적으로 형성된 상설 시장이나 정기 시장.<br><br>전통 재래시장(傳統在來市場 )<br>「001」예전부터 있어 오던 전통적인 판매 방식과 상점의 형태를 유지하고 있는 시장.전북 전주시에 사는 42살 주부 O 씨는 기업형 슈퍼마켓이 문을 닫게 되자 전통 재래시장을 찾았다.≪머니투데이 2012년 3월≫ 대형 유통업체들의 진출로 주요 수요처였던 전통 재래시장이 몰락하며 동시에 도매로 의류를 공급하던 동대문 시장도 함께 어려움을 겪고 있다는 것이다.≪헤럴드생생뉴스 2012년 5월≫<br><br>* 출처 : 국립국어원 온라인가나다</dd>
+			<dt><a href="javascript:void(0)">ALLFestMoa는 어떤 서비스를 제공하나요?</a></dt>
+			<dd>다음은 ALLFestMoa에서 제공하는 서비스입니다. <br><br>1) 기업이 직접 업로드하는 축제 · 스토어 정보<br>축제 주최자, 전통시장 상인이 직접 정보를 업로드 해 빠르고 신뢰도 높은 정보를 전달합니다.<br><br>2) 전 세계 축제 · 시장 정보<br>국내를 넘어 전 세계의 모든 축제와 전통시장 정보까지 볼 수 있습니다.<br><br>3) 맞춤형 축제 · 전통시장 · 스토어 추천<br>시즌별 새로운 축제와 전통시장을 검색이 가능하고 추천해드립니다.<br><br>4) 실시간 정보 및 리뷰<br>내가 관심 있어 하는 축제와 전통시장의 실시간 교통정보는 물론<br>실 방문자의 생동감 넘치는 리뷰와 SNS를 확인할 수 있습니다.</dd>
+			<dt><a href="javascript:void(0)">ALLFestMoa는 무엇인가요?</a></dt>
+			<dd>ALLFestMoa는 전국에서 진행되고 있는 축제의<br>정보를 한 눈에 볼 수 있는 정보 플랫폼입니다.</dd>		
+		</dl>
+		<div class="paging">
+			<a href="javascript:void(0);" class="first"></a>
+			<a href="javascript:void(0);" class="prev">1</a>
+			<a href="javascript:void(0);" class="on">1</a>
+			<a href="javascript:void(0);" class="next"></a>
+			<a href="javascript:void(0);" class="last"></a>
+		</div>
+		<div class="boardBtnBox">
+			<a href="#" class="btnType03">#1:1문의하기</a>
+		</div>
+<!-- 		<div class="boardBtnBox">
+			<a href="InquiryForm.festa" class="btnType03">1:1문의하기</a>
+		</div> -->
+	</div>
+</section>
+
+
+
+
+</th:block>
+
+</html>

@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<style>
+.wrap {
+	position: absolute;
+	left: 0;
+	bottom: 40px;
+	width: 288px;
+	height: 132px;
+	margin-left: -144px;
+	text-align: left;
+	overflow: hidden;
+	font-size: 12px;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	line-height: 1.5;
+}
+
+.wrap * {
+	padding: 0;
+	margin: 0;
+}
+
+.wrap .info {
+	width: 286px;
+	height: 120px;
+	border-radius: 5px;
+	border-bottom: 2px solid #ccc;
+	border-right: 1px solid #ccc;
+	overflow: hidden;
+	background: #fff;
+}
+
+.wrap .info:nth-child(1) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+	padding: 5px 0 0 10px;
+	height: 30px;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.info .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #888;
+	width: 17px;
+	height: 17px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+	cursor: pointer;
+}
+
+.info .body {
+	position: relative;
+	overflow: hidden;
+}
+
+.info .desc {
+	position: relative;
+	margin: 13px 0 0 90px;
+	height: 75px;
+}
+
+.desc .ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.desc .jibun {
+	font-size: 11px;
+	color: #888;
+	margin-top: -2px;
+}
+
+.info .img {
+	position: absolute;
+	top: 6px;
+	left: 5px;
+	width: 73px;
+	height: 71px;
+	border: 1px solid #ddd;
+	color: #888;
+	overflow: hidden;
+}
+
+.info:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: 0;
+	width: 22px;
+	height: 12px;
+	background:
+		url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+	color: #5085BB;
+}
+</style>
+<style>
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#googlemap {
+	height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+</style>
+
+<section>
+<th:block th:include="fragments/gukmin/gukmincarousel"></th:block>
+
+	<div class="mapCont">
+		<p class="tit">
+			<img src="https://joyfesta.kr/include/img/etc/etc_maptitle.png" />
+		</p>
+		<div class="mapOpt">
+			<dl>
+				<dt>#방문예정일</dt>
+				<dd>
+					<div class="form">
+						<input type="text" id="festivalstartdate" class="inp datepicker"
+							autocomplete="off" placeholder="선택하세요" /><span class="etxt">~</span><input
+							type="text" id="festivalenddate" class="inp datepicker fr"
+							autocomplete="off" placeholder="선택하세요" />
+					</div>
+				</dd>
+				<dt>#지역</dt>
+				<dd>
+					<div class="form">
+						<ul class="msTabs">
+							<li><a href="javascript:void(0)" class="on"
+								onclick="javascript:$('#region').val('');initMap();"
+								data-id="msTabs01">국내</a></li>
+							<li><a href="javascript:void(0)"
+								onclick="javascript:$('#sido').val('');$('#sigungu').val('');initMap();"
+								data-id="msTabs02">해외</a></li>
+							<!--
+							<li><a href="javascript:void(0)"
+								onclick="javascript:$('#googlemap').hide();$('#map').show();"
+								class="on" data-id="msTabs01">국내</a></li>
+							<li><a href="javascript:void(0)"
+								onclick="javascript:$('#map').hide();$('#googlemap').show();"
+								data-id="msTabs02">해외</a></li> 
+								 -->
+						</ul>
+						<div id="msTabs01" class="msArea">
+							<select class="select" id="sido">
+								<option value="">지역(시도)</option>
+								<option value="서울">서울특별시</option>
+								<option value="부산">부산광역시</option>
+								<option value="대구">대구광역시</option>
+								<option value="인천">인천광역시</option>
+								<option value="광주">광주광역시</option>
+								<option value="대전">대전광역시</option>
+								<option value="울산">울산광역시</option>
+								<option value="세종">세종특별자치시</option>
+								<option value="경기">경기도</option>
+								<option value="강원">강원도</option>
+								<option value="충북">충청북도</option>
+								<option value="충남">충청남도</option>
+								<option value="전북">전라북도</option>
+								<option value="전남">전라남도</option>
+								<option value="경북">경상북도</option>
+								<option value="경남">경상남도</option>
+								<option value="제주">제주특별자치도</option>
+							</select> <select class="select" id="sigungu">
+								<option value="">지역(시군구)</option>
+							</select>
+						</div>
+						<div id="msTabs02" class="msArea">
+							<select class="select" id="region" name="region">
+								<option value="">대륙</option>
+								<option value="101">아시아ㆍ중동</option>
+								<option value="102">아메리카</option>
+								<option value="103">유럽</option>
+								<option value="104">아프리카ㆍ오세아니아</option>
+							</select>
+							<!-- <select class="select">
+								<option>국가</option>
+							</select>
+							 -->
+						</div>
+					</div>
+				</dd>
+				<dt>#유형</dt>
+				<dd>
+					<div class="form">
+						<tr>
+    <td class="tdLabel"></td>
+    <td
+><select name="typeseq" id="typeseq" class="select">
+    <option value=""
+    >#전체</option>
+    <option value="23">#먹거리</option>
+    <option value="24">#지역ㆍ특산물</option>
+    <option value="25">#민속ㆍ전통문화</option>
+    <option value="26">#미술ㆍ예술</option>
+    <option value="27">#음악ㆍ공연</option>
+    <option value="28">#생태계ㆍ자연</option>
+    <option value="29">#레저ㆍ스포츠</option>
+    <option value="30">#과학ㆍ기술</option>
+    <option value="31">#교육ㆍ체험</option>
+    <option value="32">#종교ㆍ역사</option>
+    <option value="33">#기타</option>
+
+
+</select>
+
+</td>
+</tr>
+
+
+					</div>
+				</dd>
+			</dl>
+		</div>
+		<div class="mapArea">
+		<!--
+			<div id="googlemap" style="width: 100%; height: 420px;"></div>
+		 -->
+			<div id="googlemap" style="width: 100%; height: 310px;"></div> 
+		</div>
+	</div>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<script>
+		$('#region').change(function() {
+			if ($('#region').val() == 101) {
+				initMap(23.267207, 77.374354, 4);
+			} else if ($('#region').val() == 102) {
+				initMap(36.195559, -115.153193, 4);
+			} else if ($('#region').val() == 103) {
+				initMap(50.0595854, 14.3255426, 4);
+			} else if ($('#region').val() == 104) {
+				initMap(-32.0397559, 115.681354, 4);
+			} else {
+				initMap(36.2683, 127.6358, 4);
+			}
+		});
+
+		var imageSrc = '/include/img/ico/ico_marker_festival.png';
+		var map;
+		function updateGoogleMapFestivalList(map) {
+			//indicatorOn();
+			$
+					.ajax({
+						url : 'JSONFestivalListMap.festa',
+						type : 'POST',
+						data : {
+							startdate : $('#festivalstartdate').val(),
+							enddate : $('#festivalenddate').val(),
+							sido : $('#sido').val(),
+							sigungu : $('#sigungu').val(),
+							region : $('#region').val(),
+							typeseq : $('#typeseq').val()
+						},
+						dataType : 'json',
+						success : function(data, textStatus, jqXHR) {
+							if (data.resultcode == 0) {
+								//indicatorOff();
+								if (data.positions.length > 0) {
+									map = new google.maps.Map(
+											document
+													.getElementById('googlemap'),
+											{
+												center : {
+													lat : Number(data.positions[0].lat),
+													lng : Number(data.positions[0].lng)
+												},
+												zoom : 7
+											});
+									var locations = [];
+									//
+									var latLngs = [];
+									var newLat;  //x
+		                            var newLng;  //Y
+									
+									for (var i = 0; i < data.positions.length; i++) {
+										//
+										newLat = Number(data.positions[i].lat);  //x
+		                            	newLng = Number(data.positions[i].lng);  //Y
+										var latLng = new google.maps.LatLng(Number(data.positions[i].lat), Number(data.positions[i].lng));
+										if(latLngs.length != 0) {
+						                    for (var j = 0; j < latLngs.length; j++) {
+						                        var existinglatLng = latLngs[j];
+						                        var pos = existinglatLng.getPosition();
+						                        if (latLng.equals(pos) || data.positions[i].distance < 0.001) {
+						                            var a = 360.0 / latLngs.length;
+						                            newLat = pos.lat() + -.00004 * Math.cos((+a*i) / 180 * Math.PI);  //x
+						                            newLng = pos.lng() + -.00004 * Math.sin((+a*i) / 180 * Math.PI);  //Y
+						                            latLng = new google.maps.LatLng(newLat,newLng);
+						                        }
+						                    }
+						                }
+										latLngs.push(new google.maps.Marker({position: latLng}));
+										
+										locations
+												.push({
+													lat : newLat, //Number(data.positions[i].lat),
+													lng : newLng, //Number(data.positions[i].lng),
+													title : data.positions[i].title,
+													description : data.positions[i].description,
+													mainimagefilepath : data.positions[i].mainimagefilepath,
+													roadaddress : data.positions[i].roadaddress,
+													contact : data.positions[i].contact,
+													festivalseq : data.positions[i].festivalseq
+												});
+									}
+									
+									
+									var markers = locations
+											.map(function(location, i) {
+												// InfoWindow content
+												var content = '<div id="iw-container">'
+														+ '<a href="FestivalDetail.festa?festivalseq='
+														+ location.festivalseq
+														+ '" target="_blank"><div class="iw-title" style="background-color: #F26828;">'
+														+ location.title
+														+ '</div></a>'
+														+ '<div class="iw-content">'
+														+ '<div class="iw-subTitle">소개</div>'
+														+ '<a href="FestivalDetail.festa?festivalseq='
+														+ location.festivalseq
+														+ '" target="_blank"><img src="' 
+														+ location.mainimagefilepath 
+														+ '" alt="'
+														+ location.title
+														+ '" height="115" width="83"></a>'
+														+ '<p>'
+														+ location.description
+														+ '</p>'
+														+ '<div class="iw-subTitle">주소</div>'
+														+ '<p>'
+														+ location.roadaddress
+														+ '<br>'
+														+ location.contact
+														+ '<br><a href="FestivalDetail.festa?festivalseq='
+														+ location.festivalseq
+														+ '" target="_blank">'
+														+ '상세페이지</a></p>'
+														+ '</div>'
+														+ '<!--<div class="iw-bottom-gradient"></div>-->'
+														+ '</div>';
+												var infowindow = new google.maps.InfoWindow(
+														{
+															content : content
+														});
+												google.maps.event
+														.addListener(
+																infowindow,
+																'domready',
+																function() {
+																	// Reference to the DIV that wraps the bottom of infowindow
+																	var iwOuter = $('.gm-style-iw');
+
+																	// Reference to the div that groups the close button elements.
+																	var iwCloseBtn = iwOuter
+																			.find('button');
+
+																	// Apply the desired effect to the close button
+																	iwCloseBtn
+																			.css({
+																				opacity : '1',
+																				right : '15px',
+																				top : '17px',
+																				border : '0px solid',
+																				'border-radius' : '20px'
+																			});
+
+																	// If the content of infowindow not exceed the set maximum height, then the gradient is removed.
+																	if ($(
+																			'.iw-content')
+																			.height() < 140) {
+																		$(
+																				'.iw-bottom-gradient')
+																				.css(
+																						{
+																							display : 'none'
+																						});
+																	}
+																	// The API automatically applies 0.7 opacity to the button after the mouseout event. This function reverses this event to the desired value.
+																	iwCloseBtn
+																			.mouseout(function() {
+																				$(
+																						this)
+																						.css(
+																								{
+																									opacity : '1'
+																								});
+																			});
+																});
+												var marker = new google.maps.Marker(
+														{
+															position : location,
+															icon : imageSrc
+														});
+												marker
+														.addListener(
+																'click',
+																function() {
+																	infowindow
+																			.open(
+																					map,
+																					marker);
+																});
+												// Event that closes the Info Window with a click on the map
+												google.maps.event.addListener(
+														map, 'click',
+														function() {
+															infowindow.close();
+														});
+												return marker;
+											});
+									
+									
+									var markerCluster = new MarkerClusterer(
+											map, markers, {
+												imagePath : '/images/m'
+											});
+
+								}
+							} else {
+								//indicatorOff();
+								alert(data.resultmessage);
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							//indicatorOff();
+							//alert(textStatus);
+						}
+					});
+		}
+
+		function initMap(lat, lng, zoom) {
+			if (lat == null || lng == null || zoom == null) {
+				lat = 36.2683;
+				lng = 127.6358;
+				zoom = 7;
+			}
+			map = new google.maps.Map(document.getElementById('googlemap'), {
+				center : {
+					lat : lat,
+					lng : lng
+				},
+				zoom : zoom
+			});
+			updateGoogleMapFestivalList(map);
+		}
+
+		$('#festivalstartdate').on('changeDate', function() {
+			var startdate = $('#festivalstartdate').val();
+			var enddate = $('#festivalenddate').val();
+			if (startdate != '' && enddate != '') {
+				checkDate2(startdate, enddate, 'festivalstartdate');
+			}
+		});
+		$('#festivalenddate').on('changeDate', function() {
+			var startdate = $('#festivalstartdate').val();
+			var enddate = $('#festivalenddate').val();
+			if (startdate != '' && enddate != '') {
+				checkDate2(startdate, enddate, 'festivalenddate');
+			}
+		});
+
+		function checkDate2(startDate, endDate, target) {
+			var startDateArr = startDate.split('.');
+			var endDateArr = endDate.split('.');
+			var startDateCompare = new Date(startDateArr[0], startDateArr[1],
+					startDateArr[2]);
+			var endDateCompare = new Date(endDateArr[0], endDateArr[1],
+					endDateArr[2]);
+			if (startDateCompare.getTime() > endDateCompare.getTime()) {
+				alert("방문예정일 날짜를 확인해 주세요.");
+				$('#' + target).val('');
+			} else {
+				initMap();
+			}
+		}
+		$('#sido').on('change', function() {
+			$('#sigungu').val('');
+			initMap();
+			$.setSigungu($('#sido').val(), 'sigungu');
+		});
+		$('#sigungu').on('change', function() {
+			initMap();
+		});
+		$('#typeseq').on('change', function() {
+			initMap();
+		});
+	</script>
+	<script src="/gukmin/js/markerclusterer.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWEafyDye2nVJLlUGItmGjKdEp2uqoBm8&callback=initMap"
+		async defer></script>
+
+	<div class="obgBox">
+		<h2 class="mtit t01">#베스트 축제·이벤트</h2>
+		<div class="planSlideBox">
+			<div class="planSlide">
+				
+					
+						<div class="item">
+					
+					<div class="list">
+						<div class="pic">
+							<div class="bestBox">
+								1
+							</div>
+							<div class="pic_area">
+								<a
+									href="#"><img
+									src="https://joyfesta.kr/uploadedfiles/spot/2019/11/[크기변환]77da2ebb-6ae5-4ec6-a6ed-999951d0750e_171929175.jpg" />
+									<div class="sts_area">
+										
+										
+											
+												<span class="sts_be">진행<br />예정
+												</span>
+											
+											
+											
+										
+									</div></a>
+							</div>
+
+						</div>
+						<div class="cont">
+							<p class="t01">
+								<a
+									href="#">#얼음나라 화천  산천어 축제 2020</a>
+							</p>
+							<div class="t02">
+								2020.01.11
+								~
+								2020.02.02
+							</div>
+							<p class="t03">
+								
+									<a
+										href="#"
+										class="link_org">#강원도</a>
+								
+									<a
+										href="#"
+										class="link_org">#화천</a>
+								
+									<a
+										href="#"
+										class="link_org">#산천어</a>
+								
+									<a
+										href="#"
+										class="link_org">#낚시</a>
+								
+									<a
+										href="#"
+										class="link_org">#겨울</a>
+								
+									<a
+										href="#"
+										class="link_org">#강원도축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#화천축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#산천어축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#겨울축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#1월축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#2월축제</a>
+								
+							</p>
+							<a href="javascript:void(0)"
+								onclick="javascript:$.setBookmark(this, '3', '980');"
+								class="btnHart ">&nbsp;</a>
+						</div>
+					</div>
+					
+			
+				
+		
+		
+					
+					<div class="list">
+						<div class="pic">
+							<div class="bestBox">
+								2
+							</div>
+							<div class="pic_area">
+								<a
+									href="#"><img
+									src="https://joyfesta.kr/uploadedfiles/spot/2019/11/[크기변환]sub2-4-1_1_174626326.jpg" />
+									<div class="sts_area">
+										
+										
+											
+												<span class="sts_be">진행<br />예정
+												</span>
+											
+											
+											
+										
+									</div></a>
+							</div>
+
+						</div>
+						<div class="cont">
+							<p class="t01">
+								<a
+									href="#">#영동 곶감축제 2020</a>
+							</p>
+							<div class="t02">
+								2020.01.03
+								~
+								2020.01.05
+							</div>
+							<p class="t03">
+								
+									<a
+										href="#"
+										class="link_org">#충북</a>
+								
+									<a
+										href="#"
+										class="link_org">#영동</a>
+								
+									<a
+										href="#"
+										class="link_org">#곶감</a>
+								
+									<a
+										href="#"
+										class="link_org">#먹거리</a>
+								
+									<a
+										href="#"
+										class="link_org">#충북축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#곶감축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#먹거리축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#겨울축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#영동곶감축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#1월축제</a>
+								
+							</p>
+							<a href="javascript:void(0)"
+								onclick="javascript:$.setBookmark(this, '3', '981');"
+								class="btnHart ">&nbsp;</a>
+						</div>
+					</div>
+					
+			
+				
+		
+		
+					
+					<div class="list">
+						<div class="pic">
+							<div class="bestBox">
+								3
+							</div>
+							<div class="pic_area">
+								<a
+									href="#"><img
+									src="https://joyfesta.kr/uploadedfiles/spot/2019/11/4_144903387.jpg" />
+									<div class="sts_area">
+										
+										
+											
+											
+											
+												<span class="sts_ing">진행중</span>
+											
+										
+									</div></a>
+							</div>
+
+						</div>
+						<div class="cont">
+							<p class="t01">
+								<a
+									href="#">#서울디저트페어 [딸기전] 2019</a>
+							</p>
+							<div class="t02">
+								2019.12.28
+								~
+								2019.12.29
+							</div>
+							<p class="t03">
+								
+									<a
+										href="#"
+										class="link_org">#서울</a>
+								
+									<a
+										href="#"
+										class="link_org">#디저트</a>
+								
+									<a
+										href="#"
+										class="link_org">#전시회</a>
+								
+									<a
+										href="#"
+										class="link_org">#박람회</a>
+								
+									<a
+										href="#"
+										class="link_org">#가을</a>
+								
+									<a
+										href="#"
+										class="link_org">#서울축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#서울전시회</a>
+								
+									<a
+										href="#"
+										class="link_org">#서울박람회</a>
+								
+									<a
+										href="#"
+										class="link_org">#디저트페어</a>
+								
+									<a
+										href="#"
+										class="link_org">#가을축제</a>
+								
+									<a
+										href="#"
+										class="link_org">#12월축제</a>
+								
+							</p>
+							<a href="javascript:void(0)"
+								onclick="javascript:$.setBookmark(this, '3', '942');"
+								class="btnHart ">&nbsp;</a>
+						</div>
+					</div>
+					
+			
+				
+		</div>
+		
+		
+		
+	</div>
+	</div>
+	</div>
+
+	<div class="ebgBox">
+		<form id="searchform" name="searchform" action="/gukminview/festival/festivalAndEventView" method="post">
+			<ul class="categoriList">
+				<li><a href="javascript:getFestivalList('', true);" class="on">#전체</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('23', true);">#먹거리</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('24', true);">#지역ㆍ특산물</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('25', true);">#민속ㆍ전통문화</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('26', true);">#미술ㆍ예술</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('27', true);">#음악ㆍ공연</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('28', true);">#생태계ㆍ자연</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('29', true);">#레저ㆍ스포츠</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('30', true);">#과학ㆍ기술</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('31', true);">#교육ㆍ체험</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('32', true);">#종교ㆍ역사</a></li>
+				
+					<li><a
+						href="javascript:getFestivalList('33', true);">#기타</a></li>
+				
+			</ul>
+			<div class="filterBox">
+				<select class="select" id="ordertype" name="ordertype"
+					style="display: none;">
+					<option value="">#필터선택</option>
+					<option value="bookmark">#좋아요순</option>
+					<option value="view">#조회수순</option>
+				</select> <select class="select" id="festivalstatus" name="festivalstatus">
+					<option value="">#필터선택</option>
+					<option value="0">#진행중</option>
+					<option value="1">#진행예정</option>
+					<option value="2">#종료</option>
+				</select>
+			</div>
+		</form>
+
+
+
+		<ul class="onlyList" id="festivallist">
+		</ul>
+		<a href="javascript:getFestivalList('', false);" class="btnMore">#더보기
+			+</a>
+	</div>
+</section>
+
+<script>
+	var currentPage = 1;
+	var typeseq;
+	var pageSize = 6;
+
+	function getFestivalList(selectedtypeseq, refreshflag) {
+		if (refreshflag == true) {
+			typeseq = selectedtypeseq;
+			$('.onlyList').empty();
+			currentPage = 1;
+		}
+		$
+				.ajax({
+					url : 'JSONFestivalList.festa',
+					type : 'POST',
+					data : {
+						typeseq : typeseq,
+						ordertype : $('#ordertype').val(),
+						festivalstatus : $('#festivalstatus').val(),
+						currentPage : currentPage,
+						pageSize : pageSize
+					},
+					dataType : 'json',
+					success : function(data, textStatus, jqXHR) {
+						if (data.festivalList.length > 0) {
+							for (var i = 0; i < data.festivalList.length; i++) {
+								var hashtags = '';
+								for (var j = 0; j < data.festivalList[i].hashtaglist.length; j++) {
+									hashtags += '#'
+											+ data.festivalList[i].hashtaglist[j].hashtag
+											+ ' ';
+								}
+								var status = '';
+								if (data.festivalList[i].status != null
+										&& data.festivalList[i].status != '') {
+									if (data.festivalList[i].status == '진행예정') {
+										status = '<span class="sts_be">진행<br />예정</span>';
+									} else if (data.festivalList[i].status == '종료') {
+										status = '<span class="sts_fini">종료</span>';
+									} else if (data.festivalList[i].status == '진행중') {
+										status = '<span class="sts_ing">진행중</span>';
+									}
+								}
+								var btnHartClass = '';
+								if (data.festivalList[i].bookmarkflag == 'Y') {
+									btnHartClass = 'on';
+								}
+								$('.onlyList')
+										.append(
+												'<li><div class="pic_area"><a href="FestivalDetail.festa?festivalseq='
+														+ data.festivalList[i].festivalseq
+														+ '" class="pic"><img src="' 
+														+ data.festivalList[i].mainimagefilepath 
+														+ '" /><div class="sts_area">'
+														+ status
+														+ '</div></a></div><div class="cont"><p class="t01"><a href="FestivalDetail.festa?festivalseq='
+														+ data.festivalList[i].festivalseq
+														+ '">'
+														+ data.festivalList[i].title
+														+ '</a></p><div class="t02">'
+														+ data.festivalList[i].startdate
+														+ '~'
+														+ data.festivalList[i].enddate
+														+ '</div><p class="t03">'
+														+ hashtags
+														+ '</p><a href="javascript:void(0)" onclick="javascript:$.setBookmark(this, \'3\', \''
+														+ data.festivalList[i].festivalseq
+														+ '\');" class="btnHart '
+														+ btnHartClass
+														+ '">&nbsp;</a></div></li>');
+							}
+							if (data.totalCount <= (currentPage * pageSize)) {
+								$('.btnMore').hide();
+							} else {
+								$('.btnMore').show();
+							}
+							currentPage++;
+						} else {
+							if (currentPage > 1) {
+								alert('마지막 페이지입니다.');
+							}
+							$('.btnMore').hide();
+						}
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						//alert(textStatus);
+					}
+				});
+	}
+
+	$('#ordertype').change(function() {
+		getFestivalList($('#typeseq').val(), true);
+	});
+
+	$('#festivalstatus').change(function() {
+		getFestivalList($('#typeseq').val(), true);
+	});
+
+	$(document).ready(function() {
+		getFestivalList('', true);
+	});
+
+	
+</script>
+
+
+
+</th:block>
+
+</html>

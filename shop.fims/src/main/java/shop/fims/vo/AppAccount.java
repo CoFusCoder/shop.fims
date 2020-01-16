@@ -2,20 +2,20 @@ package shop.fims.vo;
 
 public class AppAccount {
 	
-	private String catAppAccCd;	//거래처별 승인 업종 코드
-	private String areacityAdminCd;	//모든 행정기관코드
-	private String catBusAccCd;	//거래처 업종 분류코드
-	private String catAccCd;	//거래처코드
-	private String areaCityCd;	//모든 지역 시군코드
-	private String areaCd;	//전국지역코드
-	private String manComCd;	//위원회코드
-	private String catAccNm1;	//거래처명
-	private String catBusAccBus;	//거래처업종분류
-	private String catAppAccApp;	//승인자
-	private String manComNm1;	//위원회명
-	private String catAppAccDt;	//승인일자
-	private String catAppAccCon;	//승인 상태
-	private String catAppAccPur;	//거래처업무
+	private String catAppAccCd;	//거래처별 승인 업종 코드	//catapp_acc_cd
+	private String areacityAdminCd;	//모든 행정기관코드	//areacity_admin_cd
+	private String catBusAccCd;	//거래처 업종 분류코드		//catbus_acc_cd
+	private String catAccCd;	//거래처코드				//cat_acc_cd
+	private String areaCityCd;	//모든 지역 시군코드		//area_city_cd
+	private String areaCd;	//전국지역코드				//area_cd
+	private String manComCd;	//위원회코드				//man_com_cd
+	private String catAccNm1;	//거래처명				//cat_acc_nm1
+	private String catBusAccBus;	//거래처업종분류		//catbus_acc_bus
+	private String catAppAccApp;	//승인자				//catapp_acc_app
+	private String manComNm1;	//위원회명				//man_com_nm1
+	private String catAppAccDt;	//승인일자				//catapp_acc_dt
+	private String catAppAccCon;	//승인 상태			//catapp_acc_con
+	private String catAppAccPur;	//거래처업무			//catapp_acc_pur
 	
 	public String getCatAppAccCd() {
 		return catAppAccCd;

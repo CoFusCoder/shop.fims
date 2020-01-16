@@ -1,18 +1,25 @@
 package shop.fims.estimate;
 
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import shop.fims.vo.Estimate;
+import shop.fims.vo.Login;
 
 
 
@@ -28,37 +35,69 @@ public class EstimateControllor {
 	 * @return
 	 */
 	@GetMapping("/estimatelist")
-	public String estimatelist() {
+	public String estimatelist(Model model) {		
+		model.addAttribute("estimatelist",estimateservice.estimatelist() );
 		return "estimate/estimatelist";		
+	}
+	//담당자 화인
+	@PostMapping("/estimatelist")
+	public String updataexeManager(@RequestParam(value = "exeManager")String exeManager,@RequestParam(value = "exaRepCd")String exaRepCd, Model model) {
+		System.out.println(exeManager +"<-----exeManager");
+		System.out.println("exaRepCd-->"+exaRepCd);
+		estimateservice.updataexeManager(exaRepCd, exeManager);
+		
+		
+		return "redirect:/estimatelist";
 	}
 	//신청서 내역 이동 
 	@GetMapping("/apply")
-	public String insertindex(Model model) {
-		return "/estimate/apply";
+	public String nextapply(@RequestParam(value = "exaRepCd", required = false) String exa_rep_cd, Model model) {
+		System.out.println(exa_rep_cd + " <-exa_rep_cd");
+		model.addAttribute("nextapply", estimateservice.nextapply(exa_rep_cd));
+		
+		return  "estimate/apply";
+	}
 	
-	}		
-	//심사지표 이동,심사명 선택	
+	//심사지표 이동
 	@GetMapping("/examinationIndex")
-	public String examinationIndex(Model model) {
-		model.addAttribute("examinateionidex", estimateservice.examinationIndex());
+	public String examinationIndex(@RequestParam(value = "exaRepCd")String exaRepCd,Model model) {	
+		System.out.println(exaRepCd+"<--exaRepCd" );
+		model.addAttribute("examinationIndex", estimateservice.examinationIndex(exaRepCd));		
+		System.out.println("model >>"+model );
 		return "estimate/examinationIndex";
 	}
+	//심사표
+	@PostMapping("/examinationIndex")
+	public @ResponseBody Map<String,List<Estimate>> evaindexscocd(@RequestParam(value = "eva")String eva) {
+		
+//		System.out.println("exaRepCd->"+exaRepCd);
+		Map<String,List<Estimate>> evaMap = new HashMap<String,List<Estimate>>();
+		List<Estimate> indexeva = estimateservice.indexeva(eva);	
+		evaMap.put("indexeva", indexeva);	
+		System.out.println(evaMap);		
+		List<Estimate> evaList = estimateservice.evaList(eva);		
+		evaMap.put("evaList", evaList);	
+		System.out.println(evaMap +"<--------evaMap");
+		return evaMap;
+	}
+	
+	
+	
 	//심사결과 상세보기
 	@GetMapping("/estimatelistdetail")
 	public String estimatelistdetail() {
 		return "estimate/estimatelistdetail";
 	}
 	
-	@PostMapping(value = "/test", produces = "application/json")
-	public @ResponseBody Estimate test(@RequestParam(value = "stnId", required = false) String stnId) {	
-		return estimateservice.testSelect(stnId);
-	}
 	@GetMapping("/finalestimatelist")
 	public String finalestimatelist() {
 		return "estimate/finalestimatelist";
 	}
+
+	
 	@GetMapping("/reviewindicater")
 	public String reviewindicater() {
 		return "estimate/reviewindicater";
 	}
+	
 }

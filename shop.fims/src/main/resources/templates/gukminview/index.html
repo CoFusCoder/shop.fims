@@ -3,11 +3,163 @@
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/gukmin/gukmindefault}">
 
-<th:block layout:fragment="gukminMainContents">
-<th:block th:include="fragments/gukmin/gukminmainview"></th:block>
+<th:block layout:fragment="projectIntroCSS">
+    <link href="http://www.vigeotech.com/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/gukmin/agency.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 </th:block>
-<th:block layout:fragment="gukminscript">
-<th:block th:include="fragments/gukmin/gukminscript"></th:block>
+
+<th:block layout:fragment="gukminMainContents">
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">축제통합관리시스템 프로젝트 소개</h2>
+                    <h3 class="section-subheading text-muted">축제통합관리시스템은 공무원, 거래처, 국민을 위한 최적의 축제관리 서비스를 제공합니다.</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">관리자 화면</h4>
+                    <p class="text-muted">총괄관리자인 도 ㆍ시ㆍ군청 공무원 및 축제를 만드는 축제추진위원회가 효율적으로 모든 축제를 관리할 수 있는 시스템</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                       <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">국민 화면</h4>
+                    <p class="text-muted">회원가입만 하면 대한민국 모든 축제를 한곳에서 검색 할 수 있고 관심있는 축제 및 방문했던 축제를 관리를 할 수 있는 시스템</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">세입ㆍ세출예산 화면</h4>
+                    <p class="text-muted">경영공시로 모든 국민에게 축제에 대한 세금이 어떻게 쓰여지는 정보를 제공하는 시스템</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="portfolio" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Case Study</h2>
+                    <h3 class="section-subheading text-muted">비제오테크의 솔루션을 소개합니다.</h3>
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="http://www.vigeotech.com/img/portfolio/vstepImg.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>정보보안 취약점 대응 훈련 솔루션<br>(V-STEP)
+</h4>
+                        <p class="text-muted">Solution Developement</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="http://www.vigeotech.com/img/portfolio/vslmsImg.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>스마트 학습 관리 시스템<br>(V-SLMS)</h4>
+                        <p class="text-muted">Solution Developement</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="http://www.vigeotech.com/img/portfolio/roundicons.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>보안수준활동관리 솔루션<br>(V-SLPM) 
+</h4>
+                        <p class="text-muted">Solution Developement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <aside class="clients">
+        <div class="container">
+        <span style="font-size: 20pt"><strong>⊙프로젝트 팀원 소개</strong></span>
+            <div class="row">
+                 <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <!-- <img src="" class="img-responsive img-centered" alt="김동석"> -->
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                 <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <!-- <img src="" class="img-responsive img-centered" alt="김동열"> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <aside class="clients">
+        <div class="container">
+        <span style="font-size: 20pt"><strong>⊙프로젝트 참고사이트</strong></span>
+            <div class="row">
+                 <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="https://joyfesta.kr/uploadedfiles/eventbanner/2019/09/%E1%84%8C%E1%85%A9%E1%84%8B%E1%85%B5%E1%84%91%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1_%E1%84%89%E1%85%A5%E1%84%83%E1%85%B5%E1%84%91%E1%85%A6_%E1%84%90%E1%85%B5%E1%84%8F%E1%85%A6%E1%86%BA%E1%84%8C%E1%85%B3%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3_185703411.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="https://joyfesta.kr/uploadedfiles/eventbanner/2019/09/%E1%84%8C%E1%85%A9%E1%84%8B%E1%85%B5%E1%84%91%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1_%E1%84%89%E1%85%A5%E1%84%83%E1%85%B5%E1%84%91%E1%85%A6_%E1%84%90%E1%85%B5%E1%84%8F%E1%85%A6%E1%86%BA%E1%84%8C%E1%85%B3%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3_185703411.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="https://joyfesta.kr/uploadedfiles/eventbanner/2019/09/%E1%84%8C%E1%85%A9%E1%84%8B%E1%85%B5%E1%84%91%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1_%E1%84%89%E1%85%A5%E1%84%83%E1%85%B5%E1%84%91%E1%85%A6_%E1%84%90%E1%85%B5%E1%84%8F%E1%85%A6%E1%86%BA%E1%84%8C%E1%85%B3%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3_185703411.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="#">
+                        <img src="https://joyfesta.kr/uploadedfiles/eventbanner/2019/09/%E1%84%8C%E1%85%A9%E1%84%8B%E1%85%B5%E1%84%91%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1_%E1%84%89%E1%85%A5%E1%84%83%E1%85%B5%E1%84%91%E1%85%A6_%E1%84%90%E1%85%B5%E1%84%8F%E1%85%A6%E1%86%BA%E1%84%8C%E1%85%B3%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3_185703411.jpg" class="img-responsive img-centered" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
 </th:block>
 
 </html>

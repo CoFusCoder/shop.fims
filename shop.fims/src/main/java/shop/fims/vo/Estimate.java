@@ -16,11 +16,32 @@ public class Estimate {
 	private String exaTotalScore;// 총점
 	private String estClaCd;// 심사구분
 	private String evaNm;// 평가명
-	private String l_criteria;// 대평가항목
-	private String m_criteria;// 중평가항목
-	private String s_criteria;// 소평가항목
-	private String scoring_criteria;// 배점기준
+	private String lCriteria;// 대평가항목
+	private String mCriteria;// 중평가항목
+	private String sCriteria;// 소평가항목
+	private String scoringCriteria;// 배점기준
 	private String scoring;// 배점
+	private String multipleChoice;//객관식
+	private String exeManager;//문제코드
+	private String evaindexScoCd;//객관식문항점수표 코드
+	private String evaindexItemCd;//항목코드
+	
+	private String areaNm;//지역 이름
+	private String areaCityNm;//시군명
+	private String areacityAdminNm;//행정기관명
+	private String festNm;//축제명
+	
+	
+	// 회원 정보
+	private String memLevCd;//모든 회원 레벨코드
+	private String memNm;//회원 이름
+	private String memAddr;//주소
+	private String memPhone;//전화번호
+	private String memEmail;//이메일
+	private String memBirth;//생년월일
+	private String joinDt;//가입일자
+	private String LoginCd;//로그인 코드
+	
 	public String getExaRepCd() {
 		return exaRepCd;
 	}
@@ -105,29 +126,29 @@ public class Estimate {
 	public void setEvaNm(String evaNm) {
 		this.evaNm = evaNm;
 	}
-	public String getL_criteria() {
-		return l_criteria;
+	public String getlCriteria() {
+		return lCriteria;
 	}
-	public void setL_criteria(String l_criteria) {
-		this.l_criteria = l_criteria;
+	public void setlCriteria(String lCriteria) {
+		this.lCriteria = lCriteria;
 	}
-	public String getM_criteria() {
-		return m_criteria;
+	public String getmCriteria() {
+		return mCriteria;
 	}
-	public void setM_criteria(String m_criteria) {
-		this.m_criteria = m_criteria;
+	public void setmCriteria(String mCriteria) {
+		this.mCriteria = mCriteria;
 	}
-	public String getS_criteria() {
-		return s_criteria;
+	public String getsCriteria() {
+		return sCriteria;
 	}
-	public void setS_criteria(String s_criteria) {
-		this.s_criteria = s_criteria;
+	public void setsCriteria(String sCriteria) {
+		this.sCriteria = sCriteria;
 	}
-	public String getScoring_criteria() {
-		return scoring_criteria;
+	public String getScoringCriteria() {
+		return scoringCriteria;
 	}
-	public void setScoring_criteria(String scoring_criteria) {
-		this.scoring_criteria = scoring_criteria;
+	public void setScoringCriteria(String scoringCriteria) {
+		this.scoringCriteria = scoringCriteria;
 	}
 	public String getScoring() {
 		return scoring;
@@ -135,19 +156,121 @@ public class Estimate {
 	public void setScoring(String scoring) {
 		this.scoring = scoring;
 	}
+	public String getMultipleChoice() {
+		return multipleChoice;
+	}
+	public void setMultipleChoice(String multipleChoice) {
+		this.multipleChoice = multipleChoice;
+	}
+	public String getExeManager() {
+		return exeManager;
+	}
+	public void setExeManager(String exeManager) {
+		this.exeManager = exeManager;
+	}
+	public String getEvaindexScoCd() {
+		return evaindexScoCd;
+	}
+	public void setEvaindexScoCd(String evaindexScoCd) {
+		this.evaindexScoCd = evaindexScoCd;
+	}
+	public String getEvaindexItemCd() {
+		return evaindexItemCd;
+	}
+	public void setEvaindexItemCd(String evaindexItemCd) {
+		this.evaindexItemCd = evaindexItemCd;
+	}
+	public String getAreaNm() {
+		return areaNm;
+	}
+	public void setAreaNm(String areaNm) {
+		this.areaNm = areaNm;
+	}
+	public String getAreaCityNm() {
+		return areaCityNm;
+	}
+	public void setAreaCityNm(String areaCityNm) {
+		this.areaCityNm = areaCityNm;
+	}
+	public String getAreacityAdminNm() {
+		return areacityAdminNm;
+	}
+	public void setAreacityAdminNm(String areacityAdminNm) {
+		this.areacityAdminNm = areacityAdminNm;
+	}
+	public String getFestNm() {
+		return festNm;
+	}
+	public void setFestNm(String festNm) {
+		this.festNm = festNm;
+	}
+	public String getMemLevCd() {
+		return memLevCd;
+	}
+	public void setMemLevCd(String memLevCd) {
+		this.memLevCd = memLevCd;
+	}
+	public String getMemNm() {
+		return memNm;
+	}
+	public void setMemNm(String memNm) {
+		this.memNm = memNm;
+	}
+	public String getMemAddr() {
+		return memAddr;
+	}
+	public void setMemAddr(String memAddr) {
+		this.memAddr = memAddr;
+	}
+	public String getMemPhone() {
+		return memPhone;
+	}
+	public void setMemPhone(String memPhone) {
+		this.memPhone = memPhone;
+	}
+	public String getMemEmail() {
+		return memEmail;
+	}
+	public void setMemEmail(String memEmail) {
+		this.memEmail = memEmail;
+	}
+	public String getMemBirth() {
+		return memBirth;
+	}
+	public void setMemBirth(String memBirth) {
+		this.memBirth = memBirth;
+	}
+	public String getJoinDt() {
+		return joinDt;
+	}
+	public void setJoinDt(String joinDt) {
+		this.joinDt = joinDt;
+	}
+	public String getLoginCd() {
+		return LoginCd;
+	}
+	public void setLoginCd(String loginCd) {
+		LoginCd = loginCd;
+	}
 	@Override
 	public String toString() {
 		return "Estimate [exaRepCd=" + exaRepCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd
 				+ ", areaCityCd=" + areaCityCd + ", festCd=" + festCd + ", memCd=" + memCd + ", accMemCd=" + accMemCd
 				+ ", festProCd=" + festProCd + ", evaIndexCd=" + evaIndexCd + ", exaCondition=" + exaCondition
 				+ ", exaDt=" + exaDt + ", exaTotalScore=" + exaTotalScore + ", estClaCd=" + estClaCd + ", evaNm="
-				+ evaNm + ", l_criteria=" + l_criteria + ", m_criteria=" + m_criteria + ", s_criteria=" + s_criteria
-				+ ", scoring_criteria=" + scoring_criteria + ", scoring=" + scoring + "]";
+				+ evaNm + ", lCriteria=" + lCriteria + ", mCriteria=" + mCriteria + ", sCriteria=" + sCriteria
+				+ ", scoringCriteria=" + scoringCriteria + ", scoring=" + scoring + ", multipleChoice=" + multipleChoice
+				+ ", exeManager=" + exeManager + ", evaindexScoCd=" + evaindexScoCd + ", evaindexItemCd="
+				+ evaindexItemCd + ", areaNm=" + areaNm + ", areaCityNm=" + areaCityNm + ", areacityAdminNm="
+				+ areacityAdminNm + ", festNm=" + festNm + ", memLevCd=" + memLevCd + ", memNm=" + memNm + ", memAddr="
+				+ memAddr + ", memPhone=" + memPhone + ", memEmail=" + memEmail + ", memBirth=" + memBirth + ", joinDt="
+				+ joinDt + ", LoginCd=" + LoginCd + "]";
 	}
 	
+
 	
 	
-	
+
 	
 	
 }

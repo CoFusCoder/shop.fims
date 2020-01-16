@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents">
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+	<meta charset="UTF-8">
+	<th:block layout:fragment="customBody">
+        <h3><i class="fa fa-angle-right"></i>안전점검조회</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i>안전점검조회</h4>
+              <hr>
+              <table class="table">
+                <thead>
+					<tr>
+						<th>구 분</th>
+						<th>점 검 사 항</th>
+					</tr>
+                </thead>
+                <tbody>
+					<tr th:each="l : ${checkList}">
+						<td th:text="${l.inslistCla}"></td>
+						<td th:text="${l.inslistCon}"></td>
+					</tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- /col-md-12 -->
+          <!-- /col-md-12 -->
+        </div>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+</html>

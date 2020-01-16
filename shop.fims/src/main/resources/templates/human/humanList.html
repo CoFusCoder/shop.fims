@@ -8,8 +8,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		<meta charset="UTF-8">
 		<th:block layout:fragment="customBody">
 
-		    <section id="main-content" style="margin: 100px; margin-top: 0px;">
-		      <section class="wrapper">
 		        <h3><i class="fa fa-angle-right"></i>축제업무인적조회</h3>
 		        <div class="row">
 		          <div class="col-md-12">
@@ -54,9 +52,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		              <table class="table">
 		                <thead>
 							<tr>
-								<th style=display:none;>인적코드</th>
-								<th style=display:none;>위원회코드</th>
-								<th style=display:none;>보유시설코드</th>
+								<th style="display:none;">인적코드</th>
+								<th style="display:none;">위원회코드</th>
+								<th style="display:none;">보유시설코드</th>
+								<th style="display:none;">담당업무코드</th>
 								<th>이름</th>
 								<th>축제명</th>
 								<th>업무</th>
@@ -72,9 +71,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		                </thead>
 		                <tbody>
 		  					<tr th:each = "h : ${HumanList}">
-								<td th:text = "${h.humanCd}" style=display:none;></td>
-								<td th:text = "${h.mamCd}" style=display:none;></td>
-								<td th:text = "${h.staCd}" style=display:none;></td>
+								<td th:text = "${h.humanCd}" style="display:none;"></td>
+								<td th:text = "${h.mamCd}" style="display:none;"></td>
+								<td th:text = "${h.staCd}" style="display:none;"></td>
+								<td th:text = "${h.workdivCd}" style="display:none;"></td>
 								<td th:text = "${h.humanNm}"></td>
 								<td th:text = "${h.festNm}"></td>
 								<td th:text = "${h.workdivNm}"></td>
@@ -86,7 +86,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<a th:href = "@{/humanView(humanCd=${h.humanCd})}">상세보기</a>
 								</td>
 								<td>
-								<a th:href = "@{/facilityList}">상세보기</a> <!--모든보유시설리스트연결-->
+								<a th:href = "@{/facilityList}">상세보기</a> 
 								</td>
 								<td>
 									<a th:href="@{/humanUpdate(humanCd=${h.humanCd})}">수정</a>
@@ -103,8 +103,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		          <!-- /col-md-12 -->
 		        </div>
 		        </div>
-		      </section>
-		    </section>
 </th:block>
 <th:block layout:fragment="adminisscript">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>

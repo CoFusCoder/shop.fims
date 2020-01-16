@@ -10,7 +10,7 @@ import shop.fims.vo.Committee;
 @Mapper
 public interface CommitteeMapper {
 	
-	//모든 위원회 관리
+	//위원회 관리
 	public List<Committee> selectAllCommitteeView();
 	
 	//위원회 상세조회 위원회 코드로 조회

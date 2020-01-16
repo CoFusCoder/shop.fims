@@ -5,59 +5,74 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisTitle">
 	<title>홍보사업리스트</title>
 </th:block>
+<th:block layout:fragment="adminisScript">
+	<script th:src="@{/adminis/lib/jquery/jquery.min.js}"></script>			
+</th:block>
 <th:block layout:fragment="adminisMainContents">
 
-	- 페이징 해야함
-	- 검색기능 해야함
-		<h3>홍보사업리스트</h3>
 		
-		<div class="row mt">
-          <div class="col-md-12">
+
+          <div class="col-lg-12">
            
-            <div class="content-panel">
-              <h4><i class="fa fa-angle-right"></i> 사업리스트</h4>   
+
+            
+<!-- 상단 홍보관련메뉴 -->	
+            <div class="form-panel">
+	            <div id="controls-tabs">
+		            <div class="wrap_controls">
+		            	<ul class="ullist controls " style="margin: 0px; padding: 0px; list-style-type: none;">
+				            <li class=""><a th:href="@{/prDivList}" id="prDivBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보분류관리</span></a></li>
+				            <li class="active"><a th:href="@{/prPromotionList}"  id="prPromotionBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보사업관리</span></a></li>
+				            <li class=""><a th:href="@{/prComList}" id="prComBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보거래처관리</span></a></li>
+		           		</ul>
+		            </div>
+            	</div>            
+            
+			<h1 align="center"><span >《[[${session.F_NM}]]》 홍보 사업 리스트</span></h1>
               <div align="right">
               <a th:href="@{/prInsertPromotion}" >
-              <button type="button" class="btn btn-primary">신규사업등록</button></a>  
+              <button type="button" class="btn btn-info">신규사업등록</button></a>  
               </div>
               
         <!-- 세부프로그램검색 start -->
-        <form class="form-inline" role="form" align="center" th:action="@{/searchSpro}" method="post">
+        <form class="form-inline" role="form" align="center" id="prSearch" th:action="@{/searchPrDetail}" method="post">
        	 <div class="form-group">
-           <label class="sr-only" for="programName"></label>
-           <input type="text" class="form-control" id="programName" name="festProNm" placeholder="홍보방식">
+           <label class="sr-only" for="festprDivNm"></label>
+            <select  class="form-control" id="festprDivNm" name="festprDivNm">
+            		<option value="" >:: 홍보방식 ::</option>
+            	<th:block th:each="d:${prDiv}">
+            		<option th:text=${d.festprDivNm}></option>
+            	</th:block>            	
+            </select>           
           </div>
           <div class="form-group">
-            <label class="sr-only" for="sProgramName"></label>
-            <input type="text" class="form-control" id="sProgramName" name="festproSproNm" placeholder="거래처명">
+            <label class="sr-only" for="catAccNm1"></label>
+            <input type="text" class="form-control" id="catAccNm1" name="catAccNm1" placeholder="거래처명">
           </div>             
           <div class="form-group">
-            <label class="sr-only" for="sProgramName"></label>
-            <input type="text" class="form-control" id="sProgramName" name="festproSproNm" placeholder="매체명">
-          </div>                        
-          <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
-                  	마감여부<span class="caret"></span>
-                    </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">마감전</a></li>
-                    <li><a href="#">마감완료</a></li>
-                  </ul>
+            <label class="sr-only" for="festprProNm"></label>
+            <input type="text" class="form-control" id="festprProNm" name="festprProNm" placeholder="매체명">
           </div><br>
           <div class="form-group">
-                  <div class="col-md-10">
-                    <div class="input-group input-large" data-date="01/01/2014" data-date-format="mm/dd/yyyy">
-                      <input type="text" class="form-control dpd1" name="from"  placeholder="기간선택">
-                      <span class="input-group-addon">~</span>
-                      <input type="text" class="form-control dpd2" name="to"  placeholder="기간선택">
-                    </div>
-                  </div>
-                </div>
-          
-          <button type="submit" class="btn btn-theme">검색</button>
+            <label class="sr-only" for="date1"></label>
+            <input type="date" class="form-control" id="date1" name="date1" >~
+            <label class="sr-only" for="date2"></label>
+            <input type="date" class="form-control" id="date2" name="date2" >
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="actionStatus"></label>
+            <select class="form-control" id="actionStatus" name="actionStatus">
+            	<option value="" >:: 마감여부 ::</option>
+            	<option value="n">마감 전</option>
+            	<option value="y">마감완료 </option>
+            </select>
+          </div>        
+          <button type="button" id="search" class="btn btn-theme">검색</button>
           <a th:href="@{/prPromotionList}"> 
-          <button type="button" class="btn btn-theme04">결과초기화</button></a>
-         
+          <button type="button" class="btn btn-theme04">결과초기화</button></a>        
         </form><br>
  		<!-- 세부프로그램검색 end-->  
  		 
@@ -67,11 +82,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 
                 <thead>
                   <tr>
+                    <th>번호</th>
                     <th>홍보분류</th>
+                    <th>거래처명</th>
                     <th>홍보매체명</th>
                     <th>프로모션내용</th>
                     <th>프로모션시작일</th>
-                    <th>장소/배포처</th>
                     <th>마감여부</th>
                     <th>금액</th>
                     <th>상세확인</th>
@@ -79,11 +95,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 </thead>
                 <tbody>
                   <tr th:each="p:${AllPromotion}">  
+			 		<td th:text="${pStat.count}"></td>
 			 		<td th:text="${p.festprDivNm}"></td>
+			 		<td th:text="${p.catAccNm1}"></td>
 			 		<td th:text="${p.festprProNm}"></td>
 			 		<td th:text="${p.festprProDetail}"></td>
 			 		<td th:text="${p.fprproStartDt}"></td>
-			 		<td th:text="${p.festprProPlace}"></td>
 			 		<td th:text="${p.actionStatus}"></td>
 			 		<td th:text="${p.festprProExpense}"></td>
 			 		<td>
@@ -98,7 +115,20 @@ layout:decorate="~{layout/adminis/adminisdefault}">
             <!-- /content-panel -->
           </div>
           <!-- /col-md-12 -->
-        </div>	
+          페이징기능안됨 해야됨.
+          <div class="dataTables_paginate paging_bootstrap pagination">
+          	<ul>
+          		<li class="prev disabled"><a href="#"><font style="vertical-align: inherit;">
+          		<font style="vertical-align: inherit;">← 이전</font></font></a></li><li class="active">
+          		<a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></a></li>
+          		<li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></a></li>
+          		<li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></a></li>
+          		<li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4</font></font></a></li>
+          		<li><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5</font></font></a></li>
+          		<li class="next"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다음 → </font></font></a></li>
+          	</ul>
+          </div>      
+   
 	
 	
 	
@@ -109,6 +139,34 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 </th:block>
 <th:block layout:fragment="adminisscript">
+<script type="text/javascript"> 
+$(document).ready(function(){
+	
+	/* 검색조건 날짜비교 */
+	$("#search").click(function(){    
+	        var startDate = $( "input[name='date1']" ).val(); 
+	        var startDateArr = startDate.split('-');
+	         
+	        var endDate = $( "input[name='date2']" ).val(); 
+	        var endDateArr = endDate.split('-');
+	                 
+	        var startDateCompare = new Date(startDateArr[0], parseInt(startDateArr[1])-1, startDateArr[2]);
+	        var endDateCompare = new Date(endDateArr[0], parseInt(endDateArr[1])-1, endDateArr[2]);
+	         
+	        if(startDateCompare.getTime() > endDateCompare.getTime()) {
+	             
+	            alert("검색조건의 시작날짜와 종료날짜를 확인해 주세요.");
+	             
+	            return;
+	        }
+	         
+	        $("#prSearch").submit();
+	});
+})
+
+
+</script>
+
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
 </th:block>
 

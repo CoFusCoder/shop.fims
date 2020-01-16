@@ -216,8 +216,10 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="/">!축제홈페이지</a></li>
-          <li><a class="logout" href="/projectintro">!FIMS프로젝트소개</a></li>
-          <li><a class="logout" href="/index/login">!로그인</a></li>			
+          <li><a class="logout" th:href="@{/index/login}" th:if="${session.SID eq null}">로그인</a></li>
+          <th:block th:unless="${session.SID eq null}">		
+          <li><a class="logout" th:href="@{/admin/logout}">로그아웃</a></li>
+          </th:block>
         </ul>
       </div>
     </header>

@@ -1,11 +1,14 @@
 package shop.fims.human;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.fims.vo.Human;
 
@@ -22,20 +25,23 @@ public class HumanController {
 		model.addAttribute("HumanList", humanservice.selectHuman());
 		return "/human/humanList";
 	}
-	//인적사항 등록
+	//인적사항 등록화면_공통코드조회
 	@GetMapping("/humanInsert")
-	public String insertHuman() {
+	public String insertHuman(HttpSession session, Model model ) {
+		
+		  String festCd = (String) session.getAttribute("F_CD");
+		  System.out.println("festCd---------->" + festCd);
+		  
+		  
+		  model.addAttribute("human", humanservice.selectinsertHuman(festCd));
+		 	
 		
 		return "/human/humanInsert";
 	}
+	//인적사항 등록화면_회원검색
+	 
 	//인적사항등록
-	@PostMapping("/memberInsert")
-	public String insertHuman(Human human) {
-		
-		System.out.println("humanNm---->" + human.toString());
-		
-		return "redirect:/humanList";
-	}
+	
 	//인적사항 수정
 	@GetMapping("/humanUpdate")
 	public String selectbyHuman(@RequestParam(value="humanCd") String humanCd, Model model) {
@@ -51,6 +57,7 @@ public class HumanController {
 		
 		System.out.println("human--------->"+human);
 		
+		humanservice.updateHuman(human);
 		return "redirect:/humanList";
 	}
 	//인적사항 삭제

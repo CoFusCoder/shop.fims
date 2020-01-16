@@ -11,16 +11,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			 <div class="form-panel">
 		              <div class=" form">		
 		                <form th:action="@{/humanUpdate}" method="post"  class="cmxform form-horizontal style-form" id="commentForm">
-		                  <div class="form-group " style=display:none>
+		                  <div class="form-group " style="display:none">
 		                    <label for="cname" class="control-label col-lg-2">회원코드</label>
 		                    <div class="col-lg-10">
 		                      <input class=" form-control" id="humanCd" type="text" name="humanCd" readonly="readonly" th:value="${h.humanCd}"/>
-		                    </div>
-		                  </div>
-		                   <div class="form-group " style=display:none>
-		                    <label for="ccomment" class="control-label col-lg-2">담당자코드</label>
-		                    <div class="col-lg-10">
-		                      <input class="form-control " id="mamCd" type="text" name="mamCd"/>
 		                    </div>
 		                  </div>
 		                  <div class="form-group ">
@@ -41,12 +35,31 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		                      <input class="form-control " id="festNm" type="text" name="festNm" th:value="${h.festNm}" readonly="readonly"/>
 		                    </div>
 		                  </div>
+		                  <div class="form-group " style="display:none">
+		                    <label for="curl" class="control-label col-lg-2">담당업무코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control " id="workdivCd" type="text" name="workdivCd" th:value=${h.workdivCd} />
+		                    </div>
+		                  </div>		                  
 		                  <div class="form-group ">
 		                    <label for="curl" class="control-label col-lg-2">담당업무</label>
 		                    <div class="col-lg-10">
-		                      <input class="form-control " id="workdivNm" type="text" name="workdivNm" th:value="${h.workdivNm}" readonly="readonly"/>
+		                      <input class="form-control " id="workdivNm" type="text" name="workdivNm" th:value="${h.workdivNm}"/>
+		                    </div>
+		                   </div>  
+		                  <div class="form-group " style="display:none">
+		                    <label for="cname" class="control-label col-lg-2">보유시설코드</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="staCd" type="text" name="staCd" th:value="${h.staCd}" readonly="readonly"/>
 		                    </div>
 		                  </div>
+		                  <div class="form-group ">
+		                    <label for="cname" class="control-label col-lg-2">근무장소</label>
+		                    <div class="col-lg-10">
+		                      <input class=" form-control" id="staNm" type="text" name="staNm" th:value="${h.staNm}"/>
+		                    </div>
+		                  </div>		                  		                    
+		                  
 		                  <div class="form-group ">
 		                    <label for="curl" class="control-label col-lg-2">근무시간</label>
 		                    <div class="col-lg-10">
@@ -54,7 +67,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		                    </div>
 		                  </div>
 		                  <div class="form-group ">
-		                    <label for="ccomment" class="control-label col-lg-2">담당자명</label>
+		                    <label for="ccomment" class="control-label col-lg-2">담당위원회코드</label>
+		                    <div class="col-lg-10">
+		                      <input class="form-control " id="mamCd" type="text" name="mamCd" th:value="${h.mamCd}"/>
+		                    </div>
+		                  </div>		                  
+		                  <div class="form-group ">
+		                    <label for="ccomment" class="control-label col-lg-2">담당위원회</label>
 		                    <div class="col-lg-10">
 		                      <input class="form-control " id="comNm2" type="text" name="comNm2" th:value="${h.comNm2}"/>
 		                    </div>

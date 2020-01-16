@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<script src="/gukmin/js/underscore-min.js"></script>
+<section>
+	<div class="commDesc">
+		<p class="t01">공지사항</p>
+		<p class="t02">조이페스타의 최근 소식으로 만나보세요!</p>
+	</div>
+	<div class="norBox">
+		<ul class="commTabs">
+			<li><a href="/gukminview/community/eventView">이벤트</a></li>
+			<li><a href="/gukminview/community/noticeView" class="on">공지사항</a></li>
+			<li><a href="/gukminview/community/faqView">FAQ</a></li>
+		</ul>
+		<form id="searchform" name="searchform" action="/gukminview/community/noticeView" method="post">
+			<div class="boSearchBox">
+				<div class="bsform">
+					<input type="text" id="keyword" name="keyword"
+						value="" /> <a
+						href="javascript:void();" id="searchbutton">검색</a>
+				</div>
+			</div>
+		</form>
+
+
+
+
+		<div class="boHeader">
+			<p class="fl" th:text="${'전체 : '+noticeTotalCount}"></p>
+		</div>
+
+		<table class="listTable01 mt0" id="listtable">
+			<colgroup>
+				<col width="80" class="mhidden" />
+				<col width="" />
+				<col width="100" class="mhidden" />
+				<col width="100" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="mhidden">번호</th>
+					<th>제목</th>
+					<th class="mhidden">작성자</th>
+					<th>작성일</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr th:each="b:${boardList}"> 
+				<td class="mhidden" th:text="${b.boardCd}"></td>
+				<td><a style="text-align: center" th:text="${b.boardTitle}" th:href="@{/gukminview/community/noticeDetailView}" ></a></td>
+				<td class="mhidden" th:text="${b.boardDt}"></td>
+				<td th:text="${b.boardWriter}"></td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="paging">
+				<a th:href="@{//gukminview/community/noticeView}">맨처음</a>
+				<a th:if="${currentPage > 1}" 
+					th:href="@{/gukminview/community/noticeView(currentPage=${currentPage - 1})}">이전</a>
+						<th:block th:each="num:${#numbers.sequence(startPageNum,lastPageNum)}">
+							<a th:if="${currentPage == num}" 
+							th:text="${num}"></a>
+							<a  th:unless="${currentPage == num}" 
+							th:text="${num}" 
+							th:href="@{/gukminview/community/noticeView(currentPage=${num})}"></a>
+						</th:block>
+			  	<a th:if="${currentPage < lastPage}" 
+					th:href="@{/gukminview/community/noticeView(currentPage=${currentPage + 1})}">다음</a>
+				<a th:href="@{/gukminview/community/noticeView(currentPage=${lastPage})}">마지막</a>	
+		</div>
+<!-- 		<div class="paging">
+			<a href="javascript:void(0);" class="first"></a>
+			<a href="javascript:void(0);" class="prev">1</a>
+			<a href="javascript:void(0);" class="on">1</a>
+			<a href="javascript:void(0);" class="next"></a>
+			<a href="javascript:void(0);" class="last"></a>
+		</div> -->
+	</div>
+</section>
+
+</th:block>
+
+</html>

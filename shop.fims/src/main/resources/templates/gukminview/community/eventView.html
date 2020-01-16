@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<script src="/gukmin/js/underscore-min.js"></script>
+<section>
+	<div class="commDesc">
+		<p class="t01">이벤트</p>
+		<p class="t02">ALLFestMoa 회원만을 위한 특별한 이벤트에 참여해보세요!</p>
+	</div>
+	<div class="norBox">
+		<ul class="commTabs">
+			<li><a href="javascript:void(0)" class="on">!이벤트</a></li>
+			<li><a href="/gukminview/community/boardList">!공지사항</a></li>
+			<li><a href="/gukminview/community/faqView">!FAQ</a></li>
+		</ul>
+		<ul class="categoryTabs">
+			<li><a href="/gukminview/community/eventView"
+				class="on">!전체</a></li>
+				<!-- <li><a href="Event.festa?opentype=1" -->
+			<li><a href="#"
+				class="">#진행중인
+					이벤트</a></li>
+			<li><a href="#"
+				class="">#지난이벤트</a></li>
+				<!-- <li><a href="Event.festa?opentype=0" -->
+		</ul>
+		<ul class="commEvtList t01">
+			<li>
+				<div class="pic">
+					<a href="/gukminview/community/eventDetailView" class="t01"><img src="https://joyfesta.kr/uploadedfiles/eventbanner/2019/09/%E1%84%8C%E1%85%A9%E1%84%8B%E1%85%B5%E1%84%91%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1_%E1%84%89%E1%85%A5%E1%84%83%E1%85%B5%E1%84%91%E1%85%A6_%E1%84%90%E1%85%B5%E1%84%8F%E1%85%A6%E1%86%BA%E1%84%8C%E1%85%B3%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3_185703411.jpg" width="260px" height="114px"></a>
+				</div>
+				<div class="cont">
+					<a href="/gukminview/community/eventDetailView" class="t01">!서울디저트페어 티켓증정 이벤트</a>
+					<div class="t02">
+					<span class="status01">종료</span> <span class="date">2019.09.30~2019.10.06</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="pic">
+					<a href="#" class="t01"><img src="https://joyfesta.kr/uploadedfiles/eventbanner/2019/09/%E1%84%8C%E1%85%A9%E1%84%8B%E1%85%B5%E1%84%91%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1_%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7_%E1%84%91%E1%85%A1%E1%86%AF%E1%84%85%E1%85%A9%E1%84%8B%E1%85%AE%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3_185039314.jpg" width="260px" height="114px"></a>
+				</div>
+				<div class="cont">
+					<a href="#" class="t01">#ALLFestMoa 인스타그램 팔로우 이벤트</a>
+					<div class="t02">
+						<span class="status01">종료</span> <span class="date">2019.09.04~2019.09.23</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="pic">
+					<a href="#" class="t01"><img src="https://joyfesta.kr/uploadedfiles/eventbanner/2019/07/%E1%84%8C%E1%85%A9%E1%84%8B%E1%85%B5%E1%84%91%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%A1_%E1%84%8B%E1%85%A9%E1%84%91%E1%85%B3%E1%86%AB%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3_%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF_190630_092917407.jpg" width="260px" height="114px"></a>
+				</div>
+				<div class="cont">
+					<a href="#" class="t01">#ALLFestMoa 정식 오픈 이벤트</a>
+					<div class="t02">
+						<span class="status01">종료</span><span class="date">2020.01.10~2020.01.15</span>
+					</div>
+				</div>
+			</li>		
+		</ul>
+		<div class="paging">
+			<a href="javascript:void(0);" class="first"></a>
+			<a href="javascript:void(0);" class="prev">1</a>
+			<a href="javascript:void(0);" class="on">1</a>
+			<a href="javascript:void(0);" class="next"></a>
+			<a href="javascript:void(0);" class="last"></a>		
+		</div>
+		<!-- <a href="javascript:void(0)" class="btnMore">더보기 +</a> -->
+	</div>
+</section>
+
+
+
+
+</th:block>
+
+</html>

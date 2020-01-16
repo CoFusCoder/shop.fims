@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<meta charset="UTF-8">
+</th:block>
+<th:block layout:fragment="adminisMainContents">
+
+		<h3>축제공고관리</h3>
+		<div align= "right">
+			<a th:href="@{/insertAnnouncement}">
+				<button type="button" class="btn btn-default">공고등록하기</button>
+			</a>
+		</div>
+		<br/>
+		<form class="form-inline" role="form" align="right" th:action="@{#}" method="get">
+			<select class="form-control" name="sk">
+	                <option value="#">이름</option>
+	              </select>
+	             <div class="form-group">
+	               <input type="text" class="form-control" placeholder="검색어를 입력해주세요." name="#">
+	             </div>
+	             <button type="submit" class="btn btn-theme">검색</button>
+        </form>		
+		
+		<div class="row mt">
+          <div class="col-md-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> 공고 관리</h4>
+              <hr>
+             
+              <table class="table table-striped table-advance table-hover">
+                
+                <thead>
+                  <tr>
+                    <th>행정기관명</th>
+                    <th>축제명</th>
+                    <th>위원회명</th>
+                    <th>공고명</th>
+                    <th>작성일</th>
+                    <th>공고마감일</th>
+                    <th>이름</th>
+                    <th>상세확인</th>
+                  </tr>
+                </thead>
+                <tbody>
+					<tr th:each="a:${announcementView}"> 
+	               		<td th:text="${a.areaCityAdminNm}"></td>
+	               		<td th:text="${a.festNm}"></td>
+	               		<td th:text="${a.manComNm1}"></td>
+	               		<td th:text="${a.festAnnNm}"></td>
+	               		<td th:text="${a.festAnnDt4}"></td>
+	               		<td th:text="${a.festAnnDt3}"></td>
+	               		<td th:text="${a.comMemNm2}"></td>
+				 		<td>
+				 		  <a th:href="@{/announcementDetail(fesAnnCd=${a.fesAnnCd})}">
+				 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a> 
+				 		</td>
+                 	 </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-md-12 -->
+        </div>	
+	
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+</th:block>
+
+</html>

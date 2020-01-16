@@ -8,11 +8,102 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisMainContents">
 <!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
 
-홍보거래처리스트 : 홍보관련 거래처만 리스트로 보여줌. 거래처명을 누르면 상세내역으로 연결되어야함.
-오류가 왜날까
-
-
-
+	
+<!-- 승인된 거래처 -->		
+          <div class="col-lg-12">
+            <div class="form-panel"> 
+            
+<!-- 상단 홍보관련메뉴 -->	           
+            	 <div id="controls-tabs">
+		            <div class="wrap_controls">
+		            	<ul class="ullist controls " style="margin: 0px; padding: 0px; list-style-type: none;">
+				            <li class=""><a th:href="@{/prDivList}" id="prDivBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보분류관리</span></a></li>
+				            <li class=""><a th:href="@{/prPromotionList}"  id="prPromotionBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보사업관리</span></a></li>
+				            <li class="active"><a th:href="@{/prComList}" id="prComBtn" style="color: rgb(102, 102, 102); display: block; padding: 5px; font-size: inherit; text-decoration: none;">
+				            	<span>홍보거래처관리</span></a></li>
+		           		</ul>
+		            </div>
+            	</div>            
+           <h1 align="center"><span >《[[${session.F_NM}]]》  승인완료 홍보 거래처 리스트</span></h1>
+               		 
+              <hr>
+             
+              <table class="table table-striped table-advance table-hover">
+                
+                <thead>
+                  <tr>
+                    <th>번호</th>
+                    <th>거래처명</th>
+                    <th>담당홍보사업건수</th>
+                    <th>사업자등록번호</th>
+                    <th>대표자명</th>
+                    <th>주소</th>
+                    <th>연락처1</th>
+                    <th>연락처2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="c:${prCom}">  
+			 		<td th:text="${cStat.count}"></td>
+			 		<td >
+			 			<a th:href="@{/allAccountDetail(catAccCd=${c.cat_acc_cd})}" th:text="${c.cat_acc_nm1}"></a>
+			 		</td>
+			 		<td>
+			 		  <a th:href="@{/searchPrByCom(catAccNm1=${c.cat_acc_nm1})}" th:text="${c.cnt}"></a>			 		
+			 		</td>
+			 		<td th:text="${c.cat_acc_no1}"></td>
+			 		<td th:text="${c.cat_acc_nm2}"></td>
+			 		<td th:text="${c.cat_acc_addr}"></td>
+			 		<td th:text="${c.cat_acc_phone2}"></td>
+			 		<td th:text="${c.cat_acc_phone3}"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /form-panel -->
+          </div>
+          <!-- /col-md-12 -->
+          
+            
+            
+            
+            
+            
+            
+            <div class="col-lg-12">
+<!-- 미승인 거래처  -->           
+            <div class="form-panel"> 
+            
+           <h1 align="center"><span >《[[${session.F_NM}]]》 미승인 거래처 </span></h1>
+               		 
+              <hr>
+             
+              <table class="table table-striped table-advance table-hover">
+                
+                <thead>
+                  <tr>
+                    <th>번호</th>
+                    <th>거래처명</th>
+                    <th>사업명</th>
+                    <th>거래처 임시정보</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="n:${notappCom}">  
+			 		<td th:text="${nStat.count}"></td>
+			 		<td>미승인 거래처</td>
+			 		<td>
+			 		<a th:href="@{/prPromotionDetail(festprProCd=${n.festprProCd})}" th:text="${n.festprProNm}"></a>
+			 		</td>	 	
+			 		<td th:text="${n.festprProEtc}"></td>		
+                  </tr>
+                </tbody>
+              </table>
+            </div>      
+            </div>    
+          
 </th:block>
 <th:block layout:fragment="adminisscript">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
