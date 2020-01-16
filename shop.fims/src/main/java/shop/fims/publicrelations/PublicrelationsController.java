@@ -166,7 +166,7 @@ public class PublicrelationsController {
 				String festCd = (String)session.getAttribute("F_CD");
 				model.addAttribute("AllPromotion", publicrelationsService.searchPrDetail(festprDivNm, catAccNm1, festprProNm, date1, date2, actionStatus, festCd));
 				model.addAttribute("prDiv",publicrelationsService.selectAllPrDiv());
-				return "publicrelations/prPromotionDetail";
+				return "publicrelations/prPromotionList";
 			}
 
 			
