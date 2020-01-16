@@ -28,6 +28,26 @@
 		Member
 </select>
 
+<!-- 모든 회원 수정 쿼리문 -->
+<update id="memberUpdate" parameterType="shop.fims.vo.Member">
+	UPDATE
+		Member
+	SET
+		mem_nm = #{memNm}
+	WHERE 
+		mem_cd = #{memCd}
+</update>
+
+<!-- 모든 회원 삭제 쿼리문 -->
+<delete id="memberDelete" parameterType="String">
+	DELETE
+	FROM
+		Member
+	WHERE
+		mem_cd = #{memCd}
+</delete>
+
+
 <!--회원 권한 조회 쿼리문 -->
 <select id="memberLevList" resultMap="memberLevResultMap">
 	SELECT

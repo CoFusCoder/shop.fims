@@ -27,7 +27,8 @@
    		<result property="festCd" column="fest_cd"/>
    		<result property="cityadminCd" column="areacity_admin_cd"/>
    		<result property="areacityCd" column="area_city_cd"/>
-   		<result property="areaCd" column="area_cd"/>   		
+   		<result property="areaCd" column="area_cd"/>
+   		<result property="memCd" column="mem_cd"/>   		
   	</resultMap>
   	
   	<!--인적리스트조회-->
@@ -188,8 +189,8 @@
 		FROM
 			Member AS m JOIN Login AS l ON m.mem_cd=l.mem_cd
 		WHERE
-			l.login_cd=#{loginCd}
-			AND m.mem_nm=#{memNm}
+			l.login_cd=#{loginCd1}
+			AND m.mem_nm=#{memNm1}
 	</select>
 	<!-- 인적등록화면_공통코드조회 -->
 	<select id="selectinsertHuman" resultMap="humanResultMap">
@@ -206,4 +207,61 @@
 		WHERE
 			f.fest_cd=#{festCd}	
 	</select>
+	
+	<!-- 인적등록처리_조회(업무코드조회) -->
+	<select id="selectinsertHuman3" resultType="String">
+		SELECT
+			fwd.feswork_div_cd
+		FROM
+			Festival_Work_Division AS fwd JOIN Festival AS f
+			ON fwd.fest_cd = f.fest_cd
+		WHERE
+			fwd.feswork_div_nm= #{WorkdivNm1}
+			AND f.fest_nm = #{FestNm1}
+	</select>
+	<!-- 인적등록처리_조회(근무시설코드조회) -->
+	<select id="selectinsertHuman4" resultType="String">
+		SELECT
+			fs.fac_sta_cd
+		FROM
+			Facility_Status AS fs JOIN Festival AS f
+			ON fs.fest_cd = f.fest_cd
+		WHERE
+			fs.fac_sta_nm=#{StaNm1}
+			AND f.fest_nm=#{FestNm1}
+	</select>
+	<!-- 인적등록처리_조회(위원회코드) -->
+	<select id="selectinsertHuman5" resultType="String">
+		SELECT
+			mc.man_com_cd
+		FROM
+			Man_Com AS mc
+		WHERE
+			mc.man_com_cd = #{MamCd1}
+			AND mc.com_mem_nm2=	#{ComNm2}	
+	</select>
+	<!-- 인적등록처리_조회(회원코드) -->
+	<select id="selectinsertHuman6" resultType="String">
+		SELECT
+			m.mem_cd
+		FROM
+			Member AS m
+		WHERE
+			m.mem_nm= #{HumanNm1}
+			AND m.mem_phone= #{HumanPhone1}
+	</select>
+	<!-- 인적등록처리 -->
+	<insert id="insertHuman" parameterType="shop.fims.vo.Human">
+		<selectKey resultType="string" keyProperty="humanCd" order="BEFORE">
+			SELECT CONCAT('human','_',(SELECT LPAD(COUNT(*)+1,3,'0') FROM Festival_Human))
+		</selectKey>
+		INSERT INTO Festival_Human
+		(fes_human_cd, areacity_admin_cd, area_cd, area_city_cd, fest_cd, feswork_div_cd,
+		man_com_cd, mem_cd, fac_sta_cd, fest_nm, feswork_div_nm, fes_human_nm, fes_human_phone,
+		fac_sta_nm, fes_human_hour, com_mem_nm2)
+		VALUES
+		(#{humanCd},#{cityadminCd},#{areaCd},#{areacityCd},#{festCd},#{workdivCd},
+		#{mamCd}, #{memCd},#{staCd},#{festNm},#{workdivNm},#{humanNm},#{humanPhone},
+		#{staNm},#{humanHour},#{comNm2})
+	</insert>
   </mapper>

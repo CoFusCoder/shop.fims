@@ -7,13 +7,26 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 </th:block>
 <th:block layout:fragment="adminisMainContents">
 <!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<script th:src="@{/adminis/lib/jquery/jquery.min.js}"></script>				
+	
+<script type="text/javascript">
+$(document).ready(function(){
+	var festCheck = $('#festCheck').text();
+	if(festCheck ==""){
+		alert('화면상단에서 관리할 축제를 선택해주세요.');
+	}
+})
+</script>	
 
 </br>
 관리자 메인페이지 입니다.
 </br>
 최종 배포 날짜 : 2020-01-13
 
-
+<!-- 축제가 선택되어있는지 확인용 -->
+<div>
+<span id="festCheck" style="display: none">[[${session.F_NM}]]</span>
+</div>
 
 </th:block>
 <th:block layout:fragment="adminisscript">

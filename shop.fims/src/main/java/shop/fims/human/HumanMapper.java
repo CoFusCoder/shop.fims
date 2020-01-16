@@ -38,6 +38,22 @@ public interface HumanMapper {
 	
 	//인적등록화면_회원검색 
 	
-	Human selectinsertHuman2(String memNm, String loginCd);
-	 
+	Human selectinsertHuman2(String memNm1, String loginCd1);
+	
+	//인적등록처리_조회1(업무코드조회)
+	String selectinsertHuman3(String FestNm1, String WorkdivNm1);
+	
+	//인적등록처리_조회2(근무시설코드조회)
+	String selectinsertHuman4(String FestNm1, String StaNm1);
+	
+	//인적등록처리_조회3(위원회코드조회)
+	String selectinsertHuman5(String MamCd1, String ComNm2);
+	
+	//인적등록처리_조회4(회원코드조회)
+	String selectinsertHuman6(String HumanNm1, String HumanPhone1);
+	
+	//회원등록처리
+	int insertHuman(Human human);
+	
+	
 }

@@ -301,7 +301,8 @@
 			f.fest_nm,
 			ca.cat_acc_nm1,
 			tf.facsta_ins_con1,
-			tf.facsta_ins_con2
+			tf.facsta_ins_con2,
+			mc.com_mem_nm2
 		FROM
 			Temporary_Facility AS tf JOIN Cat_Account AS ca ON tf.cat_acc_cd=ca.cat_acc_cd
 			JOIN Man_Com AS mc ON tf.man_com_cd=mc.man_com_cd

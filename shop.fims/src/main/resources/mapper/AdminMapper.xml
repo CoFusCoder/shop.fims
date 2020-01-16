@@ -50,11 +50,11 @@
 
 <!-- 전국 지역 삭제 쿼리문 -->
 <delete id="areaDelete" parameterType="String">
-	DELETE 
+	DELETE
 	FROM
 		Area
 	WHERE
-		area_cd=#{areaCd}
+		area_cd = #{areaCd}
 </delete>
 
 <!--전국 지역 시군 등록 쿼리문 -->

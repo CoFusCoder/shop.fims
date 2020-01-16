@@ -57,11 +57,7 @@ public class WorkController {
 			 						Model model) {
 		 
 		 model.addAttribute("WorkdivisionList", workservice.searchWorkdivision(fest_nm, feswork_cat_nm, feswork_div_nm, com_mem_nm2));
-		 System.out.println("fest_nm---------->"+fest_nm );
-		 System.out.println("feswork_cat_nm---------->"+ feswork_cat_nm);
-		 System.out.println("feswork_div_nm---------->"+ feswork_div_nm);
-		 System.out.println("com_mem_nm2---------->"+ com_mem_nm2);
-		 
+
 		 return "/work/workdivisionList";
 	 }
 	//축제업무등록
@@ -75,6 +71,7 @@ public class WorkController {
 	public String selectupdateWorkDivision(@RequestParam(value="workdivCd") String workdivCd, Model model) {
 		
 		model.addAttribute("Work", workservice.selectupdateWorkDivision(workdivCd));
+		
 		return "/work/workdivisionUpdate";
 	}
 	//축제업무삭제

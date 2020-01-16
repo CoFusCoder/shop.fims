@@ -26,16 +26,7 @@ public class FacilityController {
 		model.addAttribute("classificationList", facilityservice.selectClassification());
 		return "/facility/classificationList";
 	}
-	//모든시설검색
-	@PostMapping("/classificationSearch")
-	public String searchClassification(@RequestParam(value="fest_nm") String fest_nm, @RequestParam(value="fac_sta_nm") String fac_sta_nm,
-							@RequestParam(value="fesfac_cat_nm") String fesfac_cat_nm, @RequestParam(value="man_com_nm2") String man_com_nm2,
-							@RequestParam(value="action_status") String action_status, Model model) {
 
-		model.addAttribute("facilityList", facilityservice.searchClassification(fest_nm, fac_sta_nm, fesfac_cat_nm, man_com_nm2, action_status));
-		
-		return "/Facility/facilityList";
-	}
 	//모든시설분류등록
 	@GetMapping("/classificationInsert")
 	public String insertClassification() {
@@ -65,12 +56,21 @@ public class FacilityController {
 		
 		return "/facility/facilityList";
 	}
+	//보유시설검색
+	@PostMapping("/facilitySearch")
+	public String searchClassification(@RequestParam(value="fest_nm") String fest_nm, @RequestParam(value="fac_sta_nm") String fac_sta_nm,
+							@RequestParam(value="fesfac_cat_nm") String fesfac_cat_nm, @RequestParam(value="man_com_nm2") String man_com_nm2,
+							@RequestParam(value="action_status") String action_status, Model model) {
+
+		model.addAttribute("facilityList", facilityservice.searchClassification(fest_nm, fac_sta_nm, fesfac_cat_nm, man_com_nm2, action_status));
+		
+		return "/Facility/facilityList";
+	}	
 	//보유시설등록화면
 	@GetMapping("/facilityInsert")
 	public String insertFacility(HttpSession session, Model model) {
 		
 		String festCd = (String) session.getAttribute("F_CD");
-		System.out.println("festCd----------->"  + festCd);
 		
 		model.addAttribute("facility", facilityservice.selectInsertFacility(festCd));
 		
@@ -79,21 +79,6 @@ public class FacilityController {
 	//보유시설등록처리
 	@PostMapping("/facilityInsert")
 	public String insertFacility(Facility facility) {
-		/*
-		 * System.out.println("facility 값 확인" + facility.getStaNm());
-		 * System.out.println("facility 값 확인" + facility.getCatNm());
-		 * System.out.println("facility 값 확인" + facility.getCityadminCd());
-		 * System.out.println("facility 값 확인" + facility.getAreacityCd());
-		 * System.out.println("facility 값 확인" + facility.getAreaCd());
-		 * System.out.println("facility 값 확인" + facility.getFestCd());
-		 * System.out.println("facility 값 확인" + facility.getFestNm());
-		 * System.out.println("facility 값 확인" + facility.getStaSite());
-		 * System.out.println("facility 값 확인" + facility.getStaCount());
-		 * System.out.println("facility 값 확인" + facility.getComCd());
-		 * System.out.println("facility 값 확인" + facility.getComNm2());
-		 * System.out.println("facility 값 확인" + facility.getActionDt());
-		 * System.out.println("facility 값 확인" + facility.getActionSta());
-		 */
 		facilityservice.insertFacility(facility);
 		return "redirect:/facilityList";
 	}
@@ -101,7 +86,6 @@ public class FacilityController {
 	@GetMapping("/facilityUpdate")
 	public String selectupdateFacility(@RequestParam(value="staCd") String staCd, Model model) {
 		
-		System.out.println("stacd---------->" + staCd);
 		model.addAttribute("facility", facilityservice.selectupdateFacility(staCd));
 		
 		return "/facility/facilityUpdate";
@@ -117,7 +101,7 @@ public class FacilityController {
 	}
 	//보유시설삭제
 	@GetMapping("/facilityDelete")
-	public String delectFacility() {
+	public String delectFacility(@RequestParam(value="staCd") String staCd) {
 		
 		return "/facility/facilityDelete";
 	}
@@ -164,8 +148,8 @@ public class FacilityController {
 	//임시시설설치및철거등록화면
 	@GetMapping("/temporaryInsert")
 	public String insertTemporary(HttpSession session, Model model) {
+		
 		String festCd = (String) session.getAttribute("F_CD");
-		System.out.println("festCd----------->"  + festCd);
 		
 		model.addAttribute("facility", facilityservice.selectInsertFacility(festCd));
 		
@@ -182,7 +166,6 @@ public class FacilityController {
 	//임시시설설치및철거수정화면
 	@GetMapping("/temporaryUpdate")
 	public String selectupdateTemporary(@RequestParam(value="facCd") String facCd, Model model) {
-		System.out.println("facCd---------->" + facCd);
 		model.addAttribute("facility", facilityservice.selectupdateTemporary(facCd));
 		return "/facility/temporaryUpdate";
 	}
@@ -190,14 +173,13 @@ public class FacilityController {
 	@PostMapping("/temporaryUpdate")
 	public String updateTemporary(Facility facility) {
 		
-		System.out.println("facility---------->" + facility);
 		facilityservice.updateTemporary(facility);
 		
 		return "redirect:/temporaryList";
 	}
 	//임시시설설치및철거삭제
 	@GetMapping("/temporaryDelete")
-	public String delectTemporary() {
+	public String delectTemporary(@RequestParam(value="facCd") String facCd) {
 		
 		return "/facility/temporaryDelete";
 	}
@@ -222,8 +204,8 @@ public class FacilityController {
 	//시설안전점검후지적관리등록
 	@GetMapping("/maintenanceInsert")
 	public String insertMaintenance(HttpSession session, Model model) {
+		
 		String festCd = (String) session.getAttribute("F_CD");
-		System.out.println("festCd----------->"  + festCd);
 		
 		model.addAttribute("facility", facilityservice.insertMaintenance(festCd));
 		
@@ -233,8 +215,6 @@ public class FacilityController {
 	@PostMapping("/maintenanceInsert")
 		public String insertMaintenance(Facility facility) {
 		
-		System.out.println("facility---------->" + facility);
-		
 		facilityservice.insertMaintenance1(facility);
 		
 		return "redirect:/maintenanceList";
@@ -243,7 +223,6 @@ public class FacilityController {
 	@GetMapping("/maintenanceUpdate")
 	public String selectupdateMaintenance(@RequestParam(value="maiCd") String maiCd, Model model) {
 		
-		System.out.println("staNm---------->" + maiCd);
 		model.addAttribute("facility", facilityservice.selectupdateMaintenance(maiCd));
 		
 		return "/facility/maintenanceUpdate";
@@ -252,7 +231,6 @@ public class FacilityController {
 	@PostMapping("/maintenanceUpdate")
 	public String updateMaintenance(Facility facility) {
 		
-		System.out.println("facility---------->" + facility);
 		
 		facilityservice.selectupdateMaintenance(facility);
 		
@@ -260,7 +238,7 @@ public class FacilityController {
 	}
 	//시설안전점검후지적관리삭제 
 	@GetMapping("/maintenanceDelete")
-	public String delectMaintenance() {
+	public String delectMaintenance(@RequestParam(value="maiCd") String maiCd) {
 		
 		return "/facility/maintenanceDelete";
 	}
@@ -268,7 +246,6 @@ public class FacilityController {
 	@GetMapping("/checkList")
 	public String selectChecklist(@RequestParam(value="staNm") String staNm, Model model) {
 		
-		System.out.println("staNm--------->" + staNm);
 		model.addAttribute("checkList", facilityservice.selectChecklist(staNm));
 		
 		return "/facility/checkList";

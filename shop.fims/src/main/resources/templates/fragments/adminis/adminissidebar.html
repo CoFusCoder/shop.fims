@@ -6,7 +6,7 @@
        <div th:fragment="adminisLeftmenuFragment" id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="/allprofile"><img src="/adminis/img/asugi.jpg" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="/allprofile"><img src="/adminis/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">[[${session.SNAME}]] 님 [[${session.SLEVEL}]] 권한</h5>
           <li class="sub-menu">
             <a href="javascript:;">
@@ -129,9 +129,9 @@
               </a>
             <ul class="sub">
              <li><a th:href="@{/conditionList}">물품관리조회</a></li>         
+             <li><a th:href="@{/gDivList}">물품분류관리</a></li>
              <li><a th:href="@{/gFestivalInList}">축제관련물품입고관리</a></li>
              <li><a th:href="@{/gFestivalOutList}">축제관련물품출고관리</a></li>
-             <li><a th:href="@{/gDivList}">물품분류관리</a></li>
              <li><a th:href="@{/gComList}">물품거래처관리</a></li>
             </ul>
           </li>
@@ -142,11 +142,11 @@
               </a>
             <ul class="sub">
               <li><a th:href="@{/proTimetable}">프로그램타임테이블</a></li>
-              <li><a th:href="@{/proProList}">프로그램 관리</a></li>
               <li><a th:href="@{/proDivList}">프로그램분류관리</a></li>
+              <li><a th:href="@{/proProList}">프로그램 관리</a></li>
               <li><a th:href="@{/proSProList}">세부프로그램 조회</a></li>
-              <li><a th:href="@{/proComList}">프로그램 참가업체 조회</a></li>
               <li><a th:href="@{/proParList}">프로그램 참가자 조회</a></li>
+              <li><a th:href="@{/proComList}">프로그램 참가업체 조회</a></li>
             </ul>
           </li>
           <li class="sub-menu">
