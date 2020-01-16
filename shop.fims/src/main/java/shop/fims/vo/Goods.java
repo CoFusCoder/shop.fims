@@ -8,15 +8,15 @@ public class Goods {
 	private String areaCityCd;//모든 지역 시군코드
 	private String festCd;//축제코드
 	private String adminDepCd;//모든 행정기관 부서코드
-	private String goodsNm;//부서명
-	private int goodsAmt;//수량
+	private String goodsNm;//보유물품
+	private String goodsAmt;//수량
 	private String specialNote;//특이사항
 	private String admindepEmpNm;//특이사항
 	private String admAgeNm;//행정기관명
 	private String areaCityNm;//시군명
 	private String areacityAdminNm;//행정기관명
 	private String festNm;//축제이름
-	private String admimDepNm;//
+	private String admimDepNm;//부서명
 	private String areaNm;//지역명
 	
 	public String getGoodspreConCd() {
@@ -61,10 +61,10 @@ public class Goods {
 	public void setGoodsNm(String goodsNm) {
 		this.goodsNm = goodsNm;
 	}
-	public int getGoodsAmt() {
+	public String getGoodsAmt() {
 		return goodsAmt;
 	}
-	public void setGoodsAmt(int goodsAmt) {
+	public void setGoodsAmt(String goodsAmt) {
 		this.goodsAmt = goodsAmt;
 	}
 	public String getSpecialNote() {

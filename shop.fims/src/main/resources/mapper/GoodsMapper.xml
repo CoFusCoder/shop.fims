@@ -49,7 +49,7 @@
 	gpc.areacity_admin_cd = aca.areacity_admin_cd
 	
   </select>
-  <select id="updatecondition" resultMap="goodslist">
+  <select id="pageupdatecondition" resultMap="goodslist">
   	
 	SELECT
 	*
@@ -72,15 +72,17 @@
   
   
   </select>
-  <update id="" parameterType="shop.fims.vo.Goods">
+ 
+<update id="updatecondition" parameterType="shop.fims.vo.Goods">
   UPDATE Goods_present_condition
 	SET
-		goodspre_con_cd=#{goodspreConCd},areacity_admin_cd=#{areacityAdmCd},area_cd+#{areaCd},area_city_cd=#{areaCityCd},fest_cd=#{festCd},admin_dep_cd=#{adminDepCd},
-		admindep_emp_nm =#{admindepEmpNm},adm_age_nm=#{admAgeNm},area_city_nm=#{areaCityNm},areacity_admin_nm=#{areacityAdminNm},fest_nm=#{festNm},admim_dep_nm=#{admimDepNm},
-		goods_nm=#{goodsNm},goods_count=#{goodsAmt},special_note=#{specialNote}
-		
+
+	goods_nm = #{goodsNm},
+	goods_count = #{goodsAmt},
+	special_note = #{specialNote}
+	
 	WHERE 
 	goodspre_con_cd= #{goodspreConCd}
   
-  </update>
+</update>
   </mapper>

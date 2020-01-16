@@ -11,11 +11,18 @@ import shop.fims.vo.Goods;
 public class Goodsservice {
 	
 	@Autowired  GoodsMapper goodsmapper;
-	
+	//물품 전체 조회
 	public List<Goods> goodslist(){
 		return goodsmapper.goodslist();		
 	}
-	public List<Goods> updatecondition(String goodspreConCd){
-		return goodsmapper.updatecondition(goodspreConCd);
+	//수정화면
+	public List<Goods> pageupdatecondition(String goodspreConCd){
+		return goodsmapper.pageupdatecondition(goodspreConCd);
+	}
+	//수정처리
+	public int updatecondition(Goods goods) {
+		System.out.println("goods1->" + goods);
+		return goodsmapper.updatecondition(goods);
+		
 	}
 }
