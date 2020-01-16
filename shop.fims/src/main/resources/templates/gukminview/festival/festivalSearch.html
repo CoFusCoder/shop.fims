@@ -18,8 +18,8 @@
 			searchKeyword();
 		})
 		
-		$('#searchKeyword').keydown(function (key){
-			if(key.keyCode==13){
+		$('.searchsearch').keydown(function(key){
+			if(key.keyCode == 13){
 				
 				searchKeyword();
 			}
@@ -285,7 +285,7 @@
 		</div>
 		<form>
 			<div class="searchBox">
-				<input type="text" autocomplete="off" id="searchKeyword" placeholder="검색 하고자 하는 키워드를 입력해주세요"/> 
+				<input type="text" class="searchsearch" id="searchKeyword" placeholder="검색 하고자 하는 키워드를 입력해주세요"/> 
 				<a href="javascript:void(0)" class="btnSmartSearch"><img src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton"/></a>
 			</div>
 		</form>
