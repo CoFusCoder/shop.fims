@@ -20,12 +20,6 @@ public class OfficailController {
 	 * @author fims 한소연
 	 */
 	
-	//업무현황
-	@GetMapping("/official/WorkStatus")
-	public String WorkStatus() {
-		return "official/WorkStatus";
-	}
-	
 	//행정기관별 부서 및 직원 등록
 	@GetMapping("/official/DepartEmployInsert")
 	public String DepartEmployInsert() {
@@ -43,9 +37,17 @@ public class OfficailController {
 		return "official/DepartList";
 	}
 	
-	//부서 및 직원 조회
+	//행정기관별 부서 조회
 	@GetMapping("/official/DepartEmployList")
-	public String DepartEmployList() {
+	public String DepartEmployList(Model areaList, Model areaCityList, Model areaCityAdminList, Model DepartList, Model DepartEmployList) {
+		
+		areaList.addAttribute("areaList", adminService.areaList());
+		areaCityList.addAttribute("areaCityList", adminService.areaCityList());
+		areaCityAdminList.addAttribute("areaCityAdminList", adminService.areaCityAdminList());
+		DepartList.addAttribute("DepartList", officailService.DepartList());
+		DepartEmployList.addAttribute("DepartEmployList", officailService.DepartEmployList());
+		System.out.println("부서 조회 >>>>" + DepartList.toString());
+		
 		return "official/DepartEmployList";
 	}
 	

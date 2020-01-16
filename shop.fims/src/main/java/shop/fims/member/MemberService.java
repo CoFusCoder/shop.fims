@@ -26,13 +26,23 @@ public class MemberService {
 		return memberList;
 	}
 	
-	// 회원 권한 조회
-	public List<MemberLev> memberLevList(){
+	// 모든 회원 수정
+	public int memberUpdate() {
 		
-		List<MemberLev> memberLevList = memberMapper.memberLevList();
-		System.out.println(memberLevList + " : 회원 권한 조회");
+		int memberUpdate = memberMapper.memberUpdate();
+		System.out.println(memberUpdate + " : 전국 지역 수정");
+		
+		return memberUpdate;
+	}
+	
+	// 회원 권한 조회
+	public List<Member3> memberLevList(){
+		
+		List<Member3> memberLevList = memberMapper.memberLevList();
+		System.out.println(memberLevList + " : 회원 권한 조회 ");
 		
 		return memberLevList;
+		
 	}
 	
 	
