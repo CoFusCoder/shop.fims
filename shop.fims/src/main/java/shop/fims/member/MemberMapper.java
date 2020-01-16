@@ -16,8 +16,13 @@ public interface MemberMapper {
 	// 모든 회원 조회
 	public List<Member3> memberList();
 	
-	// 회원 권한 조회
-	public List<MemberLev> memberLevList();
+	// 모든 회원 수정
+	public int memberUpdate();
 	
+	// 모든 회원 삭제
+	public int memberDelete();
+	
+	// 회원 권한 조회
+	public List<Member3> memberLevList();
 
 }

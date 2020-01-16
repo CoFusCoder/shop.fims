@@ -41,12 +41,14 @@
 <result property="joinDt" column="mem_join_dt"/> 
 <result property="memNm" column="mem_nm"/>
 <result property="LoginCd" column="LoginCd"/>
+<result property="festAnnNm" column="fest_ann_nm"/>
+<result property="exaJoindt" column="exa_joindt"/>
  </resultMap>
  
 
  
 	<!-- 문제 따로 만든 부분 -->
- <select id="indexeva" resultMap="examinationIndexMap">
+ <select id="indexEva" resultMap="examinationIndexMap">
 		SELECT
 		ei.eva_index_cd,
 		eii.evaindex_item_cd,
@@ -55,9 +57,9 @@
 		eii.m_criteria,
 		eii.s_criteria
 		FROM
-		Eva_index AS ei
+		Eva_Index AS ei
 		INNER JOIN
-		Eva_index_item as eii
+		Eva_Index_Item as eii
 		ON 
 		ei.eva_index_cd = eii.eva_index_cd
 	
@@ -70,9 +72,9 @@
 	SELECT
 	*
 	FROM
-	Eva_index AS ei	
+	Eva_Index AS ei	
 	INNER JOIN
-	Eva_index_scoring AS eis
+	Eva_Index_Scoring AS eis
 	ON
 	ei.eva_index_cd = eis.eva_index_cd
 	WHERE
@@ -80,7 +82,7 @@
 	 </select>
 	 
 	 <!-- 심사리스트 -->
-	 <select id="estimatelist" resultMap="examinationIndexMap">
+	 <select id="estimateList" resultMap="examinationIndexMap">
 	SELECT
 	*
 		FROM
@@ -106,7 +108,7 @@
 		ON
 		er.fest_cd = f.fest_cd
 		INNER JOIN
-		Eva_index AS ei
+		Eva_Index AS ei
 		on
 		er.eva_index_cd = ei.eva_index_cd
 		INNER join
@@ -119,7 +121,7 @@
 	 
 	 </select>
 	 <!-- 심사완료시 현황바뀜 -->
-	 <select id="updateestimatelist" resultMap="examinationIndexMap">
+	 <select id="updateEstimateList" resultMap="examinationIndexMap">
 	UPDATE
 	Exa_Report
 	SET
@@ -128,7 +130,7 @@
 	exa_rep_cd = #{exa_rep_cd}
 	 </select>
 	 <!-- 리스트->신청서페이지 -->
-	<select id="nextapply" resultMap="examinationIndexMap">
+	<select id="nextApply" resultMap="examinationIndexMap">
 SELECT
 		er.exa_rep_cd,
 		a.area_nm,
@@ -172,7 +174,7 @@ SELECT
 		ON
 		er.fest_cd = f.fest_cd
 		INNER JOIN
-		Eva_index AS ei
+		Eva_Index AS ei
 		on
 		er.eva_index_cd = ei.eva_index_cd
 	 WHERE
@@ -223,7 +225,7 @@ SELECT
 		ON
 		er.fest_cd = f.fest_cd
 		INNER JOIN
-		Eva_index AS ei
+		Eva_Index AS ei
 		on
 		er.eva_index_cd = ei.eva_index_cd
 	 WHERE
@@ -234,7 +236,8 @@ SELECT
 		UPDATE Exa_Report
 		SET
 		exe_manager= #{exeManager},
-		exa_condition = 'Y'
+		exa_condition = 'Y',
+		exa_dt=NOW()
 		WHERE 
 		exa_rep_cd = #{exaRepCd}
 		 
@@ -245,7 +248,7 @@ SELECT
 		eis.scoring_criteria,
 		eis.scoring
 		FROM
-		Eva_index_scoring AS eis
+		Eva_Index_Scoring AS eis
 		WHERE
 		eis.evaindex_sco_cd = #{evaindex_sco_cd}
 	 

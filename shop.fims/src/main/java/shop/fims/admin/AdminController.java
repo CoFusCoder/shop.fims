@@ -71,13 +71,20 @@ public class AdminController {
 		return null;
 	}
 	
-	//전국 지역 삭제 메서드
-	@GetMapping("/admin/areaDelete")
-	public String areaDelete(@RequestParam(value = "areaCd") String areaCd) {
-
-		adminService.areaDelete(areaCd);
-		System.out.println(areaCd + " : 전국 지역 삭제");
-		return "/admin/areaCityList";
+	//지역 삭제
+	@PostMapping("/admin/areaDelete")
+	public @ResponseBody String areaDelete(String areaCd, ServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(adminService.areaDelete(areaCd)!=0) {
+			out.println("<script>alert('삭제시 되돌릴 수 없습니다. 삭제하시겠습니까?'); location.href='/admin/areaCityList';</script>");
+		}else{
+			adminService.areaDelete(areaCd);
+			out.println("<script>alert('지역이 삭제되었습니다.'); location.href='/admin/areaCityList';</script>");			
+		}
+		out.flush();
+		System.out.println("area 지역 삭제 >>>>>>>" + areaCd.toString());
+		return null;		
 	}
 	
 	//전국 지역 및 시군 조회
@@ -125,13 +132,21 @@ public class AdminController {
 	}
 	
 	//전국 지역 시군 삭제 메서드
-	@GetMapping("/admin/areaCityDelete")
-	public String areaCityDelete(@RequestParam(value = "areaCityCd") String areaCityCd) {
-
-		adminService.areaDelete(areaCityCd);
-		System.out.println(areaCityCd + " : 전국 지역 시군 삭제");
-		return "/admin/areaCityList";
+	@PostMapping("/admin/areaCityDelete")
+	public @ResponseBody String areaCityDelete(String areaCityCd, ServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(adminService.areaCityDelete(areaCityCd)!=0) {
+			out.println("<script>alert('삭제시 되돌릴 수 없습니다. 삭제하시겠습니까?'); location.href='/admin/areaCityList';</script>");
+		}else{
+			adminService.areaDelete(areaCityCd);
+			out.println("<script>alert('지역별 시군이 삭제되었습니다.'); location.href='/admin/areaCityList';</script>");			
+		}
+		out.flush();
+		System.out.println("areaCity 지역 시군 삭제 >>>>>>>" + areaCityCd.toString());
+		return null;		
 	}
+	
 	
 	//행정기관 등록
 	@GetMapping("/admin/areaCityAdminInsert")
@@ -188,12 +203,19 @@ public class AdminController {
 	}
 	
 	//전국 행정기관 삭제 메서드
-	@RequestMapping(value="/admin/areaCityAdmDelete", method=RequestMethod.GET)
-	public String areaCityAdmDelete(@RequestParam(value = "areacityAdminCd") String areacityAdminCd) {
-
-		adminService.areaDelete(areacityAdminCd);
-		System.out.println(areacityAdminCd + " : 전국 행정기관 삭제");
-		return "redirect:/admin/areaCityAdminList";
+	@PostMapping("/admin/areaCityAdmDelete")
+	public @ResponseBody String areaCityAdmDelete(String areacityAdminCd, ServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(adminService.areaCityDelete(areacityAdminCd)!=0) {
+			out.println("<script>alert('삭제시 되돌릴 수 없습니다. 삭제하시겠습니까?'); location.href='/admin/areaCityAdminList.';</script>");
+		}else{
+			adminService.areaCityAdmDelete(areacityAdminCd);
+			out.println("<script>alert('행정기관이 삭제되었습니다.'); location.href='/admin/areaCityAdminList';</script>");			
+		}
+		out.flush();
+		System.out.println("areacityAdminCd 행정기관 삭제 >>>>>>>" + areacityAdminCd.toString());
+		return null;		
 	}
 	
 

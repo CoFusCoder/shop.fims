@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="shop.fims.publicrelations.PublicrelationsMapper">
   
-
+<!-- ==================resultMap start========================= -->
 <!-- 홍보 분류 resultMap -->
 	<resultMap type="shop.fims.vo.PrDiv" id="prDivResultmap">
 		<result property="festprDivCd" column="festpr_div_cd"/>
@@ -73,7 +73,201 @@
 		<result property="fileInsertDt" column="file_insertdt"/>
 
 	</resultMap>  
+<!-- ==================resultMap end========================= -->
 
+
+
+
+<!-- ================== 홍보 분류 start========================= -->
+	<!-- 홍보분류 수정 -->
+	<update id="updateDiv" parameterType="shop.fims.vo.PrDiv">
+	UPDATE
+		Fest_PR_Div
+	SET
+		festpr_div_nm=#{festprDivNm}
+	WHERE
+		festpr_div_cd=#{festprDivCd}
+	</update>
+	
+	<!-- 홍보분류 삭제 -->
+	<delete id="deleteDiv" parameterType="String">
+	DELETE
+	FROM Fest_PR_Div
+	WHERE festpr_div_cd=#{festprDivCd}
+	</delete>
+	
+	<!-- 홍보 분류 등록 -->
+	<insert id="insertPrDiv" parameterType="shop.fims.vo.PrDiv">
+		<selectKey keyProperty="festprDivCd" resultType="String" order="BEFORE">
+		SELECT
+			CONCAT('PRw' ,(lpad(max(SUBSTRING(festpr_div_cd,4))+1,4,'0'))) as festpr_div_cd
+		FROM
+			Fest_PR_Div
+		</selectKey>	
+	INSERT 
+	INTO
+		Fest_PR_Div( 
+		festpr_div_cd
+		,festpr_div_nm)
+	values (#{festprDivCd},#{festprDivNm})	
+	</insert>
+	
+  	<!-- 홍보분류조회 -->
+  	<select id="selectAllPrDiv" resultMap="prDivResultmap">
+  	SELECT
+		*
+	FROM
+		Fest_PR_Div
+		ORDER BY festpr_div_cd
+  	</select>	
+
+<!-- 홍보분류코드가 홍보테이블에서 사용되고 있는지 조회 -->
+	<select id="selectDivByCd" resultType="String">
+	SELECT distinct
+		p.festpr_div_cd
+	From
+		Fest_PR_Promotion AS p
+	WHERE
+		p.festpr_div_cd=(#{festprDivCd})
+	</select>
+<!-- ================== 홍보 분류 end ========================= -->
+
+
+
+<!-- ================== 홍보 프로모션 start ========================= -->
+
+	  	<!-- 홍보리스트 조건검색 -->
+	  	<select id="searchPrDetail" resultMap="prPromotionResultmap">
+		SELECT
+			a.cat_acc_nm1
+			,c.festpr_div_nm
+			,b.*
+		FROM
+			Cat_Approval_Account AS a
+			, Fest_PR_Promotion AS b
+			, Fest_PR_Div AS c
+		WHERE a.catapp_acc_cd=b.catapp_acc_cd
+			AND b.festpr_div_cd=c.festpr_div_cd
+			AND fest_cd=(#{festCd})
+		<trim prefix="and" prefixOverrides="and">
+			<if test="festprDivNm neq null and festprDivNm neq ''.toString()">
+				and c.festpr_div_nm=#{festprDivNm} 
+			</if>
+			<if test="catAccNm1 neq null and catAccNm1 neq ''.toString()">
+				and a.cat_acc_nm1 like CONCAT ('%',#{catAccNm1},'%') 
+			</if>
+			<if test="festprProNm neq null and festprProNm neq ''.toString()">
+				and b.festpr_pro_nm like CONCAT ('%',#{festprProNm},'%') 
+			</if>
+			<if test="actionStatus neq null and actionStatus neq ''.toString()">
+				and b.action_status like CONCAT ('%',#{actionStatus},'%') 
+			</if>
+			<choose>
+				<when test="date1 neq null and date1 neq ''.toString() and date2 neq null and date2 neq ''.toString()">
+					and b.fprpro_start_dt between DATE(#{date1}) and DATE(#{date2})
+					order by b.fprpro_start_dt asc
+				</when>			
+				<when test="date1 neq null and date1 neq ''.toString() and (date2 eq null or date2 eq ''.toString())">
+					and b.fprpro_start_dt BETWEEN DATE(#{date1}) AND (SELECT DATE_add(#{date1}, INTERVAL 31 DAY))
+					order by b.fprpro_start_dt asc
+				</when>
+				<when test="(date1 eq null or date1 eq ''.toString()) and date2 neq null and date2 neq ''.toString()">
+					and b.fprpro_start_dt BETWEEN (SELECT DATE_sub(#{date2}, INTERVAL 31 DAY)) and DATE(#{date2})
+					order by b.fprpro_start_dt desc
+				</when>	
+			</choose>
+			
+		</trim>
+	  	</select>
+	  	
+	  	  	
+	  	<!-- 프로모션코드로 프로모션상세조회 -->
+	  	<select id="selectByPmcd" resultType="map">
+		SELECT distinct
+			a.cat_acc_nm1
+			,d.man_com_dep
+			,d.com_mem_nm2
+			,f.accsub_medium_nm
+			,f.accsub_nm
+			,c.festpr_div_nm
+			,b.festpr_pro_cd
+			,b.areacity_admin_cd
+			,b.area_cd
+			,b.area_city_cd
+			,b.fest_cd
+			,b.festpr_div_cd
+			,b.man_com_cd
+			,b.fesrev_bud_cd
+			,b.catapp_acc_cd
+			,b.fest_title
+			,b.festpr_pro_nm
+			,b.festpr_pro_detail
+			,b.fprpro_order_dt
+			,b.fprpro_start_dt
+			,b.fprpro_end_dt
+			,b.festpr_pro_place
+			,b.festpr_pro_amt
+			,b.group_cd
+			,b.group_nm
+			,IFNULL(b.action_dt,'마감전') AS action_dt
+			,b.action_status
+			,b.festpr_pro_expense
+			,b.festpr_pro_etc
+			,b.insert_dt		
+		FROM
+			Cat_Approval_Account AS a
+			, Fest_PR_Promotion AS b
+			, Fest_PR_Div AS c
+			, Man_Com AS d
+			, Cat_Account AS e
+			, Fes_revExp_Bud AS f
+		WHERE a.catapp_acc_cd=b.catapp_acc_cd
+			AND b.festpr_div_cd=c.festpr_div_cd
+			AND b.festpr_pro_cd=(#{festprProCd})
+			AND b.man_com_cd=d.man_com_cd
+			AND b.fesrev_bud_cd=f.fesrev_bud_cd
+	  	</select>
+	  	
+	  	
+	  	<!-- 홍보리스트조회 -->
+	  	<select id="selectAllPromotion" resultMap="prPromotionResultmap">
+	SELECT
+		f.*
+		,a.cat_acc_nm1
+	from	
+				(SELECT 		
+					c.festpr_div_nm
+					,b.*
+				From
+					Fest_PR_Promotion AS b
+					inner join
+		   		Fest_PR_Div AS c
+		   	ON b.festpr_div_cd=c.festpr_div_cd
+			WHERE fest_cd=(#{festCd})) AS f
+		LEFT OUTER join
+		   Cat_Approval_Account AS a
+		 on a.catapp_acc_cd=f.catapp_acc_cd
+		ORDER BY f.festpr_pro_cd DESC
+	  	</select>
+	
+	<!-- 홍보사업 삭제 -->
+	<delete id="deletePromotion">
+	DELETE
+	FROM
+		Fest_PR_Promotion 
+	WHERE
+		festpr_pro_cd=(#{festprProCd})
+	</delete> 
+	
+	<!-- 홍보코드로 첨부파일 삭제 -->
+	<delete id="deleteFile">
+	DELETE
+	FROM
+		Attach_Files 
+	WHERE
+		festpr_pro_cd=(#{festprProCd})
+	</delete> 
+	 
 <!-- 첨부파일조회 -->
 <select id="selectFile" resultMap="attachFilesResultmap">
 SELECT
@@ -159,7 +353,7 @@ FROM
 	FROM
 		Fest_PR_Promotion
 	</selectKey>
-INSERT 
+insert
 INTO
 	Fest_PR_Promotion(
 	festpr_pro_cd, areacity_admin_cd, area_cd,area_city_cd
@@ -173,20 +367,34 @@ values (#{festprProCd},#{areacityAdminCd},#{areaCd},#{areaCityCd}
 		,#{festCd},#{festprDivCd}, #{manComCd}, #{fesrevBudCd}
 		,#{catappAccCd}, #{festTitle},#{festprProNm}, #{festprProDetail}
 		,#{fprproOrderDt},#{fprproStartDt},#{fprproEndDt},#{festprProPlace}
-		,#{festprProAmt},#{groupCd},#{groupNm},'0000-00-00'
+		,#{festprProAmt},#{groupCd},#{groupNm},#{actionDt}
 		,'N',#{festprProExpense},#{festprProEtc},now())
 </insert>	
+
+<!-- 홍보 프로모션 수정 -->
+<update id="updatePromotionPro" parameterType="shop.fims.vo.PrPromotion">
+UPDATE
+	Fest_PR_Promotion
+SET
+	festpr_div_cd=(#{festprDivCd})
+	,fesrev_bud_cd=(#{fesrevBudCd})
+	,catapp_acc_cd=(#{catappAccCd})
+	,festpr_pro_nm=(#{festprProNm})
+	,festpr_pro_detail=(#{festprProDetail})
+	,fprpro_order_dt=(#{fprproOrderDt})
+	,fprpro_start_dt=(#{fprproStartDt})
+	,fprpro_end_dt=(#{fprproEndDt})
+	,festpr_pro_place=(#{festprProPlace})
+	,festpr_pro_amt=(#{festprProAmt})
+	,group_cd=(#{groupCd})
+	,group_nm=(#{groupNm})
+	,festpr_pro_expense=(#{festprProExpense})
+	,festpr_pro_etc=(#{festprProEtc})
+WHERE
+	festpr_pro_cd=(#{festprProCd})
+</update>	
 	
-<!-- 홍보 승인된 거래처 조회 -->
-<select id="selectParners" parameterType="String" resultType="map">
-SELECT 
-	catapp_acc_cd
-	,cat_acc_nm1
-FROM
-	Cat_Approval_Account
-WHERE 
-	catbus_acc_bus='홍보대행업체'
-</select>
+
 
 <!-- 홍보관련 계정과목코드,코드명,중분류명 조회 -->
 <select id="selectBudget" parameterType="String" resultType="map">
@@ -202,149 +410,213 @@ WHERE
 	ORDER BY fesrev_bud_cd
 </select>
 
-<!-- 홍보분류 수정 -->
-<update id="updateDiv" parameterType="shop.fims.vo.PrDiv">
+<!-- 홍보 그룹코드명 수정 -->
+<update id="updatePrGroupNm" parameterType="String">
 UPDATE
-	Fest_PR_Div
+	Fest_PR_Promotion
 SET
-	festpr_div_nm=#{festprDivNm}
-WHERE
-	festpr_div_cd=#{festprDivCd}
+	group_nm=(#{groupNm})
+WHERE group_cd=(#{groupCd})
+
 </update>
 
-<!-- 홍보분류 삭제 -->
-<delete id="deleteDiv" parameterType="String">
-DELETE
-FROM Fest_PR_Div
-WHERE festpr_div_cd=#{festprDivCd}
-</delete>
-
-<!-- 홍보 분류 등록 -->
-<insert id="insertPrDiv" parameterType="shop.fims.vo.PrDiv">
-	<selectKey keyProperty="festprDivCd" resultType="String" order="BEFORE">
-	SELECT
-		CONCAT('PRw' ,(lpad(max(SUBSTRING(festpr_div_cd,4))+1,4,'0'))) as festpr_div_cd
+<!-- 예산테이블에 들어갈 내용 확인 -->
+<select id="selectForGroupBud" resultType="map">
+SELECT
+	p.areacity_admin_cd
+	,b.accsub_man_cd
+	,p.man_com_cd
+	,p.fest_cd
+	,p.area_city_cd
+	,p.area_cd
+	,p.group_cd
+	,p.group_nm
+	,b.adm_age_nm
+	,b.fes_nm
+	,b.com_nm
+	,b.accsub_large_nm
+	,b.accsub_medium_nm
+	,b.budget_cla
+	,b.accsub_nm
+	,b.budget_details
+	,b.fes_year
+	,p.festpr_pro_expense
 	FROM
-		Fest_PR_Div
-	</selectKey>	
-INSERT 
-INTO
-	Fest_PR_Div( 
-	festpr_div_cd
-	,festpr_div_nm)
-values (#{festprDivCd},#{festprDivNm})	
+	Fest_PR_Promotion AS p
+	,Fes_revExp_Bud AS b
+WHERE 
+	p.fesrev_bud_cd=b.fesrev_bud_cd
+	and p.festpr_pro_cd=(#{festprProCd})
+
+</select>
+
+<!-- 예산테이블에 그룹코드 최초등록 -->
+<insert id="insertGroupBud" parameterType="map">
+	<selectKey keyProperty="fesrevExeCd" resultType="String" order="BEFORE">
+	SELECT
+		CONCAT('fesrev_exe' ,(lpad(max(SUBSTRING(fesrev_exe_cd,11))+1,3,'0'))) as fesrev_exe_cd
+	FROM
+		Fes_revExp_Exe
+	</selectKey>
+	INSERT
+	INTO
+	Fes_revExp_Exe(
+		fesrev_exe_cd
+		,areacity_admin_cd
+		,accsub_man_cd
+		,man_com_cd
+		,fest_cd
+		,area_city_cd
+		,area_cd
+		,group_cd
+		,dettax_paycontab_nm
+		,adm_age_nm
+		,fes_nm
+		,com_nm
+		,lar_cat_nm
+		,accsub_medium_nm
+		,bud_cla
+		,accsub_nm
+		,exp_details
+		,fes_year
+		,Expenditure
+	)
+	VALUES(#{fesrevExeCd}
+		,#{areacity_admin_cd}
+		,#{accsub_man_cd}
+		,#{man_com_cd}
+		,#{fest_cd}
+		,#{area_city_cd}
+		,#{area_cd}
+		,#{group_cd}
+		,#{group_nm}
+		,#{adm_age_nm}
+		,#{fes_nm}
+		,#{com_nm}
+		,#{accsub_large_nm}
+		,#{accsub_medium_nm}
+		,#{budget_cla}
+		,#{accsub_nm}
+		,#{budget_details}
+		,#{fes_year}
+		,#{festpr_pro_expense}
+)
 </insert>
 
-  
-<!-- 프로모션코드로 이벤트 당첨자조회   -->
-	<select id="selectEventWinnerByPmcd" resultMap="eventWinnerResultmap">
-	SELECT
-		pm.festpr_pro_nm
-		,ev.*
-	FROM
-		Fest_PR_Promotion AS pm
-		INNER JOIN
-		Fest_PR_Eventwinner AS ev
-		ON
-		pm.festpr_pro_cd=ev.festpr_pro_cd
-	where ev.festpr_pro_cd=(#{festprProCd})	
-	
-	</select>
-	
-	
-  	<!-- 홍보리스트 조건검색 -->
-  	<select id="searchPrDetail" resultMap="prPromotionResultmap">
-	SELECT
-		a.cat_acc_nm1
-		,c.festpr_div_nm
-		,b.*
-	FROM
-		Cat_Approval_Account AS a
-		, Fest_PR_Promotion AS b
-		, Fest_PR_Div AS c
-	WHERE a.catapp_acc_cd=b.catapp_acc_cd
-		AND b.festpr_div_cd=c.festpr_div_cd
-		AND fest_cd=(#{festCd})
-	<trim prefix="and" prefixOverrides="and">
-		<if test="festprDivNm neq null and festprDivNm neq ''.toString()">
-			and c.festpr_div_nm=#{festprDivNm} 
-		</if>
-		<if test="catAccNm1 neq null and catAccNm1 neq ''.toString()">
-			and a.cat_acc_nm1 like CONCAT ('%',#{catAccNm1},'%') 
-		</if>
-		<if test="festprProNm neq null and festprProNm neq ''.toString()">
-			and b.festpr_pro_nm like CONCAT ('%',#{festprProNm},'%') 
-		</if>
-		<if test="actionStatus neq null and actionStatus neq ''.toString()">
-			and b.action_status like CONCAT ('%',#{actionStatus},'%') 
-		</if>
-		<choose>
-			<when test="date1 neq null and date1 neq ''.toString() and date2 neq null and date2 neq ''.toString()">
-				and b.fprpro_start_dt between DATE(#{date1}) and DATE(#{date2})
-				order by b.fprpro_start_dt asc
-			</when>			
-			<when test="date1 neq null and date1 neq ''.toString() and (date2 eq null or date2 eq ''.toString())">
-				and b.fprpro_start_dt BETWEEN DATE(#{date1}) AND (SELECT DATE_add(#{date1}, INTERVAL 31 DAY))
-				order by b.fprpro_start_dt asc
-			</when>
-			<when test="(date1 eq null or date1 eq ''.toString()) and date2 neq null and date2 neq ''.toString()">
-				and b.fprpro_start_dt BETWEEN (SELECT DATE_sub(#{date2}, INTERVAL 31 DAY)) and DATE(#{date2})
-				order by b.fprpro_start_dt desc
-			</when>	
-		</choose>
-		
-	</trim>
-  	</select>
-  	
-  	  	
-  	<!-- 프로모션코드로 프로모션상세조회 -->
-  	<select id="selectByPmcd" resultMap="prPromotionResultmap">
-	SELECT
-		a.cat_acc_nm1
-		,c.festpr_div_nm
-		,b.*
-	FROM
-		Cat_Approval_Account AS a
-		, Fest_PR_Promotion AS b
-		, Fest_PR_Div AS c
-	WHERE a.catapp_acc_cd=b.catapp_acc_cd
-		AND b.festpr_div_cd=c.festpr_div_cd
-		AND b.festpr_pro_cd=(#{festprProCd})
-  	</select>
-  	
-  	
-  	<!-- 홍보리스트조회 -->
-  	<select id="selectAllPromotion" resultMap="prPromotionResultmap">
+<!-- 마감여부 및 마감날짜 업데이트 -->
+<update id="updateAction" parameterType="String">
+UPDATE 
+	Fest_PR_Promotion AS p
+SET
+	p.action_dt=NOW()
+	,p.action_status='Y'
+WHERE
+	p.festpr_pro_cd=(#{festprProCd})
+</update>
+
+<!-- 예산집행테이블에 해당 그룹코드로 된 레코드가 있는지 조회-->
+<select id="checkActionCd" resultType="String">
 SELECT
-	f.*
-	,a.cat_acc_nm1
-from	
-			(SELECT 		
-				c.festpr_div_nm
-				,b.*
-			From
-				Fest_PR_Promotion AS b
-				inner join
-	   		Fest_PR_Div AS c
-	   	ON b.festpr_div_cd=c.festpr_div_cd
-		WHERE fest_cd=(#{festCd})) AS f
-	LEFT OUTER join
-	   Cat_Approval_Account AS a
-	 on a.catapp_acc_cd=f.catapp_acc_cd
-	ORDER BY f.festpr_pro_cd DESC
-  	</select>
-  	
-  	
-  	<!-- 홍보분류조회 -->
-  	<select id="selectAllPrDiv" resultMap="prDivResultmap">
-  	SELECT
-		*
-	FROM
-		Fest_PR_Div
-		ORDER BY festpr_div_cd
-  	</select>
-  
-  
+	e.group_cd
+FROM
+	Fes_revExp_Exe AS e
+WHERE
+e.group_cd=(SELECT
+	p.group_cd
+FROM
+	Fest_PR_Promotion AS p
+WHERE 
+	p.festpr_pro_cd=(#{festprProCd}))
+</select>
+
+<!-- 예산집행테이블에 해당 그룹코드로 된 레코드가 있으면 합산한 값을 계산 -->
+<select id="calGroupBudExp" resultType="int">
+select
+(a.festpr_pro_expense + e.Expenditure) AS sum
+FROM
+Fes_revExp_Exe AS e
+INNER join(SELECT
+	p.group_cd
+	,p.festpr_pro_expense
+FROM
+	Fest_PR_Promotion AS p
+WHERE 
+	p.festpr_pro_cd=(#{festprProCd}))AS a
+on a.group_cd=e.group_cd
+</select>
+<!-- 프로모션코드로 그룹코드조회 -->
+<select id="selectGroupCdByProCd" resultType="String">
+SELECT
+	p.group_cd
+FROM
+Fest_PR_Promotion AS p
+WHERE
+	p.festpr_pro_cd=#{festprProCd}
+</select>
+<!-- 그룹코드 합산값 예산집행테이블에 업데이트 -->
+<update id="updateGroupCal" parameterType="List">
+UPDATE
+Fes_revExp_Exe AS e
+SET
+e.Expenditure=(#{sum})
+WHERE
+e.group_cd=(#{groupCd})
+</update>
+
+<!-- 홍보코드로 마감상태조회 -->
+<select id="checkActionStatus" resultType="String">
+SELECT
+	p.action_status
+FROM
+	Fest_PR_Promotion AS p
+WHERE
+	p.festpr_pro_cd=(#{festprProCd})
+</select>
+<!-- ================== 홍보 프로모션 end ========================= -->
+
+
+
+
+
+
+<!-- ================== 이벤트 당첨 start========================= -->
+	
+	<!-- 프로모션코드로 이벤트 당첨자조회   -->
+		<select id="selectEventWinnerByPmcd" resultMap="eventWinnerResultmap">
+		SELECT
+			pm.festpr_pro_nm
+			,ev.*
+		FROM
+			Fest_PR_Promotion AS pm
+			INNER JOIN
+			Fest_PR_Eventwinner AS ev
+			ON
+			pm.festpr_pro_cd=ev.festpr_pro_cd
+		where ev.festpr_pro_cd=(#{festprProCd})	
+		
+		</select>
+		
+
+<!-- ================== 이벤트 당첨 end========================= -->
+
+
+
+
+
+
+<!-- ================== 홍보 거래처 start========================= -->
+
+<!-- 홍보 승인된 거래처 조회 -->
+<select id="selectParners" parameterType="String" resultType="map">
+SELECT 
+	catapp_acc_cd
+	,cat_acc_nm1
+FROM
+	Cat_Approval_Account
+WHERE 
+	catbus_acc_bus='홍보대행업체'
+</select>
+
 <!-- 축제별 승인 홍보 거래처 조회 -->
 <select id="selectPrCom" resultType="map">
 SELECT
@@ -413,9 +685,7 @@ WHERE
 	fest_cd=(#{festCd})
 	and p.catapp_acc_cd='catapp_acc_020'
 </select>  
-  
-  
-  
-  
-  
+<!-- ================== 홍보 거래처 end========================= -->
+
+
   </mapper>

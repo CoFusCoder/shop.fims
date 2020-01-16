@@ -26,13 +26,17 @@ public interface PublicrelationsMapper {
 	// 홍보분류 삭제
 	public int deleteDiv(String festprDivCd);	
 	
-	
+	// 홍보분류코드가 홍보테이블에서 사용되고 있는지 조회 
+	public String selectDivByCd(String festprDivCd);
 	
 	
 	
 //**********홍보 프로모션 **********
 	// 홍보사업 신규등록
 	public int insertPromotionPro(PrPromotion promotion);
+	
+	// 홍보사업 신규등록
+	public int updatePromotionPro(PrPromotion promotion);
 	
 	// 홍보관련 승인된 거래처 조회
 	public List<Map<String, Object>> selectParners();
@@ -47,7 +51,7 @@ public interface PublicrelationsMapper {
 	public List<PrPromotion> selectAllPromotion(String festCd);
 	
 	// 홍보코드로 상세조회
-	public List<PrPromotion> selectByPmcd(String festprProCd);	
+	public List<Map<String, Object>> selectByPmcd(String festprProCd);	
 	
 	// 홍보 그룹코드 조회
 	public List<Map<String, Object>> selectGroup(String festCd);	
@@ -68,6 +72,36 @@ public interface PublicrelationsMapper {
 	
 	//첨부파일 정보 조회
 	public List<AttachFiles> selectFile (String festprProCd);
+	
+	
+	// 홍보사업 삭제
+	public int deletePromotion(String festprProCd);
+	// 마감상태확인
+	public String checkActionStatus (String festprProCd);		
+	
+	// 홍보코드로 첨부파일 삭제
+	public int deleteFile(String festprProCd);
+	
+	public int updatePrGroupNm (String groupCd, String groupNm);
+	
+	// 최초 그룹예산 합산용 데이터 조회 
+	public Map<String, String> selectForGroupBud (String festprProCd);
+	// 최초 그룹예산 등록
+	public int insertGroupBud (Map<String, String> groupdata);
+	// 마감여부, 마감날짜 업데이트
+	public int updateAction(String festprProCd);
+	
+	// 예산집행테이블에 해당 그룹코드로 된 레코드가 있는지 조회
+	public String checkActionCd(String festprProCd);
+	// 예산집행테이블에 해당 그룹코드로 된 레코드가 있으면 합산한 값을 계산
+	public int calGroupBudExp (String festprProCd);
+	// 프로모션코드로 그룹코드 조회
+	public String selectGroupCdByProCd (String festprProCd);
+	// 예산집행테이블에 그룹코드 합산된 값을 업데이트
+	public int updateGroupCal (String groupCd ,int sum);
+	
+	
+	
 	
 //**********홍보 이벤트당첨자 ***********		
 	// 홍보코드로 이벤트 당첨자 조회

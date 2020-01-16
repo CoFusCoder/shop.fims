@@ -12,7 +12,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			<div class="content-panel" style="padding: 20px;">
 				<br>
 				<h2>
-					<i class="fa fa-angle-right"></i>심사
+					<i class="fa fa-angle-right"></i>심사 페이지
 				</h2>
 				<th:block th:each="examain : ${examinationIndex}">
 					<input type="hidden" id="exaRepCd" th:value="${examain.exaRepCd}">
@@ -73,7 +73,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 				console.log(indexeva.length)
 				console.log(evaList.length)
 							
-// 				content += '<form action="/estimatelist" method="post">'
+				content += '<form action="/estimatelist" method="post">'
 				content += '<table class="table table-bordered table-striped table-condensed">'
 				for(var i = 0; i < indexeva.length; i++){
 				content += '<tr>'
@@ -95,7 +95,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 				content +='</td>'
 				content +='</tr>'				
 				content +='</table>'
-// 				content +='</form>'						
+				content +='</form>'						
 				$('.evaList').html(content)
 				$('.JudgingButton').click(function(){
 					$('#subid').css('')					

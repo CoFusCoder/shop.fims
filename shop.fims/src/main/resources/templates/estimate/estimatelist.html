@@ -17,15 +17,17 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 					</h2>
 					
 						<table class="table" >
-							<tr>
+							<tr >
 								<th>모든 행정기관관리</th>
 								<th>전국 지역관리</th>
 								<th>모든 지역 시군관리</th>
 								<th>모든 축제관리</th>
 								<th>심사 제목</th>
-								<th>심사일자</th>
+								<th>등록일자</th>
 								<th>심사현황</th>
+								<th:block th:if="${session.SID eq 'id003'}">
 								<th>심사하기</th>
+								</th:block>	
 							</tr>
 							<tr th:each="e : ${estimatelist}" >
 							<th:block th:if="${e.exaCondition} == N" >						
@@ -33,13 +35,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th th:text="${e.areaCityNm}"></th>
 								<th th:text="${e.areacityAdminNm}"></th>
 								<th th:text="${e.festNm}"></th>
-								<th th:text="${e.evaNm}"></th>
-								<th th:text="${e.exaDt}"></th>
+								<th th:text="${e.evaNm}" class="evanm"></th>
+								<th th:text="${e.exaJoindt}"></th>
 								<th th:text="${e.exaCondition}" class="exaCondition"></th>								
 								<th:block th:if="${session.SID eq 'id003'}">
 								<th>
 								<a th:href="@{/apply(exaRepCd=${e.exaRepCd})}" >  
-  			 		 			 <button class="btn btn-success btn-xs"><i class="fa fa-check">제출</i></button> 
+  			 		 			 <button id="bbts" class="btn btn-success btn-xs" ><i class="fa fa-check">심사</i></button> 
   			 		 			 </a>
 								</th>
   			 		 			 </th:block>	
@@ -66,7 +68,9 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th>심사일자</th>
 								<th>심사현황</th>
 								<th>담당자</th>
+								<th:block th:if="${session.SLEVEL eq '거래처'}">
 								<th>상세보기</th>
+								</th:block>
 							</tr>
 						<tr th:each="e : ${estimatelist}" >
 							<th:block th:if="${e.exaCondition} == Y" >						
@@ -78,15 +82,19 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th th:text="${e.exaDt}"></th>
 								<th th:text="${e.exaCondition}" ></th>								
 								<th th:text="${e.exeManager}"></th>
+								<th:block SLEVEL></th:block>
+								<th:block th:if="${session.SLEVEL eq '거래처'}">
 								<th>			
-
-								<a onclick="window.open('/estimatelistdetail','상세페이지','width=700, height=500,left=500,top=200  ');"> 
+ 			 					<a th:href="@{/estimatelistdetail(exa_rep_cd=${e.exaRepCd})}">
  			 					  <button class="btn btn-success btn-xs"><i class="fa fa-check">상세보기</i></button> 
  			 					</a>	
 								</th>
-								<th:block></th:block>
+								</th:block>
 							</tr>
-					</table>						
+					</table>
+					
+					
+
 				</div>
 			</div>
 		</div>
@@ -95,8 +103,5 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisscript">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>
 
-<script type="text/javascript">
-
-</script>
 
 </html>
