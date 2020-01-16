@@ -50,33 +50,7 @@ button.close {
 }
 </style>
 
-<script>
-	function setPopupCookie(name, value, expiredays) {
-		var todayDate = new Date();
-		todayDate.setDate(todayDate.getDate() + expiredays);
-		document.cookie = name + "=" + escape(value) + "; path=/; expires="
-				+ todayDate.toGMTString() + ";"
-	}
 
-	function closePopup(popupseq) {
-		if ($("input:checkbox[name='popup']").is(":checked"))
-			setPopupCookie('popup_' + popupseq, '1', 1);
-		$('#popupdialog').hide();
-	}
-
-	function goURL(url) {
-		opener.location.href = url;
-		self.close();
-	}
-</script>
-
-<Script>
-	$(document).ready(function() {
-		getRecommendSpotList();
-
-	
-	});
-</Script>
 
 </th:block>
 
