@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="/gukmin/include/css/common_190812.css" />
+<link rel="stylesheet" type="text/css" href="/gukmin/include/css/default_190911.css" />
+<script src="/gukmin/include/js/jquery-3.2.1.min.js"></script>
+
+<Script>
+	$(document).ready(function() {
+		statlist();//기간 별 리스트 호출
+
+		$('#keywordsearchbutton').on('click',function(){
+			searchKeyword();
+		})
+		
+		$('#searchKeyword').keydown(function (key){
+			if(key.keyCode==13)searchKeyword();
+		})
+
+	});
+	
+	function gukminDetail(contentid,contenttypeid,eventstartdate,eventenddate){
+		
+		if(contenttypeid!=15)return null;
+		
+		$('#homtitle').empty();//화면 초기화
+		$('#homelist').empty();
+		$('#homtitle').append('축제 <strong>상세 화면</strong>');
+		
+		var data={};
+		data.contentId = contentid;
+		data.contentTypeId = contenttypeid;
+		console.log(data);
+		
+		playtimes = eventstartdate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3')+" ~ "+eventenddate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3');
+		
+		//상세 헤드
+		$.ajax({
+            url : "/api/detailCommon",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+        	console.log("/api/detailCommon");
+        	console.log(data);
+        	datas = data.response.body.items.item;
+        	//타이틀
+        	$('#detailTitle').empty();
+        	$('#detailTitle').append(
+        		"<p class='t01'>"+datas.title+"</p>"
+    			+"<p class='t02'>"+datas.telname+"</p>"
+        	);
+        	//이미지
+        	$('#detailMainImg').empty();
+        	$('#detailMainImg').append(
+       				"<img class='vertical' src='"+datas.firstimage +"' width='780px' height='480px' />"
+        	)
+        	//간단내용
+			$('#detailInfo').empty();
+        	$('#detailInfo').append(
+        			"<table><tr class='first'><th>행사기간</th><td>2019.11.16 ~ 2020.01.05</td></tr>"
+        			+"<tr><th>위치</th><td>"+datas.addr1+"</td></tr>"
+        			+"<tr><th>행사장소</th><td>"+datas.overview+"</td></tr>"
+        			+"<tr><th>연락처</th><td><a href='tel:"+datas.tel+"'>"+datas.tel+"</a></td></tr>"
+        			+"<tr><th>홈페이지</th><td>"+datas.homepage+"</td></tr></table>"
+        			+"<div class='hostBar mt50'><div class='hostBar_btn'><a class='btn_storeView'>호스트 정보보기</a></div></div>"
+        			+"<div class='ctn_wrong'><a title='1:1문의하기로 이동'> <img src='https:\/\/joyfesta.kr/include/img/etc/btn_wrong.png' alt='잘못된 정보 제보'></a> <span> 이 페이지에 잘못된 정보 또는 새로운 정보가 있나요? <br /> 수정할 내용 또는 사진을 제보해주세요!</span></div>"
+        			+"<p class='latestDate'>최근 정보 업데이트 "+datas.modifiedtime.toString().replace(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/g, '$1.$2.$3 $4:')+" </p>"		
+        	)
+        	
+        });
+		
+		//상세 메인
+		$('#detailBox').empty();
+		$('#detailBox').append(
+			"<ul class='detailTabs'><li><a class='on'>상세정보</a></li></ul>"
+			+"<div class='detaillArea' id='detailinfo'><p class='dSubj'>기본정보</p><div class='detNormal' id='detaillAreaNormal'></div></div>"
+		);
+		
+		//상세 기본정보 intro
+		$.ajax({
+            url : "/api/detailIntro",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+        	console.log("/api/detailIntro");
+        	console.log(data);
+        	datas = data.response.body.items.item;
+        	$('#detaillAreaNormal').append(
+        			"<table><tr class='first'><th>주최</th><td>"+datas.sponsor1+"</td></tr>"
+					+(datas.sponsor2?"<tr><th>주관</th><td>(사)"+datas.sponsor2+"</td></tr>":"")
+					+"<tr><th>기간</th><td>"+playtimes+" / "+(datas.playtime?datas.playtime:"")+"</td></tr></table>"
+        	);
+        });
+		//info
+		$.ajax({
+            url : "/api/detailInfo",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+        	console.log("/api/detailInfo");
+        	console.log(data);
+        	datas = data.response.body.items.item;
+        	$(datas).each((index,item)=>{
+        		$('#detailinfo').append("<p class='dSubj'>"+item.infoname+"</p><div class='detIntroBox'>"+item.infotext+"</div>");
+        	})
+        	
+        });
+		
+		//img
+		$('#detailinfo').append("<p class='dSubj'>사진/영상</p><div class='detMovieBox'><div class='detMovieSlide' id='detailimgs'></div></div>");
+		$.ajax({
+            url : "/api/detailImage",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+        	console.log("/api/detailImage");
+        	console.log(data);
+        	datas = data.response.body.items.item;
+        	$(datas).each((index,item)=>{
+        		$('#detailimgs').append("<div class='item'><img class='vertical' src='"+ item.originimgurl+"' /></div>");
+        	})
+        	
+        });
+		
+	}
+	
+	function searchKeyword(){
+		var data={};
+		data.keyword = $('#searchKeyword').val();
+		data.arrange = "P"
+		$.ajax({
+            url : "/api/searchKeyword",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+			if(data.response.body.totalCount==0) return null; //검색결과 없을시 리턴
+			
+			console.log("/api/searchKeyword");
+			console.log(data);
+            
+            $('#detailInfo').empty()
+            $('#detailMainImg').empty();
+            $('#detailBox').empty();
+            $('#homtitle').empty();
+            $('#homtitle').append('키워드 <strong>검색 목록</strong>');
+            $('#homelist').empty();
+            $(data.response.body.items.item).each((index,item)=>{
+            	
+            	$('#homelist').append(
+            			"<div class='list'><div class='pic_area'><a class='pic'><img src='"+item.firstimage+"'/><div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
+						+"<div class='cont'><p class='t01'><a href='#'>"
+						+item.title//( )사이의 문자열만 추출
+						+"</a></p><div class='t02'>"
+						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"		
+            	)	                   
+            });
+
+        });
+	}
+	
+	function statlist(){
+		//메인 화면 축제 검색 리스트
+		//오늘 날짜 구하기
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; 
+		var yyyy = today.getFullYear();
+		if(dd<10)dd='0'+dd;
+		if(mm<10)mm='0'+mm;
+		
+		var data={};
+		data.arrange = "O"
+		data.eventStartDate = ''+yyyy+mm+dd
+		data.eventEndDate = ''+yyyy+(mm+1)+dd //한달동안
+		
+		$.ajax({
+            url : "/api/searchFestival",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+        	
+        	console.log("/api/searchFestival");
+            console.log(data);
+            $('#homtitle').empty();
+            $('#homtitle').append('이달의 <strong>축제 목록</strong>');
+            $('#homelist').empty();
+            $(data.response.body.items.item).each((index,item)=>{
+            	
+            	$('#homelist').append(
+            			"<div class='list'>"
+            			+"<div class='pic_area'>"
+            			+"<a class='pic'><img src='"+item.firstimage+"' onclick='gukminDetail("+item.contentid+","+item.contenttypeid+","+item.eventstartdate+","+item.eventenddate+")'/>"
+            			+"<div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
+						+"<div class='cont'><p class='t01'><a href='#'>"
+						+item.title
+						+"</a></p><div class='t02'>"
+						+"<span class='date'>"
+						+item.eventstartdate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3')//날짜 yyyymmdd to yyyy.mm.dd 변환
+						+" ~ "
+						+item.eventenddate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3')
+						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"	
+            	)	                   
+            });
+
+        });
+	}
+	
+	
+</Script>
+
+
+<title>이용약관 | 축제&middot;전통시장 플랫폼 조이페스타(JOYFESTA)</title>
+</head>
+<body>
+	<header>
+	<div class="rela">
+		<h1>
+			<a href="/"><img
+				src="https://joyfesta.kr/include/img/etc/etc_logo.png" /></a>
+		</h1>
+		<div class="totalBox">
+			<nav>
+				<ul>
+					<li id="mainli"><a href="/" id="mainhref">!전체</a></li>
+					<li id="festivalli"><a href="/gukminview/festival/festivalAndEventView" id="festivalhref">!축제·이벤트</a></li>
+					<li id="marketli"><a href="/acontractview/private/orderingPlanView" id="markethref">!계약공시</a></li>
+					<li id="promotionli"><a href="/ebudgetview/budget/budgetMainView"
+						id="promotionhref">!경영공시</a></li>
+					<li id="communityli"><a href="/gukminview/community/communityView"
+						id="communityhref">!커뮤니티</a>
+				</ul>
+			</nav>
+			<div class="etcRight">
+				<ul>
+						<li class="ico_spot"><a href="/adminview/adminMainView">!관리자홈페이지</a></li>
+						<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">!스팟등록하기</a></li>
+				</ul>
+					<a href="/gukminview/login/loginForm" class="pLogout"><span>!로그인</span></a>
+			<form>
+				<div class="searchBox">
+					<input type="text" autocomplete="nope" id="searchKeyword" placeholder="검색 하고자 하는 키워드를 입력해주세요"/> 
+					<img src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" />
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	</header>
+	
+	<div class="themeListBox">
+		<ul class="themeList">
+		</ul>
+	</div>
+	<div class="obgBox" style="padding-top: 150px">
+		<h2 class="mtit" id='homtitle'></h2>
+		<div class="hotSlideBox">
+			<div class="hotSlide" >
+				<div class="item" id="homelist"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 디테일  -->
+	<div class="detailDesc" id="detailTitle"></div>
+	<div class="detailInfo">
+		<div class="mainSlideBox">
+			<div class="mainSlide">
+				<div class="item" id="detailMainImg"></div>
+			</div>
+		</div>
+		<div class="detailCont" id="detailInfo"></div>
+	</div>
+	
+	<div id="detailBox"></div>
+	<!-- 디테일 끝 -->
+	
+</body>
+</html>

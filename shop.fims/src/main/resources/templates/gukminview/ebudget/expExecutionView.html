@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="ebudgetCSS">
+<link rel='stylesheet' href='/ebudget/css/main3.css' type='text/css'>
+</th:block>
+
+<th:block layout:fragment="gukminMainContents">
+<div id="contentW">
+<div class="content">
+	<div class="commDesc" style="width : 100%">
+		<p class="t01">경영공시</p>
+		<p class="t02">ALLFestMoa에서 축제에 대한 경영정보를 확인해보세요!</p>
+	</div>
+	<div class="norBox" style="border-bottom: 1px solid; width: 100%" >
+		<ul class="commTabs">
+			<li><a href="/gukminview/ebudget/revBudgetView" >세입현황</a></li>
+			<li><a href="/gukminview/ebudget/revExpExecutionView" class="on">세출현황</a></li>
+		</ul>	
+	</div>	
+	
+<!-- <div id="contentW">
+<div class="content"> -->
+<div id="sub_title" style="padding-top: 20px;">지출정보</div>
+
+<div id="sub_menu">
+	<ul>
+		<li>
+			<a href="/gukminview/ebudget/revExpExecutionView"  title='예산집행현황'>예산집행현황</a>
+		</li>	
+		<li>
+			<a href="/gukminview/ebudget/expEntBudgetView"  title='사업 및 예산정보'>사업 및 예산정보</a>
+		</li>	
+		<li>
+			<a href="/gukminview/ebudget/expExecutionView" class="tab2" title='지출정보'>지출정보</a>
+		</li>    	
+	</ul>    	
+</div>
+
+<div id="ex">
+	<p>- 최근 지출일자 순으로 보실 수 있습니다.<br>
+	   - 부서별 통계목 사부사업명 지급일자별로 검색하실 수 있습니다.<br>
+	   - 위에 지출정보를 클릭하시면 검색조건이 초기화 됩니다.</p>
+</div>
+
+<div id="search_table">
+  <!-- 검색항목출력 폼 -->
+  <!-- <form name="board_form" method="post" action="./eBudgetList203.html?mode=search"> -->
+  	
+			<table>
+		<caption>지출정보 검색</caption>
+          <tr>
+			<th scope="col">회계년도</th><td>
+				<label for='year'></label>
+				<select name='year' title='년도선택' id='year'>
+					<option value='2020' selected>2020</option>
+					<option value='2019' >2019</option>
+					<option value='2018'>2018</option>
+				</select>
+			</td>
+			<th scope="col">회계구분</th><td><label for='hg'></label><select name='hg' title='년도선택' id='hg'><option value='all'>전체</option><option value='공기업회계'>공기업회계</option><option value='기금회계'>기금회계</option><option value='기타특별회계'>기타특별회계</option><option value='농공단지조성 특별회계'>농공단지조성 특별회계</option><option value='상수도사업 특별회계'>상수도사업 특별회계</option><option value='식품진흥기금'>식품진흥기금</option><option value='양성평등기금'>양성평등기금</option><option value='옥외광고발전기금'>옥외광고발전기금</option><option value='의료보호비 특별회계'>의료보호비 특별회계</option><option value='일반회계'>일반회계</option><option value='자활기금'>자활기금</option><option value='재난관리기금'>재난관리기금</option><option value='주민소득사업 특별회계'>주민소득사업 특별회계</option><option value='주차장사업 특별회계'>주차장사업 특별회계</option><option value='중소기업육성기금'>중소기업육성기금</option><option value='지역문화진흥기금'>지역문화진흥기금</option><option value='폐기물처리시설주민지원기금'>폐기물처리시설주민지원기금</option><option value='하수도사업 특별회계'>하수도사업 특별회계</option> </select></td>
+          </tr>
+          <tr>
+            <th scope="col">부서명</th><td><label for='dept'></label><select name='dept' title='년도선택' id='dept'><option value='all'>전체</option><option value='감사실'>감사실</option><option value='건설과'>건설과</option><option value='건축과'>건축과</option><option value='관광과'>관광과</option><option value='관광시설사업소'>관광시설사업소</option><option value='교육체육과'>교육체육과</option><option value='교통과'>교통과</option><option value='금동'>금동</option><option value='금지면'>금지면</option><option value='기업지원과'>기업지원과</option><option value='기획실'>기획실</option><option value='노암동'>노암동</option><option value='농업기술센터'>농업기술센터</option><option value='농정과'>농정과</option><option value='농촌활력과'>농촌활력과</option><option value='대강면'>대강면</option><option value='대산면'>대산면</option><option value='덕과면'>덕과면</option><option value='도시과'>도시과</option><option value='도통동'>도통동</option><option value='동충동'>동충동</option><option value='문화예술과'>문화예술과</option><option value='민원과'>민원과</option><option value='보건소'>보건소</option><option value='보절면'>보절면</option><option value='복지과'>복지과</option><option value='사매면'>사매면</option><option value='산내면'>산내면</option><option value='산동면'>산동면</option><option value='산림녹지과'>산림녹지과</option><option value='상수도사업소'>상수도사업소</option><option value='서울사무소'>서울사무소</option><option value='송동면'>송동면</option><option value='수지면'>수지면</option><option value='시민소통실'>시민소통실</option><option value='아영면'>아영면</option><option value='안전재난과'>안전재난과</option><option value='여성가족과'>여성가족과</option><option value='여성문화센터'>여성문화센터</option><option value='왕정동'>왕정동</option><option value='운봉읍'>운봉읍</option><option value='원예산업과'>원예산업과</option><option value='의회사무국'>의회사무국</option><option value='이백면'>이백면</option><option value='인월면'>인월면</option><option value='일자리경제과'>일자리경제과</option><option value='재정과'>재정과</option><option value='주민복지과'>주민복지과</option><option value='주생면'>주생면</option><option value='주천면'>주천면</option><option value='죽항동'>죽항동</option><option value='총무과'>총무과</option><option value='축산과'>축산과</option><option value='향교동'>향교동</option><option value='홍보전산과'>홍보전산과</option><option value='환경과'>환경과</option><option value='환경사업소'>환경사업소</option> </select></td>
+			<th scope="col">통계목</th><td><label for='mok'></label><select name='mok' title='년도선택' id='mok'><option value='all'>전체</option><option value='감가상각비'>감가상각비</option><option value='감리비'>감리비</option><option value='공공운영비'>공공운영비</option><option value='공기관등에대한경상적위탁사업비'>공기관등에대한경상적위탁사업비</option><option value='공기관등에대한자본적위탁사업비'>공기관등에대한자본적위탁사업비</option><option value='공기업특별회계경상전출금'>공기업특별회계경상전출금</option><option value='공기업특별회계자본전출금'>공기업특별회계자본전출금</option><option value='공립대학운영비'>공립대학운영비</option><option value='공무원 교육여비'>공무원 교육여비</option><option value='공무원연금관리공단경상전출금'>공무원연금관리공단경상전출금</option><option value='공사ㆍ공단경상전출금'>공사ㆍ공단경상전출금</option><option value='공사ㆍ공단등융자금'>공사ㆍ공단등융자금</option><option value='공사ㆍ공단자본전출금'>공사ㆍ공단자본전출금</option><option value='과오납금등'>과오납금등</option><option value='교육기관에대한보조'>교육기관에대한보조</option><option value='국고보조금반환금'>국고보조금반환금</option><option value='국내여비'>국내여비</option><option value='국민건강보험금'>국민건강보험금</option><option value='국외경상이전'>국외경상이전</option><option value='국외업무여비'>국외업무여비</option><option value='국외자본이전'>국외자본이전</option><option value='국제부담금'>국제부담금</option><option value='국제화여비'>국제화여비</option><option value='기간제근로자등보수'>기간제근로자등보수</option><option value='기관운영업무추진비'>기관운영업무추진비</option><option value='기금전출금'>기금전출금</option><option value='기타국내차입금원금상환'>기타국내차입금원금상환</option><option value='기타보상금'>기타보상금</option><option value='기타부담금'>기타부담금</option><option value='기타자본이전'>기타자본이전</option><option value='기타직보수'>기타직보수</option><option value='기타차입금이자상환'>기타차입금이자상환</option><option value='기타해외채무상환'>기타해외채무상환</option><option value='기타회계전출금'>기타회계전출금</option><option value='내부유보금'>내부유보금</option><option value='당기순이익'>당기순이익</option><option value='도서구입비'>도서구입비</option><option value='맞춤형복지제도시행경비'>맞춤형복지제도시행경비</option><option value='무기계약근로자보수'>무기계약근로자보수</option><option value='민간경상사업보조'>민간경상사업보조</option><option value='민간단체법정운영비보조'>민간단체법정운영비보조</option><option value='민간위탁금'>민간위탁금</option><option value='민간위탁사업비'>민간위탁사업비</option><option value='민간융자금'>민간융자금</option><option value='민간인국외여비'>민간인국외여비</option><option value='민간인위탁교육비'>민간인위탁교육비</option><option value='민간인이주보상금'>민간인이주보상금</option><option value='민간인재해및복구활동보상금'>민간인재해및복구활동보상금</option><option value='민간자본사업보조(이전재원)'>민간자본사업보조(이전재원)</option><option value='민간자본사업보조(자체재원)'>민간자본사업보조(자체재원)</option><option value='민간행사사업보조'>민간행사사업보조</option><option value='배상금등'>배상금등</option><option value='법정전출금'>법정전출금</option><option value='보수'>보수</option><option value='보험금'>보험금</option><option value='부서운영업무추진비'>부서운영업무추진비</option><option value='비법정전출금'>비법정전출금</option><option value='사무관리비'>사무관리비</option><option value='사회보장적수혜금'>사회보장적수혜금</option><option value='사회복무요원보상금'>사회복무요원보상금</option><option value='사회복지사업보조'>사회복지사업보조</option><option value='사회복지시설법정운영비보조'>사회복지시설법정운영비보조</option><option value='사회성과보상금'>사회성과보상금</option><option value='성과상여금'>성과상여금</option><option value='시ㆍ군ㆍ구융자금'>시ㆍ군ㆍ구융자금</option><option value='시ㆍ군ㆍ구지역개발기금차입금원금상환'>시ㆍ군ㆍ구지역개발기금차입금원금상환</option><option value='시ㆍ군ㆍ구지역개발기금차입금이자상환'>시ㆍ군ㆍ구지역개발기금차입금이자상환</option><option value='시ㆍ군기타재원조정비'>시ㆍ군기타재원조정비</option><option value='시ㆍ군조정교부금'>시ㆍ군조정교부금</option><option value='시ㆍ도비보조금반환금'>시ㆍ도비보조금반환금</option><option value='시ㆍ도지역개발기금예수금원금상환'>시ㆍ도지역개발기금예수금원금상환</option><option value='시ㆍ도지역개발기금예수금이자상환'>시ㆍ도지역개발기금예수금이자상환</option><option value='시설부대비'>시설부대비</option><option value='시설비'>시설비</option><option value='시책추진업무추진비'>시책추진업무추진비</option><option value='시험연구비'>시험연구비</option><option value='연구용역비'>연구용역비</option><option value='연금부담금'>연금부담금</option><option value='연금지급금'>연금지급금</option><option value='예비군육성지원경상보조'>예비군육성지원경상보조</option><option value='예비군육성지원자본보조'>예비군육성지원자본보조</option><option value='예수금원금상환'>예수금원금상환</option><option value='예수금이자상환'>예수금이자상환</option><option value='예술단원ㆍ운동부등보상금'>예술단원ㆍ운동부등보상금</option><option value='예치금'>예치금</option><option value='예탁금'>예탁금</option><option value='외빈초청여비'>외빈초청여비</option><option value='운수업계보조금'>운수업계보조금</option><option value='월액여비'>월액여비</option><option value='월정수당'>월정수당</option><option value='의료및구료비'>의료및구료비</option><option value='의용소방대지원경비'>의용소방대지원경비</option><option value='의원국내여비'>의원국내여비</option><option value='의원국민건강부담금'>의원국민건강부담금</option><option value='의원국민연금부담금'>의원국민연금부담금</option><option value='의원국외여비'>의원국외여비</option><option value='의원상해부담금'>의원상해부담금</option><option value='의원역량개발비(공공위탁,자체교육)'>의원역량개발비(공공위탁,자체교육)</option><option value='의원역량개발비(민간위탁)'>의원역량개발비(민간위탁)</option><option value='의장협의체부담금'>의장협의체부담금</option><option value='의정운영공통경비'>의정운영공통경비</option><option value='의정활동비'>의정활동비</option><option value='의회운영업무추진비'>의회운영업무추진비</option><option value='이차보전금'>이차보전금</option><option value='일반예비비'>일반예비비</option><option value='자산및물품취득비'>자산및물품취득비</option><option value='자율방범대실비지원'>자율방범대실비지원</option><option value='자치구기타재원조정비'>자치구기타재원조정비</option><option value='자치구조정교부금'>자치구조정교부금</option><option value='자치단체간부담금'>자치단체간부담금</option><option value='자치단체경상보조금'>자치단체경상보조금</option><option value='자치단체자본보조'>자치단체자본보조</option><option value='잡손금'>잡손금</option><option value='장학금및학자금'>장학금및학자금</option><option value='재료비'>재료비</option><option value='재해ㆍ재난목적예비비'>재해ㆍ재난목적예비비</option><option value='적립금'>적립금</option><option value='전산개발비'>전산개발비</option><option value='정원가산업무추진비'>정원가산업무추진비</option><option value='중앙정부차입금원금상환'>중앙정부차입금원금상환</option><option value='중앙정부차입금이자상환'>중앙정부차입금이자상환</option><option value='지방채증권원금상환'>지방채증권원금상환</option><option value='지방채증권이자상환'>지방채증권이자상환</option><option value='직급보조비'>직급보조비</option><option value='직책급업무수행경비'>직책급업무수행경비</option><option value='징수교부금'>징수교부금</option><option value='차관상환'>차관상환</option><option value='출연금'>출연금</option><option value='출자금'>출자금</option><option value='통장ㆍ이장ㆍ반장활동보상금'>통장ㆍ이장ㆍ반장활동보상금</option><option value='통화금융기관융자금'>통화금융기관융자금</option><option value='통화금융기관차입금원금상환'>통화금융기관차입금원금상환</option><option value='통화금융기관차입금이자상환'>통화금융기관차입금이자상환</option><option value='특정업무경비'>특정업무경비</option><option value='포상금'>포상금</option><option value='행사관련시설비'>행사관련시설비</option><option value='행사실비보상금'>행사실비보상금</option><option value='행사운영비'>행사운영비</option> </select></td>
+          </tr>
+          <tr>
+            <th scope="col">사업개요</th><td><input type="text" name="saup" value="" id="sup" class="ime">
+			<label for="sup"></label></td>
+			<th scope="col">세부사업명</th><td><input type="text" name="saup2" value="" id="sup2" class="ime">
+			<label for="sup2"></label></td>
+          </tr>
+          <tr>
+            <th scope="col">지급일자기간</th>
+			<td colspan="3">
+				<input type="text" name="day1" id="dp1" value="2019-12-22" title='시작날짜선택' readonly>-
+				<label for="dp1"></label>
+				<input type="text" name="day2" id="dp2" value="2019-12-23" title='끝날짜선택' readonly>
+				<label for="dp2"></label>
+			</td>
+          </tr>
+     </table>
+	 <div class="searchbtn">
+	<input type="image" src="http://gyeyak.namwon.go.kr/ebudget/img/search_btn.gif" class="btn" alt='검색버튼' title='검색'>
+	</div>
+  
+</div>
+<!--search_table-->
+
+
+
+	
+<div id="list_wrap">
+<span class="total">전체 <span class="style02"> 0 </span>개의 사업이 있습니다.</span>
+<span class="ex_2">(단위 : 원)</span>
+<table id="list_table" class="page203">
+<caption>#지출정보</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="numeric">번호</th>
+			<th scope="col" class="numeric">회계구분</th>
+			<th scope="col" class="numeric">부서명</th>
+			<th scope="col" class="numeric">세부사업명</th>
+			<th scope="col" class="numeric">통계목</th>
+			<th scope="col" class="numeric">지급<br>일자</th>
+			<th scope='col' class='numeric'>사업개요(적요)</th>			<th scope="col" class="numeric">지출액</th>
+						<th scope="col" class="numeric">지급명령<br>번호</th>
+		</tr>
+	</thead>
+	<tbody>
+	 
+		<tr><td colspan='9'>검색된 데이터가 없습니다.</td>		
+	</tbody>
+
+</table>
+
+
+<div class="btn05" id="noprint">
+<div class="hidden_icon"></div>
+<span class="print_icon"><button onclick="content_print()" title="인쇄하기"></button></span>
+</div>
+
+
+
+<div id='page_wrap'></div></div>
+</div>	
+</div>
+
+
+
+</th:block>
+

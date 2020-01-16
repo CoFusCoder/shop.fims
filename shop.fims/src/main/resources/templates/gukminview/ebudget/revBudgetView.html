@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="ebudgetCSS">
+<link rel='stylesheet' href='/ebudget/css/main3.css' type='text/css'>
+</th:block>
+
+<th:block layout:fragment="gukminMainContents">
+<div id="contentW">
+<div class="content">
+	<div class="commDesc" style="width : 100%">
+		<p class="t01">경영공시</p>
+		<p class="t02">ALLFestMoa에서 축제에 대한 경영정보를 확인해보세요!</p>
+	</div>
+	<div class="norBox" style="border-bottom: 1px solid; width: 100%" >
+		<ul class="commTabs">
+			<li><a href="/gukminview/ebudget/revBudgetView" class="on">세입현황</a></li>
+			<li><a href="/gukminview/ebudget/revExpExecutionView" >세출현황</a></li>
+		</ul>	
+	</div>	
+	
+<!-- <div id="contentW">
+<div class="content"> -->
+<div id="sub_title" style="padding-top: 20px;">세입현황
+	<a href="http://www.wetax.go.kr/" target="_blank">
+	<img src="http://gyeyak.namwon.go.kr/ebudget/img/banner_wetax.gif" alt="위텍스배너" title='위텍스홈페이지로이동'></a>
+</div>
+
+<div id="ex">
+	<p>- 세입징수현황을 회계년도별, 특정기간별 조회가 가능하며 세입과목별로 정리되어 있습니다.</p>
+</div>
+
+<div id="search_table">
+		
+		<table>
+		<caption>세입현황 검색</caption>
+			<tr>
+				<th scope="col">회계년도</th>
+				<td>
+					<label for='select'></label>
+					<select name='year' title='년도선택' id='select'>
+						<option value='2020'>2020</option>
+						<option value='2019'>2019</option>
+						<option value='2018'>2018</option>
+				</select>
+				</td>
+				<th scope="col">조회기간</th>
+				<td>
+					<input type="text" id="dp1" name="day1" value="2019-12-23" title='시작날짜선택' readonly>-
+					<label for="dp1"></label>
+					<input type="text" id="dp2" name="day2" value="2019-12-24" title='끝날짜선택' readonly>
+					<label for="dp2"></label>
+				</td>
+			</tr>
+		
+		</table>
+		<div class="searchbtn">
+		<input type="image" src="http://gyeyak.namwon.go.kr/ebudget/img/search_btn.gif" class="btn" alt='검색버튼' title='검색'>
+		</div>
+
+</div>
+<!--search_table-->
+
+
+
+	
+<div id="list_wrap">
+<div id="sub_title2">세입징수</div>
+<span class="ex_2">(단위 : 원)</span>
+   <table id="list_table" class="tree_table page101">
+   <caption>세입현황</caption>
+         <thead>
+			<tr>
+				  <th scope='col' rowspan='2' class='numeric'>번호</th>
+				  <th scope='col' rowspan='2' class='numeric'>회계구분</th>
+				  <th scope='col' colspan='3'>조회기간내</th>
+				  <th scope='col' rowspan='2'>조회기간전<br>누계액</th>
+				  </tr>
+				  <tr>
+				  <th scope='col' class='numeric'>수입액</th>
+				  <th scope='col' class='numeric'>과오납반환액</th>
+				  <th scope='col' class='numeric'>과목경정액</th>
+				  </tr>		</thead>
+		<tbody>
+
+		<tr><td colspan='6' style='text-align:center;'>검색된 데이터가 없습니다.</td>
+		</tbody>
+  </table>
+
+<div class="btn05" id="noprint">
+<div class="hidden_icon"></div>
+<span class="print_icon"><button onclick="content_print()" title="인쇄하기"></button></span>
+</div>
+
+
+</div>
+</div>	
+</div>
+
+
+
+</th:block>
+

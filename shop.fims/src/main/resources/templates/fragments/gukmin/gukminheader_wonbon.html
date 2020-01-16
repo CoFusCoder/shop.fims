@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+    <!--header start-->
+<header th:fragment="gukminHeaderFragment">
+	<div class="rela">
+		<h1>
+			<a href="/"><img
+				src="/gukmin/images/gukminlog.jpg" /></a>
+		</h1>
+		<div class="totalBox">
+			<nav>
+				<ul>
+					<li id="mainli"><a href="/gukminview/gukminMainView" id="mainhref">전체</a></li>
+					<li id="festivalli"><a href="/gukminview/festival/festivalAndEventView" id="festivalhref">축제·이벤트</a></li>
+					<li id="marketli"><a href="/gukminview/acontract/orderingPlanView" id="markethref">계약공시</a></li>
+					<li id="promotionli"><a href="/gukminview/ebudget/revBudgetView"
+						id="promotionhref">경영공시</a></li>
+					<li id="communityli"><a href="/gukminview/community/communityView"
+						id="communityhref">커뮤니티</a>
+						<ul>
+							<li><a href="/gukminview/community/eventView">이벤트</a></li>
+							<li><a href="/gukminview/community/communityView">공지사항</a></li>
+							<li><a href="/gukminview/community/faqView">FAQ</a></li>
+						</ul></li>
+				</ul>
+			</nav>
+			<div class="etcRight">
+				<ul>
+					<li class="ico_spot"><a href="/admin/main" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사'}">!관리자홈페이지</a></li>
+					<li class="ico_spot">
+						<a href="/gukminview/festival/hostSpotRegisterForm" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사' || session.SLEVEL == null}">스팟등록하기</a>
+					</li>
+					<li class="ico_jjimList"><a href="/gukminview/member/myBookmarkView" th:if="${session.SLEVEL == '국민' }">찜 목록</a></li>
+				</ul>
+					<a th:href="@{/gukminview/login/loginForm}" th:if="${session.SID eq null}" class="pLogout"><span>로그인</span></a>
+			</div>
+			<th:block th:unless="${session.SID eq null}">
+			<div class="etcRight">
+					<a title="마이페이지 이동" href="/gukminview/member/myPageView" class="pMy"><img
+						src="https://joyfesta.kr/include/img/etc/etc_mimg.png" /><span class="t01">
+								[[${session.SNAME}]] 님 [[${session.SLEVEL}]] 권한
+					</span></a>
+					<a th:href="@{/logout}"
+						onclick="logout('0');"
+						class="pLogout"><span>로그아웃</span> </a>
+			</div>
+			</th:block>
+		</div>
+		<form id="searchform" name="searchform" action="#" method="post">
+			<input type="hidden" name="searchkeyword" value="" id="searchkeyword"/>
+			<input type="hidden" name="searchtype" value="festival" id="searchtype"/>
+			<input type="hidden" name="festivaltypeseqs" value="" id="festivaltypeseqs"/>
+			<input type="hidden" name="festivalsituationseqs" value="" id="festivalsituationseqs"/>
+			<input type="hidden" name="festivalseasonseqs" value="" id="festivalseasonseqs"/>
+			<input type="hidden" name="festivaltermseqs" value="" id="festivaltermseqs"/>
+			<input type="hidden" name="markettypeseqs" value="" id="markettypeseqs"/>
+			<input type="hidden" name="storetypeseqs" value="" id="storetypeseqs"/>
+			<input type="hidden" name="marketsituationseqs" value="" id="marketsituationseqs"/>
+			<input type="hidden" name="marketseasonseqs" value="" id="marketseasonseqs"/>
+			<input type="hidden" name="markettermseqs" value="" id="markettermseqs"/>
+			<div class="searchBox">
+				<input type="text" autocomplete="off" id="tagSearch"
+					name="tagSearch"
+					placeholder="무엇을 찾고 싶으세요?" /> <a href="javascript:void(0)"
+					class="btnSearch"><img
+					src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" /></a>
+				<a href="javascript:void(0)" class="btnSmartSearch"><img
+					src="https://joyfesta.kr/include/img/ico/ico_search01.png" /></a>
+			</div>
+<!-- 			<div class="searchBox">
+				<input type="text" autocomplete="off" id="tagSearch"
+					name="tagSearch"
+					onclick="javascript:$('.btnSearch').trigger('click');"
+					onkeydown="javascript:if(event.keyCode==13){$('.btnSearch').trigger('click');}"
+					placeholder="무엇을 찾고 싶으세요?" /> <a href="javascript:void(0)"
+					class="btnSearch"><img
+					src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" /></a>
+				<a href="javascript:void(0)" class="btnSmartSearch"><img
+					src="https://joyfesta.kr/include/img/ico/ico_search01.png" /></a>
+			</div> -->
+			<a href="javascript:void(0)" class="totalMenu"><span>전체메뉴</span></a>
+			<!--일반검색 -->
+			
+			<!--일반검색 -->
+			<!--스마트검색 -->
+			<div class="smartSearchBox">
+				<div class="desc">
+					<p class="t01">#ALLFestMoa 스마트검색</p>
+					<p class="t02">#필요한 조건을 선택하여 검색해보세요! 원하는 검색결과를 더 쉽고 빠르게 얻으실 수
+						있습니다.</p>
+				</div>
+				<ul class="searchTabs">
+					<li><a href="javascript:void(0)" class="on" id="searchTabs01"
+						data-id="optionTable01" onclick="setSearchType('festival');">#축제·이벤트</a></li>
+					<li><a href="javascript:void(0)" id="searchTabs02"
+						data-id="optionTable02" onclick="setSearchType('market');">#시장·스토어</a></li>
+				</ul>
+				<div class="smartSearch_List">
+					<table id="optionTable01" class="optionTable">
+						<tr>
+							<th>방문예정일</th>
+							<td>
+								<div class="form">
+									<input type="text" id="startdate" name="startdate"
+										autocomplete="off" class="inp datepicker"
+										placeholder="선택해주세요." value="" />
+									<span class="etxt">~</span> <input type="text" id="enddate"
+										name="enddate" value=""
+										autocomplete="off" class="inp datepicker"
+										placeholder="선택해주세요." />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>지역</th>
+							<td>
+								<div class="form">
+									<p class="item">국내</p>
+									<select class="select" id="sidofestival" name="sidofestival">
+										<option value="">지역(시도)</option>
+										<option value="서울"
+											>서울특별시</option>
+										<option value="부산"
+											>부산광역시</option>
+										<option value="대구"
+											>대구광역시</option>
+										<option value="인천"
+											>인천광역시</option>
+										<option value="광주"
+											>광주광역시</option>
+										<option value="대전"
+											>대전광역시</option>
+										<option value="울산"
+											>울산광역시</option>
+										<option value="세종"
+											>세종특별자치시</option>
+										<option value="경기"
+											>경기도</option>
+										<option value="강원"
+											>강원도</option>
+										<option value="충북"
+											>충청북도</option>
+										<option value="충남"
+											>충청남도</option>
+										<option value="전북"
+											>전라북도</option>
+										<option value="전남"
+											>전라남도</option>
+										<option value="경북"
+											>경상북도</option>
+										<option value="경남"
+											>경상남도</option>
+										<option value="제주"
+											>제주특별자치도</option>
+									</select> <select class="select" id="sigungufestival"
+										name="sigungufestival">
+										<option value="">지역(시군구)</option>
+									</select>
+								</div>
+								<div class="form">
+									<p class="item">해외</p>
+									<select id="regionfestival" name="regionfestival"
+										class="select">
+										<option value="">대륙</option>
+										<option value="101"
+											>아시아ㆍ중동</option>
+										<option value="102"
+											>아메리카</option>
+										<option value="103"
+											>유럽</option>
+										<option value="104"
+											>아프리카ㆍ오세아니아</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>축제유형</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allfestivaltypes"
+										onclick="setFestivalTypes('');">전체</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('23');">먹거리</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('24');">지역ㆍ특산물</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('25');">민속ㆍ전통문화</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('26');">미술ㆍ예술</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('27');">음악ㆍ공연</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('28');">생태계ㆍ자연</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('29');">레저ㆍ스포츠</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('30');">과학ㆍ기술</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('31');">교육ㆍ체험</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('32');">종교ㆍ역사</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTypes('33');">기타</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>상황</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allfestivalsituations"
+										onclick="setFestivalSituations('');">전체</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('1');">나홀로</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('2');">친구</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('3');">연인</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('4');">가족</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('5');">비즈니스</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSituations('6');">모임</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>계절</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allfestivalseasons"
+										onclick="setFestivalSeasons('');">전체</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSeasons('1');">봄</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSeasons('2');">여름</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSeasons('3');">가을</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalSeasons('4');">겨울</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>기간</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allfestivalterms"
+										onclick="setFestivalTerms('');">전체</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('1');">당일치기</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('2');">2일이상</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('3');">주말</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('4');">평일</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setFestivalTerms('5');">연휴</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<table id="optionTable02" class="optionTable">
+						<tr>
+							<th>지역</th>
+							<td>
+								<div class="form">
+									<p class="item">국내</p>
+									<select class="select" id="sidomarket" name="sidomarket">
+										<option value="">지역(시도)</option>
+										<option value="서울"
+											>서울특별시</option>
+										<option value="부산"
+											>부산광역시</option>
+										<option value="대구"
+											>대구광역시</option>
+										<option value="인천"
+											>인천광역시</option>
+										<option value="광주"
+											>광주광역시</option>
+										<option value="대전"
+											>대전광역시</option>
+										<option value="울산"
+											>울산광역시</option>
+										<option value="세종"
+											>세종특별자치시</option>
+										<option value="경기"
+											>경기도</option>
+										<option value="강원"
+											>강원도</option>
+										<option value="충북"
+											>충청북도</option>
+										<option value="충남"
+											>충청남도</option>
+										<option value="전북"
+											>전라북도</option>
+										<option value="전남"
+											>전라남도</option>
+										<option value="경북"
+											>경상북도</option>
+										<option value="경남"
+											>경상남도</option>
+										<option value="제주"
+											>제주특별자치도</option>
+									</select> <select class="select" id="sigungumarket" name="sigungumarket">
+										<option value="">지역(시군구)</option>
+									</select>
+								</div>
+								<div class="form">
+									<p class="item">해외</p>
+									<select id="regionmarket" name="regionmarket" class="select">
+										<option value="">대륙</option>
+										<option value="101"
+											>아시아ㆍ중동</option>
+										<option value="102"
+											>아메리카</option>
+										<option value="103"
+											>유럽</option>
+										<option value="104"
+											>아프리카ㆍ오세아니아</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>시장*</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allmarkettypes"
+										onclick="setMarketTypes('');">전체</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('1');">농수축산</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('2');">패션의류</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('3');">한약재</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('4');">잡화</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('5');">철물</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('6');">전자</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTypes('7');">기타</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>스토어*</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allstoretypes"
+										onclick="setStoreTypes('');">전체</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('8');">음식/식품</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('9');">수산/횟집</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('10');">축산물</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('11');">농산물/반찬</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('12');">제과/제빵/떡</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('13');">마트/과일</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('14');">방앗간</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('15');">건강원</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('16');">화장품</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('17');">의류</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('18');">분식</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('19');">이불/가방/신발</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('20');">건어물/젓갈</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('21');">꽃집/귀금속</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setStoreTypes('22');">기타</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>상황</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allmarketsituations"
+										onclick="setMarketSituations('');">전체</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('1');">나홀로</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('2');">친구</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('3');">연인</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('4');">가족</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('5');">비즈니스</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSituations('6');">모임</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>계절</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allmarketseasons"
+										onclick="setMarketSeasons('');">전체</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSeasons('1');">봄</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSeasons('2');">여름</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSeasons('3');">가을</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketSeasons('4');">겨울</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>기간</th>
+							<td>
+								<div class="radioBtn">
+									<a href="javascript:void(0)" id="allmarketterms"
+										onclick="setMarketTerms('');">전체</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('1');">당일치기</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('2');">2일이상</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('3');">주말</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('4');">평일</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMarketTerms('5');">연휴</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="m_scroll">
+					<img src="https://joyfesta.kr/include/img/bg/bg_scroll.png" alt="아래로">
+				</div>
+				<div class="btnBox">
+					<a href="javascript:void(0)" class="btnType01" >#검색</a>
+					<a href="javascript:void(0)" class="btnType02"
+						>#취소</a>
+				</div>
+<!-- 				<div class="btnBox">
+					<a href="javascript:void(0)" class="btnType01" id="searchbutton">#검색</a>
+					<a href="javascript:void(0)" class="btnType02"
+						onclick="javascript:$('.btnSmartSearch').removeClass('on');$('.smartSearchBox').hide();">#취소</a>
+				</div> -->
+			</div>
+		</form>
+		<!--스마트검색 -->
+	</div>
+</header>
+</html>
