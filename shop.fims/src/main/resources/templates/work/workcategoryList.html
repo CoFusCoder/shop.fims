@@ -29,10 +29,14 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							<td th:text = "${wc.festNm}"></td>
 							<td th:text = "${wc.workcatNm}"></td>
 							<td>
-								<a th:href="@{/workcategoryUpdate (workcatCd=${wc.workcatCd})}">수정</a>
+								<a th:href="@{/workcategoryUpdate (workcatCd=${wc.workcatCd})}">
+								<button type="button" class="btn btn-success">수정</button>
+								</a>
 							</td>
 							<td>
-								<a th:href="@{/workcategoryDelete}">삭제</a>
+								<a th:href="@{/workcategoryDelete}">
+								<button type="button" class="btn btn-danger">삭제</button>
+								</a>
 							</td>					
 						</tr>
 	                </tbody>

@@ -43,19 +43,11 @@ public class FacilityService {
 		String comNm21 = facility.getComNm2();
 		String FaccatNm1 = facility.getFaccatNm();
 		
-		System.out.println("comCd1 확인 :" + comCd1);
-		System.out.println("comNm21 확인 :" + comNm21);
-		System.out.println("FaccatNm1 확인 :" + FaccatNm1);
-		
 		String comCd = facilitymapper.selectupdateFacility1(comCd1, comNm21);
 		String faccatCd = facilitymapper.selectupdateFacility2(FaccatNm1);
 		
 		facility.setComCd(comCd);
 		facility.setFaccatCd(faccatCd);
-		
-		System.out.println("facility--------->"+facility);
-		System.out.println("comCd 확인 :" + comCd);
-		System.out.println("faccatCd 확인 :" + faccatCd);
 		
 		return  facilitymapper.updateFacility(facility);
 	}
@@ -70,15 +62,10 @@ public class FacilityService {
 		String ComCd1 = facility.getComCd();
 		String ComNm21 = facility.getComNm2();
 		String CatNm1 = facility.getCatNm();
-		System.out.println("ComCd1------->" + ComCd1);
-		System.out.println("ComNm21------->" + ComNm21);
-		System.out.println("CatNm1------->" + CatNm1);
 		
 		String comCd = facilitymapper.selectInsertFacility1(ComCd1, ComNm21);
 		String faccatCd = facilitymapper.selectInsertFacility2(CatNm1);
-		System.out.println("comCd 값 확인 : " + comCd);
-		System.out.println("faccatCd 값 확인 : " + faccatCd);
-		System.out.println("facility 뭐가 있는지 보자 : " + facility);
+
 		facility.setComCd(comCd);
 		facility.setFaccatCd(faccatCd);
 		
@@ -123,8 +110,6 @@ public class FacilityService {
 	public int updateTemporary(Facility facility) {
 		String Comcd1 = facility.getComCd();
 		String ComNm21 = facility.getComNm2();
-		System.out.println("Comcd1 확인 :" + Comcd1);
-		System.out.println("ComNm21 확인 :" + ComNm21);
 		
 		String Comcd = facilitymapper.selectupdateTemporary1(Comcd1, ComNm21);
 		facility.setComCd(Comcd);
@@ -141,25 +126,17 @@ public class FacilityService {
 	
 	//임시시설설치및철거관리등록처리
 	public int insertTemporary(Facility facility) {
+		
 		String ComCd1 = facility.getComCd();
 		String ComNm21 = facility.getComNm2();
 		String FestNm = facility.getFestNm();
 		String AccNm1 = facility.getAccNm1();
 		String StaNm1 = facility.getStaNm();
-		System.out.println("ComCd1 값 : " + ComCd1);
-		System.out.println("ComNm21 값 : " + ComNm21);
-		System.out.println("FestNm 값 : " + FestNm);
-		System.out.println("AccNm1 값 : " + AccNm1);
-		System.out.println("StaNm1 값 : " + StaNm1);
 		
 		String comCd = facilitymapper.selectinsertTemporary1(ComCd1, ComNm21);
 		String accCd = facilitymapper.selectinsertTemporary2(AccNm1);
 		String fesconmanCd = facilitymapper.selectinsertTemporary3(AccNm1, FestNm);
 		String staCd = facilitymapper.selectinsertTemporary4(FestNm, StaNm1);
-		System.out.println("comCd 값 : " + comCd);
-		System.out.println("accCd 값 : " + accCd);
-		System.out.println("fesconmanCd 값 : " + fesconmanCd);
-		System.out.println("staCd 값 : " + staCd);
 		
 		facility.setComCd(comCd);
 		facility.setAccCd(accCd);
@@ -194,11 +171,9 @@ public class FacilityService {
 	public int selectupdateMaintenance(Facility facility) {
 		String comCd1 = facility.getComCd();
 		String comNm21 = facility.getComNm2();	
-		System.out.println("comCd1 확인 :" + comCd1);
-		System.out.println("comNm21 확인 :" + comNm21);
 		
 		String comCd = facilitymapper.selectupdateMaintenance1(comCd1, comNm21);
-		System.out.println("comCd 확인 :" + comCd);
+
 		facility.setComCd(comCd);
 		
 		return facilitymapper.updateMaintenance(facility);
@@ -214,15 +189,9 @@ public class FacilityService {
 		String comNm21 = facility.getComNm2();
 		String staNm1 = facility.getStaNm();
 		String festNm1 = facility.getFestNm();
-		System.out.println("comCd1------------->" + comCd1);
-		System.out.println("comNm21------------->" + comNm21);
-		System.out.println("staNm1------------->" + staNm1);
-		System.out.println("festNm1------------->" + festNm1);
 		
 		String comCd = facilitymapper.insertselectMaintenance(comCd1, comNm21);
 		String staCd = facilitymapper.insertselectMaintenance2(staNm1, festNm1);
-		System.out.println("comCd------------>" + comCd);
-		System.out.println("staCd------------>" + staCd);
 		
 		facility.setComCd(comCd);
 		facility.setStaCd(staCd);
