@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle"></th:block>
+<th:block layout:fragment="adminisMainContents" >
+
+<!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
+<link type="text/css" rel="stylesheet" th:href="@{/board/css/@sub-default.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/board/board/css/slick.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/board/css/board.css}">
+
+<div class="content-panel">
+<section class="row-section">
+    <div class="container">
+	    <div class="col-md-10 offset-md-1 row-block">
+	        
+
+    <div class="sub-con">
+    	<div class="sub-Title area">
+                
+             부스 심사
+
+            </div>
+    	<div class="sub-txt-con area">
+            
+            <script type="text/javascript">
+          
+           
+            </script>
+            
+			
+        	<input name="_zidx" id="_zidx" type="hidden" value="1518052040^1^1518052057">
+        	<input name="user_id" id="user_id" type="hidden" value="">
+        	<input name="bmode" id="bmode" type="hidden" value="write">
+        	<input name="_sub_code" id="_sub_code" type="hidden" value="1518052076">
+        	<input name="QUERY_STR" id="QUERY_STR" type="hidden" value="_zidx,board_id">
+        	<input name="rurl" id="rurl" type="hidden" value="/sub6/sub2.htm">     
+           
+           
+            <ul class="sub-form" >
+            <th:block th:each="a : ${nextapply}">
+            	
+            	 <li >
+                    <span>지역명<input type="text" name='areaNm'  th:value="${a.areaNm}" readonly="readonly"></span>
+        			<span>시군명<input type="text" name='areaCityNm'  th:value="${a.areaCityNm}" autocomplete="off" readonly></span>
+                </li>
+                <li >
+                    <span>축제이름<input type="text" name='festNm'   th:value="${a.festNm}" readonly="readonly"></span>
+        			<span>심사과명<input type="text" name='evaNm' th:value="${a.evaNm}" autocomplete="off" readonly></span>
+                </li>
+                <li>
+        			<span>가입일자<input type="text" name='joindt'  placeholder="가입일" th:value="${a.joinDt}" autocomplete="off" readonly></span>
+                	<span>접수번호<input type="text" name='pcode'  value="접수번호 : P-1577163112" autocomplete="off" readonly></span>
+                </li>
+                <li>
+                	<span>이름<input type="text" name="memNm" th:value="${a.memNm}" readonly="readonly"></span> 
+                	<span>전화번호<input type="text" name='memPhone'   th:value="${a.memPhone}" autocomplete="off" readonly></span>                   
+                </li>
+                <li>                  
+                    <span>이메일<input type="text" name='name' th:value="${a.memEmail}" readonly="readonly"></span>
+                    <span>생년월일<input type="text" name='name'  th:value="${a.memBirth}" readonly="readonly"></span>
+                </li>  
+                <li>주소<input type="text" name='addr' id='addr' th:value="${a.memAddr}" ></li>
+                
+                
+                <li>
+                	<textarea  class="form-control requiredField" style="min-height:200px;  font-size:13px;" readonly>개인정보 수집 및 이용목적
+
+						1. 개인정보의 수집 및 이용 목적
+						춘향제는 고객님의 문의사항에 대한 답변 및 안내를 위하여 필요한 최소한의 범위 내에서 개인정보를 수집하고 있습니다.
+						
+						2. 수집하는 개인정보의 항목
+						- 필수항목: 이름, 휴대폰 번호, 주소, 이메일 주소
+						- 수집방법: 웹사이트에 고객이 직접 입력
+						
+						3. 개인정보의 처리 및 보유기간
+						춘향제는 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.
+						
+						- 보존 항목 : 이름, 휴대폰 번호, 주소, 이메일 주소
+						- 보존 근거 : 소비자의 불만 또는 분쟁처리에 관한 기록 (전자상거래등에서의 소비자보호에 관한 법률)
+						- 보존 기간 : 3년
+						
+						4. 부동의에 따른 고지사항
+						 위 개인정보 제공에 대해서 부동의할 수 있으나, 이 경우 게시판의 내용 입력을 할 수 없어 관심고객등록이 불가능합니다.
+                	</textarea>
+                </li>
+              
+                <li><input name="agreeDhk"  id="agreeIhk" type="checkbox"   > 개인신용등급 조회 및 개인정보제공방침에 동의합니다.</li>                
+                <li>
+                
+                <a th:href="@{/examinationIndex(exaRepCd=${a.exaRepCd})}" > 
+                <input name="submit" id="evaSubmit" type="submit" value="심사접수">
+                </a>
+                </li>
+          
+                </th:block>
+            </ul>
+<!--             <form method="get"  name="writeF" th:action="@{/examinationIndex(exaRepCd=${e.exaRepCd})}" onSubmit="return formChk();" enctype="multipart/form-data"> -->
+<!-- 			</form>     -->
+        </div>
+      
+        
+        
+    </div>	
+
+	  </div>
+</div>
+</section>
+</div>
+</th:block>
+<th:block layout:fragment="adminisscript">
+<th:block th:include="fragments/adminis/adminisscript"></th:block>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#evaSubmit').click(function(){
+			var check = $("#agreeIhk").is(":checked")
+			console.log(check);
+			if(check == false){
+				alert('체크해주세요');
+				$("#agreeIhk").focus()
+				return false;
+			}
+		});
+
+
+
+	});
+	
+</script>
+</th:block>
+
+</html>

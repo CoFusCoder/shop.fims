@@ -3,25 +3,24 @@ package shop.fims.vo;
 public class Member3 {
 	
 	private String memCd;
-	private String memLevCd;
+	private MemberLev MemberLev;
 	private String memNm;
 	private String memAddr;
 	private String memPhone;
 	private String memEmail;
 	private String memBirth;
 	private String memJoinDt;
-	
 	public String getMemCd() {
 		return memCd;
 	}
 	public void setMemCd(String memCd) {
 		this.memCd = memCd;
 	}
-	public String getMemLevCd() {
-		return memLevCd;
+	public MemberLev getMemberLev() {
+		return MemberLev;
 	}
-	public void setMemLevCd(String memLevCd) {
-		this.memLevCd = memLevCd;
+	public void setMemberLev(MemberLev memberLev) {
+		MemberLev = memberLev;
 	}
 	public String getMemNm() {
 		return memNm;
@@ -61,7 +60,7 @@ public class Member3 {
 	}
 	@Override
 	public String toString() {
-		return "Member [memCd=" + memCd + ", memLevCd=" + memLevCd + ", memNm=" + memNm + ", memAddr=" + memAddr
+		return "Member3 [memCd=" + memCd + ", MemberLev=" + MemberLev + ", memNm=" + memNm + ", memAddr=" + memAddr
 				+ ", memPhone=" + memPhone + ", memEmail=" + memEmail + ", memBirth=" + memBirth + ", memJoinDt="
 				+ memJoinDt + "]";
 	}

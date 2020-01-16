@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.fims.official.OfficailMapper">
+<resultMap id="DepartResultMap" type="shop.fims.vo.AdminDepart">
+	<result column="admin_dep_cd" property="adminDepCd"/>
+	<result column="areacity_admin_cd" property="areacityAdminCd"/>
+	<result column="admin_dep_belong" property="adminDepBelong"/>
+	<result column="admin_dep_nm" property="adminDepNm"/>
+</resultMap>
+
+<resultMap id="DepartEmployResultMap" type="shop.fims.vo.AdminDepartEmploy">
+	<result column="admindep_emp_cd" property="admindepEmpCd"/>
+	<result column="areacity_admin_cd" property="areacityAdminCd"/>
+	<result column="admin_dep_cd" property="adminDepCd"/>
+	<result column="area_city_cd" property="areaCityCd"/>
+	<result column="area_cd" property="areaCd"/>
+	<result column="admindep_emp_nm" property="admindepEmpNm"/>
+	<result column="admindep_emp_position" property="admindepEmpPosition"/>
+	<result column="admindep_emp_phone" property="admindepEmpPhone"/>
+	<result column="admindep_emp_tesk" property="admindepEmpTesk"/>
+</resultMap>
+
+<!--부서 등록 쿼리문 -->
+<insert	id="DepartEmployInsert" parameterType="shop.fims.vo.AdminDepart">
+	INSERT INTO
+		Admin_Depart(admin_dep_cd, areacity_admin_cd, admin_dep_belong, admin_dep_nm)
+	VALUE
+		(#{adminDepCd}, #{areacityAdminCd}, #{adminDepBelong}, #{adminDepNm})	
+</insert>
+
+<!--부서 조회 쿼리문 -->
+<select	id="DepartList" resultMap="DepartResultMap">
+	SELECT
+		*
+	FROM
+		Admin_Depart		
+</select>
+
+<!--부서별 직원 조회 쿼리문 -->
+<select	id="DepartEmployList" resultMap="DepartEmployResultMap">
+	SELECT
+		*
+	FROM
+		Admin_Depart_Employ		
+</select>
+
+
+
+
+
+
+
+
+
+
+
+</mapper>  
+  
+  
+  

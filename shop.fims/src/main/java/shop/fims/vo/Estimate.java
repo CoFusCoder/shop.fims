@@ -13,6 +13,7 @@ public class Estimate {
 	private String evaIndexCd;// 심사 평가지표명코드
 	private String exaCondition;// 심사 유무
 	private String exaDt;// 심사일자
+	private String exaJoindt;//등록일자
 	private String exaTotalScore;// 총점
 	private String estClaCd;// 심사구분
 	private String evaNm;// 평가명
@@ -41,7 +42,7 @@ public class Estimate {
 	private String memBirth;//생년월일
 	private String joinDt;//가입일자
 	private String LoginCd;//로그인 코드
-	
+	private String festAnnNm;//로그인 코드
 	public String getExaRepCd() {
 		return exaRepCd;
 	}
@@ -252,6 +253,18 @@ public class Estimate {
 	public void setLoginCd(String loginCd) {
 		LoginCd = loginCd;
 	}
+	public String getFestAnnNm() {
+		return festAnnNm;
+	}
+	public void setFestAnnNm(String festAnnNm) {
+		this.festAnnNm = festAnnNm;
+	}
+	public String getExaJoindt() {
+		return exaJoindt;
+	}
+	public void setExaJoindt(String exaJoindt) {
+		this.exaJoindt = exaJoindt;
+	}
 	@Override
 	public String toString() {
 		return "Estimate [exaRepCd=" + exaRepCd + ", areacityAdminCd=" + areacityAdminCd + ", areaCd=" + areaCd
@@ -264,10 +277,8 @@ public class Estimate {
 				+ evaindexItemCd + ", areaNm=" + areaNm + ", areaCityNm=" + areaCityNm + ", areacityAdminNm="
 				+ areacityAdminNm + ", festNm=" + festNm + ", memLevCd=" + memLevCd + ", memNm=" + memNm + ", memAddr="
 				+ memAddr + ", memPhone=" + memPhone + ", memEmail=" + memEmail + ", memBirth=" + memBirth + ", joinDt="
-				+ joinDt + ", LoginCd=" + LoginCd + "]";
+				+ joinDt + ", LoginCd=" + LoginCd + ", festAnnNm=" + festAnnNm + ", exaJoindt=" + exaJoindt + "]";
 	}
-	
-
 	
 	
 

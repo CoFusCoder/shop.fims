@@ -40,6 +40,11 @@ public class GoodsController {
 			return "redirect:/conditionList	";
 			
 		}
+		//삭제
+		@GetMapping("deleteCondition")
+		public String deleteCondition() {
+			return "/goods/conditionList";
+		}
 		
 	
 }

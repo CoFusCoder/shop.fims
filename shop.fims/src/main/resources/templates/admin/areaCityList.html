@@ -25,14 +25,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							<button class="btn btn-success btn-xs" onclick="location.href='areaInsert'">
 								<i class="fa fa-plus">등록</i>
 							</button>
+							<!-- 수정 버튼 trigger Modal -->
 							<button class="btn btn-primary btn-xs" iclass="btn btn-info btn-lg" data-toggle="modal" th:data-target="${'#areaUpModal' + i.index}">
 								<i class="fa fa-pencil">수정</i>
 							</button >
-							<a th:href="@{/admin/areaDelete(areaCd=${l.areaCd})}" style="color:#ffffff;">
-								<button class="btn btn-danger btn-xs">
-									<i class="fa fa-trash-o ">삭제</i>
-								</button>
-							</a>
 							<!-- Modal -->
 							<div th:id="${'areaUpModal' + i.index}" class="modal fade" role="dialog">
 								<div class="modal-dialog">
@@ -67,6 +63,44 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 									</div>
 								</div>
 								<!-- Modal End -->
+								<!-- 삭제 버튼 trigger Modal -->
+								<button class="btn btn-danger btn-xs" data-toggle="modal" th:data-target="${'#areaDelModal' + i.index}">
+									<i class="fa fa-trash-o ">삭제</i>
+								</button>
+								<!-- Modal -->
+								<div th:id="${'areaDelModal' + i.index}" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+										<!-- Modal content-->
+											<div class="modal-content">
+											<div class="modal-header">
+											  <h4 class="modal-title">전국 지역 삭제</h4>
+											</div>
+												<div class="modal-body">
+													<div class="form-panel">
+														<form class="form-horizontal style-form" method="post" th:action="@{/admin/areaDelete}">					
+															<div class="form-group">
+																<label class="col-sm-2 col-sm-2 control-label">전국지역코드</label>
+																<div class="col-sm-6">
+																	<input type="text" class="form-control" name="areaCd" th:value="${l.areaCd}" placeholder="*전국지역코드를 입력해주세요">
+																</div>
+															</div>
+															<div class="form-group">
+																<label class="col-sm-2 col-sm-2 control-label">지역명</label>
+																<div class="col-sm-6">
+																	<input type="text" class="form-control" name="areaNm" th:value="${l.areaNm}" placeholder="*지역명을 입력해주세요" >
+																</div>
+															</div>
+															<div class="modal-footer">
+																<button type="submit" class="btn btn btn-success">삭제하기</button>
+																<button type="submit" class="btn btn btn-danger" data-dismiss="modal" >취소</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								<!-- Modal End -->
 							</td>
 					   </tr>
 				 </tbody>
@@ -98,14 +132,10 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 							<button class="btn btn-success btn-xs" onclick="location.href='areaInsert'">
 								<i class="fa fa-plus">등록</i>
 							</button>
+							<!-- 수정 버튼 trigger Modal -->
 							<button class="btn btn-primary btn-xs" iclass="btn btn-info btn-lg" data-toggle="modal" th:data-target="${'#areaCityUpModal' + il.index}">
 								<i class="fa fa-pencil">수정</i>
 							</button>
-							<a th:href="@{/admin/areaCityDelete(areaCityCd=${cl.areaCityCd})}" style="color:#ffffff;">
-								<button class="btn btn-danger btn-xs">
-									<i class="fa fa-trash-o ">삭제</i>
-								</button>
-							</a>
 							<!-- Modal -->
 							<div th:id="${'areaCityUpModal' + il.index}" class="modal fade" role="dialog">
 								<div class="modal-dialog">
@@ -138,6 +168,50 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 												</div>
 												<div class="modal-footer">
 													<button type="submit" class="btn btn btn-success">수정하기</button>
+													<button type="submit" class="btn btn btn-danger" data-dismiss="modal" >취소</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Modal End -->
+							<!-- 삭제 버튼 trigger Modal -->
+							<button class="btn btn-danger btn-xs" data-toggle="modal" th:data-target="${'#areaCityDelModal' + il.index}">
+									<i class="fa fa-trash-o ">삭제</i>
+							</button>
+							<!-- Modal -->
+							<div th:id="${'areaCityDelModal' + il.index}" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">전국 지역 시군 수정</h4>
+										</div>
+										<div class="modal-body">
+											<form  class="form-horizontal style-form" method="post" th:action="@{/admin/areaCityDelete}">
+												<div class="form-group">
+													<label class="col-sm-2 col-sm-2 control-label">전국지역시군코드</label>
+													<div class="col-sm-6">
+														<input type="text" class="form-control" style="background-color: #e2e2e2;" name="areaCityCd" th:value="${cl.areaCityCd}" readonly="readonly">
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 col-sm-2 control-label">전국지역</label>
+													<div class="col-sm-6">
+														<select class="form-control" name="areaCd">
+															<option th:each="l: ${areaList}" th:value="${l.areaCd}" th:text="${l.areaNm}"></option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="col-sm-2 col-sm-2 control-label">시군명</label>
+													<div class="col-sm-6">
+														<input type="text" class="form-control" name="areaCityNm" th:value="${cl.areaCityNm}" placeholder="*시군명을 입력해주세요">
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn btn btn-success">삭제하기</button>
 													<button type="submit" class="btn btn btn-danger" data-dismiss="modal" >취소</button>
 												</div>
 											</form>
