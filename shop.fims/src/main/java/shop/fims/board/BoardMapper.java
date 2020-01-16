@@ -18,4 +18,7 @@ public interface BoardMapper {
 	
 	//공지사항 상세보기 게시판코드 사용
 	public List<Board> selectByBoard(int boardNum);
+	
+	//공지사항 등록
+	public int insertBoard(Board board);
 }

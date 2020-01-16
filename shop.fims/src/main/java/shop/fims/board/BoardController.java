@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import shop.fims.vo.Board;
+import shop.fims.vo.Committee;
 
 @Controller
 public class BoardController {
@@ -36,10 +40,17 @@ public class BoardController {
 		return "gukminview/community/boardDetail";
 	}
 	
-	//공지사항 등록
+	//공지사항 등록화면
 	@GetMapping("/gukminview/community/insertBoard")
-	public String InsertBoard() {
+	public String insertBoard() {
 		return "gukminview/community/insertBoard";
+	}
+	
+	//공지사항 등록
+	@PostMapping("/gukminview/community/insertBoard")
+	public String insertBoard(Board board) {
+		boardService.insertBoard(board);
+		return "redirect:/gukminview/community/boardList";
 	}
 	
 	//공지사항 수정

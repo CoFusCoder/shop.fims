@@ -64,4 +64,9 @@ public class BoardService {
 	public List<Board> selectByBoard(int boardNum){
 		return boardMapper.selectByBoard(boardNum);
 	}
+	
+	//공지사항 등록
+	public int insertBoard(Board board) {
+		return boardMapper.insertBoard(board);
+	}
 }
