@@ -61,7 +61,12 @@ public class BoardService {
 	}
 	
 	//공지사항 상세보기 게시판코드 사용
-	public List<Board> selectByBoard(String boardCd){
-		return boardMapper.selectByBoard(boardCd);
+	public List<Board> selectByBoard(int boardNum){
+		return boardMapper.selectByBoard(boardNum);
+	}
+	
+	//공지사항 등록
+	public int insertBoard(Board board) {
+		return boardMapper.insertBoard(board);
 	}
 }

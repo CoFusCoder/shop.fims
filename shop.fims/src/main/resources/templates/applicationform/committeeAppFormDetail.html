@@ -31,7 +31,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 <tbody>
                   <tr>
                     <th><i class="fa fa-circle"></i> 모든 행정기관코드</th>
-                    <td class="col-md-10">Lorem Ipsum dolor</td>	
+                    <td class="col-md-10" th:text="${a.areacityAdminCd}"></td>	
                   </tr>
                 </tbody>
                 <!-- 한세트 끝 -->
@@ -39,13 +39,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 <thead>
                   <tr>
                     <th><i class="fa fa-circle"></i> 모든 지역 시군코드</th>
-                    <td class="col-md-2">Lorem Ipsum dolor</td>
+                    <td class="col-md-2" th:text="${a.areaCityCd}"></td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th><i class="fa fa-circle"></i> 전국지역코드</th>
-                    <td class="col-md-10">Lorem Ipsum dolor</td>	
+                    <td class="col-md-10" th:text="${a.areaCd}"></td>	
                   </tr>
                 </tbody>
                 <!-- 한세트 끝 -->
@@ -53,13 +53,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 <thead>
                   <tr>
                     <th><i class="fa fa-circle"></i> 축제코드</th>
-                    <td class="col-md-2">Lorem Ipsum dolor</td>
+                    <td class="col-md-2" th:text="${a.festCd}"></td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th><i class="fa fa-circle"></i> 모든축제공고코드</th>
-                    <td class="col-md-10">Lorem Ipsum dolor</td>	
+                    <td class="col-md-10" th:text="${a.fesAnnCd}"></td>	
                   </tr>
                 </tbody>
                 <!-- 한세트 끝 -->
@@ -67,13 +67,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 <thead>
                   <tr>
                     <th><i class="fa fa-circle"></i> 위원회코드</th>
-                    <td class="col-md-2">Lorem Ipsum dolor</td>
+                    <td class="col-md-2" th:text="${a.manComCd}"></td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th><i class="fa fa-circle"></i> 이름</th>
-                    <td class="col-md-10">Lorem Ipsum dolor</td>	
+                    <td class="col-md-10" th:text="${a.comAppNm}"></td>	
                   </tr>
                 </tbody>
                 <!-- 한세트 끝 -->
@@ -81,13 +81,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 <thead>
                   <tr>
                     <th><i class="fa fa-circle"></i> 연락처</th>
-                    <td class="col-md-2">Lorem Ipsum dolor</td>
+                    <td class="col-md-2" th:text="${a.comAppPhone}"></td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th><i class="fa fa-circle"></i> 주소</th>
-                    <td class="col-md-10">Lorem Ipsum dolor</td>	
+                    <td class="col-md-10" th:text="${a.comAppAdd}"></td>	
                   </tr>
                 </tbody>
                 <!-- 한세트 끝 -->
@@ -95,13 +95,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 <thead>
                   <tr>
                     <th><i class="fa fa-circle"></i> 소속</th>
-                    <td class="col-md-2">Lorem Ipsum dolor</td>
+                    <td class="col-md-2" th:text="${a.comAppJob}"></td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th><i class="fa fa-circle"></i> 이메일주소</th>
-                    <td class="col-md-10">Lorem Ipsum dolor</td>	
+                    <td class="col-md-10" th:text="${a.comAppEmail}"></td>	
                   </tr>
                 </tbody>
                 <!-- 한세트 끝 -->
@@ -109,13 +109,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 <thead>
                   <tr>
                     <th><i class="fa fa-circle"></i> 최종학력</th>
-                    <td class="col-md-2">Lorem Ipsum dolor</td>
+                    <td class="col-md-2" th:text="${a.comAppEdu}"></td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th><i class="fa fa-circle"></i> 경력</th>
-                    <td class="col-md-10">Lorem Ipsum dolor</td>	
+                    <td class="col-md-10" th:text="${a.comAppCar}"></td>	
                   </tr>
                 </tbody>
                 <!-- 한세트 끝 -->
@@ -123,13 +123,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 <thead>
                   <tr>
                     <th><i class="fa fa-circle"></i> 위원회활동실적</th>
-                    <td class="col-md-2">Lorem Ipsum dolor</td>
+                    <td class="col-md-2" th:text="${a.comAppResult}"></td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th><i class="fa fa-circle"></i> 신청일</th>
-                    <td class="col-md-10">Lorem Ipsum dolor</td>	
+                    <td class="col-md-10" th:text="${a.comAppDt1}"></td>	
                   </tr>
                 </tbody>
                 <!-- 한세트 끝 -->
@@ -137,15 +137,37 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                 <thead>
                   <tr>
                     <th><i class="fa fa-circle"></i> 합격여부</th>
-                    <td class="col-md-2">Lorem Ipsum dolor</td>
+                    <td class="col-md-2" th:text="${a.comAppSel}"></td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th><i class="fa fa-circle"></i> 합격일자</th>
-                    <td class="col-md-10">Lorem Ipsum dolor</td>	
+                    <td class="col-md-10" th:text="${a.comAppDt2}"></td>	
                   </tr>
                 </tbody>
+                <!-- 한세트 끝 -->
+                <!-- 한세트 시작 -->
+                <thead>
+                  <tr>
+                    <th><i class="fa fa-circle"></i> 축제명</th>
+                    <td class="col-md-2" th:text="${a.festNm}"></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th><i class="fa fa-circle"></i> 위원회명</th>
+                    <td class="col-md-10" th:text="${a.manComNm1}"></td>	
+                  </tr>
+                </tbody>
+                <!-- 한세트 끝 -->
+                <!-- 한세트 시작 -->
+                <thead>
+                  <tr>
+                    <th><i class="fa fa-circle"></i> 공고명</th>
+                    <td class="col-md-2" th:text="${a.festAnnNm}"></td>
+                  </tr>
+                </thead>
                 <!-- 한세트 끝 -->
 
 

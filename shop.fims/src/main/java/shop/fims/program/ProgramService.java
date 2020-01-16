@@ -21,6 +21,16 @@ public class ProgramService {
 		return programMapper.insertDivDay(prodivday);
 	}
 	
+	//장소분류 신규등록
+	public int insertDivPlace(ProDivPlace proDivPlace) {
+		return programMapper.insertDivPlace(proDivPlace);
+	}
+	
+	//성격분류 신규등록
+	public int insertDivTheme(ProDivTheme proDivTheme) {
+		return programMapper.insertDivTheme(proDivTheme);
+	}
+	
 	
 	
 	

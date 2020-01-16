@@ -17,6 +17,12 @@ public interface ProgramMapper {
 	//프로그램 일자코드등록
 	public int insertDivDay(ProDivDay prodivday);
 	
+	//프로그램 장소코드등록
+	public int insertDivPlace(ProDivPlace proDivPlace);
+	
+	//프로그램 성격코드등록
+	public int insertDivTheme(ProDivTheme proDivTheme);
+	
 	//프로그램 참가자 조건검색
 	public List<ProParticipants> searchParticipant(String festProNm, String festproSproNm
 			,String festproParNm, String festproParGender, String festproParPhone, String festCd);

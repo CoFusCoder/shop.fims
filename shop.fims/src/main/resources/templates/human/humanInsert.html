@@ -6,10 +6,43 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <th:block layout:fragment="adminisMainContents">
 <!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
 	<meta charset="UTF-8">
-
+	<th:block layout:fragment="adminisscript">
+	<th:block th:include="fragments/adminis/adminisscript"></th:block>
 	<th:block layout:fragment="customBody" >
 	
 		<div class="content-panel">	
+		<script type="text/javascript" th:inline="javascript">
+		 $(document).ready(function () {
+			 $('.btnbtn-default').click(function() {
+		            $.ajax({
+		                type: "POST",
+		                url: "/humanInsert",
+		                data: { "loginCd1" : $('#loginCd').val(),
+		                    "memNm1" : $('#memNm').val()},
+		                dataType: "json",
+		                success: function(data) {
+		                	console.log(data);
+		                	$('#myModal').modal('hide');
+		                	var memNm = data.memNm;
+		                	var memPhone = data.memPhone;
+		                	$('#humanNm').val(memNm);
+		                	$('#humanPhone').val(memPhone);
+		                	
+		                    alert('회원조회성공! 추가사항 입력 후 등록해주세요.');
+		                   
+		                    /* location.reload(); */ //리프레쉬됨
+		                }, error: function() {
+		                    alert('일치하는 회원정보가 없습니다.');
+		                }
+		            });
+		        });
+			
+	
+		 });
+
+
+			 
+		</script>
 		<h1>인적사항등록화면</h1>
 		<!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
@@ -37,7 +70,11 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						   		 <input type="text"  class="form-control" id="memNm" name="memNm" placeholder="이름을 입력하세요"/>
 						  	</div>
 						  </div>
-						  <button type="submit" class="btnbtn-default" value="검색">검색</button>
+						  <div>
+							  <div class="form-group" style="margin-right:40px;">
+							  	<button type="button" class="btnbtn-default" value="검색">검색</button>
+							  </div>
+						 </div>
 						</form>
 			      </div>
 			    </div>
@@ -102,6 +139,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                     </div>
                   </div>
                   <div class="form-group ">
+                    <label for="staNm" class="control-label col-lg-2">근무위치</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="staNm" type="text" name="staNm" />
+                    </div>
+                  </div>                  
+                  <div class="form-group ">
                     <label for="mamCd" class="control-label col-lg-2">담당위원회코드</label>
                     <div class="col-lg-10">
                       <input class="form-control " id="mamCd" type="text" name="mamCd" />
@@ -115,7 +158,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   </div>
                   <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit" value="등록">등록</button>
+                      <button class="btn btn-theme" type="submit" value="등록" onclick="formObject">등록</button>
                       <button class="btn btn-theme04" type="button">취소</button>
                     </div>
                   </div>
@@ -124,7 +167,5 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                </div>
 			</div>
 </th:block>
-<th:block layout:fragment="adminisscript">
-<th:block th:include="fragments/adminis/adminisscript"></th:block>
 </th:block>
 </html>

@@ -5,11 +5,13 @@
   
 <mapper namespace="shop.fims.board.BoardMapper">
 	<resultMap type="shop.fims.vo.Board" id="boardResultMap">
-		<result property="boardCd" column="board_cd"/>		
+		<result property="boardCd" column="board_cd"/>
+		<result property="boardPw" column="board_pw"/>
 		<result property="boardTitle" column="board_title"/>		
 		<result property="boardContent" column="board_content"/>		
 		<result property="boardWriter" column="board_writer"/>
-		<result property="boardDt" column="board_dt"/>	
+		<result property="boardDt" column="board_dt"/>
+		<result property="boardNum" column="board_num"/>
 	</resultMap>
 
 	<!-- 공지글 총 수 -->
@@ -31,6 +33,7 @@
 			,board_content 	AS boardContent
 			,board_writer 	AS boardWriter
 			,board_dt 	AS boardDt
+			,board_num AS boardNum
 		FROM Board
 		ORDER BY board_cd DESC
 		LIMIT #{startRow},#{rowPerPage}
@@ -44,6 +47,17 @@
 		FROM 
 			Board
 		WHERE 
-			board_cd = #{boardCd}
+			board_num = #{boardNum}
 	</select>
+	
+	<!-- 위원회 등록 -->
+	<insert id="insertBoard" parameterType="shop.fims.vo.Board">
+		<selectKey resultType="string" keyProperty="boardCd" order="BEFORE">
+	        SELECT CONCAT('board','_',(SELECT LPAD(COUNT(*)+1,3,'0') FROM Board))   
+	    </selectKey>
+		INSERT INTO Board
+			(board_cd, board_pw, board_title, board_content, board_writer, board_dt, board_num)
+		VALUES 
+			(#{boardCd}, #{boardPw}, #{boardTitle}, #{boardContent}, #{boardWriter}, now(), #{boardNum})
+	</insert>
 </mapper>

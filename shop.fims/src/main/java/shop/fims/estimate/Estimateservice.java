@@ -44,7 +44,11 @@ public class Estimateservice {
 		return estimateMapper.updateEstimateList(exaRepCd);
 	}
 	//담당자 등록
-		public void updataexeManager(String exaRepCd,String exeManager){
+	public void updataexeManager(String exaRepCd,String exeManager){
 			estimateMapper.updataexeManager(exaRepCd,exeManager);
-		}
+	}
+	//점수 등록
+	public int insertscoring() {
+		return estimateMapper.insertscoring();
+	}
 }

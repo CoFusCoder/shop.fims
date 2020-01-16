@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import shop.fims.vo.Account;
 import shop.fims.vo.AccountCatBus;
+import shop.fims.vo.AccountMember;
 import shop.fims.vo.AppAccount;
 
 @Service
@@ -114,4 +115,33 @@ public class AccountService {
 		return accountMapper.searchApprovalAccount(sk, sv);
 	}
 	
+	//거래처 회원 관리
+	public List<AccountMember> selectAccountMemberView(){
+		return accountMapper.selectAccountMemberView();
+	}
+	
+	//거래처 회원 상세보기 거래처 회원 코드로 조회
+	public List<AccountMember> selectByAccountMember(String accMemCd){
+		return accountMapper.selectByAccountMember(accMemCd);
+	}
+	
+	//거래처 회원 등록
+	public int insertAccountMember(AccountMember accountMember) {
+		return accountMapper.insertAccountMember(accountMember);
+	}
+	
+	//거래처 회원 수정화면 거래처 회원 코드로 조회
+	public AccountMember selectUpAccountMember(String accMemCd){
+		return accountMapper.selectUpAccountMember(accMemCd);
+	}
+	
+	//거래처 회원 수정
+	public int updateAccountMember(AccountMember accountMember) {
+		return accountMapper.updateAccountMember(accountMember);
+	}
+	
+	//승인된 거래처 삭제
+	public int deleteAccountMember(AccountMember accountMember) {
+		return accountMapper.deleteAccountMember(accountMember);
+	}
 }

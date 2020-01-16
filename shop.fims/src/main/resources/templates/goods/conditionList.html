@@ -7,12 +7,13 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 <!-- <th:block th:include="fragments/adminis/adminisblank"></th:block> -->
 <div class="content-panel">
 		<h2>
-			<i class="fa fa-angle-right"></i>보유물품 리스트
+			<i class="fa fa-angle-right"></i>부서 별 보유물품 리스트
 		</h2>
 		<div align="right">
               <a th:href="@{/insertCondition}" >
-              <button type="button" class="btn btn-primary btn-lg" >대여물품 등록</button></a>  
-              </div>
+              <button type="button" class="btn btn-primary btn-lg" >물품 등록</button></a>  
+        </div>
+<!--         <div th:if="${session.F_CD eq }"> -->
 		<table class="table">
 			<tr>
 				<th><input type="text"> <input type="button"
@@ -37,21 +38,22 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 			</tr>
 
 			<tr th:each="g : ${conditionList}">
-				<td th:text="${g.areacityAdmCd}"></td>
-				<td th:text="${g.areaCd}"></td>
-				<td th:text="${g.areaCityCd}"></td>
-				<td th:text="${g.festCd}"></td>
-				<td th:text="${g.adminDepCd}"></td>
+				<td th:text="${g.admAgeNm}"></td>
+				<td th:text="${g.areaCityNm}"></td>
+				<td th:text="${g.areacityAdminNm}"></td>
+				<td th:text="${g.festNm}"></td>
+				<td th:text="${g.admimDepNm}"></td>
 				<td th:text="${g.goodsNm}"></td>
 				<td th:text="${g.goodsAmt}"></td>
 				<td th:text="${g.specialNote}"></td>
-				<td><a th:href="@{updateCondition}" >
+				<td><a th:href="@{updateCondition(goodspreConCd=${g.goodspreConCd})}" >
 	                  	<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a></td>				
 				<th><a th:href="@{/conditionList}">삭제하기</a></th>
 			</tr>
 
 		</table>
-	</div>
+		</div>
+<!-- 	</div> -->
 </th:block>
 <th:block layout:fragment="adminisscript">
 <th:block th:include="fragments/adminis/adminisscript"></th:block>

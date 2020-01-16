@@ -21,6 +21,7 @@ public class Human {
 	private String loginCd;
 	private String levNm;
 	private String workdivCd;
+	private String memCd;
 	
 	private String cityadminCd;	//공통코드
 	private String areacityCd;
@@ -140,6 +141,12 @@ public class Human {
 	public void setWorkdivCd(String workdivCd) {
 		this.workdivCd = workdivCd;
 	}
+	public String getMemCd() {
+		return memCd;
+	}
+	public void setMemCd(String memCd) {
+		this.memCd = memCd;
+	}
 	
 	
 	//공통코드
@@ -173,8 +180,9 @@ public class Human {
 				+ humanPhone + ", humanHour=" + humanHour + ", comNm2=" + comNm2 + ", mamCd=" + mamCd + ", humanCd="
 				+ humanCd + ", staNm=" + staNm + ", staCd=" + staCd + ", memNm=" + memNm + ", memAddr=" + memAddr
 				+ ", memPhone=" + memPhone + ", memEmail=" + memEmail + ", memBirth=" + memBirth + ", joinDt=" + joinDt
-				+ ", loginCd=" + loginCd + ", levNm=" + levNm + ", workdivCd=" + workdivCd + ", cityadminCd="
-				+ cityadminCd + ", areacityCd=" + areacityCd + ", areaCd=" + areaCd + ", festCd=" + festCd + "]";
+				+ ", loginCd=" + loginCd + ", levNm=" + levNm + ", workdivCd=" + workdivCd + ", memCd=" + memCd
+				+ ", cityadminCd=" + cityadminCd + ", areacityCd=" + areacityCd + ", areaCd=" + areaCd + ", festCd="
+				+ festCd + "]";
 	}
 
 	

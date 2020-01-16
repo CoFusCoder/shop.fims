@@ -72,7 +72,7 @@ p{margin: 0;}
                 }
             //-->
             </script>
-			<form method="get" name="writeF" th:action="@{/boardList}" onSubmit="return formChk();" enctype="multipart/form-data">
+			<form method="post" name="writeF" th:action="@{/insertCommitteeApp}" onSubmit="return formChk();" enctype="multipart/form-data">
         	<input name="_zidx" id="_zidx" type="hidden" value="1518052040^1^1518052057">
         	<input name="user_id" id="user_id" type="hidden" value="">
         	<input name="bmode" id="bmode" type="hidden" value="write">
@@ -81,36 +81,37 @@ p{margin: 0;}
         	<input name="rurl" id="rurl" type="hidden" value="/sub6/sub2.htm">
             <ul class="sub-form">
                 <li>
-                    <span><input type="text" name='title' id='title' placeholder="연도" autocomplete="off" value="2019 제89회 춘향제" readonly></span>
-        			<span><input type="text" name='rdate' id='rdate' placeholder="접수일 : 2019-12-24" value="접수일 : 2019-12-24" autocomplete="off" readonly></span>
+                    <span><input type="text" name='title' id='title' placeholder="연도" autocomplete="off" value="2019 전주세계소리축제" readonly></span>
+        			<span><input type="text" name='comAppNm' id='comAppNm' placeholder="이름을 입력해주세요" ></span>
+                </li>
+<!--                 <li>
+                    
+        			<span><input type="text" name='pcode' id='pcode' placeholder="공고코드 : " value="공고코드 :" autocomplete="off" readonly></span>
+                    <span><input type="text" name='pcode' id='pcode' placeholder="접수번호 : " value="접수번호 :" autocomplete="off" readonly></span>
+                </li> -->
+                <li>
+        			<span><input type="text" name='comAppPhone' id='comAppPhone' placeholder="연락처를 입력해주세요"></span>
+                    <span><input type="text" name='comAppPhone' id='comAppJob' placeholder="소속을 입력해주세요"></span>
                 </li>
                 <li>
-                    
-        			<span><select name="flag" class="iptborder" id="flag" in_type="03" in_mode="n" in_ttl="신청부분"><option value="">선택</option><option value="춘향길놀이">춘향길놀이</option></select></span>
-                    <span><input type="text" name='pcode' id='pcode' placeholder="접수번호 : 123456789785" value="접수번호 : P-1577163112" autocomplete="off" readonly></span>
+        			<span><input type="text" name='comAppAdd' id='comAppAdd' placeholder="주소을 입력해주세요"></span>
+                    <span><input type="text" name='comAppEmail' id='comAppEmail' placeholder="이메일주소을 입력해주세요"></span>
                 </li>
                 <li>
-                    
-        			<span><input type="text" name='team' id='team' ></span>
-                    <span><input type="text" name='name' id='tenamel'></span>
+                	<span><input type="text" name='comAppEdu' id='comAppEdu' placeholder="최종학력을 입력해주세요"></span>
+                    <span><input type="text" name='comAppCar' id='comAppCar' placeholder="경력을 입력해주세요"></span>
                 </li>
-                <li>
-                    
-        			<span><input type="text" name='hp' id='hp' ></span>
-                    <span><input type="text" name='email' id='email'></span>
-                </li>
-                <li><input type="text" name='addr' id='addr' ></li>
-                <li><input type="password" name='pwd' id='pwd'></li>
+                <li><input type="text" name='comAppResult' id='comAppResult' placeholder="위원회활동실적을 입력해주세요"></li>
 								<li>※ 신청접수 파일 업로드해주세요.</li>
                 <li><input name="upfile1" type="file" /></li>
                 <li>
                 	<textarea  class="form-control requiredField" style="min-height:200px;  font-size:13px;" readonly>개인정보 수집 및 이용목적
 
 						1. 개인정보의 수집 및 이용 목적
-						춘향제는 고객님의 문의사항에 대한 답변 및 안내를 위하여 필요한 최소한의 범위 내에서 개인정보를 수집하고 있습니다.
+						전주세계소리축제는 고객님의 문의사항에 대한 답변 및 안내를 위하여 필요한 최소한의 범위 내에서 개인정보를 수집하고 있습니다.
 						
 						2. 수집하는 개인정보의 항목
-						- 필수항목: 이름, 휴대폰 번호, 주소, 이메일 주소
+						- 필수항목: 이름, 연락처, 주소, 이메일 주소
 						- 수집방법: 웹사이트에 고객이 직접 입력
 						
 						3. 개인정보의 처리 및 보유기간

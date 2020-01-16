@@ -7,6 +7,7 @@ public class Board {
 	private String boardContent;	//내용			//board_content
 	private String boardWriter;		//작성자			//board_writer
 	private String boardDt;			//작성일			//board_dt
+	private int boardNum;		//게시글번호	//board_num
 	
 	public String getBoardCd() {
 		return boardCd;
@@ -44,11 +45,24 @@ public class Board {
 	public void setBoardDt(String boardDt) {
 		this.boardDt = boardDt;
 	}
+	public int getBoardNum() {
+		return boardNum;
+	}
+	public void setBoardNum(int boardNum) {
+		this.boardNum = boardNum;
+	}
 	@Override
 	public String toString() {
 		return "Board [boardCd=" + boardCd + ", boardPw=" + boardPw + ", boardTitle=" + boardTitle + ", boardContent="
-				+ boardContent + ", boardWriter=" + boardWriter + ", boardDt=" + boardDt + "]";
+				+ boardContent + ", boardWriter=" + boardWriter + ", boardDt=" + boardDt + ", boardNum=" + boardNum
+				+ "]";
 	}
+	
+
+	
+
+
+
 	
 
 	

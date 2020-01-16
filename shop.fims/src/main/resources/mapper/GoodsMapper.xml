@@ -11,17 +11,19 @@
  <result property="areaCityCd" column="area_city_cd"/>
  <result property="festCd" column="fest_cd"/>
  <result property="adminDepCd" column="admin_dep_cd"/>
-<!--  <result property="" column="admindep_emp_nm"/> -->
-<!--  <result property="" column="adm_age_nm"/> -->
-<!--  <result property="" column="area_city_nm"/> -->
-<!--  <result property="" column="areacity_admin_nm"/> -->
-<!--  <result property="" column="fest_nm"/> -->
-<!--  <result property="" column="admim_dep_nm"/> -->
+ <result property="admindepEmpNm" column="admindep_emp_nm"/>
+ <result property="admAgeNm" column="adm_age_nm"/>
+ <result property="areaCityNm" column="area_city_nm"/>
+ <result property="areacityAdminNm" column="areacity_admin_nm"/>
+ <result property="festNm" column="fest_nm"/>
+ <result property="admimDepNm" column="admim_dep_nm"/>
  <result property="goodsNm" column="goods_nm"/>
  <result property="goodsAmt" column="goods_count"/>
  <result property="specialNote" column="special_note"/>
 
- 
+ <result property="areaNm" column="area_nm"/>
+ <result property="areaCityNm" column="area_city_nm"/>
+
  
  
  
@@ -32,7 +34,55 @@
 	SELECT
 	*
 	FROM
-	Goods_present_condition
+	Goods_present_condition AS gpc
+	INNER join
+	Area AS a
+	on
+	gpc.area_cd = a.area_cd
+	INNER join
+	Area_City AS ac
+	on
+	gpc.area_city_cd = ac.area_city_cd
+	INNER join
+	Area_City_Admin AS aca
+	on
+	gpc.areacity_admin_cd = aca.areacity_admin_cd
 	
   </select>
+  <select id="pageupdatecondition" resultMap="goodslist">
+  	
+	SELECT
+	*
+	FROM
+	Goods_present_condition AS gpc
+	INNER join
+	Area AS a
+	on
+	gpc.area_cd = a.area_cd
+	INNER join
+	Area_City AS ac
+	on
+	gpc.area_city_cd = ac.area_city_cd
+	INNER join
+	Area_City_Admin AS aca
+	on
+	gpc.areacity_admin_cd = aca.areacity_admin_cd
+	where
+	gpc.goodspre_con_cd = #{goodspre_con_cd}
+  
+  
+  </select>
+ 
+<update id="updatecondition" parameterType="shop.fims.vo.Goods">
+  UPDATE Goods_present_condition
+	SET
+
+	goods_nm = #{goodsNm},
+	goods_count = #{goodsAmt},
+	special_note = #{specialNote}
+	
+	WHERE 
+	goodspre_con_cd= #{goodspreConCd}
+  
+</update>
   </mapper>

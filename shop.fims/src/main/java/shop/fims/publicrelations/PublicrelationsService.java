@@ -48,10 +48,17 @@ public class PublicrelationsService {
 	}	
 	
 	
+	public String selectDivByCd(String festprDivCd) {
+		return publicrelationsMapper.selectDivByCd(festprDivCd);	
+	}
 	
 	
 //**********홍보 프로모션 ***********	
 	
+	//홍보 그룹코드명 변경
+	public int updatePrGroupNm (String groupCd, String groupNm) {
+		return publicrelationsMapper.updatePrGroupNm(groupCd, groupNm);		
+	}
 	// 홍보 사업 신규 등록
 	public int insertPromotionPro(PrPromotion promotion, String groupNm2) {
 		System.out.println("groupNm2"+groupNm2);
@@ -70,6 +77,23 @@ public class PublicrelationsService {
 		return publicrelationsMapper.insertPromotionPro(promotion);
 	}
 	
+	// 홍보 사업 수정
+	public int updatePromotionPro(PrPromotion promotion, String groupNm2) {
+		System.out.println("groupNm2"+groupNm2);
+		if(promotion.getGroupNm().equals("")) {
+			promotion.setGroupNm(groupNm2);	
+		}
+		
+		System.out.println(promotion);
+		String groupCd = publicrelationsMapper.selectGroupCd(promotion.getGroupNm());
+		if(groupCd==null) {
+			groupCd=publicrelationsMapper.newGroupCd();
+			promotion.setGroupCd(groupCd);
+		}else {
+			promotion.setGroupCd(groupCd);
+		}
+		return publicrelationsMapper.updatePromotionPro(promotion);
+	}	
 
 	
 	// 홍보관련 계정과목명 조회
@@ -101,7 +125,7 @@ public class PublicrelationsService {
 	}	
 
 	//홍보코드로 상세내역조회
-	public List<PrPromotion> selectByPmcd(String festprProCd){
+	public List<Map<String, Object>> selectByPmcd(String festprProCd){
 		return publicrelationsMapper.selectByPmcd(festprProCd);		
 	}
 
@@ -123,7 +147,7 @@ public class PublicrelationsService {
 				attachFiles.setFileSize(fileUpload.getSize());
 				attachFiles.setFileNm(fileUpload.getOriginalFilename());
 				attachFiles.setFestprProCd(publicrelationsMapper.selectLastCd());
-				attachFiles.setFileWriter("윤");
+				attachFiles.setFileWriter("임시계정명");
 								
 				System.out.println(attachFiles.getFileNm()+ " << 실제 업로드된 파일명");
 				System.out.println(fileUpload.getContentType() + " << 실제 업로드된 파일명");	
@@ -154,7 +178,24 @@ public class PublicrelationsService {
 		return 0;		
 	}
 	
-	
+	// 최초 그룹예산 합산용 데이터 조회 후 등록
+	public int selectForGroupBud (String festprProCd){
+		String Actioncheck = publicrelationsMapper.checkActionCd(festprProCd);
+		if(Actioncheck==null) {
+		Map<String, String> groupdata = publicrelationsMapper.selectForGroupBud(festprProCd);	
+		publicrelationsMapper.insertGroupBud(groupdata);
+		}else {
+			String groupCd = publicrelationsMapper.selectGroupCdByProCd(festprProCd);
+			int sum = publicrelationsMapper.calGroupBudExp(festprProCd);
+			publicrelationsMapper.updateGroupCal(groupCd, sum);
+		}
+		
+		return publicrelationsMapper.updateAction(festprProCd);
+	}
+
+	public String checkActionStatus(String festprProCd) {
+		return publicrelationsMapper.checkActionStatus(festprProCd);
+	}
 	
 //**********홍보 이벤트당첨자 ***********		
 

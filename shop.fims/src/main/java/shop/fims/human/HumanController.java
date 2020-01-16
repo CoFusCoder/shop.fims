@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,6 +25,7 @@ public class HumanController {
 	public String selectHuman(Model model) {
 		
 		model.addAttribute("HumanList", humanservice.selectHuman());
+		
 		return "/human/humanList";
 	}
 	//인적사항 등록화면_공통코드조회
@@ -30,7 +33,6 @@ public class HumanController {
 	public String insertHuman(HttpSession session, Model model ) {
 		
 		  String festCd = (String) session.getAttribute("F_CD");
-		  System.out.println("festCd---------->" + festCd);
 		  
 		  
 		  model.addAttribute("human", humanservice.selectinsertHuman(festCd));
@@ -39,14 +41,23 @@ public class HumanController {
 		return "/human/humanInsert";
 	}
 	//인적사항 등록화면_회원검색
-	 
+	 @RequestMapping(value="/humanInsert", method = RequestMethod.POST, produces = "application/json")
+	 public @ResponseBody Human selectHumanM(@RequestParam(value="loginCd1") String loginCd1, @RequestParam(value="memNm1") String memNm1, Model model) {
+		 
+		 return humanservice.selectinsertHuman2(memNm1, loginCd1);
+	 }
 	//인적사항등록
-	
+	@PostMapping("/humanadd")
+	public String insertHuman(Human human) {
+		
+		humanservice.insertHuman(human);
+		
+		return "redirect:/humanList";
+	}
 	//인적사항 수정
 	@GetMapping("/humanUpdate")
 	public String selectbyHuman(@RequestParam(value="humanCd") String humanCd, Model model) {
 		
-		System.out.println("humancd---------->" + humanCd);
 		model.addAttribute("Human", humanservice.selectbyHuman(humanCd));
 		
 		return "/human/humanUpdate";
@@ -55,16 +66,15 @@ public class HumanController {
 	@PostMapping("/humanUpdate")
 	public String updateHuman(Human human) {
 		
-		System.out.println("human--------->"+human);
-		
 		humanservice.updateHuman(human);
+		
 		return "redirect:/humanList";
 	}
 	//인적사항 삭제
 	@GetMapping("/humanDelete")
 	public String delectHuman() {
 		
-		return "/human/humanDelete";
+		return "redirect:/humanList";
 	}
 	
 	//인적검색화면
@@ -80,6 +90,7 @@ public class HumanController {
 							@RequestParam(value="fes_human_hour") String fes_human_hour ,@RequestParam(value="com_mem_nm2") String com_mem_nm2, Model model) {
 		
 		model.addAttribute("HumanList", humanservice.searchHuman(fest_nm, feswork_div_nm, com_mem_nm2, fes_human_nm, fes_human_phone, fes_human_hour));
+		
 		return "/human/humanList";
 	}
 	//인적사항 상세보기

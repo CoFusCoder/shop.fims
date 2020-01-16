@@ -61,5 +61,18 @@
 		WHERE 
 			com_app_cd = #{comAppCd}
 	</select>
+	
+	<!-- 위원회 신청서 등록 -->
+	<insert id="insertCommitteeApp" parameterType="shop.fims.vo.CommitteeApp">
+		<selectKey resultType="string" keyProperty="comAppCd" order="BEFORE">
+	        SELECT CONCAT('com','_','app','_',(SELECT LPAD(COUNT(*)+1,3,'0') FROM Com_App))   
+	    </selectKey>
+		INSERT INTO Com_App
+			(com_app_cd, areacity_admin_cd, area_city_cd, area_cd, fest_cd, fes_ann_cd, man_com_cd, com_app_nm, com_app_phone, com_app_add,
+			com_app_job, com_app_email, com_app_edu, com_app_car, com_app_result, com_app_dt1, com_app_sel, com_app_dt2, fest_nm, man_com_nm1, fest_ann_nm)
+		VALUES 
+			(#{comAppCd}, #{areacityAdminCd}, #{areaCityCd}, #{areaCd}, #{festCd}, #{fesAnnCd}, #{manComCd}, #{comAppNm}, #{comAppPhone}, #{comAppAdd},
+			 #{comAppJob}, #{comAppEmail}, #{comAppEdu}, #{comAppCar}, #{comAppResult}, now(), #{comAppSel}, now(), #{festNm}, #{manComNm1}, #{festAnnNm} )
+	</insert>
 
 </mapper>

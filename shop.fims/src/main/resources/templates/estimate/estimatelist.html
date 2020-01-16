@@ -22,7 +22,8 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th>전국 지역관리</th>
 								<th>모든 지역 시군관리</th>
 								<th>모든 축제관리</th>
-								<th>심사 제목</th>
+								<th>심사 제목</th>								
+								<th>심사 대상</th>
 								<th>등록일자</th>
 								<th>심사현황</th>
 								<th:block th:if="${session.SID eq 'id003'}">
@@ -34,8 +35,11 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th th:text="${e.areaNm}"></th>
 								<th th:text="${e.areaCityNm}"></th>
 								<th th:text="${e.areacityAdminNm}"></th>
-								<th th:text="${e.festNm}"></th>
+								<th th:text="${e.festNm}"></th>								
 								<th th:text="${e.evaNm}" class="evanm"></th>
+<!-- 								<th:block th:if="${session.SID != 'id003'}"> -->
+								<th th:text="${e.memNm}"></th>
+<!-- 								</th:block> -->
 								<th th:text="${e.exaJoindt}"></th>
 								<th th:text="${e.exaCondition}" class="exaCondition"></th>								
 								<th:block th:if="${session.SID eq 'id003'}">
@@ -64,7 +68,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th>모든 지역 시군관리</th>
 								<th>모든 축제관리</th>
 								<th>심사 제목</th>
-<!-- 								<th>심사 분류</th> -->
+								<th>심사 대상</th>
 								<th>심사일자</th>
 								<th>심사현황</th>
 								<th>담당자</th>
@@ -79,6 +83,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 								<th th:text="${e.areacityAdminNm}"></th>
 								<th th:text="${e.festNm}"></th>
 								<th th:text="${e.evaNm}"></th>
+								<th th:text="${e.memNm}"></th>
 								<th th:text="${e.exaDt}"></th>
 								<th th:text="${e.exaCondition}" ></th>								
 								<th th:text="${e.exeManager}"></th>
