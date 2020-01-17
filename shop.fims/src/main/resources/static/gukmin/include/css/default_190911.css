@@ -105,7 +105,7 @@ nav ul li>ul{display:none;}
 .etcRight{margin-top:8px;float:right;height:auto;overflow:hidden; }/*수정2019.07.01*/
 .etcRight ul{float:left; margin-top:1px}/*수정2019.07.01*/
 .etcRight ul li{float:left;margin-left:5px;}
-.etcRight ul li a{font-size:13px;color:#fff;border:1px solid #ff9b6c;padding:0 4px;border-radius:3px;}/*수정2019.07.04_2차*/
+.etcRight ul li a{font-size:13px;color:#fff;border:1px solid white;padding:0 4px;border-radius:3px;}/*수정2019.07.04_2차*/
 .etcRight ul li.ico_spot{ background:none}/*추가2019.07.10*/
 .etcRight ul li.ico_jjimList{ background:none}/*추가2019.07.10*/
 .etcRight .pMy{margin-top:-1px;margin-left:20px;position:relative;float:left;height:auto;}

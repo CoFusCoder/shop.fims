@@ -1,8 +1,8 @@
 @charset "utf-8";
-@import url(http://www.gangnam.go.kr/assets/css/font.css);
-@import url(http://www.gangnam.go.kr/assets/css/board.css);
-@import url(http://www.gangnam.go.kr/assets/css/contents.css);
-@import url(http://www.gangnam.go.kr/assets/css/popup.css);
+/* @import url(/acontract/assets/css/font.css); */
+@import url(/acontract/assets/css/board.css);
+@import url(/acontract/assets/css/contents.css);
+@import url(/acontract/assets/css/popup.css);
 
 /* grid equal 5 columns */
 .col-xs-5ths,.col-sm-5ths,.col-md-5ths,.col-lg-5ths { position:relative; min-height:1px; padding-right:15px; padding-left:15px;}

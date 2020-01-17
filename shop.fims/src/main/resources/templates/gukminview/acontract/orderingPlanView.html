@@ -8,8 +8,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 <link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/style.css">
 <link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/sub.css">
 <link rel="stylesheet" type="text/css" href="/acontract/assets/css/board.css">
-<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/fontawesome/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/acontract/assets/css/font.css">
+<!-- <link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/fontawesome/css/font-awesome.min.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="/acontract/assets/css/font.css"> -->
 <link rel="stylesheet" type="text/css" href="/acontract/assets/css/print.css" media="print">
 <link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/DataTables/css/DT_bootstrap.css" media="screen">
 </th:block>
@@ -39,7 +39,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	 		
 		</div>
 		<!-- end: left -->
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 			$(document).ready(function(){
 				var $menuClick = $('.left-menu .depth2>.panel>.panel-heading');
 				$menuClick.click( function () {
@@ -51,7 +51,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 					}
 				});
 			});
-		</script>
+		</script> -->
 		
 		
 
@@ -84,7 +84,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 				<p class="print_btn"><a href="javascript:window.print();" title="출력하기"><img src="http://www.gangnam.go.kr/assets/images/common/print_btn.png" alt="프린트하기" /></a></p>
 				<div class="sep-line col-xs-12"><span class="blind">구분선</span></div>
 			</div>
-			<script type='text/javascript'>
+			<!-- <script type='text/javascript'>
 			//sns share
 			/* $('.sns_share').click(function(){
 				$('.sns_list').slideDown(200);
@@ -155,7 +155,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 					}]
 				});
 			}
-			</script>
+			</script> -->
 			<div class="tab-menu col-xs-12">
 				
 					<div class="tabbable gn-bbs-tab">
@@ -216,9 +216,9 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 				<!-- start: contents -->	
 				<div id="contents-wrap" class="contents col-xs-12">
 					<div class="row">
-	<link href="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" media="screen">
-	<script src="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-	<script>
+	<!-- <link href="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" media="screen"> -->
+	<!-- <script src="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> -->
+	<!-- <script>
 		$(document).ready(function(){
 			$('.datepicker').datepicker({
 				format:  "yyyy-mm-dd",
@@ -226,7 +226,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 				todayHighlight: true
 			});
 		});	
-	</script>
+	</script> -->
 	
 	<th:block layout:fragment="acontractrightTable">
 	
@@ -653,14 +653,14 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 							<ul class="pagination">
 								<li><a href="#" onclick="selectPage_func(1); return false;"><i class="fa fa-angle-double-left"></i><span class="sr-only">맨 처음으로</span></a></li> <li><a href="#" onclick="selectPage_func(1); return false;"><i class="fa fa-angle-left" ></i><span class="sr-only">이전</span></a></li>  <li class="paginate_button active"><a href="#" class="on">1</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(2); return false;">2</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(3); return false;">3</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(4); return false;">4</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(5); return false;">5</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(6); return false;">6</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(7); return false;">7</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(8); return false;">8</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(9); return false;">9</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(10); return false;">10</a></li> <li><a href="#" onclick="selectPage_func(2); return false;"><i class="fa fa-angle-right"></i><span class="sr-only">다음</span></a></li> <li><a href="#" onclick="selectPage_func(97); return false;"><i class="fa fa-angle-double-right"></i><span class="sr-only">맨 뒤로</span></a></li> 
 							</ul>
-							<script>
+<!-- 							<script>
 								$(document).ready(function(){
 									var on_page =  $('.pagination li a.on');
 									if($('.pagination li a').hasClass('on')){
 										$(on_page).attr('title','현재페이지')
 									}
 								});
-							</script>
+							</script> -->
 						</div>
 				</div>		
 			</div>
