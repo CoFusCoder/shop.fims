@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="acontratCSS">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/style.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/sub.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css/board.css">
+<!-- <link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/fontawesome/css/font-awesome.min.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="/acontract/assets/css/font.css"> -->
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/DataTables/css/DT_bootstrap.css" media="screen">
+</th:block>
+
+
+
+<th:block layout:fragment="gukminMainContents">
+<section>	
+	<div class="commDesc">
+		<p class="t01">계약공시</p>
+		<p class="t02">ALLFestMoa에서 다양한 계약정보를 확인해보세요!</p>
+	</div>
+	<div class="norBox" style="border-bottom: 1px solid">
+		<ul class="commTabs">
+			<li><a href="/gukminview/acontract/orderingPlanView" class="on">수의계약</a></li>
+			<li><a href="/gukminview/acontract/generalContractOrdPlan" >일반계약</a></li>
+		</ul>	
+	</div>	
+	
+	
+<div id="sub-wrap" class="sub">
+				<div class="container">
+					<div class="row">
+		<!-- start: left -->
+	 	<div class="left col-md-3 visible-md visible-lg">
+
+	 		
+		</div>
+		<!-- end: left -->
+		<!-- <script type="text/javascript">
+			$(document).ready(function(){
+				var $menuClick = $('.left-menu .depth2>.panel>.panel-heading');
+				$menuClick.click( function () {
+					if ( $(this).hasClass('active') === false ){
+						$menuClick.removeClass('active');
+						$(this).addClass('active');
+					} else if ( $(this).hasClass('active') === true ){
+						$menuClick.removeClass('active');
+					}
+				});
+			});
+		</script> -->
+		
+		
+
+	<div id="gnsubContent" class="right-wrap col-lg-12 col-md-9">
+				<div class="row">
+					<!-- start: sub-header -->		
+					<div id="container" class="sub-header col-xs-12" >
+						<div class="row">
+
+			<div class="title-wrap col-xs-12">
+				<h3 class="con-title col-xs-12 col-md-6">발주계획</h3>
+				<p class="sns_share"><a href="javascript:"><img src="http://www.gangnam.go.kr/assets/images/common/sns_share.png" alt="공유하기" /></a></p>
+				
+				<div class="dashboard col-xs-12 col-md-6">
+					<ul class="sns_list">
+						<!-- <li class="kakaotalk"><a href="javascript:sendLink();" id="kakao-link-btn" title="카카오톡으로 공유하기 (새창)"><img src="/acontract/assets/images/sub/sub-header_dashboard_kakaotalk.png" alt="카카오톡" /></a></li> -->
+						<li class="naver"><a href="#!" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="네이버 블로그로 공유하기 (새창)" ><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_naver.png" alt="네이버" /></a></li>
+						<li class="googleplus"><a href="#!" onclick="javascript:window.open('https://plus.google.com/share?url='+encodeURIComponent(document.URL), 'googleplussharedialog','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=600');return false;" target="_blank" title="구글플러스로 공유하기 (새창)"><img src="/acontract/assets/images/sub/sub-header_dashboard_googleplus.png" alt="구글플러스" /></a></li>
+						<li class="facebook"><a href="#!" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="페이스북으로 공유하기 (새창)"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_facebook.png" alt="페이스북" /></a></li>
+						<li class="twitter"><a href="#!" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20'+encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="트위터로 공유하기 (새창)"><img src="/acontract/assets/images/sub/sub-header_dashboard_twitter.png" alt="트위터" /></a></li>
+					</ul>
+					<ul class="mobile_sns_list">
+						<li class="naver"><a href="#!" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="네이버 블로그로 공유하기 (새창)" ><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_naver.png" alt="네이버" /></a></li>
+						<li class="googleplus"><a href="#!" onclick="javascript:window.open('https://plus.google.com/share?url='+encodeURIComponent(document.URL), 'googleplussharedialog','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=600');return false;" target="_blank" title="구글플러스로 공유하기 (새창)"><img src="/acontract/assets/images/sub/sub-header_dashboard_googleplus.png" alt="구글플러스" /></a></li>
+						<li class="facebook"><a href="#!" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="페이스북으로 공유하기 (새창)"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_facebook.png" alt="페이스북" /></a></li>
+						<li class="twitter"><a href="#!" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20'+encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="트위터로 공유하기 (새창)"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_twitter.png" alt="트위터" /></a></li>
+						<li class="print"><a href="javascript:window.print();" title="출력하기"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_print.png" alt="프린트하기" /></a></li>
+					</ul>
+				</div>
+				<p class="print_btn"><a href="javascript:window.print();" title="출력하기"><img src="http://www.gangnam.go.kr/assets/images/common/print_btn.png" alt="프린트하기" /></a></p>
+				<div class="sep-line col-xs-12"><span class="blind">구분선</span></div>
+			</div>
+			<!-- <script type='text/javascript'>
+			//sns share
+			/* $('.sns_share').click(function(){
+				$('.sns_list').slideDown(200);
+			}); */
+			//sns share
+			$('.sns_share > a').click(function(){
+				if ($(this).hasClass('on')){
+					$('.sns_list').slideUp(200);
+					$(this).removeClass('on');
+				}else{
+					$('.sns_list').slideDown(200);
+					$(this).addClass('on');
+				}
+			});
+			$('.sns_share a').focusout(function(){
+				setTimeout(function(){
+					if($('.sns_list a:focus').length < 1 ){
+						$('.sns_list').slideUp(200);
+						$('.sns_share > a').removeClass('on');
+					}
+				},100); 
+			});
+			$('.sns_list > li:last-child > a').focusout(function(){
+				setTimeout(function(){
+					if($('.sns_list a:focus').length < 1 ){
+						$('.sns_list').slideUp(200);
+						$('.sns_share > a').removeClass('on');
+					}
+				},100); 
+			});
+			
+			  // 사용할 앱의 JavaScript 키를 설정해 주세요.
+			  Kakao.init('8da58c7d3d508745e3bfb2835663ab34');
+			  function sendLink() {
+				
+				var shareImage = '';
+	
+				if(shareImage == '' || shareImage == null){
+					shareImage = '/acontract/assets/images/icon/touch/og_image_src.png';
+				}
+				
+				var httpShareImage = '';
+				
+				if(shareImage.indexOf("http://") > -1 || shareImage.indexOf("https://") > -1){
+					httpShareImage = shareImage;
+				} else {
+					httpShareImage = 'http://www.gangnam.go.kr'+shareImage;
+				}
+				
+				Kakao.Link.sendDefault({
+					objectType: 'feed',
+					content: {
+						title: '강남구청 > 함께강남 > 수의계약 > 발주계획',
+						description: '#강남구청 바로 가기 #강남구청 홈페이지로',
+						imageUrl: httpShareImage,
+						link: {
+							mobileWebUrl: window.location.href,
+							webUrl: window.location.href
+						}
+					},
+					buttons: [
+					{
+						title: '상세보기',
+						link: {
+							mobileWebUrl: window.location.href,
+							webUrl: window.location.href
+						}
+					}]
+				});
+			}
+			</script> -->
+			<div class="tab-menu col-xs-12">
+				
+					<div class="tabbable gn-bbs-tab">
+						<ul class="nav nav-tabs">
+							
+								<li class="active">
+									<a href=/gukminview/acontract/orderingPlanView>
+										발주계획
+									</a>
+								</li>
+							
+								<li >
+									<a href="/gukminview/acontract/privateContractView">
+										수의계약현황
+									</a>
+								</li>
+							
+								<li >
+									<a href="/gukminview/acontract/contractComReceipt">
+										계약 희망업체 접수
+									</a>
+								</li>
+						</ul>
+					</div>
+					<div class="mobile-sub-tab-area">
+						<button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".mobile-sub-tab">
+							상세메뉴
+						</button>
+						<div class="tabbable mobile-sub-tab collapse" style="height: 0px;">
+							<ul class="nav navbar-nav">
+								
+									<li class="active">
+										<a href="/gukminview/acontract/orderingPlanView">
+											발주계획
+										</a>
+									</li>
+								
+									<li >
+										<a href="/gukminview/acontract/privateContractView">
+											수의계약현황
+										</a>
+									</li>
+								
+									<li >
+										<a href="/gukminview/acontract/contractComReceipt">
+											계약 희망업체 접수
+										</a>
+									</li>
+													
+							</ul>
+						</div>
+					</div>
+			</div>
+						</div>
+					</div>
+					<!-- end: sub-header -->
+				</div>
+				<!-- start: contents -->	
+				<div id="contents-wrap" class="contents col-xs-12">
+					<div class="row">
+	<!-- <link href="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" media="screen"> -->
+	<!-- <script src="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> -->
+	<!-- <script>
+		$(document).ready(function(){
+			$('.datepicker').datepicker({
+				format:  "yyyy-mm-dd",
+				autoclose: true,
+				todayHighlight: true
+			});
+		});	
+	</script> -->
+	
+	<th:block layout:fragment="acontractrightTable">
+	
+	<div class="normal board list clear-b">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-12">
+						<p class="text-red mb5">사업명을 클릭하시면 제안서를 접수하실 수 있습니다.</p>
+						<div class="board-search-wrap clear-b">
+							<form id="listForm" action="#" method="GET">
+								<input type="hidden" name="pgno" value="1">
+								<input type="hidden" name="mid" value="FM041501">
+								<div class="pull-left">
+									<label for="saup_field1_gb">구분</label>
+									<select name="saup_field1_gb" id="saup_field1_gb" style="background-color: white !important; height: 35px; width: 60px">
+										<option value="" selected="selected">구분</option>
+										<option value="1" >공사</option>
+										<option value="2" >용역</option>
+										<option value="3" >물품</option>
+									</select>
+									<label for="saup_dept_cd">부서</label>
+									<select name="saup_dept_cd" id="saup_dept_cd" style="background-color: white !important; height: 35px; width: 160px">
+										<option value="" selected="selected">부서</option>
+										
+											<option value="3220225"
+												>
+												건강증진과
+											</option>
+										
+											<option value="3220202"
+												>
+												건설관리과
+											</option>
+										
+											<option value="3220175"
+												>
+												건축과
+											</option>
+										
+											<option value="3220226"
+												>
+												공동주택과
+											</option>
+										
+											<option value="3220177"
+												>
+												공원녹지과
+											</option>
+										
+											<option value="3220239"
+												>
+												관광진흥과
+											</option>
+										
+											<option value="3220126"
+												>
+												교육지원과
+											</option>
+										
+											<option value="3220228"
+												>
+												교통행정과
+											</option>
+										
+											<option value="3220218"
+												>
+												기획예산과
+											</option>
+										
+											<option value="3220235"
+												>
+												뉴디자인과
+											</option>
+										
+											<option value="3220203"
+												>
+												도로관리과
+											</option>
+										
+											<option value="3220174"
+												>
+												도시계획과
+											</option>
+										
+											<option value="3220192"
+												>
+												도시계획상임기획단
+											</option>
+										
+											<option value="3220238"
+												>
+												문화체육과
+											</option>
+										
+											<option value="3220124"
+												>
+												민원여권과
+											</option>
+										
+											<option value="3220188"
+												>
+												보건과
+											</option>
+										
+											<option value="3220186"
+												>
+												보건행정과
+											</option>
+										
+											<option value="3220232"
+												>
+												보육지원과
+											</option>
+										
+											<option value="3220229"
+												>
+												복지정책과
+											</option>
+										
+											<option value="3220178"
+												>
+												부동산정보과
+											</option>
+										
+											<option value="3220230"
+												>
+												사회복지과
+											</option>
+										
+											<option value="3220221"
+												>
+												세무1과
+											</option>
+										
+											<option value="3220222"
+												>
+												세무2과
+											</option>
+										
+											<option value="3220220"
+												>
+												세무관리과
+											</option>
+										
+											<option value="3220231"
+												>
+												어르신복지과
+											</option>
+										
+											<option value="3220233"
+												>
+												여성가족과
+											</option>
+										
+											<option value="3220187"
+												>
+												위생과
+											</option>
+										
+											<option value="3220036"
+												>
+												의약과
+											</option>
+										
+											<option value="3220237"
+												>
+												일자리정책과
+											</option>
+										
+											<option value="3220201"
+												>
+												자동차민원과
+											</option>
+										
+											<option value="3220227"
+												>
+												재건축사업과
+											</option>
+										
+											<option value="3220198"
+												>
+												재난안전과
+											</option>
+										
+											<option value="3220219"
+												>
+												재무과
+											</option>
+										
+											<option value="3220144"
+												>
+												전산정보과
+											</option>
+										
+											<option value="3220216"
+												>
+												주민자치과
+											</option>
+										
+											<option value="3220200"
+												>
+												주차관리과
+											</option>
+										
+											<option value="3220173"
+												>
+												주택과
+											</option>
+										
+											<option value="3220236"
+												>
+												지역경제과
+											</option>
+										
+											<option value="3220234"
+												>
+												청소행정과
+											</option>
+										
+											<option value="3220120"
+												>
+												총무과
+											</option>
+										
+											<option value="3220204"
+												>
+												치수과
+											</option>
+										
+											<option value="3220176"
+												>
+												환경과
+											</option>
+									</select>
+									<label for="keyfield">검색구분</label>
+									<select name="keyfield" id="keyfield" style="background-color: white !important; height: 35px; width: 80px">
+										<option value="SAUP_NM">사업명</option>
+									</select>
+									<label for="keyword">검색어</label>
+									<input type="text" name="keyword" id="keyword" value="" placeholder="검색어를 입력하세요." style="height: 33px; width: 200px">
+								</div>
+								<div class="pull-left mt5">	
+									<span class="margin-right-5">예산액 :</span>
+									<label for="srch_start_amt">예산액 최저 금액</label>
+									<input type="number" name="srch_start_amt" id="srch_start_amt" value="" title="예산액 조회 최저금액" placeholder="예산액 조회 최저금액"/> -
+									<label for="srch_end_amt">예산액 최고 금액</label>
+									<input type="number" name="srch_end_amt" id="srch_end_amt" value="" title="예산액 조회 최고금액" placeholder="예산액 조회 최고금액"/>
+									<button type="button" class="btn btn-darkblue">검색</button>
+									<a href="#" class="btn btn-gray">초기화</a>
+								</div>
+							</form>
+						</div>
+						<table class="table table-hover">
+							<caption></caption>
+							<colgroup>
+								<col style="width:10%">
+								<col style="width:12%">
+								<col style="width:auto">
+								<col style="width:12%">
+								<col style="width:12%">				
+								<col style="width:14%">				
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">구분</th>
+									<th scope="col">발주시기</th>
+									<th scope="col">사업명</th>
+									<th scope="col">예산액</th>
+									<th scope="col">담당부서</th>
+									<th scope="col">접수기간</th>
+								</tr>
+							</thead>
+							<tbody>
+										<tr>
+											<td>
+												물품
+											</td>
+											<td>2020년 12월</td>
+											<td class="align-l">
+												<a href="#">일원동 맛의거리 상권 안내 표지판 제작·설치</a>
+											</td>
+											<td>17,000,000원</td>
+											<td>지역경제과</td>
+											<td>
+												2019-12-24<br/>~ 2019-12-27
+											</td>
+										</tr>						
+									
+										<tr>
+											<td>
+												공사
+											</td>
+											<td>2020년 12월</td>
+											<td class="align-l">
+												<a href="#">탄천 공영주차장 화장실 철거</a>
+											</td>
+											<td>5,000,000원</td>
+											<td>건설관리과</td>
+											<td>
+												2019-12-12<br/>~ 2019-12-16
+											</td>
+										</tr>						
+									
+										<tr>
+											<td>
+												용역
+											</td>
+											<td>2020년 12월</td>
+											<td class="align-l">
+												<a href="#">제34회 강남통계연보 발간</a>
+											</td>
+											<td>5,250,000원</td>
+											<td>전산정보과</td>
+											<td>
+												2019-11-20<br/>~ 2019-11-22
+											</td>
+										</tr>						
+									
+										<tr>
+											<td>
+												용역
+											</td>
+											<td>2020년 11월</td>
+											<td class="align-l">
+												<a href="#">(재공고)강남세움보호작업장 위생관리시스템 설치공사 실시설계 및 감리용역</a>
+											</td>
+											<td>18,709,000원</td>
+											<td>사회복지과</td>
+											<td>
+												2019-11-13<br/>~ 2019-11-18
+											</td>
+										</tr>						
+										<tr>
+											<td>
+												용역
+											</td>
+											<td>2020년 11월</td>
+											<td class="align-l">
+												<a href="#">대청복지관 목욕탕 리모델링 공사 감리용역</a>
+											</td>
+											<td>6,160,000원</td>
+											<td>복지정책과</td>
+											<td>
+												2019-11-04<br/>~ 2019-11-06
+											</td>
+										</tr>						
+									
+										<tr>
+											<td>
+												용역
+											</td>
+											<td>2020년 04월</td>
+											<td class="align-l">
+												<a href="#">가로수길 법정도로명 변경을 위한 주소사용자 서면동의 조사</a>
+											</td>
+											<td>7,500,000원</td>
+											<td>부동산정보과</td>
+											<td>
+												2019-11-26<br/>~ 2019-12-31
+											</td>
+										</tr>						
+										<tr>
+											<td>
+												용역
+											</td>
+											<td>2020년 01월</td>
+											<td class="align-l">
+												<a href="#">2020 구간부 역량강화를 위한 강의 제공</a>
+											</td>
+											<td>22,000,000원</td>
+											<td>총무과</td>
+											<td>
+												2020-01-03<br/>~ 2020-01-07
+											</td>
+										</tr>						
+										<tr>
+											<td>
+												용역
+											</td>
+											<td>2020년 01월</td>
+											<td class="align-l">
+												<a href="#">외국어 홈페이지 전문번역 용역</a>
+											</td>
+											<td>22,000,000원</td>
+											<td>정책홍보실</td>
+											<td>
+												2020-01-02<br/>~ 2020-01-06
+											</td>
+										</tr>						
+										<tr>
+											<td>
+												용역
+											</td>
+											<td>2020년 01월</td>
+											<td class="align-l">
+												<a href="#">공공근로사업 산업안전보건법 보건관리자 선임</a>
+											</td>
+											<td>18,316,200원</td>
+											<td>일자리정책과</td>
+											<td>
+												2019-12-31<br/>~ 2020-01-03
+											</td>
+										</tr>						
+										<tr>
+											<td>
+												용역
+											</td>
+											<td>2020년 01월</td>
+											<td class="align-l">
+												<a href="#">공공근로사업 산업안전보건법 안전관리자 선임</a>
+											</td>
+											<td>12,816,000원</td>
+											<td>일자리정책과</td>
+											<td>
+												2019-12-31<br/>~ 2020-01-03
+											</td>
+										</tr>						
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="pagination">
+								<li><a href="#" onclick="selectPage_func(1); return false;"><i class="fa fa-angle-double-left"></i><span class="sr-only">맨 처음으로</span></a></li> <li><a href="#" onclick="selectPage_func(1); return false;"><i class="fa fa-angle-left" ></i><span class="sr-only">이전</span></a></li>  <li class="paginate_button active"><a href="#" class="on">1</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(2); return false;">2</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(3); return false;">3</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(4); return false;">4</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(5); return false;">5</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(6); return false;">6</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(7); return false;">7</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(8); return false;">8</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(9); return false;">9</a></li> <li class="paginate_button"><a href="#" onclick="selectPage_func(10); return false;">10</a></li> <li><a href="#" onclick="selectPage_func(2); return false;"><i class="fa fa-angle-right"></i><span class="sr-only">다음</span></a></li> <li><a href="#" onclick="selectPage_func(97); return false;"><i class="fa fa-angle-double-right"></i><span class="sr-only">맨 뒤로</span></a></li> 
+							</ul>
+<!-- 							<script>
+								$(document).ready(function(){
+									var on_page =  $('.pagination li a.on');
+									if($('.pagination li a').hasClass('on')){
+										$(on_page).attr('title','현재페이지')
+									}
+								});
+							</script> -->
+						</div>
+				</div>		
+			</div>
+		</div>	
+	
+	</th:block>
+	
+			
+									</div>
+									<!-- end: row -->
+								</div>
+								<!-- end: contents -->
+		<!-- start: contents_admin -->
+			
+		<!-- end: contents_admin -->
+							</div> <!-- right-wrap -->
+	
+
+		
+
+					</div>
+					<!-- end: row -->
+				</div>
+				<!-- end: container -->
+			</div> 
+
+
+
+</section>
+</th:block>
+

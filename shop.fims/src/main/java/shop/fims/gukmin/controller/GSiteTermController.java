@@ -19,10 +19,10 @@ public class GSiteTermController {
 	 * @author ksmart33 김동석
 	 * @return gukminview/siteterms/siteTermView
 	 */
-	@GetMapping("/gukminview/sitemap/siteterms/siteTermView")
+	@GetMapping("/gukminview/siteterms/siteTermView")
 	public String siteTermView() {
 		System.out.println("---국민사이트 이용약관 : siteTermView SiteTermController.java-------");
-		return "/gukminview/sitemap/siteterms/siteTermView";
+		return "/gukminview/siteterms/siteTermView";
 	}
 	
 	/**
@@ -33,9 +33,9 @@ public class GSiteTermController {
 	 * @author ksmart33 김동석
 	 * @return gukminview/siteterms/privacyPolicy
 	 */
-	@GetMapping("/gukminview/sitemap/siteterms/privacyPolicy")
+	@GetMapping("/gukminview/siteterms/privacyPolicy")
 	public String privacyPolicy() {
 		System.out.println("---국민사이트 개인정보처리방침 : privacyPolicy SiteTermController.java-------");
-		return "/gukminview/sitemap/siteterms/privacyPolicy";
+		return "/gukminview/siteterms/privacyPolicy";
 	}
 }

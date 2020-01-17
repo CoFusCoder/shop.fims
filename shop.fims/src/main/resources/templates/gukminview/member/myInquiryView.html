@@ -7,14 +7,14 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 
 <section>
 	<div class="mypDesc">
-		<p class="t01">#나의 문의내역</p>
-		<p class="t02">#나의 문의내역을 모아보세요!</p>
+		<p class="t01">나의 문의내역</p>
+		<p class="t02">나의 문의내역을 모아보세요!</p>
 	</div>
 	<div class="norBox">
 		<form id="searchform" name="searchform" action="/gukminview/member/myInquiryView" method="post">
 			<ul class="commTabs t03">
-				<li><a href="javascript:void(0)" id="spotinquiry" class="on">#스팟문의</a></li>
-				<li><a href="javascript:void(0)" id="generalinquiry">#1:1문의</a></li>
+				<li><a href="javascript:void(0)" id="spotinquiry" class="on">축제문의</a></li>
+				<li><a href="javascript:void(0)" id="generalinquiry">1:1문의</a></li>
 			</ul>
 			<div class="boSearchBox t01">
 				<div class="bsform">
@@ -133,7 +133,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 														}
 														spotinfo = '<div class="info">'
 																+ '<ul>'
-																+ '<li>문의스팟</li>'
+																+ '<li>문의축제</li>'
 																+ '<li>'
 																+ item.spottitle
 																+ '</li>'
@@ -288,7 +288,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 				});
 	} */
 </script>
-<script>
+<!-- <script>
 	function setDateRange(startdate, enddate) {
 		$('#sdate').datepicker('setDate', startdate);
 		$('#edate').datepicker('setDate', enddate);
@@ -306,7 +306,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	});
 
 	
-</script>
+</script> -->
 
 
 </th:block>

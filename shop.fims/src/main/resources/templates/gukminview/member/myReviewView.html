@@ -7,8 +7,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 
 <section>
 	<div class="mypDesc">
-		<p class="t01">#나의 리뷰내역</p>
-		<p class="t02">#나의 리뷰내역을 모아보세요!</p>
+		<p class="t01">나의 리뷰내역</p>
+		<p class="t02">나의 리뷰내역을 모아보세요!</p>
 	</div>
 	<div class="norBox">
 		<form id="searchform" name="searchform" action="/gukminview/member/myReviewView" method="post">
@@ -30,14 +30,15 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								class="datepicker" /> <span class="etxt">~</span> <input
 								type="text" id="edate" name="enddate" class="datepicker" />
 								<p class="m_form_btn_check">
-									<a href="javascript:searchReview();" id="searchbutton">#검색</a>
+									<a href="javascript:searchReview();" id="searchbutton">검색</a>
 								</p></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</form>
-
+		<br>
+		등록된 리뷰가 없습니다.
 
 
 		<table id="reviewTable" class="listTable01">
@@ -253,10 +254,10 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						$('#dialogcontent').append(textStatus);
 						$('#commondialog').show();
 					}
-				}); */
-	}
+				}); 
+	}*/
 </script>
-<script>
+<!-- <script>
 	function setDateRange(startdate, enddate) {
 		$('#sdate').datepicker('setDate', startdate);
 		$('#edate').datepicker('setDate', enddate);
@@ -272,7 +273,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	});
 
 	
-</script>
+</script> -->
 
 
 </th:block>

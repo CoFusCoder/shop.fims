@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="acontratCSS">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/style.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/sub.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css/board.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css/print.css" media="print">
+</th:block>
+<style>
+nav ul li a{font-size:17px;line-height:111px;width:100%;overflow:hidden;display:block;height:auto;color:#fff !important;}
+
+
+</style>
+
+<th:block layout:fragment="gukminMainContents">
+<section>	
+	<div class="commDesc">
+		<p class="t01">계약공시</p>
+		<p class="t02">ALLFestMoa에서 다양한 계약정보를 확인해보세요!</p>
+	</div>
+	<div class="norBox" style="border-bottom: 1px solid">
+		<ul class="commTabs">
+			<li><a href="/gukminview/acontract/orderingPlanView" class="on">수의계약</a></li>
+			<li><a href="/gukminview/acontract/generalContractOrdPlan" >일반계약</a></li>
+		</ul>	
+	</div>	
+	
+	
+<div id="sub-wrap" class="sub">
+				<div class="container">
+					<div class="row">
+		<!-- start: left -->
+	 	<div class="left col-md-3 visible-md visible-lg">
+
+	 		
+		</div>
+		<!-- end: left -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var $menuClick = $('.left-menu .depth2>.panel>.panel-heading');
+				$menuClick.click( function () {
+					if ( $(this).hasClass('active') === false ){
+						$menuClick.removeClass('active');
+						$(this).addClass('active');
+					} else if ( $(this).hasClass('active') === true ){
+						$menuClick.removeClass('active');
+					}
+				});
+			});
+		</script>
+		
+		
+
+	<div id="gnsubContent" class="right-wrap col-lg-12 col-md-9">
+				<div class="row">
+					<!-- start: sub-header -->		
+					<div id="container" class="sub-header col-xs-12" >
+						<div class="row">
+
+			<div class="title-wrap col-xs-12">
+				<h3 class="con-title col-xs-12 col-md-6">계약 희망업체 접수</h3>
+				<p class="sns_share"><a href="javascript:"><img src="http://www.gangnam.go.kr/assets/images/common/sns_share.png" alt="공유하기" /></a></p>
+				
+				<div class="dashboard col-xs-12 col-md-6">
+					<ul class="sns_list">
+						<!-- <li class="kakaotalk"><a href="javascript:sendLink();" id="kakao-link-btn" title="카카오톡으로 공유하기 (새창)"><img src="/acontract/assets/images/sub/sub-header_dashboard_kakaotalk.png" alt="카카오톡" /></a></li> -->
+						<li class="naver"><a href="#!" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="네이버 블로그로 공유하기 (새창)" ><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_naver.png" alt="네이버" /></a></li>
+						<li class="googleplus"><a href="#!" onclick="javascript:window.open('https://plus.google.com/share?url='+encodeURIComponent(document.URL), 'googleplussharedialog','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=600');return false;" target="_blank" title="구글플러스로 공유하기 (새창)"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_googleplus.png" alt="구글플러스" /></a></li>
+						<li class="facebook"><a href="#!" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="페이스북으로 공유하기 (새창)"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_facebook.png" alt="페이스북" /></a></li>
+						<li class="twitter"><a href="#!" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20'+encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="트위터로 공유하기 (새창)"><img src="/acontract/assets/images/sub/sub-header_dashboard_twitter.png" alt="트위터" /></a></li>
+					</ul>
+					<ul class="mobile_sns_list">
+						<li class="naver"><a href="#!" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="네이버 블로그로 공유하기 (새창)" ><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_naver.png" alt="네이버" /></a></li>
+						<li class="googleplus"><a href="#!" onclick="javascript:window.open('https://plus.google.com/share?url='+encodeURIComponent(document.URL), 'googleplussharedialog','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=600');return false;" target="_blank" title="구글플러스로 공유하기 (새창)"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_googleplus.png" alt="구글플러스" /></a></li>
+						<li class="facebook"><a href="#!" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="페이스북으로 공유하기 (새창)"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_facebook.png" alt="페이스북" /></a></li>
+						<li class="twitter"><a href="#!" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20'+encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="트위터로 공유하기 (새창)"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_twitter.png" alt="트위터" /></a></li>
+						<li class="print"><a href="javascript:window.print();" title="출력하기"><img src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_print.png" alt="프린트하기" /></a></li>
+					</ul>
+				</div>
+				<p class="print_btn"><a href="javascript:window.print();" title="출력하기"><img src="http://www.gangnam.go.kr/assets/images/common/print_btn.png" alt="프린트하기" /></a></p>
+				<div class="sep-line col-xs-12"><span class="blind">구분선</span></div>
+			</div>
+			<!-- <script type='text/javascript'>
+			//sns share
+			/* $('.sns_share').click(function(){
+				$('.sns_list').slideDown(200);
+			}); */
+			//sns share
+			$('.sns_share > a').click(function(){
+				if ($(this).hasClass('on')){
+					$('.sns_list').slideUp(200);
+					$(this).removeClass('on');
+				}else{
+					$('.sns_list').slideDown(200);
+					$(this).addClass('on');
+				}
+			});
+			$('.sns_share a').focusout(function(){
+				setTimeout(function(){
+					if($('.sns_list a:focus').length < 1 ){
+						$('.sns_list').slideUp(200);
+						$('.sns_share > a').removeClass('on');
+					}
+				},100); 
+			});
+			$('.sns_list > li:last-child > a').focusout(function(){
+				setTimeout(function(){
+					if($('.sns_list a:focus').length < 1 ){
+						$('.sns_list').slideUp(200);
+						$('.sns_share > a').removeClass('on');
+					}
+				},100); 
+			});
+			
+			  // 사용할 앱의 JavaScript 키를 설정해 주세요.
+			  Kakao.init('8da58c7d3d508745e3bfb2835663ab34');
+			  function sendLink() {
+				
+				var shareImage = '';
+	
+				if(shareImage == '' || shareImage == null){
+					shareImage = 'http://www.gangnam.go.kr/assets/images/icon/touch/og_image_src.png';
+				}
+				
+				var httpShareImage = '';
+				
+				if(shareImage.indexOf("http://") > -1 || shareImage.indexOf("https://") > -1){
+					httpShareImage = shareImage;
+				} else {
+					httpShareImage = 'http://www.gangnam.go.kr'+shareImage;
+				}
+				
+				Kakao.Link.sendDefault({
+					objectType: 'feed',
+					content: {
+						title: '강남구청 > 함께강남 > 수의계약 > 발주계획',
+						description: '#강남구청 바로 가기 #강남구청 홈페이지로',
+						imageUrl: httpShareImage,
+						link: {
+							mobileWebUrl: window.location.href,
+							webUrl: window.location.href
+						}
+					},
+					buttons: [
+					{
+						title: '상세보기',
+						link: {
+							mobileWebUrl: window.location.href,
+							webUrl: window.location.href
+						}
+					}]
+				});
+			}
+			</script> -->
+			<div class="tab-menu col-xs-12">
+				
+					<div class="tabbable gn-bbs-tab">
+						<ul class="nav nav-tabs">
+							
+								<li >
+									<a href="/gukminview/acontract/orderingPlanView">
+										발주계획
+									</a>
+								</li>
+							
+								<li >
+									<a href="/gukminview/acontract/privateContractView">
+										수의계약현황
+									</a>
+								</li>
+							
+								<li class="active">
+									<a href="/gukminview/acontract/contractComReceipt">
+										계약 희망업체 접수
+									</a>
+								</li>
+						</ul>
+					</div>
+					<div class="mobile-sub-tab-area">
+						<button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".mobile-sub-tab">
+							상세메뉴
+						</button>
+						<div class="tabbable mobile-sub-tab collapse" style="height: 0px;">
+							<ul class="nav navbar-nav">
+								
+									<li >
+										<a href="/gukminview/acontract/orderingPlanView">
+											발주계획
+										</a>
+									</li>
+								
+									<li >
+										<a href="/gukminview/acontract/privateContractView">
+											수의계약현황
+										</a>
+									</li>
+								
+									<li class="active">
+										<a href="/gukminview/acontract/contractComReceipt">
+											계약 희망업체 접수
+										</a>
+									</li>
+													
+							</ul>
+						</div>
+					</div>
+			</div>
+						</div>
+					</div>
+					<!-- end: sub-header -->
+				</div>
+				<!-- start: contents -->	
+				<div id="contents-wrap" class="contents col-xs-12">
+					<div class="row">
+	<!-- <link href="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" media="screen">
+	<script src="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.datepicker').datepicker({
+				format:  "yyyy-mm-dd",
+				autoclose: true,
+				todayHighlight: true
+			});
+		});	
+	</script> -->
+	
+			<!-- 게시판 상단 콘텐츠 영역 -->
+
+				<div class="mainDescription">
+					<p class="bul01">업체정보를 등록해 주시면 수의계약 체결 시 참고하겠습니다.</p>
+					&nbsp;
+		
+					<p class="bul01">
+						강남구와 계약을 희망하는 업체는 아래 첨부서식을 작성하시어 업로드 해주시기 바랍니다.<br /> <a
+							class="btn btn-sm btn-blue mt10"
+							href="#"
+							title="새창열림">제출서식 다운로드 <i
+							class="fa fa-download"></i></a>
+					</p>
+		
+					<p class="bul01 mt10">특정 사업 계약을 희망하시는 경우, 발주계획 탭에서 제안서를 접수해
+						주시기 바랍니다.</p>
+		
+					<p class="bul01">문의 : 재무과 (02-3423-5252)</p>
+		
+				</div>
+
+		<!-- /.게시판 상단 콘텐츠 영역 -->
+	
+	<th:block layout:fragment="acontractrightTable">
+	
+	<div class="normal board list clear-b">
+									<div class="col-xs-12">
+										<div class="row">
+											<div class="col-xs-12">
+												<div class="board-search-wrap clear-b">
+													<form id="listForm" action="#"
+														method="GET">
+														<input type="hidden" name="mid" value="FM041503">
+														<input type="hidden" name="pgno" value="1">
+														<div class="inl_bk">
+															<input type="hidden" name="schOptnList[0].keyfield"
+																value="1"> <label for="schOptnList[0].id">구분
+																선택</label> <select name="schOptnList[0].keyword" style="background-color: white !important; height: 35px; width: 100px"
+																id="schOptnList[0].id">
+																<option value="">구분 선택</option>
+																<option value="contract_sortation_01">공사</option>
+																<option value="contract_sortation_02">용역</option>
+																<option value="contract_sortation_03">물품</option>
+															</select> <input type="hidden" name="schOptnList[1].keyfield"
+																value="2"> <label for="schOptnList[1].id">세부유형
+																선택</label> <select name="schOptnList[1].keyword" style="background-color: white !important; height: 35px; width: 150px"
+																id="schOptnList[1].id">
+																<option value="">세부유형 선택</option>
+																<option value="contract_type_01">디자인</option>
+																<option value="contract_type_02">인쇄물</option>
+																<option value="contract_type_03">동영상</option>
+																<option value="contract_type_04">행사기획</option>
+																<option value="contract_type_05">종합홍보</option>
+																<option value="contract_type_06">기타</option>
+															</select>
+														</div>
+														<div class="inl_bk search_sibbk">
+															<div class="search_sibtg">
+																<label for="keyfield">검색조건</label> <select style="background-color: white !important; height: 35px; width: 60px"
+																	name="keyfield" id="keyfield">
+																	<option value="bdm_main_title">제목</option>
+																	<option value="bdm_main_cont">내용</option>
+																</select> <label for="keyword">검색어</label> <input type="text" style="height: 33px; width: 200px"
+																	id="keyword" name="keyword" value="">
+																<div class="search-btn-area">
+																	<button type="button" class="btn btn-darkblue">검색</button>
+																	<a href="#"
+																		class="btn btn-gray">초기화</a>
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+												
+												<form id="form" role="form"
+													action="#"
+													method="post">
+													<input type="hidden" name="bdm_user_passwd" value="">
+												</form>
+												
+												<table class="table table-hover">
+													<caption></caption>
+													<colgroup>
+														<!-- 번호 -->
+														<col style="width: 7%">
+														<!-- 제목 -->
+														<col style="width: auto">
+														<!-- 서브제목 -->
+														<!-- 첨부 -->
+														<!-- 내용보기를 사용하지 않는 경우, 파일 미리보기 추가 -->
+														<col style="width: 11%">
+														<!-- 담당부서 -->
+														<!-- 작성자 -->
+														<col style="width: 10%">
+														<!-- 이메일 -->
+														<!-- 주소 -->
+														<!-- 전화번호 -->
+														<!-- 핸드폰번호 -->
+														<col style="width: 12%">
+														<col style="width: 12%">
+														<!-- 조회수 -->
+														<!-- 등록일 -->
+														<col style="width: 14%">
+													</colgroup>
+													<thead>
+														<tr>
+															<th scope="col">번호</th>
+															<th scope="col">제목</th>
+															<th scope="col">첨부</th>
+															<th scope="col">작성자</th>
+															<th scope="col">구분</th>
+															<th scope="col">세부유형</th>
+															<th scope="col">작성일</th>
+														</tr>
+													</thead>
+													<tbody class="grid">
+														<tr class="grid-item">
+															<td class="num">149</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">수의계약업체등록</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="인쇄사 필증.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="인쇄 직접생산확인증명서.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="산업디자인전문회사 신고확인증.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="수의계약업체등록 서식.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_txt.png"
+																	alt="광진플랜.mp4 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="2019 제안서-압축됨.pdf 다운로드"></span>
+															</td>
+
+															<!-- 
+						
+							<td class="fil">
+												<img src="/assets/images/icon/file_pdf.png" alt="인쇄사 필증.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="인쇄 직접생산확인증명서.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="산업디자인전문회사 신고확인증.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="수의계약업체등록 서식.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_txt.png" alt="광진플랜.mp4 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="2019 제안서-압축됨.pdf 다운로드"> 
+								
+							</td>
+						
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>(주)위즈디자인랩</span>
+																		<div>(주)위즈디자인랩</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+
+															<td>용역</td>
+															<td>디자인</td>
+															<td>2019-12-23</td>
+														</tr>
+														<tr class="grid-item">
+															<td class="num">148</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">수의계약업체등록</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="강남구청 수의계약 업체 관리정보_케이스랩.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_jpg.png"
+																	alt="포트폴리오 01_4tbf.jpg 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_jpg.png"
+																	alt="포트폴리오 02_4tbf.jpg 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_jpg.png"
+																	alt="포트폴리오 03_vsl.jpg 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_jpg.png"
+																	alt="포트폴리오 04_vsl.jpg 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_jpg.png"
+																	alt="포트폴리오 05_모빌리티_.jpg 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_jpg.png"
+																	alt="포트폴리오 06_모빌리티_.jpg 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="여성기업확인서.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="사업자등록증명.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="케이스랩_회사소개서_191025.pdf 다운로드"></span>
+															</td>
+															<!-- 
+						
+							<td class="fil">
+												<img src="/assets/images/icon/file_pdf.png" alt="강남구청 수의계약 업체 관리정보_케이스랩.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_jpg.png" alt="포트폴리오 01_4tbf.jpg 다운로드"> 
+												<img src="/assets/images/icon/file_jpg.png" alt="포트폴리오 02_4tbf.jpg 다운로드"> 
+												<img src="/assets/images/icon/file_jpg.png" alt="포트폴리오 03_vsl.jpg 다운로드"> 
+												<img src="/assets/images/icon/file_jpg.png" alt="포트폴리오 04_vsl.jpg 다운로드"> 
+												<img src="/assets/images/icon/file_jpg.png" alt="포트폴리오 05_모빌리티_.jpg 다운로드"> 
+												<img src="/assets/images/icon/file_jpg.png" alt="포트폴리오 06_모빌리티_.jpg 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="여성기업확인서.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="사업자등록증명.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="케이스랩_회사소개서_191025.pdf 다운로드"> 
+							</td>
+						
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>케이스랩</span>
+																		<div>케이스랩</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+															<td>용역</td>
+															<td>디자인</td>
+															<td>2019-12-18</td>
+														</tr>
+														<tr class="grid-item">
+															<td class="num">147</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">수의계약희망업체접수</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_hwp.png"
+																	alt="미디랜드업체정보_191218.hwp 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_jpg.png"
+																	alt="KakaoTalk_20191218_1139418356.jpg 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_jpg.png"
+																	alt="KakaoTalk_20191218_113941835.jpg 다운로드"></span>
+															</td>
+															<!-- 
+						
+							<td class="fil">
+												<img src="/assets/images/icon/file_hwp.png" alt="미디랜드업체정보_191218.hwp 다운로드"> 
+												<img src="/assets/images/icon/file_jpg.png" alt="KakaoTalk_20191218_1139418356.jpg 다운로드"> 
+												<img src="/assets/images/icon/file_jpg.png" alt="KakaoTalk_20191218_113941835.jpg 다운로드"> 
+								
+							</td>
+						
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>이한주</span>
+																		<div>이한주</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+															<td>물품</td>
+															<td>기타</td>
+															<td>2019-12-18</td>
+														</tr>
+														<tr class="grid-item">
+															<td class="num">146</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">수의계약업체등록</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="수의계약 업체 관리정보.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="소방기술인력보유현황.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="유신플랜테크-회사지명원.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="유신플랜테크-회사지명원.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="유신플렌테크  회사소개서.pdf 다운로드"></span>
+															</td>
+
+															<!-- 
+						
+							<td class="fil">
+												<img src="/assets/images/icon/file_pdf.png" alt="수의계약 업체 관리정보.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="소방기술인력보유현황.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="유신플랜테크-회사지명원.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="유신플랜테크-회사지명원.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="유신플렌테크  회사소개서.pdf 다운로드"> 
+							</td>
+						
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>(주)유신플랜테크</span>
+																		<div>(주)유신플랜테크</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+															<td>용역</td>
+															<td>기타</td>
+															<td>2019-12-17</td>
+														</tr>
+														<tr class="grid-item">
+															<td class="num">145</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">행복큐산업 수의계약
+																	업체등록 (방한복)</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="수의계약업체 강남구청.pdf 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="행복큐소개서1.pdf 다운로드"></span>
+															</td>
+															<!-- 
+							<td class="fil">
+												<img src="/assets/images/icon/file_pdf.png" alt="수의계약업체 강남구청.pdf 다운로드"> 
+												<img src="/assets/images/icon/file_pdf.png" alt="행복큐소개서1.pdf 다운로드"> 
+							</td>
+						
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>행복큐산업</span>
+																		<div>행복큐산업</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+															<td>물품</td>
+															<td>기타</td>
+															<td>2019-12-16</td>
+														</tr>
+														<tr class="grid-item">
+															<td class="num">144</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">수의계약희망업체 접수</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="디자인마이러브.pdf 다운로드"></span>
+															</td>
+															<!-- 
+							<td class="fil">
+												<img src="/assets/images/icon/file_pdf.png" alt="디자인마이러브.pdf 다운로드"> 
+							</td>
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>디자인마이러브</span>
+																		<div>디자인마이러브</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+															<td>용역</td>
+															<td>디자인</td>
+															<td>2019-12-12</td>
+														</tr>
+														<tr class="grid-item">
+															<td class="num">143</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">수의계약업체 (안내판)</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_hwp.png"
+																	alt="수의계약서류(중앙광고)1212.hwp 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_ppt.png"
+																	alt="중앙광고실적증명서.pptx 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_xls.png"
+																	alt="강남구청(영동시장최종합계견적서).xls 다운로드"></span>
+															</td>
+															<!-- 
+							<td class="fil">
+												<img src="/assets/images/icon/file_hwp.png" alt="수의계약서류(중앙광고)1212.hwp 다운로드"> 
+												<img src="/assets/images/icon/file_ppt.png" alt="중앙광고실적증명서.pptx 다운로드"> 
+												<img src="/assets/images/icon/file_xls.png" alt="강남구청(영동시장최종합계견적서).xls 다운로드"> 
+							</td>
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>중앙광고</span>
+																		<div>중앙광고</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+															<td>용역</td>
+															<td>기타</td>
+															<td>2019-12-12</td>
+														</tr>
+														<tr class="grid-item">
+															<td class="num">142</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">수의계약업체등록</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_hwp.png"
+																	alt="업체용서식_20191210.hwp 다운로드"></span>
+															</td>
+															<!-- 
+							<td class="fil">
+												<img src="/assets/images/icon/file_hwp.png" alt="업체용서식_20191210.hwp 다운로드"> 
+							</td>
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>(주)대성개발산업</span>
+																		<div>(주)대성개발산업</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+															<td>용역</td>
+															<td>기타</td>
+															<td>2019-12-10</td>
+														</tr>
+														<tr class="grid-item">
+															<td class="num">141</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">강남힐링센터 구축을
+																	위한 보수 공사</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_hwp.png"
+																	alt="업체관리정보.hwp 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_jpg.png"
+																	alt="사업자등록증(dsa).jpg 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_png.png"
+																	alt="건설업면허.png 다운로드"></span>
+															</td>
+
+															<!-- 
+						
+							<td class="fil">
+												<img src="/assets/images/icon/file_hwp.png" alt="업체관리정보.hwp 다운로드"> 
+												<img src="/assets/images/icon/file_jpg.png" alt="사업자등록증(dsa).jpg 다운로드"> 
+												<img src="/assets/images/icon/file_png.png" alt="건설업면허.png 다운로드"> 
+							</td>
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>경인건설(주)</span>
+																		<div>경인건설(주)</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+															<td>공사</td>
+															<td>기타</td>
+															<td>2019-12-10</td>
+														</tr>
+														<tr class="grid-item">
+															<td class="num">140</td>
+															<td class="align-l tit">
+																<!-- 비공개 게시글(비밀글) --> <i class="fa fa-lock"></i> <!-- 비회원 -->
+																<span onclick="loginConfirmAlert();">수의계약 업체등록</span>
+															</td>
+															<td class="fil">
+																<!-- 비공개 게시글(비밀글) --> <!-- 비회원 --> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_pdf.png"
+																	alt="붙임4) 수의계약 업체 관리정보 서식(2019.12.06).pdf 다운로드"></span>
+																<span onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_ppt.png"
+																	alt="서울_강남구청_유지관리_회사소개(2019.12.06).pptx 다운로드"></span> <span
+																onclick="loginConfirmAlert();"><img
+																	src="http://www.gangnam.go.kr/assets/images/icon/file_ppt.png"
+																	alt="서울_강남구청_통합 One-Stop 교통민원 자동처리시스템_제안(2019.12.06).pptx 다운로드"></span>
+															</td>
+															<!-- 
+							<td class="fil">
+												<img src="/assets/images/icon/file_pdf.png" alt="붙임4) 수의계약 업체 관리정보 서식(2019.12.06).pdf 다운로드"> 
+												<img src="/assets/images/icon/file_ppt.png" alt="서울_강남구청_유지관리_회사소개(2019.12.06).pptx 다운로드"> 
+												<img src="/assets/images/icon/file_ppt.png" alt="서울_강남구청_통합 One-Stop 교통민원 자동처리시스템_제안(2019.12.06).pptx 다운로드"> 
+							</td>
+						-->
+															<!-- 추가 고정 정보중 리스트에 노출될 정보 -->
+															<td class="name">
+																<div class="b_name_bk">
+																	<a href="javascript:void()"> <span>(주)케이앤엘정보시스템</span>
+																		<div>(주)케이앤엘정보시스템</div>
+																	</a>
+																</div>
+															</td>
+															<!-- 리스트에서보여질 설정 값 -->
+															<td>용역</td>
+															<td>기타</td>
+															<td>2019-12-06</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<!-- <script type="text/javascript">
+		$(function(){
+			if($(window).width() > 767){ 
+				$('.b_name_bk > a > span').each(function(){
+					var textMax = 6;
+					if($(this).text().length > textMax) {
+						$(this).text($(this).text().substring(0, textMax));
+						$(this).html($(this).html() + "...");
+						$(this).parents('.b_name_bk').addClass('ofw');
+					}
+		
+				});
+			}
+			$('.b_name_bk.ofw > a').focus(function(){
+				$(this).children('span').hide();
+				$(this).children('div').show();
+			});
+			$('.b_name_bk.ofw > a').focusout(function(){
+				$(this).children('span').show();
+				$(this).children('div').removeAttr('style');
+			});
+		});
+	</script> -->
+											</div>
+										</div>
+
+										<!-- 2019/12/23  infinitescroll 수동으로 페이지 넘기기 적용시
+		<div class="row">
+			<div id="infscr_next" class="align-c">
+				<a href="#n"><i class="fa fa-angle-down" aria-hidden="true"></i> <span>더보기</span></a>
+			</div>
+		</div>	 -->
+
+										<div class="row">
+											<div class="col-md-12 text-right mt10">
+												<button type="button" class="btn btn-blue btn-sm"
+													onclick="loginConfirmAlert();">등록</button>
+											</div>
+											<div class="col-md-12 text-center">
+												<ul class="pagination">
+													<li><a href="#"
+														onclick="selectPage_func(1); return false;"><i
+															class="fa fa-angle-double-left"></i><span class="sr-only">맨
+																처음으로</span></a></li>
+													<li><a href="#"
+														onclick="selectPage_func(1); return false;"><i
+															class="fa fa-angle-left"></i><span class="sr-only">이전</span></a></li>
+													<li class="paginate_button active"><a href="#"
+														class="on">1</a></li>
+													<li class="paginate_button"><a href="#"
+														onclick="selectPage_func(2); return false;">2</a></li>
+													<li class="paginate_button"><a href="#"
+														onclick="selectPage_func(3); return false;">3</a></li>
+													<li class="paginate_button"><a href="#"
+														onclick="selectPage_func(4); return false;">4</a></li>
+													<li class="paginate_button"><a href="#"
+														onclick="selectPage_func(5); return false;">5</a></li>
+													<li class="paginate_button"><a href="#"
+														onclick="selectPage_func(6); return false;">6</a></li>
+													<li class="paginate_button"><a href="#"
+														onclick="selectPage_func(7); return false;">7</a></li>
+													<li class="paginate_button"><a href="#"
+														onclick="selectPage_func(8); return false;">8</a></li>
+													<li class="paginate_button"><a href="#"
+														onclick="selectPage_func(9); return false;">9</a></li>
+													<li class="paginate_button"><a href="#"
+														onclick="selectPage_func(10); return false;">10</a></li>
+													<li><a href="#"
+														onclick="selectPage_func(2); return false;"><i
+															class="fa fa-angle-right"></i><span class="sr-only">다음</span></a></li>
+													<li><a href="#"
+														onclick="selectPage_func(15); return false;"><i
+															class="fa fa-angle-double-right"></i><span
+															class="sr-only">맨 뒤로</span></a></li>
+												</ul>
+												<!-- <script>
+						$(document).ready(function(){
+							var on_page =  $('.pagination li a.on');
+							if($('.pagination li a').hasClass('on')){
+								$(on_page).attr('title','현재페이지')
+							}
+						});
+					</script> -->
+											</div>
+										</div>
+									</div>
+								</div>
+	</th:block>
+									</div>
+									<!-- end: row -->
+								</div>
+								<!-- end: contents -->
+		<!-- start: contents_admin -->
+			
+							</div> <!-- right-wrap -->
+	
+
+		
+
+					</div>
+					<!-- end: row -->
+				</div>
+				<!-- end: container -->
+			</div> 
+
+
+
+</section>
+</th:block>
+

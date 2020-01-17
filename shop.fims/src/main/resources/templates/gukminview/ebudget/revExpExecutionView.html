@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="ebudgetCSS">
+<link rel='stylesheet' href='/ebudget/css/main3.css' type='text/css'>
+</th:block>
+
+<th:block layout:fragment="gukminMainContents">
+<div id="contentW">
+<div class="content">
+	<div class="commDesc" style="width : 100%">
+		<p class="t01">경영공시</p>
+		<p class="t02">ALLFestMoa에서 축제에 대한 경영정보를 확인해보세요!</p>
+	</div>
+	<div class="norBox" style="border-bottom: 1px solid; width: 100%" >
+		<ul class="commTabs">
+			<li><a href="/gukminview/ebudget/revBudgetView" >세입현황</a></li>
+			<li><a href="/gukminview/ebudget/revExpExecutionView" class="on">세출현황</a></li>
+		</ul>	
+	</div>	
+	
+<!-- <div id="contentW">
+<div class="content"> -->
+<div id="sub_title" style="padding-top: 20px;">예산집행현황</div>
+
+<div id="sub_menu">
+	<ul>
+		<li>
+			<a href="/gukminview/ebudget/revExpExecutionView" class="tab2" title='예산집행현황'>예산집행현황</a>
+		</li>	
+		<li>
+			<a href="/gukminview/ebudget/expEntBudgetView"  title='사업 및 예산정보'>사업 및 예산정보</a>
+		</li>	
+		<li>
+			<a href="/gukminview/ebudget/expExecutionView"  title='지출정보'>지출정보</a>
+		</li>    	
+	</ul>    	
+</div>
+
+<div id="ex">
+	<p>- 총 예산액과 현재까지의 지출총액을 분야별로 나누어 보실 수 있습니다.<br>
+	   - 위에 예산집행현황을 클릭하시면 검색조건이 초기화됩니다.
+	</p>
+</div>
+
+<div id="search_table">
+	<!-- 검색항목출력 폼 -->
+<!-- 	<form name="board_form" method="post" action="./eBudgetList201.html?mode=search&code=201"> 	 -->
+	 	
+		<table>
+		<caption>예산집행현황 검색</caption>
+			<tr>
+				<th scope="col">회계년도</th>
+				<td>
+					<label for='select'></label>
+					<select name='year' title='년도선택' id='select'>
+						<option value='2020'>2020</option>
+						<option value='2019'>2019</option>
+						<option value='2018'>2018</option>
+					</select>
+				</td>
+				<th scope="col">기간</th>
+				<td>
+					<input type="text" id="dp1" name="day1" value="2019-06-05" title='시작날짜선택' readonly>-
+					<label for="dp1"></label>
+					<input type="text" id="dp2" name="day2" value="2019-12-23" title='끝날짜선택' readonly>
+					<label for="dp2"></label>
+				</td>
+			</tr>
+		</table>
+		<div class="searchbtn">
+		<input type="image" src="http://gyeyak.namwon.go.kr/ebudget/img/search_btn.gif" class="btn" alt='검색버튼' title='검색'>
+		</div>
+	
+</div><!--search_table-->
+
+
+
+	
+<div id="list_wrap">
+<span class="ex_2">(단위 : 원)</span>
+  <table id="list_table" class="page201">
+  <caption>#예산집행현황</caption>
+	<thead>
+		<tr>
+			<th scope="col" rowspan="2" class="numeric">분야별</th>
+			<th scope="col" rowspan="2" class="numeric">예산액(A)</th>
+			<th scope="col" colspan="3" class="numeric">지출액</th>
+			<th scope='col' rowspan='2' class='numeric'>비율(B/A)</th>		</tr>
+		<tr>
+			<th scope="col" class="numeric">조회기간전</th><th scope='col' class="numeric">조회기간내</th><th scope='col'  class="numeric">누계(B)</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		<tr><th scope='col'>일반공공행정</th><td data-title='예산액' class='numeric' >37,845,960,000</td><td data-title='지출액-조회기간전' class='numeric' >29,833,904,615</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >29,833,904,615</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>78.83 <span class='style01'>%</span></td></tr><tr><th scope='col'>공공질서및안전</th><td data-title='예산액' class='numeric' >11,187,159,000</td><td data-title='지출액-조회기간전' class='numeric' >5,697,891,115</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >5,697,891,115</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>50.93 <span class='style01'>%</span></td></tr><tr><th scope='col'>교육</th><td data-title='예산액' class='numeric' >8,458,780,000</td><td data-title='지출액-조회기간전' class='numeric' >8,229,889,220</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >8,229,889,220</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>97.29 <span class='style01'>%</span></td></tr><tr><th scope='col'>문화및관광</th><td data-title='예산액' class='numeric' >83,065,877,000</td><td data-title='지출액-조회기간전' class='numeric' >61,187,907,800</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >61,187,907,800</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>73.66 <span class='style01'>%</span></td></tr><tr><th scope='col'>환경보호</th><td data-title='예산액' class='numeric' >92,306,231,000</td><td data-title='지출액-조회기간전' class='numeric' >34,230,256,995</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >34,230,256,995</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>37.08 <span class='style01'>%</span></td></tr><tr><th scope='col'>사회복지</th><td data-title='예산액' class='numeric' >168,487,768,000</td><td data-title='지출액-조회기간전' class='numeric' >152,423,603,875</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >152,423,603,875</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>90.47 <span class='style01'>%</span></td></tr><tr><th scope='col'>보건</th><td data-title='예산액' class='numeric' >13,023,103,000</td><td data-title='지출액-조회기간전' class='numeric' >12,451,727,570</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >12,451,727,570</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>95.61 <span class='style01'>%</span></td></tr><tr><th scope='col'>농림해양수산</th><td data-title='예산액' class='numeric' >198,967,429,000</td><td data-title='지출액-조회기간전' class='numeric' >173,003,701,286</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >173,003,701,286</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>86.95 <span class='style01'>%</span></td></tr><tr><th scope='col'>산업ㆍ중소기업</th><td data-title='예산액' class='numeric' >31,774,228,000</td><td data-title='지출액-조회기간전' class='numeric' >23,147,900,973</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >23,147,900,973</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>72.85 <span class='style01'>%</span></td></tr><tr><th scope='col'>수송및교통</th><td data-title='예산액' class='numeric' >60,546,712,000</td><td data-title='지출액-조회기간전' class='numeric' >40,475,003,400</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >40,475,003,400</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>66.85 <span class='style01'>%</span></td></tr><tr><th scope='col'>국토및지역개발</th><td data-title='예산액' class='numeric' >73,055,069,000</td><td data-title='지출액-조회기간전' class='numeric' >62,876,467,280</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >62,876,467,280</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>86.07 <span class='style01'>%</span></td></tr><tr><th scope='col'>과학기술</th><td data-title='예산액' class='numeric' >335,534,000</td><td data-title='지출액-조회기간전' class='numeric' >320,908,770</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >320,908,770</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>95.64 <span class='style01'>%</span></td></tr><tr><th scope='col'>예비비</th><td data-title='예산액' class='numeric' >8,778,275,000</td><td data-title='지출액-조회기간전' class='numeric' >503,027,595</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >503,027,595</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>5.73 <span class='style01'>%</span></td></tr><tr><th scope='col'>기타</th><td data-title='예산액' class='numeric' >98,922,137,000</td><td data-title='지출액-조회기간전' class='numeric' >89,344,581,977</td><td data-title='지출액-조회기간내' class='numeric' >0</td><td data-title='지출액-누계(B)' class='numeric' >89,344,581,977</td><td data-title='비율(B/A)' class='numeric' id='sub_t'>90.32 <span class='style01'>%</span></td></tr>		<tr class="sum">
+			<th scope="col">합계</th>
+			<td data-title='예산액(A)' class='numeric' >886,754,262,000</td>
+			<td data-title='지출액-조회기간전' class='numeric' >693,726,772,471</td>
+			<td data-title='지출액-조회기간내' class='numeric' >0</td>
+			<td data-title='지출액-누계(B)' class='numeric' >693,726,772,471</td>
+						<td data-title='비율(B/A)' class='numeric' id='total_per' >78.23<span class='style01'>%</span></td>
+					</tr>
+
+	</tbody>
+  </table>
+
+
+ 
+<div class="btn05" id="noprint">
+<div class="hidden_icon"></div>
+<span class="print_icon"><button onclick="content_print()" title="인쇄하기"></button></span>
+</div>
+
+
+</div>
+</div>	
+</div>
+
+
+
+</th:block>
+

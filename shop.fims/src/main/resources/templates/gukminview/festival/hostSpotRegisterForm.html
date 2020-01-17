@@ -9,16 +9,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 <link rel="stylesheet"
 	href="/gukmin/editors/trumbowyg/plugins/colors/ui/trumbowyg.colors.css">
 
-<!-- Import jQuery -->
-<!--
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-	window.jQuery
-			|| document.write(
-					'<script src="js/vendor/jquery-3.3.1.min.js"><\/script>') 
-</script>
- -->
-
 <!-- Import Trumbowyg -->
 <script src="/gukmin/editors/trumbowyg/trumbowyg.min.js"></script>
 <script type="text/javascript" src="/gukmin/editors/trumbowyg/langs/ko.min.js"></script>
@@ -56,8 +46,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	<input type="hidden" name="leafletfilepath" value="" id="leafletfilepath"/>
 	<section>
 		<div class="commDesc">
-			<p class="t01">스팟 등록하기</p>
-			<p class="t02">당신의 스팟을 ALLFestMoa에 등록해주세요.</p>
+			<p class="t01">축제 등록하기</p>
+			<p class="t02">당신의 축제을 ALLFestMoa에 등록해주세요.</p>
 		</div>
 		<div class="norBox">
 
@@ -119,50 +109,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<option value="">지역(시군구)</option>
 							</select>
 						</div>
-						<div class="form">
-							<p class="item">해외</p>
-							<!-- 
-							<div class="radioBtn">
-								<a href="javascript:setRegion('101');" id="region101">아시아·중동
-								</a> <a href="javascript:setRegion('102');" id="region102">아메리카</a>
-								<a href="javascript:setRegion('103');" id="region103">유럽</a> <a
-									href="javascript:setRegion('104');" id="region104">아프리카·오세아니아
-								</a>
-							</div>
-							 -->
-							<select id="regions" name="regions" class="select">
-								<option value="">대륙</option>
-								<option value="A" disabled="disabled">--아시아</option>
-								<option value="A01">동아시아</option>
-								<option value="A02">동남아시아</option>
-								<option value="A03">서아시아</option>
-								<option value="A04">남아시아</option>
-								<option value="A99">아시아 기타</option>
-								<option value="B" disabled="disabled">--아메리카</option>
-								<option value="B01">남아메리카</option>
-								<option value="B02">북아메리카</option>
-								<option value="B99">아메리카 기타</option>
-								<option value="C" disabled="disabled">--아프리카</option>
-								<option value="C01">동아프리카</option>
-								<option value="C02">서아프리카</option>
-								<option value="C03">남아프리카</option>
-								<option value="C04">북아프리카</option>
-								<option value="C99">아프리카 기타</option>
-								<option value="D" disabled="disabled">--오세아니아</option>
-								<option value="D01">오세아니아</option>
-								<option value="D99">오세아니아 기타</option>
-								<option value="E" disabled="disabled">--유럽</option>
-								<option value="E01">동유럽</option>
-								<option value="E02">서유럽</option>
-								<option value="E03">남유럽</option>
-								<option value="E04">북유럽</option>
-								<option value="E99">유럽 기타</option>
-								<option value="F" disabled="disabled">--기타</option>
-								<option value="F99">기타</option>
-							</select> <select class="select" id="country" name="country">
-								<option value="">국가</option>
-							</select>
-						</div>
+						
 					</td>
 				</tr>
 				<tr>
@@ -441,136 +388,99 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 							<input type="text" id="roadaddress" name="roadaddress"
 								class="inp" />
 							
-<!-- 							<script
-								src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
-							
-							<script
-								src="//dapi.kakao.com/v2/maps/sdk.js?appkey=565c5e2a6c37d4bf2ff2cf399b5dede9&libraries=services"></script> -->
-							<script>
-								function address_execDaumPostcode() {
-									new daum.Postcode(
-											{
-												oncomplete : function(data) {
-													var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
-													var extraRoadAddr = ''; // 도로명 조합형 주소 변수
-
-													// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-													// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-													if (data.bname !== ''
-															&& /[동|로|가]$/g
-																	.test(data.bname)) {
-														extraRoadAddr += data.bname;
-													}
-													// 건물명이 있고, 공동주택일 경우 추가한다.
-													if (data.buildingName !== ''
-															&& data.apartment === 'Y') {
-														extraRoadAddr += (extraRoadAddr !== '' ? ', '
-																+ data.buildingName
-																: data.buildingName);
-													}
-													// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-													if (extraRoadAddr !== '') {
-														extraRoadAddr = ' ('
-																+ extraRoadAddr
-																+ ')';
-													}
-													// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
-													if (fullRoadAddr !== '') {
-														fullRoadAddr += extraRoadAddr;
-													}
-
-													// 우편번호와 주소 정보를 해당 필드에 넣는다.
-													//document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
-													document
-															.getElementById('roadaddress').value = fullRoadAddr;
-
-													//autoLocation(fullRoadAddr);
-												}
-											}).open();
-								}
-							</script>
 						</div>
 					</td>
 				</tr>
+				
 				<tr>
 					<th>위치정보<mark>*</mark></th>
 					<td>
 						<div class="form">
-							<div class="addrBox" id="floating-panel">
+													<div class="addrBox" id="floating-panel">
 								<input type="text" id="googleaddress" class="inp" /> <a
 									href="javascript:void(0)" id="locationsearchbutton"
 									class="btnEtc01">위치표시</a>
 							</div>
+							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3&libraries=services"></script>
+							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3"></script>	
+							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3&libraries=LIBRARY"></script>
+							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3&libraries=services"></script>
+							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3&libraries=services,clusterer,drawing"></script>
+							
 							<p class="rtxt">
-								※ 구글지도에서 위치 검색 후 플러스코드(ex. GWXC+93 서울특별시)를 복사하여 붙여넣기 해주세요 [<a
-									href="https://www.google.com/maps/?hl=ko" target="_blank">구글지도바로가기</a>]
+								※카카오지도에서 위치 검색 후 플러스코드(ex.서울특별시)를 복사하여 붙여넣기 해주세요 [<a
+									href="https://map.kakao.com/?urlX=495835&urlY=1129435&urlLevel=4&map_type=TYPE_MAP&map_hybrid=false" target="_blank">카카오지도바로가기</a>]
 							</p>
-							<div class="mapBox" id="googlemap"
-								style="width: 100%; height: 500px; margin-top: 10px; display:;"></div>
+							
+							<div id="map" style="width:100%;height:500px; margin-top: 10px; display:;"></div>
+							
+							<!-- <div class="mapBox" id="googlemap"style="width: 100%; height: 500px; margin-top: 10px; display:;"></div> -->						
+							
 							<script>
-								function initMap() {
-									var map = new google.maps.Map(document
-											.getElementById('googlemap'), {
-										zoom : 8,
-										center : {
-											lat : 37.548468341546155,
-											lng : 126.92014667234184
-										}
-									});
-									var geocoder = new google.maps.Geocoder();
-
-									document.getElementById(
-											'locationsearchbutton')
-											.addEventListener(
-													'click',
-													function() {
-														geocodeAddress(
-																geocoder, map);
-													});
-								}
-
-								var googlemarker;
-
-								function geocodeAddress(geocoder, resultsMap) {
-									var address = document
-											.getElementById('googleaddress').value;
-									geocoder
-											.geocode(
-													{
-														'address' : address
-													},
-													function(results, status) {
-														if (status === 'OK') {
-															resultsMap
-																	.setCenter(results[0].geometry.location);
-
-															if (typeof googlemarker != "undefined")
-																googlemarker
-																		.setMap(null);
-
-															googlemarker = new google.maps.Marker(
-																	{
-																		map : resultsMap,
-																		position : results[0].geometry.location
-																	});
-															$('#lat')
-																	.val(
-																			results[0].geometry.location
-																					.lat());
-															$('#lon')
-																	.val(
-																			results[0].geometry.location
-																					.lng());
-														} else {
-															alert('Geocode was not successful for the following reason: '
-																	+ status);
-														}
-													});
-								}
-							</script>
-							<script async defer
-								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWEafyDye2nVJLlUGItmGjKdEp2uqoBm8&callback=initMap">
+								// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+								var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 								
+								var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+								    mapOption = {
+								        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+								        level: 3 // 지도의 확대 레벨
+								    };  
+								
+								// 지도를 생성합니다    
+								
+								var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+								
+								//일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+								var mapTypeControl = new kakao.maps.MapTypeControl();
+								
+								//지도에 컨트롤을 추가해야 지도위에 표시됩니다
+								//kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+								map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+								
+								//지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+								var zoomControl = new kakao.maps.ZoomControl();
+								map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+								
+								// 장소 검색 객체를 생성합니다
+								var ps = new kakao.maps.services.Places(); 
+								
+								// 키워드로 장소를 검색합니다
+								ps.keywordSearch('이태원 맛집', placesSearchCB); 
+								
+								// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+								function placesSearchCB (data, status, pagination) {
+								    if (status === kakao.maps.services.Status.OK) {
+								
+								        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+								        // LatLngBounds 객체에 좌표를 추가합니다
+								        var bounds = new kakao.maps.LatLngBounds();
+								
+								        for (var i=0; i<data.length; i++) {
+								            displayMarker(data[i]);    
+								            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+								        }       
+								
+								        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+								        map.setBounds(bounds);
+								    } 
+								}
+								
+								// 지도에 마커를 표시하는 함수입니다
+								function displayMarker(place) {
+								    
+								    // 마커를 생성하고 지도에 표시합니다
+								    var marker = new kakao.maps.Marker({
+								        map: map,
+								        position: new kakao.maps.LatLng(place.y, place.x) 
+								    });
+								
+								    // 마커에 클릭이벤트를 등록합니다
+								    kakao.maps.event.addListener(marker, 'click', function() {
+								        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+								        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+								        infowindow.open(map, marker);
+								    });
+								}
 							</script>
 						</div>
 					</td>
@@ -605,137 +515,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<div class="form">
 							<input type="text" id="openyear" name="openyear" class="etcForm"
 								placeholder="ex) 2019" />
-							<!--
-							<select name="openyear" id="openyear" class="select w100">
-    <option value=""
-    >선택</option>
-    <option value="2020">2020</option>
-    <option value="2019">2019</option>
-    <option value="2018">2018</option>
-    <option value="2017">2017</option>
-    <option value="2016">2016</option>
-    <option value="2015">2015</option>
-    <option value="2014">2014</option>
-    <option value="2013">2013</option>
-    <option value="2012">2012</option>
-    <option value="2011">2011</option>
-    <option value="2010">2010</option>
-    <option value="2009">2009</option>
-    <option value="2008">2008</option>
-    <option value="2007">2007</option>
-    <option value="2006">2006</option>
-    <option value="2005">2005</option>
-    <option value="2004">2004</option>
-    <option value="2003">2003</option>
-    <option value="2002">2002</option>
-    <option value="2001">2001</option>
-    <option value="2000">2000</option>
-    <option value="1999">1999</option>
-    <option value="1998">1998</option>
-    <option value="1997">1997</option>
-    <option value="1996">1996</option>
-    <option value="1995">1995</option>
-    <option value="1994">1994</option>
-    <option value="1993">1993</option>
-    <option value="1992">1992</option>
-    <option value="1991">1991</option>
-    <option value="1990">1990</option>
-    <option value="1989">1989</option>
-    <option value="1988">1988</option>
-    <option value="1987">1987</option>
-    <option value="1986">1986</option>
-    <option value="1985">1985</option>
-    <option value="1984">1984</option>
-    <option value="1983">1983</option>
-    <option value="1982">1982</option>
-    <option value="1981">1981</option>
-    <option value="1980">1980</option>
-    <option value="1979">1979</option>
-    <option value="1978">1978</option>
-    <option value="1977">1977</option>
-    <option value="1976">1976</option>
-    <option value="1975">1975</option>
-    <option value="1974">1974</option>
-    <option value="1973">1973</option>
-    <option value="1972">1972</option>
-    <option value="1971">1971</option>
-    <option value="1970">1970</option>
-    <option value="1969">1969</option>
-    <option value="1968">1968</option>
-    <option value="1967">1967</option>
-    <option value="1966">1966</option>
-    <option value="1965">1965</option>
-    <option value="1964">1964</option>
-    <option value="1963">1963</option>
-    <option value="1962">1962</option>
-    <option value="1961">1961</option>
-    <option value="1960">1960</option>
-    <option value="1959">1959</option>
-    <option value="1958">1958</option>
-    <option value="1957">1957</option>
-    <option value="1956">1956</option>
-    <option value="1955">1955</option>
-    <option value="1954">1954</option>
-    <option value="1953">1953</option>
-    <option value="1952">1952</option>
-    <option value="1951">1951</option>
-    <option value="1950">1950</option>
-    <option value="1949">1949</option>
-    <option value="1948">1948</option>
-    <option value="1947">1947</option>
-    <option value="1946">1946</option>
-    <option value="1945">1945</option>
-    <option value="1944">1944</option>
-    <option value="1943">1943</option>
-    <option value="1942">1942</option>
-    <option value="1941">1941</option>
-    <option value="1940">1940</option>
-    <option value="1939">1939</option>
-    <option value="1938">1938</option>
-    <option value="1937">1937</option>
-    <option value="1936">1936</option>
-    <option value="1935">1935</option>
-    <option value="1934">1934</option>
-    <option value="1933">1933</option>
-    <option value="1932">1932</option>
-    <option value="1931">1931</option>
-    <option value="1930">1930</option>
-    <option value="1929">1929</option>
-    <option value="1928">1928</option>
-    <option value="1927">1927</option>
-    <option value="1926">1926</option>
-    <option value="1925">1925</option>
-    <option value="1924">1924</option>
-    <option value="1923">1923</option>
-    <option value="1922">1922</option>
-    <option value="1921">1921</option>
-    <option value="1920">1920</option>
-    <option value="1919">1919</option>
-    <option value="1918">1918</option>
-    <option value="1917">1917</option>
-    <option value="1916">1916</option>
-    <option value="1915">1915</option>
-    <option value="1914">1914</option>
-    <option value="1913">1913</option>
-    <option value="1912">1912</option>
-    <option value="1911">1911</option>
-    <option value="1910">1910</option>
-    <option value="1909">1909</option>
-    <option value="1908">1908</option>
-    <option value="1907">1907</option>
-    <option value="1906">1906</option>
-    <option value="1905">1905</option>
-    <option value="1904">1904</option>
-    <option value="1903">1903</option>
-    <option value="1902">1902</option>
-    <option value="1901">1901</option>
-    <option value="1900">1900</option>
-
-
-</select>
-
- 
-								 -->
 						</div>
 					</td>
 				</tr>
@@ -836,7 +615,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						</div>
 					</td>
 				</tr>
-				<script>
+				<!-- <script>
 					$(function() {
 						$('#sortable').sortable(
 								{
@@ -962,7 +741,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 																	$(
 																			'#dialogcontent')
 																			.append(
-																					'스팟등록은 로그인 후 이용해 주세요.');
+																					'축제등록은 로그인 후 이용해 주세요.');
 																	$(
 																			'#commondialog')
 																			.show();
@@ -985,7 +764,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 													});
 										}
 									});
-				</script>
+				</script> -->
 				<tr>
 					<th>동영상<mark></mark></th>
 					<td>
@@ -1006,7 +785,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 							첨부할 수 있습니다.</p>
 					</td>
 				</tr>
-				<script>
+				<!-- <script>
 					$("#spotvideo")
 							.on(
 									'change',
@@ -1103,7 +882,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 													}
 												});
 									});
-				</script>
+				</script> -->
 				<tr>
 					<th>리플렛<mark></mark></th>
 					<td>
@@ -1118,7 +897,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<p class="rtxt mt5">※ PDF파일만 첨부 가능하고 최대 100MB까지 첨부할 수 있습니다.</p>
 					</td>
 				</tr>
-				<script>
+				<!-- <script>
 					$("#spotleaflet")
 							.on(
 									'change',
@@ -1215,7 +994,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 													}
 												});
 									});
-				</script>
+				</script> -->
 				<tr>
 					<th>축제소개<mark>*</mark></th>
 					<td>
@@ -1337,17 +1116,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						</div>
 					</td>
 				</tr>
-				<input type="hidden" name="adapplyflag" value="N" id="adapplyflag"/>
-				<input type="hidden" name="bizimagefilepath" value="" id="bizimagefilepath"/>
-				<input type="hidden" name="maintopbannerflag" value="N" id="maintopbannerflag"/>
-				<input type="hidden" name="maintopbannerimagefilepath" value="" id="maintopbannerimagefilepath"/>
-				<input type="hidden" name="hotspotbannerflag" value="N" id="hotspotbannerflag"/>
-				<input type="hidden" name="bestbannerflag" value="N" id="bestbannerflag"/>
-				<input type="hidden" name="promotionflag" value="N" id="promotionflag"/>
-				<input type="hidden" name="premiumpageflag" value="N" id="premiumpageflag"/>
-				<input type="hidden" name="keywordflag" value="N" id="keywordflag"/>
-				<input type="hidden" name="hashtagflag" value="N" id="hashtagflag"/>
-				<input type="hidden" name="etcflag" value="N" id="etcflag"/>
+
 				<tr>
 					<td colspan="2">
 						<!-- 전체 수정2019.05.24-->
@@ -1376,7 +1145,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	</section>
 </form>
 
-<script>
+<!-- <script>
 
 	$('#sido').on('change', function() {
 		$('#sigungu').val('');
@@ -1841,18 +1610,18 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 									success : function(data, textStatus, jqXHR) {
 										indicatorOff();
 										if (data.resultcode == 0) {
-											$('#dialogtitle').append('스팟등록');
+											$('#dialogtitle').append('축제등록');
 											$('#dialogcontent').append(
-													'스팟등록신청이 완료되었습니다.');
+													'축제등록신청이 완료되었습니다.');
 											dialogtargeturl = 'HostSpot.festa';
 											$('#commondialog').show();
 										} else if (data.resultcode == 2) {
-											$('#dialogtitle').append('스팟등록');
+											$('#dialogtitle').append('축제등록');
 											$('#dialogcontent').append(
 													data.resultmessage);
 											$('#commondialog').show();
 										} else {
-											$('#dialogtitle').append('스팟등록');
+											$('#dialogtitle').append('축제등록');
 											$('#dialogcontent').append(
 													data.resultmessage);
 											$('#commondialog').show();
@@ -1861,7 +1630,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 									error : function(jqXHR, textStatus,
 											errorThrown) {
 										indicatorOff();
-										$('#dialogtitle').append('스팟등록');
+										$('#dialogtitle').append('축제등록');
 										$('#dialogcontent').append(textStatus);
 										$('#commondialog').show();
 									}
@@ -1916,7 +1685,54 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			});
 
 	
+</script> -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function address_execDaumPostcode() {
+	new daum.Postcode(
+			{
+				oncomplete : function(data) {
+					var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+					var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+					// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+					// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+					if (data.bname !== ''
+							&& /[동|로|가]$/g
+									.test(data.bname)) {
+						extraRoadAddr += data.bname;
+					}
+					// 건물명이 있고, 공동주택일 경우 추가한다.
+					if (data.buildingName !== ''
+							&& data.apartment === 'Y') {
+						extraRoadAddr += (extraRoadAddr !== '' ? ', '
+								+ data.buildingName
+								: data.buildingName);
+					}
+					// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+					if (extraRoadAddr !== '') {
+						extraRoadAddr = ' ('
+								+ extraRoadAddr
+								+ ')';
+					}
+					// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+					if (fullRoadAddr !== '') {
+						fullRoadAddr += extraRoadAddr;
+					}
+
+					// 우편번호와 주소 정보를 해당 필드에 넣는다.
+					//document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
+					document
+							.getElementById('roadaddress').value = fullRoadAddr;
+
+					//autoLocation(fullRoadAddr);
+				}
+			}).open();
+}
 </script>
+
+
+
 
 
 

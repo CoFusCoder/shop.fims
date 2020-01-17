@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+<th:block layout:fragment="gukminMainContents">
+<form id="registerform" name="registerform" action="/HostInfoEditForm.festa" method="post">
+	<input type="hidden" id="hosttype" name="hosttype"
+		value="1">
+	<input type="hidden" name="myfestivaltypeseqs" value="" id="myfestivaltypeseqs"/>
+	<input type="hidden" name="mystoretypeseqs" value="" id="mystoretypeseqs"/>
+	<input type="hidden" name="myregions" value="" id="myregions"/>
+	<section>
+		<div class="mypDesc t01">
+			<p class="t01">거래처 정보</p>
+			<p class="t02">ALLFestMoa에 오신것을 환영합니다!</p>
+		</div>
+		<div class="norBox">
+			<p class="mytit">필수 회원정보</p>
+			<div class="myinfoBox">
+				<div class="fl">
+					<p class="item">회원유형</p>
+					<ul>
+						<li class="host"><span class="on">거래처</span></li>
+					</ul>
+				</div>
+				<div class="fr">
+					<p class="item">로그인 정보</p>
+					<table class="writeTable t01">
+						<colgroup>
+							<col width="120" />
+							<col width="" />
+						</colgroup>
+						<tr>
+							<th>아이디(이메일)</th>
+							<td>
+								<div class="form">
+									<input type="email" id="email" name="email"
+										th:value="${session.SID}"
+										readonly="readonly" class="inp" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>비밀번호</th>
+							<td>
+								<div class="form">
+									<input type="password" disabled="disabled" class="inp t01" />
+									<a href="javascript:changePassword();" class="btnEtc01">비밀번호변경</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<p class="item">거래처 정보</p>
+					<ul class="commTabs t02">
+						<li><a href="javascript:void(0)"
+							onclick="javascript:$('#hosttype').val('1');"
+							class="on"
+							style="pointer-events: none;">축제·이벤트</a></li>
+						<li><a href="javascript:void(0)"
+							onclick="javascript:$('#hosttype').val('2');"
+							class=""
+							style="pointer-events: none;">시장·스토어</a></li>
+					</ul>
+					<table class="writeTable t01">
+						<colgroup>
+							<col width="120" />
+							<col width="" />
+						</colgroup>
+						<tr>
+							<th>거래처 유형</th>
+							<td>
+								<div class="form">
+									<select class="select" id="hostform" name="hostform">
+										<option value="">선택하세요</option>
+										<option value="1"
+											>중앙정부기관</option>
+										<option value="2"
+											>공기업</option>
+										<option value="3"
+											>대기업</option>
+										<option value="4"
+											>신문/방송/언론</option>
+										<option value="5"
+											>외국계기업</option>
+										<option value="6"
+											>지방자치단체</option>
+										<option value="7"
+											>학교/재단/협회</option>
+										<option value="8"
+											>중소/벤처기업</option>
+										<option value="9"
+											>학회/비영리단체</option>
+										<option value="10"
+											>해외</option>
+										<option value="11"
+											selected>개인</option>
+										<option value="99"
+											>기타</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>거래처명</th>
+							<td>
+								<div class="form">
+									<input type="text" id="hostname" name="hostname"
+										value="핌스" class="inp"
+										placeholder="거래처명(주최사 또는 스토어명)" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>담당자 이름</th>
+							<td>
+								<div class="form">
+									<input type="text" id="managername" name="managername"
+										th:value="${session.SNAME}"
+										class="inp" placeholder="담당자 이름" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>담당자 연락처</th>
+							<td>
+								<div class="form">
+									<select class="select w60" id="managercontact01" name="managercontact01">
+										<option value="">선택</option>
+										<option th:value="${#strings.substring(SID,0,1)}" 
+											selected>010</option>
+										<option value="011"
+											>011</option>
+										<option value="016"
+											>016</option>
+										<option value="017"
+											>017</option>
+										<option value="019"
+											>019</option>
+									</select> <span class="etxt">-</span> <input type="text" id="managercontact02"
+										th:with="SPHONE = ${session.SPHONE}"
+										name="managercontact02"
+										th:value="${#strings.substring(SPHONE,4,8)}"
+										class="inp w60" /> <span class="etxt">-</span> <input
+										th:with="SPHONET = ${session.SPHONE}"
+										type="text" id="managercontact03" name="managercontact03"
+										th:value="${#strings.substring(SPHONET,9,13)}"
+										class="inp w60" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>담당자 이메일</th>
+							<td>
+								<div class="form">
+									<input type="email" id="manageremail" name="manageremail"
+										value="chas0303@naver.com"
+										class="inp" placeholder="담당자 이메일" />
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<dl class="myAgreeList">
+				<dt>
+					<p class="tit">이용약관 내용 동의</p>
+					<label for="chk_all">전체동의</label> <input type="checkbox"
+						id="chk_all" />
+				</dt>
+				<dd>
+					<div class="fl">
+						<ul>
+							<li><label for="chk_agree01">만14세 이상입니다<span>(필수)</span></label>
+								<input type="checkbox" checked="checked" id="chk_agree01"
+								disabled="disabled" /></li>
+							<li><label for="chk_agree03">서비스 이용약관 동의<span>(필수)</span></label>
+								<a href="SiteTerms.festa" target="_blank"
+								class="btnAgreeView">내용보기</a> <input type="checkbox"
+								checked="checked" id="chk_agree03" disabled="disabled" /></li>
+							<li><label for="chk_agree05">개인정보 수집·이용에 대한 동의<span>(필수)</span></label>
+								<a href="PrivacyPolicy.festa" target="_blank"
+								class="btnAgreeView">내용보기</a> <input type="checkbox"
+								checked="checked" id="chk_agree05" disabled="disabled" /></li>
+						</ul>
+					</div>
+					<div class="fr">
+						<ul>
+							<li class="long"><label for="chk_agree02">전자적 전송매체를
+									이용한 광고성 정보의 수신에 동의합니다. (선택)</label> <input type="checkbox"
+								id="chk_agree02"
+								checked /></li>
+							<li><label for="chk_agree04">장기 미접속 시 계정 활성 상태 유지
+									(선택)</label> <input type="checkbox" id="chk_agree04"
+								checked /></li>
+						</ul>
+					</div>
+				</dd>
+			</dl>
+			<div class="myLeave">
+				<span>ALLFestMoa를 더 이상 이용하지 않으신다면,</span><a href="/gukminview/member/secedeForm"
+					class="btn">회원탈퇴</a>
+			</div>
+			<!-- 
+			<div class="mytit t01">
+				옵션 추가정보
+				<p class="myDesc">※ 입력하신 정보는 컨텐츠 큐레이션에 참고됩니다. (관심사용자에게 노출될 확률
+					증가)</p>
+			</div>
+			<table class="writeTable t02">
+					<tr>
+						<td>
+							<p class="optTitle">축제·이벤트 유형</p>
+							<div class="radioBtn">
+								<a href="javascript:void(0)" id="allmyfestivaltypes"
+									onclick="setMyFestivalTypes('');">전체</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(34);">공연/영화/음악</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(35);">과학/IT</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(36);">꽃</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(37);">자연/생태계</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(38);">민속/전통</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(39);">먹거리</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(40);">지역특산물</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(41);">체험/참여</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(42);">레저/스포츠</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(43);">전시/박람회</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(44);">불꽃/빛</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(45);">대학축제</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(46);">우리동네축제</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(47);">교육</a>
+									<a href="javascript:void(0)"
+										class=""
+										onclick="setMyFestivalTypes(48);">이색/기타</a>
+							</div>
+						</td>
+					</tr>
+				<tr>
+					<td>
+						<p class="optTitle">지역</p>
+						<div class="form">
+							<p class="item">국내</p>
+							<div class="radioBtn">
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(1);">서울</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(2);">경기</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(3);">인천</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(4);">대전/충청</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(5);">부산/울산/경남</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(6);">대구/경북</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(7);">광주/전라</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(8);">강원/기타</a>
+							</div>
+						</div>
+						<div class="form">
+							<p class="item">해외</p>
+							<div class="radioBtn">
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(101);">아시아ㆍ중동</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(102);">아메리카</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(103);">유럽</a>
+										<a href="javascript:void(0)"
+											class=""
+											onclick="setMyRegions(104);">아프리카ㆍ오세아니아</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<div class="boardBtnBox ac t01">
+			 -->
+			<div class="boardBtnBox ac">
+				<a href="javascript:void(0)" id="registerbutton" class="btnType03">수정완료</a>
+				<a href="javascript:void(0)" class="btnType04"
+					onclick="window.history.back();">취소</a>
+			</div>
+		</div>
+	</section>
+</form>
+<div class="dialog" id="passwordchangedialog"
+	style="display: none; z-index: 1000;">
+	<div class="popBox">
+		<div class="popHeader">
+			<h1>비밀번호 변경</h1>
+			<a href="javascript:void(0)"
+				onclick="javascript:$('#passwordchangedialog').hide();"><img
+				src="/gukmin/include/img/ico/ico_close02.png" /></a>
+		</div>
+		<div class="popCont">
+			<div class="findForm">
+				<input type="password" id="password" class="inp"
+					placeholder="현재 비밀번호" /> <input type="password" id="newpassword"
+					class="inp" placeholder="새 비밀번호" /> <input type="password"
+					id="newpasswordconfirm" class="inp" placeholder="새 비밀번호 확인" />
+				<p class="txt">
+					<!-- 비밀번호 변경 -->
+				</p>
+			</div>
+			<div class="btnBox">
+				<a href="javascript:void(0)" id="passwordchangebutton"
+					class="btnType01">비밀번호 변경</a> <a href="javascript:void(0)"
+					onclick="javascript:$('#passwordchangedialog').hide();"
+					class="btnType02">닫기</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function changePassword() {
+		$('#password').val('');
+		$('#newpassword').val('');
+		$('#newpasswordconfirm').val('');
+		$('#passwordchangedialog').show();
+	}
+	$('#passwordchangebutton').click(function() {
+		resetCommonDialog();
+		indicatorOn();
+		$.ajax({
+			url : 'JSONPasswordChange.festa',
+			type : 'POST',
+			data : {
+				password : $('#password').val(),
+				newpassword : $('#newpassword').val(),
+				newpasswordconfirm : $('#newpasswordconfirm').val()
+			},
+			dataType : 'json',
+			success : function(data, textStatus, jqXHR) {
+				indicatorOff();
+				if (data.resultcode == 0) {
+					$('#password').val('');
+					$('#newpassword').val('');
+					$('#newpasswordconfirm').val('');
+					$('#passwordchangedialog').hide();
+					$('#dialogtitle').append('비밀번호 변경');
+					$('#dialogcontent').append('비밀번호 변경이 완료되었습니다.');
+					$('#commondialog').show();
+				} else {
+					$('#dialogtitle').append('비밀번호 변경');
+					$('#dialogcontent').append(data.resultmessage);
+					$('#commondialog').show();
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				indicatorOff();
+				$('#dialogtitle').append('비밀번호 변경');
+				$('#dialogcontent').append(textStatus);
+				$('#commondialog').show();
+			}
+		});
+	});
+	$("#chk_all").change(function() {
+		if ($("#chk_all").is(":checked")) {
+			$('#chk_agree02').prop('checked', true);
+			$('#chk_agree04').prop('checked', true);
+		} else {
+			$('#chk_agree02').prop('checked', false);
+			$('#chk_agree04').prop('checked', false);
+		}
+	});
+	$("#chk_agree02").change(function() {
+		if ($("#chk_agree02").is(":checked") == false) {
+			$('#chk_all').prop('checked', false);
+		}
+	});
+	$("#chk_agree04").change(function() {
+		if ($("#chk_agree04").is(":checked") == false) {
+			$('#chk_all').prop('checked', false);
+		}
+	});
+	$("#chk_agree02").change(function() {
+		if ($("#chk_agree02").is(":checked") == true) {
+			if ($("#chk_agree04").is(":checked") == true) {
+				$('#chk_all').prop('checked', true);
+			}
+		}
+	});
+	$("#chk_agree04").change(function() {
+		if ($("#chk_agree04").is(":checked") == true) {
+			if ($("#chk_agree02").is(":checked") == true) {
+				$('#chk_all').prop('checked', true);
+			}
+		}
+	});
+	var myfestivaltypeseqs = [];
+	function setMyFestivalTypes(typeseq) {
+		if (typeseq == '') {
+			$('#myfestivaltypeseqs').val('');
+			$('#allmyfestivaltypes').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmyfestivaltypes').removeClass("on");
+			if ($('#myfestivaltypeseqs').val() != '') {
+				myfestivaltypeseqs = $('#myfestivaltypeseqs').val().split(',');
+			}
+			if (checkValue(typeseq, myfestivaltypeseqs) == 'Exist') {
+				myfestivaltypeseqs.splice($
+						.inArray(typeseq, myfestivaltypeseqs), 1);
+				$('#myfestivaltypeseqs').val(myfestivaltypeseqs);
+			} else {
+				myfestivaltypeseqs.push(typeseq);
+				$('#myfestivaltypeseqs').val(myfestivaltypeseqs);
+			}
+		}
+	}
+	var mystoretypeseqs = [];
+	function setMyStoreTypes(typeseq) {
+		if (typeseq == '') {
+			$('#mystoretypeseqs').val('');
+			$('#allmystoretypes').parents(".radioBtn").eq(0).find("a")
+					.removeClass("on");
+		} else {
+			$('#allmystoretypes').removeClass("on");
+			if ($('#mystoretypeseqs').val() != '') {
+				mystoretypeseqs = $('#mystoretypeseqs').val().split(',');
+			}
+			if (checkValue(typeseq, mystoretypeseqs) == 'Exist') {
+				mystoretypeseqs.splice($.inArray(typeseq, mystoretypeseqs), 1);
+				$('#mystoretypeseqs').val(mystoretypeseqs);
+			} else {
+				mystoretypeseqs.push(typeseq);
+				$('#mystoretypeseqs').val(mystoretypeseqs);
+			}
+		}
+	}
+	var myregions = [];
+	function setMyRegions(region) {
+		if ($('#myregions').val() != '') {
+			myregions = $('#myregions').val().split(',');
+		}
+		if (checkValue(region, myregions) == 'Exist') {
+			myregions.splice($.inArray(region, myregions), 1);
+			$('#myregions').val(myregions);
+		} else {
+			myregions.push(region);
+			$('#myregions').val(myregions);
+		}
+	}
+	function checkValue(value, arr) {
+		var status = 'Not exist';
+		for (var i = 0; i < arr.length; i++) {
+			var name = arr[i];
+			if (name == value) {
+				status = 'Exist';
+				break;
+			}
+		}
+		return status;
+	}
+	$('#registerbutton')
+			.click(
+					function() {
+						resetCommonDialog();
+						indicatorOn();
+						var adinforeceiveflag = 'N';
+						if ($('#chk_agree02').is(':checked')) {
+							adinforeceiveflag = 'Y';
+						}
+						var accountactiveflag = 'N';
+						if ($('#chk_agree04').is(':checked')) {
+							accountactiveflag = 'Y';
+						}
+						$.ajax({
+							url : 'JSONMemberEdit.festa',
+							type : 'POST',
+							data : {
+								adinforeceiveflag : adinforeceiveflag,
+								accountactiveflag : accountactiveflag,
+								hostform : $('#hostform').val(),
+								hostname : $('#hostname').val(),
+								managername : $('#managername').val(),
+								manageremail : $('#manageremail').val(),
+								managercontact : $('#managercontact01').val() + '-' + $('#managercontact02').val() + '-' + $('#managercontact03').val(),
+								myfestivaltypeseqs : $('#myfestivaltypeseqs').val(),
+								mystoretypeseqs : $('#mystoretypeseqs').val(),
+								myregions : $('#myregions').val()
+							},
+							dataType : 'json',
+							success : function(data, textStatus, jqXHR) {
+								indicatorOff();
+								if (data.resultcode == 0) {
+									$('#dialogtitle').append('회원정보수정');
+									$('#dialogcontent').append('회원정보 수정이 완료되었습니다.');
+									dialogtargeturl = 'HostPage.festa';
+									$('#commondialog').show();
+								} else {
+									$('#dialogtitle').append('회원정보수정');
+									$('#dialogcontent').append(data.resultmessage);
+									$('#commondialog').show();
+								}
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								indicatorOff();
+								$('#dialogtitle').append('회원정보수정');
+								$('#dialogcontent').append(textStatus);
+								$('#commondialog').show();
+							}
+						});
+					});
+	$(document).ready(function() {
+		$('#myfestivaltypeseqs').val(myfestivaltypeseqs);
+		if ($('#myfestivaltypeseqs').val() == '') $('#allmyfestivaltypes').addClass("on");
+		$('#mystoretypeseqs').val(mystoretypeseqs);
+		if ($('#mystoretypeseqs').val() == '') $('#allmystoretypes').addClass("on");
+		$('#myregions').val(myregions);
+	});
+</script>
+</th:block>
+</html>

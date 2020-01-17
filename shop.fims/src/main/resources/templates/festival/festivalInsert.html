@@ -2,8 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/adminis/adminisdefault}">
+<th:block layout:fragment="adminisTitle">
+	<title>축제 관리</title>
+</th:block>
 <head th:fragment="adminisHeadFragment">
-	<th:block layout:fragment="adminisTitle"></th:block>
 	<th:block layout:fragment="adminisCss">
 		<!--external css-->
 		<link href="/adminis/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="gukminMainContents">
+
+<section>
+	<div class="mypDesc">
+		<p class="t01">거래처 페이지</p>
+		<p class="t02">
+		[[${session.SNAME}]]
+			님, 안녕하세요!
+		</p>
+	</div>
+	<div class="norBox">
+		<div class="mypBox">
+			<div class="fl">
+				<p class="tit">
+					<a href="/gukminview/member/hostInfoEditForm">회원정보 관리</a>
+				</p>
+				<p class="ico">
+					<a href="/gukminview/member/hostInfoEditForm"><img
+						src="https://joyfesta.kr/include/img/ico/ico_mypList07.png" /></a>
+				</p>
+				
+					<dl>
+						<dt>관심정보가비어있어요</dt>
+						<dd>
+							관심정보를입력하시면 <br /> 관련 정보를 검색하는사용자에게 더 잘 노출될 수 있어요!
+						</dd>
+					</dl>
+				
+				
+			</div>
+			<div class="fr">
+				<p class="tit">
+					<a href="/festival/festivalList">나의 축제관리</a>
+				</p>
+				<p class="ico">
+					<a href="/festival/festivalList"> <img
+						src="https://joyfesta.kr/include/img/ico/ico_mypList05.png" /></a>
+				</p>
+				<div class="mlist_spot_in">
+					<ul class="mlist_spot t02">
+						<li>
+							<p class="item">등록요청</p>
+							<p class="cnt">
+								0
+							</p>
+						</li>
+						<li>
+							<p class="item">확인중</p>
+							<p class="cnt">
+								0
+							</p>
+						</li>
+						<li>
+							<p class="item">승인반려</p>
+							<p class="cnt">
+								0
+							</p>
+						</li>
+						<li>
+							<p class="item">승인완료</p>
+							<p class="cnt">
+								0
+							</p>
+						</li>
+					</ul>
+					<ul class="mlist_spot t01">
+						<li>
+							<p class="item">
+								축제리뷰
+								
+							</p>
+							<p class="cnt">
+								0
+							</p>
+						</li>
+						<li>
+							<p class="item">
+								축제문의
+								
+							</p>
+							<p class="cnt">
+								0
+							</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="mypBox">
+			<div class="fl">
+				<p class="tit">
+					<a href="#">나의 문의 내역</a>
+				</p>
+				<p class="ico">
+					<a href="#"><img
+						src="https://joyfesta.kr/include/img/ico/ico_mypList03.png" /></a>
+				</p>
+				<p class="stit">
+					문의 총
+					0
+					건
+				</p>
+				<ul class="mlist t01">
+					<li>
+						<p class="item">답변대기</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+					<li>
+						<p class="item">답변완료</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="fr">
+				<p class="tit">
+					<a href="javascript:void(0)"
+						onclick="javascript:$.serviceDialog('광고신청 내역', '<br />서비스 준비중 입니다.<br />', '');">광고신청
+						내역</a>
+				</p>
+				<p class="ico">
+					<a href="javascript:void(0)"
+						onclick="javascript:$.serviceDialog('광고신청 내역', '<br />서비스 준비중 입니다.<br />', '');"><img
+						src="https://joyfesta.kr/include/img/ico/ico_mypList06.png" /></a>
+				</p>
+				<p class="stit">
+					신청 총
+					0
+					건
+				</p>
+				<ul class="mlist t02">
+					<li>
+						<p class="item">등록요청</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+					<li>
+						<p class="item">확인중</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+					<li>
+						<p class="item">승인반려</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+					<li>
+						<p class="item">승인완료</p>
+						<p class="cnt">
+							0
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+
+</th:block>
+
+</html>

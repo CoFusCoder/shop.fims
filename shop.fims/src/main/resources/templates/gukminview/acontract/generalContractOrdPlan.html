@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="acontratCSS">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/style.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/sub.css">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css/board.css">
+<!-- <link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/fontawesome/css/font-awesome.min.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="/acontract/assets/css/font.css"> -->
+<link rel="stylesheet" type="text/css" href="/acontract/assets/css/print.css" media="print">
+<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/DataTables/css/DT_bootstrap.css" media="screen">
+</th:block>
+
+
+
+<th:block layout:fragment="gukminMainContents">
+<section>	
+	<div class="commDesc">
+		<p class="t01">계약공시</p>
+		<p class="t02">ALLFestMoa에서 다양한 계약정보를 확인해보세요!</p>
+	</div>
+	<div class="norBox" style="border-bottom: 1px solid">
+		<ul class="commTabs">
+			<li><a href="/gukminview/acontract/orderingPlanView" >수의계약</a></li>
+			<li><a href="/gukminview/acontract/generalContractOrdPlan" class="on">일반계약</a></li>
+		</ul>	
+	</div>	
+	
+	
+<div id="sub-wrap" class="sub">
+				<div class="container">
+					<div class="row">
+		<!-- start: left -->
+	 	<div class="left col-md-3 visible-md visible-lg">
+
+	 		
+		</div>
+		<!-- end: left -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var $menuClick = $('.left-menu .depth2>.panel>.panel-heading');
+				$menuClick.click( function () {
+					if ( $(this).hasClass('active') === false ){
+						$menuClick.removeClass('active');
+						$(this).addClass('active');
+					} else if ( $(this).hasClass('active') === true ){
+						$menuClick.removeClass('active');
+					}
+				});
+			});
+		</script>
+		
+		
+
+	<div id="gnsubContent" class="right-wrap col-lg-12 col-md-9">
+						<div class="row">
+							<!-- start: sub-header -->
+							<div id="container" class="sub-header col-xs-12">
+								<div class="row">
+
+									<div class="title-wrap col-xs-12">
+										<h3 class="con-title col-xs-12 col-md-6">발주계획</h3>
+										<p class="sns_share">
+											<a href="javascript:"><img
+												src="http://www.gangnam.go.kr/assets/images/common/sns_share.png" alt="공유하기" /></a>
+										</p>
+										<div class="dashboard col-xs-12 col-md-6">
+											<ul class="sns_list">
+												<!-- <li class="kakaotalk"><a href="javascript:sendLink();" id="kakao-link-btn" title="카카오톡으로 공유하기 (새창)"><img src="/assets/images/sub/sub-header_dashboard_kakaotalk.png" alt="카카오톡" /></a></li> -->
+												<li class="naver"><a href="#!"
+													onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+													target="_blank" title="네이버 블로그로 공유하기 (새창)"><img
+														src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_naver.png"
+														alt="네이버" /></a></li>
+												<li class="googleplus"><a href="#!"
+													onclick="javascript:window.open('https://plus.google.com/share?url='+encodeURIComponent(document.URL), 'googleplussharedialog','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=600');return false;"
+													target="_blank" title="구글플러스로 공유하기 (새창)"><img
+														src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_googleplus.png"
+														alt="구글플러스" /></a></li>
+												<li class="facebook"><a href="#!"
+													onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+													target="_blank" title="페이스북으로 공유하기 (새창)"><img
+														src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_facebook.png"
+														alt="페이스북" /></a></li>
+												<li class="twitter"><a href="#!"
+													onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20'+encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+													target="_blank" title="트위터로 공유하기 (새창)"><img
+														src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_twitter.png"
+														alt="트위터" /></a></li>
+											</ul>
+											<ul class="mobile_sns_list">
+												<li class="naver"><a href="#!"
+													onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+													target="_blank" title="네이버 블로그로 공유하기 (새창)"><img
+														src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_naver.png"
+														alt="네이버" /></a></li>
+												<li class="googleplus"><a href="#!"
+													onclick="javascript:window.open('https://plus.google.com/share?url='+encodeURIComponent(document.URL), 'googleplussharedialog','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=600');return false;"
+													target="_blank" title="구글플러스로 공유하기 (새창)"><img
+														src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_googleplus.png"
+														alt="구글플러스" /></a></li>
+												<li class="facebook"><a href="#!"
+													onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.URL)+'&t='+encodeURIComponent(document.title), 'facebooksharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+													target="_blank" title="페이스북으로 공유하기 (새창)"><img
+														src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_facebook.png"
+														alt="페이스북" /></a></li>
+												<li class="twitter"><a href="#!"
+													onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20'+encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+													target="_blank" title="트위터로 공유하기 (새창)"><img
+														src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_twitter.png"
+														alt="트위터" /></a></li>
+												<li class="print"><a href="javascript:window.print();"
+													title="출력하기"><img
+														src="http://www.gangnam.go.kr/assets/images/sub/sub-header_dashboard_print.png"
+														alt="프린트하기" /></a></li>
+											</ul>
+										</div>
+										<p class="print_btn">
+											<a href="javascript:window.print();" title="출력하기"><img
+												src="http://www.gangnam.go.kr/assets/images/common/print_btn.png" alt="프린트하기" /></a>
+										</p>
+										<div class="sep-line col-xs-12">
+											<span class="blind">구분선</span>
+										</div>
+									</div>
+									<!-- <script type='text/javascript'>
+		//sns share
+		/* $('.sns_share').click(function(){
+			$('.sns_list').slideDown(200);
+		}); */
+		//sns share
+		$('.sns_share > a').click(function(){
+			if ($(this).hasClass('on')){
+				$('.sns_list').slideUp(200);
+				$(this).removeClass('on');
+			}else{
+				$('.sns_list').slideDown(200);
+				$(this).addClass('on');
+			}
+		});
+		$('.sns_share a').focusout(function(){
+			setTimeout(function(){
+				if($('.sns_list a:focus').length < 1 ){
+					$('.sns_list').slideUp(200);
+					$('.sns_share > a').removeClass('on');
+				}
+			},100); 
+		});
+		$('.sns_list > li:last-child > a').focusout(function(){
+			setTimeout(function(){
+				if($('.sns_list a:focus').length < 1 ){
+					$('.sns_list').slideUp(200);
+					$('.sns_share > a').removeClass('on');
+				}
+			},100); 
+		});
+		  // 사용할 앱의 JavaScript 키를 설정해 주세요.
+		  Kakao.init('8da58c7d3d508745e3bfb2835663ab34');
+		  function sendLink() {
+			var shareImage = '';
+			if(shareImage == '' || shareImage == null){
+				shareImage = '/assets/images/icon/touch/og_image_src.png';
+			}
+			var httpShareImage = '';
+			if(shareImage.indexOf("http://") > -1 || shareImage.indexOf("https://") > -1){
+				httpShareImage = shareImage;
+			} else {
+				httpShareImage = 'http://www.gangnam.go.kr'+shareImage;
+			}
+			Kakao.Link.sendDefault({
+				objectType: 'feed',
+				content: {
+					title: '강남구청 > 함께강남 > 일반계약 > 발주계획',
+					description: '#강남구청 바로 가기 #강남구청 홈페이지로',
+					imageUrl: httpShareImage,
+					link: {
+						mobileWebUrl: window.location.href,
+						webUrl: window.location.href
+					}
+				},
+				buttons: [
+				{
+					title: '상세보기',
+					link: {
+						mobileWebUrl: window.location.href,
+						webUrl: window.location.href
+					}
+				}]
+			});
+		}
+		</script> -->
+									<div class="tab-menu col-xs-12">
+										<div class="tabbable gn-bbs-tab">
+											<ul class="nav nav-tabs">
+												<li class="active"><a
+													href="/gukminview/acontract/generalContractOrdPlan"> 발주계획 </a></li>
+												<li><a href="/gukminview/acontract/generalContractView">
+														계약현황 </a></li>
+											</ul>
+										</div>
+										<div class="mobile-sub-tab-area">
+											<button class="navbar-toggle collapsed"
+												data-toggle="collapse" data-target=".mobile-sub-tab">
+												상세메뉴</button>
+											<div class="tabbable mobile-sub-tab collapse"
+												style="height: 0px;">
+												<ul class="nav navbar-nav">
+													<li class="active"><a
+														href="/gukminview/acontract/generalContractOrdPlan"> 발주계획 </a></li>
+													<li><a
+														href="/gukminview/acontract/generalContractView"> 계약현황
+													</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- end: sub-header -->
+						</div>
+						<!-- start: contents -->
+						<div id="contents-wrap" class="contents col-xs-12">
+							<div class="row">
+								<!-- <link
+									href="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css"
+									rel="stylesheet" media="screen">
+								<script
+									src="/acontract/assets/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+								<script>
+function addDateYYYYMMDD(yy, mm, dd, addday) {
+	var adddate = new Date(yy, mm, dd);
+	adddate.setDate(adddate.getDate() + addday);
+	var y = adddate.getFullYear();
+	var m = adddate.getMonth();
+	var d = adddate.getDate();
+	if ((""+m).length == 1) m = "0" + m;
+	if ((""+d).length == 1) d = "0" + d;
+	return y +"-"+ m +"-"+ d;
+};
+$(document).ready(function(){
+	$('.datepicker').datepicker({
+		format: "yyyy-mm-dd",
+		autoclose: true,
+		todayHighlight: true
+	});
+	// 검색 종료일이 비어있는 경우 현재 날짜 입력
+	var edate = $('#enddate').val();
+	if (typeof edate == "undefined" || edate == "") {
+		var date = new Date(); 
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		var day = date.getDate();
+		if ((""+month).length == 1) month = "0" + month;
+		if ((""+day).length == 1) day = "0" + day;
+		$('#enddate').val(year +"-"+ month +"-"+ day);
+	}
+	// 검색 시작일이 비어있는 경우 검색 종료일에서 60일 전 입력
+	var sdate = $('#startdate').val();
+	if (typeof sdate == "undefined" || sdate == "") {
+		var splitdate = ($('#enddate').val()).split("-");
+		$('#startdate').val(addDateYYYYMMDD(splitdate[0], splitdate[1], splitdate[2], -60));
+	}
+});	
+</script> -->
+								<div class="normal board list clear-b">
+									<div class="col-xs-12">
+										<div class="row">
+											<div class="col-xs-12">
+												<div class="board-search-wrap clear-b">
+													<form id="listForm"
+														action="#" method="POST">
+														<input type="hidden" name="mid" value="FM041201">
+														<input type="hidden" name="pgno" value="1">
+														<div class="pull-left">
+															<div class="pull-left mt5">
+																<label for="work_scope">범위</label> <select style="background-color: white !important; height: 35px; width: 60px"
+																	id="work_scope" name="work_scope">
+																	<option value="Frgcpt">외자</option>
+																	<option value="Servc">용역</option>
+																	<option value="Cnstwk">공사</option>
+																	<option value="Thng" selected="selected">물품</option>
+																</select> <label for="startdate">시작일</label> <input type="text" style="height: 33px; width: 200px"
+																	name="startdate" id="startdate" value=""
+																	class="datepicker" />&nbsp;-&nbsp; <label
+																	for="enddate">종료일</label> <input type="text" style="height: 33px; width: 200px"
+																	name="enddate" id="enddate" value="" class="datepicker" />
+																<button type="button" class="btn btn-darkblue">검색</button>
+																<a href="#"
+																	class="btn btn-gray">초기화</a>
+															</div>
+														</div>
+													</form>
+												</div>
+												<table class="table table-hover">
+													<caption></caption>
+													<colgroup>
+														<col style="width: 7%">
+														<col style="width: 10%">
+														<col style="width: 7%">
+														<col style="width: 7%">
+														<col style="width: auto">
+														<col style="width: 12%">
+														<col style="width: 9%">
+														<col style="width: 5%">
+														<col style="width: 13%">
+													</colgroup>
+													<thead>
+														<tr>
+															<th scope="col">업무</th>
+															<th scope="col" colspan="3">발주기관</th>
+															<th scope="col" style="vertical-align: middle;">게시일시</th>
+															<th scope="col" rowspan="2"
+																style="vertical-align: middle;">세부품명번호</th>
+															<th scope="col" colspan="3">구매계획</th>
+														</tr>
+														<tr>
+															<th scope="col">유형</th>
+															<th scope="col">발주시기</th>
+															<th scope="col">조달방식</th>
+															<th scope="col">계약방법</th>
+															<th scope="col">사업명</th>
+															<th scope="col">수량정보</th>
+															<th scope="col">단위</th>
+															<th scope="col">구매예정금액</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td colspan="11"
+																style="height: 30pt; text-align: center;">검색/등록된
+																정보가 없습니다.</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12 text-center">
+												<ul class="pagination">
+													<li><a href="#"
+														onclick="selectPage_func(1); return false;"><i
+															class="fa fa-angle-double-left"></i><span class="sr-only">맨
+																처음으로</span></a></li>
+													<li><a href="#"
+														onclick="selectPage_func(1); return false;"><i
+															class="fa fa-angle-left"></i><span class="sr-only">이전</span></a></li>
+													<li class="paginate_button active"><a href="#"
+														class="on">1</a></li>
+													<li><a href="#"
+														onclick="selectPage_func(1); return false;"><i
+															class="fa fa-angle-right"></i><span class="sr-only">다음</span></a></li>
+													<li><a href="#"
+														onclick="selectPage_func(1); return false;"><i
+															class="fa fa-angle-double-right"></i><span
+															class="sr-only">맨 뒤로</span></a></li>
+												</ul>
+												<!-- <script>
+						$(document).ready(function(){
+							var on_page =  $('.pagination li a.on');
+							if($('.pagination li a').hasClass('on')){
+								$(on_page).attr('title','현재페이지')
+							}
+						});
+					</script> -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- end: row -->
+						</div>
+						<!-- end: contents -->
+						<!-- start: contents_admin -->
+						
+						<!-- end: contents_admin -->
+					</div>
+					<!-- right-wrap -->
+	
+
+		
+
+					</div>
+					<!-- end: row -->
+				</div>
+				<!-- end: container -->
+			</div> 
+
+
+
+</section>
+</th:block>
+

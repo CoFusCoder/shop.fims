@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+/* 20170419 선거D-DAY */
+.vote-dday {position:relative;top:0;right:0;z-index:-999;margin-top:85px}
+.vote-dday>div>.inner {position:absolute;top:10px;right:0;background-color:#301878;padding:10px 15px 0 15px;border-radius:5px;background-image:url(http://www.gangnam.go.kr/assets/images/main/popup/vote-area-bg.png);background-repeat:no-repeat;background-position:102px 38px}
+.vote-dday>div>.inner p {margin-bottom:0}
+.vote-dday>div>.inner .top-txt {font-size:13px;font-weight:600;color:#fff}
+.vote-dday>div>.inner .d-day-txt {font-family:"Nanum Square";font-size:35px;color:#ffeb3b;font-weight:600}
+
+
+/* 20170814 이재민대피소 */
+.victimShelterarea {position:absolute;top:0;left:0;right:0;z-index:10;margin-top:85px}
+.victimShelterarea>div.container{position:relative;}
+.victimShelterarea>div>.inner {position:absolute;top:15px;right:0;background-color:rgba(233, 30, 99, 0.85);padding:4px 12px;border-radius:3px;text-align:center}
+.victimShelterarea>div>.inner a {color:#fff;font-size:14px;font-weight:600}
+.victimShelterarea>div>.inner a p {margin-bottom:0}
+.victimShelterarea>div>.inner a p>i {font-weight:400;font-size:14px}
+.victimShelterarea>div>.inner02 {position:absolute;top:15px;left:140px;background-color:rgba(103, 58, 183, 0.85);padding:3px 10px;border-radius:3px;text-align:center}
+.victimShelterarea>div>.inner02 a {color:#fff;font-size:13px}
+/* 20180724 무더위쉼터 추가 */
+.victimShelterarea>div>.inner04 {position:absolute;top:15px;right:220px;background-color:rgba(81, 64, 173, 0.85);padding:4px 10px;border-radius:3px;text-align:center}
+.victimShelterarea>div>.inner04 a {color:#fff;font-size:14px;font-weight:600}
+
+/* 20171208 빠른정보찾기 추가 */
+.victimShelterarea>div>.inner03 {position:absolute;top:15px;right:84px;background-color:rgba(246, 127, 0, 0.85);padding:4px 12px;border-radius:3px;text-align:center}
+.victimShelterarea>div>.inner03 a {color:#fff;font-size:14px;font-weight:600}
+.victimShelterarea>div>.inner03 a p {margin-bottom:0}
+.victimShelterarea>div>.inner03 a p>i {font-weight:400;font-size:14px}
+.victimShelterarea>div>.inner03 a {color:#fff;font-size:14px}
+
+/* 20180906 2018강남페스티벌 D-DAY 추가 */
+.inner-gnfes-dday {position:absolute;top:5px;left:0;padding:4px 12px;border-radius:3px;text-align:center}
+.inner-gnfes-dday>p {font-family:"Nanum Square";font-weight:700;font-size:40px;color:#fff}
+
+
+@media screen and (max-width: 991px) {
+	.voters_popup {display:block;top:60px}
+	.victimShelterarea {display:none}
+}
+
+@media screen and (max-width: 767px) {
+	.voters_popup {top:50px}
+}
+
+@media screen and (max-width: 490px) {
+	.voters_popup .popup-box {width:100%}
+}
