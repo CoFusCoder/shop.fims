@@ -1,7 +1,10 @@
 package shop.fims.gukmin.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -40,7 +43,14 @@ public class GMemberController {
 	
 	//국민화면 로그인하기
 	@PostMapping("/gukminview/gukminMainView")
-	public String login(Member member, HttpSession session, Model model) {
+	public String login(Member member, HttpSession session, Model model, HttpServletResponse response) throws IOException {
+		
+		//alert 메세지 창 띄우기
+		response.setContentType("text/html; charset=UTF-8");
+		 
+		PrintWriter out = response.getWriter();
+		
+		
 		//입력된 아이디 비밀번호
 		System.out.println(member.toString() + "<--입력된 정보");
 		log.error(member.toString());
@@ -48,11 +58,28 @@ public class GMemberController {
 		String result 		= (String) map.get("result"); 
 		Member loginMember 	= (Member) map.get("loginMember");
 		
-		//로그인 실패 화면 login
-		if(!result.equals("로그인 성공")) {
-			model.addAttribute("result", result);
-			return "/gukminview/login/loginForm";
+		System.out.println( map + "<--map 변수 login 메서드 GMemberController.java ");
+		System.out.println( result + "<--result 변수 login 메서드 GMemberController.java ");
+		System.out.println( loginMember + "<--loginMember 변수 login 메서드 GMemberController.java ");
+		
+		
+		//alert 메세지 창 띄우기
+		if(result.equals("등록된 아이디의 정보가 없습니다.")) {
+			System.out.println( result + "<--result 변수 login 메서드 GMemberController.java ");
+			out.println("<script>alert('등록된 아이디의 정보가 없습니다.'); location.href='/gukminview/login/loginForm';</script>");
+			out.flush();
+		}else if(result.equals("비밀번호가 일치하지 않습니다.")) {
+			System.out.println( result + "<--result 변수 login 메서드 GMemberController.java ");
+			out.println("<script>alert('비밀번호가 일치하지 않습니다.'); location.href='/gukminview/login/loginForm';</script>");
+			out.flush();
 		}
+		
+		
+		//로그인 실패 화면 login
+		/*
+		 * if(!result.equals("로그인 성공")) { model.addAttribute("result", result); return
+		 * "/gukminview/login/loginForm"; }
+		 */
 		session.setAttribute("SID"		, loginMember.getLoginCd());
 		session.setAttribute("SLEVEL"	, loginMember.getMemLevNm());
 		session.setAttribute("SNAME"	, loginMember.getMemNm());
