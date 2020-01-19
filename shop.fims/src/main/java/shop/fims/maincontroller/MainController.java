@@ -22,6 +22,12 @@ public class MainController {
 	 * @return gukminview/index
 	 */
 	@GetMapping("/")
+	public String portfolio() {
+		System.out.println("---포트폴리오화면 : portfolio 메서드 MainController.java-------");
+		return "/portfolio/index";
+	}
+	
+	@GetMapping("/main")
 	public String gukminmainview() {
 		System.out.println("---국민 메인화면 : gukminmainview 메서드 MainController.java-------");
 		return "/gukminview/index";
