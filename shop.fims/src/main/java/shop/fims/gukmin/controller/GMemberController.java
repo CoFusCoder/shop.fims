@@ -159,29 +159,11 @@ public class GMemberController {
 		return "/gukminview/member/memberRegisterForm";
 	}
 	
-	/*
-	 * @GetMapping("/addMember") public String addMember() { return
-	 * "/member/mInsert/addMember"; }
-	 */
 	
-	/*
-	 * @PostMapping("/addMember") 
-	 * public String addMember(Member member, Model
-	 * model) { 
-	 * System.out.println(member); Member memberCheck =
-	 * memberService.getMemberById(member.getMemberId());
-	 * 
-	 * if(memberCheck != null) { model.addAttribute("result", "동일한 아이디가 존재합니다.");
-	 * return "/member/mInsert/addMember"; }
-	 * 
-	 * memberService.addMember(member);
-	 * 
-	 * return "redirect:/memberList"; }
-	 */
-	
-	
+	//국민회원가입
 	@PostMapping("/gukminview/member/memberRegisterForm")
 	public String addMember(GMember member, Login login, Model model) {
+		
 		System.out.println(member + "<--member 변수 addMember 메서드 GMemberController.java");
 		System.out.println(login + "<--login 변수 addMember 메서드 GMemberController.java");
 		System.out.println(model + "<--model 변수 addMember 메서드 GMemberController.java");
@@ -206,8 +188,11 @@ public class GMemberController {
 		GMember memberCheck = gmemberService.getMemberById(member.getLoginCd());
 		System.out.println(memberCheck +"<--memberCheck 변수 addMember메서드 GMemberController.Java");
 		
+		
+		model.addAttribute("result", "Result");
+		
 		if(memberCheck != null) {
-			model.addAttribute("result", "동일한 아이디가 존재합니다.");
+			 model.addAttribute("result", "동일한 아이디가 존재합니다."); 
 			return "gukminview/member/memberRegisterForm";
 		}
 		
@@ -217,22 +202,6 @@ public class GMemberController {
 		return "redirect:/gukminview/login/loginForm";
 	}
 	
-	/*
-	 * @PostMapping("/gukminview/member/memberRegisterForm") public String
-	 * addLogin(Login login, Model model) { System.out.println(login); GMember
-	 * memberCheck = gmemberService.getMemberById(login.getLoginCd());
-	 * System.out.println(memberCheck
-	 * +"<--memberCheck 변수 addMember메서드 GMemberController.Java");
-	 * 
-	 * if(memberCheck != null) { model.addAttribute("result", "동일한 아이디가 존재합니다.");
-	 * return "gukminview/member/memberRegisterForm"; }
-	 * 
-	 * gmemberService.addLogin(login);
-	 * 
-	 * return "redirect:/admin/main"; }
-	 */
-	
-		
 	/**
 	 * @param 없음
 	 * @file MemberController.java

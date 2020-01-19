@@ -5,7 +5,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 
 <th:block layout:fragment="gukminMainContents">
 
-<form id="registerform" name="registerform" action="/gukminview/member/memberRegisterForm" method="post">
+<form id="registerform" name="registerform" th:action="@{/gukminview/member/memberRegisterForm}" method="post">
 	<input type="hidden" name="membertype" value="1" id="membertype"/>
 	<input type="hidden" name="hosttype" value="1" id="hosttype"/>
 	<input type="hidden" name="MemCd">
@@ -24,7 +24,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<li class="indi"><a href="javascript:void(0)"
 							onclick="javascript:$('#membertype').val('1');" class="on">개인</a></li>
 						<li class="host"><a href="javascript:void(0)"
-							onclick="javascript:$('#membertype').val('2');">기업</a></li>
+							onclick="javascript:$('#membertype').val('2'); alert('구현중입니다.')">기업</a></li>
 					</ul>
 				</div>
 				<div class="fr">
@@ -39,7 +39,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>이름</th>
 								<td>
 									<div class="form">
-										<input type="text" id="MemNm" name="MemNm"
+										<input type="text" id="GMemNm" name="MemNm"
 											class="inp" placeholder="이름" />
 									</div>
 								</td>
@@ -48,9 +48,9 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>아이디</th>
 								<td>
 									<div class="form">
-										<input type="text" class="inp echeck" 
+										<input type="text" class="inp echeck" id="GLoginCd"
 											name="LoginCd" placeholder="아이디" /> <button
-											type="button"
+											type="button" id="idcheck"
 											class="btnEtc02">중복확인</button>
 									</div>
 								</td>
@@ -59,7 +59,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>비밀번호</th>
 								<td>
 									<div class="form">
-										<input type="password" id="memberpassword"
+										<input type="password" id="GLoginPw"
 											name="LoginPw" class="inp"
 											placeholder="비밀번호를 입력해주세요" />
 									</div>
@@ -69,7 +69,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>비밀번호 확인</th>
 								<td>
 									<div class="form">
-										<input type="password" id="memberrepassword"
+										<input type="password" id="GLoginPwCheck"
 											class="inp"
 											placeholder="비밀번호를 한번 더 입력해 주세요." />
 									</div>
@@ -79,8 +79,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>전화번호</th>
 								<td>
 									<div class="form">
-										<select class="select w60" id="membercontact01"
-											name="PhoneFirst">
+										<select class="select w60" id="PhoneFirst"
+											name="GPhoneFirst">
 											<option value="">선택</option>
 											<option value="010">010</option>
 											<option value="011">011</option>
@@ -89,9 +89,9 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 											<option value="019">019</option>
 										</select> <span class="etxt">-</span> 
 										<input type="text"
-											id="membercontact02" name="PhoneMiddle" class="inp w60" />
+											id="GPhoneMiddle" name="PhoneMiddle" class="inp w60" />
 										<span class="etxt">-</span> <input type="text"
-											id="membercontact03" name="PhoneLast" class="inp w60" />
+											id="GPhoneLast" name="PhoneLast" class="inp w60" />
 									</div>
 								</td>
 							</tr>
@@ -99,7 +99,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>주소</th>
 								<td>
 								<div class="form">
-									<input type="text" id="roadaddress" name="MemAddr"	class="inp echeck" />
+									<input type="text" id="GMemAddr" name="MemAddr"	class="inp echeck" />
 										<a href="javascript:void(0)" id="addresssearchbutton"
 										onclick="address_execDaumPostcode()" class="btnEtc02">주소찾기</a>
 								</div>
@@ -110,7 +110,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>이메일</th>
 								<td>
 									<div class="form">
-										<input type="email" id="mem_email" name="MemEmail"
+										<input type="email" id="GMemEmail" name="MemEmail"
 											class="inp" placeholder="이메일" />
 									</div>
 								</td>
@@ -120,9 +120,9 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<td>
 									<div class="form">
 									<input type="text"
-											id="membercontact02" name="BirthYear" class="inp w60" placeholder="년(4자)" maxlength="4"/>
+											id="GBirthYear" name="BirthYear" class="inp w60" placeholder="년(4자)" maxlength="4"/>
 									<span class="etxt">-</span>		
-										<select class="select w60" id="membercontact01" name="BirthMonth"
+										<select class="select w60" id="GBirthMonth" name="BirthMonth"
 											>
 											<option value="">월</option>
 											<option value="01">01</option>
@@ -141,7 +141,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 										<span class="etxt"></span> 
 										<span class="etxt">-</span> 
 										<input type="text" name="BirthDay"
-											id="membercontact03" class="inp w60" placeholder="일" maxlength="2"/>
+											id="GBirthDay" class="inp w60" placeholder="일" maxlength="2"/>
 									</div>
 								</td>
 							</tr>							
@@ -293,7 +293,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			</dl>
 
 			<div class="boardBtnBox">
-				<button type="submit" class="btnType03">동의하고
+				<button type="submit" class="btnType03" id="GmemberBtn">동의하고
 					가입완료</button>
 			</div>
 
@@ -301,158 +301,143 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	</section>
 </form>
 
+<!-- 아이디 중복체크 확인중  -->
+<!-- <script th:inline="javascript">
+/*<![CDATA[*/
 
-
-
-<div class="dialog" style="display: none; z-index: 1000;"
-	id="registercompletedialog">
-	<div class="popBox">
-		<div class="popHeader">
-			<h1>회원가입</h1>
-			<a href="javascript:void(0)" onclick="location.href='MyPage.festa'"><img
-				src="https://joyfesta.kr/include/img/ico/ico_close02.png" /></a>
-		</div>
-		<div class="popCont">
-			<p class="signTxt01">입력하신 이메일주소로 회원가입 인증메일을 발송했습니다.</p>
-			<p class="signTxt02">
-				인증메일 확인 후 회원가입을 완료해 주세요.<br />
-			</p>
-			<div class="btnBox">
-				<a href="javascript:void(0)"
-					onclick="location.href='LoginForm.festa'" class="btnType02">확인</a>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- <script>
-	function checkID(membertype) {
-		var email = '';
-		if (membertype == 1) {
-			email = $('#memberemail').val();
-		} else {
-			email = $('#hostemail').val();
-		}
-
-		resetCommonDialog();
-		indicatorOn();
-
-		$.ajax({
-			url : 'JSONMemberMailCheck.festa',
-			type : 'POST',
-			data : {
-				email : email
-			},
-			dataType : 'json',
-			success : function(data, textStatus, jqXHR) {
-				indicatorOff();
-				if (data.resultcode == 0) {
-					$('#dialogtitle').append('아이디중복확인');
-					$('#dialogcontent').append('사용가능한 메일입니다.');
-					//$('#dialogcontent').append('사용할 수 있는 아이디(이메일)입니다.');
-					$('#commondialog').show();
-				} else {
-					$('#dialogtitle').append('아이디중복확인');
-					$('#dialogcontent').append(data.resultmessage);
-					$('#commondialog').show();
-				}
-			},
-			error : function(jqXHR, textStatus, errorThrown) {
-				indicatorOff();
-				$('#dialogtitle').append('아이디중복확인');
-				$('#dialogcontent').append(textStatus);
-				$('#commondialog').show();
-			}
-		});
-	}
-
-	$('#registerbutton').click(
-			function() {
-				resetCommonDialog();
-
-				if ($('#chk_agree01').is(':checked') == false
-						|| $('#chk_agree03').is(':checked') == false
-						|| $('#chk_agree05').is(':checked') == false) {
-
-					$('#dialogtitle').append('회원가입');
-					$('#dialogcontent').append('필수사항 항목에 동의해 주세요.');
-					$('#commondialog').show();
-				} else {
-					indicatorOn();
-
-					var email = '';
-					var password = '';
-					var repassword = '';
-					var contact = '';
-					if ($('#membertype').val() == '1') {
-						email = $('#memberemail').val();
-						password = $('#memberpassword').val();
-						repassword = $('#memberrepassword').val();
-						contact = $('#membercontact01').val() + '-'
-								+ $('#membercontact02').val() + '-'
-								+ $('#membercontact03').val();
-					} else if ($('#membertype').val() == '2') {
-						email = $('#hostemail').val();
-						password = $('#hostpassword').val();
-						repassword = $('#hostrepassword').val();
-					} else {
-					}
-
-					var adinforeceiveflag = 'N';
-					if ($('#chk_agree02').is(':checked')) {
-						adinforeceiveflag = 'Y';
-					}
-					var accountactiveflag = 'N';
-					if ($('#chk_agree04').is(':checked')) {
-						accountactiveflag = 'Y';
-					}
-
-					$.ajax({
-						url : 'JSONMemberRegister.festa',
-						type : 'POST',
-						data : {
-							membertype : $('#membertype').val(),
-							email : email,
-							password : password,
-							repassword : repassword,
-							adinforeceiveflag : adinforeceiveflag,
-							accountactiveflag : accountactiveflag,
-							membername : $('#membername').val(),
-							contact : contact,
-							hosttype : $('#hosttype').val(),
-							hostform : $('#hostform').val(),
-							hostname : $('#hostname').val(),
-							managername : $('#managername').val(),
-							manageremail : $('#manageremail').val(),
-							managercontact : $('#managercontact01').val() + '-'
-									+ $('#managercontact02').val() + '-'
-									+ $('#managercontact03').val()
-						},
-						dataType : 'json',
-						success : function(data, textStatus, jqXHR) {
-							indicatorOff();
-							if (data.resultcode == 0) {
-
-								$('#registercompletedialog').show();
-							} else {
-								$('#dialogtitle').append('회원가입');
-								$('#dialogcontent').append(data.resultmessage);
-								$('#commondialog').show();
-							}
-						},
-						error : function(jqXHR, textStatus, errorThrown) {
-							indicatorOff();
-							$('#dialogtitle').append('회원가입');
-							$('#dialogcontent').append(textStatus);
-							$('#commondialog').show();
-						}
-					});
-				}
-			});
-
+$(document).ready(function(){
 	
+	$('#idcheck').click(function (){
+		
+		var idCheck =  /*[[ ${result} ]]*/
+		var id = $('#GLoginCd');
+		
+		if(id.val == "" && idCheck = ""){
+			alert('아이디를 입력해주세요')
+			id.focus();
+			return false;	
+			
+		}else if(id.val != ""){
+			
+			}else if(idCheck != null){
+				alert('동일한 아이디가 존재합니다.')
+				id.focus();
+				return false;
+			}
+			
+		}
+		
+	});
+	
+	
+});
+
+/*]]>*/
+
 </script> -->
 
+
+<!-- 회원가입 유효성 검사 -->
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	$(document).ready(function() {
+		
+		$('#GmemberBtn').click(function () {
+				
+			//회원가입 기본정보 입력
+			var idCheck =  /*[[ ${result} ]]*/
+			var name = $('#GMemNm');
+			var id = $('#GLoginCd');
+			var pw = $('#GLoginPw');
+			var pwcheck = $('#GLoginPwCheck');
+			var phone1 = $('#GPhoneFirst');
+			var phone2 = $('#GPhoneMiddle');
+			var phone3 = $('#GPhoneLast');
+			var addr = $('#GMemAddr');
+			var email = $('#GMemEmail');
+			var birth1 = $('#GBirthYear');
+			var birth2 = $('#GBirthMonth');
+			var birth3 = $('#GBirthDay');
+			
+			//회원가입 동의
+			//$("input:checkbox[name=complete_yn]").is(":checked") == true
+
+			var chkAgree01 = $('input:checkbox[id="chk_agree01"]');
+			var chkAgree02 = $('input:checkbox[id="chk_agree02"]');
+			var chkAgree03 = $('input:checkbox[id="chk_agree03"]');
+			
+			if(name.val() == ""){
+				alert('이름을 입력해주세요')
+				name.focus();
+				return false;
+			}else if(id.val() == ""){
+				alert('아이디를 입력해주세요')
+				id.focus();
+				return false;
+			}else if(pw.val() == ""){
+				alert('비밀번호를 입력해주세요')
+				pw.focus();
+				return false;
+			}else if(pwcheck.val() != pw.val()){
+				alert('비밀번호를 다시 확인해주세요.')
+				pwcheck.focus();
+				return false;
+			}else if(phone1.val() == ""){
+				alert('핸드폰 번호 앞번호를 입력해주세요.')
+				phone1.focus();
+				return false;
+			}else if(phone2.val() == ""){
+				alert('핸드폰 번호 중간번호를 입력해주세요.')
+				phone2.focus();
+				return false;
+			}else if(phone3.val() == ""){
+				alert('핸드폰 번호 마지막번호를 입력해주세요.')
+				phone3.focus();
+				return false;
+			}else if(addr.val() == ""){
+				alert('주소를 입력해주세요.')
+				addr.focus();
+				return false;
+			}else if(email.val() == ""){
+				alert('이메일을 입력해주세요')
+				email.focus();
+				return false;
+			}else if(birth1.val() == ""){
+				alert('생년월일 년도를 입력해주세요')
+				birth1.focus();
+				return false;
+			}else if(birth2.val() == ""){
+				alert('생년월일 월을 입력해주세요')
+				birth2.focus();
+				return false;
+			}else if(birth3.val() == ""){
+				alert('생년월일 일자를 입력해주세요')
+				birth3.focus();
+				return false;
+			}else if(chkAgree01.is(":checked") == false){
+				alert('필수 이용약관을 선택해주세요')
+				birth3.focus();
+				return false;
+			}else if(chkAgree02.is(":checked") == false){
+				alert('서비스 동의 약관을 선택해주세요.')
+				birth3.focus();
+				return false;
+			}else if(chkAgree03.is(":checked") == false){
+				alert('개인정보 수집을 선택해주세요.')
+				birth3.focus();
+				return false;
+			}
+			
+			
+		});
+				
+		
+	});
+	/*]]>*/
+
+</script>
+
+<!-- 다움 우편번호 서비스 API -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 function address_execDaumPostcode() {
@@ -489,8 +474,7 @@ function address_execDaumPostcode() {
 
 					// 우편번호와 주소 정보를 해당 필드에 넣는다.
 					//document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
-					document
-							.getElementById('roadaddress').value = fullRoadAddr;
+					document.getElementById('GMemAddr').value = fullRoadAddr;
 
 					//autoLocation(fullRoadAddr);
 				}

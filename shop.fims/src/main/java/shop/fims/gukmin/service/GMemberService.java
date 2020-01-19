@@ -57,25 +57,8 @@ public class GMemberService {
 		return gmemberMapper.getMemberById(memberId);
 	}
 	
-	//회원가입
+	//국민 회원가입
 	public int addMember(GMember member) {
-		
-		//String birthyear = member.getBirthYear();
-		//String birthmonth = member.getBirthMonth();
-		//String birthday = member.getBirthDay();
-		
-		//String membirth = birthyear + "-" + birthmonth + "-" + birthday ;
-		
-		//member.setBirthDay(membirth);
-		
-		//String phonefirst =  member.getPhoneFirst();
-		//String phonemiddle = member.getPhoneMiddle();
-		//String phonelast = member.getPhoneLast();
-		
-		//String memphone = phonefirst + "-" + phonemiddle + "-" + phonelast;
-		
-		//member.setMemPhone(memphone);
-		
 		
 		System.out.println(member + "<--member 변수 addMember 메서드 GMemberService.java----");
 		int result = gmemberMapper.addMember(member);
@@ -83,7 +66,7 @@ public class GMemberService {
 		return result;
 	}
 	
-	//회원가입
+	//국민 회원가입
 	public int addLogin(Login login) {
 		System.out.println(login + "<--login 변수 addMember 메서드 GMemberService.java----");
 		int result = gmemberMapper.addLogin(login);
