@@ -1,0 +1,1641 @@
+-- --------------------------------------------------------
+-- 호스트:                          dusthgks.cafe24.com
+-- 서버 버전:                        10.1.13-MariaDB - MariaDB Server
+-- 서버 OS:                        Linux
+-- HeidiSQL 버전:                  10.1.0.5464
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- 테이블 dusthgks.Account_Member 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Account_Member` (
+  `acc_mem_cd` varchar(50) NOT NULL COMMENT '하나의 거래처별 소속 회원코드',
+  `mem_cd` varchar(20) DEFAULT NULL COMMENT '회원코드',
+  `mem_lev_cd` varchar(20) DEFAULT NULL COMMENT '모든 회원 레벨코드',
+  `cat_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처코드',
+  `catbus_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처 업종 분류코드',
+  `catapp_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처별 승인 업종 코드',
+  `cat_acc_nm1` varchar(50) DEFAULT NULL COMMENT '거래처명',
+  `catbus_acc_bus` varchar(50) DEFAULT NULL COMMENT '거래처업종분류',
+  `acc_mem_nm` varchar(50) DEFAULT NULL COMMENT '거래처 소속 회원이름',
+  `acc_mem_addr` varchar(50) DEFAULT NULL COMMENT '주소',
+  `acc_mem_phone` varchar(50) DEFAULT NULL COMMENT '전화번호',
+  `acc_mem_email` varchar(50) DEFAULT NULL COMMENT '이메일',
+  `acc_mem_dt1` date DEFAULT NULL COMMENT '생년월일',
+  `acc_mem_dt2` date DEFAULT NULL COMMENT '가입일자',
+  PRIMARY KEY (`acc_mem_cd`),
+  KEY `FK_09_Cat_Business_Account_TO_12_Account_Member` (`catbus_acc_cd`),
+  KEY `FK_07_Member_TO_12_Account_Member` (`mem_cd`),
+  KEY `FK_06_Member_Lev_TO_12_Account_Member` (`mem_lev_cd`),
+  KEY `FK_10_Cat_Account_TO_12_Account_Member` (`cat_acc_cd`),
+  KEY `FK_11_Cat_Approval_Account_TO_12_Account_Member` (`catapp_acc_cd`),
+  CONSTRAINT `FK_06_Member_Lev_TO_12_Account_Member` FOREIGN KEY (`mem_lev_cd`) REFERENCES `Member_Lev` (`mem_lev_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_07_Member_TO_12_Account_Member` FOREIGN KEY (`mem_cd`) REFERENCES `Member` (`mem_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_09_Cat_Business_Account_TO_12_Account_Member` FOREIGN KEY (`catbus_acc_cd`) REFERENCES `Cat_Business_Account` (`catbus_acc_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_10_Cat_Account_TO_12_Account_Member` FOREIGN KEY (`cat_acc_cd`) REFERENCES `Cat_Account` (`cat_acc_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_11_Cat_Approval_Account_TO_12_Account_Member` FOREIGN KEY (`catapp_acc_cd`) REFERENCES `Cat_Approval_Account` (`catapp_acc_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='하나의 거래처별 소속 회원관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Acc_sub_Man 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Acc_sub_Man` (
+  `accsub_man_cd` varchar(50) NOT NULL COMMENT '모든계정과목코드',
+  `accsub_lar_cd` varchar(50) DEFAULT NULL COMMENT '대분류코드',
+  `accsub_med_cd` varchar(50) DEFAULT NULL COMMENT '중분류코드',
+  `accsub_large_nm` varchar(50) DEFAULT NULL COMMENT '대분류명',
+  `accsub_medium_nm` varchar(50) DEFAULT NULL COMMENT '중분류명',
+  `budget_cla` varchar(50) DEFAULT NULL COMMENT '예산구분',
+  `accsub_nm` varchar(50) DEFAULT NULL COMMENT '모든계정과목명',
+  PRIMARY KEY (`accsub_man_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 계정과목관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Admin_Depart 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Admin_Depart` (
+  `admin_dep_cd` varchar(50) NOT NULL COMMENT '모든 행정기관 부서코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `admin_dep_belong` varchar(50) DEFAULT NULL COMMENT '실국명',
+  `admin_dep_nm` varchar(50) DEFAULT NULL COMMENT '부서명',
+  PRIMARY KEY (`admin_dep_cd`),
+  KEY `FK_03_Area_City_Admin_TO_04_Admin_Depart` (`areacity_admin_cd`),
+  CONSTRAINT `FK_03_Area_City_Admin_TO_04_Admin_Depart` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 행정기관 부서관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Admin_Depart_Employ 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Admin_Depart_Employ` (
+  `admindep_emp_cd` varchar(50) NOT NULL COMMENT '모든 행정기관 부서별 직원 관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `admin_dep_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관 부서코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `admindep_emp_nm` varchar(50) DEFAULT NULL COMMENT '성명',
+  `admindep_emp_position` varchar(50) DEFAULT NULL COMMENT '직위',
+  `admindep_emp_phone` varchar(50) DEFAULT NULL COMMENT '전화번호',
+  `admindep_emp_tesk` varchar(100) DEFAULT NULL COMMENT '업무',
+  PRIMARY KEY (`admindep_emp_cd`),
+  KEY `FK_04_Admin_Depart_TO_05_Admin_Depart_Employ` (`admin_dep_cd`),
+  KEY `FK_03_Area_City_Admin_TO_05_Admin_Depart_Employ` (`areacity_admin_cd`),
+  KEY `FK_02_Area_City_TO_05_Admin_Depart_Employ` (`area_city_cd`),
+  KEY `FK_01_Area_TO_05_Admin_Depart_Employ` (`area_cd`),
+  CONSTRAINT `FK_01_Area_TO_05_Admin_Depart_Employ` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_05_Admin_Depart_Employ` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_05_Admin_Depart_Employ` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_04_Admin_Depart_TO_05_Admin_Depart_Employ` FOREIGN KEY (`admin_dep_cd`) REFERENCES `Admin_Depart` (`admin_dep_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 행정기관 부서별 직원관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Area 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Area` (
+  `area_cd` varchar(50) NOT NULL COMMENT '전국지역코드',
+  `area_nm` varchar(50) DEFAULT NULL COMMENT '지역명',
+  PRIMARY KEY (`area_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='전국 지역관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Area_City 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Area_City` (
+  `area_city_cd` varchar(50) NOT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_nm` varchar(50) DEFAULT NULL COMMENT '시군명',
+  PRIMARY KEY (`area_city_cd`),
+  KEY `FK_01_Area_TO_02_Area_City` (`area_cd`),
+  CONSTRAINT `FK_01_Area_TO_02_Area_City` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 지역 시군관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Area_City_Admin 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Area_City_Admin` (
+  `areacity_admin_cd` varchar(50) NOT NULL COMMENT '모든 행정기관코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `areacity_admin_nm` varchar(50) DEFAULT NULL COMMENT '행정기관명',
+  PRIMARY KEY (`areacity_admin_cd`),
+  KEY `FK_02_Area_City_TO_03_Area_City_Admin` (`area_city_cd`),
+  KEY `FK_01_Area_TO_03_Area_City_Admin2` (`area_cd`),
+  CONSTRAINT `FK_01_Area_TO_03_Area_City_Admin2` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 행정기관관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Attach_Files 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Attach_Files` (
+  `file_cd` varchar(10) NOT NULL COMMENT '첨부파일코드',
+  `festpr_pro_cd` varchar(50) DEFAULT NULL COMMENT '홍보상세코드',
+  `file_nm` varchar(50) DEFAULT NULL COMMENT '첨부파일명',
+  `file_size` varchar(50) DEFAULT NULL COMMENT '첨부파일크기',
+  `file_writer` varchar(20) DEFAULT NULL COMMENT '첨부파일작성자',
+  `file_insertdt` date DEFAULT NULL COMMENT '첨부파일작성일',
+  PRIMARY KEY (`file_cd`),
+  KEY `festpr_pro_cd` (`festpr_pro_cd`),
+  CONSTRAINT `FK_Attach_Files_Fest_PR_Promotion` FOREIGN KEY (`festpr_pro_cd`) REFERENCES `Fest_PR_Promotion` (`festpr_pro_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='첨부파일';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Board 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Board` (
+  `board_cd` varchar(50) NOT NULL COMMENT '게시판코드',
+  `board_pw` varchar(50) DEFAULT NULL COMMENT '게시판비밀번호',
+  `board_title` varchar(100) DEFAULT NULL COMMENT '제목',
+  `board_content` varchar(5000) DEFAULT NULL COMMENT '내용',
+  `board_writer` varchar(50) DEFAULT NULL COMMENT '작성자',
+  `board_dt` date DEFAULT NULL COMMENT '작성일',
+  `board_num` int(11) DEFAULT NULL COMMENT '게시글번호',
+  PRIMARY KEY (`board_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='게시판';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Booth_App 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Booth_App` (
+  `boo_app_cd` varchar(50) NOT NULL COMMENT '부스 참가신청서관리',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `fes_ann_cd` varchar(50) DEFAULT NULL COMMENT '모든축제공고코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `boo_app_nm1` varchar(50) DEFAULT NULL COMMENT '부스명',
+  `boo_app_nm2` varchar(50) DEFAULT NULL COMMENT '신청자',
+  `boo_app_phone` varchar(50) DEFAULT NULL COMMENT '신청자연락처',
+  `boo_app_email` varchar(50) DEFAULT NULL COMMENT '신청자메일주소',
+  `boo_app_pur` varchar(50) DEFAULT NULL COMMENT '운영목적',
+  `boo_app_plan` varchar(250) DEFAULT NULL COMMENT '운영계획',
+  `boo_app_dt1` date DEFAULT NULL COMMENT '참가시작희망일',
+  `boo_app_dt2` date DEFAULT NULL COMMENT '참가종료희망일',
+  `boo_app_att` blob COMMENT '참가인원리스트(첨부)',
+  `boo_app_booth` varchar(50) DEFAULT NULL COMMENT '신청부스개수',
+  `boo_app_table` varchar(50) DEFAULT NULL COMMENT '테이블개수',
+  `boo_app_chair` varchar(50) DEFAULT NULL COMMENT '의자개수',
+  `boo_app_ele` varchar(50) DEFAULT NULL COMMENT '전기사용여부',
+  `boo_app_banner` varchar(50) DEFAULT NULL COMMENT '현수막문구',
+  `boo_app_dt3` date DEFAULT NULL COMMENT '신청일',
+  `boo_app_sel` varchar(50) DEFAULT NULL COMMENT '선정여부',
+  `boo_app_dt4` date DEFAULT NULL COMMENT '선정일자',
+  PRIMARY KEY (`boo_app_cd`),
+  KEY `FK_01_Area_TO_44_Booth_App` (`area_cd`),
+  KEY `FK_02_Area_City_TO_44_Booth_App` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_44_Booth_App` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_44_Booth_App` (`fest_cd`),
+  KEY `FK_42_Festival_Ann_TO_44_Booth_App` (`fes_ann_cd`),
+  KEY `FK_13_Man_Com_TO_44_Booth_App` (`man_com_cd`),
+  CONSTRAINT `FK_01_Area_TO_44_Booth_App` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_44_Booth_App` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_44_Booth_App` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_44_Booth_App` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_44_Booth_App` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_42_Festival_Ann_TO_44_Booth_App` FOREIGN KEY (`fes_ann_cd`) REFERENCES `Festival_Ann` (`fes_ann_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='부스 참가신청서관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Cat_Account 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Cat_Account` (
+  `cat_acc_cd` varchar(50) NOT NULL COMMENT '거래처코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `cat_acc_nm1` varchar(50) DEFAULT NULL COMMENT '거래처명',
+  `cat_acc_oper` varchar(50) DEFAULT NULL COMMENT '사업자분류',
+  `cat_acc_nm2` varchar(50) DEFAULT NULL COMMENT '거래처대표자명',
+  `cat_acc_addr` varchar(50) DEFAULT NULL COMMENT '거래처사업장주소',
+  `cat_acc_no1` varchar(50) DEFAULT NULL COMMENT '거래처사업자등록번호',
+  `cat_acc_no2` varchar(50) DEFAULT NULL COMMENT '거래처법인등록번호',
+  `cat_acc_phone1` varchar(50) DEFAULT NULL COMMENT '거래처팩스번호',
+  `cat_acc_phone2` varchar(50) DEFAULT NULL COMMENT '대표자 전화번호',
+  `cat_acc_phone3` varchar(50) DEFAULT NULL COMMENT '거래처 대표번호',
+  `cat_acc_email` varchar(50) DEFAULT NULL COMMENT '거래처이메일',
+  `cat_acc_dt1` date DEFAULT NULL COMMENT '등록일자',
+  `cat_acc_app` varchar(50) DEFAULT NULL COMMENT '승인자',
+  `man_com_nm1` varchar(50) DEFAULT NULL COMMENT '위원회명',
+  `cat_acc_dt2` date DEFAULT NULL COMMENT '승인일자',
+  `cat_acc_con` varchar(50) DEFAULT NULL COMMENT '승인 상태',
+  PRIMARY KEY (`cat_acc_cd`),
+  KEY `FK_03_Area_City_Admin_TO_10_Cat_Account` (`areacity_admin_cd`),
+  KEY `FK_02_Area_City_TO_10_Cat_Account` (`area_city_cd`),
+  KEY `FK_01_Area_TO_10_Cat_Account` (`area_cd`),
+  KEY `FK_13_Man_Com_TO_10_Cat_Account` (`man_com_cd`),
+  CONSTRAINT `FK_01_Area_TO_10_Cat_Account` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_10_Cat_Account` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_10_Cat_Account` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_10_Cat_Account` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='업종별 모든 거래처관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Cat_Approval_Account 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Cat_Approval_Account` (
+  `catapp_acc_cd` varchar(50) NOT NULL COMMENT '거래처별 승인 업종 코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `catbus_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처 업종 분류코드',
+  `cat_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `cat_acc_nm1` varchar(50) DEFAULT NULL COMMENT '거래처명',
+  `catbus_acc_bus` varchar(50) DEFAULT NULL COMMENT '거래처업종분류',
+  `catapp_acc_app` varchar(50) DEFAULT NULL COMMENT '승인자',
+  `man_com_nm1` varchar(50) DEFAULT NULL COMMENT '위원회명',
+  `catapp_acc_dt` date DEFAULT NULL COMMENT '승인일자',
+  `catapp_acc_con` varchar(50) DEFAULT NULL COMMENT '승인 상태',
+  `catapp_acc_pur` varchar(50) DEFAULT NULL COMMENT '거래처업무',
+  PRIMARY KEY (`catapp_acc_cd`),
+  KEY `FK_03_Area_City_Admin_TO_11_Cat_Approval_Account` (`areacity_admin_cd`),
+  KEY `FK_09_Cat_Business_Account_TO_11_Cat_Approval_Account` (`catbus_acc_cd`),
+  KEY `FK_02_Area_City_TO_11_Cat_Approval_Account` (`area_city_cd`),
+  KEY `FK_01_Area_TO_11_Cat_Approval_Account` (`area_cd`),
+  KEY `FK_10_Cat_Account_TO_11_Cat_Approval_Account` (`cat_acc_cd`),
+  KEY `FK_13_Man_Com_TO_11_Cat_Approval_Account` (`man_com_cd`),
+  CONSTRAINT `FK_01_Area_TO_11_Cat_Approval_Account` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_11_Cat_Approval_Account` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_11_Cat_Approval_Account` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_09_Cat_Business_Account_TO_11_Cat_Approval_Account` FOREIGN KEY (`catbus_acc_cd`) REFERENCES `Cat_Business_Account` (`catbus_acc_cd`),
+  CONSTRAINT `FK_10_Cat_Account_TO_11_Cat_Approval_Account` FOREIGN KEY (`cat_acc_cd`) REFERENCES `Cat_Account` (`cat_acc_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_11_Cat_Approval_Account` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='하나의 거래처별 승인업종';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Cat_Business_Account 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Cat_Business_Account` (
+  `catbus_acc_cd` varchar(50) NOT NULL COMMENT '거래처 업종 분류코드',
+  `catbus_acc_bus` varchar(50) DEFAULT NULL COMMENT '거래처업종분류',
+  PRIMARY KEY (`catbus_acc_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='거래처 업종 분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Com_App 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Com_App` (
+  `com_app_cd` varchar(50) NOT NULL COMMENT '위원회참가신청서관리',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `fes_ann_cd` varchar(50) DEFAULT NULL COMMENT '모든축제공고코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `com_app_nm` varchar(50) DEFAULT NULL COMMENT '이름',
+  `com_app_phone` varchar(50) DEFAULT NULL COMMENT '연락처',
+  `com_app_add` varchar(50) DEFAULT NULL COMMENT '주소',
+  `com_app_job` varchar(50) DEFAULT NULL COMMENT '소속',
+  `com_app_email` varchar(50) DEFAULT NULL COMMENT '이메일주소',
+  `com_app_edu` varchar(50) DEFAULT NULL COMMENT '최종학력',
+  `com_app_car` varchar(50) DEFAULT NULL COMMENT '경력',
+  `com_app_result` varchar(50) DEFAULT NULL COMMENT '위원회활동실적',
+  `com_app_dt1` date DEFAULT NULL COMMENT '신청일',
+  `com_app_sel` varchar(50) DEFAULT NULL COMMENT '합격여부',
+  `com_app_dt2` date DEFAULT NULL COMMENT '합격일자',
+  `fest_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `man_com_nm1` varchar(50) DEFAULT NULL COMMENT '위원회명',
+  `fest_ann_nm` varchar(50) DEFAULT NULL COMMENT '공고명',
+  PRIMARY KEY (`com_app_cd`),
+  KEY `FK_01_Area_TO_59_Com_App` (`area_cd`),
+  KEY `FK_02_Area_City_TO_59_Com_App` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_59_Com_App` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_59_Com_App` (`fest_cd`),
+  KEY `FK_42_Festival_Ann_TO_59_Com_App` (`fes_ann_cd`),
+  KEY `FK_13_Man_Com_TO_59_Com_App` (`man_com_cd`),
+  CONSTRAINT `FK_01_Area_TO_59_Com_App` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_59_Com_App` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_59_Com_App` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_59_Com_App` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_59_Com_App` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_42_Festival_Ann_TO_59_Com_App` FOREIGN KEY (`fes_ann_cd`) REFERENCES `Festival_Ann` (`fes_ann_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='위원회 참가 신청서 관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Con_Cod_Man 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Con_Cod_Man` (
+  `concod_man_cd` varchar(50) NOT NULL COMMENT '계약코드관리',
+  `con_cod_nm` varchar(50) NOT NULL COMMENT '계약코드명',
+  PRIMARY KEY (`concod_man_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='계약 코드관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Estimate_clas 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Estimate_clas` (
+  `est_cla_cd` varchar(50) NOT NULL COMMENT '심사구분',
+  `classification` varchar(50) DEFAULT NULL COMMENT '분류',
+  PRIMARY KEY (`est_cla_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='심사 분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Eva_Index 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Eva_Index` (
+  `eva_index_cd` varchar(50) NOT NULL COMMENT '심사 평가지표명코드',
+  `est_cla_cd` varchar(50) DEFAULT NULL COMMENT '심사구분',
+  `eva_nm` varchar(50) DEFAULT NULL COMMENT '평가명',
+  PRIMARY KEY (`eva_index_cd`),
+  KEY `FK_50_Estimate_clas_TO_51_Eva_index` (`est_cla_cd`),
+  CONSTRAINT `FK_50_Estimate_clas_TO_51_Eva_index` FOREIGN KEY (`est_cla_cd`) REFERENCES `Estimate_clas` (`est_cla_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제 관련심사/평가지표명';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Eva_Index_Item 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Eva_Index_Item` (
+  `evaindex_item_cd` varchar(50) NOT NULL COMMENT '항목코드',
+  `est_cla_cd` varchar(50) DEFAULT NULL COMMENT '심사구분',
+  `eva_index_cd` varchar(50) DEFAULT NULL COMMENT '심사 평가지표명코드',
+  `l_criteria` varchar(50) NOT NULL COMMENT '대평가항목',
+  `m_criteria` varchar(50) DEFAULT NULL COMMENT '중평가항목',
+  `s_criteria` varchar(300) DEFAULT NULL COMMENT '소평가항목',
+  `multiple_choice` varchar(50) NOT NULL COMMENT '객 주관식',
+  PRIMARY KEY (`evaindex_item_cd`),
+  KEY `FK_50_Estimate_clas_TO_52_Eva_index_item` (`est_cla_cd`),
+  KEY `FK_51_Eva_index_TO_52_Eva_index_item` (`eva_index_cd`),
+  CONSTRAINT `FK_50_Estimate_clas_TO_52_Eva_index_item` FOREIGN KEY (`est_cla_cd`) REFERENCES `estimate_clas` (`est_cla_cd`),
+  CONSTRAINT `FK_51_Eva_index_TO_52_Eva_index_item` FOREIGN KEY (`eva_index_cd`) REFERENCES `eva_index` (`eva_index_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='심사/평가항목';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Eva_Index_Scoring 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Eva_Index_Scoring` (
+  `evaindex_sco_cd` varchar(50) NOT NULL COMMENT '객관식문항수표 코드',
+  `eva_index_cd` varchar(50) DEFAULT NULL COMMENT '심사 평가지표명코드',
+  `evaindex_item_cd` varchar(50) DEFAULT NULL COMMENT '항목코드',
+  `scoring_criteria` varchar(50) DEFAULT NULL COMMENT '배점기준',
+  `scoring` varchar(50) DEFAULT NULL COMMENT '배점',
+  PRIMARY KEY (`evaindex_sco_cd`),
+  KEY `FK_51_Eva_index_TO_53_Eva_index_scoring` (`eva_index_cd`),
+  KEY `FK_52_Eva_index_item_TO_53_Eva_index_scoring` (`evaindex_item_cd`),
+  CONSTRAINT `FK_51_Eva_index_TO_53_Eva_index_scoring` FOREIGN KEY (`eva_index_cd`) REFERENCES `eva_index` (`eva_index_cd`),
+  CONSTRAINT `FK_52_Eva_index_item_TO_53_Eva_index_scoring` FOREIGN KEY (`evaindex_item_cd`) REFERENCES `Eva_Index_Item` (`evaindex_item_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='객관식문항수표';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Exa_Report 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Exa_Report` (
+  `exa_rep_cd` varchar(50) NOT NULL COMMENT '모든 심사 결과',
+  `areacity_admin_cd` varchar(50) NOT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) NOT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) NOT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `mem_cd` varchar(50) DEFAULT NULL COMMENT '회원코드',
+  `acc_mem_cd` varchar(50) DEFAULT NULL COMMENT '하나의 거래처별 소속 회원코드',
+  `fest_pro_cd` varchar(50) DEFAULT NULL COMMENT '하나의 축제내 여러개 프로그램 소개코드',
+  `eva_index_cd` varchar(50) DEFAULT NULL COMMENT '심사 평가지표명코드',
+  `exa_condition` varchar(50) NOT NULL COMMENT '심사 유무',
+  `exa_dt` date NOT NULL COMMENT '심사일자',
+  `exa_joindt` date NOT NULL COMMENT '등록일자',
+  `exa_total_score` varchar(50) NOT NULL COMMENT '총점',
+  `exe_manager` varchar(50) NOT NULL COMMENT '담당자',
+  PRIMARY KEY (`exa_rep_cd`),
+  KEY `FK_02_Area_City_TO_23_Exa_Report` (`area_city_cd`),
+  KEY `FK_01_Area_TO_23_Exa_Report` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_23_Exa_Report` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_23_Exa_Report` (`fest_cd`),
+  KEY `FK_51_Eva_index_TO_23_Exa_Report` (`eva_index_cd`),
+  KEY `FK_23_Exa_Report_22_Fest_Program` (`mem_cd`),
+  KEY `acc_mem_cd` (`acc_mem_cd`),
+  KEY `fest_pro_cd` (`fest_pro_cd`),
+  CONSTRAINT `FK_01_Area_TO_23_Exa_Report` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_23_Exa_Report` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_23_Exa_Report` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_18_Festival_TO_23_Exa_Report` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_23_Exa_Report_07_Member` FOREIGN KEY (`mem_cd`) REFERENCES `Member` (`mem_cd`),
+  CONSTRAINT `FK_23_Exa_Report_12_Account_Member` FOREIGN KEY (`acc_mem_cd`) REFERENCES `Account_Member` (`acc_mem_cd`),
+  CONSTRAINT `FK_23_Exa_Report_22_Fest_Program` FOREIGN KEY (`fest_pro_cd`) REFERENCES `Fest_Program` (`fest_pro_cd`),
+  CONSTRAINT `FK_51_Eva_index_TO_23_Exa_Report` FOREIGN KEY (`eva_index_cd`) REFERENCES `Eva_Index` (`eva_index_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 심사 결과';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Facility_Mai 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Facility_Mai` (
+  `fac_mai_cd` varchar(20) NOT NULL COMMENT '안전점검후지적관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `safins_list_cd` varchar(20) NOT NULL COMMENT '안전관리점검리스트코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fac_sta_cd` varchar(20) DEFAULT NULL COMMENT '모든보유시설코드',
+  `fest_nm` varchar(50) NOT NULL COMMENT '축제명',
+  `fac_sta_nm` varchar(50) NOT NULL COMMENT '시설명',
+  `facmai_che_dt` varchar(50) DEFAULT NULL COMMENT '점검일자',
+  `fac_mai_cad` varchar(20) DEFAULT NULL COMMENT '지적사항',
+  `facmai_ins_in` varchar(20) DEFAULT NULL COMMENT '점검기관',
+  `facmai_rec_dt` varchar(50) DEFAULT NULL COMMENT '재점검일',
+  `facmai_sup_dt` varchar(50) DEFAULT NULL COMMENT '보완완료일',
+  `facmai_res_human` varchar(10) DEFAULT NULL COMMENT '점검기관 담당자',
+  `com_mem_nm2` varchar(20) DEFAULT NULL COMMENT '위원회명',
+  `facmai_sta_che` varchar(20) DEFAULT NULL COMMENT '점검상태',
+  PRIMARY KEY (`fac_mai_cd`),
+  KEY `FK_18_Festival_TO_31_Facility_Mai` (`fest_cd`),
+  KEY `FK_01_Area_TO_31_Facility_Mai` (`area_cd`),
+  KEY `FK_02_Area_City_TO_31_Facility_Mai` (`area_city_cd`),
+  KEY `FK_29_Facility_Status_TO_31_Facility_Mai` (`fac_sta_cd`),
+  KEY `FK_13_Man_Com_TO_31_Facility_Mai` (`man_com_cd`),
+  KEY `FK_03_Area_City_Admin_TO_31_Facility_Mai` (`areacity_admin_cd`),
+  KEY `FK_32_Saf_Ins_List_TO_31_Facility_Mai` (`safins_list_cd`),
+  CONSTRAINT `FK_01_Area_TO_31_Facility_Mai` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_31_Facility_Mai` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_31_Facility_Mai` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_31_Facility_Mai` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_31_Facility_Mai` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_29_Facility_Status_TO_31_Facility_Mai` FOREIGN KEY (`fac_sta_cd`) REFERENCES `Facility_Status` (`fac_sta_cd`),
+  CONSTRAINT `FK_32_Saf_Ins_List_TO_31_Facility_Mai` FOREIGN KEY (`safins_list_cd`) REFERENCES `Saf_Ins_List` (`safins_list_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='시설물안전점검 후 지적관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Facility_Status 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Facility_Status` (
+  `fac_sta_cd` varchar(20) NOT NULL COMMENT '모든보유시설코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `fesfac_cat_cd` varchar(20) DEFAULT NULL COMMENT '모든시설분류코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fest_nm` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `fesfac_cat_nm` varchar(50) DEFAULT NULL COMMENT '모든시설분류명',
+  `fac_sta_nm` varchar(20) DEFAULT NULL COMMENT '시설명',
+  `fac_sta_site` varchar(20) DEFAULT NULL COMMENT '위치',
+  `fac_sta_count` varchar(10) DEFAULT NULL COMMENT '수량',
+  `com_mem_nm2` varchar(20) DEFAULT NULL COMMENT '위원회명',
+  `group_cd` varchar(20) DEFAULT NULL COMMENT '세입상세 그룹코드',
+  `action_dt` varchar(50) DEFAULT NULL COMMENT '마감일자',
+  `action_status` varchar(20) DEFAULT NULL COMMENT '마감유무',
+  PRIMARY KEY (`fac_sta_cd`),
+  KEY `FK_28_Fes_Fac_Cat_TO_29_Facility_Status` (`fesfac_cat_cd`),
+  KEY `FK_13_Man_Com_TO_29_Facility_Status` (`man_com_cd`),
+  KEY `FK_18_Festival_TO_29_Facility_Status` (`fest_cd`),
+  KEY `FK_01_Area_TO_29_Facility_Status` (`area_cd`),
+  KEY `FK_02_Area_City_TO_29_Facility_Status` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_29_Facility_Status` (`areacity_admin_cd`),
+  CONSTRAINT `FK_01_Area_TO_29_Facility_Status` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_29_Facility_Status` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_29_Facility_Status` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_29_Facility_Status` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_29_Facility_Status` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_28_Fes_Fac_Cat_TO_29_Facility_Status` FOREIGN KEY (`fesfac_cat_cd`) REFERENCES `Fes_Fac_Cat` (`fesfac_cat_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 보유시설현황 세입';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Festival 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Festival` (
+  `fest_cd` varchar(50) NOT NULL COMMENT '축제코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `fest_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `fest_host_area` varchar(50) DEFAULT NULL COMMENT '축제개최지역',
+  `fest_host_place` varchar(50) DEFAULT NULL COMMENT '축제개최장소',
+  `fest_start_dt` date DEFAULT NULL COMMENT '축제시작일자',
+  `fest_end_dt` date DEFAULT NULL COMMENT '축제종료일자',
+  `fest_content` varchar(500) DEFAULT NULL COMMENT '축제내용',
+  `fest_super_agency` varchar(50) DEFAULT NULL COMMENT '축제주관기관',
+  `fest_spo_agency` varchar(50) DEFAULT NULL COMMENT '축제후원기관',
+  `fest_addr` varchar(50) DEFAULT NULL COMMENT '축제 개최 주소',
+  `fest_inquiry` varchar(50) DEFAULT NULL COMMENT '축제전화문의',
+  PRIMARY KEY (`fest_cd`),
+  KEY `FK_02_Area_City_TO_18_Festival` (`area_city_cd`),
+  KEY `FK_01_Area_TO_18_Festival` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_18_Festival` (`areacity_admin_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Festival_Ann 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Festival_Ann` (
+  `fes_ann_cd` varchar(50) NOT NULL COMMENT '모든축제공고코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fest_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `man_com_nm1` varchar(50) DEFAULT NULL COMMENT '위원회명',
+  `fest_ann_nm` varchar(50) DEFAULT NULL COMMENT '공고명',
+  `fest_ann_dt1` date DEFAULT NULL COMMENT '용역시작일',
+  `fest_ann_dt2` date DEFAULT NULL COMMENT '용역종료일',
+  `fest_ann_dt3` date DEFAULT NULL COMMENT '공고마감일',
+  `fest_ann_con` varchar(250) DEFAULT NULL COMMENT '공고내용',
+  `fest_ann_att` blob COMMENT '신청서양식첨부',
+  `fest_ann_dt4` date DEFAULT NULL COMMENT '작성일',
+  `areacity_admin_nm` varchar(50) DEFAULT NULL COMMENT '행정기관명',
+  `com_mem_nm2` varchar(50) DEFAULT NULL COMMENT '이름',
+  PRIMARY KEY (`fes_ann_cd`),
+  KEY `FK_01_Area_TO_42_Festival_Ann` (`area_cd`),
+  KEY `FK_02_Area_City_TO_42_Festival_Ann` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_42_Festival_Ann` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_42_Festival_Ann` (`fest_cd`),
+  KEY `FK_13_Man_Com_TO_42_Festival_Ann` (`man_com_cd`),
+  CONSTRAINT `FK_01_Area_TO_42_Festival_Ann` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_42_Festival_Ann` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_42_Festival_Ann` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_42_Festival_Ann` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_42_Festival_Ann` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제 공고관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Festival_Human 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Festival_Human` (
+  `fes_human_cd` varchar(20) NOT NULL COMMENT '모든축제별모든인적관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `feswork_div_cd` varchar(20) DEFAULT NULL COMMENT '축제진행업무중분류코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `mem_cd` varchar(100) DEFAULT NULL COMMENT '회원코드',
+  `fac_sta_cd` varchar(100) DEFAULT NULL COMMENT '모든보유시설코드',
+  `fest_nm` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `feswork_div_nm` varchar(20) DEFAULT NULL COMMENT '진행업무중분류명',
+  `fes_human_nm` varchar(100) DEFAULT NULL COMMENT '이름',
+  `fes_human_phone` varchar(20) DEFAULT NULL COMMENT '연락처',
+  `fac_sta_nm` varchar(20) DEFAULT NULL COMMENT '보유시설명',
+  `fes_human_hour` varchar(30) DEFAULT NULL COMMENT '근무시간',
+  `com_mem_nm2` varchar(20) DEFAULT NULL COMMENT '위원회이름',
+  PRIMARY KEY (`fes_human_cd`),
+  KEY `FK_01_Area_TO_41_Festival_Human` (`area_cd`),
+  KEY `FK_02_Area_City_TO_41_Festival_Human` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_41_Festival_Human` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_41_Festival_Human` (`fest_cd`),
+  KEY `FK_40_Festival_Work_Division_TO_41_Festival_Human` (`feswork_div_cd`),
+  KEY `FK_13_Man_Com_TO_41_Festival_Human` (`man_com_cd`),
+  KEY `FK_07_Member_TO_41_Festival_Human` (`mem_cd`),
+  KEY `Facility_Status_To_Festival_Human` (`fac_sta_cd`),
+  CONSTRAINT `FK_01_Area_TO_41_Festival_Human` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_41_Festival_Human` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_41_Festival_Human` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_07_Member_TO_41_Festival_Human` FOREIGN KEY (`mem_cd`) REFERENCES `Member` (`mem_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_41_Festival_Human` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_41_Festival_Human` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_40_Festival_Work_Division_TO_41_Festival_Human` FOREIGN KEY (`feswork_div_cd`) REFERENCES `Festival_Work_Division` (`feswork_div_cd`),
+  CONSTRAINT `Facility_Status_To_Festival_Human` FOREIGN KEY (`fac_sta_cd`) REFERENCES `Facility_Status` (`fac_sta_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제별 모든 인적관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Festival_Work_Category 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Festival_Work_Category` (
+  `feswork_cat_cd` varchar(20) NOT NULL COMMENT '축제진행업무대분류코드',
+  `areacity_admin_cd` varchar(50) COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) COMMENT '축제코드',
+  `fest_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `feswork_cat_nm` varchar(20) COMMENT '진행업무대분류명',
+  PRIMARY KEY (`feswork_cat_cd`),
+  KEY `FK_18_Festival_TO_39_Festival_Work_Category` (`fest_cd`),
+  KEY `FK_02_Area_City_TO_39_Festival_Work_Category` (`area_city_cd`),
+  KEY `FK_01_Area_TO_39_Festival_Work_Category` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_39_Festival_Work_Category` (`areacity_admin_cd`),
+  CONSTRAINT `FK_01_Area_TO_39_Festival_Work_Category` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_39_Festival_Work_Category` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_39_Festival_Work_Category` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_18_Festival_TO_39_Festival_Work_Category` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='축제 진행업무 대분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Festival_Work_Division 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Festival_Work_Division` (
+  `feswork_div_cd` varchar(20) NOT NULL COMMENT '축제진행업무중분류코드',
+  `areacity_admin_cd` varchar(20) NOT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `feswork_cat_cd` varchar(20) DEFAULT NULL COMMENT '축제진행업무대분류코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fest_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `feswork_cat_nm` varchar(20) DEFAULT NULL COMMENT '진행업무대분류명',
+  `feswork_div_nm` varchar(20) DEFAULT NULL COMMENT '진행업무중분류',
+  `com_mem_nm2` varchar(20) DEFAULT NULL COMMENT '위원회이름',
+  PRIMARY KEY (`feswork_div_cd`),
+  KEY `FK_39_Festival_Work_Category_TO_40_Festival_Work_Division` (`feswork_cat_cd`),
+  KEY `FK_01_Area_TO_40_Festival_Work_Division` (`area_cd`),
+  KEY `FK_02_Area_City_TO_40_Festival_Work_Division` (`area_city_cd`),
+  KEY `FK_18_Festival_TO_40_Festival_Work_Division` (`fest_cd`),
+  KEY `FK_13_Man_Com_TO_40_Festival_Work_Division` (`man_com_cd`),
+  KEY `FK_03_Area_City_Admin_TO_40_Festival_Work_Division` (`areacity_admin_cd`),
+  CONSTRAINT `FK_01_Area_TO_40_Festival_Work_Division` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_40_Festival_Work_Division` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_40_Festival_Work_Division` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_40_Festival_Work_Division` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_40_Festival_Work_Division` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_39_Festival_Work_Category_TO_40_Festival_Work_Division` FOREIGN KEY (`feswork_cat_cd`) REFERENCES `Festival_Work_Category` (`feswork_cat_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='축제 진행업무 중분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Festtival_Ticket_Revenu 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Festtival_Ticket_Revenu` (
+  `festic_rev_cd` varchar(50) NOT NULL COMMENT '입장권세입관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `festic_rev_fee` varchar(50) DEFAULT NULL COMMENT '입장료금액',
+  `festic_rev_amount` varchar(50) DEFAULT NULL COMMENT '수량',
+  `group_cd` varchar(50) DEFAULT NULL COMMENT '세입상세그룹코드',
+  `action_dt` varchar(50) DEFAULT NULL COMMENT '마감일자',
+  `action_status` varchar(50) DEFAULT NULL COMMENT '마감유무',
+  PRIMARY KEY (`festic_rev_cd`),
+  KEY `FK_01_Area_TO_37_Festtival_Ticket_Revenu` (`area_cd`),
+  KEY `FK_02_Area_City_TO_37_Festtival_Ticket_Revenu` (`area_city_cd`),
+  KEY `FK_18_Festival_TO_37_Festtival_Ticket_Revenu` (`fest_cd`),
+  KEY `FK_03_Area_City_Admin_TO_37_Festtival_Ticket_Revenu` (`areacity_admin_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='입장권-세입';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Goods_in 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Goods_in` (
+  `festgoods_in_cd` varchar(50) NOT NULL COMMENT '입고홍보상품코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `festgoods_ldiv_cd` varchar(10) DEFAULT NULL COMMENT '모든물품 상품 비품 대분류코드',
+  `festgoods_sdiv_cd` varchar(10) DEFAULT NULL COMMENT '모든 물품 상품 비품 소분류코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `cat_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처코드',
+  `acc_mem_cd` varchar(50) DEFAULT NULL COMMENT '하나의 거래처별 소속 회원코드',
+  `fesrev_bud_cd` varchar(50) DEFAULT NULL COMMENT '모든축제세입세출예산관리코드',
+  `fest_title` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `festgoods_in_nm` varchar(20) NOT NULL COMMENT '상품명',
+  `festgoods_in_detail` varchar(20) DEFAULT NULL COMMENT '입고목적',
+  `festgoods_in_amt` int(10) NOT NULL COMMENT '수량',
+  `group_cd` varchar(10) NOT NULL COMMENT '세입세출상세 그룹코드',
+  `action_dt` date NOT NULL COMMENT '마감일자',
+  `action_status` char(1) NOT NULL COMMENT '마감유무',
+  `festgoods_expense` int(10) NOT NULL COMMENT '총금액',
+  `insert_dt` date NOT NULL COMMENT '작성일',
+  PRIMARY KEY (`festgoods_in_cd`),
+  KEY `FK_01_Area_TO_48_Fest_Goods_in` (`area_cd`),
+  KEY `FK_02_Area_City_TO_48_Fest_Goods_in` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_48_Fest_Goods_in` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_48_Fest_Goods_in` (`fest_cd`),
+  KEY `FK_33_Fest_Goods_Ldiv_TO_48_Fest_Goods_in` (`festgoods_ldiv_cd`),
+  KEY `FK_47_Fest_Goods_Sdiv_TO_48_Fest_Goods_in` (`festgoods_sdiv_cd`),
+  KEY `FK_12_Account_Member_TO_48_Fest_Goods_in` (`acc_mem_cd`),
+  KEY `FK_13_Man_Com_TO_48_Fest_Goods_in` (`man_com_cd`),
+  KEY `FK_10_Cat_Account_TO_48_Fest_Goods_in` (`cat_acc_cd`),
+  KEY `FK_16_Fes_revExp_Bud_TO_48_Fest_Goods_in` (`fesrev_bud_cd`),
+  CONSTRAINT `FK_01_Area_TO_48_Fest_Goods_in` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_48_Fest_Goods_in` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_48_Fest_Goods_in` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_10_Cat_Account_TO_48_Fest_Goods_in` FOREIGN KEY (`cat_acc_cd`) REFERENCES `Cat_Account` (`cat_acc_cd`),
+  CONSTRAINT `FK_12_Account_Member_TO_48_Fest_Goods_in` FOREIGN KEY (`acc_mem_cd`) REFERENCES `Account_Member` (`acc_mem_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_48_Fest_Goods_in` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_16_Fes_revExp_Bud_TO_48_Fest_Goods_in` FOREIGN KEY (`fesrev_bud_cd`) REFERENCES `Fes_revExp_Bud` (`fesrev_bud_cd`),
+  CONSTRAINT `FK_18_Festival_TO_48_Fest_Goods_in` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_33_Fest_Goods_Ldiv_TO_48_Fest_Goods_in` FOREIGN KEY (`festgoods_ldiv_cd`) REFERENCES `Fest_Goods_Ldiv` (`festgoods_ldiv_cd`),
+  CONSTRAINT `FK_47_Fest_Goods_Sdiv_TO_48_Fest_Goods_in` FOREIGN KEY (`festgoods_sdiv_cd`) REFERENCES `Fest_Goods_Sdiv` (`festgoods_sdiv_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='축제별 입고 물품관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Goods_Ldiv 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Goods_Ldiv` (
+  `festgoods_ldiv_cd` varchar(10) NOT NULL COMMENT '모든물품 상품 비품 대분류코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `fest_title` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `festgoods_ldiv_nm` varchar(20) NOT NULL COMMENT '모든물품 상품 비품 대분류',
+  PRIMARY KEY (`festgoods_ldiv_cd`),
+  KEY `FK_01_Area_TO_33_Fest_Goods_Ldiv` (`area_cd`),
+  KEY `FK_02_Area_City_TO_33_Fest_Goods_Ldiv` (`area_city_cd`),
+  KEY `FK_18_Festival_TO_33_Fest_Goods_Ldiv` (`fest_cd`),
+  KEY `FK_03_Area_City_Admin_TO_33_Fest_Goods_Ldiv` (`areacity_admin_cd`),
+  CONSTRAINT `FK_01_Area_TO_33_Fest_Goods_Ldiv` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_33_Fest_Goods_Ldiv` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_33_Fest_Goods_Ldiv` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_18_Festival_TO_33_Fest_Goods_Ldiv` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 물품 상품 비품 대분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Goods_out 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Goods_out` (
+  `festgoods_out_cd` varchar(50) NOT NULL COMMENT '출고홍보상품코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `festgoods_in_cd` varchar(50) DEFAULT NULL COMMENT '입고홍보상품코드',
+  `acc_mem_cd` varchar(50) DEFAULT NULL COMMENT '하나의 거래처별 소속 회원코드',
+  `fest_title` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `festgoods_out_nm` varchar(20) DEFAULT NULL COMMENT '출고상품',
+  `festgoods_out_detail` varchar(50) DEFAULT NULL COMMENT '출고목적',
+  `festgoods_out_amt` int(10) NOT NULL COMMENT '출고수량',
+  `festgoods_stock` int(10) NOT NULL COMMENT '재고수량',
+  `insert_dt` date NOT NULL COMMENT '작성일',
+  PRIMARY KEY (`festgoods_out_cd`),
+  KEY `FK_01_Area_TO_49_Fest_Goods_out` (`area_cd`),
+  KEY `FK_02_Area_City_TO_49_Fest_Goods_out` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_49_Fest_Goods_out` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_49_Fest_Goods_out` (`fest_cd`),
+  KEY `FK_12_Account_Member_TO_49_Fest_Goods_out` (`acc_mem_cd`),
+  KEY `FK_48_Fest_Goods_in_TO_49_Fest_Goods_out` (`festgoods_in_cd`),
+  CONSTRAINT `FK_01_Area_TO_49_Fest_Goods_out` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_49_Fest_Goods_out` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_49_Fest_Goods_out` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_12_Account_Member_TO_49_Fest_Goods_out` FOREIGN KEY (`acc_mem_cd`) REFERENCES `Account_Member` (`acc_mem_cd`),
+  CONSTRAINT `FK_18_Festival_TO_49_Fest_Goods_out` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_48_Fest_Goods_in_TO_49_Fest_Goods_out` FOREIGN KEY (`festgoods_in_cd`) REFERENCES `Fest_Goods_in` (`festgoods_in_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='축제별 출고 물품관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Goods_Sdiv 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Goods_Sdiv` (
+  `festgoods_sdiv_cd` varchar(10) NOT NULL COMMENT '모든 물품 상품 비품 대분류 소분류',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `festgoods_ldiv_cd` varchar(10) DEFAULT NULL COMMENT '모든물품 상품 비품 대분류코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `fest_title` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `festgoods_sdiv_nm` varchar(20) NOT NULL COMMENT '모든 물품 상품 비품 대분류 소분류명',
+  PRIMARY KEY (`festgoods_sdiv_cd`),
+  KEY `FK_03_Area_City_Admin_TO_47_Fest_Goods_Sdiv` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_47_Fest_Goods_Sdiv` (`fest_cd`),
+  KEY `FK_01_Area_TO_47_Fest_Goods_Sdiv` (`area_cd`),
+  KEY `FK_02_Area_City_TO_47_Fest_Goods_Sdiv` (`area_city_cd`),
+  KEY `FK_33_Fest_Goods_Ldiv_TO_47_Fest_Goods_Sdiv` (`festgoods_ldiv_cd`),
+  CONSTRAINT `FK_01_Area_TO_47_Fest_Goods_Sdiv` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_47_Fest_Goods_Sdiv` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_47_Fest_Goods_Sdiv` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_18_Festival_TO_47_Fest_Goods_Sdiv` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_33_Fest_Goods_Ldiv_TO_47_Fest_Goods_Sdiv` FOREIGN KEY (`festgoods_ldiv_cd`) REFERENCES `Fest_Goods_Ldiv` (`festgoods_ldiv_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 물품 상품 비품 대분류 - 소분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Program 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Program` (
+  `fest_pro_cd` varchar(10) NOT NULL COMMENT '하나의 축제내 여러개 프로그램 소개코드',
+  `areacity_admin_cd` varchar(50) NOT NULL COMMENT '모든 행정기관코드',
+  `festprodiv_day_cd` varchar(10) NOT NULL COMMENT '축제프로그램일차분류코드',
+  `festprodiv_pla_cd` varchar(10) NOT NULL COMMENT '모든축제별프로그램장소분류',
+  `festprodiv_theme_cd` varchar(10) DEFAULT NULL COMMENT '모든 축제별 프로그램 성격분류',
+  `fest_cd` varchar(50) NOT NULL COMMENT '축제코드',
+  `man_com_cd` varchar(50) NOT NULL COMMENT '위원회코드',
+  `exa_rep_cd` varchar(50) DEFAULT NULL COMMENT '모든 심사 결과',
+  `fesrev_bud_cd` varchar(50) NOT NULL COMMENT '모든축제세입세출예산관리코드',
+  `acc_mem_cd` varchar(50) NOT NULL COMMENT '하나의 거래처별 소속 회원코드',
+  `area_city_cd` varchar(50) NOT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) NOT NULL COMMENT '전국지역코드',
+  `fest_title` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `fest_pro_nm` varchar(20) NOT NULL COMMENT '프로그램명',
+  `fest_pro_img` blob COMMENT '프로그램이미지',
+  `festpro_time_start` time DEFAULT NULL COMMENT '프로그램시작시간',
+  `festpro_time_end` time DEFAULT NULL COMMENT '프로그램종료시간',
+  `festpro_reserv_div` char(1) NOT NULL COMMENT '예약가능여부',
+  `fest_pro_runtime` varchar(20) DEFAULT NULL COMMENT '소요시간',
+  `fest_pro_detail` varchar(500) DEFAULT NULL COMMENT '내용',
+  `group_cd` varchar(20) NOT NULL COMMENT '세입세출상세 그룹코드',
+  `action_dt` date NOT NULL COMMENT '마감일자',
+  `action_status` char(1) NOT NULL COMMENT '마감유무',
+  `fest_pro_expense` int(11) NOT NULL COMMENT '대프로그램비용',
+  `fest_pro_agelevel` varchar(20) NOT NULL COMMENT '관람연령',
+  `festpro_ticket_cost` int(11) DEFAULT NULL COMMENT '입장료금액',
+  `festpro_reflect_div` varchar(20) NOT NULL COMMENT '평과결과에대한반영',
+  `festpro_reflect_dt` date NOT NULL COMMENT '평과결과에대한반영일자',
+  `pro_approve` varchar(20) DEFAULT NULL COMMENT '승인자ID',
+  `insert_dt` date NOT NULL COMMENT '작성일',
+  PRIMARY KEY (`fest_pro_cd`),
+  KEY `FK_18_Festival_TO_22_Fest_Program` (`fest_cd`),
+  KEY `FK_02_Area_City_TO_22_Fest_Program` (`area_city_cd`),
+  KEY `FK_01_Area_TO_22_Fest_Program` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_22_Fest_Program` (`areacity_admin_cd`),
+  KEY `FK_19_Fest_Pro_Div_Day_TO_22_Fest_Program` (`festprodiv_day_cd`),
+  KEY `FK_20_Fest_Pro_Div_Place_TO_22_Fest_Program` (`festprodiv_pla_cd`),
+  KEY `FK_13_Man_Com_TO_22_Fest_Program` (`man_com_cd`),
+  KEY `FK_12_Account_Member_TO_22_Fest_Program` (`acc_mem_cd`),
+  KEY `FK_14_Acc_sub_Man_TO_22_Fest_Program` (`fesrev_bud_cd`),
+  KEY `FK_21_Fest_Pro_Div_Theme_TO_22_Fest_Program` (`festprodiv_theme_cd`),
+  KEY `FK_23_Exa_Report_TO_22_Fest_Program` (`exa_rep_cd`),
+  CONSTRAINT `FK_01_Area_TO_22_Fest_Program` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_22_Fest_Program` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_22_Fest_Program` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_12_Account_Member_TO_22_Fest_Program` FOREIGN KEY (`acc_mem_cd`) REFERENCES `Account_Member` (`acc_mem_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_22_Fest_Program` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_22_Fest_Program` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_19_Fest_Pro_Div_Day_TO_22_Fest_Program` FOREIGN KEY (`festprodiv_day_cd`) REFERENCES `Fest_Pro_Div_Day` (`festprodiv_day_cd`),
+  CONSTRAINT `FK_20_Fest_Pro_Div_Place_TO_22_Fest_Program` FOREIGN KEY (`festprodiv_pla_cd`) REFERENCES `Fest_Pro_Div_Place` (`festprodiv_pla_cd`),
+  CONSTRAINT `FK_21_Fest_Pro_Div_Theme_TO_22_Fest_Program` FOREIGN KEY (`festprodiv_theme_cd`) REFERENCES `Fest_Pro_Div_Theme` (`festprodiv_theme_cd`),
+  CONSTRAINT `FK_22_Fest_Program_16_Fes_revExp_Bud` FOREIGN KEY (`fesrev_bud_cd`) REFERENCES `Fes_revExp_Bud` (`fesrev_bud_cd`),
+  CONSTRAINT `FK_23_Exa_Report_TO_22_Fest_Program` FOREIGN KEY (`exa_rep_cd`) REFERENCES `Exa_Report` (`exa_rep_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='하나의 축제내 여러개 프로그램 소개관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Pro_Div_Day 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Pro_Div_Day` (
+  `festprodiv_day_cd` varchar(10) NOT NULL COMMENT '축제프로그램일차분류코드',
+  `festprodiv_day_nm` varchar(5) NOT NULL COMMENT '프로그램일차분류',
+  PRIMARY KEY (`festprodiv_day_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='축제 프로그램 일차분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Pro_Div_Place 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Pro_Div_Place` (
+  `festprodiv_pla_cd` varchar(10) NOT NULL COMMENT '모든축제별프로그램장소분류',
+  `areacity_admin_cd` varchar(50) NOT NULL COMMENT '모든 행정기관코드',
+  `area_city_cd` varchar(50) NOT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) NOT NULL COMMENT '전국지역코드',
+  `fest_cd` varchar(50) NOT NULL COMMENT '축제코드',
+  `fest_title` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `festprodiv_pla_nm` varchar(20) NOT NULL COMMENT '모든축제별프로그램장소',
+  PRIMARY KEY (`festprodiv_pla_cd`),
+  KEY `FK_03_Area_City_Admin_TO_20_Fest_Pro_Div_Place` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_20_Fest_Pro_Div_Place` (`fest_cd`),
+  KEY `FK_02_Area_City_TO_20_Fest_Pro_Div_Place` (`area_city_cd`),
+  KEY `FK_01_Area_TO_20_Fest_Pro_Div_Place` (`area_cd`),
+  CONSTRAINT `FK_01_Area_TO_20_Fest_Pro_Div_Place` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_20_Fest_Pro_Div_Place` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_20_Fest_Pro_Div_Place` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_18_Festival_TO_20_Fest_Pro_Div_Place` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제별 프로그램 장소분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Pro_Div_Theme 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Pro_Div_Theme` (
+  `festprodiv_theme_cd` varchar(10) NOT NULL COMMENT '모든 축제별 프로그램 성격분류',
+  `areacity_admin_cd` varchar(50) NOT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) NOT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) NOT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) NOT NULL COMMENT '축제코드',
+  `fest_title` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `festprodiv_theme_nm` varchar(20) NOT NULL COMMENT '모든축제별프로그램성격분류',
+  PRIMARY KEY (`festprodiv_theme_cd`),
+  KEY `FK_18_Festival_TO_21_Fest_Pro_Div_Theme` (`fest_cd`),
+  KEY `FK_02_Area_City_TO_21_Fest_Pro_Div_Theme` (`area_city_cd`),
+  KEY `FK_01_Area_TO_21_Fest_Pro_Div_Theme` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_21_Fest_Pro_Div_Theme` (`areacity_admin_cd`),
+  CONSTRAINT `FK_01_Area_TO_21_Fest_Pro_Div_Theme` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_21_Fest_Pro_Div_Theme` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_21_Fest_Pro_Div_Theme` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_18_Festival_TO_21_Fest_Pro_Div_Theme` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제별 프로그램 성격분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Pro_participants 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Pro_participants` (
+  `festpro_par_cd` varchar(10) NOT NULL COMMENT '프로그램참가자코드',
+  `areacity_admin_cd` varchar(50) NOT NULL COMMENT '모든 행정기관코드',
+  `festpro_spro_cd` varchar(10) DEFAULT NULL COMMENT '하나의축제내하나의프로그램내 상세관리코드',
+  `fest_pro_cd` varchar(10) NOT NULL COMMENT '하나의 축제내 여러개 프로그램 소개코드',
+  `acc_mem_cd` varchar(50) NOT NULL COMMENT '하나의 거래처별 소속 회원코드',
+  `fest_cd` varchar(50) NOT NULL COMMENT '축제코드',
+  `man_com_cd` varchar(50) NOT NULL COMMENT '위원회코드',
+  `area_city_cd` varchar(50) NOT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) NOT NULL COMMENT '전국지역코드',
+  `festpro_par_nm` varchar(100) NOT NULL COMMENT '이름',
+  `festpro_par_gender` char(1) NOT NULL COMMENT '성별',
+  `festpro_par_age` varchar(2) NOT NULL COMMENT '나이',
+  `festpro_par_phone` varchar(20) NOT NULL COMMENT '연락처',
+  `festpro_par_etc` varchar(50) DEFAULT NULL COMMENT '특이사항',
+  `insert_dt` date NOT NULL COMMENT '작성일',
+  PRIMARY KEY (`festpro_par_cd`),
+  KEY `FK_18_Festival_TO_25_Fest_Pro_participants` (`fest_cd`),
+  KEY `FK_02_Area_City_TO_25_Fest_Pro_participants` (`area_city_cd`),
+  KEY `FK_01_Area_TO_25_Fest_Pro_participants` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_25_Fest_Pro_participants` (`areacity_admin_cd`),
+  KEY `FK_13_Man_Com_TO_25_Fest_Pro_participants` (`man_com_cd`),
+  KEY `FK_12_Account_Member_TO_25_Fest_Pro_participants` (`acc_mem_cd`),
+  KEY `FK_22_Fest_Program_TO_25_Fest_Pro_participants` (`fest_pro_cd`),
+  KEY `FK_24_Fest_Pro_sPro_TO_25_Fest_Pro_participants` (`festpro_spro_cd`),
+  CONSTRAINT `FK_01_Area_TO_25_Fest_Pro_participants` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_25_Fest_Pro_participants` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_25_Fest_Pro_participants` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_12_Account_Member_TO_25_Fest_Pro_participants` FOREIGN KEY (`acc_mem_cd`) REFERENCES `Account_Member` (`acc_mem_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_25_Fest_Pro_participants` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_25_Fest_Pro_participants` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_22_Fest_Program_TO_25_Fest_Pro_participants` FOREIGN KEY (`fest_pro_cd`) REFERENCES `Fest_Program` (`fest_pro_cd`),
+  CONSTRAINT `FK_24_Fest_Pro_sPro_TO_25_Fest_Pro_participants` FOREIGN KEY (`festpro_spro_cd`) REFERENCES `Fest_Pro_sPro` (`festpro_spro_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='프로그램 참가자관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Pro_Reservation 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Pro_Reservation` (
+  `festpro_res_cd` varchar(50) NOT NULL COMMENT '모든축제 예약관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `fest_pro_cd` varchar(10) DEFAULT NULL COMMENT '하나의 축제내 여러개 프로그램 소개코드',
+  `festprodiv_pla_cd` varchar(10) DEFAULT NULL COMMENT '모든축제별프로그램장소분류',
+  `festprodiv_theme_cd` varchar(10) DEFAULT NULL COMMENT '모든 축제별 프로그램 성격분류',
+  `fest_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `fest_pro_nm` varchar(50) DEFAULT NULL COMMENT '프로그램명',
+  `festpro_res_fee` varchar(50) DEFAULT NULL COMMENT '예약요금',
+  `festpro_res_nm` varchar(50) DEFAULT NULL COMMENT '예약자',
+  `festpro_res_per` varchar(50) DEFAULT NULL COMMENT '예약인원',
+  `festpro_res_dt` varchar(50) DEFAULT NULL COMMENT '예약일자',
+  `festpro_res_phone` varchar(50) DEFAULT NULL COMMENT '예약자 연락처',
+  `festpro_res_con` varchar(50) DEFAULT NULL COMMENT '예약현황',
+  `festpro_res_man_nm` varchar(50) DEFAULT NULL COMMENT '위원회 담당자',
+  `festpro_res_man_dt` varchar(50) DEFAULT NULL COMMENT '승인일자',
+  PRIMARY KEY (`festpro_res_cd`),
+  KEY `FK_03_Area_City_Admin_TO_38_Fest_Pro_Reservation` (`areacity_admin_cd`),
+  KEY `FK_01_Area_TO_38_Fest_Pro_Reservation` (`area_cd`),
+  KEY `FK_02_Area_City_TO_38_Fest_Pro_Reservation` (`area_city_cd`),
+  KEY `FK_22_Fest_Program_TO_38_Fest_Pro_Reservation` (`fest_pro_cd`),
+  KEY `FK_20_Fest_Pro_Div_Place_TO_38_Fest_Pro_Reservation` (`festprodiv_pla_cd`),
+  KEY `FK_21_Fest_Pro_Div_Theme_TO_38_Fest_Pro_Reservation` (`festprodiv_theme_cd`),
+  CONSTRAINT `FK_01_Area_TO_38_Fest_Pro_Reservation` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_38_Fest_Pro_Reservation` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_38_Fest_Pro_Reservation` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_20_Fest_Pro_Div_Place_TO_38_Fest_Pro_Reservation` FOREIGN KEY (`festprodiv_pla_cd`) REFERENCES `Fest_Pro_Div_Place` (`festprodiv_pla_cd`),
+  CONSTRAINT `FK_21_Fest_Pro_Div_Theme_TO_38_Fest_Pro_Reservation` FOREIGN KEY (`festprodiv_theme_cd`) REFERENCES `Fest_Pro_Div_Theme` (`festprodiv_theme_cd`),
+  CONSTRAINT `FK_22_Fest_Program_TO_38_Fest_Pro_Reservation` FOREIGN KEY (`fest_pro_cd`) REFERENCES `Fest_Program` (`fest_pro_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제 프로그램 예약관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Pro_sPro 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Pro_sPro` (
+  `festpro_spro_cd` varchar(10) NOT NULL COMMENT '하나의축제내하나의프로그램내 상세관리코드',
+  `areacity_admin_cd` varchar(50) NOT NULL COMMENT '모든 행정기관코드',
+  `festprodiv_theme_cd` varchar(10) NOT NULL COMMENT '모든 축제별 프로그램 성격분류',
+  `fest_pro_cd` varchar(10) NOT NULL COMMENT '하나의 축제내 여러개 프로그램 소개코드',
+  `acc_mem_cd` varchar(50) NOT NULL COMMENT '하나의 거래처별 소속 회원코드',
+  `fest_cd` varchar(50) NOT NULL COMMENT '축제코드',
+  `man_com_cd` varchar(50) NOT NULL COMMENT '위원회코드',
+  `area_city_cd` varchar(50) NOT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) NOT NULL COMMENT '전국지역코드',
+  `festpro_spro_nm` varchar(20) DEFAULT NULL COMMENT '중프로그램명',
+  `festpro_spro_place` varchar(20) DEFAULT NULL COMMENT '세부위치',
+  `festpro_spro_time` varchar(15) DEFAULT NULL COMMENT '세부시간',
+  `festpro_spro_detail` varchar(300) DEFAULT NULL COMMENT '내용',
+  `festpro_spro_expense` int(10) DEFAULT NULL COMMENT '중프로그램비용',
+  `insert_dt` date NOT NULL COMMENT '작성일',
+  PRIMARY KEY (`festpro_spro_cd`),
+  KEY `FK_18_Festival_TO_24_Fest_Pro_sPro` (`fest_cd`),
+  KEY `FK_02_Area_City_TO_24_Fest_Pro_sPro` (`area_city_cd`),
+  KEY `FK_01_Area_TO_24_Fest_Pro_sPro` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_24_Fest_Pro_sPro` (`areacity_admin_cd`),
+  KEY `FK_13_Man_Com_TO_24_Fest_Pro_sPro` (`man_com_cd`),
+  KEY `FK_12_Account_Member_TO_24_Fest_Pro_sPro` (`acc_mem_cd`),
+  KEY `FK_21_Fest_Pro_Div_Theme_TO_24_Fest_Pro_sPro` (`festprodiv_theme_cd`),
+  KEY `FK_22_Fest_Program_TO_24_Fest_Pro_sPro` (`fest_pro_cd`),
+  CONSTRAINT `FK_01_Area_TO_24_Fest_Pro_sPro` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_24_Fest_Pro_sPro` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_24_Fest_Pro_sPro` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_12_Account_Member_TO_24_Fest_Pro_sPro` FOREIGN KEY (`acc_mem_cd`) REFERENCES `Account_Member` (`acc_mem_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_24_Fest_Pro_sPro` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_24_Fest_Pro_sPro` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_21_Fest_Pro_Div_Theme_TO_24_Fest_Pro_sPro` FOREIGN KEY (`festprodiv_theme_cd`) REFERENCES `Fest_Pro_Div_Theme` (`festprodiv_theme_cd`),
+  CONSTRAINT `FK_22_Fest_Program_TO_24_Fest_Pro_sPro` FOREIGN KEY (`fest_pro_cd`) REFERENCES `Fest_Program` (`fest_pro_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='하나의 축제내 하나의 프로그램내 상세관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_PR_Div 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_PR_Div` (
+  `festpr_div_cd` varchar(10) NOT NULL COMMENT '홍보방식코드',
+  `festpr_div_nm` varchar(20) NOT NULL COMMENT '홍보방식구분명',
+  PRIMARY KEY (`festpr_div_cd`),
+  KEY `festpr_div_nm` (`festpr_div_nm`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='홍보 방식분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_PR_Eventwinner 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_PR_Eventwinner` (
+  `festpr_eve_cd` varchar(50) NOT NULL COMMENT '이벤트당첨자',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `festpr_pro_cd` varchar(50) DEFAULT NULL COMMENT '홍보상세코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fest_title` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `festpr_eve_nm` varchar(20) NOT NULL COMMENT '이름',
+  `festpr_eve_phone` varchar(20) NOT NULL COMMENT '연락처',
+  `festpr_eve_addr` varchar(50) NOT NULL COMMENT '주소',
+  `festpreve_deli_dt` date NOT NULL COMMENT '경품전달일',
+  `festpr_eve_no` varchar(5) NOT NULL COMMENT '당첨자번호',
+  `festpr_eve_etc` varchar(30) DEFAULT NULL COMMENT '비고',
+  `insert_dt` date NOT NULL COMMENT '작성일',
+  PRIMARY KEY (`festpr_eve_cd`),
+  KEY `FK_56_Fest_PR_Promotion_TO_57_Fest_PR_Eventwinner` (`festpr_pro_cd`),
+  KEY `FK_01_Area_TO_57_Fest_PR_Eventwinner` (`area_cd`),
+  KEY `FK_02_Area_City_TO_57_Fest_PR_Eventwinner` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_57_Fest_PR_Eventwinner` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_57_Fest_PR_Eventwinner` (`fest_cd`),
+  KEY `FK_13_Man_Com_TO_57_Fest_PR_Eventwinner` (`man_com_cd`),
+  CONSTRAINT `FK_01_Area_TO_57_Fest_PR_Eventwinner` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_57_Fest_PR_Eventwinner` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_57_Fest_PR_Eventwinner` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_57_Fest_PR_Eventwinner` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_57_Fest_PR_Eventwinner` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_56_Fest_PR_Promotion_TO_57_Fest_PR_Eventwinner` FOREIGN KEY (`festpr_pro_cd`) REFERENCES `Fest_PR_Promotion` (`festpr_pro_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='홍보 상세 경품이벤트 - 당첨자관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_PR_Promotion 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_PR_Promotion` (
+  `festpr_pro_cd` varchar(50) NOT NULL COMMENT '홍보상세코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `festpr_div_cd` varchar(50) DEFAULT NULL COMMENT '홍보방식코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fesrev_bud_cd` varchar(50) DEFAULT NULL COMMENT '모든축제세입세출예산관리코드',
+  `catapp_acc_cd` varchar(50) DEFAULT NULL COMMENT '승인된거래처코드',
+  `fest_title` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `festpr_pro_nm` varchar(20) DEFAULT NULL COMMENT '매체명',
+  `festpr_pro_detail` varchar(100) DEFAULT NULL COMMENT '홍보내용상세',
+  `fprpro_order_dt` date DEFAULT NULL COMMENT '홍보제작일',
+  `fprpro_start_dt` date DEFAULT NULL COMMENT '홍보시작일',
+  `fprpro_end_dt` date DEFAULT NULL COMMENT '홍보종료일',
+  `festpr_pro_place` varchar(50) DEFAULT NULL COMMENT '장소 배포처',
+  `festpr_pro_amt` int(10) unsigned DEFAULT NULL COMMENT '수량',
+  `group_cd` varchar(10) DEFAULT NULL COMMENT '세입세출상세 그룹코드',
+  `group_nm` varchar(30) DEFAULT NULL COMMENT '세입세출상세 그룹명',
+  `action_dt` date DEFAULT NULL COMMENT '마감일',
+  `action_status` char(1) DEFAULT NULL COMMENT '마감유무',
+  `festpr_pro_expense` int(10) DEFAULT NULL COMMENT '금액',
+  `festpr_pro_etc` varchar(100) DEFAULT NULL COMMENT '비고',
+  `insert_dt` date DEFAULT NULL COMMENT '작성일',
+  PRIMARY KEY (`festpr_pro_cd`),
+  KEY `FK_55_Fest_PR_Div_TO_56_Fest_PR_Promotion` (`festpr_div_cd`),
+  KEY `FK_01_Area_TO_56_Fest_PR_Promotion` (`area_cd`),
+  KEY `FK_02_Area_City_TO_56_Fest_PR_Promotion` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_56_Fest_PR_Promotion` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_56_Fest_PR_Promotion` (`fest_cd`),
+  KEY `FK_13_Man_Com_TO_56_Fest_PR_Promotion` (`man_com_cd`),
+  KEY `FK_16_Fes_revExp_Bud_TO_56_Fest_PR_Promotion` (`fesrev_bud_cd`),
+  KEY `FK_Fest_PR_Promotion_Cat_Approval_Account` (`catapp_acc_cd`),
+  CONSTRAINT `FK_01_Area_TO_56_Fest_PR_Promotion` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_56_Fest_PR_Promotion` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_56_Fest_PR_Promotion` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_56_Fest_PR_Promotion` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_16_Fes_revExp_Bud_TO_56_Fest_PR_Promotion` FOREIGN KEY (`fesrev_bud_cd`) REFERENCES `Fes_revExp_Bud` (`fesrev_bud_cd`),
+  CONSTRAINT `FK_18_Festival_TO_56_Fest_PR_Promotion` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_55_Fest_PR_Div_TO_56_Fest_PR_Promotion` FOREIGN KEY (`festpr_div_cd`) REFERENCES `Fest_PR_Div` (`festpr_div_cd`),
+  CONSTRAINT `FK_Fest_PR_Promotion_Cat_Approval_Account` FOREIGN KEY (`catapp_acc_cd`) REFERENCES `Cat_Approval_Account` (`catapp_acc_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='홍보 상세관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fest_Schedule 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fest_Schedule` (
+  `fest_sch_cd` varchar(10) NOT NULL COMMENT '축제계획실행일정관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `acc_mem_cd` varchar(50) DEFAULT NULL COMMENT '하나의 거래처별 소속 회원코드',
+  `fescon_man_cd` varchar(50) DEFAULT NULL COMMENT '모든축제계약관리코드',
+  `fest_title` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `fest_sch_no` varchar(2) NOT NULL COMMENT '확인차수',
+  `fest_sch_dt` date NOT NULL COMMENT '날짜',
+  `fest_sche_nm` varchar(20) NOT NULL COMMENT '일정명',
+  `fest_sche_task` varchar(300) NOT NULL COMMENT '내용',
+  `fest_sch_comment` varchar(200) DEFAULT NULL COMMENT '담당자피드백',
+  `fest_sch_etc` varchar(200) DEFAULT NULL COMMENT '비고',
+  `fest_sch_attach` blob COMMENT '첨부파일',
+  `insert_dt` date NOT NULL COMMENT '작성일',
+  PRIMARY KEY (`fest_sch_cd`),
+  KEY `FK_02_Area_City_TO_58_Fest_Schedule` (`area_city_cd`),
+  KEY `FK_01_Area_TO_58_Fest_Schedule` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_58_Fest_Schedule` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_58_Fest_Schedule` (`fest_cd`),
+  KEY `FK_13_Man_Com_TO_58_Fest_Schedule` (`man_com_cd`),
+  KEY `FK_12_Account_Member_TO_58_Fest_Schedule` (`acc_mem_cd`),
+  KEY `FK_27_Fes_Con_Man_TO_58_Fest_Schedule` (`fescon_man_cd`),
+  CONSTRAINT `FK_01_Area_TO_58_Fest_Schedule` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_58_Fest_Schedule` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_58_Fest_Schedule` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_12_Account_Member_TO_58_Fest_Schedule` FOREIGN KEY (`acc_mem_cd`) REFERENCES `Account_Member` (`acc_mem_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_58_Fest_Schedule` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_58_Fest_Schedule` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_27_Fes_Con_Man_TO_58_Fest_Schedule` FOREIGN KEY (`fescon_man_cd`) REFERENCES `Fes_Con_Man` (`fescon_man_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='부서별 축제 실행 일정관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fes_Con_Man 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fes_Con_Man` (
+  `fescon_man_cd` varchar(50) NOT NULL COMMENT '모든축제계약관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `concod_man_cd` varchar(50) DEFAULT NULL COMMENT '계약코드관리',
+  `cat_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처코드',
+  `catapp_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처별 승인 업종 코드',
+  `fesrev_bud_cd` varchar(50) DEFAULT NULL COMMENT '모든축제세입세출예산관리코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `contract_nm` varchar(50) NOT NULL COMMENT '계약코드명',
+  `con_details` varchar(50) DEFAULT NULL COMMENT '계약내용',
+  `con_att_fil` varchar(50) DEFAULT NULL COMMENT '계약서첨부파일',
+  `adm_age_nm` varchar(50) DEFAULT NULL COMMENT '행정기관명',
+  `fes_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `con_ann_nm` varchar(250) DEFAULT NULL COMMENT '계약공고명',
+  `cat_acc_nm1` varchar(50) DEFAULT NULL COMMENT '거래처명',
+  `cat_acc_nm2` varchar(50) DEFAULT NULL COMMENT '거래처대표자',
+  `con_amo` int(20) DEFAULT NULL COMMENT '계약금액(원)',
+  `con_com_dt` date DEFAULT NULL COMMENT '계약서작성일',
+  `con_sta_dt` date DEFAULT NULL COMMENT '계약시작일자',
+  `con_exp_dt` date DEFAULT NULL COMMENT '계약만료일자',
+  `con_nor_com` date DEFAULT NULL COMMENT '계약정상완료일자',
+  `con_pre_per` varchar(50) DEFAULT NULL COMMENT '계약서작성한담당자',
+  `belong` varchar(50) DEFAULT NULL COMMENT '소속',
+  `con_sta1` varchar(50) DEFAULT NULL COMMENT '계약상태1',
+  `con_sta2` varchar(50) DEFAULT NULL COMMENT '계약상태2',
+  PRIMARY KEY (`fescon_man_cd`),
+  KEY `FK_10_Cat_Account_TO_27_Fes_Con_Man` (`cat_acc_cd`),
+  KEY `FK_11_Cat_Approval_Account_TO_27_Fes_Con_Man` (`catapp_acc_cd`),
+  KEY `FK_16_Fes_revExp_Bud_TO_27_Fes_Con_Man` (`fesrev_bud_cd`),
+  KEY `FK_18_Festival_TO_27_Fes_Con_Man` (`fest_cd`),
+  KEY `FK_01_Area_TO_27_Fes_Con_Man` (`area_cd`),
+  KEY `FK_02_Area_City_TO_27_Fes_Con_Man` (`area_city_cd`),
+  KEY `FK_26_Con_Cod_Man_TO_27_Fes_Con_Man` (`concod_man_cd`),
+  KEY `FK_03_Area_City_Admin_TO_27_Fes_Con_Man` (`areacity_admin_cd`),
+  CONSTRAINT `FK_01_Area_TO_27_Fes_Con_Man` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_27_Fes_Con_Man` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_27_Fes_Con_Man` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_10_Cat_Account_TO_27_Fes_Con_Man` FOREIGN KEY (`cat_acc_cd`) REFERENCES `Cat_Account` (`cat_acc_cd`),
+  CONSTRAINT `FK_11_Cat_Approval_Account_TO_27_Fes_Con_Man` FOREIGN KEY (`catapp_acc_cd`) REFERENCES `Cat_Approval_Account` (`catapp_acc_cd`),
+  CONSTRAINT `FK_16_Fes_revExp_Bud_TO_27_Fes_Con_Man` FOREIGN KEY (`fesrev_bud_cd`) REFERENCES `Fes_revExp_Bud` (`fesrev_bud_cd`),
+  CONSTRAINT `FK_18_Festival_TO_27_Fes_Con_Man` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_26_Con_Cod_Man_TO_27_Fes_Con_Man` FOREIGN KEY (`concod_man_cd`) REFERENCES `Con_Cod_Man` (`concod_man_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제 계약관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fes_Fac_Cat 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fes_Fac_Cat` (
+  `fesfac_cat_cd` varchar(20) NOT NULL COMMENT '모든시설분류코드',
+  `fesfac_cat_nm` varchar(20) DEFAULT NULL COMMENT '모든시설분류',
+  PRIMARY KEY (`fesfac_cat_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 시설 분류';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fes_revExp_Bud 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fes_revExp_Bud` (
+  `fesrev_bud_cd` varchar(50) NOT NULL COMMENT '모든축제세입세출예산관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `fesrev_sub_cd` varchar(50) DEFAULT NULL COMMENT '모든축제세입세출 소계및합계 예산관리코드',
+  `accsub_man_cd` varchar(50) DEFAULT NULL COMMENT '모든계정과목코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `adm_age_nm` varchar(50) DEFAULT NULL COMMENT '행정기관명',
+  `fes_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `com_nm` varchar(50) DEFAULT NULL COMMENT '위원회명',
+  `accsub_large_nm` varchar(50) DEFAULT NULL COMMENT '대분류명',
+  `accsub_medium_nm` varchar(50) DEFAULT NULL COMMENT '중분류명',
+  `budget_cla` varchar(50) DEFAULT NULL COMMENT '예산구분',
+  `accsub_nm` varchar(50) DEFAULT NULL COMMENT '모든계정과목명',
+  `budget_details` varchar(50) DEFAULT NULL COMMENT '세부내용	',
+  `fes_year` varchar(20) DEFAULT NULL COMMENT '년도',
+  `budget` int(20) DEFAULT NULL COMMENT '예산액',
+  PRIMARY KEY (`fesrev_bud_cd`),
+  KEY `FK_14_Acc_sub_Man_TO_16_Fes_revExp_Bud` (`accsub_man_cd`),
+  KEY `FK_15_Fes_revExp_Sub_TO_16_Fes_revExp_Bud` (`fesrev_sub_cd`),
+  KEY `FK_01_Area_TO_16_Fes_revExp_Bud` (`area_cd`),
+  KEY `FK_13_Man_Com_TO_16_Fes_revExp_Bud` (`man_com_cd`),
+  KEY `FK_03_Area_City_Admin_TO_16_Fes_revExp_Bud` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_16_Fes_revExp_Bud` (`fest_cd`),
+  KEY `FK_02_Area_City_TO_16_Fes_revExp_Bud` (`area_city_cd`),
+  CONSTRAINT `FK_01_Area_TO_16_Fes_revExp_Bud` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_16_Fes_revExp_Bud` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_16_Fes_revExp_Bud` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_16_Fes_revExp_Bud` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_14_Acc_sub_Man_TO_16_Fes_revExp_Bud` FOREIGN KEY (`accsub_man_cd`) REFERENCES `Acc_sub_Man` (`accsub_man_cd`),
+  CONSTRAINT `FK_15_Fes_revExp_Sub_TO_16_Fes_revExp_Bud` FOREIGN KEY (`fesrev_sub_cd`) REFERENCES `Fes_revExp_Sub` (`fesrev_sub_cd`),
+  CONSTRAINT `FK_18_Festival_TO_16_Fes_revExp_Bud` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제 세입세출 예산관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fes_revExp_Exe 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fes_revExp_Exe` (
+  `fesrev_exe_cd` varchar(50) NOT NULL COMMENT '모든축제세입세출집행관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `accsub_man_cd` varchar(50) DEFAULT NULL COMMENT '모든계정과목코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `group_cd` varchar(50) DEFAULT NULL COMMENT '상세세입세출그룹코드',
+  `dettax_paycontab_nm` varchar(50) DEFAULT NULL COMMENT '상세세입세출',
+  `adm_age_nm` varchar(50) DEFAULT NULL COMMENT '행정기관명',
+  `fes_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `com_nm` varchar(50) DEFAULT NULL COMMENT '위원회명',
+  `lar_cat_nm` varchar(50) DEFAULT NULL COMMENT '대분류명',
+  `accsub_medium_nm` varchar(50) DEFAULT NULL COMMENT '중분류명',
+  `bud_cla` varchar(50) DEFAULT NULL COMMENT '예산구분		',
+  `accsub_nm` varchar(50) DEFAULT NULL COMMENT '모든계정과목명',
+  `exp_details` varchar(50) DEFAULT NULL COMMENT '세부내용	',
+  `fes_year` year(4) DEFAULT NULL COMMENT '년도',
+  `Expenditure` int(11) DEFAULT NULL COMMENT '집행액',
+  PRIMARY KEY (`fesrev_exe_cd`),
+  KEY `FK_14_Acc_sub_Man_TO_17_Fes_revExp_Exe` (`accsub_man_cd`),
+  KEY `FK_01_Area_TO_17_Fes_revExp_Exe` (`area_cd`),
+  KEY `FK_13_Man_Com_TO_17_Fes_revExp_Exe` (`man_com_cd`),
+  KEY `FK_03_Area_City_Admin_TO_17_Fes_revExp_Exe` (`areacity_admin_cd`),
+  KEY `FK_02_Area_City_TO_17_Fes_revExp_Exe` (`area_city_cd`),
+  KEY `FK_18_Festival_TO_17_Fes_revExp_Exe` (`fest_cd`),
+  CONSTRAINT `FK_01_Area_TO_17_Fes_revExp_Exe` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_17_Fes_revExp_Exe` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_17_Fes_revExp_Exe` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_17_Fes_revExp_Exe` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_14_Acc_sub_Man_TO_17_Fes_revExp_Exe` FOREIGN KEY (`accsub_man_cd`) REFERENCES `Acc_sub_Man` (`accsub_man_cd`),
+  CONSTRAINT `FK_18_Festival_TO_17_Fes_revExp_Exe` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제 세입세출 집행관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Fes_revExp_Sub 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Fes_revExp_Sub` (
+  `fesrev_sub_cd` varchar(50) NOT NULL COMMENT '모든축제세입세출 소계및합계 예산관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `accsub_lar_cd` varchar(50) DEFAULT NULL COMMENT '모든계정과목대분류코드',
+  `adm_age_nm` varchar(50) DEFAULT NULL COMMENT '행정기관명',
+  `fes_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `com_nm` varchar(50) DEFAULT NULL COMMENT '위원회명',
+  `accsub_large_nm` varchar(50) DEFAULT NULL COMMENT '대분류명',
+  `budget_cla` varchar(50) DEFAULT NULL COMMENT '예산구분',
+  `fes_year` varchar(50) DEFAULT NULL COMMENT '년도',
+  `budget` int(50) DEFAULT NULL COMMENT '예산액',
+  PRIMARY KEY (`fesrev_sub_cd`),
+  KEY `FK_01_Area_TO_15_Fes_revExp_Sub` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_15_Fes_revExp_Sub` (`areacity_admin_cd`),
+  KEY `FK_02_Area_City_TO_15_Fes_revExp_Sub` (`area_city_cd`),
+  KEY `FK_13_Man_Com_TO_15_Fes_revExp_Sub` (`man_com_cd`),
+  KEY `FK_18_Festival_TO_15_Fes_revExp_Sub` (`fest_cd`),
+  CONSTRAINT `FK_01_Area_TO_15_Fes_revExp_Sub` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_15_Fes_revExp_Sub` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_15_Fes_revExp_Sub` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_15_Fes_revExp_Sub` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_15_Fes_revExp_Sub` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제 세입세출 소계및합계 예산관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Goods_deliver_bre 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Goods_deliver_bre` (
+  `goodsdel_bre_cd` varchar(50) NOT NULL COMMENT '모든축제별 계약물품납품내역관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `cat_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처코드',
+  `catbus_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처 업종 분류코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `deliver_dt` date DEFAULT NULL COMMENT '계약물품날짜',
+  `deliver_bre` varchar(50) DEFAULT NULL COMMENT '계약물품내역',
+  PRIMARY KEY (`goodsdel_bre_cd`),
+  KEY `FK_03_Area_City_Admin_TO_34_Goods_deliver_bre` (`areacity_admin_cd`),
+  KEY `FK_01_Area_TO_34_Goods_deliver_bre` (`area_cd`),
+  KEY `FK_02_Area_City_TO_34_Goods_deliver_bre` (`area_city_cd`),
+  KEY `FK_18_Festival_TO_34_Goods_deliver_bre` (`fest_cd`),
+  KEY `FK_09_Cat_Business_Account_TO_34_Goods_deliver_bre` (`catbus_acc_cd`),
+  KEY `FK_10_Cat_Account_TO_34_Goods_deliver_bre` (`cat_acc_cd`),
+  KEY `FK_13_Man_Com_TO_34_Goods_deliver_bre` (`man_com_cd`),
+  CONSTRAINT `FK_01_Area_TO_34_Goods_deliver_bre` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_34_Goods_deliver_bre` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_34_Goods_deliver_bre` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_09_Cat_Business_Account_TO_34_Goods_deliver_bre` FOREIGN KEY (`catbus_acc_cd`) REFERENCES `Cat_Business_Account` (`catbus_acc_cd`),
+  CONSTRAINT `FK_10_Cat_Account_TO_34_Goods_deliver_bre` FOREIGN KEY (`cat_acc_cd`) REFERENCES `Cat_Account` (`cat_acc_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_34_Goods_deliver_bre` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_34_Goods_deliver_bre` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든축제별 계약물품납품 내역관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Goods_present_condition 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Goods_present_condition` (
+  `goodspre_con_cd` varchar(50) NOT NULL COMMENT '모든보유물품현황코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `admin_dep_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관 부서코드',
+  `admindep_emp_nm` varchar(50) DEFAULT NULL COMMENT '담당자',
+  `adm_age_nm` varchar(50) DEFAULT NULL COMMENT '전국지역이름',
+  `area_city_nm` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군이름',
+  `areacity_admin_nm` varchar(50) DEFAULT NULL COMMENT '모든 행정기관이름',
+  `fest_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `admim_dep_nm` varchar(50) DEFAULT NULL COMMENT '부서명',
+  `goods_nm` varchar(50) DEFAULT NULL COMMENT '보유물품',
+  `goods_count` int(20) DEFAULT NULL COMMENT '수량',
+  `special_note` varchar(250) DEFAULT NULL COMMENT '특이사항',
+  PRIMARY KEY (`goodspre_con_cd`),
+  KEY `FK_02_Area_City_TO_35_Goods_present_condition` (`area_city_cd`),
+  KEY `FK_01_Area_TO_35_Goods_present_condition` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_35_Goods_present_condition` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_35_Goods_present_condition` (`fest_cd`),
+  KEY `FK_04_Admin_Depart_TO_35_Goods_present_condition` (`admin_dep_cd`),
+  CONSTRAINT `FK_01_Area_TO_35_Goods_present_condition` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_35_Goods_present_condition` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_35_Goods_present_condition` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_04_Admin_Depart_TO_35_Goods_present_condition` FOREIGN KEY (`admin_dep_cd`) REFERENCES `Admin_Depart` (`admin_dep_cd`),
+  CONSTRAINT `FK_18_Festival_TO_35_Goods_present_condition` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 보유물품현황';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Goods_rental_revenue 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Goods_rental_revenue` (
+  `goodsren_rev_cd` varchar(50) NOT NULL COMMENT '모든축제별 보유물품대여관리코드',
+  `areacity_admin_cd` varchar(50) NOT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) NOT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) NOT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) NOT NULL COMMENT '축제코드',
+  `catbus_acc_cd` varchar(50) NOT NULL COMMENT '거래처 업종 분류코드',
+  `cat_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처코드',
+  `catapp_acc_cd` varchar(50) DEFAULT NULL COMMENT '거래처별 승인 업종 코드',
+  `fesrev_bud_cd` varchar(50) NOT NULL COMMENT '모든축제세입세출예산관리코드',
+  `man_com_cd` varchar(50) NOT NULL COMMENT '위원회코드',
+  `deliver_bre` varchar(50) NOT NULL COMMENT '보유물품사용내역',
+  `goods_amt` int(11) NOT NULL COMMENT '대여료',
+  `money` int(11) NOT NULL COMMENT '수량',
+  `lender` varchar(50) NOT NULL COMMENT '대여자',
+  `return_situation` varchar(50) NOT NULL COMMENT '반납유무',
+  `return_due_dt` date NOT NULL COMMENT '반납예정일',
+  `return_dt` date NOT NULL COMMENT '반납완료일',
+  `group_cd` int(11) NOT NULL COMMENT '세입상세그룹코드',
+  `action_dt` date NOT NULL COMMENT '마감일자',
+  `action_status` varchar(50) NOT NULL COMMENT '마감유무',
+  PRIMARY KEY (`goodsren_rev_cd`),
+  KEY `FK_01_Area_TO_36_Goods_rental_revenue` (`area_cd`),
+  KEY `FK_03_Area_City_Admin_TO_36_Goods_rental_revenue` (`areacity_admin_cd`),
+  KEY `FK_02_Area_City_TO_36_Goods_rental_revenue` (`area_city_cd`),
+  KEY `FK_18_Festival_TO_36_Goods_rental_revenue` (`fest_cd`),
+  KEY `FK_13_Man_Com_TO_36_Goods_rental_revenue` (`man_com_cd`),
+  KEY `FK_09_Cat_Business_Account_TO_36_Goods_rental_revenue` (`catbus_acc_cd`),
+  KEY `FK_16_Fes_revExp_Bud_TO_36_Goods_rental_revenue` (`fesrev_bud_cd`),
+  KEY `FK_11_Cat_Approval_Account_TO_36_Goods_rental_revenue` (`catapp_acc_cd`),
+  KEY `FK_10_Cat_Account_TO_36_Goods_rental_revenue` (`cat_acc_cd`),
+  CONSTRAINT `FK_01_Area_TO_36_Goods_rental_revenue` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_36_Goods_rental_revenue` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_36_Goods_rental_revenue` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_09_Cat_Business_Account_TO_36_Goods_rental_revenue` FOREIGN KEY (`catbus_acc_cd`) REFERENCES `Cat_Business_Account` (`catbus_acc_cd`),
+  CONSTRAINT `FK_10_Cat_Account_TO_36_Goods_rental_revenue` FOREIGN KEY (`cat_acc_cd`) REFERENCES `Cat_Account` (`cat_acc_cd`),
+  CONSTRAINT `FK_11_Cat_Approval_Account_TO_36_Goods_rental_revenue` FOREIGN KEY (`catapp_acc_cd`) REFERENCES `Cat_Approval_Account` (`catapp_acc_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_36_Goods_rental_revenue` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_16_Fes_revExp_Bud_TO_36_Goods_rental_revenue` FOREIGN KEY (`fesrev_bud_cd`) REFERENCES `Fes_revExp_Bud` (`fesrev_bud_cd`),
+  CONSTRAINT `FK_18_Festival_TO_36_Goods_rental_revenue` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제별 보유물품 대여관리 - 세입';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Login 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Login` (
+  `login_cd` varchar(20) NOT NULL COMMENT '아이디',
+  `mem_cd` varchar(20) DEFAULT NULL COMMENT '회원코드',
+  `mem_lev_cd` varchar(20) DEFAULT NULL COMMENT '모든 회원 레벨코드',
+  `login_pw` varchar(20) DEFAULT NULL COMMENT '패스워드',
+  `mem_nm` varchar(50) DEFAULT NULL COMMENT '이름',
+  `mem_lev_nm` varchar(50) DEFAULT NULL COMMENT '레벨명',
+  PRIMARY KEY (`login_cd`),
+  KEY `FK_06_Member_Lev_TO_08_Login` (`mem_lev_cd`),
+  KEY `FK_07_Member_TO_08_Login` (`mem_cd`),
+  CONSTRAINT `FK_06_Member_Lev_TO_08_Login` FOREIGN KEY (`mem_lev_cd`) REFERENCES `Member_Lev` (`mem_lev_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_07_Member_TO_08_Login` FOREIGN KEY (`mem_cd`) REFERENCES `Member` (`mem_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 회원 로그인관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Ltem_scoring 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Ltem_scoring` (
+  `item_sco_cd` varchar(50) NOT NULL COMMENT '축제의 각항목배점',
+  `eva_index_cd` varchar(50) DEFAULT NULL COMMENT '심사 평가지표명코드',
+  `evaindex_item_cd` varchar(50) DEFAULT NULL COMMENT '항목코드',
+  `evaindex_sco_cd` varchar(50) DEFAULT NULL COMMENT '객관식문항점수표 코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `score` int(11) DEFAULT NULL COMMENT '배점',
+  PRIMARY KEY (`item_sco_cd`),
+  KEY `FK_51_Eva_index_TO_54_Item_scoring` (`eva_index_cd`),
+  KEY `FK_52_Eva_index_item_TO_54_Item_scoring` (`evaindex_item_cd`),
+  KEY `FK_53_Eva_index_scoring_TO_54_Item_scoring` (`evaindex_sco_cd`),
+  KEY `FK_18_Festival_TO_54_Item_scoring` (`fest_cd`),
+  CONSTRAINT `FK_18_Festival_TO_54_Item_scoring` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_51_Eva_index_TO_54_Item_scoring` FOREIGN KEY (`eva_index_cd`) REFERENCES `Eva_Index` (`eva_index_cd`),
+  CONSTRAINT `FK_52_Eva_index_item_TO_54_Item_scoring` FOREIGN KEY (`evaindex_item_cd`) REFERENCES `Eva_Index_Item` (`evaindex_item_cd`),
+  CONSTRAINT `FK_53_Eva_index_scoring_TO_54_Item_scoring` FOREIGN KEY (`evaindex_sco_cd`) REFERENCES `Eva_Index_Scoring` (`evaindex_sco_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='축제의 각 항목배점';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Man_Com 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Man_Com` (
+  `man_com_cd` varchar(50) NOT NULL COMMENT '위원회코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `mem_cd` varchar(20) DEFAULT NULL COMMENT '회원코드',
+  `mem_lev_cd` varchar(20) DEFAULT NULL COMMENT '모든 회원 레벨코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `exa_rep_cd` varchar(50) DEFAULT NULL COMMENT '모든 심사 결과',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `fest_nm` varchar(50) DEFAULT NULL COMMENT '축제명',
+  `man_com_cat` varchar(50) DEFAULT NULL COMMENT '위원회 분류',
+  `man_com_nm1` varchar(50) DEFAULT NULL COMMENT '위원회명',
+  `man_com_dep` varchar(50) DEFAULT NULL COMMENT '위원회부서',
+  `man_com_rank` varchar(50) DEFAULT NULL COMMENT '직급',
+  `com_mem_nm2` varchar(50) DEFAULT NULL COMMENT '이름',
+  `man_com_job` varchar(50) DEFAULT NULL COMMENT '소속',
+  `man_com_dt1` date DEFAULT NULL COMMENT '작성일자',
+  `man_com_app` varchar(50) DEFAULT NULL COMMENT '승인자',
+  `man_com_dt2` date DEFAULT NULL COMMENT '승인일자',
+  `man_com_con` varchar(50) DEFAULT NULL COMMENT '승인 상태',
+  PRIMARY KEY (`man_com_cd`),
+  KEY `FK_07_Member_TO_13_Man_Com` (`mem_cd`),
+  KEY `FK_03_Area_City_Admin_TO_13_Man_Com` (`areacity_admin_cd`),
+  KEY `FK_01_Area_TO_13_Man_Com` (`area_cd`),
+  KEY `FK_02_Area_City_TO_13_Man_Com` (`area_city_cd`),
+  KEY `FK_06_Member_Lev_TO_13_Man_Com` (`mem_lev_cd`),
+  KEY `FK_18_Festival_TO_13_Man_Com` (`fest_cd`),
+  KEY `exa_rep_cd` (`exa_rep_cd`),
+  CONSTRAINT `FK_01_Area_TO_13_Man_Com` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_13_Man_Com` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_13_Man_Com` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_06_Member_Lev_TO_13_Man_Com` FOREIGN KEY (`mem_lev_cd`) REFERENCES `Member_Lev` (`mem_lev_cd`),
+  CONSTRAINT `FK_07_Member_TO_13_Man_Com` FOREIGN KEY (`mem_cd`) REFERENCES `Member` (`mem_cd`),
+  CONSTRAINT `FK_13_Man_Com_23_Exa_Report` FOREIGN KEY (`exa_rep_cd`) REFERENCES `Exa_Report` (`exa_rep_cd`),
+  CONSTRAINT `FK_18_Festival_TO_13_Man_Com` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='위원회 관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Member 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Member` (
+  `mem_cd` varchar(20) NOT NULL COMMENT '회원코드',
+  `mem_lev_cd` varchar(20) DEFAULT NULL COMMENT '모든 회원 레벨코드',
+  `mem_nm` varchar(50) DEFAULT NULL COMMENT '이름',
+  `mem_addr` varchar(50) DEFAULT NULL COMMENT '주소',
+  `mem_phone` varchar(50) DEFAULT NULL COMMENT '전화번호',
+  `mem_email` varchar(50) DEFAULT NULL COMMENT '이메일',
+  `mem_birth` varchar(50) DEFAULT NULL COMMENT '생년월일',
+  `mem_join_dt` date DEFAULT NULL COMMENT '가입일자',
+  PRIMARY KEY (`mem_cd`),
+  KEY `FK_06_Member_Lev_TO_07_Member` (`mem_lev_cd`),
+  CONSTRAINT `FK_06_Member_Lev_TO_07_Member` FOREIGN KEY (`mem_lev_cd`) REFERENCES `Member_Lev` (`mem_lev_cd`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 회원관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Member_Lev 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Member_Lev` (
+  `mem_lev_cd` varchar(20) NOT NULL COMMENT '모든 회원 레벨코드',
+  `mem_lev_nm` varchar(50) DEFAULT NULL COMMENT '레벨명',
+  PRIMARY KEY (`mem_lev_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 회원 레벨관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Saf_Ins_List 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Saf_Ins_List` (
+  `safins_list_cd` varchar(20) NOT NULL COMMENT '안전관리점검리스트코드',
+  `safins_list_cla` varchar(20) DEFAULT NULL COMMENT '분류',
+  `safins_list_con` varchar(250) DEFAULT NULL COMMENT '점검내용',
+  PRIMARY KEY (`safins_list_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='안전관리 점검리스트 점검표';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Service_App 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Service_App` (
+  `ser_app_cd` varchar(50) NOT NULL COMMENT '용역 참가신청서관리',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `fes_ann_cd` varchar(50) DEFAULT NULL COMMENT '모든축제공고코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `ser_app_nm1` varchar(100) DEFAULT NULL COMMENT '거래처명',
+  `ser_app_no1` varchar(50) DEFAULT NULL COMMENT '거래처사업자등록번호',
+  `ser_app_no2` varchar(50) DEFAULT NULL COMMENT '거래처법인등록번호',
+  `ser_app_add` varchar(50) DEFAULT NULL COMMENT '거래처사업장주소',
+  `ser_app_phone` varchar(50) DEFAULT NULL COMMENT '거래처대표번호',
+  `ser_app_nm2` varchar(50) DEFAULT NULL COMMENT '거래처대표자명',
+  `ser_app_no3` varchar(50) DEFAULT NULL COMMENT '대표자 주민번호',
+  `ser_app_att` blob COMMENT '관련서류첨부',
+  PRIMARY KEY (`ser_app_cd`),
+  KEY `FK_02_Area_City_TO_43_Service_App` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_43_Service_App` (`areacity_admin_cd`),
+  KEY `FK_01_Area_TO_43_Service_App` (`area_cd`),
+  KEY `FK_18_Festival_TO_43_Service_App` (`fest_cd`),
+  KEY `FK_13_Man_Com_TO_43_Service_App` (`man_com_cd`),
+  KEY `FK_42_Festival_Ann_TO_43_Service_App` (`fes_ann_cd`),
+  CONSTRAINT `FK_01_Area_TO_43_Service_App` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_43_Service_App` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_43_Service_App` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_43_Service_App` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_43_Service_App` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_42_Festival_Ann_TO_43_Service_App` FOREIGN KEY (`fes_ann_cd`) REFERENCES `Festival_Ann` (`fes_ann_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='용역참가신청서관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Software_Development 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Software_Development` (
+  `sof_dev_cd` varchar(50) NOT NULL COMMENT 'sw개발사코드',
+  `sof_dev_nm` varchar(50) DEFAULT NULL COMMENT '이름',
+  `sof_dev_birth` varchar(50) DEFAULT NULL COMMENT '생년월일',
+  `sof_dev_phone` varchar(50) DEFAULT NULL COMMENT '전화번호',
+  `sof_dev_address` varchar(50) DEFAULT NULL COMMENT '주소',
+  `sof_dev_email` varchar(50) DEFAULT NULL COMMENT '이메일',
+  `sof_dev_part` varchar(50) DEFAULT NULL COMMENT '역할',
+  PRIMARY KEY (`sof_dev_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='sw개발사 관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Temporary_Facility 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Temporary_Facility` (
+  `tem_fac_cd` varchar(20) NOT NULL COMMENT '모든축제별 임시시설 설치관리코드',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `fescon_man_cd` varchar(50) DEFAULT NULL COMMENT '모든축제계약관리코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `fac_sta_cd` varchar(20) DEFAULT NULL COMMENT '모든보유시설코드',
+  `cat_acc_cd` varchar(20) DEFAULT NULL COMMENT '거래처코드',
+  `fest_nm` varchar(20) DEFAULT NULL COMMENT '축제명',
+  `fac_sta_nm` varchar(50) DEFAULT NULL COMMENT '시설명',
+  `cat_acc_nm1` varchar(50) DEFAULT NULL COMMENT '거래처명',
+  `con_details` varchar(50) DEFAULT NULL COMMENT '계약내용',
+  `facsta_sta_dt` varchar(50) DEFAULT NULL COMMENT '설치시작일자',
+  `facsta_end_dt` varchar(50) DEFAULT NULL COMMENT '설치종료일자',
+  `facsta_dem_dt` varchar(50) DEFAULT NULL COMMENT '철거확인일자',
+  `fac_sta_che` varchar(10) DEFAULT NULL COMMENT '철거확인자',
+  `facsta_ins_mo` varchar(20) DEFAULT NULL COMMENT '계약설치모델명',
+  `facsta_ins_sc` varchar(20) DEFAULT NULL COMMENT '설치장소',
+  `facsta_ins_num` int(11) DEFAULT NULL COMMENT '설치개수',
+  `facsta_ins_con` varchar(250) DEFAULT NULL COMMENT '설치내용',
+  `facsta_work_sta` int(11) DEFAULT NULL COMMENT '근무인원',
+  `com_mem_nm2` varchar(20) DEFAULT NULL COMMENT '위원회직원',
+  `facsta_ins_con1` varchar(10) DEFAULT NULL COMMENT '설치상태1',
+  `facsta_ins_con2` varchar(10) DEFAULT NULL COMMENT '설치상태2',
+  PRIMARY KEY (`tem_fac_cd`),
+  KEY `FK_18_Festival_TO_30_Temporary_Facility` (`fest_cd`),
+  KEY `FK_01_Area_TO_30_Temporary_Facility` (`area_cd`),
+  KEY `FK_02_Area_City_TO_30_Temporary_Facility` (`area_city_cd`),
+  KEY `FK_27_Fes_Con_Man_TO_30_Temporary_Facility` (`fescon_man_cd`),
+  KEY `FK_29_Facility_Status_TO_30_Temporary_Facility` (`fac_sta_cd`),
+  KEY `FK_13_Man_Com_TO_30_Temporary_Facility` (`man_com_cd`),
+  KEY `FK_03_Area_City_Admin_TO_30_Temporary_Facility` (`areacity_admin_cd`),
+  KEY `FK_10_Cat_Account_TO_30_Temporary_Facility` (`cat_acc_cd`),
+  CONSTRAINT `FK_01_Area_TO_30_Temporary_Facility` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_30_Temporary_Facility` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_30_Temporary_Facility` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_10_Cat_Account_TO_30_Temporary_Facility` FOREIGN KEY (`cat_acc_cd`) REFERENCES `Cat_Account` (`cat_acc_cd`),
+  CONSTRAINT `FK_13_Man_Com_TO_30_Temporary_Facility` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_30_Temporary_Facility` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_27_Fes_Con_Man_TO_30_Temporary_Facility` FOREIGN KEY (`fescon_man_cd`) REFERENCES `Fes_Con_Man` (`fescon_man_cd`),
+  CONSTRAINT `FK_29_Facility_Status_TO_30_Temporary_Facility` FOREIGN KEY (`fac_sta_cd`) REFERENCES `Facility_Status` (`fac_sta_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='모든 축제별 임시시설 설치 및 철거관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Vol_App 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Vol_App` (
+  `vol_app_cd` varchar(50) NOT NULL COMMENT '축제자원봉사 신청서관리',
+  `areacity_admin_cd` varchar(50) DEFAULT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) DEFAULT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) DEFAULT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) DEFAULT NULL COMMENT '축제코드',
+  `fes_ann_cd` varchar(50) DEFAULT NULL COMMENT '모든축제공고코드',
+  `man_com_cd` varchar(50) DEFAULT NULL COMMENT '위원회코드',
+  `vol_app_cat` varchar(50) DEFAULT NULL COMMENT '지원분야',
+  `vol_app_nm` varchar(50) DEFAULT NULL COMMENT '신청자이름',
+  `vol_app_phone` varchar(50) DEFAULT NULL COMMENT '연락처',
+  `vol_app_dt1` date DEFAULT NULL COMMENT '생년월일',
+  `vol_app_gender` varchar(50) DEFAULT NULL COMMENT '성별',
+  `vol_app_tshirt` varchar(50) DEFAULT NULL COMMENT '티셔츠사이즈',
+  `vol_app_portalid` varchar(50) DEFAULT NULL COMMENT '자원봉사포털ID',
+  `vol_app_spec` varchar(50) DEFAULT NULL COMMENT '특기사항',
+  `vol_app_reason` varchar(250) DEFAULT NULL COMMENT '지원동기',
+  `vol_app_email` varchar(50) DEFAULT NULL COMMENT '이메일주소',
+  `vol_app_dt2` date DEFAULT NULL COMMENT '신청일',
+  `vol_app_sel` varchar(50) DEFAULT NULL COMMENT '합격여부',
+  `vol_app_dt3` date DEFAULT NULL COMMENT '합격일자',
+  PRIMARY KEY (`vol_app_cd`),
+  KEY `FK_01_Area_TO_45_Vol_App` (`area_cd`),
+  KEY `FK_02_Area_City_TO_45_Vol_App` (`area_city_cd`),
+  KEY `FK_03_Area_City_Admin_TO_45_Vol_App` (`areacity_admin_cd`),
+  KEY `FK_18_Festival_TO_45_Vol_App` (`fest_cd`),
+  KEY `FK_42_Festival_Ann_TO_45_Vol_App` (`fes_ann_cd`),
+  KEY `FK_13_Man_Com_TO_45_Vol_App` (`man_com_cd`),
+  CONSTRAINT `FK_01_Area_TO_45_Vol_App` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_02_Area_City_TO_45_Vol_App` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_03_Area_City_Admin_TO_45_Vol_App` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_13_Man_Com_TO_45_Vol_App` FOREIGN KEY (`man_com_cd`) REFERENCES `Man_Com` (`man_com_cd`),
+  CONSTRAINT `FK_18_Festival_TO_45_Vol_App` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_42_Festival_Ann_TO_45_Vol_App` FOREIGN KEY (`fes_ann_cd`) REFERENCES `Festival_Ann` (`fes_ann_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='축제자원봉사 신청서';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+-- 테이블 dusthgks.Waiting_For_Judging 구조 내보내기
+CREATE TABLE IF NOT EXISTS `Waiting_For_Judging` (
+  `watfor_jud_cd` varchar(50) NOT NULL COMMENT '심사대기 코드',
+  `areacity_admin_cd` varchar(50) NOT NULL COMMENT '모든 행정기관코드',
+  `area_cd` varchar(50) NOT NULL COMMENT '전국지역코드',
+  `area_city_cd` varchar(50) NOT NULL COMMENT '모든 지역 시군코드',
+  `fest_cd` varchar(50) NOT NULL COMMENT '축제코드',
+  `fest_pro_cd` varchar(50) NOT NULL COMMENT '하나의 축제내 하나의 프로그램 소개코드',
+  `mem_cd` varchar(50) NOT NULL COMMENT '회원코드',
+  `eva_index_cd` varchar(50) DEFAULT NULL COMMENT '심사명',
+  `exa_target` varchar(50) DEFAULT NULL COMMENT '심사대상',
+  `reg_dt` date DEFAULT NULL COMMENT '등록일자',
+  `exa_dt` date DEFAULT NULL COMMENT '심사완료일자',
+  `exa_manager` varchar(50) DEFAULT NULL COMMENT '담당자',
+  `exa_status` varchar(50) DEFAULT NULL COMMENT '심사현황',
+  PRIMARY KEY (`watfor_jud_cd`),
+  KEY `mem_cd` (`mem_cd`),
+  KEY `fest_pro_cd` (`fest_pro_cd`),
+  KEY `fest_cd` (`fest_cd`),
+  KEY `area_city_cd` (`area_city_cd`),
+  KEY `area_cd` (`area_cd`),
+  KEY `areacity_admin_cd` (`areacity_admin_cd`),
+  KEY `eva_index_cd` (`eva_index_cd`),
+  CONSTRAINT `FK_Waiting_For_Judging_Area` FOREIGN KEY (`area_cd`) REFERENCES `Area` (`area_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_Waiting_For_Judging_Area_City` FOREIGN KEY (`area_city_cd`) REFERENCES `Area_City` (`area_city_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_Waiting_For_Judging_Area_City_Admin` FOREIGN KEY (`areacity_admin_cd`) REFERENCES `Area_City_Admin` (`areacity_admin_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_Waiting_For_Judging_Eva_Index` FOREIGN KEY (`eva_index_cd`) REFERENCES `Eva_Index` (`eva_index_cd`),
+  CONSTRAINT `FK_Waiting_For_Judging_Fest_Program` FOREIGN KEY (`fest_pro_cd`) REFERENCES `Fest_Program` (`fest_pro_cd`),
+  CONSTRAINT `FK_Waiting_For_Judging_Festival` FOREIGN KEY (`fest_cd`) REFERENCES `Festival` (`fest_cd`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_Waiting_For_Judging_Member` FOREIGN KEY (`mem_cd`) REFERENCES `Member` (`mem_cd`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='심사 대기 관리';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

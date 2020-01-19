@@ -5,9 +5,12 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 
 <th:block layout:fragment="gukminMainContents">
 
-<form id="registerform" name="registerform" action="/MemberRegisterForm.festa" method="post">
+<form id="registerform" name="registerform" action="/gukminview/member/memberRegisterForm" method="post">
 	<input type="hidden" name="membertype" value="1" id="membertype"/>
 	<input type="hidden" name="hosttype" value="1" id="hosttype"/>
+	<input type="hidden" name="MemCd">
+	<input type="hidden" name="MemLevCd" value="level_013">
+	<input type="hidden" name="MemLevNm" value="국민">
 	<section>
 		<div class="mypDesc">
 			<p class="t01">회원정보</p>
@@ -32,29 +35,11 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<col width="120" />
 								<col width="" />
 							</colgroup>
-							<tr style="display: none;">
-								<th>회원코드</th>
-								<td>
-									<div class="form">
-										<input type="hidden" id="MemCd" name="MemCd"
-											class="inp" placeholder="회원코드" />
-									</div>
-								</td>
-							</tr>
-							<tr style="display: none;">
-								<th>회원레벨코드</th>
-								<td>
-									<div class="form">
-										<input type="hidden" id="MemLevCd" name="MemLevCd"
-											class="inp" placeholder="회원레벨코드" />
-									</div>
-								</td>
-							</tr>
 							<tr>
 								<th>이름</th>
 								<td>
 									<div class="form">
-										<input type="text" id="membername" name="MemNm"
+										<input type="text" id="MemNm" name="MemNm"
 											class="inp" placeholder="이름" />
 									</div>
 								</td>
@@ -63,10 +48,10 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>아이디</th>
 								<td>
 									<div class="form">
-										<input type="email" class="inp echeck" id="memberemail"
-											name="LoginCd" placeholder="아이디" /> <a
-											href="javascript:void(0)" onclick="javascript:checkID(1);"
-											class="btnEtc02">중복확인</a>
+										<input type="text" class="inp echeck" 
+											name="LoginCd" placeholder="아이디" /> <button
+											type="button"
+											class="btnEtc02">중복확인</button>
 									</div>
 								</td>
 							</tr>
@@ -76,7 +61,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 									<div class="form">
 										<input type="password" id="memberpassword"
 											name="LoginPw" class="inp"
-											placeholder="8~16자, 영문/숫자/특수문자 중 2가지 이상 조합으로 만들어주세요." />
+											placeholder="비밀번호를 입력해주세요" />
 									</div>
 								</td>
 							</tr>
@@ -85,7 +70,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<td>
 									<div class="form">
 										<input type="password" id="memberrepassword"
-											name="LoginPw" class="inp"
+											class="inp"
 											placeholder="비밀번호를 한번 더 입력해 주세요." />
 									</div>
 								</td>
@@ -95,7 +80,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<td>
 									<div class="form">
 										<select class="select w60" id="membercontact01"
-											name="membercontact01">
+											name="PhoneFirst">
 											<option value="">선택</option>
 											<option value="010">010</option>
 											<option value="011">011</option>
@@ -104,9 +89,9 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 											<option value="019">019</option>
 										</select> <span class="etxt">-</span> 
 										<input type="text"
-											id="membercontact02" name="MemPhone" class="inp w60" />
+											id="membercontact02" name="PhoneMiddle" class="inp w60" />
 										<span class="etxt">-</span> <input type="text"
-											id="membercontact03" name="membercontact03" class="inp w60" />
+											id="membercontact03" name="PhoneLast" class="inp w60" />
 									</div>
 								</td>
 							</tr>
@@ -125,7 +110,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>이메일</th>
 								<td>
 									<div class="form">
-										<input type="text" id="MemAddr" name="MemAddr"
+										<input type="email" id="mem_email" name="MemEmail"
 											class="inp" placeholder="이메일" />
 									</div>
 								</td>
@@ -134,19 +119,29 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>생년월일</th>
 								<td>
 									<div class="form">
-										<select class="select w60" id="membercontact01"
-											name="membercontact01">
-											<option value="">선택</option>
-											<option value="010">010</option>
-											<option value="011">011</option>
-											<option value="016">016</option>
-											<option value="017">017</option>
-											<option value="019">019</option>
-										</select> <span class="etxt">-</span> 
-										<input type="text"
-											id="membercontact02" name="MemPhone" class="inp w60" />
-										<span class="etxt">-</span> <input type="text"
-											id="membercontact03" name="membercontact03" class="inp w60" />
+									<input type="text"
+											id="membercontact02" name="BirthYear" class="inp w60" placeholder="년(4자)" maxlength="4"/>
+									<span class="etxt">-</span>		
+										<select class="select w60" id="membercontact01" name="BirthMonth"
+											>
+											<option value="">월</option>
+											<option value="01">01</option>
+											<option value="02">02</option>
+											<option value="03">03</option>
+											<option value="04">04</option>
+											<option value="05">05</option>
+											<option value="06">06</option>
+											<option value="07">07</option>
+											<option value="08">08</option>
+											<option value="09">09</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select> 
+										<span class="etxt"></span> 
+										<span class="etxt">-</span> 
+										<input type="text" name="BirthDay"
+											id="membercontact03" class="inp w60" placeholder="일" maxlength="2"/>
 									</div>
 								</td>
 							</tr>							
@@ -164,9 +159,9 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<td>
 									<div class="form">
 										<input type="email" class="inp echeck" id="hostemail"
-											name="hostemail" placeholder="아이디(이메일)" /> <a
-											href="javascript:void(0)" onclick="javascript:checkID(2);"
-											class="btnEtc02">중복확인</a>
+											name="hostemail" placeholder="아이디(이메일)" /> <button
+											type="button"
+											class="btnEtc02">중복확인</button>
 									</div>
 								</td>
 							</tr>
@@ -298,8 +293,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			</dl>
 
 			<div class="boardBtnBox">
-				<a href="javascript:void(0)" id="registerbutton" class="btnType03">동의하고
-					가입완료</a>
+				<button type="submit" class="btnType03">동의하고
+					가입완료</button>
 			</div>
 
 		</div>
@@ -330,7 +325,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	</div>
 </div>
 
-<script>
+<!-- <script>
 	function checkID(membertype) {
 		var email = '';
 		if (membertype == 1) {
@@ -456,7 +451,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			});
 
 	
-</script>
+</script> -->
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>

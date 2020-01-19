@@ -17,6 +17,7 @@ public class Member extends Login{
 	private String MemEmail ; //이메일 
 	private String MemBirth ; //생년월일 
 	private String MemJoinDt ; //가입일자 
+
 	
 	public Member(){
 		super();

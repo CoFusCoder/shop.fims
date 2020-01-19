@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import shop.fims.gukmin.service.GMemberService;
-import shop.fims.vo.Member;
+import shop.fims.vo.GMember;
+import shop.fims.vo.Login;
 
 @Controller
 public class GMemberController {
@@ -43,7 +44,7 @@ public class GMemberController {
 	
 	//국민화면 로그인하기
 	@PostMapping("/gukminview/gukminMainView")
-	public String login(Member member, HttpSession session, Model model, HttpServletResponse response) throws IOException {
+	public String login(GMember member, HttpSession session, Model model, HttpServletResponse response) throws IOException {
 		
 		//alert 메세지 창 띄우기
 		response.setContentType("text/html; charset=UTF-8");
@@ -56,7 +57,7 @@ public class GMemberController {
 		log.error(member.toString());
 		Map<String,Object> map = gmemberService.getMemberLogin(member);
 		String result 		= (String) map.get("result"); 
-		Member loginMember 	= (Member) map.get("loginMember");
+		GMember loginMember 	= (GMember) map.get("loginMember");
 		
 		System.out.println( map + "<--map 변수 login 메서드 GMemberController.java ");
 		System.out.println( result + "<--result 변수 login 메서드 GMemberController.java ");
@@ -75,11 +76,18 @@ public class GMemberController {
 		}
 		
 		
-		//로그인 실패 화면 login
-		/*
-		 * if(!result.equals("로그인 성공")) { model.addAttribute("result", result); return
-		 * "/gukminview/login/loginForm"; }
-		 */
+		//로그인 실패 화면 login 이것을 해줘야 srping에서 에러 메세지가 안뜬다
+		
+		
+		  if(!result.equals("로그인 성공")) {
+		  
+		  model.addAttribute("result", result);
+		  
+		  return "/gukminview/login/loginForm";
+		  
+		  }
+		 
+		 
 		session.setAttribute("SID"		, loginMember.getLoginCd());
 		session.setAttribute("SLEVEL"	, loginMember.getMemLevNm());
 		session.setAttribute("SNAME"	, loginMember.getMemNm());
@@ -96,13 +104,13 @@ public class GMemberController {
 	
 	//관리자 화면 로그인하기
 	@PostMapping("/admin/main")
-	public String adminlogin(Member member, HttpSession session, Model model) {
+	public String adminlogin(GMember member, HttpSession session, Model model) {
 		//입력된 아이디 비밀번호
 		System.out.println(member.toString() + "<--입력된 정보");
 		log.error(member.toString());
 		Map<String,Object> map = gmemberService.getMemberLogin(member);
 		String result 		= (String) map.get("result"); 
-		Member loginMember 	= (Member) map.get("loginMember");
+		GMember loginMember 	= (GMember) map.get("loginMember");
 		
 		//로그인 실패 화면 login
 		if(!result.equals("로그인 성공")) {
@@ -151,6 +159,80 @@ public class GMemberController {
 		return "/gukminview/member/memberRegisterForm";
 	}
 	
+	/*
+	 * @GetMapping("/addMember") public String addMember() { return
+	 * "/member/mInsert/addMember"; }
+	 */
+	
+	/*
+	 * @PostMapping("/addMember") 
+	 * public String addMember(Member member, Model
+	 * model) { 
+	 * System.out.println(member); Member memberCheck =
+	 * memberService.getMemberById(member.getMemberId());
+	 * 
+	 * if(memberCheck != null) { model.addAttribute("result", "동일한 아이디가 존재합니다.");
+	 * return "/member/mInsert/addMember"; }
+	 * 
+	 * memberService.addMember(member);
+	 * 
+	 * return "redirect:/memberList"; }
+	 */
+	
+	
+	@PostMapping("/gukminview/member/memberRegisterForm")
+	public String addMember(GMember member, Login login, Model model) {
+		System.out.println(member + "<--member 변수 addMember 메서드 GMemberController.java");
+		System.out.println(login + "<--login 변수 addMember 메서드 GMemberController.java");
+		System.out.println(model + "<--model 변수 addMember 메서드 GMemberController.java");
+		
+		String birthyear = member.getBirthYear();
+		String birthmonth = member.getBirthMonth();
+		String birthday = member.getBirthDay();
+		
+		String membirth = birthyear + "-" + birthmonth + "-" + birthday ;
+		
+		member.setMemBirth(membirth);
+		
+		String phonefirst =  member.getPhoneFirst();
+		String phonemiddle = member.getPhoneMiddle();
+		String phonelast = member.getPhoneLast();
+		
+		String memphone = phonefirst + "-" + phonemiddle + "-" + phonelast;
+		
+		member.setMemPhone(memphone);
+		
+		
+		GMember memberCheck = gmemberService.getMemberById(member.getLoginCd());
+		System.out.println(memberCheck +"<--memberCheck 변수 addMember메서드 GMemberController.Java");
+		
+		if(memberCheck != null) {
+			model.addAttribute("result", "동일한 아이디가 존재합니다.");
+			return "gukminview/member/memberRegisterForm";
+		}
+		
+		gmemberService.addMember(member);
+		gmemberService.addLogin(login);
+		
+		return "redirect:/gukminview/login/loginForm";
+	}
+	
+	/*
+	 * @PostMapping("/gukminview/member/memberRegisterForm") public String
+	 * addLogin(Login login, Model model) { System.out.println(login); GMember
+	 * memberCheck = gmemberService.getMemberById(login.getLoginCd());
+	 * System.out.println(memberCheck
+	 * +"<--memberCheck 변수 addMember메서드 GMemberController.Java");
+	 * 
+	 * if(memberCheck != null) { model.addAttribute("result", "동일한 아이디가 존재합니다.");
+	 * return "gukminview/member/memberRegisterForm"; }
+	 * 
+	 * gmemberService.addLogin(login);
+	 * 
+	 * return "redirect:/admin/main"; }
+	 */
+	
+		
 	/**
 	 * @param 없음
 	 * @file MemberController.java
