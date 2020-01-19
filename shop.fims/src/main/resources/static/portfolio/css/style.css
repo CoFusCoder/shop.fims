@@ -1225,7 +1225,7 @@ h3 {
   transition: transform 500ms ease, background 500ms ease;
   -webkit-transition: transform 500ms ease, background 500ms ease;
   box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);
-  background: #311E25;
+  background: #363636;
 }
 
 @media (max-width: 767px) {
@@ -1254,7 +1254,7 @@ h3 {
 .header-area .main-header-area.sticky ul li a::before {
   position: absolute;
   content: "";
-  background: #DB9A64;
+  background: #363636;
   width: 100%;
   height: 3px;
   bottom: -33px;
@@ -1374,6 +1374,16 @@ h3 {
 /* line 4, ../../Arafath/CL/Cl November/228. Resume-02/HTML/scss/_slider.scss */
 .slider_bg_2 {
   background-image: url(../img/banner/banner_2.png);
+}
+
+/* 메인화면 추가 */
+.slider_bg_3 {
+	position: relative;
+	color: #fff;
+	text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25);
+	background: #35b88f url("../img/banner/banner.svg") bottom center no-repeat;
+	margin: 0;
+	background-size: 125% auto;
 }
 
 /* line 7, ../../Arafath/CL/Cl November/228. Resume-02/HTML/scss/_slider.scss */
@@ -2027,7 +2037,7 @@ h3 {
   background-repeat: no-repeat;
   position: relative;
   padding: 106px 0 120px 0;
-  background: #3B2930;
+  background: #6e6e6e;
   overflow: hidden;
 }
 
@@ -2425,7 +2435,6 @@ h3 {
 /* line 1, ../../Arafath/CL/Cl November/228. Resume-02/HTML/scss/_download.scss */
 .download_area {
   padding: 110px 0 90px 0;
-  background: #311E25;
 }
 
 @media (max-width: 767px) {
@@ -2575,7 +2584,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/Cl November/228. Resume-02/HTML/scss/_gallery.scss */
 .gallery_area {
-  background: #311E25;
+  background: #ffffff;
   padding-top: 120px;
   padding-bottom: 120px;
 }
@@ -2634,8 +2643,8 @@ h3 {
 
 /* line 10, ../../Arafath/CL/Cl November/228. Resume-02/HTML/scss/_footer.scss */
 .footer .footer_top {
-  padding-top: 145px;
-  padding-bottom: 129px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 @media (max-width: 767px) {
@@ -2970,9 +2979,8 @@ h3 {
 
 /* line 1, ../../Arafath/CL/Cl November/228. Resume-02/HTML/scss/_service.scss */
 .service_area {
-  background: #3B2930;
-  padding-bottom: 90px;
-  padding-top: 120px;
+  background: #6e6e6e;
+  padding-bottom: 120px;
 }
 
 /* line 5, ../../Arafath/CL/Cl November/228. Resume-02/HTML/scss/_service.scss */
