@@ -53,6 +53,9 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 											type="button" id="idcheck"
 											class="btnEtc02">중복확인</button>
 									</div>
+									<div id="idChdeckP">
+									<p style="font-weight:normal; font-size: 14px;">아아디 중복학인을 해주세요.</p>
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -325,15 +328,15 @@ $(document).ready(function(){
 				
 				
 				if(glogincd == 1){
+						$('#idChdeckP').html('<p style="color: red; font-weight:normal; font-size: 14px;">중복된 아이디 입니다.</p>')
 					alert('중복된 아이디가 있습니다.');
 					$('#GmemberBtn').click(function(){
-						alert('중복된 아이디가 있습니다.')
 						false
 					})
 				}else {
+						$('#idChdeckP').html('<p style="color: green; font-weight:normal; font-size: 14px;">사용가능한 아이디 입니다.</p>')
 					alert('사용가능한 아이디입니다.');
 					$('#GLoginCd').keyup(function(){
-						
 						$('#GmemberBtn').click(function(){
 							alert('아이디를 다시 확인해주세요')
 							false
