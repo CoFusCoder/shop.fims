@@ -150,21 +150,6 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 </th:block>
 <th:block layout:fragment="adminisscript">
 	<th:block th:include="fragments/adminis/adminisscript"/>
-	<script type="text/javascript" th:inline="javascript">
-								 
-		$(document).ready(function(){
-			/*<![CDATA[*/
-			var areacityAdminCd = [[${acl.areacityAdminCd}]];
-			console.log(areacityAdminCd);
-			/*]]>*/ 	
-			$('#deletebtn').on('click', function(){
-				var addr = '/admin/areaCityAdmDelete?areacityAdminCd=';
-				alert(1234);
-				//location.href = addr + areacityAdminCd;
-				//location.href='/admin/areaCityAdmDelete?areacityAdminCd=${acl.areacityAdminCd}';
-			});
-		});
-	</script>
 </th:block>
 
 </html>

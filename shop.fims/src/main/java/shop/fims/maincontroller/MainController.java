@@ -110,7 +110,7 @@ public class MainController {
 	@GetMapping("/admin/main")
 	public String index() {
 		System.out.println("---관리자 메인화면 : MainController.java-------");
-		return "index";
+		return "allprofile";
 	}
 
 	
