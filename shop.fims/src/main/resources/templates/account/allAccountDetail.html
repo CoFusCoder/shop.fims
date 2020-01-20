@@ -9,7 +9,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 
 		<div>
-		<a th:href="@{/allAccountView}">
+		<a th:href="@{/account/allAccountView}">
 		<button type="button" class="btn btn-default" >뒤로가기</button>
 		</a>
 		</div>
@@ -121,11 +121,11 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   <tbody>
                     <tr>
 	                    <td colspan="2">
-		                    <a th:href="@{/updateAllAccount(catAccCd=${a.catAccCd})}">
+		                    <a th:href="@{/account/updateAllAccount(catAccCd=${a.catAccCd})}">
 		                    <button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
 	                    </td>
 	                    <td colspan="2">
-	                    	<a th:href="@{/deleteAllAccount(catAccCd=${a.catAccCd})}">
+	                    	<a th:href="@{/account/deleteAllAccount(catAccCd=${a.catAccCd})}">
 	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
 	                    </td>
                     </tr>

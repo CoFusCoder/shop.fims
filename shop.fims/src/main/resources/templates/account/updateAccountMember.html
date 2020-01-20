@@ -11,7 +11,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
               <h4><i class="fa fa-angle-right"></i></span> 거래처회원 수정하기 </h4><br>
 			 <div class="form-panel">
 		              <div class="form">
-		                <form th:action="@{/updateAccountMember}" method="post" class="cmxform form-horizontal style-form" id="commentForm" th:with="a = ${selectUpAccountMember}">
+		                <form th:action="@{/account/updateAccountMember}" method="post" class="cmxform form-horizontal style-form" id="commentForm" th:with="a = ${selectUpAccountMember}">
 		                  <div class="form-group">
 		                    <label for="curl" class="control-label col-lg-2">하나의 거래처별 소속 회원코드</label>
 		                    <div class="col-lg-10">
@@ -103,7 +103,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 		                   </div>
 		                   <div class="form-group">
 		                   	<div class="col-lg-offset-2 col-lg-10">
-			                   <a th:href="@{/accountMemberView}">
+			                   <a th:href="@{/account/accountMemberView}">
 			                    	<button class="btn btn-theme04" type="button">취소</button>
 			                   </a>
 		                   </div>

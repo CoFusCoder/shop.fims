@@ -70,7 +70,18 @@
 			Login.mem_cd = Member.mem_cd
 		WHERE
 				login_cd = #{LoginCd}
-	 </select>	 
+	 </select>
+	 
+	  <select id="getUserById" parameterType="String" resultType="String">
+		SELECT 
+				COUNT(login_cd)
+		FROM 
+			Login INNER JOIN Member 
+		ON 
+			Login.mem_cd = Member.mem_cd
+		WHERE
+				login_cd = #{LoginCd}
+	 </select>
 
 	<!-- 회원가입 -->
 	 <insert id="addMember" parameterType="shop.fims.vo.GMember">

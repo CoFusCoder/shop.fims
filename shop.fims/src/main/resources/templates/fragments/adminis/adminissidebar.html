@@ -9,16 +9,22 @@
           <p class="centered"><a href="/allprofile"><img src="/adminis/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">[[${session.SNAME}]] 님 [[${session.SLEVEL}]] 권한</h5>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+               th:class="${#strings.indexOf(#httpServletRequest.getRequestURI(),'officialLevelInsert') > -1 ? 'active' : ''}"
+            >
               <i class="fa fa-plus-square"></i>
               <span>운영관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/operation/officialLevelInsert}">공무원 계정 생성</a></li>
+              <li >
+              	<a th:href="@{/operation/officialLevelInsert}">공무원 계정 생성</a>
+              </li>
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+            	th:class="${#strings.indexOf(#httpServletRequest.getRequestURI(),'admin') > -1 ? 'active' : ''}"
+            >
               <i class="fa fa-plus-square"></i>
               <span>행정기관관리</span>
               </a>
@@ -30,7 +36,9 @@
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+           		 th:class="${#strings.indexOf(#httpServletRequest.getRequestURI(),'member') > -1 ? 'active' : ''}"
+            >
               <i class="fa fa-plus-square"></i>
               <span>회원관리</span>
               </a>
@@ -40,7 +48,9 @@
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+          	  th:class="${#strings.indexOf(#httpServletRequest.getRequestURI(),'Depart') > -1 ? 'active' : ''}"
+            >
               <i class="fa fa-plus-square"></i>
               <span>공무원관리</span>
               </a>
@@ -51,19 +61,23 @@
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+            	th:class="${#strings.indexOf(#httpServletRequest.getRequestURI(),'account') > -1 ? 'active' : ''}"
+           >
               <i class="fa fa-plus-square"></i>
               <span>거래처 관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/allAccountView}">모든거래처관리</a></li>
-              <li><a th:href="@{/accountCatBusView}">거래처업종분류조회</a></li>
-              <li><a th:href="@{/approvalAccountView}">승인된거래처관리</a></li>
-              <li><a th:href="@{/accountMemberView}">거래처회원관리</a></li>
+              <li><a th:href="@{/account/allAccountView}">모든거래처관리</a></li>
+              <li><a th:href="@{/account/accountCatBusView}">거래처업종분류조회</a></li>
+              <li><a th:href="@{/account/approvalAccountView}">승인된거래처관리</a></li>
+              <li><a th:href="@{/account/accountMemberView}">거래처회원관리</a></li>
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+            	th:class="${#strings.indexOf(#httpServletRequest.getRequestURI(),'allCommittee') > -1 ? 'active' : ''}"
+            >
               <i class=" fa fa-plus-square"></i>
               <span>위원회관리</span>
               </a>
@@ -72,7 +86,9 @@
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+           	 th:class="${#strings.indexOf(#httpServletRequest.getRequestURI(),'festival') > -1 ? 'active' : ''}"
+            >
               <i class="fa fa-plus-square"></i>
               <span>축제관리</span>
               </a>
@@ -82,21 +98,23 @@
             </ul>
           </li>
            <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;" id="sub-menu1"
+            >
               <i class=" fa fa-plus-square"></i>
               <span>축제인적관리</span>
               </a>
             <ul class="sub">
-              <li><a th:href="@{/workcategoryList}">축제업무분류조회</a></li>
-              <li><a th:href="@{/workcategoryInsert}">축제업무분류등록</a></li>
-              <li><a th:href="@{/workdivisionList}">축제업무조회</a></li>
-              <li><a th:href="@{/workdivisionInsert}">축제업무등록</a></li>
-              <li><a th:href="@{/humanList}">축제인적조회</a></li>
-              <li><a th:href="@{/humanInsert}">축제인적등록</a></li>
+              <li class="subactive"><a th:href="@{/workcategoryList}">축제업무분류조회</a></li>
+              <li class="subactive"><a th:href="@{/workcategoryInsert}">축제업무분류등록</a></li>
+              <li class="subactive"><a th:href="@{/workdivisionList}">축제업무조회</a></li>
+              <li class="subactive"><a th:href="@{/workdivisionInsert}">축제업무등록</a></li>
+              <li class="subactive"><a th:href="@{/humanList}">축제인적조회</a></li>
+              <li class="subactive"><a th:href="@{/humanInsert}">축제인적등록</a></li>
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+            >
               <i class="fa fa-plus-square"></i>
               <span>축제홍보관리</span>
               </a>
@@ -135,8 +153,11 @@
              <li><a th:href="@{/gComList}">물품거래처관리</a></li>
             </ul>
           </li>
+            	<!-- th:class="${#strings.contains(#httpServletRequest.getRequestURI(),'pro') == true ? 'active' : ''}" -->
+<!--             	th:data-test="${#strings.contains(#httpServletRequest.getRequestURI(),'pro') == true }" -->
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+            >
               <i class=" fa fa-plus-square"></i>
               <span>축제내프로그램관리</span>
               </a>
@@ -160,7 +181,9 @@
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+            	th:class="${#strings.indexOf(#httpServletRequest.getRequestURI(),'sche') > -1 ? 'active' : ''}"
+            >
               <i class=" fa fa-plus-square"></i>
               <span>일정관리</span>
               </a>
@@ -170,7 +193,9 @@
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a href="javascript:;"
+            
+            >
               <i class=" fa fa-plus-square"></i>
               <span>심사관리</span>
               </a>            
@@ -184,8 +209,18 @@
       </div>
     </aside>
     <!--sidebar end--> 
-      </div>
-    </aside>
-    <!--sidebar end-->
+    
+    
+<script th:inline="javascript">
+/*<![CDATA[*/
+	
+
+	
+	
+
+
+/*]]>*/
+</script>    
+
 
 </html>

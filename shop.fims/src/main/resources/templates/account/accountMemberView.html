@@ -9,12 +9,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 		<h3>거래처회원관리</h3>
 		<div align= "right">
-			<a th:href="@{/insertAccountMember}">
+			<a th:href="@{/account/insertAccountMember}">
 				<button type="button" class="btn btn-default">거래처 회원 등록하기</button>
 			</a>
 		</div>
 		<br/>
-		<form class="form-inline" role="form" align="right" th:action="@{/accountMemberView}" method="get">
+		<form class="form-inline" role="form" align="right" th:action="@{/account/accountMemberView}" method="get">
 			<select class="form-control" name="sk">
 				   	<option value="acc_mem_nm">거래처 소속 회원이름</option>
 	                <option value="acc_mem_nm">거래처 소속 회원이름</option>
@@ -52,7 +52,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                		<td th:text="${a.AccMemPhone}"></td>
                		<td th:text="${a.AccMemDt2}"></td>
 			 		<td>
-			 		  <a th:href="@{/accountMemberDetail(accMemCd=${a.accMemCd})}">
+			 		  <a th:href="@{/account/accountMemberDetail(accMemCd=${a.accMemCd})}">
 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a> 
 			 		</td>
                   </tr>

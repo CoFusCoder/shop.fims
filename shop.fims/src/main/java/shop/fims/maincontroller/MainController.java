@@ -101,7 +101,7 @@ public class MainController {
 	 * @author ksmart33 김동석
 	 * @return /admin/main
 	 */
-	@GetMapping("/admin/main")
+	@GetMapping("/manager/main")
 	public String index() {
 		System.out.println("---관리자 메인화면 : MainController.java-------");
 		return "index";

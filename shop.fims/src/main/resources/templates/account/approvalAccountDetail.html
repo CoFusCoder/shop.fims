@@ -9,7 +9,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 
 		<div>
-		<a th:href="@{/approvalAccountView}">
+		<a th:href="@{/account/approvalAccountView}">
 		<button type="button" class="btn btn-default" >뒤로가기</button>
 		</a>
 		</div>
@@ -103,11 +103,11 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                   <tbody>
                     <tr>
 	                    <td colspan="2">
-		                    <a th:href="@{/updateApprovalAccount(catAppAccCd=${a.catAppAccCd})}">
+		                    <a th:href="@{/account/updateApprovalAccount(catAppAccCd=${a.catAppAccCd})}">
 		                    <button class="btn btn-primary btn-xl"><i class="fa fa-pencil"></i></button></a>
 	                    </td>
 	                    <td colspan="2">
-	                    	<a th:href="@{/deleteApprovalAccount(catAppAccCd=${a.catAppAccCd})}">
+	                    	<a th:href="@{/account/deleteApprovalAccount(catAppAccCd=${a.catAppAccCd})}">
 	                    	<button class="btn btn-danger btn-xl"><i class="fa fa-trash-o "></i></button></a>
 	                    </td>
                     </tr>

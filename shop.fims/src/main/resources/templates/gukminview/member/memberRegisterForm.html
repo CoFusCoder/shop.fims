@@ -49,7 +49,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<td>
 									<div class="form">
 										<input type="text" class="inp echeck" id="GLoginCd"
-											name="LoginCd" placeholder="아이디" /> <button
+											name="LoginCd" placeholder="아이디" required/> <button
 											type="button" id="idcheck"
 											class="btnEtc02">중복확인</button>
 									</div>
@@ -288,53 +288,87 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 							<a href="/gukminview/siteterms/privacyPolicy" target="_blank"
 							class="btnAgreeView">내용보기</a> <input type="checkbox"
 							id="chk_agree05" /></li>
+							<input type="hidden" value="x" id="idCheckOK">
 					</ul>
 				</dd>
 			</dl>
 
 			<div class="boardBtnBox">
 				<button type="submit" class="btnType03" id="GmemberBtn">동의하고
-					가입완료</button>
+					가입완료</button> 
+					
 			</div>
 
 		</div>
 	</section>
 </form>
+			
 
-<!-- 아이디 중복체크 확인중  -->
-<!-- <script th:inline="javascript">
+<!-- 아이디 중복체크   -->
+<script th:inline="javascript">
 /*<![CDATA[*/
 
 $(document).ready(function(){
-	
-	$('#idcheck').click(function (){
+
+	$('#idcheck').click(function(){
+		$('#idCheckOK').val('o');
+		var glogincd = $('#GLoginCd').val();
 		
-		var idCheck =  /*[[ ${result} ]]*/
-		var id = $('#GLoginCd');
-		
-		if(id.val == "" && idCheck = ""){
-			alert('아이디를 입력해주세요')
-			id.focus();
-			return false;	
-			
-		}else if(id.val != ""){
-			
-			}else if(idCheck != null){
-				alert('동일한 아이디가 존재합니다.')
-				id.focus();
-				return false;
-			}
-			
-		}
-		
+		var request = $.ajax({
+			  url: "/idCheck",
+			  method: "POST",
+			  data: { 'glogincd' : glogincd },
+			  dataType: "json"
+			});
+			 
+			request.done(function( glogincd ) {
+				
+				
+				if(glogincd == 1){
+					alert('중복된 아이디가 있습니다.');
+					$('#GmemberBtn').click(function(){
+						alert('중복된 아이디가 있습니다.')
+						false
+					})
+				}else {
+					alert('사용가능한 아이디입니다.');
+					$('#GLoginCd').keyup(function(){
+						
+						$('#GmemberBtn').click(function(){
+							alert('아이디를 다시 확인해주세요')
+							false
+						})
+					})
+					
+				}
+				
+			});
+			 
+			request.fail(function( jqXHR, textStatus ) {
+			  alert( "Request failed: " + textStatus );
+			});
+
+
 	});
 	
 	
-});
+	
+	
+	
+	
+	
+});	
+	
+
+
+
+	
+	
+
 
 /*]]>*/
 
-</script> -->
+</script>
 
 
 <!-- 회원가입 유효성 검사 -->
@@ -358,6 +392,7 @@ $(document).ready(function(){
 			var birth1 = $('#GBirthYear');
 			var birth2 = $('#GBirthMonth');
 			var birth3 = $('#GBirthDay');
+			var idcheckok = $('#idCheckOK').val();
 			
 			//회원가입 동의
 			//$("input:checkbox[name=complete_yn]").is(":checked") == true
@@ -425,6 +460,9 @@ $(document).ready(function(){
 			}else if(chkAgree03.is(":checked") == false){
 				alert('개인정보 수집을 선택해주세요.')
 				birth3.focus();
+				return false;
+			}else if(idcheckok == 'x'){
+				alert('아아디 중복학인을 해주세요.')
 				return false;
 			}
 			

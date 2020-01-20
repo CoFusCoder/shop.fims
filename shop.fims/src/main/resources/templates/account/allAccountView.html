@@ -9,12 +9,12 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 		<h3>모든거래처관리</h3>
 		<div align= "right">
-			<a th:href="@{/insertAllAccount}">
+			<a th:href="@{/account/insertAllAccount}">
 				<button type="button" class="btn btn-default">거래처 등록하기</button>
 			</a>
 		</div>
 		<br/>
-		<form class="form-inline" role="form" align="right" th:action="@{/searchAccount}" method="post">
+		<form class="form-inline" role="form" align="right" th:action="@{/account/searchAccount}" method="post">
 			<select class="form-control" name="sk">
 				   	<option value="cat_acc_nm1">거래처명</option>
 	                <option value="cat_acc_nm2">거래처대표자명</option>
@@ -52,7 +52,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
                		<td th:text="${a.catAccPhone3}"></td>
                		<td th:text="${a.catAccCon}"></td>
 			 		<td>
-			 		  <a th:href="@{/allAccountDetail(catAccCd=${a.catAccCd})}">
+			 		  <a th:href="@{/account/allAccountDetail(catAccCd=${a.catAccCd})}">
 			 		  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button></a> 
 			 		</td>
                   </tr>

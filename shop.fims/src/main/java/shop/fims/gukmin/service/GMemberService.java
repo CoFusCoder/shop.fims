@@ -57,6 +57,11 @@ public class GMemberService {
 		return gmemberMapper.getMemberById(memberId);
 	}
 	
+	public String getUserById(String memberId) {
+		
+		return gmemberMapper.getUserById(memberId);
+	}
+	
 	//국민 회원가입
 	public int addMember(GMember member) {
 		

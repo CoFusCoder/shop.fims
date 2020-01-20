@@ -10,6 +10,8 @@ import shop.fims.vo.Login;
 public interface GMemberMapper {
 	
 	//ID 가져오기?
+	public String getUserById(String memberId);
+	
 	public GMember getMemberById(String memberId);
 	
 	//로그인
@@ -19,5 +21,7 @@ public interface GMemberMapper {
 	public int addMember(GMember member);
 	
 	public int addLogin(Login login);
+	
+	
 	
 }

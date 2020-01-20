@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import shop.fims.gukmin.service.GMemberService;
 import shop.fims.vo.GMember;
@@ -142,7 +147,7 @@ public class GMemberController {
 	@GetMapping("/admin/logout")
 	public String adminlogout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/admin/main";
+		return "redirect:/manager/main";
 	}
 	
 	/**
@@ -188,8 +193,7 @@ public class GMemberController {
 		GMember memberCheck = gmemberService.getMemberById(member.getLoginCd());
 		System.out.println(memberCheck +"<--memberCheck 변수 addMember메서드 GMemberController.Java");
 		
-		
-		model.addAttribute("result", "Result");
+		model.addAttribute("IDCheck", memberCheck);
 		
 		if(memberCheck != null) {
 			 model.addAttribute("result", "동일한 아이디가 존재합니다."); 
@@ -201,6 +205,24 @@ public class GMemberController {
 		
 		return "redirect:/gukminview/login/loginForm";
 	}
+	
+	//아이디 중복 체크 컨트롤러
+	
+	
+	@RequestMapping(value="/idCheck", method = RequestMethod.POST)
+	
+	public @ResponseBody String idCheck(@RequestParam(value = "glogincd") String glogincd) {
+		log.info("post idCheck");
+		System.out.println("<--idcheck 메서드 idCheck 메서드 GMemberController.java ------");
+		String idcheck =   gmemberService.getUserById(glogincd);
+		System.out.println(idcheck + "<--idcheck idCheck 메서드 GMemberController.java ------");
+		
+
+		return idcheck;
+	}
+	
+	
+	
 	
 	/**
 	 * @param 없음
