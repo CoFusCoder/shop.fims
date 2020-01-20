@@ -82,8 +82,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 								<th>전화번호</th>
 								<td>
 									<div class="form">
-										<select class="select w60" id="PhoneFirst"
-											name="GPhoneFirst">
+										<select class="select w60" id="GPhoneFirst"
+											name="PhoneFirst">
 											<option value="">선택</option>
 											<option value="010">010</option>
 											<option value="011">011</option>
@@ -144,7 +144,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 										<span class="etxt"></span> 
 										<span class="etxt">-</span> 
 										<input type="text" name="BirthDay"
-											id="GBirthDay" class="inp w60" placeholder="일" maxlength="2"/>
+											id="GBirthDay" class="inp w60" placeholder="일" maxlength="2" />
 									</div>
 								</td>
 							</tr>							
@@ -326,7 +326,6 @@ $(document).ready(function(){
 			 
 			request.done(function( glogincd ) {
 				
-				
 				if(glogincd == 1){
 						$('#idChdeckP').html('<p style="color: red; font-weight:normal; font-size: 14px;">중복된 아이디 입니다.</p>')
 					alert('중복된 아이디가 있습니다.');
@@ -354,20 +353,8 @@ $(document).ready(function(){
 
 	});
 	
-	
-	
-	
-	
-	
-	
 });	
 	
-
-
-
-	
-	
-
 
 /*]]>*/
 
@@ -452,7 +439,14 @@ $(document).ready(function(){
 				alert('생년월일 일자를 입력해주세요')
 				birth3.focus();
 				return false;
-			}else if(chkAgree01.is(":checked") == false){
+			}else if(Number(birth3.val()) > 31){
+				alert('날짜는 1일 ~ 31일까지 중에 선택해주세요.')
+				birth3.focus();
+				return false;
+				
+			}
+			
+			else if(chkAgree01.is(":checked") == false){
 				alert('필수 이용약관을 선택해주세요')
 				birth3.focus();
 				return false;
@@ -469,6 +463,7 @@ $(document).ready(function(){
 				return false;
 			}
 			
+			alert('회원가입이 완료되었습니다.');
 			
 		});
 				

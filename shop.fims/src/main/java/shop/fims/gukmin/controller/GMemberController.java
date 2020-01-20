@@ -177,11 +177,11 @@ public class GMemberController {
 		String birthmonth = member.getBirthMonth();
 		String birthday = member.getBirthDay();
 		
-		String membirth = birthyear + "-" + birthmonth + "-" + birthday ;
+		String membirth = birthyear + "-" + birthmonth + "-" + birthday;
 		
 		member.setMemBirth(membirth);
 		
-		String phonefirst =  member.getPhoneFirst();
+		String phonefirst = member.getPhoneFirst();
 		String phonemiddle = member.getPhoneMiddle();
 		String phonelast = member.getPhoneLast();
 		
