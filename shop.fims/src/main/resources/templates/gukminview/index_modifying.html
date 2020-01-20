@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/gukmin/gukmindefault}">
+
+<th:block layout:fragment="projectIntroCSS">
+     <link href="/gukmin/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/gukmin/agency.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+</th:block>
+
+
+<th:block layout:fragment="gukminMainContents">
+<style type="text/css">
+
+
+	/* <!-- iframe youtube �떆�옉  --> */
+	.text {
+	position: absolute;
+	bottom: 0;
+	background: rgb(0, 0, 0); /* Fallback color */
+	background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+	color: #f1f1f1;
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+	}
+	
+	/* <!-- iframe youtube �걹  --> */
+
+</style>
+
+<style>
+
+
+/* Center website */
+.main7 {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* h1 {
+  font-size: 50px;
+  word-break: break-all;
+} */
+
+.row7 {
+  margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row7,
+.row7 > .column7 {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column7 {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide all elements by default */
+}
+
+/* Clear floats after rows */ 
+.row7:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content7 {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show7 {
+  display: block;
+}
+
+/* Style the buttons */
+.btn7 {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn7:hover {
+  background-color: #ddd;
+}
+
+.btn7.active {
+  background-color: #666;
+  color: white;
+}
+</style>
+
+    <!-- Services Section -->
+    <section id="services" style="padding-bottom: 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" >축제통합관리시스템 프로젝트 소개</h2>
+                    <h3 class="section-subheading text-muted">축제통합관리시스템은 공무원, 거래처, 국민을 위한 최적의 축제관리 서비스를 제공합니다.</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <a href="/manager/main" target="_blank"><span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span></a>
+                    <h4 class="service-heading"><a href="/manager/main" style="color: black" target="_blank">관리자 화면</a></h4>
+                    <p class="text-muted">총괄관리자인 도 ㆍ시ㆍ군청 공무원 및 축제를 만드는 축제추진위원회가 효율적으로 모든 축제를 관리할 수 있는 시스템</p>
+                </div>
+                <div class="col-md-4">
+                    <a href="/gukminview/gukminMainView" target="_blank"><span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                       <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span></a>
+                    <h4 class="service-heading"><a href="/gukminview/gukminMainView" style="color: black" target="_blank">국민 화면</a></h4>
+                    <p class="text-muted">회원가입만 하면 대한민국 모든 축제를 한곳에서 검색 할 수 있고 관심있는 축제 및 방문했던 축제를 관리를 할 수 있는 시스템</p>
+                </div>
+                <div class="col-md-4">
+                    <a href="/gukminview/ebudget/revBudgetView" target="_blank"><span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span></a>
+                    <h4 class="service-heading"><a href="/gukminview/ebudget/revBudgetView" style="color: black" target="_blank">세입ㆍ세출예산 화면</a></h4>
+                    <p class="text-muted">경영공시로 모든 국민에게 축제에 대한 세금이 어떻게 쓰여지는 정보를 제공하는 시스템</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="portfolio" class="bg-light-gray" style="margin-top: 0; padding-top: 50px; padding-bottom: 0px;">
+        <div class="container" >
+            <div class="row" >
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Case Study</h2>
+                    <h3 class="section-subheading text-muted">ALLFestMoa의 시스템을 소개합니다.</h3>
+                </div>
+            </div>
+            <div class="row" style="width:100%; height: 100%">
+                
+                <div class="col-md-4 col-sm-6 portfolio-item" >
+                        <div class="portfolio-hover" style="width:100%; height: 100%">
+                            <div class="portfolio-hover-content" >
+                                
+                            </div>
+                        </div>
+                        <a href="/manager/main" target="_blank"><img src="/gukmin/images/adminview.jpg" class="img-responsive" alt="관리자화면" style="width: 360px;  height: 200px;"></a>
+                    <div class="portfolio-caption">
+                        <h4><a href="/manager/main" style="color: black" target="_blank">전국 축제 통합관리 시스템</a><br>(FIMS)</h4>
+							
+                        <p class="text-muted">System development</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                        <div class="portfolio-hover" style="width:100%; height: 100%">
+                            <div class="portfolio-hover-content">
+                                
+                            </div>
+                        </div>
+                        <a href="/gukminview/gukminMainView"  target="_blank"><img src="/gukmin/images/gukminview.jpg" class="img-responsive" alt="국민화면" style="width: 360px;  height: 200px;"></a>
+                    <div class="portfolio-caption">
+                        <h4><a href="/gukminview/gukminMainView" style="color: black" target="_blank">전국 축제정보 제공 시스템</a><br>(ALLFestMoa)</h4>
+                        <p class="text-muted">System development</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                        <div class="portfolio-hover" style="width:100%; height: 100%">
+                            <div class="portfolio-hover-content" >
+                              
+                            </div>
+                        </div>
+                        <a href="/gukminview/ebudget/revBudgetView" target="_blank"><img src="/gukmin/images/budgetview.jpg" class="img-responsive" alt="세입ㆍ세출예산 화면" style="width: 360px;  height: 200px;"></a>
+                    <div class="portfolio-caption">
+                        <h4><a href="/gukminview/ebudget/revBudgetView" style="color: black" target="_blank">세입ㆍ세출예산 관리 시스템</a><br>(FIMS-Budget)</h4> 
+                        <p class="text-muted">System development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+     <aside class="clients">
+    <div class="container">
+		<h2 style="text-align: center">팀 프로젝트 담당구현</h2>
+		<p style="text-align: center">축제통합관리시스템 프로젝트에서 담당한 업무에 대한 상세한 설명입니다.</p>
+		<br>
+		
+		
+		
+		
+		
+		
+		</div>
+    </aside> 
+    
+    <aside class="clients" style="margin-bottom: 50px;">
+		<div class="container" style="margin-top: 60px; padding-left: 0; padding-right: 0">
+		<h2 style="text-align: center">대표축제 3가지 </h2>
+		<p style="text-align: center">축제 업무프로세스를 파악하기 위해 대표축제 3가지를 정하고 자료조사를 하였습니다.</p>
+		<br>	
+			<div class="row">
+			   <div class="col-md-4">
+			    <div class="embed-responsive embed-responsive-16by9">
+			      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DJafz_wnKbk"></iframe>
+			      <span class="text">전주세계소리축제</span>
+			    </div>
+			  </div>
+			
+			  <div class="col-md-4">
+			    <div class="embed-responsive embed-responsive-16by9 hoverable">
+			      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8C3s1SAQe3I"></iframe>
+			      <span class="text">임실치츠축제</span>
+			    </div>
+			  </div>
+			
+			  <div class="col-md-4">
+			    <div class="embed-responsive embed-responsive-16by9 hoverable">
+			      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5wJ1z42zciM"></iframe>
+			 		 <span class="text">남원 춘향제</span>
+				</div>    
+			  </div>
+			</div>
+		</div>	
+		
+<!-- iframe youtube 끝  -->
+	</aside>
+    <aside class="clients">
+        <div class="container">
+        <h2 style="text-align: center">화면과 처리 구현 참고사이트 </h2>
+		<p style="text-align: center">관리자와 국민 화면 구성, Front-End와 Back-End 관련 참고한 사이트 리스트 입니다. </p>
+		<br>
+		
+		<div id="myBtnContainer">
+		  <button class="btn7 active" onclick="filterSelection('all')">전체 리스트</button>
+		  <button class="btn7" onclick="filterSelection('nature')">화면 구현</button>
+		  <button class="btn7" onclick="filterSelection('cars')">처리 구현</button>
+		  <button class="btn7" onclick="filterSelection('people')">자료 조사</button>
+		</div>
+		
+		<!-- Portfolio Gallery Grid -->
+		<div class="row7">
+		  <div class="column7 nature">
+		    <div class="content7">
+		      <h4>▣국민화면</h4>
+		      <p style="color: gray">1. <a href="https://www.w3schools.com/" target="_blank" style="color: gray" class="opentab">w3schools</a></p>
+		      <p style="color: gray">2. <a href="https://joyfesta.kr/Main.festa" target="_blank"  style="color: gray" class="opentab">조이페스타</a></p>
+		      <p style="color: gray">3. <a href="http://www.gangnam.go.kr/contract/list.do?mid=FM041501" target="_blank" style="color: gray" class="opentab">강남구청</a></p>
+		      <p style="color: gray">4. <a href="http://gyeyak.namwon.go.kr/ebudget/?cpath=" target="_blank" style="color: gray" class="opentab">남원시청</a></p>
+		    </div>
+		  </div>
+		  <div class="column7 nature">
+		    <div class="content7">
+		      <h4>▣관리자화면</h4>
+		      <p style="color: gray">1. <a href="https://templatemag.com/dashio-bootstrap-admin-template/" target="_blank" style="color: gray" class="opentab">Dashio Demo</a></p>
+		      <p style="color: gray">2. <a href="https://gdadmin.plus.godomall.com:14003/base/index.php" target="_blank" style="color: gray" class="opentab">고도몰</a></p>
+		    </div>
+		  </div>
+		  <div class="column7 cars">
+		    <div class="content7">
+		      <h4>▣프런트엔드 개발</h4>
+		      <p style="color: gray">1. <a href="http://apis.map.kakao.com/web/sample/" target="_blank" style="color: gray" class="opentab">카카오맵지도API</a></p>
+		      <p style="color: gray">2. <a href="http://api.visitkorea.or.kr/guide/inforArea.do" target="_blank" style="color: gray" class="opentab">TourAPI3.0</a></p>
+		      <p style="color: gray">3. <a href="https://plugins.jquery.com/tag/jquery/" target="_blank" style="color: gray" class="opentab">Jquery 파일업로드</a></p>
+		    </div>
+		  </div>
+		  <div class="column7 cars">
+		    <div class="content7">
+		      <h4>▣빽엔드 개발</h4>
+		      <p style="color: gray">1. <a href="https://opentutorials.org/course/1223" target="_blank" style="color: gray" class="opentab">생활코딩 Java</a></p>
+		      <p style="color: gray">2. <a href="https://mvnrepository.com/search?q=thymeleaf" target="_blank" style="color: gray" class="opentab">Mvnrepository</a></p>
+		      <p style="color: gray">3. <a href="https://mybatis.org/mybatis-3/ko/dynamic-sql.html" target="_blank" style="color: gray" class="opentab">Mybatis SQL</a></p>
+		    </div>
+		  </div>
+		  <div class="column7 people">
+		    <div class="content7">
+		      <h4>▣구현 단계</h4>
+		      <p style="color: gray">1. <a href="https://youtu.be/6rNZFo4eyhE" target="_blank" style="color: gray">Spring 인터셉터</a></p>
+		      <p style="color: gray">2. <a href="https://www.egovframe.go.kr/EgovEduMovie.jsp?menu=4&submenu=3" target="_blank" style="color: gray" class="opentab">전자정부 표준프레임워크</a></p>
+		    </div>
+		  </div>
+		  <div class="column7 people">
+		    <div class="content7">
+		      <h4>▣개발 단계</h4>
+		      <p style="color: gray">1. <a href="https://www.mcst.go.kr/kor/s_culture/festival/festivalList.jsp" target="_blank" style="color: gray" class="opentab">문화체육관광부 지역축제</a></p>
+		      <p style="color: gray">2. <a href="http://www.sorifestival.com/" target="_blank" style="color: gray" class="opentab">전주세계소리축제 경영공시</a></p>
+		      <p style="color: gray">3. <a href="http://www.chunhyang.org/HOME/index.php?_zidx=1517992993^1^1517993002" target="_blank" style="color: gray" class="opentab">춘향제 공지사항</a></p>
+		      <p style="color: gray">4. <a href="http://www.imsilfestival.com/?r=new2019&c=121/126" target="_blank" style="color: gray" class="opentab">임실치즈축제 축제개요</a></p>
+		    </div>
+		  </div>
+		<!-- END GRID -->
+		</div>
+		
+		<!-- END MAIN -->
+		</div>        
+    </aside>
+    
+<script>
+
+
+
+
+
+
+</script>    
+
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column7");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show7");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show7");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn7");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>    
+</th:block>
+
+</html>

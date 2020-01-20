@@ -28,7 +28,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 
 .column6 {
   float: left;
-  width: 33.3%;
+  width: 30%;
   margin-bottom: 16px;
   padding: 0 8px;
 }
@@ -45,7 +45,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 
 .card6 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  text-align: center;
 }
 
 
@@ -55,7 +54,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 }
 
 .card6 :not(div){
-text-align: center;
 
 }
  
@@ -78,7 +76,7 @@ text-align: center;
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 90%;
+  width: 100%;
 }
 
 .button6:hover {
@@ -185,27 +183,27 @@ text-align: center;
             </div>
             <div class="row text-center">
                 <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
+                    <a href="/manager/main" target="_blank"><span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">관리자 화면</h4>
+                    </span></a>
+                    <h4 class="service-heading"><a href="/manager/main" style="color: black" target="_blank">관리자 화면</a></h4>
                     <p class="text-muted">총괄관리자인 도 ㆍ시ㆍ군청 공무원 및 축제를 만드는 축제추진위원회가 효율적으로 모든 축제를 관리할 수 있는 시스템</p>
                 </div>
                 <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
+                    <a href="/gukminview/gukminMainView" target="_blank"><span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">국민 화면</h4>
+                    </span></a>
+                    <h4 class="service-heading"><a href="/gukminview/gukminMainView" style="color: black" target="_blank">국민 화면</a></h4>
                     <p class="text-muted">회원가입만 하면 대한민국 모든 축제를 한곳에서 검색 할 수 있고 관심있는 축제 및 방문했던 축제를 관리를 할 수 있는 시스템</p>
                 </div>
                 <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
+                    <a href="/gukminview/ebudget/revBudgetView" target="_blank"><span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="service-heading">세입ㆍ세출예산 화면</h4>
+                    </span></a>
+                    <h4 class="service-heading"><a href="/gukminview/ebudget/revBudgetView" style="color: black" target="_blank">세입ㆍ세출예산 화면</a></h4>
                     <p class="text-muted">경영공시로 모든 국민에게 축제에 대한 세금이 어떻게 쓰여지는 정보를 제공하는 시스템</p>
                 </div>
             </div>
@@ -228,10 +226,10 @@ text-align: center;
                                 
                             </div>
                         </div>
-                        <img src="/gukmin/images/adminview.jpg" class="img-responsive" alt="관리자화면" style="width: 360px;  height: 200px;">
+                        <a href="/manager/main" target="_blank"><img src="/gukmin/images/adminview.jpg" class="img-responsive" alt="관리자화면" style="width: 360px;  height: 200px;"></a>
                     <div class="portfolio-caption">
-                        <h4>전국 축제 통합관리 시스템<br>(FIMS)
-</h4>
+                        <h4><a href="/manager/main" style="color: black" target="_blank">전국 축제 통합관리 시스템</a><br>(FIMS)</h4>
+							
                         <p class="text-muted">System development</p>
                     </div>
                 </div>
@@ -241,9 +239,9 @@ text-align: center;
                                 
                             </div>
                         </div>
-                        <img src="/gukmin/images/gukminview.jpg" class="img-responsive" alt="국민화면" style="width: 360px;  height: 200px;">
+                        <a href="/gukminview/gukminMainView"  target="_blank"><img src="/gukmin/images/gukminview.jpg" class="img-responsive" alt="국민화면" style="width: 360px;  height: 200px;"></a>
                     <div class="portfolio-caption">
-                        <h4>전국 축제정보 제공 시스템<br>(ALLFestMoa)</h4>
+                        <h4><a href="/gukminview/gukminMainView" style="color: black" target="_blank">전국 축제정보 제공 시스템</a><br>(ALLFestMoa)</h4>
                         <p class="text-muted">System development</p>
                     </div>
                 </div>
@@ -253,10 +251,9 @@ text-align: center;
                               
                             </div>
                         </div>
-                        <img src="/gukmin/images/budgetview.jpg" class="img-responsive" alt="세입ㆍ세출예산 화면" style="width: 360px;  height: 200px;">
+                        <a href="/gukminview/ebudget/revBudgetView" target="_blank"><img src="/gukmin/images/budgetview.jpg" class="img-responsive" alt="세입ㆍ세출예산 화면" style="width: 360px;  height: 200px;"></a>
                     <div class="portfolio-caption">
-                        <h4>세입ㆍ세출예산 관리 시스템<br>(FIMS-Budget) 
-</h4>
+                        <h4><a href="/gukminview/ebudget/revBudgetView" style="color: black" target="_blank">세입ㆍ세출예산 관리 시스템</a><br>(FIMS-Budget)</h4> 
                         <p class="text-muted">System development</p>
                     </div>
                 </div>
@@ -266,99 +263,117 @@ text-align: center;
     
      <aside class="clients">
     <div class="container">
-		<h2 style="text-align: center">팀프로젝트 팀원소개</h2>
-		<p style="text-align: center">축제통합관리시스템 팀프로젝트 팀원은 총 6명입니다.</p>
+		<h2 style="text-align: center">팀 프로젝트 담당구현 소개</h2>
+		<p style="text-align: center">축제통합관리시스템 프로젝트의 구현한 업무에 대한 상세한 설명입니다.</p>
 		<br>
 		
-		<div class="row" style="padding-left: 90px;">
 		  <div class="column6">
-		    <div class="card6">
-		    <!-- 필수사항 : 원본 이미지 픽셀 사이즈는 500(너비)*333(높이)를 꼭 맞춰야 정렬이 된다. -->
-		      <img src="/gukmin/images/team1.jpg" alt="Jane" style="width:80%; " class="imgstyle">
-		      <div class="container6">
-		        <h3>팀장 : 한소연</h3>
-		        <p class="title6">-담당업무 : 키워드입력</p>
-		        <p>담당업무상세설명란 핵심 3줄만</p>
-		        <p>담당업무상세설명란 핵심 3줄만</p>
-		        <p>담당업무상세설명란 핵심 3줄만</p>
-		        <p>▶이메일 : example@example.com</p>
-		        <p><button class="button6">Contact</button></p>
-		      </div>
-		    </div>
-		  </div>
-		
-		  <div class="column6">
-		    <div class="card6">
-		      <img src="/gukmin/images/kds.jpg" alt="Mike" style="width:80%;" class="imgstyle">
-		      <div class="container6" style="text-align: left;">
+		    <div class="card6" style="width: 90%">
+		      <img src="/gukmin/images/kds.jpg" alt="Mike" style="width: 100%" class="imgstyle">
+		      <div class="container6" >
 		        <h3>팀원 : 김동석</h3>
-		        <p class="title6">-담당업무 : 국민화면, 계약관리 ,세입ㆍ세출예산 관리</p>
-		        <p>▷국민의 관심축제 관리 </p>
-		        <p>▷일반계약 및 수의계약 관리</p>
-		        <p>▷세입ㆍ세출예산 및 집행 관리  </p>
+		        <p class="title6">-담당업무 : 국민화면 전체 구현</p>
+		        <p>▷개발언어 : Java, Ajax, Spring 등</p>
+		        <p>▷DBMS : MY-SQL  </p>
+		        <p>▷WAS : apache-tomcat-9.0.1  </p>
+		        <p>▷협업툴  : GitHub  </p>
+		        <p>▷통합개발환경   : STS 4.2.1  </p>
+		        <p>▷프레임워크 : Maven, mybatis 3.31 등 </p>
 		        <p>▶이메일 : chas0302@naver.com</p>
-		        <p><button class="button6">Contact</button></p>
+		        <p><a href="https://chas0302.blog.me/" title="새탭으로 블로그 보기" target="_blank" style="color: #333">▶블로그 : chas0302.blog.me</a></p>
+		        <p><a href="mailto:chas0302@naver.com" title="이메일보내기"><button class="button6">Contact</button></a></p>
 		      </div>
 		    </div>
 		  </div>
 		  
-		  <div class="column6">
-		    <div class="card6">
-		      <img src="https://www.w3schools.com/w3images/team1.jpg" alt="John" style="width:80%" class="imgstyle">
-		      <div class="container6">
-		        <h3>팀원 : 윤수정</h3>
-		        <p class="title6">-담당업무 : 키워드입력</p>
-		        <p>담당업무상세설명란 핵심 3줄만</p>
-		        <p>담당업무상세설명란 핵심 3줄만</p>
-		        <p>담당업무상세설명란 핵심 3줄만</p>
-		        <p>▶이메일 : example@example.com</p>
-		        <p><button class="button6">Contact</button></p>
-		      </div>
-		    </div>
+		  <div class="column6" style="width: 70%">
+		  <span style="color: red">※구현화면으로 이동하기 위해</span> <strong style="color: red">인터셉터 </strong><span style="color: red"> 미적용 상태입니다.※</span>
+		    <hr>
+		    <table class="table table-hover">
+			    <thead>
+			      <tr>
+			        <th>순번</th>
+			        <th>담당업무</th>
+			        <th>업무내용</th>
+			        <th>링크</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td>01</td>
+			        <td>로그인</td>
+			        <td>권한별로 공무원,거래처, 국민, 개발사 로그인이 가능하다.</td>
+			        <td><a href="/gukminview/login/loginForm" title="새팁으로 열기" target="_blank" style="color: #626262">로그인 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>02</td>
+			        <td>회원가입</td>
+			        <td>국민으로 회원가입을 할 수 있다.(※기업가입 구현중)</td>
+			        <td><a href="/gukminview/member/memberRegisterForm" title="새팁으로 열기" target="_blank" style="color: #626262">회원가입 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>03</td>
+			        <td>국민-마이페이지</td>
+			        <td>국민으로 로그인시 회원정보관리, 나의 찜목록 등 확인 가능</td>
+			        <td><a href="/gukminview/member/myPageView" title="새팁으로 열기" target="_blank" style="color: #626262">국민-마이페이지 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>04</td>
+			        <td>관리자-마이페이지</td>
+			        <td>관리자로 로그인시 관리자홈과 축제관리 가능</td>
+			        <td><a href="/gukminview/member/hostPageView" title="새팁으로 열기" target="_blank" style="color: #626262">관리자-마이페이지 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>05</td>
+			        <td>축제등록</td>
+			        <td>축제추진위원회와 거래처(위탁업체)에서 축제 등록 가능(※축제등록 구현중)</td>
+			        <td><a href="/gukminview/festival/hostSpotRegisterForm" title="새팁으로 열기" target="_blank" style="color: #626262">축제등록 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>06</td>
+			        <td>layout구성</td>
+			        <td>관리자 화면 Thymeleaf로 layout 구성</td>
+			        <td><a href="/manager/main" title="새팁으로 열기" target="_blank" style="color: #626262">관리자메인 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>07</td>
+			        <td>축제검색</td>
+			        <td>TourAPI와 카카오지 지도 API 활용하여 위치와 축제 검색 가능</td>
+			        <td><a href="/gukminview/festival/festivalSearch" title="새팁으로 열기" target="_blank" style="color: #626262">축제검색 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>08</td>
+			        <td>전체축제리스트</td>
+			        <td>국민에게 진행중과 진행예정인 축제 정보 제공(※CRUD 구현중)</td>
+			        <td><a href="/gukminview/gukminMainView" title="새팁으로 열기" target="_blank" style="color: #626262">축제리스트 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>09</td>
+			        <td>축제 상세페이지</td>
+			        <td>행사기간, 위치, 행사장소, 연락처 등 확인 가능(※CRUD 구현중)</td>
+			        <td><a href="/gukminview/festivaldetail/festivalDetailView" title="새팁으로 열기" target="_blank" style="color: #626262">축제 상세페이지 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>10</td>
+			        <td>계약관리</td>
+			        <td>공사ㆍ용역ㆍ물품에 관련된 일반계약과 수의계약을 검색 가능(※CRUD 구현중)</td>
+			        <td><a href="/gukminview/acontract/orderingPlanView" title="새팁으로 열기" target="_blank" style="color: #626262">계약공시 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>11</td>
+			        <td>예산관리</td>
+			        <td>공무원이 관리하고 있는 경영정보를 수요자인 국민이 조회 가능(※CRUD 구현중)</td>
+			        <td><a href="/gukminview/ebudget/revExpExecutionView" title="새팁으로 열기" target="_blank" style="color: #626262">경영공시 화면</a></td>
+			      </tr>
+			      <tr>
+			        <td>12</td>
+			        <td>커뮤니티</td>
+			        <td>이벤트, 자주묻는 질문, 공지사항 게시글 확인 가능</td>
+			        <td><a href="/gukminview/community/communityView" title="새팁으로 열기" target="_blank" style="color: #626262">커뮤니티 화면</a></td>
+			      </tr>
+			    </tbody>
+			  </table>
 		  </div>
-		  <div class="column6">
-		    <div class="card6">
-		      <img src="https://www.w3schools.com/w3images/team1.jpg" alt="John" style="width:80%" class="imgstyle">
-		      <div class="container6">
-		        <h3>팀원 : 조희영</h3>
-		        <p class="title6">-담당업무 : 키워드입력</p>
-		        <p>담당업무상세설명란 핵심 3줄만</p>
-		        <p>담당업무상세설명란 핵심 3줄만</p>
-		        <p>담당업무상세설명란 핵심 3줄만</p>
-		        <p>▶이메일 : example@example.com</p>
-		        <p><button class="button6">Contact</button></p>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="column6">
-		    <div class="card6">
-		      <img src="/gukmin/images/kdmin.jpg" alt="John" style="width:80%" class="imgstyle">
-		      <div class="container6">
-		        <h3>팀원 : 김도민</h3>
-		        <p class="title6">-담당업무 : 위원회,거래처,공지사항,참가신청서 관리</p>
-		        <p>▷축제 위원회 및 거래처 관리</p>
-		        <p>▷축제 위원회 참가신청 공지</p>
-		        <p>▷축제 위원회 참가신청서 관리</p>
-		        <p>▶이메일 : tispffh@naver.com</p>
-		        <p><button class="button6">Contact</button></p>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="column6">
-		    <div class="card6">
-		      <img src="/gukmin/images/jounsang.jpg" alt="John" style="width:80%" class="imgstyle">
-		      <div class="container6">
-		        <h3>팀원 : 조윤상</h3>
-		        <p class="title6">-담당업무 : 물품관리와 심사관리</p>
-		        <p>▷축제에 관련된 물품관리</p>
-		        <p>▷추진위원회 평가관리</p>
-		        <p>▷부스 거래처 평가 관리</p>
-		        <p>▶이메일 : havetkd@naver.com</p>
-		        <p><button class="button6">Contact</button></p>
-		      </div>
-		    </div>
-		  </div>
-		</div>
 		</div>
     </aside> 
     
