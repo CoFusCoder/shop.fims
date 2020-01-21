@@ -9,62 +9,63 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 	 <h4><i class="fa fa-angle-right"></i>물품 수정하기 </h4><br>	 	
 		 <div class="form-panel">
               <div class="form">
-                <form  method="post" class="cmxform form-horizontal style-form" id="commentForm">
+                <form th:action="@{/updateCondition}" method="post" class="cmxform form-horizontal style-form" id="commentForm">
+                  <div>
+                  <input type="hidden" th:value="${u.goodspreConCd}" name="goodspreConCd">
+                  </div>             
                   <div class="form-group">
                     <label for="curl" class="control-label col-lg-2">행정기관명</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="manComCd" type="text" name="manComCd" th:value="${u.admAgeNm}" readonly/>
+                      <input class=" admAgeNm" id="admAgeNm" type="text" name="admAgeNm" th:value="${u.admAgeNm}" readonly/>
                     </div>
                   </div>            
                   <div class="form-group">
                     <label for="curl" class="control-label col-lg-2">전국 지역명</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="manComCd" type="text" name="manComCd" th:value="${u.areaCityNm}" readonly/>
+                      <input class=" areaCityNm" id="areaCityNm" type="text" name="areaCityNm" th:value="${u.areaCityNm}" readonly/>
                     </div>
                   </div>            
                   <div class="form-group">
                     <label for="curl" class="control-label col-lg-2">모든 지역 시군명</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="manComCd" type="text" name="manComCd" th:value="${u.areacityAdminNm}" readonly/>
+                      <input class=" areacityAdminNm" id="areacityAdminNm" type="text" name="areacityAdminNm" th:value="${u.areacityAdminNm}" readonly/>
                     </div>
                   </div>            
                   <div class="form-group">
                     <label for="curl" class="control-label col-lg-2">모든 축제이름</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="manComCd" type="text" name="manComCd" th:value="${u.festNm}" readonly/>
+                      <input class=" festNm" id="festNm" type="text" name="festNm" th:value="${u.festNm}" readonly/>
                     </div>
                   </div>            
                   <div class="form-group">
                     <label for="curl" class="control-label col-lg-2">모든 행정기관 부서명</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="manComCd" type="text" name="manComCd" th:value="${u.admimDepNm}" readonly/>
+                      <input class=" admimDepNm" id="admimDepNm" type="text" name="admimDepNm" th:value="${u.admimDepNm}" readonly/>
                     </div>
                   </div>            
                   <div class="form-group">
                     <label for="curl" class="control-label col-lg-2">보유물품</label>
                     <div class="col-lg-10">
-                      <input class=" form-control" id="manComCd" type="text" name="manComCd" th:value="${u.goodsNm}" />
+                      <input class=" goodsNm" id="goodsNm" type="text" name="goodsNm" th:value="${u.goodsNm}" />
                     </div>
                   </div>            
                   <div class="form-group">
                     <label for="curl" class="control-label col-lg-2">수량</label>
                     <div class="col-lg-10">
-                      <input   class=" form-control" id="manComCd" type="text" name="manComCd" th:value="${u.goodsAmt}"/>
+                      <input   class=" goodsAmt" id="goodsAmt" type="text" name="goodsAmt" th:value="${u.goodsAmt}"/>
                     </div>
                   </div>            
                   <div class="form-group">
                     <label for="curl" class="control-label col-lg-2">특이사항</label>
                     <div class="col-lg-10">
-                      <textarea rows="3" cols="100" class="form-control " id="festprProEtc" name="festprProEtc" >[[${u.specialNote}]]</textarea>
+                      <textarea rows="3" cols="100" class="specialNote " id="specialNote" name="specialNote" >[[${u.specialNote}]]</textarea>
                     </div>
-                  </div>            
+                  </div>   
                   <div class="form-group">
-                   <div>
-               	 	<a href="@{/updateCondition(goodspreConCd=${u.goodspreConCd},goodsNm=${goodsNm=${u.goodsNm}},goodsAmt=${u.goodsAmt},specialNote=${u.specialNote})}">		               
-                  <button type="submit" value="물품수정">물품수정 </button>
-                  </a>
-                  </div>  	                   
-                  </div>                    
+					<div class="col-lg-offset-2 col-lg-10">
+						<button class="btn btn-theme" type="submit" value="물품수정">물품수정</button>
+					</div>
+				  </div>                             
                 </form>
               </div>
            </div>
