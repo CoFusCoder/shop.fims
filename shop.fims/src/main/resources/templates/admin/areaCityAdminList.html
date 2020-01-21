@@ -27,7 +27,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 						<td th:text="${acl.areaCityCd}"></td>
 						<td th:text="${acl.areacityAdminNm}"></td>
 						<td>
-							<button class="btn btn-success btn-xs" onclick="location.href='areaCityAdminInsert'">
+							<button class="btn btn-success btn-xs" onclick="location.href='/admin/areaCityAdminInsert'">
 								<i class="fa fa-plus">등록</i>
 							</button>
 							<!-- 수정 버튼 trigger Modal -->
@@ -149,7 +149,7 @@ layout:decorate="~{layout/adminis/adminisdefault}">
 
 </th:block>
 <th:block layout:fragment="adminisscript">
-	<th:block th:include="fragments/adminis/adminisscript"/>
+	<th:block th:include="fragments/adminis/adminisscript"/></th:block>
 	<script type="text/javascript" th:inline="javascript">
 								 
 		$(document).ready(function(){

@@ -263,7 +263,7 @@
 			</nav>
 			<div class="etcRight">
 				<ul>
-					<li class="ico_spot"><a href="/admin/main" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사'}">!관리자홈페이지</a></li>
+					<li class="ico_spot"><a href="/admin/main" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사'}">관리자홈페이지</a></li>
 					<li class="ico_spot">
 						<a href="/gukminview/festival/hostSpotRegisterForm" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사' || session.SLEVEL == null}">축제등록하기</a>
 					</li>
@@ -321,17 +321,13 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3&libraries=services"></script>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3"></script>	
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3&libraries=LIBRARY"></script>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3&libraries=services"></script>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce9799ace907394c3c6506c13da262a3&libraries=services,clusterer,drawing"></script>
 		
 		<div class="searchMapCont">
 			<!-- <div id="googlemap" style="width: 100%; height: 420px;"></div> -->
 			<div id="map" style="width:100%;height:420px;"></div>
 		</div>
-		<script th:inline="javascript">
-		
+		<script th:inline="javascript" type="text/javascript">
+		/*<![CDATA[*/
 		// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 		var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
@@ -385,7 +381,7 @@
 		        infowindow.open(map, marker);
 		    });
 		}
-			
+		/*]]>*/
 		</script>
 		
 		

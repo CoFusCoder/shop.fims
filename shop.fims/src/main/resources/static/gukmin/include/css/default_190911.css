@@ -130,7 +130,7 @@ footer .rela .fbox01 .fnbList li:first-child{padding-left:0;}
 footer .rela .fbox01 .fnbList li a{font-size:14px;color:#fff;}
 footer .rela .fbox01 .fnbList li a:hover { text-decoration:underline}
 /*백그라운드색상수정 2019.06.29*//*백그라운드색상수정-2차 2019.07.03*/
-footer .rela .fbox01 select{margin-top:13px;border:1px solid #fff;width:180px;height:35px;background: #828282 url(https://joyfesta.kr/img/bg/bg_select_ico.png) no-repeat right 10px center !important; color:#fff;float:right; padding: 5px;}
+footer .rela .fbox01 select{margin-top:13px;border:1px solid #fff;width:180px;height:35px;) no-repeat right 10px center !important; color:#fff;float:right; padding: 5px;}
 /*수정 및 추가 2019.06.14*/
 footer .rela .fbox02{padding-bottom:30px;position:relative;margin-top:20px;width:100%;height:auto;overflow:hidden; letter-spacing:0}
 footer .rela .fbox02 ul li{ float:left;width:50%;font-size:13px;color:#fff;margin-right:0;}
@@ -470,7 +470,7 @@ footer .snsBox{position:absolute;right:0;top:0;}
 .onlyList li .cont .t02{font-size:14px;color:#666;margin-top:5px;width:100%;height:auto;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}/*수정2019.07.01*/
 .onlyList li .cont .t04{font-size:14px;color:#666;margin-top:5px;width:100%;height:40px;min-height:40px;overflow:hidden;}
 .onlyList li .cont .t02 .date{ width:100%;font-size:14px;color:#666;position:relative;float:left;padding-right:10px;}
-.onlyList li .cont .t02 .gps{ width:95%;padding-left:15px;font-size:14px;color:#666;float:left;background:url(https://joyfesta.kr/include/img/bg/bg_gps01.png) no-repeat left center;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
+.onlyList li .cont .t02 .gps{ width:95%;padding-left:15px;font-size:14px;color:#666;float:left;) no-repeat left center;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 .onlyList li .cont .t03{ width:95%;margin-top:5px;font-size:13px;color:#ff671f;width:100%;height:auto;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 /*추가2019.06.21*/ 
 .onlyList li .btnHart_list{left:10px;top:10px;}
@@ -514,7 +514,7 @@ footer .snsBox{position:absolute;right:0;top:0;}
 .festList li .cont .t01{font-size:18px;color:#000;width:93.2%;height:auto;overflow:hidden; font-weight:600;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 .festList li .cont .t02{font-size:14px;color:#666;margin-top:5px;width:100%;height:auto;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}/*수정2019.07.01*/
 .festList li .cont .t02 .date{ width:100%;font-size:14px;color:#666;position:relative;float:left;padding-right:10px;}
-.festList li .cont .t02 .gps{width:95%;padding-left:15px;font-size:14px;color:#666;float:left;background:url(https://joyfesta.kr/img/bg/bg_gps01.png) no-repeat left center;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
+.festList li .cont .t02 .gps{width:95%;padding-left:15px;font-size:14px;color:#666;float:left;) no-repeat left center;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 .festList li .cont .t03{ width:95%;margin-top:20px;font-size:13px;color:#666;width:100%;height:auto;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 .festList li .cont .t04{margin-top:5px;font-size:13px;color:#ff671f;width:100%;height:auto;overflow:hidden;}
 
@@ -1514,7 +1514,7 @@ section{width:100%;padding-bottom:20px;position:relative;overflow:hidden;margin-
 
 .btnPlace{float:left;margin-top:20px;margin-bottom:10px;width:calc( 100% - 2px );height:50px;line-height:50px;display:block;text-align:center;border-radius:5px;color:#333;border:1px solid #3e3e3e;background:#fff;}
 .addressList{width:100%;height:auto;overflow:hidden;}
-.addressList li{width:100%;height:auto;overflow:hidden;background:url(https://joyfesta.kr/img/bg/bg_gps01.png) no-repeat left 3px;;}
+.addressList li{width:100%;height:auto;overflow:hidden;) no-repeat left 3px;;}
 .addressList li .cont{float:left;width:calc( 100% - 50px );margin-left:25px;height:auto;overflow:hidden;font-size:14px;color:#484848;}
 .addressList li .cont a{text-decoration:underline;}
 .addressList li .btnDel{float:right;margin-top:3px;}
@@ -1651,12 +1651,12 @@ section{width:100%;padding-bottom:20px;position:relative;overflow:hidden;margin-
 .detailTag a{float:left;height:40px;line-height:40px;font-size:14px;color:#ff671f;margin-right:5px;}
 /*해시태크 하단에 SNS 추가2019.06.03*/
 .detailCont .snsBox{ position: relative; text-align:right; padding-top:10px}/*수정2019.06.26*//*위치수정2019.06.29*/
-.detailCont .snsBox .btnHart2{ display:inline-block;width:35px;height:35px;overflow:hidden;background:url(https://joyfesta.kr/img/bg/bg_hart02.png);}
+.detailCont .snsBox .btnHart2{ display:inline-block;width:35px;height:35px;overflow:hidden;)}
 .detailCont .snsBox .btnHart2.on{background:url(https://joyfesta.kr/img/bg/bg_hart02_on.png);}
-.detailCont .snsBox .btnSnsF {display:inline-block;width:35px;height:35px;overflow:hidden;background:url(https://joyfesta.kr/img/bg/bg_snsIcon.png) no-repeat; }
-.detailCont .snsBox .btnSnsK {display:inline-block;width:35px;height:35px;overflow:hidden;background:url(https://joyfesta.kr/img/bg/bg_snsIcon.png) no-repeat -40px 0;}
-.detailCont .snsBox .btnSnsB {display:inline-block;width:35px;height:35px;overflow:hidden;background:url(https://joyfesta.kr/img/bg/bg_snsIcon.png) no-repeat -80px 0;}
-.detailCont .snsBox .btnSnsL {display:inline-block;width:35px;height:35px;overflow:hidden;background:url(https://joyfesta.kr/img/bg/bg_snsIcon.png) no-repeat -120px 0;}
+.detailCont .snsBox .btnSnsF {display:inline-block;width:35px;height:35px;overflow:hidden; }
+.detailCont .snsBox .btnSnsK {display:inline-block;width:35px;height:35px;overflow:hidden;}
+.detailCont .snsBox .btnSnsB {display:inline-block;width:35px;height:35px;overflow:hidden;}
+.detailCont .snsBox .btnSnsL {display:inline-block;width:35px;height:35px;overflow:hidden;}
 
 .hostBar{width:100%;height:auto;overflow:hidden;margin:0 0 12px 0;}
 .hostBar span{float:left;font-size:18px;color:#000; font-weight:600} /*수정2019.06.14*/
@@ -1722,7 +1722,7 @@ section{width:100%;padding-bottom:20px;position:relative;overflow:hidden;margin-
 .detMap .mapOpt .t01{font-size:14px;margin:20px 0;color:#fff;text-align:center;width:100%;height:auto;overflow:hidden;}
 .detMap .mapOpt .t02{font-size:12px;margin:20px 0;color:#fff;text-align:center;width:calc( 100% - 20px );padding:0 10px;height:auto;overflow:hidden;}
 .detMap .mapOpt .t03{position:absolute;left:0;bottom:0;}
-.detMap .mapOpt .select{display:block;width:164px;height:32px;background: #828282 url(https://joyfesta.kr/img/bg/bg_select_ico.png) no-repeat right 10px center !important;float:none;margin:0 auto;}
+.detMap .mapOpt .select{display:block;width:164px;height:32px;) no-repeat right 10px center !important;float:none;margin:0 auto;}
 
 .detSlideBox{width:1210px;height:auto;overflow:hidden;position:relative;}
 .detSlideBox .detSlideList{width:100%;height:auto;overflow:hidden;}
@@ -1732,7 +1732,7 @@ section{width:100%;padding-bottom:20px;position:relative;overflow:hidden;margin-
 .detSlideBox .item .cont .t01{font-size:16px;color:#000;width:90%;height:auto;font-weight:600;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 .detSlideBox .item .cont .t02{font-size:13px;color:#666;margin-top:5px;width:100%;height:auto;overflow:hidden}
 .detSlideBox .item .cont .t02 .date{width:100%;font-size:13px;color:#666;position:relative;float:left;padding-right:10px;}
-.detSlideBox .item .cont .t02 .gps{width:95%;padding-left:15px;font-size:14px;color:#666;float:left;background:url(https://joyfesta.kr/img/bg/bg_gps01.png) no-repeat left center;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
+.detSlideBox .item .cont .t02 .gps{width:95%;padding-left:15px;font-size:14px;color:#666;float:left;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 .detSlideBox .item .cont .t03{ width:80%;margin-top:5px;font-size:13px;color:#ff671f;width:100%;height:auto;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
 .detSlideBox .item .cont .btnHart{right:0px;}/*190629 수정 : 15px -> 0px*/
 .detSlideBox .detLeft{position:absolute;left:0px;top:75px;}
@@ -1832,13 +1832,13 @@ section{width:100%;padding-bottom:20px;position:relative;overflow:hidden;margin-
 .snsReviewForm .bottomCont .etxt2{font-size:13px;color:#000;float:left;font-weight:600;height:52px;line-height:56px;margin-left:5px; margin-right:10px;} /*추가2019.05.24*/
 .snsReviewForm .bottomCont .etxt3{font-size:13px;color:#666;float:left;line-height:52px; margin-left:5px }/*추가2019.07.02*/
 .snsReviewForm .bottomCont #rateYo{float:left;margin-top:15px;}
-.snsReviewForm .bottomCont .btnFileUpload{line-height:52px;text-indent:33px;font-size:14px;color:#4c4c4c;float:left;background:url(https://joyfesta.kr/img/bg/bg_photo01.png) no-repeat 10px center;width:105px;border-left:1px solid #ccc;border-right:1px solid #ccc;height:52px;overflow:hidden;}
+.snsReviewForm .bottomCont .btnFileUpload{line-height:52px;text-indent:33px;font-size:14px;color:#4c4c4c;float:left;) no-repeat 10px center;width:105px;border-left:1px solid #ccc;border-right:1px solid #ccc;height:52px;overflow:hidden;}
 .snsReviewForm .bottomCont .imgBox{float:left;width:calc( 100% - 363px );height:auto;overflow:hidden;}
 .snsReviewForm .bottomCont .imgBox li{position:relative;float:left;margin:2px 0 2px 2px;height:48px;width:48px;overflow:hidden;}
 .snsReviewForm .bottomCont .imgBox li img{height:48px;width:48px;overflow:hidden;}
 .snsReviewForm .bottomCont .imgBox li .del{display:block;width:15px;height:15px;overflow:hidden;} /*수정2019.05.24*/
 .snsReviewForm .bottomCont .imgBox li .del img{width:15px;height:15px;position:absolute;right:0;top:0;background:#fff;border:1px solid #333;}/*수정2019.05.24*/
-.snsReviewForm .bottomCont .btnReviewSave{line-height:52px;text-indent:33px;font-size:14px;color:#4c4c4c;float:right;background:url(https://joyfesta.kr/img/bg/bg_review.png) no-repeat 10px center;width:105px;border-left:1px solid #ccc;height:52px;overflow:hidden;}
+.snsReviewForm .bottomCont .btnReviewSave{line-height:52px;text-indent:33px;font-size:14px;color:#4c4c4c;float:right;) no-repeat 10px center;width:105px;border-left:1px solid #ccc;height:52px;overflow:hidden;}
 .reviewListHeader{margin-top:50px;width:100%;height:auto;overflow:hidden;}
 .reviewListHeader .cnt{font-size:18px;color:#000;float:left; letter-spacing:-1px; font-weight:600}
 .reviewListHeader .cnt span{font-size:18px;color:#5c5c5c;}
@@ -2127,7 +2127,7 @@ a.link_org { color:#ff671f}
 .popHeader_review a{position:absolute;right:30px;top:10px;}
 .popCont_review{height:auto;overflow:hidden; margin:0 auto; padding:0 10px; overflow:hidden}
 .popCont_review_btn  {float:right; margin:10px 0}
-.popCont_review_btn .btnReviewSave{display: inline-block;line-height:42px;text-indent:33px;font-size:14px;color:#ff671f;background:url(https://joyfesta.kr/img/bg/bg_review.png) no-repeat 10px center;width:105px;border:1px solid #ff671f;height:42px;}
+.popCont_review_btn .btnReviewSave{display: inline-block;line-height:42px;text-indent:33px;font-size:14px;color:#ff671f;) no-repeat 10px center;width:105px;border:1px solid #ff671f;height:42px;}
 .popCont_review_btn .btnReviewCancel{display:inline-block; text-align:center;line-height:42px;font-size:14px;color:#4c4c4c;width:105px;border:1px solid #4c4c4c;height:42px;}
 
 /* 팝업_소속전통시장찾기 2019.06.14*/

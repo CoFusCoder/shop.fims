@@ -35,7 +35,7 @@ public class AdminController {
 	@GetMapping("/admin/areaInsert")
 	public String areaInsert(Model model) {
 		model.addAttribute("areaList", adminService.areaList());
-		return "admin/areaInsert";
+		return "/admin/areaInsert";
 	}
 	
 	//전국 지역 등록 처리 메서드
@@ -93,7 +93,7 @@ public class AdminController {
 		areaList.addAttribute("areaList", adminService.areaList());
 		areaCityList.addAttribute("areaCityList", adminService.areaCityList());
 		
-		return "admin/areaCityList";
+		return "/admin/areaCityList";
 	}
 	
 	//전국 지역 시군 등록 처리 메서드
@@ -153,7 +153,7 @@ public class AdminController {
 	public String areaCityAdminInsert(Model areaList, Model areaCityList) {
 		areaList.addAttribute("areaList", adminService.areaList());
 		areaCityList.addAttribute("areaCityList", adminService.areaCityList());
-		return "admin/areaCityAdminInsert";
+		return "/admin/areaCityAdminInsert";
 	}
 	
 	//행정기관 등록 처리 메서드
@@ -185,7 +185,7 @@ public class AdminController {
 		areaCityAdminList.addAttribute("areaCityAdminList", adminService.areaCityAdminList());
 		
 		System.out.println("행정기관 >>>>" + areaCityAdminList.toString());
-		return "admin/areaCityAdminList";
+		return "/admin/areaCityAdminList";
 	}
 	
 	//전국 행정기관 수정 메서드

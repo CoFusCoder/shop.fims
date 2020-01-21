@@ -26,7 +26,7 @@
 			</nav>
 			<div class="etcRight">
 				<ul>
-					<li class="ico_spot"><a href="/manager/main" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사'}">관리자홈페이지</a></li>
+					<li class="ico_spot"><a href="/main" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사'}">관리자홈페이지</a></li>
 					<li class="ico_spot">
 						<a href="/gukminview/festival/hostSpotRegisterForm" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사' || session.SLEVEL == null}">축제등록하기</a>
 					</li>
