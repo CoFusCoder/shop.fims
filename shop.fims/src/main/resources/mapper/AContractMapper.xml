@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="shop.fims.gukmin.mapper.AContractMapper">
+	<resultMap type="shop.fims.vo.PriOrderPlan" id="PriOrderPlanResultMap">
+		<result property="PriOrderPlanCd" column="pri_order_plan_cd"/>
+		<result property="AreacityAdminCd" column="areacity_admin_cd"/>
+		<result property="AreaCd" column="area_cd"/>
+		<result property="AreaCityCd" column="area_city_cd"/>
+		<result property="FesrevBudCd" column="fesrev_bud_cd"/>
+		<result property="FestCd" column="fest_cd"/>
+		<result property="ManComCd" column="man_com_cd"/>
+		<result property="ContractCla" column="contract_cla"/>
+		<result property="EnterpriseCla" column="enterprise_cla"/>
+		<result property="OrderDate" column="order_date"/>
+		<result property="EnterpriseNm" column="enterprise_nm"/>
+		<result property="Budget" column="budget"/>
+		<result property="FesNm" column="fes_nm"/>
+		<result property="StratDate" column="strat_date"/>
+		<result property="EndDate" column="end_date"/>
+		<result property="OrganNm" column="organ_nm"/>
+		<result property="RegisterNm" column="register_nm"/>
+		<result property="RegisterDate" column="register_date"/>
+	</resultMap>
+	
+
+	 <!--수의계약 -발주계획 조회-->
+	 <select id="getPriOrderPlanList" resultMap="PriOrderPlanResultMap">
+		SELECT 
+		  	  Pri_Order_Plan.enterprise_cla
+			, Pri_Order_Plan.order_date
+			, Pri_Order_Plan.enterprise_nm
+			, Pri_Order_Plan.budget
+			, Pri_Order_Plan.fes_nm
+			, Pri_Order_Plan.strat_date
+			, Pri_Order_Plan.end_date
+		FROM 
+			Pri_Order_Plan 
+		INNER JOIN 
+			Area_City_Admin 
+		ON 
+			Pri_Order_Plan.areacity_admin_cd = Area_City_Admin.areacity_admin_cd
+		ORDER BY 
+			Pri_Order_Plan.order_date DESC , Pri_Order_Plan.fes_nm
+	 </select>
+	 
+	 <!-- 수의계약 리스트 카운트 -->
+	 <select id="getPriOrderPlanAllCount" resultType="int">
+		SELECT 
+			COUNT(*)
+		
+		FROM 
+			Pri_Order_Plan 
+		INNER JOIN 
+			Area_City_Admin 
+		ON 
+			Pri_Order_Plan.areacity_admin_cd = Area_City_Admin.areacity_admin_cd
+		ORDER BY 
+			Pri_Order_Plan.order_date DESC , Pri_Order_Plan.fes_nm
+	 </select>
+	 
+	 <select id="PriOrderPlanpage" resultMap="PriOrderPlanResultMap" parameterType="java.util.Map">
+		SELECT 
+		  	  Pri_Order_Plan.enterprise_cla
+			, Pri_Order_Plan.order_date
+			, Pri_Order_Plan.enterprise_nm
+			, Pri_Order_Plan.budget
+			, Pri_Order_Plan.fes_nm
+			, Pri_Order_Plan.strat_date
+			, Pri_Order_Plan.end_date
+		FROM 
+			Pri_Order_Plan 
+		INNER JOIN 
+			Area_City_Admin 
+		ON 
+			Pri_Order_Plan.areacity_admin_cd = Area_City_Admin.areacity_admin_cd
+		ORDER BY 
+			Pri_Order_Plan.order_date DESC , Pri_Order_Plan.fes_nm
+		LIMIT #{startRow},#{rowPerPage}
+	 </select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

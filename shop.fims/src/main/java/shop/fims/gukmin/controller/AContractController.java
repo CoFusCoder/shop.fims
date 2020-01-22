@@ -1,11 +1,22 @@
 package shop.fims.gukmin.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import shop.fims.gukmin.service.AContractService;
+import shop.fims.vo.PriOrderPlan;
 
 @Controller
 public class AContractController {
 
+	@Autowired
+	private AContractService aContractService;
 
 	/**
 	 * @param 없음
@@ -49,6 +60,19 @@ public class AContractController {
 		return "/gukminview/acontract/generalContractView";
 	}
 	
+	/*
+	 * @GetMapping("gukminview/acontract/orderingPlanView") public String
+	 * orderingPlanView(Model model) { System.out.
+	 * println("---수의계약->발주계획 : orderingPlanView AContractController.java-------");
+	 * 
+	 * List<PriOrderPlan> list = aContractService.getPriOrderPlanList();
+	 * model.addAttribute("PriOrderPlanList", list);
+	 * 
+	 * 
+	 * 
+	 * return "/gukminview/acontract/orderingPlanView"; }
+	 */
+	
 	/**
 	 * @param 없음
 	 * @file AContractController.java
@@ -58,8 +82,18 @@ public class AContractController {
 	 * @return gukminview/acontract/orderingPlanView
 	 */
 	@GetMapping("gukminview/acontract/orderingPlanView")
-	public String orderingPlanView() {
-		System.out.println("---수의계약->발주계획 : orderingPlanView AContractController.java-------");
+	public String orderingPlanView(Model model
+							,@RequestParam(value="currentPage"
+							, required = false
+							, defaultValue = "1") int currentPage) {
+		Map<String, Object> map = aContractService.PriOrderPlanpage(currentPage);
+			
+		model.addAttribute("PriOrderTotalCount", map.get("PriOrderTotalCount"));
+		model.addAttribute("orderingPlanpageing", map.get("list"));
+		model.addAttribute("currentPage", map.get("currentPage"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("startPageNum", map.get("startPageNum"));
+		model.addAttribute("lastPageNum", map.get("lastPageNum"));
 		return "/gukminview/acontract/orderingPlanView";
 	}
 	
